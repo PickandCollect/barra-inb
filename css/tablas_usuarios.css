@@ -1,0 +1,109 @@
+       .custom-main-container {
+            max-width: 97%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .text-primary-custom {
+            color: #32255e !important;
+        }
+
+        /* Color de fondo para las cabeceras y pies de la tabla */
+        .custom-table thead th,
+        .custom-table tfoot th {
+            background-color: #533392;
+            color: white;
+            border-color: #533392;
+        }
+
+        /* Color de fondo para botones */
+        .custom-btn {
+            background-color: #533392;
+            color: white;
+            border: none;
+        }
+
+        .custom-btn:focus,
+        .custom-btn:hover {
+            background-color: #2D2A7B;
+            color: white;
+        }
+
+        /* Estilos de paginación personalizados */
+        .custom-pagination .page-item .page-link {
+            color: #533392 !important;
+            background-color: white !important;
+            border-color: #533392 !important;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .custom-pagination .page-item.active .page-link {
+            background-color: #533392 !important;
+            color: white !important;
+            border-color: #533392 !important;
+        }
+
+        .custom-pagination .page-item .page-link:hover,
+        .custom-pagination .page-item .page-link:focus {
+            background-color: #2D2A7B !important;
+            color: white !important;
+            border-color: #2D2A7B !important;
+        }
+
+        .custom-pagination .page-item.disabled .page-link {
+            color: #b28fcf !important;
+            background-color: #f8f9fa !important;
+            border-color: #e4d8f3 !important;
+            cursor: not-allowed;
+        }
+
+        /* Ajustar el tamaño y espaciado de los botones de paginación */
+        .custom-pagination .page-item {
+            margin: 0 5px;
+        }
+
+        .custom-pagination .page-link {
+            padding: 8px 12px;
+        }
+
+        /* Botones de acciones */
+        .action-btn {
+            border: none;
+            color: white;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .edit-btn {
+            background-color: #2D2A7B;
+        }
+
+        .edit-btn:hover {
+            background-color: #1c1f5b;
+        }
+
+        .delete-btn {
+            background-color: #d9534f;
+        }
+
+        .delete-btn:hover {
+            background-color: #a94442;
+        }
+
+        /* Alinear botones en la columna Acciones */
+        .action-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        /* Ajustar el ancho de la columna Acciones */
+        .custom-table th:first-child,
+        .custom-table td:first-child {
+            width: 15%;
+            /* Ajustar según sea necesario */
+        }

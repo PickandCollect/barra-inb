@@ -1,0 +1,66 @@
+     /* Estilos personalizados */
+        .custom-form-section {
+            background-color: #f8f9fc;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .custom-form-section h3 {
+            color: #2d2a7b;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .custom-form-group label {
+            font-weight: bold;
+        }
+        
+
+        /* Hover efecto para los botones personalizados */
+        .custom-btn:focus,
+        .custom-btn:hover {
+            background-color: #2D2A7B;
+            color: white;
+        }
+
+        .custom-submit-button {
+            background-color: #533392;
+            color: white;
+            font-weight: bold;
+            padding: 15px 40px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+        }
+
+        .custom-submit-button:hover {
+            background-color: #2D2A7B;
+        }
+
+        /* Grid para las secciones en columnas */
+        .custom-grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        /* Ajuste de ancho del contenedor */
+        .custom-container {
+            max-width: 100%;
+        }
+
+        /* Estilos de select e input */
+        .custom-form-control {
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .custom-card-border {
+            background-color: #F3F3F3;
+            border-left: 5px solid #533392;
+            border-bottom: 5px solid #533392;
+        }

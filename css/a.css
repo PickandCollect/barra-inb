@@ -1,0 +1,63 @@
+/* Contenedor para los botones */
+.button-editar {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Se incrementó el espacio entre los botones para mejorar la separación */
+    flex-wrap: wrap; /* Esto permite que los botones se ajusten cuando el contenedor se reduzca en pantallas pequeñas */
+}
+
+/* Estilos personalizados para los botones */
+.btn-editar{
+    background-color: #533392;
+    color: white;
+    border: none;
+    padding: 12px 25px; /* Se aumentó el padding para un tamaño de botón más cómodo */
+    font-size: 1.1em; /* Aumenta un poco el tamaño de la fuente */
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px; /* Se ajustó la altura para mantener la consistencia en el tamaño */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efectos de hover y foco */
+.btn-editar:hover,
+.btn-editar:focus {
+    background-color: #2D2A7B;
+    color: white;
+    transform: scale(1.05);
+    outline: none;
+}
+
+/* Estilo específico para el botón de recarga */
+.btn-editar {
+    padding: 10px 20px; /* Aseguramos que el botón recarga siga siendo más compacto */
+}
+
+/* Tamaño del icono dentro del botón de recarga */
+.btn-editar i {
+    font-size: 16px;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .btn-editar {
+        font-size: 1em;
+        padding: 10px 20px;
+        max-width: 100%; /* En móviles, el botón ocupará todo el ancho disponible */
+    }
+
+    /* Aseguramos que los botones dentro del contenedor también se ajusten a pantallas pequeñas */
+    .button-editar{
+        gap: 15px; /* Se incrementa el espacio en pantallas pequeñas */
+        justify-content: center; /* Los botones estarán centrados en pantallas pequeñas */
+    }
+
+    .btn-editar {
+        font-size: 1em;
+        padding: 12px 20px; /* Aseguramos que el padding sea adecuado para pantallas pequeñas */
+        height: 45px; /* Ajustamos la altura de los botones para pantallas pequeñas */
+    }
+}

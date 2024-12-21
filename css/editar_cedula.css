@@ -1,0 +1,211 @@
+     /* Estilos personalizados */
+        .custom-form-section-editar {
+            background-color: #f8f9fc;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+          .custom-card-border-editar {
+            background-color: #F3F3F3;
+            border-left: 5px solid #533392;
+            border-bottom: 5px solid #533392;
+        }
+
+        .custom-form-section-editar h6{
+            color: black;
+            margin-bottom: 1px;
+            font-weight: bold;
+            
+        }
+        .custom-form-section-editar h3 {
+            color: #2d2a7b;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .custom-form-group-editar label {
+            font-weight: bold;
+             min-height: 40px; /* Ajusta el valor según la altura deseada */
+    line-height: 20px; 
+            
+        }
+        
+         .custom-grid-container-editar {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+           /* Espaciado entre los campos */
+}
+        
+
+        .custom-container-editar {
+            max-width: 100%;
+        }
+        
+        .custom-grid-container-ee {
+           display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+         .custom-grid-container-eee {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+      
+         .custom-submit-button-editar {
+            background-color: #533392;
+            color: white;
+            font-weight: bold;
+            padding: 5px 15px; /* Ajusta según el tamaño que desees */
+            margin: 5px; /* Asegúrate de tener un margen consistente */
+            font-size: 1em;
+            border: none;
+            border-radius: 50px;
+            display: inline-block; /* Asegura que los botones estén en línea */
+        }
+        .custom-submit-button-editar1 {
+            background-color: #533392;
+            color: white;
+            font-weight: bold;
+            padding: 5px 15px; /* Ajusta según el tamaño que desees */
+            margin: 5px; /* Asegúrate de tener un margen consistente */
+            font-size: 1em;
+            border: none;
+            border-radius: 50px;
+            margin-top: 50px;
+            display: inline-block; /* Asegura que los botones estén en línea */
+        }
+
+        .custom-submit-button-editar:hover {
+            background-color: #2D2A7B;
+            color: white;
+        }
+
+       
+        /* Estilos de select e input */
+        .custom-form-control-editar {
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+      .custom-table-style-main-container {
+            max-width: 97%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .custom-table-style-text-primary {
+            color: #32255e !important;
+        }
+
+        /* Color de fondo para las cabeceras y pies de la tabla */
+        .custom-table-style-table thead th,
+        .custom-table-style-table tfoot th {
+            background-color: #533392;
+            color: white;
+            border-color: #533392;
+        }
+
+        /* Color de fondo para botones */
+        .custom-table-style-btn {
+            background-color: #533392;
+            color: white;
+            border: none;
+        }
+
+        .custom-table-style-btn:focus,
+        .custom-table-style-btn:hover {
+            background-color: #2D2A7B;
+            color: white;
+        }
+
+        /* Estilos de paginación personalizados */
+        .custom-table-style-pagination .page-item .page-link,
+        .custom-table-style-navigation .page-item .page-link {
+            color: #533392 !important;
+            background-color: white !important;
+            border-color: #533392 !important;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .custom-table-style-pagination .page-item.active .page-link,
+        .custom-table-style-navigation .page-item.active .page-link {
+            background-color: #533392 !important;
+            color: white !important;
+            border-color: #533392 !important;
+        }
+
+        .custom-table-style-pagination .page-item .page-link:hover,
+        .custom-table-style-pagination .page-item .page-link:focus,
+        .custom-table-style-navigation .page-item .page-link:hover,
+        .custom-table-style-navigation .page-item .page-link:focus {
+            background-color: #2D2A7B !important;
+            color: white !important;
+            border-color: #2D2A7B !important;
+        }
+
+        .custom-table-style-pagination .page-item.disabled .page-link,
+        .custom-table-style-navigation .page-item.disabled .page-link {
+            color: #b28fcf !important;
+            background-color: #f8f9fa !important;
+            border-color: #e4d8f3 !important;
+            cursor: not-allowed;
+        }
+
+        /* Ajustar el tamaño y espaciado de los botones de paginación */
+        .custom-table-style-pagination .page-item,
+        .custom-table-style-navigation .page-item {
+            margin: 0 5px;
+        }
+
+        .custom-table-style-pagination .page-link,
+        .custom-table-style-navigation .page-link {
+            padding: 8px 12px;
+        }
+
+        /* Botones de acciones */
+        .custom-table-style-action-btn {
+            border: none;
+            color: white;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .custom-table-style-edit-btn {
+            background-color: #2D2A7B;
+        }
+
+        .custom-table-style-edit-btn:hover {
+            background-color: #1c1f5b;
+        }
+
+        .custom-table-style-delete-btn {
+            background-color: #d9534f;
+        }
+
+        .custom-table-style-delete-btn:hover {
+            background-color: #a94442;
+        }
+
+        /* Alinear botones en la columna Acciones */
+        .custom-table-style-action-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        /* Ajustar el ancho de la columna Acciones */
+        .custom-table-style-table th:first-child,
+        .custom-table-style-table td:first-child {
+            width: 15%;
+            /* Ajustar según sea necesario */
+        }

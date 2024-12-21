@@ -1,0 +1,37 @@
+  /* Estilos personalizados */
+        .custom-topbar {
+            background-color: #e0e0e0;
+        }
+
+        /* Estilo del botón toggle del sidebar en el topbar */
+        .custom-sidebar-toggle {
+            background-color: #533392 !important;
+            color: white !important;
+            border: none;
+        }
+
+        /* Efecto hover para el botón toggle del sidebar */
+        .custom-sidebar-toggle:focus,
+        .custom-sidebar-toggle:hover {
+            background-color: #2D2A7B !important;
+            color: white !important;
+        }
+
+        /* Estilo para el botón de búsqueda */
+        .custom-search-btn {
+            background-color: #533392 !important;
+            color: white !important;
+            border: none;
+        }
+
+        /* Asegurar el icono blanco en el botón de búsqueda */
+        .custom-search-btn i {
+            color: white !important;
+        }
+
+        /* Hover para el botón de búsqueda */
+        .custom-search-btn:hover,
+        .custom-search-btn:focus {
+            background-color: #2D2A7B !important;
+            color: white !important;
+        }

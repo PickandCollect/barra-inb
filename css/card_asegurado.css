@@ -1,0 +1,306 @@
+ .card-custom-border-f {
+            border-left: 5px solid #533392;
+            border-radius: 20px;
+            /* Color morado personalizado */
+        }
+         .card-custom-border-a {
+         
+            border-radius: 20px;
+            /* Color morado personalizado */
+        }
+
+        h2 {
+            color: #2d2a7b;
+            font-weight: bold;
+            
+        }
+          /* Centrado del contenido en las tarjetas */
+        .card-body {
+            
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        
+        /* Estilos para los íconos grandes */
+        .icon-large {
+            font-size: 5em;
+            color: #533392;
+        }
+        .custom-btn
+        {
+            background-color: #533392;
+            color: white;
+            font-weight: bold;
+            padding: 15px 15px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+              box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Efecto sombra */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+            
+        }
+       .custom-btn:focus,
+        .custom-btn:hover {
+            background-color: #2D2A7B;
+            color: white;
+              transform: scale(1.05);
+    outline: none;
+        }
+
+   .custom-btn-h {
+    background-color: #533392;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 20px; /* Espacio interno más amplio */
+    margin-bottom: 20px;
+    width: 100%; /* Botón ocupa todo el ancho disponible */
+    max-width: 450px; /* Ajuste del ancho máximo */
+    height: auto; /* Permite que el botón ajuste su altura */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espaciado entre ícono y texto */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center; /* Asegura alineación del texto */
+    white-space: normal; /* Permite que el texto se divida en varias líneas */
+}
+
+.custom-btn-h span {
+    display: inline-block;
+    text-align: center;
+}
+
+.custom-btn-h i {
+    font-size: 1.5em; /* Ajusta el tamaño del ícono */
+}
+
+.custom-btn-h:hover,
+.custom-btn-h:focus {
+    background-color: #2D2A7B;
+    transform: scale(1.05);
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .custom-btn-h {
+        font-size: 1em;
+        padding: 10px 15px;
+        max-width: 100%; /* En móviles, el botón ocupa todo el ancho */
+    }
+
+    .custom-btn-h i {
+        font-size: 1.2em;
+    }
+    .custom-btn {
+        font-size: 1em;
+        padding: 10px 15px;
+        max-width: 100%; /* En móviles, el botón ocupa todo el ancho */
+    }
+}
+
+  .custom-form-section-aseg {
+            background-color: #f8f9fc;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+          .custom-card-border-aseg {
+            background-color: #F3F3F3;
+            border-left: 5px solid #533392;
+            border-bottom: 5px solid #533392;
+        }
+
+        .custom-form-section-aseg h6{
+            color: black;
+            margin-bottom: 1px;
+            font-weight: bold;
+            
+        }
+        .custom-form-section-aseg h3 {
+            color: #2d2a7b;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .custom-form-group-aseg label {
+            font-weight: bold;
+             min-height: 40px; /* Ajusta el valor según la altura deseada */
+    line-height: 20px; 
+            
+        }
+        
+         .custom-grid-container-aseg {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+           /* Espaciado entre los campos */
+}
+        
+
+        .custom-container-aseg {
+            max-width: 100%;
+        }
+        
+        .custom-grid-container-ee {
+           display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+         .custom-grid-container-eee {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+      
+         .custom-submit-button-aseg {
+            background-color: #533392;
+            color: white;
+            font-weight: bold;
+            padding: 5px 15px; /* Ajusta según el tamaño que desees */
+            margin: 5px; /* Asegúrate de tener un margen consistente */
+            font-size: 1em;
+            border: none;
+            border-radius: 50px;
+            display: inline-block; /* Asegura que los botones estén en línea */
+        }
+        .custom-submit-button-aseg {
+            background-color: #533392;
+            color: white;
+            font-weight: bold;
+            padding: 5px 15px; /* Ajusta según el tamaño que desees */
+            margin: 5px; /* Asegúrate de tener un margen consistente */
+            font-size: 1em;
+            border: none;
+            border-radius: 50px;
+            margin-top: 50px;
+            display: inline-block; /* Asegura que los botones estén en línea */
+        }
+
+        .custom-submit-button-aseg:hover {
+            background-color: #2D2A7B;
+            color: white;
+        }
+
+       
+        /* Estilos de select e input */
+        .custom-form-control-aseg {
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+      .file-upload {
+        display: flex;
+        align-items: center;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        width: fit-content;
+        transition: all 0.3s ease;
+        background-color: #f8f9fa;
+    }
+
+    .file-upload:hover {
+        border-color: #007bff;
+        background-color: #e9ecef;
+    }
+
+    .file-upload input[type="file"] {
+        display: none; /* Ocultar el input original */
+    }
+
+    .file-upload span {
+        font-size: 14px;
+        color: #333;
+        padding-left: 10px;
+    }
+
+    .file-upload i {
+        font-size: 18px;
+        color: #007bff;
+    }
+     .custom-table-style-main-container {
+            max-width: 97%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .custom-table-style-text-primary {
+            color: #32255e !important;
+        }
+
+        /* Color de fondo para las cabeceras y pies de la tabla */
+        .custom-table-style-table thead th,
+        .custom-table-style-table tfoot th {
+            background-color: #533392;
+            color: white;
+            border-color: #533392;
+        }
+
+        /* Color de fondo para botones */
+        .custom-table-style-btn {
+            background-color: #533392;
+            color: white;
+            border: none;
+        }
+
+        .custom-table-style-btn:focus,
+        .custom-table-style-btn:hover {
+            background-color: #2D2A7B;
+            color: white;
+        }
+
+        /* Estilos de paginación personalizados */
+        .custom-table-style-pagination .page-item .page-link,
+        .custom-table-style-navigation .page-item .page-link {
+            color: #533392 !important;
+            background-color: white !important;
+            border-color: #533392 !important;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .custom-table-style-pagination .page-item.active .page-link,
+        .custom-table-style-navigation .page-item.active .page-link {
+            background-color: #533392 !important;
+            color: white !important;
+            border-color: #533392 !important;
+        }
+
+        .custom-table-style-pagination .page-item .page-link:hover,
+        .custom-table-style-pagination .page-item .page-link:focus,
+        .custom-table-style-navigation .page-item .page-link:hover,
+        .custom-table-style-navigation .page-item .page-link:focus {
+            background-color: #2D2A7B !important;
+            color: white !important;
+            border-color: #2D2A7B !important;
+        }
+
+        .custom-table-style-pagination .page-item.disabled .page-link,
+        .custom-table-style-navigation .page-item.disabled .page-link {
+            color: #b28fcf !important;
+            background-color: #f8f9fa !important;
+            border-color: #e4d8f3 !important;
+            cursor: not-allowed;
+        }
+
+        /* Ajustar el tamaño y espaciado de los botones de paginación */
+        .custom-table-style-pagination .page-item,
+        .custom-table-style-navigation .page-item {
+            margin: 0 5px;
+        }
+
+        .custom-table-style-pagination .page-link,
+        .custom-table-style-navigation .page-link {
+            padding: 8px 12px;
+        }

@@ -1,0 +1,273 @@
+.custom-table-style-main-container {
+    max-width: 97%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.custom-table-style-text-primary {
+    color: #32255e !important;
+}
+
+/* Color de fondo para las cabeceras y pies de la tabla */
+.custom-table-style-table-t thead th,
+.custom-table-style-table-t tfoot th {
+    background-color: #533392;
+    color: white;
+    border-color: #533392;
+}
+
+/* Color de fondo para botones */
+.custom-table-style-btn {
+    background-color: #533392;
+    color: white;
+    border: none;
+}
+
+.custom-table-style-btn:focus,
+.custom-table-style-btn:hover {
+    background-color: #2D2A7B;
+    color: white;
+}
+
+/* Estilos de paginación personalizados */
+.custom-table-style-pagination-t .page-item .page-link,
+.custom-table-style-navigation-t .page-item .page-link {
+    color: #533392 !important;
+    background-color: white !important;
+    border-color: #533392 !important;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-table-style-pagination-t .page-item.active .page-link,
+.custom-table-style-navigation-t .page-item.active .page-link {
+    background-color: #533392 !important;
+    color: white !important;
+    border-color: #533392 !important;
+}
+
+.custom-table-style-pagination-t .page-item .page-link:hover,
+.custom-table-style-pagination-t .page-item .page-link:focus,
+.custom-table-style-navigation-t .page-item .page-link:hover,
+.custom-table-style-navigation-t .page-item .page-link:focus {
+    background-color: #2D2A7B !important;
+    color: white !important;
+    border-color: #2D2A7B !important;
+}
+
+.custom-table-style-pagination-t .page-item.disabled .page-link,
+.custom-table-style-navigation-t .page-item.disabled .page-link {
+    color: #b28fcf !important;
+    background-color: #f8f9fa !important;
+    border-color: #e4d8f3 !important;
+    cursor: not-allowed;
+}
+
+/* Ajustar el tamaño y espaciado de los botones de paginación */
+.custom-table-style-pagination-t .page-item,
+.custom-table-style-navigation-t .page-item {
+    margin: 0 5px;
+}
+
+.custom-table-style-pagination-t .page-link,
+.custom-table-style-navigation-t .page-link {
+    padding: 8px 12px;
+}
+
+/* Botones de acciones */
+.custom-table-style-action-btn {
+    border: none;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.custom-table-style-edit-btn {
+    background-color: #2D2A7B;
+}
+
+.custom-table-style-edit-btn:hover {
+    background-color: #1c1f5b;
+}
+
+.custom-table-style-delete-btn {
+    background-color: #d9534f;
+}
+
+.custom-table-style-delete-btn:hover {
+    background-color: #a94442;
+}
+
+/* Alinear botones en la columna Acciones */
+.custom-table-style-action-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Ajustar el ancho de la columna Acciones */
+.custom-table-style-table th:first-child,
+.custom-table-style-table td:first-child {
+    width: 15%;
+    /* Ajustar según sea necesario */
+}
+/* Contenedor para los botones */
+.button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Se incrementó el espacio entre los botones para mejorar la separación */
+    flex-wrap: wrap; /* Esto permite que los botones se ajusten cuando el contenedor se reduzca en pantallas pequeñas */
+}
+
+/* Estilos personalizados para los botones */
+.btn-custom-modal,
+.btn-reload-modal {
+    background-color: #533392;
+    color: white;
+    border: none;
+    padding: 12px 25px; /* Se aumentó el padding para un tamaño de botón más cómodo */
+    font-size: 1.1em; /* Aumenta un poco el tamaño de la fuente */
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px; /* Se ajustó la altura para mantener la consistencia en el tamaño */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efectos de hover y foco */
+.btn-custom-modal:hover,
+.btn-reload-modal:hover,
+.btn-custom-modal:focus,
+.btn-reload-modal:focus,
+.file-label:focus {
+    background-color: #2D2A7B;
+    color: white;
+    transform: scale(1.05);
+    outline: none;
+}
+
+/* Estilo específico para el botón de recarga */
+.btn-reload-modal {
+    padding: 10px 20px; /* Aseguramos que el botón recarga siga siendo más compacto */
+}
+
+/* Tamaño del icono dentro del botón de recarga */
+.btn-reload-modal i {
+    font-size: 16px;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .custom-btn-modal {
+        font-size: 1em;
+        padding: 10px 20px;
+        max-width: 100%; /* En móviles, el botón ocupará todo el ancho disponible */
+    }
+
+    /* Aseguramos que los botones dentro del contenedor también se ajusten a pantallas pequeñas */
+    .button-container {
+        gap: 15px; /* Se incrementa el espacio en pantallas pequeñas */
+        justify-content: center; /* Los botones estarán centrados en pantallas pequeñas */
+    }
+
+    .btn-custom-modal,
+    .btn-reload-modal {
+        font-size: 1em;
+        padding: 12px 20px; /* Aseguramos que el padding sea adecuado para pantallas pequeñas */
+        height: 45px; /* Ajustamos la altura de los botones para pantallas pequeñas */
+    }
+}
+   .checkbox-container-wrapper {
+    display: flex; /* Disposición en fila */
+    justify-content: space-between; /* Espacio entre las columnas */
+    gap: 20px; /* Espacio entre las columnas */
+    width: 100%; /* Asegura que ocupe el 100% del contenedor */
+}
+
+.checkbox-container, .additional-content {
+    flex: 1; /* Hace que ambas columnas ocupen el mismo espacio */
+    padding: 10px; /* Agregar algo de espacio interno */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
+
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: column; /* Los elementos se apilan verticalmente */
+    gap: 10px; /* Espacio entre los checkboxes */
+}
+
+.checkbox-container label, .additional-content label {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.additional-content {
+    border-radius: 5px; /* Bordes redondeados */
+}
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilo del botón con el ícono */
+.file-label {
+    background-color: #533392; /* Color de fondo */
+    color: white; /* Color del ícono */
+    padding: 10px 15px; /* Espaciado alrededor del ícono */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de mano */
+}
+
+/* Estilo del campo de texto deshabilitado */
+.file-name {
+    padding: 10px;
+    width: 250px; /* Ajusta el ancho según lo que necesites */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo claro */
+    margin-bottom: 8px;
+}
+
+  /* Los divs están invisibles pero ocupan el mismo lugar */
+  .invisible {
+    position: absolute;  /* Usamos absolute para que se ubiquen en el mismo espacio */
+    top: 0;              /* Ajustar la posición desde el top */
+    left: 0;             /* Ajustar la posición desde la izquierda */
+    width: 100%;         /* O el ancho que necesites */
+    height: 100%;        /* O la altura que necesites */
+    opacity: 0;          /* Los hace invisibles */
+  }
+
+  /* Si quieres que uno se apile encima del otro, usa z-index */
+  #mainDatos {
+    z-index: 0;          /* El primer div estará encima */
+  }
+
+  #mainDocs {
+    z-index: 1;          /* El segundo div estará debajo */
+  }
+
+/* Estilo general para los checkboxes deshabilitados */
+input[type="checkbox"]:disabled {
+    opacity: 1; /* Reducir la opacidad para indicar que el checkbox está deshabilitado */
+    cursor: not-allowed; /* Cambiar el cursor para que se vea que no se puede interactuar con el checkbox */
+}
+
+/* Estilo para los checkboxes deshabilitados pero marcados */
+input[type="checkbox"]:disabled:checked {
+    opacity: 1; /* Restablecer la opacidad para que el checkbox deshabilitado marcado se vea igual que uno habilitado */
+    background-color: #2196F3; /* Color de fondo similar al habilitado */
+    border-color: #2196F3; /* Color del borde */
+    /* Usar un color adecuado para el ícono marcado */
+   
+}
+
+
+

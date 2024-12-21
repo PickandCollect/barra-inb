@@ -1,0 +1,110 @@
+ /* Estilos personalizados */
+        .custom-form-section {
+            background-color: #f8f9fc;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            max-width: 100%;
+        }
+
+        .custom-form-section h3 {
+            color: #2d2a7b;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .custom-form-group label {
+            font-weight: bold;
+        }
+
+        .custom-btn:focus,
+        .custom-btn:hover {
+            background-color: #2D2A7B;
+            color: white;
+        }
+
+        .custom-submit-button {
+            background-color: #533392;
+            color: white;
+            font-weight: bold;
+            padding: 15px 40px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .custom-submit-button:hover {
+            background-color: #2D2A7B;
+        }
+
+        .custom-grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .custom-container {
+            max-width: 100%;
+        }
+
+        .custom-form-control {
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .custom-card-border {
+            background-color: #F3F3F3;
+            border-left: 5px solid #533392;
+            border-bottom: 5px solid #533392;
+        }
+
+        .profile-picture-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #533392;
+            background-color: #e0e0e0;
+            margin-bottom: 10px;
+        }
+
+        .custom-file-upload {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            grid-column: span 3;
+        }
+
+        .custom-file-upload i {
+            font-size: 20px;
+            color: #2D2A7B;
+            margin-right: 10px;
+        }
+
+        .custom-file-upload span {
+            font-size: 14px;
+            color: #6c757d;
+            font-weight: bold;
+            flex: 1;
+            text-align: center;
+        }
+
+        input[type="file"] {
+            display: none;
+        }

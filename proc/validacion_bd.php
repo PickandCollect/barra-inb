@@ -1,0 +1,114 @@
+<?php
+session_start(); // Iniciar sesión
+include 'conexion.php'; // Archivo de conexión a la base de datos
+
+header('Content-Type: application/json'); // Configurar la respuesta como JSON
+
+// Inicializar la respuesta
+$response = [
+    'success' => false,
+    'message' => 'Error desconocido',
+    'rol' => null,
+    'no_siniestro' => null,
+    'id_usuario' => null,
+];
+
+// Verificar si el método es POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    $response['message'] = 'Método no permitido.';
+    echo json_encode($response);
+    exit;
+}
+
+// Obtener datos del formulario
+$usuario = $_POST['usuario'] ?? null;
+$contrasena = $_POST['contrasena'] ?? null;
+$no_siniestro = $_POST['usuario'] ?? null;
+$passw_ext = $_POST['contrasena'] ?? null;
+
+// Validar que los campos no estén vacíos
+if ((!$usuario || !$contrasena) && (!$no_siniestro || !$passw_ext)) {
+    $response['message'] = 'Usuario/contraseña o No. Siniestro/Contraseña Externa son requeridos.';
+    echo json_encode($response);
+    exit;
+}
+
+try {
+    // Verificar si el usuario y la contraseña existen en la tabla Usuario
+    if ($usuario && $contrasena) {
+        $sql = "SELECT usuario, nombre, id_usuario, passw FROM Usuario WHERE usuario = ? LIMIT 1";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bind_param('s', $usuario);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+
+        if ($resultado->num_rows === 1) {
+            $usuarioData = $resultado->fetch_assoc();
+
+            if ($contrasena === $usuarioData['passw']) {
+                $_SESSION['usuario'] = $usuarioData['usuario'];
+                $_SESSION['nombre_usuario'] = $usuarioData['nombre']; // Guardar el nombre del usuario
+                $_SESSION['rol'] = 'administrador';
+                $_SESSION['id_usuario'] = $usuarioData['id_usuario'];
+
+                $response['success'] = true;
+                $response['message'] = 'Inicio de sesión exitoso.';
+                $response['rol'] = 'administrador';
+                $response['id_usuario'] = $usuarioData['id_usuario'];
+            } else {
+                $response['message'] = 'Contraseña incorrecta.';
+            }
+        } else {
+            // Verificar en la tabla Expediente para asegurados
+            if ($no_siniestro && $passw_ext) {
+                $sqlExpediente = "SELECT no_siniestro, fk_asegurado FROM Expediente WHERE no_siniestro = ? AND passw_ext = ? LIMIT 1";
+                $stmtExpediente = $conexion->prepare($sqlExpediente);
+                $stmtExpediente->bind_param('ss', $no_siniestro, $passw_ext);
+                $stmtExpediente->execute();
+                $resultadoExpediente = $stmtExpediente->get_result();
+
+                if ($resultadoExpediente->num_rows === 1) {
+                    $expedienteData = $resultadoExpediente->fetch_assoc();
+
+                    // Realizar una consulta adicional para obtener el nombre del asegurado
+                    $sqlAsegurado = "SELECT nom_asegurado FROM Asegurado WHERE id_asegurado = ? LIMIT 1";
+                    $stmtAsegurado = $conexion->prepare($sqlAsegurado);
+                    $stmtAsegurado->bind_param('i', $expedienteData['fk_asegurado']);
+                    $stmtAsegurado->execute();
+                    $resultadoAsegurado = $stmtAsegurado->get_result();
+
+                    if ($resultadoAsegurado->num_rows === 1) {
+                        $aseguradoData = $resultadoAsegurado->fetch_assoc();
+
+                        // Guardar los datos en la sesión
+                        $_SESSION['no_siniestro'] = $expedienteData['no_siniestro'];
+                        $_SESSION['fk_asegurado'] = $expedienteData['fk_asegurado'];
+                        $_SESSION['nom_asegurado'] = $aseguradoData['nom_asegurado'];
+                        $_SESSION['rol'] = 'asegurado';
+
+                        $response['success'] = true;
+                        $response['message'] = 'Acceso asegurado exitoso.';
+                        $response['rol'] = 'asegurado';
+                        $response['no_siniestro'] = $expedienteData['no_siniestro'];
+                    } else {
+                        $response['message'] = 'No se encontró el asegurado asociado.';
+                    }
+                    $stmtAsegurado->close();
+                } else {
+                    $response['message'] = 'No se encontró el expediente.';
+                }
+                $stmtExpediente->close();
+            } else {
+                $response['message'] = 'Datos incompletos para asegurado.';
+            }
+        }
+        $stmt->close();
+    } else {
+        $response['message'] = 'Datos incompletos para usuario.';
+    }
+} catch (Exception $e) {
+    $response['message'] = 'Error del servidor: ' . $e->getMessage();
+}
+
+$conexion->close(); // Cerrar conexión
+echo json_encode($response); // Responder con JSON

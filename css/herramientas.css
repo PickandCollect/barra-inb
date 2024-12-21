@@ -1,0 +1,88 @@
+.custom-h2 {
+            color: #2d2a7b;
+            font-weight: bold;
+        }
+
+        .custom-form-section-editar {
+            background-color: #f8f9fc;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+          .custom-card-border-editar {
+            background-color: #F3F3F3;
+            border-left: 5px solid #533392;
+            border-bottom: 5px solid #533392;
+        }
+
+        .custom-form-section-editar h6{
+            color: black;
+            margin-bottom: 1px;
+            font-weight: bold;
+            
+        }
+        .custom-form-section-editar h3 {
+            color: #2d2a7b;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .custom-form-group-editar label {
+            font-weight: bold;
+             min-height: 40px; /* Ajusta el valor según la altura deseada */
+    line-height: 20px; 
+            
+        }
+        .file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilo del botón con el ícono */
+.file-label {
+    background-color: #533392; /* Color de fondo */
+    color: white; /* Color del ícono */
+    padding: 10px 15px; /* Espaciado alrededor del ícono */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de mano */
+    height: 40px;
+}
+
+/* Estilo del campo de texto deshabilitado */
+.file-name {
+    padding: 10px;
+    height: 40px;
+    width: 240px; /* Ajusta el ancho según lo que necesites */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo claro */
+    margin-bottom: 8px;
+}
+.custom-submit-button-editar {
+    background-color: #533392 !important;
+    color: white !important;
+    font-weight: bold;
+    padding: 5px 10px !important; /* Ajusta según el tamaño que desees */
+    margin: 0px; /* Elimina cualquier margen adicional */
+    font-size: 1em;
+    border: none;
+
+    border-radius: 50px;
+    display: inline-block !important; /* Asegura que los botones estén en línea */
+    vertical-align: middle; /* Alinea el botón verticalmente */
+    height: 40px; /* Asegúrate de que el botón tenga la misma altura que los demás campos */
+}
+
+
+         .custom-submit-button-editar:hover {
+            background-color: #2D2A7B !important;
+            color: white;
+        }
+        .custom-grid-container-ee {
+           display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }

@@ -1,0 +1,75 @@
+/* Estilo para el sidebar */
+.sidebar {
+    transition: width 0.3s, background 0.3s; /* Transición suave */
+    width: 250px; /* Ancho inicial del sidebar */
+    background: linear-gradient(90deg, #7F00A5, #2d2a7b); /* Fondo con gradiente */
+    overflow: hidden; /* Ocultar contenido desbordado */
+}
+
+.sidebar.collapsed {
+    width: 80px; /* Ancho reducido cuando el sidebar está colapsado */
+}
+
+/* Estilo para el logo */
+.sidebar-brand {
+    text-align: center;
+    padding: 15px 0;
+    background-color: rgba(92, 45, 128, 0.9); /* Fondo semitransparente */
+    border-bottom: 1px solid #ccc;
+}
+
+.sidebar-logo {
+    max-width: 100%;
+    max-height: 50px; /* Tamaño máximo del logo expandido */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+.sidebar.collapsed .sidebar-logo {
+    max-height: 40px; /* Tamaño del logo reducido */
+}
+
+/* Divider */
+.sidebar-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 10px 0;
+}
+
+/* Botón de colapsar */
+#sidebarToggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#sidebarToggle:hover {
+    color: #ccc;
+}
+
+/* Estilo para los enlaces */
+.nav-link {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.nav-link i {
+    margin-right: 10px;
+}
+
+.nav-link span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar.collapsed .nav-link span {
+    display: none; /* Ocultar textos al colapsar */
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.1); /* Fondo al pasar el mouse */
+}
