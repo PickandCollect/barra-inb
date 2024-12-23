@@ -29,6 +29,12 @@ $fecha_fact_seg = isset($_POST['fecha_fact_seg']) ? $_POST['fecha_fact_seg'] : N
 $fecha_termino_Seg = isset($_POST['fecha_termino_Seg']) ? $_POST['fecha_termino_Seg'] : NULL;
 $fk_cedula = isset($_POST['fk_cedula']) ? $_POST['fk_cedula'] : NULL; // Asignamos NULL si no se envía el campo
 
+// Validación de campos obligatorios
+if (empty($comentario) || empty($estatus_seg) || empty($sub_seg) || empty($estacion_seg)) {
+    echo json_encode(['error' => 'Los campos "comentario", "estatus_seg", "sub_seg" y "estacion_seg" son obligatorios.']);
+    exit; // Salir del script si falta algún campo obligatorio
+}
+
 // Preparar la consulta SQL para insertar el seguimiento
 $query_insert = "INSERT INTO Seguimiento (
                     fecha_seguimiento, hr_seguimiento, estatus_seguimiento, subestatus, estacion, usuario, 

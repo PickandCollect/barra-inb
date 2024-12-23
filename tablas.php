@@ -20,7 +20,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/tablas.css">
     <link rel="stylesheet" href="css/editar_cedula.css">
-
+    <link rel="stylesheet" href="css/chat.css">
 </head>
 
 <body>
@@ -339,6 +339,162 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                             <!--WHATSAPP-->
                             <div class="invisible" id="mainWP">
                                 <div id="modal-wp" class="custom-form-section-editar custom-card-border-editar">
+                                    <div class="container">
+                                        <div class="row clearfix">
+                                            <div class="col-lg-12">
+                                                <div class="card-chat chat-app">
+                                                    <div id="plist" class="people-list">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Search...">
+                                                        </div>
+                                                        <ul class="list-unstyled chat-list mt-2 mb-0">
+                                                            <li class="clearfix">
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
+                                                                <div class="about">
+                                                                    <div class="name">Vincent Porter</div>
+                                                                    <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="clearfix active">
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                                                                <div class="about">
+                                                                    <div class="name">Aiden Chavez</div>
+                                                                    <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="clearfix">
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
+                                                                <div class="about">
+                                                                    <div class="name">Mike Thomas</div>
+                                                                    <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="clearfix">
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                                                                <div class="about">
+                                                                    <div class="name">Christian Kelly</div>
+                                                                    <div class="status"> <i class="fa fa-circle offline"></i> left 10 hours ago </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="clearfix">
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="avatar">
+                                                                <div class="about">
+                                                                    <div class="name">Monica Ward</div>
+                                                                    <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="clearfix">
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
+                                                                <div class="about">
+                                                                    <div class="name">Dean Henry</div>
+                                                                    <div class="status"> <i class="fa fa-circle offline"></i> offline since Oct 28 </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="chat">
+                                                        <div class="chat-header clearfix">
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                                                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                                                                    </a>
+                                                                    <div class="chat-about">
+                                                                        <h6 class="m-b-0">Aiden Chavez</h6>
+                                                                        <small>Last seen: 2 hours ago</small>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6 text-right">
+                                                                    <a href="javascript:void(0);" class="btn btn-outline-secondary" id="open-camera-btn">
+                                                                        <i class="fa fa-camera"></i> Abrir Cámara
+                                                                    </a>
+
+                                                                    <!-- Modal para mostrar el video -->
+                                                                    <div class="modal fade" id="cameraModal" tabindex="-1" role="dialog" aria-labelledby="cameraModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-lg" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="cameraModalLabel">Cámara en Vivo</h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <!-- Aquí se mostrará el video -->
+                                                                                    <video id="video" width="100%" height="auto" autoplay></video>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
+                                                                    <a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-cogs"></i></a>
+                                                                    <a href="javascript:void(0);" class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="chat-history">
+                                                            <ul class="m-b-0">
+                                                                <li class="clearfix">
+                                                                    <div class="message-data text-right">
+                                                                        <span class="message-data-time">10:10 AM, Today</span>
+                                                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                                                                    </div>
+                                                                    <div class="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
+                                                                </li>
+                                                                <li class="clearfix">
+                                                                    <div class="message-data">
+                                                                        <span class="message-data-time">10:12 AM, Today</span>
+                                                                    </div>
+                                                                    <div class="message my-message">Are we meeting today?</div>
+                                                                </li>
+                                                                <li class="clearfix">
+                                                                    <div class="message-data">
+                                                                        <span class="message-data-time">10:15 AM, Today</span>
+                                                                    </div>
+                                                                    <div class="message my-message">Project has been already finished and I have results to show you.</div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="chat-message clearfix">
+                                                            <div class="input-group mb-0">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text"><i class="fa fa-send"></i></span>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Enter text here...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal for Viewing Info (if needed) -->
+                                    <div class="modal fade" id="view_info" tabindex="-1" role="dialog" aria-labelledby="viewInfoLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="viewInfoLabel">User Info</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <!-- User Info Content Goes Here -->
+                                                    <p>Details about Aiden Chavez...</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
@@ -747,40 +903,41 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <div class="custom-grid-container-eee custom-form-group-editar form-group">
                                                 <div class="custom-form-group form-group">
                                                     <label for="estatus_seg">Estatus:</label>
-                                                    <input type="text" id="estatus_seg" name="estatus_seg" class="custom-form-control form-control">
+                                                    <input type="text" id="estatus_seg" name="estatus_seg" class="custom-form-control form-control" readonly>
                                                 </div>
                                                 <div class="custom-form-group form-group">
                                                     <label for="sub_seg">Subestatus:</label>
-                                                    <input type="text" id="sub_seg" name="sub_seg" class="custom-form-control form-control">
+                                                    <input type="text" id="sub_seg" name="sub_seg" class="custom-form-control form-control" readonly>
                                                 </div>
                                                 <div class="custom-form-group form-group">
                                                     <label for="estacion_seg">Estación:</label>
-                                                    <input type="text" id="estacion_seg" name="estacion_seg" class="custom-form-control form-control">
+                                                    <input type="text" id="estacion_seg" name="estacion_seg" class="custom-form-control form-control" readonly>
                                                 </div>
                                                 <div class="custom-form-group form-group">
                                                     <label for="fecha_ter_seg">Fecha de termino:</label>
-                                                    <input type="text" id="fecha_ter_seg" name="fecha_ter_seg" class="custom-form-control form-control">
+                                                    <input type="text" id="fecha_ter_seg" name="fecha_ter_seg" class="custom-form-control form-control" readonly>
                                                 </div>
                                             </div>
                                             <div class="custom-form-group-editar form-group">
                                                 <label for="comentario_seg">
                                                     <h6>Comentario:</h6>
                                                 </label>
-                                                <textarea id="comentario_seg" name="comentario_seg" rows="1" cols="50" style="resize: both; overflow: auto;" placeholder="Comentario" class="custom-form-control form-control"></textarea>
+                                                <textarea id="comentario_seg" name="comentario_seg" rows="1" cols="50" style="resize: both; overflow: auto;" placeholder="Comentario" class="custom-form-control form-control" required></textarea>
                                             </div>
                                             <div class="custom-grid-container-eee custom-form-group-editar form-group">
                                                 <div class="custom-form-group form-group">
                                                     <label for="estatus_seg_ed">Estatus Seguimiento:</label>
-                                                    <select id="estatus_seg_ed" name="estatus_seg_ed" class="custom-form-control form-control">
+                                                    <select id="estatus_seg_ed" name="estatus_seg_ed" class="custom-form-control form-control" disabled required>
                                                         <option value="" selected>Selecciona</option>
                                                         <!-- <option value="ABIERTO">ABIERTO</option>
-                                                    <option value="TERMINADO">TERMINADO</option>
-                                                    <option value="NUEVO">NUEVO</option>-->
+                                                        <option value="TERMINADO">TERMINADO</option>
+                                                        <option value="NUEVO">NUEVO</option> -->
                                                     </select>
                                                 </div>
+
                                                 <div class="custom-form-group form-group">
                                                     <label for="subestatus_seg_ed">Subestatus:</label>
-                                                    <select id="subestatus_seg_ed" name="subestatus_seg_ed" class="custom-form-control form-control">
+                                                    <select id="subestatus_seg_ed" name="subestatus_seg_ed" class="custom-form-control form-control" required>
                                                         <option value="" selected>Selecciona</option>
                                                         <!--    GENERALES
                                                         <option value="CANCELADO POR ASEGURADORA(DESVÍO INTERNO, INVESTIGACIÓN, PÓLIZA NO PAGADA)">CANCELADO POR ASEGURADORA(DESVÍO INTERNO, INVESTIGACIÓN, PÓLIZA NO PAGADA)</option>
@@ -808,8 +965,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                         <!-- INBURSA -->
                                                         <option value="NUEVO">NUEVO</option>
                                                         <option value="SIN CONTACTO">SIN CONTACTO</option>
-                                                        <option value="CON CONTACTO SIN DOCUMENTO">CON CONTACTO SIN DOCUMENTOS</option>
-                                                        <option value="CON CONTACTO SIN COOPERACIÓN DEL CLIENTE">CON CONTACTO SIN COOPERACIÓN DEL CLIENTE</option>
+                                                        <option value="CON CONTACTO SIN DOCUMENTOS">CON CONTACTO SIN DOCUMENTOS</option>
+                                                        <option value="CON CONTACTO SIN COOPERACION DEL CLIENTE">CON CONTACTO SIN COOPERACIÓN DEL CLIENTE</option>
                                                         <option value="ALGUNOS DOCUMENTOS RECIBIDOS">ALGUNOS DOCUMENTOS RECIBIDOS</option>
                                                         <option value="90% DE DOCUMENTOS RECIBIDOS">90% DE DOCUMENTOS RECIBIDOS</option>
                                                         <option value="TOTAL DE DOCUMENTOS RECIBIDOS">TOTAL DE DOCUMENTOS RECIBIDOS</option>
@@ -818,21 +975,19 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                         <option value="EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES">EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES</option>
                                                         <option value="ALTA DE CUENTA EXITOSA">ALTA DE CUENTA EXITOSA</option>
                                                         <option value="DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA">DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA</option>
-                                                        <option value="INCIDENCIAEN EN EXPEDIENTE DIGITAL AOL">INCIDENCIAEN EN EXPEDIENTE DIGITAL AOL</option>
+                                                        <option value="INCIDENCIA EN EXPEDIENTE DIGITAL AOL">INCIDENCIA EN EXPEDIENTE DIGITAL AOL</option>
                                                         <option value="EN PROCESO DE PAGO">EN PROCESO DE PAGO</option>
                                                         <option value="PAGO AUTORIZADO">PAGO AUTORIZADO</option>
                                                         <option value="PAGO">PAGO</option>
                                                         <option value="RECHAZADO">RECHAZADO</option>
-                                                        <option value="CANCELADO POR INACTIVIDA">CANCELADO POR INACTIVIDAD</option>
+                                                        <option value="CANCELADO POR INACTIVIDAD">CANCELADO POR INACTIVIDAD</option>
                                                         <option value="CANCELADO POR ASEGURADORA">CANCELADO POR ASEGURADORA</option>
                                                         <option value="DOCUMENTO EN BARRA">DOCUMENTO EN BARRA</option>
-
-
                                                     </select>
                                                 </div>
                                                 <div class="custom-form-group form-group">
                                                     <label for="estacion_seg_ed">Estación:</label>
-                                                    <select id="estacion_seg_ed" name="estacion_sed_ed" class="custom-form-control form-control">
+                                                    <select id="estacion_seg_ed" name="estacion_sed_ed" class="custom-form-control form-control" required>
                                                         <option value="" selected>Selecciona</option>
                                                         <!-- GENERALES
                                                         <option value="CANCELADO">CANCELADO</option>
@@ -1479,31 +1634,27 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
             const estacionOptions = {
                 'NUEVO': ['NUEVO'],
+                'SIN CONTACTO': ['MARCACIÓN'],
                 'CON CONTACTO SIN DOCUMENTOS': ['MARCACIÓN'],
-                'CON CONTACTO SIN COOPERACIÓN DEL CLIENTE': ['MARCACIÓN'],
-                'DATOS INCORRECTOS': ['MARCACIÓN'],
+                'CON CONTACTO SIN COOPERACION DEL CLIENTE': ['MARCACIÓN'],
 
-                'DE 1 A 3 DOCUMENTOS': ['EN SEGUIMIENTO'],
-                'DE 4 A 6 DOCUMENTOS': ['EN SEGUIMIENTO'],
-                'DE 7 A 10 DOCUMENTOS': ['EN SEGUIMIENTO'],
-                'EXPEDIENTE AUTORIZADO': ['EN SEGUIMIENTO'],
+                'ALGUNOS DOCUMENTOS RECIBIDOS': ['EN SEGUIMIENTO AOL'],
+                '90% DE DOCUMENTOS RECIBIDOS': ['EN SEGUIMIENTO AOL'],
+                'TOTAL DE DOCUMENTOS RECIBIDOS': ['EN SEGUIMIENTO AOL'],
+                'EXPEDIENTE DIGITAL CORRECTO': ['EN SEGUIMIENTO AOL'],
+                'EXPEDIENTE SUBSANADO': ['EN SEGUIMIENTO AOL'],
+                'EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES': ['EN SEGUIMIENTO INBURSA'],
+                'ALTA DE CUENTA EXITOSA': ['EN SEGUIMIENTO AOL'],
+                'DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA': ['EN SEGUIMIENTO INBURSA'],
+                'INCIDENCIA EN EXPEDIENTE DIGITAL AOL': ['EN SEGUIMIENTO AOL'],
+                'EN PROCESO DE PAGO': ['EN SEGUIMIENTO INBURSA'],
+                'PAGO AUTORIZADO': ['EXPEDIENTE COMPLETO GESTIONADO'],
+                'PAGO': ['EXPEDIENTE COMPLETO GESTIONADO'],
+                'RECHAZADO': ['EXPEDIENTE COMPLETO GESTIONADO'],
 
-                'CITA CREADA': ['EN SEGUIMIENTO ASEGURADORA'],
-                'CITA REAGENDADA': ['EN SEGUIMIENTO ASEGURADORA'],
-                'CITA CANCELADA': ['EN SEGUIMIENTO ASEGURADORA'],
-                'CITA CONCLUIDA': ['EN SEGUIMIENTO ASEGURADORA'],
-                'INTEGRACIÓN': ['EN SEGUIMIENTO ASEGURADORA'],
-                'PENDIENTE DE REVISIÓN': ['EN SEGUIMIENTO ASEGURADORA'],
-                'EXPEDIENTE INCORRECTO': ['EN SEGUIMIENTO ASEGURADORA'],
-                'EXPEDIENTE AUTORIZADO': ['EN SEGUIMIENTO ASEGURADORA'],
-                'REAPERTURA DE CASO': ['EN SEGUIMIENTO ASEGURADORA'],
-
-                'CANCELADO POR ASEGURADORA(DESVÍO INTERNO, INVESTIGACIÓN, PÓLIZA NO PAGADA)': ['CANCELADO'],
-                'CONCLUIDO POR OTRAS VÍAS (BARRA OFICINA BROKER)': ['CANCELADO'],
-                'SIN CONTACTO': ['CANCELADO', 'MARCACIÓN'],
-
-                'TERMINADO ENTREGA ORIGINALES EN OFICINA': ['EXPEDIENTE COMPLETO GESTIONADO'],
-                'TERMINADO POR PROCESO COMPLETO': ['EXPEDIENTE COMPLETO GESTIONADO'],
+                'CANCELADO POR INACTIVIDAD': ['CANCELADO'],
+                'CANCELADO POR ASEGURADORA': ['CANCELADO'],
+                'DOCUMENTO EN BARRA': ['CANCELADO'],
             };
 
             // Llenar estatus según el subestatus
@@ -1536,10 +1687,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     estatusSelect.innerHTML = '<option value="TERMINADO">TERMINADO</option>';
                 }
                 // Si se selecciona 'MARCACIÓN', solo se debe mostrar "ABIERTO" en estatus
-                else if (estacionValue === 'MARCACIÓN' || estacionValue === 'EN SEGUIMIENTO ASEGURADORA' || estacionValue === 'EN SEGUIMIENTO') {
+                else if (estacionValue === 'MARCACIÓN' || estacionValue === 'EN SEGUIMIENTO AOL' || estacionValue === 'EN SEGUIMIENTO INBURSA') {
                     estatusSelect.innerHTML = '<option value="ABIERTO">ABIERTO</option>';
                 } else if (estacionValue === 'NUEVO') {
-                    estatusSelect.innerHTML = '<option value="NUEVO">NUEVO</option>';
+                    estatusSelect.innerHTML = '<option value="ABIERTO">ABIERTO</option>';
                 }
                 // Si no es 'CANCELADO' ni 'MARCACIÓN', volver a las opciones del subestatus original
                 else {
@@ -1747,9 +1898,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             $("#btnSeg").click(function() {
                 // Obtener los valores de los campos del formulario
                 var fecha_seguimiento = $("#fecha_reconocimiento_seg").val();
-                var estatus_seg = $("#estatus_seg").val();
-                var sub_seg = $("#sub_seg").val();
-                var estacion_seg = $("#estacion_seg").val();
+                var estatus_seg = $("#estatus_seg_ed").val();
+                var sub_seg = $("#subestatus_seg_ed").val();
+                var estacion_seg = $("#estacion_seg_ed").val();
                 var comentario = $("#comentario_seg").val();
                 var estatus_seg_ed = $("#estatus_seg_ed").val();
                 var subestatus_seg_ed = $("#subestatus_seg_ed").val();
@@ -1813,33 +1964,24 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 $.ajax({
                     url: 'proc/insert_seguimiento.php',
                     type: 'POST',
-                    data: data,
+                    data: data, // Verifica que 'data' sea un objeto o string válido
                     success: function(response) {
-                        console.log(response); // Revisa la respuesta
-                        // Si la respuesta es exitosa, puedes proceder con el insert_mensajes_op
+                        console.log(response);
                         if (response.success) {
-                            // Insertar el mensaje en la base de datos
                             var messageData = {
-                                usuario_emisor: "<?php echo $_SESSION['id_usuario'] ?? ''; ?>", // El emisor
-                                usuario_receptor: id_asegurado, // El receptor
-                                mensaje: mensaje_seg_ed, // Mensaje a enviar
-                                fecha_envio: fecha_envio_seg, // Fecha del mensaje
-                                no_siniestro: no_siniestro_exp // Enviar el no_siniestro en el mensaje
+                                id_usuario_emisor: id_asegurado,
+                                id_usuario_receptor: "<?php echo $_SESSION['id_usuario'] ?? ''; ?>",
+                                mensaje: comentario,
+                                fecha_envio: fecha_envio_seg,
+                                no_siniestro: no_siniestro_exp
                             };
 
-                            // Mostrar los datos que se enviarán a insert_mensajes_op.php
-                            console.log("Datos enviados a insert_mensajes_op.php:", messageData);
+                            console.log("Enviados a insert_mensajes_op.php:", messageData);
 
                             $.ajax({
                                 url: 'proc/insert_mensajes_op.php',
                                 type: 'POST',
-                                data: {
-                                    usuario_emisor: "<?php echo $_SESSION['id_usuario'] ?? ''; ?>", // El emisor
-                                    usuario_receptor: id_asegurado, // El receptor
-                                    mensaje: mensaje_seg_ed, // Mensaje a enviar
-                                    fecha_envio: fecha_envio_seg, // Fecha del mensaje
-                                    no_siniestro: no_siniestro_exp // Enviar el no_siniestro en el mensaje
-                                },
+                                data: messageData, // Los datos se deben enviar correctamente formateados
                                 success: function(response) {
                                     if (response.success) {
                                         alert('Mensaje enviado correctamente.');
@@ -1847,7 +1989,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                         alert('Error al enviar el mensaje.');
                                     }
                                 },
-                                error: function() {
+                                error: function(xhr, status, error) {
+                                    console.log(xhr.responseText); // Muestra más detalles sobre el error
                                     alert('Hubo un error al enviar el mensaje.');
                                 }
                             });
@@ -1855,10 +1998,12 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                             alert(response.error);
                         }
                     },
-                    error: function() {
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText); // Ver el detalle del error para el seguimiento
                         alert('Hubo un error al enviar los datos de seguimiento.');
                     }
                 });
+
             });
         });
     </script>
@@ -1951,6 +2096,45 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             fileNameField.value = fileName; // Muestra el nombre del archivo seleccionado
         }
     </script>
+    
+    <script>
+        // Obtener elementos del DOM
+        const openCameraBtn = document.getElementById('open-camera-btn');
+        const videoElement = document.getElementById('video');
+
+        // Función para iniciar la cámara
+        function startCamera() {
+            // Solicitar acceso a la cámara
+            navigator.mediaDevices.getUserMedia({
+                    video: true
+                })
+                .then(function(stream) {
+                    // Asignar el stream de la cámara al video
+                    videoElement.srcObject = stream;
+                })
+                .catch(function(error) {
+                    console.error('Error al acceder a la cámara: ', error);
+                    alert('No se pudo acceder a la cámara.');
+                });
+        }
+
+        // Abrir el modal y empezar la cámara cuando el usuario hace clic
+        openCameraBtn.addEventListener('click', function() {
+            $('#cameraModal').modal('show'); // Mostrar el modal
+            startCamera(); // Iniciar la cámara
+        });
+
+        // Detener la cámara cuando el modal se cierra
+        $('#cameraModal').on('hidden.bs.modal', function() {
+            const stream = videoElement.srcObject;
+            if (stream) {
+                const tracks = stream.getTracks();
+                tracks.forEach(track => track.stop()); // Detener todos los tracks de video
+                videoElement.srcObject = null; // Limpiar la fuente del video
+            }
+        });
+    </script>
+
 
 
     <!-- Se eliminó el script que abre el modal -->

@@ -189,39 +189,70 @@
                                 <label for="subestatus_seg_ed">Subestatus:</label>
                                 <select id="subestatus_seg_ed" name="subestatus_seg_ed" class="custom-form-control form-control">
                                     <option value="" selected>Selecciona</option>
-                                    <option value="CANCELADO POR ASEGURADORA(DESVÍO INTERNO, INVESTIGACIÓN, PÓLIZA NO PAGADA)">CANCELADO POR ASEGURADORA(DESVÍO INTERNO, INVESTIGACIÓN, PÓLIZA NO PAGADA)</option>
-                                    <option value="CITA CANCELADA">CITA CANCELADA</option>
-                                    <option value="CITA CONCLUIDA">CITA CONCLUIDA</option>
-                                    <option value="CITA CREADA">CITA CREADA</option>
-                                    <option value="CITA REAGENDADA">CITA REAGENDADA</option>
-                                    <option value="CON CONTACTO SIN COOPERACIÓN DEL CLIENTE">CON CONTACTO SIN COOPERACIÓN DEL CLIENTE</option>
-                                    <option value="CON CONTACTO SIN DOCUMENTOS">CON CONTACTO SIN DOCUMENTOS</option>
-                                    <option value="CONCLUIDO POR OTRAS VÍAS (BARRA OFICINA BROKER)">CONCLUIDO POR OTRAS VÍAS (BARRA,OFICINA,BROKER)</option>
-                                    <option value="DATOS INCORRECTOS">DATOS INCORRECTOS</option>
-                                    <option value="DE 1 A 3 DOCUMENTOS">DE 1 A 3 DOCUMENTOS</option>
-                                    <option value="DE 4 A 6 DOCUMENTOS">DE 4 A 6 DOCUMENTOS</option>
-                                    <option value="DE 7 A 10 DOCUMENTOS">DE 7 A 10 DOCUMENTOS</option>
-                                    <option value="EXPEDIENTE AUTORIZADO">EXPEDIENTE AUTORIZADO</option>
-                                    <option value="EXPEDIENTE INCORRECTO">EXPEDIENTE INCORRECTO</option>
+                                    <!--    GENERALES
+                                                        <option value="CANCELADO POR ASEGURADORA(DESVÍO INTERNO, INVESTIGACIÓN, PÓLIZA NO PAGADA)">CANCELADO POR ASEGURADORA(DESVÍO INTERNO, INVESTIGACIÓN, PÓLIZA NO PAGADA)</option>
+                                                        <option value="CITA CANCELADA">CITA CANCELADA</option>
+                                                        <option value="CITA CONCLUIDA">CITA CONCLUIDA</option>
+                                                        <option value="CITA CREADA">CITA CREADA</option>
+                                                        <option value="CITA REAGENDADA">CITA REAGENDADA</option>
+                                                        <option value="CON CONTACTO SIN COOPERACIÓN DEL CLIENTE">CON CONTACTO SIN COOPERACIÓN DEL CLIENTE</option>
+                                                        <option value="CON CONTACTO SIN DOCUMENTOS">CON CONTACTO SIN DOCUMENTOS</option>
+                                                        <option value="CONCLUIDO POR OTRAS VÍAS (BARRA OFICINA BROKER)">CONCLUIDO POR OTRAS VÍAS (BARRA,OFICINA,BROKER)</option>
+                                                        <option value="DATOS INCORRECTOS">DATOS INCORRECTOS</option>
+                                                        <option value="DE 1 A 3 DOCUMENTOS">DE 1 A 3 DOCUMENTOS</option>
+                                                        <option value="DE 4 A 6 DOCUMENTOS">DE 4 A 6 DOCUMENTOS</option>
+                                                        <option value="DE 7 A 10 DOCUMENTOS">DE 7 A 10 DOCUMENTOS</option>
+                                                        <option value="EXPEDIENTE AUTORIZADO">EXPEDIENTE AUTORIZADO</option>
+                                                        <option value="EXPEDIENTE INCORRECTO">EXPEDIENTE INCORRECTO</option>
+                                                        <option value="NUEVO">NUEVO</option>
+                                                        <option value="PENDIENTE DE REVISIÓN">PENDIENTE DE REVISIÓN</option>
+                                                        <option value="REAPERTURA DE CASO">REAPERTURA DE CASO</option>
+                                                        <option value="SIN CONTACTO">SIN CONTACTO</option>
+                                                        <option value="TERMINADO ENTREGA ORIGINALES EN OFICINA">TERMINADO ENTREGA ORIGINALES EN OFICINA</option>
+                                                        <option value="TERMINADO POR PROCESO COMPLETO">TERMINADO POR PROCESO COMPLETO</option>
+                                                        <option vale="INTEGRACION">INTEGRACIÓN</option>-->
+
+                                    <!-- INBURSA -->
                                     <option value="NUEVO">NUEVO</option>
-                                    <option value="PENDIENTE DE REVISIÓN">PENDIENTE DE REVISIÓN</option>
-                                    <option value="REAPERTURA DE CASO">REAPERTURA DE CASO</option>
                                     <option value="SIN CONTACTO">SIN CONTACTO</option>
-                                    <option value="TERMINADO ENTREGA ORIGINALES EN OFICINA">TERMINADO ENTREGA ORIGINALES EN OFICINA</option>
-                                    <option value="TERMINADO POR PROCESO COMPLETO">TERMINADO POR PROCESO COMPLETO</option>
-                                    <option vale="INTEGRACION">INTEGRACIÓN</option>
+                                    <option value="CON CONTACTO SIN DOCUMENTOS">CON CONTACTO SIN DOCUMENTOS</option>
+                                    <option value="CON CONTACTO SIN COOPERACION DEL CLIENTE">CON CONTACTO SIN COOPERACIÓN DEL CLIENTE</option>
+                                    <option value="ALGUNOS DOCUMENTOS RECIBIDOS">ALGUNOS DOCUMENTOS RECIBIDOS</option>
+                                    <option value="90% DE DOCUMENTOS RECIBIDOS">90% DE DOCUMENTOS RECIBIDOS</option>
+                                    <option value="TOTAL DE DOCUMENTOS RECIBIDOS">TOTAL DE DOCUMENTOS RECIBIDOS</option>
+                                    <option value="EXPEDIENTE DIGITAL CORRECTO">EXPEDIENTE DIGITAL CORRECTO</option>
+                                    <option value="EXPEDIENTE SUBSANADO">EXPEDIENTE SUBSANADO</option>
+                                    <option value="EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES">EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES</option>
+                                    <option value="ALTA DE CUENTA EXITOSA">ALTA DE CUENTA EXITOSA</option>
+                                    <option value="DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA">DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA</option>
+                                    <option value="INCIDENCIA EN EXPEDIENTE DIGITAL AOL">INCIDENCIA EN EXPEDIENTE DIGITAL AOL</option>
+                                    <option value="EN PROCESO DE PAGO">EN PROCESO DE PAGO</option>
+                                    <option value="PAGO AUTORIZADO">PAGO AUTORIZADO</option>
+                                    <option value="PAGO">PAGO</option>
+                                    <option value="RECHAZADO">RECHAZADO</option>
+                                    <option value="CANCELADO POR INACTIVIDAD">CANCELADO POR INACTIVIDAD</option>
+                                    <option value="CANCELADO POR ASEGURADORA">CANCELADO POR ASEGURADORA</option>
+                                    <option value="DOCUMENTO EN BARRA">DOCUMENTO EN BARRA</option>
                                 </select>
                             </div>
                             <div class="custom-form-group form-group">
                                 <label for="estacion_seg_ed">Estación:</label>
                                 <select id="estacion_seg_ed" name="estacion_sed_ed" class="custom-form-control form-control">
                                     <option value="" selected>Selecciona</option>
-                                    <option value="CANCELADO">CANCELADO</option>
-                                    <option value="EN SEGUIMIENTO">EN SEGUIMIENTO</option>
-                                    <option value="EN SEGUIMIENTO ASEGURADORA">EN SEGUIMIENTO ASEGURADORA</option>
-                                    <option value="EXPEDIENTE COMPLETO GESTIONADO">EXPEDIENTE COMPLETO GESTIONADO</option>
-                                    <option value="MARCACION">MARCACIÓN</option>
+                                    <!-- GENERALES
+                                                        <option value="CANCELADO">CANCELADO</option>
+                                                        <option value="EN SEGUIMIENTO">EN SEGUIMIENTO</option>
+                                                        <option value="EN SEGUIMIENTO ASEGURADORA">EN SEGUIMIENTO ASEGURADORA</option>
+                                                        <option value="EXPEDIENTE COMPLETO GESTIONADO">EXPEDIENTE COMPLETO GESTIONADO</option>
+                                                        <option value="MARCACION">MARCACIÓN</option>
+                                                        <option value="NUEVO">NUEVO</option>-->
+                                    <!-- INBURSA -->
                                     <option value="NUEVO">NUEVO</option>
+                                    <option value="MARCACION">MARCACIÓN</option>
+                                    <option value="EN SEGUIMIENTO AOL">EN SEGUIMIENTO AOL</option>
+                                    <option value="EN SEGUIMIENTO INBURSA">EN SEGUIMIENTO INBURSA</option>
+                                    <option value="EXPEDIENTE COMPLETO GESTIONADO">EXPEDIENTE COMPLETO GESTIONADO</option>
+                                    <option value="CANCELADO">CANCELADO</option>
                                 </select>
                             </div>
                         </div>
@@ -340,61 +371,51 @@
 
             // Opciones según el subestatus seleccionado
             const estatusOptions = {
-                'NUEVO': ['NUEVO'],
+                'NUEVO': ['ABIERTO'],
+                'SIN CONTACTO': ['ABIERTO'],
                 'CON CONTACTO SIN DOCUMENTOS': ['ABIERTO'],
                 'CON CONTACTO SIN COOPERACIÓN DEL CLIENTE': ['ABIERTO'],
-                'DATOS INCORRECTOS': ['ABIERTO'],
-
-                'DE 1 A 3 DOCUMENTOS': ['ABIERTO'],
-                'DE 4 A 6 DOCUMENTOS': ['ABIERTO'],
-                'DE 7 A 10 DOCUMENTOS': ['ABIERTO'],
-                'EXPEDIENTE AUTORIZADO': ['ABIERTO'],
-
-                'CITA CREADA': ['ABIERTO'],
-                'CITA REAGENDADA': ['ABIERTO'],
-                'CITA CANCELADA': ['ABIERTO'],
-                'CITA CONCLUIDA': ['ABIERTO'],
-                'INTEGRACIÓN': ['ABIERTO'],
-                'PENDIENTE DE REVISIÓN': ['ABIERTO'],
-                'EXPEDIENTE INCORRECTO': ['ABIERTO'],
-                'EXPEDIENTE AUTORIZADO': ['ABIERTO'],
-                'REAPERTURA DE CASO': ['ABIERTO'],
-
-                'CANCELADO POR ASEGURADORA(DESVÍO INTERNO, INVESTIGACIÓN, PÓLIZA NO PAGADA)': ['TERMINADO'],
-                'CONCLUIDO POR OTRAS VÍAS (BARRA OFICINA BROKER)': ['TERMINADO'],
-                'SIN CONTACTO': ['TERMINADO', 'ABIERTO'],
-
-                'TERMINADO ENTREGA ORIGINALES EN OFICINA': ['TERMINADO'],
-                'TERMINADO POR PROCESO COMPLETO': ['TERMINADO'],
+                'ALGUNOS DOCUMENTOS RECIBIDOS': ['ABIERTO'],
+                '90% DE DOCUMENTOS RECIBIDOS': ['ABIERTO'],
+                'TOTAL DE DOCUMENTOS RECIBIDOS': ['ABIERTO'],
+                'EXPEDIENTE DIGITAL CORRECTO': ['ABIERTO'],
+                'EXPEDIENTE SUBSANADO': ['ABIERTO'],
+                'EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES': ['ABIERTO'],
+                'ALTA DE CUENTA EXITOSA': ['ABIERTO'],
+                'DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA': ['ABIERTO'],
+                'INCIDENCIA EN EXPEDIENTE DIGITAL AOL': ['ABIERTO'],
+                'EN PROCESO DE PAGO': ['TERMINADO'],
+                'PAGO AUTORIZADO': ['TERMINADO'],
+                'PAGADO': ['TERMINADO'],
+                'RECHAZADO': ['TERMINADO'],
+                'CANCELADO POR INACTIVIDAD': ['TERMINADO'],
+                'CANCELADO POR ASEGURADORA': ['TERMINADO'],
+                'DOCUMENTO EN BARRA': ['TERMINADO'],
             };
 
             const estacionOptions = {
                 'NUEVO': ['NUEVO'],
+                'SIN CONTACTO': ['MARCACIÓN'],
                 'CON CONTACTO SIN DOCUMENTOS': ['MARCACIÓN'],
-                'CON CONTACTO SIN COOPERACIÓN DEL CLIENTE': ['MARCACIÓN'],
-                'DATOS INCORRECTOS': ['MARCACIÓN'],
+                'CON CONTACTO SIN COOPERACION DEL CLIENTE': ['MARCACIÓN'],
 
-                'DE 1 A 3 DOCUMENTOS': ['EN SEGUIMIENTO'],
-                'DE 4 A 6 DOCUMENTOS': ['EN SEGUIMIENTO'],
-                'DE 7 A 10 DOCUMENTOS': ['EN SEGUIMIENTO'],
-                'EXPEDIENTE AUTORIZADO': ['EN SEGUIMIENTO'],
+                'ALGUNOS DOCUMENTOS RECIBIDOS': ['EN SEGUIMIENTO AOL'],
+                '90% DE DOCUMENTOS RECIBIDOS': ['EN SEGUIMIENTO AOL'],
+                'TOTAL DE DOCUMENTOS RECIBIDOS': ['EN SEGUIMIENTO AOL'],
+                'EXPEDIENTE DIGITAL CORRECTO': ['EN SEGUIMIENTO AOL'],
+                'EXPEDIENTE SUBSANADO': ['EN SEGUIMIENTO AOL'],
+                'EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES': ['EN SEGUIMIENTO INBURSA'],
+                'ALTA DE CUENTA EXITOSA': ['EN SEGUIMIENTO AOL'],
+                'DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA': ['EN SEGUIMIENTO INBURSA'],
+                'INCIDENCIA EN EXPEDIENTE DIGITAL AOL': ['EN SEGUIMIENTO AOL'],
+                'EN PROCESO DE PAGO': ['EN SEGUIMIENTO INBURSA'],
+                'PAGO AUTORIZADO': ['EXPEDIENTE COMPLETO GESTIONADO'],
+                'PAGO': ['EXPEDIENTE COMPLETO GESTIONADO'],
+                'RECHAZADO': ['EXPEDIENTE COMPLETO GESTIONADO'],
 
-                'CITA CREADA': ['EN SEGUIMIENTO ASEGURADORA'],
-                'CITA REAGENDADA': ['EN SEGUIMIENTO ASEGURADORA'],
-                'CITA CANCELADA': ['EN SEGUIMIENTO ASEGURADORA'],
-                'CITA CONCLUIDA': ['EN SEGUIMIENTO ASEGURADORA'],
-                'INTEGRACIÓN': ['EN SEGUIMIENTO ASEGURADORA'],
-                'PENDIENTE DE REVISIÓN': ['EN SEGUIMIENTO ASEGURADORA'],
-                'EXPEDIENTE INCORRECTO': ['EN SEGUIMIENTO ASEGURADORA'],
-                'EXPEDIENTE AUTORIZADO': ['EN SEGUIMIENTO ASEGURADORA'],
-                'REAPERTURA DE CASO': ['EN SEGUIMIENTO ASEGURADORA'],
-
-                'CANCELADO POR ASEGURADORA(DESVÍO INTERNO, INVESTIGACIÓN, PÓLIZA NO PAGADA)': ['CANCELADO'],
-                'CONCLUIDO POR OTRAS VÍAS (BARRA OFICINA BROKER)': ['CANCELADO'],
-                'SIN CONTACTO': ['CANCELADO', 'MARCACIÓN'],
-
-                'TERMINADO ENTREGA ORIGINALES EN OFICINA': ['EXPEDIENTE COMPLETO GESTIONADO'],
-                'TERMINADO POR PROCESO COMPLETO': ['EXPEDIENTE COMPLETO GESTIONADO'],
+                'CANCELADO POR INACTIVIDAD': ['CANCELADO'],
+                'CANCELADO POR ASEGURADORA': ['CANCELADO'],
+                'DOCUMENTO EN BARRA': ['CANCELADO'],
             };
 
             // Llenar estatus según el subestatus
@@ -427,10 +448,10 @@
                     estatusSelect.innerHTML = '<option value="TERMINADO">TERMINADO</option>';
                 }
                 // Si se selecciona 'MARCACIÓN', solo se debe mostrar "ABIERTO" en estatus
-                else if (estacionValue === 'MARCACIÓN' || estacionValue === 'EN SEGUIMIENTO ASEGURADORA' || estacionValue === 'EN SEGUIMIENTO') {
+                else if (estacionValue === 'MARCACIÓN' || estacionValue === 'EN SEGUIMIENTO AOL' || estacionValue === 'EN SEGUIMIENTO INBURSA') {
                     estatusSelect.innerHTML = '<option value="ABIERTO">ABIERTO</option>';
                 } else if (estacionValue === 'NUEVO') {
-                    estatusSelect.innerHTML = '<option value="NUEVO">NUEVO</option>';
+                    estatusSelect.innerHTML = '<option value="ABIERTO">ABIERTO</option>';
                 }
                 // Si no es 'CANCELADO' ni 'MARCACIÓN', volver a las opciones del subestatus original
                 else {
@@ -449,7 +470,7 @@
         // Evento de cambio en el select de subestatus
         document.getElementById('subestatus_seg_ed').addEventListener('change', function() {
             const subestatus = this.value;
-            updateOptions(subestatus); // Llamamos la función correcta
+            updateOptionsSub(subestatus); // Llamamos la función correcta
         });
     </script>
     <script>
