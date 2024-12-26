@@ -119,6 +119,93 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         </div>
                     </div>
 
+                    <div class="custom-form-section-editar custom-card-border-editar text-center">
+                        <h2 class="custom-h2">Re-asignación de operadores</h2>
+                        <div class="custom-form-group-editar form-group">
+                            <div class="row justify-content-between align-items-center">
+                                <!-- Columna 1: Operador -->
+                                <div class="col d-flex flex-column">
+                                    <label for="roperador_arch">
+                                        <h6>Operador:</h6>
+                                    </label>
+                                    <select id="roperador_arch" name="roperador_arch" class="custom-form-control form-control" style="height: 40px;">
+                                        <option value="">Selecciona</option>
+                                        <option value="ASEGURADO">ASEGURADO</option>
+                                        <option value="TERCERO">TERCERO</option>
+                                    </select>
+                                </div>
+
+                                <!-- Columna 2: Fecha de Asignación -->
+                                <div class="col d-flex flex-column">
+                                    <label for="fecha_rasig_operador">
+                                        <h6>Fecha de re-asignación:</h6>
+                                    </label>
+                                    <input type="date" id="fecha_rasig_operador" name="fecha_rasig_operador" class="custom-form-control form-control" style="height: 40px;">
+                                </div>
+
+                                <!-- Columna 3: Selección de archivo -->
+                                <div class="col d-flex flex-column">
+                                    <label for="arch">
+                                        <h6>Selecciona archivo(.xlsx):</h6>
+                                    </label>
+                                    <div class="file-upload" id="fileUpload">
+                                        <label for="fileInput" class="file-label">
+                                            <i class="fas fa-file-upload"></i>
+                                        </label>
+                                        <input type="file" id="fileInput" name="arch" accept="image/*,application/pdf" style="display:none;" onchange="updateFileName()" />
+                                        <input type="text" id="fileName" class="file-name" disabled placeholder="No se ha seleccionado un archivo" style="height: 40px;" />
+                                        <button type="button" id="btnCargaArchOp" class="btn custom-submit-button-editar" style="height: 40px; margin-left: -10px; margin-right: auto; margin-bottom: 10px; ">
+                                            Cargar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="custom-form-section-editar custom-card-border-editar text-center">
+                        <h2 class="custom-h2">Asignaciones Integrador/Operador/Perdidas Totales</h2>
+                        <div class="custom-form-group-editar form-group">
+                            <div class="row justify-content-between align-items-center">
+                                <!-- Columna 1: Operador -->
+                                <div class="col d-flex flex-column">
+                                    <label for="in_operador_arch">
+                                        <h6>Integrador/Operador/Perdidas Totales:</h6>
+                                    </label>
+                                    <select id="in_operador_arch" name="in_operador_arch" class="custom-form-control form-control" style="height: 40px;">
+                                        <option value="">Selecciona</option>
+                                        <option value="ASEGURADO">ASEGURADO</option>
+                                        <option value="TERCERO">TERCERO</option>
+                                    </select>
+                                </div>
+
+                                <!-- Columna 2: Fecha de Asignación -->
+                                <div class="col d-flex flex-column">
+                                    <label for="fecha_in_asig_operador">
+                                        <h6>Fecha de re-asignación:</h6>
+                                    </label>
+                                    <input type="date" id="fecha_in_asig_operador" name="fecha_in_asig_operador" class="custom-form-control form-control" style="height: 40px;">
+                                </div>
+
+                                <!-- Columna 3: Selección de archivo -->
+                                <div class="col d-flex flex-column">
+                                    <label for="arch">
+                                        <h6>Selecciona archivo(.xlsx):</h6>
+                                    </label>
+                                    <div class="file-upload" id="fileUpload">
+                                        <label for="fileInput" class="file-label">
+                                            <i class="fas fa-file-upload"></i>
+                                        </label>
+                                        <input type="file" id="fileInput" name="arch" accept="image/*,application/pdf" style="display:none;" onchange="updateFileName()" />
+                                        <input type="text" id="fileName" class="file-name" disabled placeholder="No se ha seleccionado un archivo" style="height: 40px;" />
+                                        <button type="button" id="btnCargaArchOp" class="btn custom-submit-button-editar" style="height: 40px; margin-left: -10px; margin-right: auto; margin-bottom: 10px; ">
+                                            Cargar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <?php include 'footer.php'; ?>

@@ -36,7 +36,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         <!-- Sidebar Toggler -->
         <li class="nav-item text-center">
             <button class="rounded-circle border-0" id="sidebarToggle">
-                
+
             </button>
         </li>
 
@@ -76,6 +76,14 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     <span>Herramientas</span>
                 </a>
             </li>
+
+            <!-- Nav Item - Calidad 
+            <li class="nav-item">
+                <a class="nav-link" href="calidad.php">
+                    <i class="fa-solid fa-medal"></i>
+                    <span>Calidad</span>
+                </a>
+            </li>-->
         <?php endif; ?>
 
         <?php if ($rol == 'asegurado'): ?>

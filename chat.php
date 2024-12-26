@@ -95,27 +95,42 @@
                 const message = $('#messageInput').val();
                 if (message) {
                     const messageHtml = `
-                        <div class="message">
-                            <div class="content">
-                                <i class="fas fa-user"></i>${message}
-                            </div>
-                        </div>
-                    `;
+                <div class="message">
+                    <div class="content">
+                        <i class="fas fa-user"></i>${message}
+                    </div>
+                </div>
+            `;
                     $('#chatBox').append(messageHtml);
-                    $('#messageInput').val('');
+                    $('#messageInput').val(''); // Limpiar el campo de texto
                     $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
+
+                    // Enviar el mensaje al servidor PHP
+                    $.ajax({
+                        url: 'proc/mensajes_wa.php',
+                        type: 'POST',
+                        data: {
+                            message: message
+                        },
+                        success: function(response) {
+                            console.log('Mensaje enviado con éxito:', response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.log('Error al enviar mensaje:', error);
+                        }
+                    });
                 }
             });
 
             // Simular respuesta del "administrador"
             setInterval(function() {
                 const responseMessage = `
-                    <div class="message reply">
-                        <div class="content">
-                            <i class="fas fa-user-tie"></i> Respuesta automática
-                        </div>
-                    </div>
-                `;
+            <div class="message reply">
+                <div class="content">
+                    <i class="fas fa-user-tie"></i> Respuesta automática
+                </div>
+            </div>
+        `;
                 $('#chatBox').append(responseMessage);
                 $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
             }, 5000);

@@ -84,7 +84,10 @@
             background-color: #2D2A7B;
             color: white;
         }
-
+.custom-submit-button-editar1:hover {
+    background-color: #2D2A7B;
+            color: white;
+}
        
         /* Estilos de select e input */
         .custom-form-control-editar {
