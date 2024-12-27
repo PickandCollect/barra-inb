@@ -16,6 +16,12 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 <html lang="es">
 
 <head>
+    <!-- Bootstrap CSS -->
+
+    <!-- Optional JavaScript and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/tablas.css">
@@ -82,7 +88,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                             while ($row = $resultado_cedula->fetch_assoc()) {
                                 $output .= "<tr>";
                                 $output .= "<td class='custom-table-style-action-container'>
-                            <button class='custom-table-style-action-btn custom-table-style-edit-btn'  data-id='" . $row["ID_Registro"] . "'>
+                            <button id= 'btnEditTabla'  class='custom-table-style-action-btn custom-table-style-edit-btn'  data-id='" . $row["ID_Registro"] . "'>
                                 <i class='fas fa-edit'></i> 
                             </button>
                             <button class='custom-table-style-action-btn custom-table-style-delete-btn' data-id='" . $row["ID_Registro"] . "'>
@@ -336,33 +342,12 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                 </div>
                             </div>
 
-                            <!--WHATSAPP-->
                             <div class="invisible" id="mainWP">
                                 <div id="modal-wp" class="custom-form-section-editar custom-card-border-editar">
                                     <div class="container">
                                         <div class="row clearfix">
                                             <div class="col-lg-12">
                                                 <div class="card-chat chat-app">
-                                                    <div id="plist" class="people-list">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text"><i class="fa fa-search"></i></span>
-                                                            </div>
-                                                            <input type="text" class="form-control" placeholder="Search...">
-                                                        </div>
-                                                        <ul class="list-unstyled chat-list mt-2 mb-0">
-                                                            <!-- Lista de usuarios (solo muestra nombres y estados por ahora) -->
-                                                            <li class="clearfix">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
-                                                                <div class="about">
-                                                                    <div class="name">Vincent Porter</div>
-                                                                    <div class="status"><i class="fa fa-circle offline"></i> left 7 mins ago</div>
-                                                                </div>
-                                                            </li>
-                                                            <!-- Otros usuarios aquí -->
-                                                        </ul>
-                                                    </div>
-
                                                     <div class="chat">
                                                         <div class="chat-header clearfix">
                                                             <div class="row">
@@ -371,22 +356,29 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                                         <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
                                                                     </a>
                                                                     <div class="chat-about">
-                                                                        <h6 class="m-b-0">Aiden Chavez</h6>
-                                                                        <small>Last seen: 2 hours ago</small>
+                                                                        <h6 class="m-b-0" id="asegurado-nombre">Nombre del Asegurado</h6>
+                                                                        <small id="asegurado-telefono">Número de Teléfono</small>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-6 text-right">
-                                                                    <a href="javascript:void(0);" class="btn btn-outline-secondary" id="open-camera-btn">
+                                                                <div class="col-lg-6 text-right d-flex justify-content-end align-items-center">
+                                                                    <a href="javascript:void(0);" class="btn btn-outline-secondary mx-2" id="open-camera-btn">
                                                                         <i class="fa fa-camera"></i>
                                                                     </a>
-                                                                    <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
-                                                                    <a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-cogs"></i></a>
-                                                                    <a href="javascript:void(0);" class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
+                                                                    <a href="javascript:void(0);" class="btn btn-outline-primary mx-2">
+                                                                        <i class="fa fa-image"></i>
+                                                                    </a>
+                                                                    <a href="javascript:void(0);" class="btn btn-outline-info mx-2">
+                                                                        <i class="fa fa-cogs"></i>
+                                                                    </a>
+                                                                    <a href="javascript:void(0);" class="btn btn-outline-warning mx-2">
+                                                                        <i class="fa fa-question"></i>
+                                                                    </a>
                                                                 </div>
+
                                                             </div>
                                                         </div>
 
-                                                        <div class="chat-history" id="chat-history">
+                                                        <div class="chat-history" id="chat-history" style="height: 400px; overflow-y: auto;">
                                                             <ul class="m-b-0">
                                                                 <!-- Los mensajes serán añadidos dinámicamente aquí -->
                                                             </ul>
@@ -410,473 +402,476 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                         </div>
                                     </div>
                                 </div>
-                       
+                            </div>
 
-                        <!-- Modal for Viewing Info (if needed) -->
-                        <div class="modal fade" id="view_info" tabindex="-1" role="dialog" aria-labelledby="viewInfoLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="viewInfoLabel">User Info</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+
+
+
+                            <!-- Modal for Viewing Info (if needed) -->
+                            <div class="modal fade" id="view_info" tabindex="-1" role="dialog" aria-labelledby="viewInfoLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="viewInfoLabel">User Info</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- User Info Content Goes Here -->
+                                            <p>Details about Aiden Chavez...</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
-                                    <div class="modal-body">
-                                        <!-- User Info Content Goes Here -->
-                                        <p>Details about Aiden Chavez...</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="visible" id="mainDatos">
+                        <div id="modal-estatus" class="custom-form-section-editar custom-card-border-editar">
+                            <h3 id="estatus-heading" style="cursor: pointer;">Estatus</h3>
+                            <div id="collapseEstatus" class="collapse hide" class="custom-table-style-main-container card shadow mb-4">
+                                <div class="card-header py-3 custom-table-style-text-primary">
+                                    <h6 class="m-0 font-weight-bold">Histórico Estatus</h6>
+                                </div>
+                                <div>
+                                    <div class="card-body">
+                                        <div class="table-responsive custom-table-style-pagination custom-table-style-navigation">
+                                            <table class="table table-bordered custom-table-style-table" id="dataTable" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Usuario</th>
+                                                        <th>Fecha-Estatus</th>
+                                                        <th>Comentario</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Usuario</th>
+                                                        <th>Fecha-Estatus</th>
+                                                        <th>Comentario</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody>
+                                                    <!-- Aquí se llenarán las filas con JavaScript -->
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                    </div>
-                </div>
-
-
-
-                <div class="visible" id="mainDatos">
-                    <div id="modal-estatus" class="custom-form-section-editar custom-card-border-editar">
-                        <h3 id="estatus-heading" style="cursor: pointer;">Estatus</h3>
-                        <div id="collapseEstatus" class="collapse hide" class="custom-table-style-main-container card shadow mb-4">
-                            <div class="card-header py-3 custom-table-style-text-primary">
-                                <h6 class="m-0 font-weight-bold">Histórico Estatus</h6>
-                            </div>
-                            <div>
-                                <div class="card-body">
-                                    <div class="table-responsive custom-table-style-pagination custom-table-style-navigation">
-                                        <table class="table table-bordered custom-table-style-table" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Usuario</th>
-                                                    <th>Fecha-Estatus</th>
-                                                    <th>Comentario</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Usuario</th>
-                                                    <th>Fecha-Estatus</th>
-                                                    <th>Comentario</th>
-                                                </tr>
-                                            </tfoot>
-                                            <tbody>
-                                                <!-- Aquí se llenarán las filas con JavaScript -->
-                                            </tbody>
-                                        </table>
+                        <!-- Formulario de cédula -->
+                        <form action="proc/procesamiento_datos.php" method="POST">
+                            <div class="row"> <!-- Se eliminó no-gutters y se usa CSS para el espacio entre columnas -->
+                                <!-- Columna 1 -->
+                                <div class="col-md-6 col-12 mb-3">
+                                    <div id="vehiculo">
+                                        <div class="custom-form-section-editar custom-card-border-editar">
+                                            <h3 id="vehiculo-heading" style="cursor: pointer;">Vehículo</h3>
+                                            <div id="collapseVehiculo" class="custom-grid-container-editar collapse hide">
+                                                <!-- Campo oculto para el id del vehículo -->
+                                                <input type="hidden" id="id_vehiculo" name="id_vehiculo" value="">
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="marca_veh">
+                                                        <h6>Marca:</h6>
+                                                    </label>
+                                                    <input type="text" id="marca_veh" name="marca_veh" class="custom-form-control form-control" placeholder="Marca del vehículo">
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="tipo_veh">
+                                                        <h6>Tipo:</h6>
+                                                    </label>
+                                                    <input type="text" id="tipo_veh" name="tipo_veh" class="custom-form-control form-control" placeholder="Tipo de vehículo">
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="placas_veh">
+                                                        <h6>Placas:</h6>
+                                                    </label>
+                                                    <input type="text" id="placas_veh" name="placas_veh" class="custom-form-control form-control" placeholder="Placas">
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="no_serie_veh">
+                                                        <h6>No. Serie:</h6>
+                                                    </label>
+                                                    <input type="text" id="no_serie_veh" name="no_serie_veh" class="custom-form-control form-control" placeholder="Número de serie">
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="valor_indem_veh">
+                                                        <h6>Valor indemnización:</h6>
+                                                    </label>
+                                                    <input type="text" id="valor_indem_veh" name="valor_indem_veh" class="custom-form-control form-control" placeholder="Valor Indemnización">
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="valor_comer_veh">
+                                                        <h6>Valor comercial:</h6>
+                                                    </label>
+                                                    <input type="text" id="valor_comer_veh" name="valor_comer_veh" class="custom-form-control form-control" placeholder="Valor Comercial">
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="porc_dano_veh">
+                                                        <h6>Porcentaje de daño:</h6>
+                                                    </label>
+                                                    <select id="porc_dano_veh" name="porc_dano_veh" class="custom-form-control form-control">
+                                                        <option value="" disabled selected>Selecciona</option>
+                                                        <?php
+                                                        for ($i = 0; $i <= 100; $i++) {
+                                                            $value = str_pad($i, 2, '0', STR_PAD_LEFT); // Agrega ceros a la izquierda si es necesario
+                                                            echo "<option value=\"$value\">$value</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="valor_base_veh">
+                                                        <h6>Valor base:</h6>
+                                                    </label>
+                                                    <input type="text" id="valor_base_veh" name="valor_base_veh" class="custom-form-control form-control" placeholder="Valor Base">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Formulario de cédula -->
-                    <form action="proc/procesamiento_datos.php" method="POST">
-                        <div class="row"> <!-- Se eliminó no-gutters y se usa CSS para el espacio entre columnas -->
-                            <!-- Columna 1 -->
-                            <div class="col-md-6 col-12 mb-3">
-                                <div id="vehiculo">
-                                    <div class="custom-form-section-editar custom-card-border-editar">
-                                        <h3 id="vehiculo-heading" style="cursor: pointer;">Vehículo</h3>
-                                        <div id="collapseVehiculo" class="custom-grid-container-editar collapse hide">
-                                            <!-- Campo oculto para el id del vehículo -->
-                                            <input type="hidden" id="id_vehiculo" name="id_vehiculo" value="">
+                                    <div id="aseguradot">
+                                        <div class="custom-form-section-editar custom-card-border-editar">
+                                            <h3 id="asegurado-heading" style="cursor: pointer;">Asegurado</h3>
+                                            <div id="collapseAsegurado" class="custom-grid-container-editar collapse hide">
+                                                <!-- Campo oculto para el id del asegurado -->
+                                                <input type="hide" id="id_asegurado" name="id_asegurado" value="">
+
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="asegurado_ed">
+                                                        <h6>Asegurado:</h6>
+                                                    </label>
+                                                    <input type="text" id="asegurado_ed" name="asegurado_ed" class="custom-form-control form-control" placeholder="Nombre del asegurado">
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="email_ed">
+                                                        <h6>Email:</h6>
+                                                    </label>
+                                                    <input type="email" id="email_ed" name="email_ed" class="custom-form-control form-control" placeholder="Email">
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="telefono1_ed">
+                                                        <h6>Teléfono1:</h6>
+                                                    </label>
+                                                    <input type="text" id="telefono1_ed" name="telefono1_ed" class="custom-form-control form-control" placeholder="Teléfono principal">
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="telefono2_ed">
+                                                        <h6>Teléfono2:</h6>
+                                                    </label>
+                                                    <input type="text" id="telefono2_ed" name="telefono2_ed" class="custom-form-control form-control" placeholder="Otro teléfono">
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="contacto_ed">
+                                                        <h6>Contacto:</h6>
+                                                    </label>
+                                                    <input type="text" id="contacto_ed" name="contacto_ed" class="custom-form-control form-control" placeholder="Contacto">
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="con_email_ed">
+                                                        <h6>Contacto email:</h6>
+                                                    </label>
+                                                    <input type="email" id="con_email_ed" name="con_email_ed" class="custom-form-control form-control" placeholder="Contacto email">
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="con_telefono1_ed">
+                                                        <h6>Contacto teléfono 1:</h6>
+                                                    </label>
+                                                    <input type="text" id="con_telefono1_ed" name="con_telefono1_ed" class="custom-form-control form-control" placeholder="Contacto teléfono 1">
+                                                </div>
+                                                <div class="custom-form-group-editar form-group">
+                                                    <label for="con_telefono2_ed">
+                                                        <h6>Contacto teléfono 2:</h6>
+                                                    </label>
+                                                    <input type="text" id="con_telefono2_ed" name="con_telefono2_ed" class="custom-form-control form-control" placeholder="Contacto teléfono 2">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Columna 2 -->
+                                <div class="col-md-6 col-12 mb-3">
+                                    <div id="expediente" class="custom-form-section-editar custom-card-border-editar">
+                                        <h3 id="expediente-heading" style="cursor: pointer;">Expediente</h3>
+                                        <div id="collapseExpediente" class="custom-grid-container-editar collapse hide">
                                             <div class="custom-form-group-editar form-group">
-                                                <label for="marca_veh">
-                                                    <h6>Marca:</h6>
+                                                <label for="fecha_carga_exp">
+                                                    <h6>Fecha Carga:</h6>
                                                 </label>
-                                                <input type="text" id="marca_veh" name="marca_veh" class="custom-form-control form-control" placeholder="Marca del vehículo">
+                                                <input type="date" id="fecha_carga_exp" name="fecha_carga_exp" class="custom-form-control form-control">
+                                            </div>
+                                            <input type="hidden" id="cedula_id_ed" name="cedula_id_ed" value="">
+                                            <div class="custom-form-group-editar form-group">
+                                                <label for="no_siniestro_exp">
+                                                    <h6>No Siniestro:</h6>
+                                                </label>
+                                                <input type="text" id="no_siniestro_exp" name="no_siniestro_exp" class="custom-form-control form-control" placeholder="Número de reporte">
                                             </div>
                                             <div class="custom-form-group-editar form-group">
-                                                <label for="tipo_veh">
-                                                    <h6>Tipo:</h6>
+                                                <label for="poliza_exp">
+                                                    <h6>Póliza:</h6>
                                                 </label>
-                                                <input type="text" id="tipo_veh" name="tipo_veh" class="custom-form-control form-control" placeholder="Tipo de vehículo">
+                                                <input type="text" id="poliza_exp" name="poliza_exp" class="custom-form-control form-control" placeholder="Número de póliza">
                                             </div>
                                             <div class="custom-form-group-editar form-group">
-                                                <label for="placas_veh">
-                                                    <h6>Placas:</h6>
+                                                <label for="afectado_exp">
+                                                    <h6>Afectado:</h6>
                                                 </label>
-                                                <input type="text" id="placas_veh" name="placas_veh" class="custom-form-control form-control" placeholder="Placas">
-                                            </div>
-                                            <div class="custom-form-group-editar form-group">
-                                                <label for="no_serie_veh">
-                                                    <h6>No. Serie:</h6>
-                                                </label>
-                                                <input type="text" id="no_serie_veh" name="no_serie_veh" class="custom-form-control form-control" placeholder="Número de serie">
-                                            </div>
-                                            <div class="custom-form-group-editar form-group">
-                                                <label for="valor_indem_veh">
-                                                    <h6>Valor indemnización:</h6>
-                                                </label>
-                                                <input type="text" id="valor_indem_veh" name="valor_indem_veh" class="custom-form-control form-control" placeholder="Valor Indemnización">
-                                            </div>
-                                            <div class="custom-form-group-editar form-group">
-                                                <label for="valor_comer_veh">
-                                                    <h6>Valor comercial:</h6>
-                                                </label>
-                                                <input type="text" id="valor_comer_veh" name="valor_comer_veh" class="custom-form-control form-control" placeholder="Valor Comercial">
-                                            </div>
-                                            <div class="custom-form-group-editar form-group">
-                                                <label for="porc_dano_veh">
-                                                    <h6>Porcentaje de daño:</h6>
-                                                </label>
-                                                <select id="porc_dano_veh" name="porc_dano_veh" class="custom-form-control form-control">
-                                                    <option value="" disabled selected>Selecciona</option>
-                                                    <?php
-                                                    for ($i = 0; $i <= 100; $i++) {
-                                                        $value = str_pad($i, 2, '0', STR_PAD_LEFT); // Agrega ceros a la izquierda si es necesario
-                                                        echo "<option value=\"$value\">$value</option>";
-                                                    }
-                                                    ?>
+                                                <select id="afectado_exp" name="afectado_exp" class="custom-form-control form-control">
+                                                    <option value="">Selecciona</option>
+                                                    <option value="ASEGURADO">ASEGURADO</option>
+                                                    <option value="TERCERO">TERCERO</option>
                                                 </select>
                                             </div>
                                             <div class="custom-form-group-editar form-group">
-                                                <label for="valor_base_veh">
-                                                    <h6>Valor base:</h6>
+                                                <label for="tipo_caso_exp">
+                                                    <h6>Tipo de caso:</h6>
                                                 </label>
-                                                <input type="text" id="valor_base_veh" name="valor_base_veh" class="custom-form-control form-control" placeholder="Valor Base">
+                                                <select id="tipo_caso_exp" name="tipo_caso_exp" class="custom-form-control form-control">
+                                                    <option value="" selected>Selecciona</option>
+                                                    <option value="COLISION">COLISION</option>
+                                                    <option value="INCENDIO">INCENDIO</option>
+                                                    <option value="INUNDACION">INUNDACION</option>
+                                                    <option value="ROBO">ROBO</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group custom-form-group-editar ">
+                                                <label for="cobertura_exp">
+                                                    <h6>Cobertura:</h6>
+                                                </label>
+                                                <select id="cobertura_exp" name="cobertura_exp" class="form-control form-control-user">
+                                                    <option value="">Selecciona</option>
+                                                    <option value="DM">DM</option>
+                                                    <option value="RT">RT</option>
+                                                    <option value="RC">RC</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group custom-form-group-editar">
+                                                <label for="fecha_siniestro_exp">
+                                                    <h6>Fecha Siniestro:</h6>
+                                                </label>
+                                                <input type="date" id="fecha_siniestro_exp" name="fecha_siniestro_exp" class="custom-form-control form-control">
+                                            </div>
+                                            <!-- Campo oculto para el id de la direccion -->
+                                            <input type="hidden" id="id_direccion_exp" name="id_direccion_exp" value="">
+
+                                            <input type="hidden" id="id_expediente_exp" name="id_expediente_exp" value="">
+                                            <div class="form-group custom-form-group-editar">
+                                                <label for="estado_exp">
+                                                    <h6>Estado:</h6>
+                                                </label>
+                                                <select id="estado_exp" name="estado_exp" class="custom-form-control form-control">
+                                                    <option value="" selected>Selecciona</option>
+                                                    <?php foreach ($resultado_estados as $estado): ?>
+                                                        <option value="<?= $estado['pk_estado'] ?>"><?= $estado['pk_estado'] ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group custom-form-group-editar">
+                                                <label for="region_exp">
+                                                    <h6>Región:</h6>
+                                                </label>
+                                                <select id="region_exp" name="region_exp" class="custom-form-control form-control">
+                                                    <option value="" selected>Selecciona</option>
+                                                    <?php foreach ($resultados_regiones as $region): ?>
+                                                        <option value="<?= $region['region'] ?>"><?= $region['region'] ?></option>
+                                                    <?php endforeach; ?>
+
+                                                </select>
+                                            </div>
+                                            <div class="form-group custom-form-group-editar">
+                                                <label for="ciudad_exp">
+                                                    <h6>Ciudad:</h6>
+                                                </label>
+                                                <select id="ciudad_exp" name="ciudad_exp" class="custom-form-control form-control">
+                                                    <option value="" selected>Selecciona</option>
+                                                    <?php foreach ($resultado_ciudades as $ciudad): ?>
+                                                        <option value="<?= $ciudad['ciudad'] ?>"><?= $ciudad['ciudad'] ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group custom-form-group-editar">
+                                                <label for="taller_corralon_exp">
+                                                    <h6>Taller/Corralon:</h6>
+                                                </label>
+                                                <input type="text" id="taller_corralon_exp" name="taller_corralon_exp" class="custom-form-control form-control" placeholder="Taller/Corralon">
+                                            </div>
+                                            <div class="form-group custom-form-group-editar">
+                                                <label for="financiado_exp">
+                                                    <h6>Financiado:</h6>
+                                                </label>
+                                                <select id="financiado_exp" name="financiado_exp" class="form-control form-control-user">
+                                                    <option value="">Selecciona</option>
+                                                    <option value="SI">SI</option>
+                                                    <option value="NO">NO</option>
+                                                </select>
+                                            </div>
+                                            <div class="custom-form-group-editar form-group">
+                                                <label for="regimen_exp">
+                                                    <h6>Régimen:</h6>
+                                                </label>
+                                                <select id="regimen_exp" name="regimen_exp" class="custom-form-control form-control">
+                                                    <option value="" selected>Selecciona</option>
+                                                    <option value="PERSONA FISICA">PERSONA FISICA</option>
+                                                    <option value="PERSONA FISICA CON ACTIVIDAD EMPRESARIAL">PERSONA FISICA CON ACTIVIDAD EMPRESARIAL</option>
+                                                    <option value="PERSONA MORAL">PERSONA MORAL</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group custom-form-group-editar">
+                                                <label for="pass_ext_exp">
+                                                    <h6>Password:</h6>
+                                                </label>
+                                                <input type="text" id="pass_ext_exp" name="pass_ext_exp" class="custom-form-control form-control" placeholder="Password Externo">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div id="aseguradot">
-                                    <div class="custom-form-section-editar custom-card-border-editar">
-                                        <h3 id="asegurado-heading" style="cursor: pointer;">Asegurado</h3>
-                                        <div id="collapseAsegurado" class="custom-grid-container-editar collapse hide">
-                                            <!-- Campo oculto para el id del asegurado -->
-                                            <input type="hide" id="id_asegurado" name="id_asegurado" value="">
-
+                                    <div id="perdidas" class="custom-form-section-editar custom-card-border-editar">
+                                        <h3 id="perdidas-heading" style="cursor: pointer;">Perdidas Totales</h3>
+                                        <div id="collapsePerdidas" class="custom-grid-container-editar collapse hide">
                                             <div class="custom-form-group-editar form-group">
-                                                <label for="asegurado_ed">
-                                                    <h6>Asegurado:</h6>
+                                                <label for="operador">
+                                                    <h6>Operador:</h6>
                                                 </label>
-                                                <input type="text" id="asegurado_ed" name="asegurado_ed" class="custom-form-control form-control" placeholder="Nombre del asegurado">
+                                                <input type="text" id="operador" name="operador" class="custom-form-control form-control" placeholder="Operador">
                                             </div>
                                             <div class="custom-form-group-editar form-group">
-                                                <label for="email_ed">
-                                                    <h6>Email:</h6>
+                                                <label for="supervisor">
+                                                    <h6>Supervisor:</h6>
                                                 </label>
-                                                <input type="email" id="email_ed" name="email_ed" class="custom-form-control form-control" placeholder="Email">
+                                                <input type="text" id="supervisor" name="supervisor" class="custom-form-control form-control" placeholder="Supervisor">
                                             </div>
                                             <div class="custom-form-group-editar form-group">
-                                                <label for="telefono1_ed">
-                                                    <h6>Teléfono1:</h6>
+                                                <label for="accion">
+                                                    <h6>Accion:</h6>
                                                 </label>
-                                                <input type="text" id="telefono1_ed" name="telefono1_ed" class="custom-form-control form-control" placeholder="Teléfono principal">
+                                                <select id="accion" name="accion" class="custom-form-control form-control">
+                                                    <option value="" selected>Selecciona</option>
+                                                    <option value="EXPEDIENTE AUTORIZADO">EXPEDIENTE AUTORIZADO</option>
+                                                    <option value="EXPEDIENTE INCORRECTO">EXPEDIENTE INCORRECTO</option>
+                                                    <option value="INTEGRACION">INTEGRACION</option>
+                                                    <option value="PENDIENTE DE REVISION">PENDIENTE DE REVISION</option>
+                                                </select>
                                             </div>
                                             <div class="custom-form-group-editar form-group">
-                                                <label for="telefono2_ed">
-                                                    <h6>Teléfono2:</h6>
+                                                <label for="comentario">
+                                                    <h6>Comentario:</h6>
                                                 </label>
-                                                <input type="text" id="telefono2_ed" name="telefono2_ed" class="custom-form-control form-control" placeholder="Otro teléfono">
+                                                <select id="comentario" name="comentario" class="custom-form-control form-control">
+                                                    <option value="" selected>Selecciona</option>
+                                                    <option value="DOCUMENTOS ILEGIBLES">DOCUMENTOS ILEGIBLES</option>
+                                                    <option value="ENDOSOS INCOMPLETOS / NO CONSECUTIVOS">ENDOSOS INCOMPLETOS / NO CONSECUTIVOS</option>
+                                                    <option value="ERRORES EN DENUNCIA">ERRORES EN DENUNCIA</option>
+                                                    <option value="NO HAY ACREDITACION">NO HAY ACREDITACION</option>
+                                                    <option value="VIGENCIA DE DOCUMENTOS">VIGENCIA DE DOCUMENTOS</option>
+                                                    <option value="OTRO">OTRO</option>
+                                                </select>
                                             </div>
                                             <div class="custom-form-group-editar form-group">
-                                                <label for="contacto_ed">
-                                                    <h6>Contacto:</h6>
+                                                <label for="subcomentario">
+                                                    <h6>Subcomentario:</h6>
                                                 </label>
-                                                <input type="text" id="contacto_ed" name="contacto_ed" class="custom-form-control form-control" placeholder="Contacto">
+                                                <textarea id="subcomentario" name="subcomentario" rows="1" cols="50" style="resize: both; overflow: auto;" placeholder="Subcomentario" class="custom-form-control form-control"></textarea>
                                             </div>
-                                            <div class="custom-form-group-editar form-group">
-                                                <label for="con_email_ed">
-                                                    <h6>Contacto email:</h6>
-                                                </label>
-                                                <input type="email" id="con_email_ed" name="con_email_ed" class="custom-form-control form-control" placeholder="Contacto email">
+                                            <div class="text-center">
                                             </div>
-                                            <div class="custom-form-group-editar form-group">
-                                                <label for="con_telefono1_ed">
-                                                    <h6>Contacto teléfono 1:</h6>
-                                                </label>
-                                                <input type="text" id="con_telefono1_ed" name="con_telefono1_ed" class="custom-form-control form-control" placeholder="Contacto teléfono 1">
-                                            </div>
-                                            <div class="custom-form-group-editar form-group">
-                                                <label for="con_telefono2_ed">
-                                                    <h6>Contacto teléfono 2:</h6>
-                                                </label>
-                                                <input type="text" id="con_telefono2_ed" name="con_telefono2_ed" class="custom-form-control form-control" placeholder="Contacto teléfono 2">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <!-- Columna 2 -->
-                            <div class="col-md-6 col-12 mb-3">
-                                <div id="expediente" class="custom-form-section-editar custom-card-border-editar">
-                                    <h3 id="expediente-heading" style="cursor: pointer;">Expediente</h3>
-                                    <div id="collapseExpediente" class="custom-grid-container-editar collapse hide">
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="fecha_carga_exp">
-                                                <h6>Fecha Carga:</h6>
-                                            </label>
-                                            <input type="date" id="fecha_carga_exp" name="fecha_carga_exp" class="custom-form-control form-control">
-                                        </div>
-                                        <input type="hidden" id="cedula_id_ed" name="cedula_id_ed" value="">
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="no_siniestro_exp">
-                                                <h6>No Siniestro:</h6>
-                                            </label>
-                                            <input type="text" id="no_siniestro_exp" name="no_siniestro_exp" class="custom-form-control form-control" placeholder="Número de reporte">
-                                        </div>
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="poliza_exp">
-                                                <h6>Póliza:</h6>
-                                            </label>
-                                            <input type="text" id="poliza_exp" name="poliza_exp" class="custom-form-control form-control" placeholder="Número de póliza">
-                                        </div>
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="afectado_exp">
-                                                <h6>Afectado:</h6>
-                                            </label>
-                                            <select id="afectado_exp" name="afectado_exp" class="custom-form-control form-control">
-                                                <option value="">Selecciona</option>
-                                                <option value="ASEGURADO">ASEGURADO</option>
-                                                <option value="TERCERO">TERCERO</option>
-                                            </select>
-                                        </div>
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="tipo_caso_exp">
-                                                <h6>Tipo de caso:</h6>
-                                            </label>
-                                            <select id="tipo_caso_exp" name="tipo_caso_exp" class="custom-form-control form-control">
-                                                <option value="" selected>Selecciona</option>
-                                                <option value="COLISION">COLISION</option>
-                                                <option value="INCENDIO">INCENDIO</option>
-                                                <option value="INUNDACION">INUNDACION</option>
-                                                <option value="ROBO">ROBO</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group custom-form-group-editar ">
-                                            <label for="cobertura_exp">
-                                                <h6>Cobertura:</h6>
-                                            </label>
-                                            <select id="cobertura_exp" name="cobertura_exp" class="form-control form-control-user">
-                                                <option value="">Selecciona</option>
-                                                <option value="DM">DM</option>
-                                                <option value="RT">RT</option>
-                                                <option value="RC">RC</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group custom-form-group-editar">
-                                            <label for="fecha_siniestro_exp">
-                                                <h6>Fecha Siniestro:</h6>
-                                            </label>
-                                            <input type="date" id="fecha_siniestro_exp" name="fecha_siniestro_exp" class="custom-form-control form-control">
-                                        </div>
-                                        <!-- Campo oculto para el id de la direccion -->
-                                        <input type="hidden" id="id_direccion_exp" name="id_direccion_exp" value="">
-
-                                        <input type="hidden" id="id_expediente_exp" name="id_expediente_exp" value="">
-                                        <div class="form-group custom-form-group-editar">
-                                            <label for="estado_exp">
-                                                <h6>Estado:</h6>
-                                            </label>
-                                            <select id="estado_exp" name="estado_exp" class="custom-form-control form-control">
-                                                <option value="" selected>Selecciona</option>
-                                                <?php foreach ($resultado_estados as $estado): ?>
-                                                    <option value="<?= $estado['pk_estado'] ?>"><?= $estado['pk_estado'] ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group custom-form-group-editar">
-                                            <label for="region_exp">
-                                                <h6>Región:</h6>
-                                            </label>
-                                            <select id="region_exp" name="region_exp" class="custom-form-control form-control">
-                                                <option value="" selected>Selecciona</option>
-                                                <?php foreach ($resultados_regiones as $region): ?>
-                                                    <option value="<?= $region['region'] ?>"><?= $region['region'] ?></option>
-                                                <?php endforeach; ?>
-
-                                            </select>
-                                        </div>
-                                        <div class="form-group custom-form-group-editar">
-                                            <label for="ciudad_exp">
-                                                <h6>Ciudad:</h6>
-                                            </label>
-                                            <select id="ciudad_exp" name="ciudad_exp" class="custom-form-control form-control">
-                                                <option value="" selected>Selecciona</option>
-                                                <?php foreach ($resultado_ciudades as $ciudad): ?>
-                                                    <option value="<?= $ciudad['ciudad'] ?>"><?= $ciudad['ciudad'] ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group custom-form-group-editar">
-                                            <label for="taller_corralon_exp">
-                                                <h6>Taller/Corralon:</h6>
-                                            </label>
-                                            <input type="text" id="taller_corralon_exp" name="taller_corralon_exp" class="custom-form-control form-control" placeholder="Taller/Corralon">
-                                        </div>
-                                        <div class="form-group custom-form-group-editar">
-                                            <label for="financiado_exp">
-                                                <h6>Financiado:</h6>
-                                            </label>
-                                            <select id="financiado_exp" name="financiado_exp" class="form-control form-control-user">
-                                                <option value="">Selecciona</option>
-                                                <option value="SI">SI</option>
-                                                <option value="NO">NO</option>
-                                            </select>
-                                        </div>
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="regimen_exp">
-                                                <h6>Régimen:</h6>
-                                            </label>
-                                            <select id="regimen_exp" name="regimen_exp" class="custom-form-control form-control">
-                                                <option value="" selected>Selecciona</option>
-                                                <option value="PERSONA FISICA">PERSONA FISICA</option>
-                                                <option value="PERSONA FISICA CON ACTIVIDAD EMPRESARIAL">PERSONA FISICA CON ACTIVIDAD EMPRESARIAL</option>
-                                                <option value="PERSONA MORAL">PERSONA MORAL</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group custom-form-group-editar">
-                                            <label for="pass_ext_exp">
-                                                <h6>Password:</h6>
-                                            </label>
-                                            <input type="text" id="pass_ext_exp" name="pass_ext_exp" class="custom-form-control form-control" placeholder="Password Externo">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="perdidas" class="custom-form-section-editar custom-card-border-editar">
-                                    <h3 id="perdidas-heading" style="cursor: pointer;">Perdidas Totales</h3>
-                                    <div id="collapsePerdidas" class="custom-grid-container-editar collapse hide">
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="operador">
-                                                <h6>Operador:</h6>
-                                            </label>
-                                            <input type="text" id="operador" name="operador" class="custom-form-control form-control" placeholder="Operador">
-                                        </div>
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="supervisor">
-                                                <h6>Supervisor:</h6>
-                                            </label>
-                                            <input type="text" id="supervisor" name="supervisor" class="custom-form-control form-control" placeholder="Supervisor">
-                                        </div>
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="accion">
-                                                <h6>Accion:</h6>
-                                            </label>
-                                            <select id="accion" name="accion" class="custom-form-control form-control">
-                                                <option value="" selected>Selecciona</option>
-                                                <option value="EXPEDIENTE AUTORIZADO">EXPEDIENTE AUTORIZADO</option>
-                                                <option value="EXPEDIENTE INCORRECTO">EXPEDIENTE INCORRECTO</option>
-                                                <option value="INTEGRACION">INTEGRACION</option>
-                                                <option value="PENDIENTE DE REVISION">PENDIENTE DE REVISION</option>
-                                            </select>
-                                        </div>
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="comentario">
-                                                <h6>Comentario:</h6>
-                                            </label>
-                                            <select id="comentario" name="comentario" class="custom-form-control form-control">
-                                                <option value="" selected>Selecciona</option>
-                                                <option value="DOCUMENTOS ILEGIBLES">DOCUMENTOS ILEGIBLES</option>
-                                                <option value="ENDOSOS INCOMPLETOS / NO CONSECUTIVOS">ENDOSOS INCOMPLETOS / NO CONSECUTIVOS</option>
-                                                <option value="ERRORES EN DENUNCIA">ERRORES EN DENUNCIA</option>
-                                                <option value="NO HAY ACREDITACION">NO HAY ACREDITACION</option>
-                                                <option value="VIGENCIA DE DOCUMENTOS">VIGENCIA DE DOCUMENTOS</option>
-                                                <option value="OTRO">OTRO</option>
-                                            </select>
-                                        </div>
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="subcomentario">
-                                                <h6>Subcomentario:</h6>
-                                            </label>
-                                            <textarea id="subcomentario" name="subcomentario" rows="1" cols="50" style="resize: both; overflow: auto;" placeholder="Subcomentario" class="custom-form-control form-control"></textarea>
-                                        </div>
-                                        <div class="text-center">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="custom-form-section-editar custom-card-border-editar ">
-                            <h3 id="seguimiento-heading" style="cursor: pointer;">Seguimiento</h3>
-                            <div id="collapseSeguimiento" class="collapse hide">
-                                <div class="custom-table-style-main-container card shadow mb-4">
-                                    <div class="card-header py-3 custom-table-style-text-primary">
-                                        <h6 class="m-0 font-weight-bold">Comentarios</h6>
-                                    </div>
-                                    <div id="collapseEstatus" class="collapse show">
-                                        <div class="card-body">
-                                            <div class="table-responsive custom-table-style-pagination custom-table-style-navigation">
-                                                <table class="table table-bordered custom-table-style-table" id="dataTableC" width="100%" cellspacing="0">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Tipo Fecha</th>
-                                                            <th>Fecha-Estatus</th>
-                                                            <th>Usuario</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tfoot>
-                                                        <tr>
-                                                            <th>Tipo Fecha</th>
-                                                            <th>Fecha-Estatus</th>
-                                                            <th>Usuario</th>
-                                                        </tr>
-                                                    </tfoot>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>01_Fecha de carga</td>
-                                                            <td>2024-01-09 - NUEVO</td>
-                                                            <td>2024-01-09 07:16:53 - Supervisor</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>02_Fecha de actualización</td>
-                                                            <td>2024-01-10 - PROCESADO</td>
-                                                            <td>2024-01-10 12:45:22 - Operador</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                            <div class="custom-form-section-editar custom-card-border-editar ">
+                                <h3 id="seguimiento-heading" style="cursor: pointer;">Seguimiento</h3>
+                                <div id="collapseSeguimiento" class="collapse hide">
+                                    <div class="custom-table-style-main-container card shadow mb-4">
+                                        <div class="card-header py-3 custom-table-style-text-primary">
+                                            <h6 class="m-0 font-weight-bold">Comentarios</h6>
+                                        </div>
+                                        <div id="collapseEstatus" class="collapse show">
+                                            <div class="card-body">
+                                                <div class="table-responsive custom-table-style-pagination custom-table-style-navigation">
+                                                    <table class="table table-bordered custom-table-style-table" id="dataTableC" width="100%" cellspacing="0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Tipo Fecha</th>
+                                                                <th>Fecha-Estatus</th>
+                                                                <th>Usuario</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tfoot>
+                                                            <tr>
+                                                                <th>Tipo Fecha</th>
+                                                                <th>Fecha-Estatus</th>
+                                                                <th>Usuario</th>
+                                                            </tr>
+                                                        </tfoot>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>01_Fecha de carga</td>
+                                                                <td>2024-01-09 - NUEVO</td>
+                                                                <td>2024-01-09 07:16:53 - Supervisor</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>02_Fecha de actualización</td>
+                                                                <td>2024-01-10 - PROCESADO</td>
+                                                                <td>2024-01-10 12:45:22 - Operador</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="custom-grid-container-eee custom-form-group-editar form-group">
-                                    <div class="custom-form-group form-group">
-                                        <label for="estatus_seg">Estatus:</label>
-                                        <input type="text" id="estatus_seg" name="estatus_seg" class="custom-form-control form-control" readonly>
+                                    <div class="custom-grid-container-eee custom-form-group-editar form-group">
+                                        <div class="custom-form-group form-group">
+                                            <label for="estatus_seg">Estatus:</label>
+                                            <input type="text" id="estatus_seg" name="estatus_seg" class="custom-form-control form-control" readonly>
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="sub_seg">Subestatus:</label>
+                                            <input type="text" id="sub_seg" name="sub_seg" class="custom-form-control form-control" readonly>
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="estacion_seg">Estación:</label>
+                                            <input type="text" id="estacion_seg" name="estacion_seg" class="custom-form-control form-control" readonly>
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="fecha_ter_seg">Fecha de termino:</label>
+                                            <input type="text" id="fecha_ter_seg" name="fecha_ter_seg" class="custom-form-control form-control" readonly>
+                                        </div>
                                     </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="sub_seg">Subestatus:</label>
-                                        <input type="text" id="sub_seg" name="sub_seg" class="custom-form-control form-control" readonly>
+                                    <div class="custom-form-group-editar form-group">
+                                        <label for="comentario_seg">
+                                            <h6>Comentario:</h6>
+                                        </label>
+                                        <textarea id="comentario_seg" name="comentario_seg" rows="1" cols="50" style="resize: both; overflow: auto;" placeholder="Comentario" class="custom-form-control form-control" required></textarea>
                                     </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="estacion_seg">Estación:</label>
-                                        <input type="text" id="estacion_seg" name="estacion_seg" class="custom-form-control form-control" readonly>
-                                    </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="fecha_ter_seg">Fecha de termino:</label>
-                                        <input type="text" id="fecha_ter_seg" name="fecha_ter_seg" class="custom-form-control form-control" readonly>
-                                    </div>
-                                </div>
-                                <div class="custom-form-group-editar form-group">
-                                    <label for="comentario_seg">
-                                        <h6>Comentario:</h6>
-                                    </label>
-                                    <textarea id="comentario_seg" name="comentario_seg" rows="1" cols="50" style="resize: both; overflow: auto;" placeholder="Comentario" class="custom-form-control form-control" required></textarea>
-                                </div>
-                                <div class="custom-grid-container-eee custom-form-group-editar form-group">
-                                    <div class="custom-form-group form-group">
-                                        <label for="estatus_seg_ed">Estatus Seguimiento:</label>
-                                        <select id="estatus_seg_ed" name="estatus_seg_ed" class="custom-form-control form-control" disabled required>
-                                            <option value="" selected>Selecciona</option>
-                                            <!-- <option value="ABIERTO">ABIERTO</option>
+                                    <div class="custom-grid-container-eee custom-form-group-editar form-group">
+                                        <div class="custom-form-group form-group">
+                                            <label for="estatus_seg_ed">Estatus Seguimiento:</label>
+                                            <select id="estatus_seg_ed" name="estatus_seg_ed" class="custom-form-control form-control" disabled required>
+                                                <option value="" selected>Selecciona</option>
+                                                <!-- <option value="ABIERTO">ABIERTO</option>
                                                         <option value="TERMINADO">TERMINADO</option>
                                                         <option value="NUEVO">NUEVO</option> -->
-                                        </select>
-                                    </div>
+                                            </select>
+                                        </div>
 
-                                    <div class="custom-form-group form-group">
-                                        <label for="subestatus_seg_ed">Subestatus:</label>
-                                        <select id="subestatus_seg_ed" name="subestatus_seg_ed" class="custom-form-control form-control" required>
-                                            <option value="" selected>Selecciona</option>
-                                            <!--    GENERALES
+                                        <div class="custom-form-group form-group">
+                                            <label for="subestatus_seg_ed">Subestatus:</label>
+                                            <select id="subestatus_seg_ed" name="subestatus_seg_ed" class="custom-form-control form-control" required>
+                                                <option value="" selected>Selecciona</option>
+                                                <!--    GENERALES
                                                         <option value="CANCELADO POR ASEGURADORA(DESVÍO INTERNO, INVESTIGACIÓN, PÓLIZA NO PAGADA)">CANCELADO POR ASEGURADORA(DESVÍO INTERNO, INVESTIGACIÓN, PÓLIZA NO PAGADA)</option>
                                                         <option value="CITA CANCELADA">CITA CANCELADA</option>
                                                         <option value="CITA CONCLUIDA">CITA CONCLUIDA</option>
@@ -899,159 +894,159 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                         <option value="TERMINADO POR PROCESO COMPLETO">TERMINADO POR PROCESO COMPLETO</option>
                                                         <option vale="INTEGRACION">INTEGRACIÓN</option>-->
 
-                                            <!-- INBURSA -->
-                                            <option value="NUEVO">NUEVO</option>
-                                            <option value="SIN CONTACTO">SIN CONTACTO</option>
-                                            <option value="CON CONTACTO SIN DOCUMENTOS">CON CONTACTO SIN DOCUMENTOS</option>
-                                            <option value="CON CONTACTO SIN COOPERACION DEL CLIENTE">CON CONTACTO SIN COOPERACIÓN DEL CLIENTE</option>
-                                            <option value="ALGUNOS DOCUMENTOS RECIBIDOS">ALGUNOS DOCUMENTOS RECIBIDOS</option>
-                                            <option value="90% DE DOCUMENTOS RECIBIDOS">90% DE DOCUMENTOS RECIBIDOS</option>
-                                            <option value="TOTAL DE DOCUMENTOS RECIBIDOS">TOTAL DE DOCUMENTOS RECIBIDOS</option>
-                                            <option value="EXPEDIENTE DIGITAL CORRECTO">EXPEDIENTE DIGITAL CORRECTO</option>
-                                            <option value="EXPEDIENTE SUBSANADO">EXPEDIENTE SUBSANADO</option>
-                                            <option value="EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES">EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES</option>
-                                            <option value="ALTA DE CUENTA EXITOSA">ALTA DE CUENTA EXITOSA</option>
-                                            <option value="DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA">DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA</option>
-                                            <option value="INCIDENCIA EN EXPEDIENTE DIGITAL AOL">INCIDENCIA EN EXPEDIENTE DIGITAL AOL</option>
-                                            <option value="EN PROCESO DE PAGO">EN PROCESO DE PAGO</option>
-                                            <option value="PAGO AUTORIZADO">PAGO AUTORIZADO</option>
-                                            <option value="PAGO">PAGO</option>
-                                            <option value="RECHAZADO">RECHAZADO</option>
-                                            <option value="CANCELADO POR INACTIVIDAD">CANCELADO POR INACTIVIDAD</option>
-                                            <option value="CANCELADO POR ASEGURADORA">CANCELADO POR ASEGURADORA</option>
-                                            <option value="DOCUMENTO EN BARRA">DOCUMENTO EN BARRA</option>
-                                        </select>
-                                    </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="estacion_seg_ed">Estación:</label>
-                                        <select id="estacion_seg_ed" name="estacion_sed_ed" class="custom-form-control form-control" required>
-                                            <option value="" selected>Selecciona</option>
-                                            <!-- GENERALES
+                                                <!-- INBURSA -->
+                                                <option value="NUEVO">NUEVO</option>
+                                                <option value="SIN CONTACTO">SIN CONTACTO</option>
+                                                <option value="CON CONTACTO SIN DOCUMENTOS">CON CONTACTO SIN DOCUMENTOS</option>
+                                                <option value="CON CONTACTO SIN COOPERACION DEL CLIENTE">CON CONTACTO SIN COOPERACIÓN DEL CLIENTE</option>
+                                                <option value="ALGUNOS DOCUMENTOS RECIBIDOS">ALGUNOS DOCUMENTOS RECIBIDOS</option>
+                                                <option value="90% DE DOCUMENTOS RECIBIDOS">90% DE DOCUMENTOS RECIBIDOS</option>
+                                                <option value="TOTAL DE DOCUMENTOS RECIBIDOS">TOTAL DE DOCUMENTOS RECIBIDOS</option>
+                                                <option value="EXPEDIENTE DIGITAL CORRECTO">EXPEDIENTE DIGITAL CORRECTO</option>
+                                                <option value="EXPEDIENTE SUBSANADO">EXPEDIENTE SUBSANADO</option>
+                                                <option value="EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES">EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES</option>
+                                                <option value="ALTA DE CUENTA EXITOSA">ALTA DE CUENTA EXITOSA</option>
+                                                <option value="DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA">DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA</option>
+                                                <option value="INCIDENCIA EN EXPEDIENTE DIGITAL AOL">INCIDENCIA EN EXPEDIENTE DIGITAL AOL</option>
+                                                <option value="EN PROCESO DE PAGO">EN PROCESO DE PAGO</option>
+                                                <option value="PAGO AUTORIZADO">PAGO AUTORIZADO</option>
+                                                <option value="PAGO">PAGO</option>
+                                                <option value="RECHAZADO">RECHAZADO</option>
+                                                <option value="CANCELADO POR INACTIVIDAD">CANCELADO POR INACTIVIDAD</option>
+                                                <option value="CANCELADO POR ASEGURADORA">CANCELADO POR ASEGURADORA</option>
+                                                <option value="DOCUMENTO EN BARRA">DOCUMENTO EN BARRA</option>
+                                            </select>
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="estacion_seg_ed">Estación:</label>
+                                            <select id="estacion_seg_ed" name="estacion_sed_ed" class="custom-form-control form-control" required>
+                                                <option value="" selected>Selecciona</option>
+                                                <!-- GENERALES
                                                         <option value="CANCELADO">CANCELADO</option>
                                                         <option value="EN SEGUIMIENTO">EN SEGUIMIENTO</option>
                                                         <option value="EN SEGUIMIENTO ASEGURADORA">EN SEGUIMIENTO ASEGURADORA</option>
                                                         <option value="EXPEDIENTE COMPLETO GESTIONADO">EXPEDIENTE COMPLETO GESTIONADO</option>
                                                         <option value="MARCACION">MARCACIÓN</option>
                                                         <option value="NUEVO">NUEVO</option>-->
-                                            <!-- INBURSA -->
-                                            <option value="NUEVO">NUEVO</option>
-                                            <option value="MARCACION">MARCACIÓN</option>
-                                            <option value="EN SEGUIMIENTO AOL">EN SEGUIMIENTO AOL</option>
-                                            <option value="EN SEGUIMIENTO INBURSA">EN SEGUIMIENTO INBURSA</option>
-                                            <option value="EXPEDIENTE COMPLETO GESTIONADO">EXPEDIENTE COMPLETO GESTIONADO</option>
-                                            <option value="CANCELADO">CANCELADO</option>
-                                        </select>
+                                                <!-- INBURSA -->
+                                                <option value="NUEVO">NUEVO</option>
+                                                <option value="MARCACION">MARCACIÓN</option>
+                                                <option value="EN SEGUIMIENTO AOL">EN SEGUIMIENTO AOL</option>
+                                                <option value="EN SEGUIMIENTO INBURSA">EN SEGUIMIENTO INBURSA</option>
+                                                <option value="EXPEDIENTE COMPLETO GESTIONADO">EXPEDIENTE COMPLETO GESTIONADO</option>
+                                                <option value="CANCELADO">CANCELADO</option>
+                                            </select>
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="mensaje_seg_ed">Tipo de mensaje:</label>
+                                            <select id="mensaje_seg_ed" name="mensaje_seg_ed" class="custom-form-control form-control">
+                                                <option value="" selected>Selecciona</option>
+                                                <option value="INTERNO">INTERNO</option>
+                                                <option value="TODOS">TODOS</option>
+                                            </select>
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="fecha_reconocimiento_seg">Fecha de Seguimiento:</label>
+                                            <input type="date" id="fecha_reconocimiento_seg" name="fecha_reconocimiento_seg" class="custom-form-control form-control">
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="hora_seguimiento_seg">Hora Seguimiento:</label>
+                                            <input type="time" id="hora_seguimiento_seg" name="hora_seguimiento_seg" class="custom-form-control form-control">
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="fecha_cita_seg">Fecha Cita:</label>
+                                            <input type="date" id="fecha_cita_seg" name="fecha_cita_seg" class="custom-form-control form-control">
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="hora_cita_seg">Hora Cita:</label>
+                                            <input type="time" id="hora_cita_seg" name="hora_cita_seg" class="custom-form-control form-control">
+                                        </div>
                                     </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="mensaje_seg_ed">Tipo de mensaje:</label>
-                                        <select id="mensaje_seg_ed" name="mensaje_seg_ed" class="custom-form-control form-control">
-                                            <option value="" selected>Selecciona</option>
-                                            <option value="INTERNO">INTERNO</option>
-                                            <option value="TODOS">TODOS</option>
-                                        </select>
+                                    <div class="custom-form-group-editar form-group">
+                                        <label for="persona_seg">
+                                            <h6>Persona Contactada:</h6>
+                                        </label>
+                                        <textarea id="persona_seg" name="persona_seg" rows="1" cols="50" style="resize: both; overflow: auto;" placeholder="Comentario" class="custom-form-control form-control"></textarea>
                                     </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="fecha_reconocimiento_seg">Fecha de Seguimiento:</label>
-                                        <input type="date" id="fecha_reconocimiento_seg" name="fecha_reconocimiento_seg" class="custom-form-control form-control">
-                                    </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="hora_seguimiento_seg">Hora Seguimiento:</label>
-                                        <input type="time" id="hora_seguimiento_seg" name="hora_seguimiento_seg" class="custom-form-control form-control">
-                                    </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="fecha_cita_seg">Fecha Cita:</label>
-                                        <input type="date" id="fecha_cita_seg" name="fecha_cita_seg" class="custom-form-control form-control">
-                                    </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="hora_cita_seg">Hora Cita:</label>
-                                        <input type="time" id="hora_cita_seg" name="hora_cita_seg" class="custom-form-control form-control">
-                                    </div>
-                                </div>
-                                <div class="custom-form-group-editar form-group">
-                                    <label for="persona_seg">
-                                        <h6>Persona Contactada:</h6>
-                                    </label>
-                                    <textarea id="persona_seg" name="persona_seg" rows="1" cols="50" style="resize: both; overflow: auto;" placeholder="Comentario" class="custom-form-control form-control"></textarea>
-                                </div>
-                                <div class="custom-grid-container-ee custom-form-group-editar form-group">
-                                    <div class="custom-form-group form-group">
-                                        <label for="tipo_persona_seg">Tipo persona:</label>
-                                        <select id="tipo_persona_seg" name="tipo_persona_seg" class="custom-form-control form-control">
-                                            <option value="" selected>Selecciona</option>
-                                            <option value="ASEGURADO">ASEGURADO</option>
-                                            <option value="CONOCIDO">CONOCIDO</option>
-                                            <option value="FAMILIAR">FAMILIAR</option>
-                                            <option value="SIN RESPUESTA">SIN RESPUESTA</option>
+                                    <div class="custom-grid-container-ee custom-form-group-editar form-group">
+                                        <div class="custom-form-group form-group">
+                                            <label for="tipo_persona_seg">Tipo persona:</label>
+                                            <select id="tipo_persona_seg" name="tipo_persona_seg" class="custom-form-control form-control">
+                                                <option value="" selected>Selecciona</option>
+                                                <option value="ASEGURADO">ASEGURADO</option>
+                                                <option value="CONOCIDO">CONOCIDO</option>
+                                                <option value="FAMILIAR">FAMILIAR</option>
+                                                <option value="SIN RESPUESTA">SIN RESPUESTA</option>
 
-                                        </select>
+                                            </select>
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="contacto_p_seg">Contacto:</label>
+                                            <select id="contacto_p_seg" name="contacto_p_seg" class="custom-form-control form-control">
+                                                <option value="" selected>Selecciona</option>
+                                                <option value="SI">SI</option>
+                                                <option value="NO">NO</option>
+                                            </select>
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="fecha_envio_seg">Fecha de primer envio de documentos:</label>
+                                            <input type="date" id="fecha_envio_seg" name="fecha_envio_seg" class="custom-form-control form-control">
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="fecha_expediente_seg">Fecha de integración de expediente:</label>
+                                            <input type="date" id="fecha_expediente_seg" name="fecha_expediente_seg" class="custom-form-control form-control">
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="fecha_fact_seg">Fecha de facturación de servicio:</label>
+                                            <input type="date" id="fecha_fact_seg" name="fecha_fact_seg" class="custom-form-control form-control">
+                                        </div>
+                                        <div class="custom-form-group form-group">
+                                            <label for="fecha_termino_Seg">Fecha de termino:</label>
+                                            <input type="date" id="fecha_termino_Seg" name="fecha_termino_Seg" class="custom-form-control form-control">
+                                        </div>
                                     </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="contacto_p_seg">Contacto:</label>
-                                        <select id="contacto_p_seg" name="contacto_p_seg" class="custom-form-control form-control">
-                                            <option value="" selected>Selecciona</option>
-                                            <option value="SI">SI</option>
-                                            <option value="NO">NO</option>
-                                        </select>
+                                    <div class="text-right">
+                                        <button type="button" class="btn custom-submit-button-editar" id="btnSeg">
+                                            Insertar Seguimiento
+                                        </button>
                                     </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="fecha_envio_seg">Fecha de primer envio de documentos:</label>
-                                        <input type="date" id="fecha_envio_seg" name="fecha_envio_seg" class="custom-form-control form-control">
-                                    </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="fecha_expediente_seg">Fecha de integración de expediente:</label>
-                                        <input type="date" id="fecha_expediente_seg" name="fecha_expediente_seg" class="custom-form-control form-control">
-                                    </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="fecha_fact_seg">Fecha de facturación de servicio:</label>
-                                        <input type="date" id="fecha_fact_seg" name="fecha_fact_seg" class="custom-form-control form-control">
-                                    </div>
-                                    <div class="custom-form-group form-group">
-                                        <label for="fecha_termino_Seg">Fecha de termino:</label>
-                                        <input type="date" id="fecha_termino_Seg" name="fecha_termino_Seg" class="custom-form-control form-control">
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <button type="button" class="btn custom-submit-button-editar" id="btnSeg">
-                                        Insertar Seguimiento
-                                    </button>
-                                </div>
 
-                                <div id="modal-asignamiento" class="custom-form-section-editar custom-card-border-editar">
-                                    <h3 id="asignamiento-heading" style="cursor: pointer;">Asignamiento</h3>
-                                    <div id="collapseAsignamiento" class="collapse hide">
-                                        <div class="custom-table-style-main-container card shadow mb-4">
-                                            <div class="custom-grid-container-ee custom-form-group-editar form-group">
-                                                <div class="custom-form-group form-group">
-                                                    <label for="asignacion">Asignación:</label>
-                                                    <select id="asignacion" name="asignacion" class="custom-form-control form-control">
-                                                        <option value="" selected>Selecciona</option>
+                                    <div id="modal-asignamiento" class="custom-form-section-editar custom-card-border-editar">
+                                        <h3 id="asignamiento-heading" style="cursor: pointer;">Asignamiento</h3>
+                                        <div id="collapseAsignamiento" class="collapse hide">
+                                            <div class="custom-table-style-main-container card shadow mb-4">
+                                                <div class="custom-grid-container-ee custom-form-group-editar form-group">
+                                                    <div class="custom-form-group form-group">
+                                                        <label for="asignacion">Asignación:</label>
+                                                        <select id="asignacion" name="asignacion" class="custom-form-control form-control">
+                                                            <option value="" selected>Selecciona</option>
 
 
-                                                    </select>
+                                                        </select>
+                                                    </div>
+                                                    <div class="custom-form-group form-group">
+                                                        <label for="fecha_asignacion">Fecha de asignación:</label>
+                                                        <input type="date" id="fecha_asignacion" name="fecha_asignacion" class="custom-form-control form-control">
+                                                    </div>
+                                                    <div">
+                                                        <button type="button" class="btn custom-submit-button-editar1" id="btnAs">
+                                                            Asignar
+                                                        </button>
                                                 </div>
-                                                <div class="custom-form-group form-group">
-                                                    <label for="fecha_asignacion">Fecha de asignación:</label>
-                                                    <input type="date" id="fecha_asignacion" name="fecha_asignacion" class="custom-form-control form-control">
-                                                </div>
-                                                <div">
-                                                    <button type="button" class="btn custom-submit-button-editar1" id="btnAs">
-                                                        Asignar
-                                                    </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                    </div>
                 </div>
+                </form>
             </div>
-            </form>
-        </div>
-        <!--AQUI COMIENZA DOCS-->
+            <!--AQUI COMIENZA DOCS-->
 
-    </div>
-    </div>
-    </div>
+        </div>
+
+
     </div>
 
     <script>
@@ -1356,66 +1351,38 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             // Variable global para almacenar el id_asegurado
             let globalIdAsegurado = null;
 
-            // Declarar editButtons solo una vez
-            const editButtons = document.querySelectorAll('.custom-table-style-edit-btn'); // Botones de edición en la tabla
+            // Declarar botones de edición
+            const editButtons = document.querySelectorAll('.custom-table-style-edit-btn');
 
-            // Asignar un event listener a cada botón de edición
-            editButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const idExp = this.getAttribute('data-id'); // Obtener el ID de la cédula
+            // Función para obtener los datos del asegurado
+            async function obtenerDatosAsegurado(idAsegurado) {
+                try {
+                    console.log("Obteniendo datos para el asegurado con id:", idAsegurado);
+                    const response = await fetch('proc/get_doc_aseg.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_asegurado: idAsegurado
+                        })
+                    });
 
-                    // Verificar que el idExp no esté vacío
-                    if (!idExp) {
-                        console.error('No se encontró el ID de la cédula');
-                        return; // Detener ejecución si no hay ID válido
+                    const data = await response.json();
+                    console.log("Datos obtenidos del asegurado:", data);
+
+                    if (data.error) {
+                        alert("Error al obtener los datos del asegurado: " + data.error);
+                    } else {
+                        actualizarCheckboxes(data);
                     }
+                } catch (error) {
+                    console.error('Error al obtener datos del asegurado:', error);
+                    alert('Hubo un error al obtener los datos del asegurado.');
+                }
+            }
 
-                    console.log('ID de expediente:', idExp); // Agregar para depuración
-
-                    // Cambiar la URL para enviar el parámetro id_cedula
-                    fetch('proc/get_asegurado.php?id_cedula=' + idExp) // Cambiar por la URL que corresponda para obtener los datos del asegurado
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Error al obtener los datos: ' + response.statusText);
-                            }
-                            return response.json(); // Usamos .json() directamente para obtener la respuesta como JSON
-                        })
-                        .then(parsedData => {
-                            console.log('Datos JSON parseados: ', parsedData);
-
-                            // Verificar si hay datos y asignarlos a los campos del formulario
-                            if (parsedData && !parsedData.error) {
-                                document.getElementById('asegurado_ed').value = parsedData.nom_asegurado || '';
-                                document.getElementById('email_ed').value = parsedData.email || '';
-                                document.getElementById('telefono1_ed').value = parsedData.tel1 || '';
-                                document.getElementById('telefono2_ed').value = parsedData.tel2 || '';
-                                document.getElementById('contacto_ed').value = parsedData.contacto || '';
-                                document.getElementById('con_email_ed').value = parsedData.contacto_email || '';
-                                document.getElementById('con_telefono1_ed').value = parsedData.contacto_tel1 || '';
-                                document.getElementById('con_telefono2_ed').value = parsedData.contacto_tel2 || '';
-
-                                // Asignar el valor de id_asegurado al campo oculto
-                                document.getElementById('id_asegurado').value = parsedData.id_asegurado || ''; // Asigna el id_asegurado al campo oculto
-
-                                // Almacenar el valor de id_asegurado en la variable global
-                                globalIdAsegurado = parsedData.id_asegurado || '';
-                                console.log('id_asegurado almacenado globalmente:', globalIdAsegurado);
-
-                                // Llamar a la función para obtener los datos del asegurado
-                                obtenerDatosAsegurado(globalIdAsegurado);
-                            } else {
-                                // Manejar el caso donde el JSON tiene un error
-                                console.error('Error en los datos recibidos:', parsedData.error);
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error al obtener los datos:', error);
-                            alert('Ocurrió un error al obtener los datos del asegurado.');
-                        });
-                });
-            });
-
-            // Esta función actualiza los checkboxes basándose en los datos obtenidos del servidor
+            // Función para actualizar los checkboxes basándose en los datos obtenidos
             function actualizarCheckboxes(datos) {
                 const checkboxes = [{
                         id: 'checkCFDI',
@@ -1487,51 +1454,70 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     }
                 ];
 
-                // Iteramos sobre los checkboxes y actualizamos el estado
                 checkboxes.forEach(function(checkbox) {
-                    const isChecked = datos[checkbox.field]; // Obtener el valor true/false del JSON
-                    const checkboxElement = document.getElementById(checkbox.id); // Obtener el checkbox
+                    const isChecked = datos[checkbox.field];
+                    const checkboxElement = document.getElementById(checkbox.id);
 
                     if (checkboxElement) {
-                        checkboxElement.checked = isChecked; // Actualizamos el estado del checkbox
+                        checkboxElement.checked = isChecked;
                     }
                 });
             }
 
-            // Función para obtener los datos del asegurado desde el servidor usando POST
-            function obtenerDatosAsegurado(idAsegurado) {
-                console.log("Obteniendo datos para el asegurado con id:", idAsegurado);
-                fetch('proc/get_doc_aseg.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            id_asegurado: idAsegurado
-                        })
-                    })
-                    .then(response => response.text()) // Obtener la respuesta como texto primero
-                    .then(data => {
-                        console.log("Respuesta del servidor:", data); // Ver la respuesta cruda
-                        try {
-                            const datos = JSON.parse(data); // Intentar parsear la respuesta como JSON
-                            if (datos.error) {
-                                alert("Error al obtener los datos del asegurado: " + datos.error);
-                            } else {
-                                actualizarCheckboxes(datos);
-                            }
-                        } catch (e) {
-                            console.error('Error al parsear JSON:', e);
-                            alert('La respuesta del servidor no es válida.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Hubo un error al obtener los datos.');
-                    });
+            // Obtener datos del asegurado y asignar los valores a los campos del formulario
+            async function cargarDatosAsegurado(idExp) {
+                try {
+                    const response = await fetch('proc/get_asegurado.php?id_cedula=' + idExp);
+
+                    if (!response.ok) {
+                        throw new Error('Error al obtener los datos: ' + response.statusText);
+                    }
+
+                    const data = await response.json();
+                    console.log('Datos obtenidos:', data);
+
+                    if (data && !data.error) {
+                        // Asignar los datos a los campos del formulario
+                        document.getElementById('asegurado_ed').value = data.nom_asegurado || '';
+                        document.getElementById('email_ed').value = data.email || '';
+                        document.getElementById('telefono1_ed').value = data.tel1 || '';
+                        document.getElementById('telefono2_ed').value = data.tel2 || '';
+                        document.getElementById('contacto_ed').value = data.contacto || '';
+                        document.getElementById('con_email_ed').value = data.contacto_email || '';
+                        document.getElementById('con_telefono1_ed').value = data.contacto_tel1 || '';
+                        document.getElementById('con_telefono2_ed').value = data.contacto_tel2 || '';
+
+                        // Asignar id_asegurado al campo oculto y a la variable global
+                        document.getElementById('id_asegurado').value = data.id_asegurado || '';
+                        globalIdAsegurado = data.id_asegurado || '';
+                        console.log('id_asegurado almacenado globalmente:', globalIdAsegurado);
+
+                        // Obtener datos adicionales del asegurado
+                        await obtenerDatosAsegurado(globalIdAsegurado);
+                    } else {
+                        console.error('Error en los datos recibidos:', data.error);
+                        alert('No se encontraron datos para el asegurado.');
+                    }
+                } catch (error) {
+                    console.error('Error al cargar los datos del asegurado:', error);
+                    alert('Hubo un error al cargar los datos del asegurado.');
+                }
             }
+
+            // Asignar event listeners a los botones de edición
+            editButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const idExp = this.getAttribute('data-id');
+                    if (idExp) {
+                        cargarDatosAsegurado(idExp);
+                    } else {
+                        console.error('No se encontró el ID de la cédula');
+                    }
+                });
+            });
         });
     </script>
+
 
 
     <!--Estatus, subestatus, estacion-->
@@ -2041,18 +2027,34 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
         // Función para iniciar la cámara
         function startCamera() {
-            // Solicitar acceso a la cámara
-            navigator.mediaDevices.getUserMedia({
-                    video: true
-                })
-                .then(function(stream) {
-                    // Asignar el stream de la cámara al video
-                    videoElement.srcObject = stream;
-                })
-                .catch(function(error) {
-                    console.error('Error al acceder a la cámara: ', error);
-                    alert('No se pudo acceder a la cámara.');
-                });
+            // Verificar si el navegador admite getUserMedia
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                // Solicitar acceso a la cámara
+                navigator.mediaDevices.getUserMedia({
+                        video: true
+                    })
+                    .then(function(stream) {
+                        // Asignar el stream de la cámara al elemento de video
+                        videoElement.srcObject = stream;
+                        videoElement.play(); // Iniciar la reproducción
+                    })
+                    .catch(function(error) {
+                        console.error('Error al acceder a la cámara: ', error);
+                        alert('No se pudo acceder a la cámara. Asegúrate de haber otorgado permisos.');
+                    });
+            } else {
+                alert('Tu navegador no soporta el acceso a la cámara.');
+            }
+        }
+
+        // Función para detener la cámara
+        function stopCamera() {
+            const stream = videoElement.srcObject;
+            if (stream) {
+                const tracks = stream.getTracks(); // Obtener los tracks de video
+                tracks.forEach(track => track.stop()); // Detener cada track
+                videoElement.srcObject = null; // Limpiar la fuente del video
+            }
         }
 
         // Abrir el modal y empezar la cámara cuando el usuario hace clic
@@ -2063,14 +2065,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
         // Detener la cámara cuando el modal se cierra
         $('#cameraModal').on('hidden.bs.modal', function() {
-            const stream = videoElement.srcObject;
-            if (stream) {
-                const tracks = stream.getTracks();
-                tracks.forEach(track => track.stop()); // Detener todos los tracks de video
-                videoElement.srcObject = null; // Limpiar la fuente del video
-            }
+            stopCamera(); // Detener la cámara al cerrar el modal
         });
     </script>
+
 
     <script>
         document.getElementById("btnAs").addEventListener("click", function() {
@@ -2110,22 +2108,21 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         });
     </script>
 
-
     <script>
         $(document).ready(function() {
-            // Enviar mensaje
+            // Función para enviar mensaje
             $('#send-message-btn').click(function() {
                 const message = $('#message-input').val(); // Obtener el mensaje ingresado
                 if (message.trim() !== "") {
                     // Crear el nuevo mensaje
                     const messageHtml = `
-                    <li class="clearfix">
-                        <div class="message-data text-right">
-                            <span class="message-data-time">${new Date().toLocaleTimeString()}, Today</span>
-                            <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
-                        </div>
-                        <div class="message my-message">${message}</div>
-                    </li>
+                <li class="clearfix">
+                    <div class="message-data text-right">
+                        <span class="message-data-time">${new Date().toLocaleTimeString()}, Today</span>
+                      
+                    </div>
+                    <div class="message my-message">${message}</div>
+                </li>
                 `;
                     // Añadir el mensaje a la historia del chat
                     $('#chat-history ul').append(messageHtml);
@@ -2137,21 +2134,78 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         url: 'proc/mensajes_wa.php', // URL de tu archivo PHP
                         type: 'POST',
                         data: {
-                            message: message
+                            message: message,
+                            type: 'sent' // Marcar como mensaje enviado
                         },
                         success: function(response) {
                             console.log('Mensaje enviado con éxito:', response);
                         },
                         error: function(xhr, status, error) {
-                            console.log('Error al enviar mensaje:', error);
+                            console.error('Error al enviar mensaje:', error);
                         }
                     });
                 }
             });
 
-            // Simular respuesta automática del "administrador"
+            // Función para cargar mensajes recibidos periódicamente
+            function cargarMensajesRecibidos() {
+                $.ajax({
+                    url: 'proc/mensajes_recibidos.json', // Archivo JSON con los mensajes registrados
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log('Mensajes cargados:', response);
 
+                        // Limpiar y volver a cargar toda la conversación
+                        $('#chat-history ul').empty();
+
+                        response.forEach((msg) => {
+                            const isSent = msg.type === 'sent'; // Verificar si el mensaje es enviado o recibido
+                            const messageHtml = `
+                        <li class="clearfix">
+                            <div class="message-data ${isSent ? 'text-right' : ''}">
+                                <span class="message-data-time">${new Date(msg.timestamp * 1000).toLocaleTimeString()}, Today</span>
+                               
+                            </div>
+                            <div class="message ${isSent ? 'my-message' : 'other-message'}">${msg.mensaje}</div>
+                        </li>
+                        `;
+                            $('#chat-history ul').append(messageHtml);
+                        });
+
+                        // Desplazar hacia abajo
+                        $('#chat-history')[0].scrollTop = $('#chat-history')[0].scrollHeight;
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error al cargar mensajes:', error);
+                        console.error('Respuesta completa del servidor:', xhr.responseText);
+                    }
+                });
+            }
+
+            // Actualizar mensajes cada 1 segundo
+            setInterval(cargarMensajesRecibidos, 1000);
         });
+    </script>
+
+
+    <script>
+        // Llama a noConflict para evitar problemas con el símbolo $
+        var $j = jQuery.noConflict();
+
+        // Usa $j como alias de jQuery en lugar de $
+        $j(document).ready(function() {
+            // Vincula el evento click para abrir el modal
+            $j('#btnEditTabla').on('click', function() {
+                $j('#editarCedulaModal').modal('show');
+            });
+        });
+    </script>
+
+
+    // Llamar a la función para cargar los datos del asegurado al cargar la página
+    $(document).ready(function() {
+    cargarDatosAsegurado();
+    });
     </script>
 
     <!-- Se eliminó el script que abre el modal -->
