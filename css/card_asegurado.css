@@ -304,3 +304,11 @@
         .custom-table-style-navigation .page-link {
             padding: 8px 12px;
         }
+        /* Hacer el div o elemento completamente invisible */
+.invisible {
+    display: none;
+}
+/* Mostrar el div o componente */
+.visible {
+    display: block; /* o 'flex', 'inline-block', dependiendo de tu estructura */
+}

@@ -313,192 +313,433 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                 <div class="custom-form-section-aseg custom-card-border-aseg">
                                     <div id="collapseAsegurado" class="custom-grid-container-aseg collapse show">
 
-                                        <!-- CFDI y factura original endosada -->
+                                        <!--AUTORIZACION DE PAGO POR TRANSFERENCIA (TODOS LOS CASOS)-->
                                         <div class="custom-form-group-editar form-group">
-                                            <label for="cfdi">
-                                                <h6>CFDI y factura original endosada</h6>
+                                            <label for="pagotrans">
+                                                <h6>
+                                                    Autorización de pago por transferencia</h6>
                                                 <div class="file-upload" id="fileUpload1">
-                                                    <input type="file" id="fileInput1" name="cfdi" accept="image/*,application/pdf" />
+                                                    <input type="file" id="fileInput1" name="pagotrans" accept="image/*,application/pdf" />
                                                     <span id="fileName1">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
 
+                                        <!--CARTA PETICION DE INDEMNIZACION (TODOS LOS CASOS)-->
                                         <div class="custom-form-group-editar form-group">
-                                            <label for="nfacturas">
+                                            <label for="cartaidemn">
                                                 <h6>
-                                                    ¿Cuántas facturas tienes de tu vehículo?</h6>
-                                                <div class="file-upload" id="fileUpload5">
-                                                    <input type="file" id="fileInput5" name="nfacturas" accept="image/*,application/pdf" />
-                                                    <span id="fileName5">Seleccionar archivo</span>
-                                                </div>
-                                            </label>
-                                        </div>
-
-                                        <!-- Titulo de propiedad original o certificado -->
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="tt_propiedad">
-                                                <h6>Titulo de propiedad original o certificado:</h6>
+                                                    Carta petición de indemnización</h6>
                                                 <div class="file-upload" id="fileUpload2">
-                                                    <input type="file" id="fileInput2" name="tt_propiedad" accept="image/*,application/pdf" />
+                                                    <input type="file" id="fileInput2" name="cartaidemn" accept="image/*,application/pdf" />
                                                     <span id="fileName2">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
 
-                                        <!-- Pedimento de importación original -->
+                                        <!--FACTURA ORIGINAL Y SUBSECUENTES (TODOS LOS CASOS)-->
                                         <div class="custom-form-group-editar form-group">
-                                            <label for="pedimento">
-                                                <h6>Pedimento de importación original:</h6>
+                                            <label for="factori_frente">
+                                                <h6>
+                                                    Factura de origen frente</h6>
                                                 <div class="file-upload" id="fileUpload3">
-                                                    <input type="file" id="fileInput3" name="pedimento" accept="image/*,application/pdf" />
+                                                    <input type="file" id="fileInput3" name="factori" accept="image/*,application/pdf" />
                                                     <span id="fileName3">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
-
-                                        <!-- Baja de permiso de internación temporal -->
                                         <div class="custom-form-group-editar form-group">
-                                            <label for="baja_permiso">
-                                                <h6>Baja de permiso de internación temporal:</h6>
+                                            <label for="factori_trasero">
+                                                <h6>
+                                                    Factura de origen trasero</h6>
                                                 <div class="file-upload" id="fileUpload4">
-                                                    <input type="file" id="fileInput4" name="baja_permiso" accept="image/*,application/pdf" />
+                                                    <input type="file" id="fileInput4" name="factori" accept="image/*,application/pdf" />
                                                     <span id="fileName4">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
-
                                         <div class="custom-form-group-editar form-group">
-                                            <label for="ntenencias">
+                                            <label for="subsec">
                                                 <h6>
-                                                    ¿Cuántas tenencias tienes de tu vehículo?</h6>
-                                                <div class="file-upload" id="fileUpload6">
-                                                    <input type="file" id="fileInput6" name="ntenencias" accept="image/*,application/pdf" />
-                                                    <span id="fileName6">Seleccionar archivo</span>
-                                                </div>
+                                                    ¿Con cuantas subsecuentes cuentas?</h6>
+                                                <select id="subsecfac" name="subsecfac" class="custom-form-control form-control">
+                                                    <option value="" selected>Selecciona</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
                                             </label>
                                         </div>
 
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="bajaplacas">
-                                                <h6>
-                                                    Baja de placas</h6>
-                                                <div class="file-upload" id="fileUpload7">
-                                                    <input type="file" id="fileInput7" name="bajaplacas" accept="image/*,application/pdf" />
-                                                    <span id="fileName7">Seleccionar archivo</span>
-                                                </div>
-                                            </label>
+                                        <div class="custom-form-group-editar form-group invisible" id="fact1">
+                                            <h6>
+                                                Factura subsecuente 1 frente</h6>
+                                            <div class="file-upload" id="fileUpload5">
+                                                <input type="file" id="fileInput5" name="subsec" accept="image/*,application/pdf" />
+                                                <span id="fileName5">Seleccionar archivo</span>
+                                            </div>
+                                            <h6>
+                                                Factura subsecuente 1 trasero</h6>
+                                            <div class="file-upload" id="fileUpload6">
+                                                <input type="file" id="fileInput6" name="subsec" accept="image/*,application/pdf" />
+                                                <span id="fileName6">Seleccionar archivo</span>
+                                            </div>
+                                        </div>
+                                        <div class="custom-form-group-editar form-group invisible" id="fact2">
+                                            <h6>
+                                                Factura subsecuente 2 frente</h6>
+                                            <div class="file-upload" id="fileUpload7">
+                                                <input type="file" id="fileInput7" name="subsec" accept="image/*,application/pdf" />
+                                                <span id="fileName7">Seleccionar archivo</span>
+                                            </div>
+                                            <h6>
+                                                Factura subsecuente 2 trasero</h6>
+                                            <div class="file-upload" id="fileUpload8">
+                                                <input type="file" id="fileInput8" name="subsec" accept="image/*,application/pdf" />
+                                                <span id="fileName8">Seleccionar archivo</span>
+                                            </div>
+                                        </div>
+                                        <div class="custom-form-group-editar form-group invisible" id="fact3">
+                                            <h6>
+                                                Factura subsecuente 3 frente</h6>
+                                            <div class="file-upload" id="fileUpload9">
+                                                <input type="file" id="fileInput9" name="subsec" accept="image/*,application/pdf" />
+                                                <span id="fileName9">Seleccionar archivo</span>
+                                            </div>
+                                            <h6>
+                                                Factura subsecuente 3 trasero</h6>
+                                            <div class="file-upload" id="fileUpload10">
+                                                <input type="file" id="fileInput10" name="subsec" accept="image/*,application/pdf" />
+                                                <span id="fileName10">Seleccionar archivo</span>
+                                            </div>
                                         </div>
 
+                                        <!--CARTA FACTURA VIGENTE (TODOS LOS CASOS/FINANCIAMIENTO)-->
                                         <div class="custom-form-group-editar form-group">
-                                            <label for="verificacion">
+                                            <label for="factfina">
                                                 <h6>
-                                                    Verificación vehicular</h6>
-                                                <div class="file-upload" id="fileUpload8">
-                                                    <input type="file" id="fileInput8" name="verificacion" accept="image/*,application/pdf" />
-                                                    <span id="fileName8">Seleccionar archivo</span>
-                                                </div>
-                                            </label>
-                                        </div>
-
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="averiguacion">
-                                                <h6>
-                                                    Averiguación vehicular</h6>
-                                                <div class="file-upload" id="fileUpload9">
-                                                    <input type="file" id="fileInput9" name="averiguacion" accept="image/*,application/pdf" />
-                                                    <span id="fileName9">Seleccionar archivo</span>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <!--NO FUNCIONA A PARTIR DE AQUI-->
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="acreditacion">
-                                                <h6>
-                                                    Acreditación de propiedad</h6>
-                                                <div class="file-upload" id="fileUpload10">
-                                                    <input type="file" id="fileInput10" name="acreditacion" accept="image/*,application/pdf" />
-                                                    <span id="fileName10">Seleccionar archivo</span>
-                                                </div>
-                                            </label>
-                                        </div>
-
-                                        <div class="custom-form-group-editar form-group">
-                                            <label for="aviso">
-                                                <h6>
-                                                    Aviso a la PFP</h6>
+                                                    Carta factura vigente</h6>
                                                 <div class="file-upload" id="fileUpload11">
-                                                    <input type="file" id="fileInput11" name="aviso" accept="image/*,application/pdf" />
+                                                    <input type="file" id="fileInput11" name="factfina" accept="image/*,application/pdf" />
                                                     <span id="fileName11">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
 
+                                        <!--PAGO TENENCIAS O CERTIFICACION 5 EJERCICIOS FISCALES (TODOS LOS CASOS)-->
                                         <div class="custom-form-group-editar form-group">
-                                            <label for="ine">
+                                            <label for="pagoten">
                                                 <h6>
-                                                    Identificación oficial</h6>
-                                                <div class="file-upload" id="fileUpload12">
-                                                    <input type="file" id="fileInput12" name="ine" accept="image/*,application/pdf" />
-                                                    <span id="fileName12">Seleccionar archivo</span>
+                                                    ¿Cuántas facturas tienes de tu vehículo?</h6>
+                                                <select id="pagoten" name="pagoten" class="custom-form-control form-control">
+                                                    <option value="" selected>Selecciona</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </label>
+                                        </div>
+
+                                        <!-- ANVERSO Y REVERSO TENENCIAS -->
+                                        <div class="custom-form-group-editar form-group invisible" id="tenencia1">
+                                            <h6>Tenencia 1</h6>
+                                            <div class="file-upload" id="fileUpload12">
+                                                <input type="file" id="fileInput12" name="pagotrans" accept="image/*,application/pdf" />
+                                                <span id="fileName12">Seleccionar archivo</span>
+                                            </div>
+                                            <h6>Comprobante de pago de tenencias o certificación 1</h6>
+                                            <div class="file-upload" id="fileUpload13">
+                                                <input type="file" id="fileInput13" name="pagoten1" accept="image/*,application/pdf" />
+                                                <span id="fileName13">Seleccionar archivo</span>
+                                            </div>
+                                        </div>
+                                        <div class="custom-form-group-editar form-group invisible" id="tenencia2">
+                                            <h6>Tenencia 2</h6>
+                                            <div class="file-upload" id="fileUpload14">
+                                                <input type="file" id="fileInput14" name="pagoten2" accept="image/*,application/pdf" />
+                                                <span id="fileName14">Seleccionar archivo</span>
+                                            </div>
+                                            <h6>Comprobante de pago de tenencias o certificación 2</h6>
+                                            <div class="file-upload" id="fileUpload15">
+                                                <input type="file" id="fileInput15" name="pagoten3" accept="image/*,application/pdf" />
+                                                <span id="fileName15">Seleccionar archivo</span>
+                                            </div>
+                                        </div>
+                                        <div class="custom-form-group-editar form-group invisible" id="tenencia3">
+                                            <h6>Tenencia 3</h6>
+                                            <div class="file-upload" id="fileUpload16">
+                                                <input type="file" id="fileInput16" name="pagoten4" accept="image/*,application/pdf" />
+                                                <span id="fileName16">Seleccionar archivo</span>
+                                            </div>
+                                            <h6>Comprobante de pago de tenencias o certificación 3</h6>
+                                            <div class="file-upload" id="fileUpload17">
+                                                <input type="file" id="fileInput17" name="pagoten5" accept="image/*,application/pdf" />
+                                                <span id="fileName17">Seleccionar archivo</span>
+                                            </div>
+                                        </div>
+                                        <div class="custom-form-group-editar form-group invisible" id="tenencia4">
+                                            <h6>Tenencia 4</h6>
+                                            <div class="file-upload" id="fileUpload18">
+                                                <input type="file" id="fileInput18" name="pagoten6" accept="image/*,application/pdf" />
+                                                <span id="fileName18">Seleccionar archivo</span>
+                                            </div>
+                                            <h6>Comprobante de pago de tenencias o certificación 4</h6>
+                                            <div class="file-upload" id="fileUpload19">
+                                                <input type="file" id="fileInput19" name="pagoten7" accept="image/*,application/pdf" />
+                                                <span id="fileName19">Seleccionar archivo</span>
+                                            </div>
+                                        </div>
+                                        <div class="custom-form-group-editar form-group invisible" id="tenencia5">
+                                            <h6>Tenencia 5</h6>
+                                            <div class="file-upload" id="fileUpload20">
+                                                <input type="file" id="fileInput20" name="pagoten8" accept="image/*,application/pdf" />
+                                                <span id="fileName20">Seleccionar archivo</span>
+                                            </div>
+                                            <h6>Comprobante de pago de tenencias o certificación 5</h6>
+                                            <div class="file-upload" id="fileUpload21">
+                                                <input type="file" id="fileInput21" name="pagoten9" accept="image/*,application/pdf" />
+                                                <span id="fileName21">Seleccionar archivo</span>
+                                            </div>
+                                        </div>
+
+                                        <!--COMPROBANTE DE VERIFICACION (TODOS)-->
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="compveri">
+                                                <h6>
+                                                    Comprobante de verificación / Certificación de verificación</h6>
+                                                <div class="file-upload" id="fileUpload22">
+                                                    <input type="file" id="fileInput22" name="compveri" accept="image/*,application/pdf" />
+                                                    <span id="fileName22">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
 
+                                        <!--COMPROBANTE DE BAJA DE PLACAS CON RECIBO DE PAGO (TODOS)-->
                                         <div class="custom-form-group-editar form-group">
-                                            <label for="comprobante">
+                                            <label for="bajaplac">
                                                 <h6>
-                                                    Comprobante de domicilio</h6>
-                                                <div class="file-upload" id="fileUpload13">
-                                                    <input type="file" id="fileInput13" name="comprobante" accept="image/*,application/pdf" />
-                                                    <span id="fileName13">Seleccionar archivo</span>
+                                                    Baja de placas</h6>
+                                                <div class="file-upload" id="fileUpload23">
+                                                    <input type="file" id="fileInput23" name="bajaplac" accept="image/*,application/pdf" />
+                                                    <span id="fileName23">Seleccionar archivo</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="recibobajaplac">
+                                                <h6>
+                                                    Recibo de pago baja de placas</h6>
+                                                <div class="file-upload" id="fileUpload24">
+                                                    <input type="file" id="fileInput24" name="recibobajaplac" accept="image/*,application/pdf" />
+                                                    <span id="fileName24">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
 
+                                        <!--TARJETA DE CIRCULACIÓN (TODOS)-->
                                         <div class="custom-form-group-editar form-group">
-                                            <label for="estadocuenta">
+                                            <label for="tarjetacirc">
                                                 <h6>
-                                                    AEstado de ceunta bancario</h6>
-                                                <div class="file-upload" id="fileUpload14">
-                                                    <input type="file" id="fileInput14" name="estadocuenta" accept="image/*,application/pdf" />
-                                                    <span id="fileName14">Seleccionar archivo</span>
+                                                    Tarjeta de circulación</h6>
+                                                <div class="file-upload" id="fileUpload25">
+                                                    <input type="file" id="fileInput25" name="tarjetacirc" accept="image/*,application/pdf" />
+                                                    <span id="fileName25">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
 
+                                        <!--DUPLICADO DE LLAVES (TODOS)-->
                                         <div class="custom-form-group-editar form-group">
-                                            <label for="finiquito">
+                                            <label for="duplicadollaves">
                                                 <h6>
-                                                    Finiquito firmado</h6>
-                                                <div class="file-upload" id="fileUpload15">
-                                                    <input type="file" id="fileInput15" name="estadocuenta" accept="image/*,application/pdf" />
-                                                    <span id="fileName15">Seleccionar archivo</span>
+                                                    Tarjeta de circulación</h6>
+                                                <div class="file-upload" id="fileUpload26">
+                                                    <input type="file" id="fileInput26" name="duplicadollaves" accept="image/*,application/pdf" />
+                                                    <span id="fileName26">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
 
+                                        <!--CARATURA DE POLIZA (TODOS)-->
                                         <div class="custom-form-group-editar form-group">
-                                            <label for="formato">
+                                            <label for="caractulapoliza">
                                                 <h6>
-                                                    Formato conoce a tu cliente firmado</h6>
-                                                <div class="file-upload" id="fileUpload16">
-                                                    <input type="file" id="fileInput16" name="formato" accept="image/*,application/pdf" />
-                                                    <span id="fileName16">Seleccionar archivo</span>
+                                                    Carátula de la póliza de seguro a nombre del asegurado</h6>
+                                                <div class="file-upload" id="fileUpload27">
+                                                    <input type="file" id="fileInput27" name="caractulapoliza" accept="image/*,application/pdf" />
+                                                    <span id="fileName27">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
 
+                                        <!--IDENTIFICACION OFICIAL (TODOS)-->
                                         <div class="custom-form-group-editar form-group">
-                                            <label for="rfcfiscal">
+                                            <label for="identificacion">
                                                 <h6>
-                                                    Situacion fiscal - RFC</h6>
-                                                <div class="file-upload" id="fileUpload17">
-                                                    <input type="file" id="fileInput17" name="rfcfiscal" accept="image/*,application/pdf" />
-                                                    <span id="fileName17">Seleccionar archivo</span>
+                                                    Identificación oficial (INE, pasaporte, o cédula profesional)</h6>
+                                                <div class="file-upload" id="fileUpload28">
+                                                    <input type="file" id="fileInput28" name="identificacion" accept="image/*,application/pdf" />
+                                                    <span id="fileName28">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
+
+                                        <!--COMPROBANTE DE DOMICILIO (TODOS)-->
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="comprobantedomi">
+                                                <h6>
+                                                    Comprobante de domicilio (No mayor a 3 meses de antigüedad)</h6>
+                                                <div class="file-upload" id="fileUpload29">
+                                                    <input type="file" id="fileInput29" name="comprobantedomi" accept="image/*,application/pdf" />
+                                                    <span id="fileName29">Seleccionar archivo</span>
+                                                </div>
+                                            </label>
+                                        </div>
+
+
+                                        <!--RFC O CONSTANCIA DE SITUACION FISCAL (TODOS)-->
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="rfc_contancia">
+                                                <h6>
+                                                    Cúedula fiscal de RFC / Constancia de situacion fiscal</h6>
+                                                <div class="file-upload" id="fileUpload30">
+                                                    <input type="file" id="fileInput30" name="rfc_contancia" accept="image/*,application/pdf" />
+                                                    <span id="fileName30">Seleccionar archivo</span>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <!--CURP (PERSONA FISICA SIN ACTIVIDAD EMPRESARIAL)-->
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="curp">
+                                                <h6>
+                                                    CURP</h6>
+                                                <div class="file-upload" id="fileUpload31">
+                                                    <input type="file" id="fileInput31" name="curp" accept="image/*,application/pdf" />
+                                                    <span id="fileName31">Seleccionar archivo</span>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <!--SOLICITUD DE EXPEDICION DE CFDI (PERSONA FISICA SIN ACTIVIDAD EMPRESARIAL)-->
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="solicfdi">
+                                                <h6>
+                                                    Solicitud de expedición de CFDI</h6>
+                                                <div class="file-upload" id="fileUpload31">
+                                                    <input type="file" id="fileInput31" name="solicfdi" accept="image/*,application/pdf" />
+                                                    <span id="fileName31">Seleccionar archivo</span>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <!--CFDI (PERSONA FISICA CON ACTIVIDAD EMPRESARIAL)-->
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="cfdi">
+                                                <h6>
+                                                    CFDI</h6>
+                                                <div class="file-upload" id="fileUpload32">
+                                                    <input type="file" id="fileInput32" name="cfdi" accept="image/*,application/pdf" />
+                                                    <span id="fileName32">Seleccionar archivo</span>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <!--CARTA DE ACEPTACION CFDI (PERSONA MORAL)-->
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="aceptacion_cfdi">
+                                                <h6>
+                                                    Carta de aceptación para generar CFDI</h6>
+                                                <div class="file-upload" id="fileUpload33">
+                                                    <input type="file" id="fileInput33" name="aceptacion_cfdi" accept="image/*,application/pdf" />
+                                                    <span id="fileName33">Seleccionar archivo</span>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <!--DENUNCIA DE ROBO Y ACREDITACIÓN CERTIFICACADA (ROBO TOTAL)-->
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="denunciarobo">
+                                                <h6>
+                                                    Denuncia de robo</h6>
+                                                <div class="file-upload" id="fileUpload34">
+                                                    <input type="file" id="fileInput34" name="denunciarobo" accept="image/*,application/pdf" />
+                                                    <span id="fileName34">Seleccionar archivo</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="acreditacion_propiedad">
+                                                <h6>
+                                                    Acreditación de la propiedad certificada ante el Ministerio Público</h6>
+                                                <div class="file-upload" id="fileUpload35">
+                                                    <input type="file" id="fileInput35" name="acreditacion_propiedad" accept="image/*,application/pdf" />
+                                                    <span id="fileName35">Seleccionar archivo</span>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <!--LIBERACION EN POSESION(ROBO TOTAL)-->
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="liberacionposesion">
+                                                <h6>
+                                                    Liberación en posesión</h6>
+                                                <div class="file-upload" id="fileUpload36">
+                                                    <input type="file" id="fileInput36" name="liberacionposesion" accept="image/*,application/pdf" />
+                                                    <span id="fileName36">Seleccionar archivo</span>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <!--SOLICITUD Y CONTRATO AL TIPO DE CUENTA(NO CONTAR CON CUENTA BANCARIA)-->
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="solicitud_contrato">
+                                                <h6>
+                                                    Solicitud correpondiente al tipo de cuenta</h6>
+                                                <div class="file-upload" id="fileUpload37">
+                                                    <input type="file" id="fileInput37" name="solicitud_contrato1" accept="image/*,application/pdf" />
+                                                    <span id="fileName37">Seleccionar archivo</span>
+                                                </div>
+
+                                            </label>
+                                        </div>
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="solicitud_contrato2">
+                                                <h6>
+                                                    Contrato correpondiente al tipo de cuenta</h6>
+                                                <div class="file-upload" id="fileUpload38">
+                                                    <input type="file" id="fileInput38" name="solicitud_contrato2" accept="image/*,application/pdf" />
+                                                    <span id="fileName38">Seleccionar archivo</span>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <!--IDENTIFICACION OFICIAL (NO CONTAR CON CUENTA BANCARIA)-->
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="identificacioncuenta">
+                                                <h6>
+                                                    Identificación oficial (INE, pasaporte, o cédula profesional)</h6>
+                                                <div class="file-upload" id="fileUpload39">
+                                                    <input type="file" id="fileInput39" name="identificacioncuenta" accept="image/*,application/pdf" />
+                                                    <span id="fileName39">Seleccionar archivo</span>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <!--COMPROBANTE DE DOMICILIO (TODOS)-->
+                                        <div class="custom-form-group-editar form-group">
+                                            <label for="comprobantedomi1">
+                                                <h6>
+                                                    Comprobante de domicilio (No mayor a 3 meses de antigüedad)</h6>
+                                                <div class="file-upload" id="fileUpload40">
+                                                    <input type="file" id="fileInput40" name="comprobantedomi1" accept="image/*,application/pdf" />
+                                                    <span id="fileName40">Seleccionar archivo</span>
+                                                </div>
+                                            </label>
+                                        </div>
+
                                         <!-- Otros campos omitidos por brevedad -->
 
                                     </div>
@@ -631,6 +872,28 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         actualizarNombreArchivo("fileInput15", "fileName15", "fileUpload15");
         actualizarNombreArchivo("fileInput16", "fileName16", "fileUpload16");
         actualizarNombreArchivo("fileInput17", "fileName17", "fileUpload17");
+        actualizarNombreArchivo("fileInput18", "fileName18", "fileUpload18");
+        actualizarNombreArchivo("fileInput19", "fileName19", "fileUpload19");
+        actualizarNombreArchivo("fileInput20", "fileName20", "fileUpload20");
+        actualizarNombreArchivo("fileInput21", "fileName21", "fileUpload21");
+        actualizarNombreArchivo("fileInput22", "fileName22", "fileUpload22");
+        actualizarNombreArchivo("fileInput23", "fileName23", "fileUpload23");
+        actualizarNombreArchivo("fileInput24", "fileName24", "fileUpload24");
+        actualizarNombreArchivo("fileInput25", "fileName25", "fileUpload25");
+        actualizarNombreArchivo("fileInput27", "fileName27", "fileUpload26");
+        actualizarNombreArchivo("fileInput28", "fileName28", "fileUpload28");
+        actualizarNombreArchivo("fileInput29", "fileName29", "fileUpload29");
+        actualizarNombreArchivo("fileInput30", "fileName30", "fileUpload30");
+        actualizarNombreArchivo("fileInput31", "fileName31", "fileUpload31");
+        actualizarNombreArchivo("fileInput32", "fileName32", "fileUpload32");
+        actualizarNombreArchivo("fileInput33", "fileName33", "fileUpload33");
+        actualizarNombreArchivo("fileInput34", "fileName34", "fileUpload34");
+        actualizarNombreArchivo("fileInput35", "fileName35", "fileUpload35");
+        actualizarNombreArchivo("fileInput36", "fileName36", "fileUpload36");
+        actualizarNombreArchivo("fileInput37", "fileName37", "fileUpload37");
+        actualizarNombreArchivo("fileInput38", "fileName38", "fileUpload38");
+        actualizarNombreArchivo("fileInput39", "fileName39", "fileUpload39");
+        actualizarNombreArchivo("fileInput40", "fileName40", "fileUpload40");
     </script>
 
 
@@ -888,8 +1151,66 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             });
         });
     </script>
+    <script>
+        // Función que oculta o muestra los divs basados en la selección del select
+        document.getElementById('subsecfac').addEventListener('change', function() {
+            var value = this.value;
 
+            // Ocultar todos los divs primero
+            document.getElementById('fact1').classList.add('invisible');
+            document.getElementById('fact2').classList.add('invisible');
+            document.getElementById('fact3').classList.add('invisible');
 
+            // Mostrar los divs según el valor seleccionado
+            if (value == '1') {
+                document.getElementById('fact1').classList.remove('invisible');
+            } else if (value == '2') {
+                document.getElementById('fact1').classList.remove('invisible');
+                document.getElementById('fact2').classList.remove('invisible');
+            } else if (value == '3') {
+                document.getElementById('fact1').classList.remove('invisible');
+                document.getElementById('fact2').classList.remove('invisible');
+                document.getElementById('fact3').classList.remove('invisible');
+            }
+        });
+    </script>
+
+    <script>
+        // Función que oculta o muestra los divs basados en la selección del select
+        document.getElementById('pagoten').addEventListener('change', function() {
+            var value = this.value;
+
+            // Ocultar todos los divs primero
+            document.getElementById('tenencia1').classList.add('invisible');
+            document.getElementById('tenencia2').classList.add('invisible');
+            document.getElementById('tenencia3').classList.add('invisible');
+            document.getElementById('tenencia4').classList.add('invisible');
+            document.getElementById('tenencia5').classList.add('invisible');
+
+            // Mostrar los divs según el valor seleccionado
+            if (value == '1') {
+                document.getElementById('tenencia1').classList.remove('invisible');
+            } else if (value == '2') {
+                document.getElementById('tenencia1').classList.remove('invisible');
+                document.getElementById('tenencia2').classList.remove('invisible');
+            } else if (value == '3') {
+                document.getElementById('tenencia1').classList.remove('invisible');
+                document.getElementById('tenencia2').classList.remove('invisible');
+                document.getElementById('tenencia3').classList.remove('invisible');
+            } else if (value == '4') {
+                document.getElementById('tenencia1').classList.remove('invisible');
+                document.getElementById('tenencia2').classList.remove('invisible');
+                document.getElementById('tenencia3').classList.remove('invisible');
+                document.getElementById('tenencia4').classList.remove('invisible');
+            } else if (value == '5') {
+                document.getElementById('tenencia1').classList.remove('invisible');
+                document.getElementById('tenencia2').classList.remove('invisible');
+                document.getElementById('tenencia3').classList.remove('invisible');
+                document.getElementById('tenencia4').classList.remove('invisible');
+                document.getElementById('tenencia5').classList.remove('invisible');
+            }
+        });
+    </script>
 </body>
 
 </html>

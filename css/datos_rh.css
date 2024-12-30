@@ -1,0 +1,54 @@
+/* Estilos básicos */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+/* Contenedor principal */
+.container {
+    width: 60%;
+    margin: auto;
+    padding-top: 20px;
+}
+/* Estilos para las pestañas */
+.tabs {
+    display: flex;
+    background-color: #f1f1f1;
+    border-bottom: 2px solid #ccc;
+}
+.tabs li {
+    list-style: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    flex: 1;
+    background-color: #ddd;
+    transition: background-color 0.3s;
+}
+.tabs li.active {
+    background-color: #007bff;
+    color: white;
+}
+.tabs li:hover {
+    background-color: #555;
+    color: white;
+}
+/* Secciones del formulario */
+.form-section {
+    display: none;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+}
+.form-section.active {
+    display: block;
+}
+/* Estilos de los campos del formulario */
+.form-section input, .form-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
