@@ -544,7 +544,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <h3 id="asegurado-heading" style="cursor: pointer;">Asegurado</h3>
                                             <div id="collapseAsegurado" class="custom-grid-container-editar collapse hide">
                                                 <!-- Campo oculto para el id del asegurado -->
-                                                <input type="hide" id="id_asegurado" name="id_asegurado" value="">
+                                                <input class="invisible" id="id_asegurado" name="id_asegurado" value="">
 
                                                 <div class="custom-form-group-editar form-group">
                                                     <label for="asegurado_ed">
