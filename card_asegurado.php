@@ -260,11 +260,11 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                                 <div class="row">
                                                                     <div class="col-lg-6">
                                                                         <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                                                                            <img src="img/solera_icono.png" alt="avatar">
                                                                         </a>
                                                                         <div class="chat-about">
-                                                                            <h6 class="m-b-0" id="asegurado-nombre">Nombre del Asegurado</h6>
-                                                                            <small id="asegurado-telefono">Número de Teléfono</small>
+                                                                            <h6 class="m-b-0" id="asegurado-nombre">Asesoria Solera</h6>
+                                                                            <small id="asegurado-telefono">5630316561</small>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-6 text-right d-flex justify-content-end align-items-center">
@@ -295,9 +295,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                             <div class="chat-message clearfix">
                                                                 <div class="input-group mb-0">
 
-                                                                    <input type="text" class="form-control" placeholder="Mensaje" id="message-input" style="height: 50px;">
+                                                                    <input type="text" class="form-control" placeholder="Mensaje" id="message-input" style="height: 46px;">
                                                                     <div class="input-group-append">
-                                                                        <button class="btn " type="button" id="send-message-btn">Enviar</button>
+                                                                        <button class="btn-wp" type="button" id="send-message-btn">Enviar</button>
                                                                     </div>
 
                                                                 </div>

@@ -31,20 +31,29 @@
                                 <input type="date" id="fecha_subida" name="fecha_subida" class="custom-form-control form-control">
                             </div>
                             <div class="custom-form-group form-group">
-                                <label for="no_reporte">No Reporte:</label>
-                                <input type="text" id="no_reporte" name="no_reporte" class="custom-form-control form-control" placeholder="Número de reporte">
+                                <label for="hora_subida">Hora Subida:</label>
+                                <input type="time" id="hora_subida" name="hora_subida" class="custom-form-control form-control">
                             </div>
                             <div class="custom-form-group form-group">
-                                <label for="fecha_asignacion">Fecha Asignación:</label>
-                                <input type="date" id="fecha_asignacion" name="fecha_asignacion" class="custom-form-control form-control">
+                                <label for="no_reporte">No Siniestro:</label>
+                                <input type="text" id="no_reporte" name="no_reporte" class="custom-form-control form-control" placeholder="Número de reporte">
                             </div>
                             <div class="custom-form-group form-group">
                                 <label for="poliza">Póliza:</label>
                                 <input type="text" id="poliza" name="poliza" class="custom-form-control form-control" placeholder="Número de póliza">
                             </div>
                             <div class="custom-form-group form-group">
-                                <label for="asegurado">Asegurado:</label>
-                                <input type="text" id="asegurado" name="asegurado" class="custom-form-control form-control" placeholder="Nombre del asegurado">
+                                <label for="folio">Folio:</label>
+                                <input type="text" id="folio" name="folio" class="custom-form-control form-control" placeholder="Número de póliza">
+                            </div>
+                            <div class="custom-form-group form-group">
+                                <label for="fecha_asignacion">Fecha Asignación:</label>
+                                <input type="date" id="fecha_asignacion" name="fecha_asignacion" class="custom-form-control form-control">
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="asegurado">Nombre:</label>
+                                <input type="text" id="asegurado" name="asegurado" class="custom-form-control form-control" placeholder="Nombre completo">
                             </div>
                             <div class="custom-form-group form-group">
                                 <label for="afectado">Afectado:</label>
@@ -55,40 +64,46 @@
                                 </select>
                             </div>
                             <div class="custom-form-group form-group">
-                                <label for="cobertura">Cobertura:</label>
-                                <input type="text" id="cobertura" name="cobertura" class="custom-form-control form-control" placeholder="Cobertura">
-                            </div>
-                            <div class="custom-form-group form-group">
-                                <label for="telefono1">Teléfono1:</label>
-                                <input type="text" id="telefono1" name="telefono1" class="custom-form-control form-control" placeholder="Teléfono principal" maxlength="10">
-                            </div>
-                            <div class="custom-form-group form-group">
                                 <label for="celular">Celular:</label>
                                 <input type="text" id="celular" name="celular" class="custom-form-control form-control" placeholder="Celular" maxlength="10">
-                            </div>
-                            <div class="custom-form-group form-group">
-                                <label for="telefono3">Teléfono2:</label>
-                                <input type="text" id="telefono3" name="telefono3" class="custom-form-control form-control" placeholder="Otro teléfono" maxlength="10">
                             </div>
                             <div class="custom-form-group form-group">
                                 <label for="email">Email:</label>
                                 <input type="email" id="email" name="email" class="custom-form-control form-control" placeholder="Correo electrónico" required>
                             </div>
                             <div class="custom-form-group form-group">
-                                <label for="datosaudatex">Datos Audatex:</label>
-                                <input type="text" id="datosaudatex" name="datosaudatex" class="custom-form-control form-control" placeholder="Datos Audatex">
+                                <label for="cobertura">Cobertura:</label>
+                                <select id="cobertura" name="cobertura" class="custom-form-control form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="DM">DM</option>
+                                </select>
                             </div>
+                            <!-- <div class="custom-form-group form-group">
+                                <label for="telefono1">Teléfono1:</label>
+                                <input type="text" id="telefono1" name="telefono1" class="custom-form-control form-control" placeholder="Teléfono principal" maxlength="10">
+                            </div>-->
+
+                            <!-- <div class="custom-form-group form-group">
+                                <label for="telefono3">Teléfono2:</label>
+                                <input type="text" id="telefono3" name="telefono3" class="custom-form-control form-control" placeholder="Otro teléfono" maxlength="10">
+                            </div>-->
+
+
                             <div class="custom-form-group form-group">
                                 <label for="marca">Marca:</label>
                                 <input type="text" id="marca" name="marca" class="custom-form-control form-control" placeholder="Marca del vehículo">
                             </div>
                             <div class="custom-form-group form-group">
-                                <label for="tipo">Tipo:</label>
+                                <label for="tipo">Modelo:</label>
                                 <input type="text" id="tipo" name="tipo" class="custom-form-control form-control" placeholder="Tipo de vehículo">
                             </div>
                             <div class="custom-form-group form-group">
                                 <label for="ano">Año:</label>
                                 <input type="text" id="ano" name="ano" class="custom-form-control form-control" placeholder="Año de fabricación">
+                            </div>
+                            <div class="custom-form-group form-group">
+                                <label for="color">Color:</label>
+                                <input type="text" id="color" name="color" class="custom-form-control form-control" placeholder="Año de fabricación">
                             </div>
                             <div class="custom-form-group form-group">
                                 <label for="placas">Placas:</label>
@@ -98,7 +113,10 @@
                                 <label for="no_serie">No. Serie:</label>
                                 <input type="text" id="no_serie" name="no_serie" class="custom-form-control form-control" placeholder="Número de serie" maxlength="17">
                             </div>
-
+                            <div class="custom-form-group form-group">
+                                <label for="status">Status:</label>
+                                <input type="text" id="status" name="status" class="custom-form-control form-control" placeholder="Status" maxlength="17">
+                            </div>
                             <div class="custom-form-group form-group">
                                 <label for="regimen">Régimen:</label>
                                 <select id="regimen" name="regimen" class="custom-form-control form-control">
@@ -108,10 +126,10 @@
                                     <option value="PERSONA MORAL">PERSONA MORAL</option>
                                 </select>
                             </div>
-                            <div class="custom-form-group form-group">
+                            <!--<div class="custom-form-group form-group">
                                 <label for="taller">Taller:</label>
                                 <input type="text" id="taller" name="taller" class="custom-form-control form-control" placeholder="Taller asignado">
-                            </div>
+                            </div>-->
                             <div class="custom-form-group form-group">
                                 <label for="tipo_caso">Tipo de caso:</label>
                                 <select id="tipo_caso" name="tipo_caso" class="custom-form-control form-control">
@@ -121,6 +139,10 @@
                                     <option value="INUNDACION">INUNDACION</option>
                                     <option value="ROBO">ROBO</option>
                                 </select>
+                            </div>
+                            <div class="custom-form-group form-group">
+                                <label for="datosaudatex">Comentarios Extra:</label>
+                                <input type="text" id="datosaudatex" name="datosaudatex" class="custom-form-control form-control" placeholder="Comentarios Extra">
                             </div>
                         </div>
                     </div>

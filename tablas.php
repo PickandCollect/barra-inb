@@ -353,7 +353,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                             <div class="row">
                                                                 <div class="col-lg-6">
                                                                     <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-                                                                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                                                                        <img src="img/solera_icono.png" alt="avatar">
                                                                     </a>
                                                                     <div class="chat-about">
                                                                         <h6 class="m-b-0" id="asegurado-nombre">Nombre del Asegurado</h6>
@@ -361,16 +361,16 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6 text-right d-flex justify-content-end align-items-center">
-                                                                    <a href="javascript:void(0);" class="btn btn-outline-secondary mx-2" id="open-camera-btn">
+                                                                    <a href="javascript:void(0);" class="btn-wp btn-outline-secondary mx-2" id="open-camera-btn">
                                                                         <i class="fa fa-camera"></i>
                                                                     </a>
-                                                                    <a href="javascript:void(0);" class="btn btn-outline-primary mx-2">
+                                                                    <a href="javascript:void(0);" class="btn-wp btn-outline-primary mx-2">
                                                                         <i class="fa fa-image"></i>
                                                                     </a>
-                                                                    <a href="javascript:void(0);" class="btn btn-outline-info mx-2">
+                                                                    <a href="javascript:void(0);" class="btn-wp btn-outline-info mx-2">
                                                                         <i class="fa fa-cogs"></i>
                                                                     </a>
-                                                                    <a href="javascript:void(0);" class="btn btn-outline-warning mx-2">
+                                                                    <a href="javascript:void(0);" class="btn-wp btn-outline-warning mx-2">
                                                                         <i class="fa fa-question"></i>
                                                                     </a>
                                                                 </div>
@@ -387,9 +387,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                         <!-- Input para escribir el mensaje -->
                                                         <div class="chat-message clearfix">
                                                             <div class="input-group mb-0">
-                                                                <input type="text" class="form-control" placeholder="Mensaje" id="message-input" style="height: 50px;">
+                                                                <input type="text" class="form-control" placeholder="Mensaje" id="message-input" style="height: 46px;">
                                                                 <div class="input-group-append">
-                                                                    <button class="btn " type="button" id="send-message-btn">Enviar</button>
+                                                                    <button class="btn-wp" type="button" id="send-message-btn">Enviar</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1491,6 +1491,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                         // Obtener datos adicionales del asegurado
                         await obtenerDatosAsegurado(globalIdAsegurado);
+
+                        // Actualizar los elementos del modal con el nombre y teléfono
+                        document.getElementById('asegurado-nombre').textContent = data.nom_asegurado || 'Nombre no disponible';
+                        document.getElementById('asegurado-telefono').textContent = data.tel1 || 'Teléfono no disponible';
                     } else {
                         console.error('Error en los datos recibidos:', data.error);
                         alert('No se encontraron datos para el asegurado.');
@@ -2110,16 +2114,18 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             // Función para enviar mensaje
             $('#send-message-btn').click(function() {
                 const message = $('#message-input').val(); // Obtener el mensaje ingresado
+                const telefono = $('#telefono').val(); // Obtener el teléfono del asegurado
+                const nombre = $('#nombre').val(); // Obtener el nombre del asegurado
+
                 if (message.trim() !== "") {
-                    // Crear el nuevo mensaje
+                    // Crear el nuevo mensaje para la vista de chat
                     const messageHtml = `
-                <li class="clearfix">
-                    <div class="message-data text-right">
-                        <span class="message-data-time">${new Date().toLocaleTimeString()}, Today</span>
-                      
-                    </div>
-                    <div class="message my-message">${message}</div>
-                </li>
+                    <li class="clearfix">
+                        <div class="message-data text-right">
+                            <span class="message-data-time">${new Date().toLocaleTimeString()}, Today</span>
+                        </div>
+                        <div class="message my-message">${message}</div>
+                    </li>
                 `;
                     // Añadir el mensaje a la historia del chat
                     $('#chat-history ul').append(messageHtml);
@@ -2132,6 +2138,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         type: 'POST',
                         data: {
                             message: message,
+                            telefono: telefono, // Enviar teléfono del asegurado
+                            nombre: nombre, // Enviar nombre del asegurado
                             type: 'sent' // Marcar como mensaje enviado
                         },
                         success: function(response) {
@@ -2146,8 +2154,11 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
             // Función para cargar mensajes recibidos periódicamente
             function cargarMensajesRecibidos() {
+                const telefono = $('#telefono').val(); // Obtener el teléfono del asegurado para filtrar los mensajes
+                const nombre = $('#nombre').val(); // Obtener el nombre del asegurado para mostrarlo en la vista
+
                 $.ajax({
-                    url: 'proc/mensajes_recibidos.json', // Archivo JSON con los mensajes registrados
+                    url: 'proc/historial_' + telefono + "_" + nombre + '.json', // Cargar el archivo específico del asegurado
                     dataType: 'json',
                     success: function(response) {
                         console.log('Mensajes cargados:', response);
@@ -2158,13 +2169,12 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         response.forEach((msg) => {
                             const isSent = msg.type === 'sent'; // Verificar si el mensaje es enviado o recibido
                             const messageHtml = `
-                        <li class="clearfix">
-                            <div class="message-data ${isSent ? 'text-right' : ''}">
-                                <span class="message-data-time">${new Date(msg.timestamp * 1000).toLocaleTimeString()}, Today</span>
-                               
-                            </div>
-                            <div class="message ${isSent ? 'my-message' : 'other-message'}">${msg.mensaje}</div>
-                        </li>
+                            <li class="clearfix">
+                                <div class="message-data ${isSent ? 'text-right' : ''}">
+                                    <span class="message-data-time">${new Date(msg.timestamp * 1000).toLocaleTimeString()}, Today</span>
+                                </div>
+                                <div class="message ${isSent ? 'my-message' : 'other-message'}">${msg.mensaje}</div>
+                            </li>
                         `;
                             $('#chat-history ul').append(messageHtml);
                         });
@@ -2178,6 +2188,21 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     }
                 });
             }
+
+            // Función para establecer los datos del asegurado cuando se abra el modal
+            function setFormData() {
+                const nombreAsegurado = document.getElementById("asegurado-nombre").innerText;
+                const telefonoAsegurado = document.getElementById("asegurado-telefono").innerText;
+
+                // Colocar esos valores en los campos del formulario
+                $('#nombre').val(nombreAsegurado);
+                $('#telefono').val(telefonoAsegurado);
+            }
+
+            // Llamada para establecer los datos del asegurado al abrir el modal
+            $('#view_info').on('shown.bs.modal', function() {
+                setFormData();
+            });
 
             // Actualizar mensajes cada 1 segundo
             setInterval(cargarMensajesRecibidos, 1000);
@@ -2199,11 +2224,6 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     </script>
 
 
-    // Llamar a la función para cargar los datos del asegurado al cargar la página
-    $(document).ready(function() {
-    cargarDatosAsegurado();
-    });
-    </script>
 
     <!-- Se eliminó el script que abre el modal -->
 </body>

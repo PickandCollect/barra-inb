@@ -2,9 +2,6 @@
 // Token que configuramos para la validación del webhook
 $token = 'SoleraInbursa'; // Cambia este token por uno más seguro
 
-// Archivo donde se almacenan los mensajes
-$archivo = 'mensajes_recibidos.json';
-
 // Verificación del webhook
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Reto enviado por Facebook
@@ -35,28 +32,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $telefono = $datos['entry'][0]['changes'][0]['value']['messages'][0]['from']; // Número del remitente
         $mensajeTexto = $datos['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']; // Mensaje recibido
 
+        // Asegurado: Aquí se asume que hay un campo 'name' en el mensaje, si no, puedes ajustarlo
+        $nombreAsegurado = isset($datos['entry'][0]['changes'][0]['value']['messages'][0]['contact']['name']) ? $datos['entry'][0]['changes'][0]['value']['messages'][0]['contact']['name'] : 'Desconocido';
+
+        // Crear el nombre del archivo en base al número de teléfono y nombre del asegurado
+        $nombreArchivo = "historial_" . preg_replace('/[^a-zA-Z0-9]/', '_', $telefono . "_" . $nombreAsegurado) . ".json";
+
         // Formatear el mensaje recibido
         $mensaje = [
             'telefono' => $telefono,
+            'nombre_asegurado' => $nombreAsegurado,
             'mensaje' => $mensajeTexto,
             'type' => 'received', // Tipo de mensaje: recibido
             'timestamp' => time()
         ];
 
-        // Si el archivo ya existe, cargar el contenido existente
+        // Verificar si el archivo ya existe
         $contenidoExistente = [];
-        if (file_exists($archivo)) {
-            $contenidoExistente = json_decode(file_get_contents($archivo), true);
+        if (file_exists($nombreArchivo)) {
+            // Si existe, cargar el contenido existente
+            $contenidoExistente = json_decode(file_get_contents($nombreArchivo), true);
             if (!$contenidoExistente) {
                 $contenidoExistente = [];
             }
         }
 
-        // Agregar el nuevo mensaje recibido al contenido existente
+        // Agregar el nuevo mensaje al contenido existente
         $contenidoExistente[] = $mensaje;
 
-        // Guardar los mensajes en el archivo JSON
-        file_put_contents($archivo, json_encode($contenidoExistente, JSON_PRETTY_PRINT));
+        // Guardar los mensajes en el archivo JSON correspondiente
+        file_put_contents($nombreArchivo, json_encode($contenidoExistente, JSON_PRETTY_PRINT));
 
         // Responder con un código de estado HTTP 200 (éxito)
         http_response_code(200);
@@ -64,29 +69,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (isset($_POST['message'])) {
         // Registrar mensajes enviados desde el sistema
         $mensajeTexto = $_POST['message']; // Mensaje enviado desde el sistema
+        $telefono = 'Sistema'; // Puedes usar "Sistema" o un identificador genérico
+
+        // Crear el nombre del archivo en base al teléfono o un identificador general
+        $nombreArchivo = "historial_" . preg_replace('/[^a-zA-Z0-9]/', '_', $telefono) . ".json";
 
         // Formatear el mensaje enviado
         $mensaje = [
-            'telefono' => 'Sistema', // Puedes usar "Sistema" o un identificador genérico
+            'telefono' => $telefono,
             'mensaje' => $mensajeTexto,
             'type' => 'sent', // Tipo de mensaje: enviado
             'timestamp' => time()
         ];
 
-        // Si el archivo ya existe, cargar el contenido existente
+        // Verificar si el archivo ya existe
         $contenidoExistente = [];
-        if (file_exists($archivo)) {
-            $contenidoExistente = json_decode(file_get_contents($archivo), true);
+        if (file_exists($nombreArchivo)) {
+            // Si existe, cargar el contenido existente
+            $contenidoExistente = json_decode(file_get_contents($nombreArchivo), true);
             if (!$contenidoExistente) {
                 $contenidoExistente = [];
             }
         }
 
-        // Agregar el nuevo mensaje enviado al contenido existente
+        // Agregar el nuevo mensaje al contenido existente
         $contenidoExistente[] = $mensaje;
 
-        // Guardar los mensajes en el archivo JSON
-        file_put_contents($archivo, json_encode($contenidoExistente, JSON_PRETTY_PRINT));
+        // Guardar los mensajes en el archivo JSON correspondiente
+        file_put_contents($nombreArchivo, json_encode($contenidoExistente, JSON_PRETTY_PRINT));
 
         // Responder con un código de estado HTTP 200 (éxito)
         http_response_code(200);

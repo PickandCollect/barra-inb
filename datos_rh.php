@@ -42,6 +42,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             <li class="active" onclick="showTab(0)">Información Personal</li>
             <li onclick="showTab(1)">Dirección</li>
             <li onclick="showTab(2)">Contacto</li>
+            <li onclick="showTab(3)">Prueba</li>
         </ul>
 
         <!-- Formulario -->
@@ -101,6 +102,17 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <textarea class="form-control" id="direccion" name="direccion" rows="3" placeholder="Dirección" required></textarea>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        <h2>Seleccion y puesto</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+
                         </div>
                     </div>
                 </div>
@@ -175,34 +187,110 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
             <!-- Sección 2: Dirección -->
             <div class="form-section" id="section-2">
-            <div class="container mt-5">
-    <h3>Cargar Archivos y Vista Previa</h3>
-    
-    <!-- Input File -->
-    <div class="mb-3">
-        <label for="fileUpload" class="form-label">Selecciona un archivo</label>
-        <input class="form-control" type="file" id="fileUpload" name="fileUpload" onchange="handleFileSelect(event)">
-    </div>
+              <div class="container mt-5">
+              <div id="carouselExample" class="carousel slide custom-form-section-editar custom-card-border-editar" data-ride="carousel">
+                                        <!-- Indicadores -->
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
+                                            <li data-target="#carouselExample" data-slide-to="1"></li>
+                                            <li data-target="#carouselExample" data-slide-to="2"></li>
+                                            <li data-target="#carouselExample" data-slide-to="3"></li>
+                                        </ol>
 
-    <!-- Previsualización de archivos cargados -->
-    <div id="filePreviews"></div>
-</div>
+                                        <!-- Contenido del Carousel -->
+                                        <div class="carousel-inner">
+                                            <!-- Primer Item (Imagen) -->
+                                            <div class="carousel-item active">
+                                                <iframe src="https://www.pinterest.com/" width="800" height="700"></iframe>
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Etiqueta de la primera diapositiva (Imagen)</h5>
+                                                    <p>Contenido de la primera diapositiva con imagen.</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Segundo Item (PDF) -->
+                                            <div class="carousel-item">
+                                                <iframe src="https://www.pdf995.com/samples/pdf.pdf" class="d-block w-100" height="400px" allow="autoplay"></iframe>
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Etiqueta de la segunda diapositiva (PDF)</h5>
+                                                    <p>Vista previa del PDF en el carousel.</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Tercer Item (Imagen) -->
+                                            <div class="carousel-item">
+                                                <img src="https://place.dog/800/400" class="d-block w-100" alt="Imagen de un perrito">
+
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Etiqueta de la tercera diapositiva (Imagen)</h5>
+                                                    <p>Contenido de la tercera diapositiva con imagen.</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Cuarto Item (PDF) -->
+                                            <div class="carousel-item">
+                                                <iframe src="https://www.pdf995.com/samples/pdf.pdf" class="d-block w-100" height="400px" allow="autoplay"></iframe>
+
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Etiqueta de la cuarta diapositiva (PDF)</h5>
+                                                    <p>Vista de otro archivo PDF en el carousel.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Controles -->
+                                        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Anterior</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Siguiente</span>
+                                        </a>
+                                    </div>
+              </div>
             </div>
 
             <!-- Sección 3: Contacto -->
             <div class="form-section" id="section-3">
                 <h2>Contacto</h2>
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="tipo_contrato" class="form-label">Tipo de Contrato</label>
+        <select class="form-select" id="tipo_contrato" name="tipo_contrato" required>
+            <option value="">Seleccione</option>
+            <option value="Indefinido">Indefinido</option>
+            <option value="Temporal">Temporal</option>
+            <option value="Por Proyecto">Por Proyecto</option>
+            <option value="Honorarios">Honorarios</option>
+        </select>
                 
-                <label for="telefono">Teléfono:</label>
-                <input type="text" id="telefono" name="telefono" required>
+        <label for="sueldo_acordado" class="form-label">Sueldo Acordado (MXN)</label>
+        <input type="number" class="form-control" id="sueldo_acordado" name="sueldo_acordado" step="0.01" required>
+
+        <label for="dias_laborales" class="form-label">Días Laborales</label>
+        <input type="text" class="form-control" id="dias_laborales" name="dias_laborales" placeholder="Ej. Lunes a Viernes" required>
+
+        <label for="horario" class="form-label">Horario de Trabajo</label>
+        <input type="text" class="form-control" id="horario" name="horario" placeholder="Ej. 9:00 AM - 6:00 PM" required>
+
+        <label for="prestaciones" class="form-label">Prestaciones</label>
+        <textarea class="form-control" id="prestaciones" name="prestaciones" rows="3" placeholder="Ej. Seguro médico, Aguinaldo, Vacaciones, etc." required></textarea>
+
+        <label for="cuenta_bancaria" class="form-label">Número de Cuenta Bancaria</label>
+        <input type="text" class="form-control" id="cuenta_bancaria" name="cuenta_bancaria" required>
+
+        <label for="rfc" class="form-label">RFC</label>
+        <input type="text" class="form-control" id="rfc" name="rfc" placeholder="Ej. ABCD123456EF7" required>
             </div>
 
             <!-- Botón de Envío -->
             <div class="d-flex justify-content-center mt-4 col-12">
                 <button type="submit" class="btn btn-primary btn-lg px-4 py-2 shadow-sm">Enviar</button>
             </div>
+
+
+            <!-- Seccion 4 -->
+
+
         </form>
     </div>
 
