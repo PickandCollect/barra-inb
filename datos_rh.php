@@ -36,54 +36,176 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 </head>
 
 <body id="page-top">
-    <div><?php include 'slidebar.php'; ?></div>
-    <div><?php include 'topbar.php'; ?></div>
-<div class="container">
-    <!-- Pestañas de navegación -->
-    <ul class="tabs">
-        <li class="active" onclick="showTab(0)">Información Personal</li>
-        <li onclick="showTab(1)">Dirección</li>
-        <li onclick="showTab(2)">Contacto</li>
-    </ul>
+<div class="container mt-5">
+        <!-- Pestañas de navegación -->
+        <ul class="tabs">
+            <li class="active" onclick="showTab(0)">Información Personal</li>
+            <li onclick="showTab(1)">Dirección</li>
+            <li onclick="showTab(2)">Contacto</li>
+        </ul>
 
-    <!-- Formulario -->
-    <form id="formulario">
+        <!-- Formulario -->
+        <form id="formulario">
+            <!-- Sección 1: Información Personal -->
+            <div class="form-section active" id="section-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Información Personal</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Nombre -->
+                            <div class="col-md-6 mb-3">
+                                <div class="icon-input">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre(s)" required>
+                                </div>
+                            </div>
 
-        <!-- Sección 1: Información Personal -->
-        <div class="form-section active" id="section-1">
-            <h2>Información Personal</h2>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-            
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido" required>
-        </div>
+                            <!-- Apellidos -->
+                            <div class="col-md-6 mb-3">
+                                <div class="icon-input">
+                                    <i class="fas fa-user-tie"></i>
+                                    <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellidos" required>
+                                </div>
+                            </div>
 
-        <!-- Sección 2: Dirección -->
-        <div class="form-section" id="section-2">
-            <h2>Dirección</h2>
-            <label for="calle">Calle:</label>
-            <input type="text" id="calle" name="calle" required>
-            
-            <label for="ciudad">Ciudad:</label>
-            <input type="text" id="ciudad" name="ciudad" required>
-        </div>
+                            <!-- Correo Electrónico -->
+                            <div class="col-md-6 mb-3">
+                                <div class="icon-input">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo Electrónico" required>
+                                </div>
+                            </div>
 
-        <!-- Sección 3: Contacto -->
-        <div class="form-section" id="section-3">
-            <h2>Contacto</h2>
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="telefono">Teléfono:</label>
-            <input type="text" id="telefono" name="telefono" required>
-        </div>
+                            <!-- Teléfono -->
+                            <div class="col-md-6 mb-3">
+                                <div class="icon-input">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" required>
+                                </div>
+                            </div>
 
-        <!-- Botón de envío -->
-        <button type="submit">Enviar</button>
+                            <!-- Fecha de Nacimiento -->
+                            <div class="col-md-6 mb-3">
+                                <div class="icon-input">
+                                    <i class="fas fa-birthday-cake"></i>
+                                    <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                                </div>
+                            </div>
 
-    </form>
+                            <!-- Dirección -->
+                            <div class="col-md-12 mb-3">
+                                <div class="icon-input">
+                                    <i class="fas fa-home"></i>
+                                    <textarea class="form-control" id="direccion" name="direccion" rows="3" placeholder="Dirección" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Información Profesional -->
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        <h2>Información Profesional</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Puesto de Interés -->
+                            <div class="col-md-6 mb-3">
+                                <div class="icon-input">
+                                    <i class="fas fa-briefcase"></i>
+                                    <select class="form-select" id="puesto" name="puesto" required>
+                                        <option value="Desarrollador">Desarrollador</option>
+                                        <option value="Analista">Analista</option>
+                                        <option value="Gerente">Gerente</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Nivel de Experiencia -->
+                            <div class="col-md-6 mb-3">
+                                <div class="icon-input">
+                                    <i class="fas fa-star"></i>
+                                    <select class="form-select" id="experiencia" name="experiencia">
+                                        <option value="Junior">Junior</option>
+                                        <option value="Semi-Senior">Semi-Senior</option>
+                                        <option value="Senior">Senior</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Años de Experiencia -->
+                            <div class="col-md-6 mb-3">
+                                <div class="icon-input">
+                                    <i class="fas fa-clock"></i>
+                                    <input type="number" class="form-control" id="anos_experiencia" name="anos_experiencia" placeholder="Años de Experiencia" required>
+                                </div>
+                            </div>
+
+                            <!-- Formación Académica -->
+                            <div class="col-md-6 mb-3">
+                                <div class="icon-input">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <input type="text" class="form-control" id="formacion" name="formacion" placeholder="Formación Académica" required>
+                                </div>
+                            </div>
+
+                            <!-- Currículum -->
+                            <div class="col-md-12 mb-3">
+                                <div class="icon-input">
+                                    <i class="fas fa-file-alt"></i>
+                                    <input type="file" class="form-control" id="cv" name="cv" required>
+                                </div>
+                            </div>
+
+                            <!-- Referencias -->
+                            <div class="col-md-12 mb-3">
+                                <div class="icon-input">
+                                    <i class="fas fa-address-card"></i>
+                                    <textarea class="form-control" id="referencias" name="referencias" placeholder="Referencias Laborales" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 2: Dirección -->
+            <div class="form-section" id="section-2">
+            <div class="container mt-5">
+    <h3>Cargar Archivos y Vista Previa</h3>
+    
+    <!-- Input File -->
+    <div class="mb-3">
+        <label for="fileUpload" class="form-label">Selecciona un archivo</label>
+        <input class="form-control" type="file" id="fileUpload" name="fileUpload" onchange="handleFileSelect(event)">
+    </div>
+
+    <!-- Previsualización de archivos cargados -->
+    <div id="filePreviews"></div>
 </div>
+            </div>
+
+            <!-- Sección 3: Contacto -->
+            <div class="form-section" id="section-3">
+                <h2>Contacto</h2>
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" name="telefono" required>
+            </div>
+
+            <!-- Botón de Envío -->
+            <div class="d-flex justify-content-center mt-4 col-12">
+                <button type="submit" class="btn btn-primary btn-lg px-4 py-2 shadow-sm">Enviar</button>
+            </div>
+        </form>
+    </div>
+
     
 
     <!-- Bootstrap core JavaScript (CDN)-->
@@ -131,6 +253,60 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         sections[index].classList.add('active');
     }
     </script>
+
+<script>
+    function handleFileSelect(event) {
+        const files = event.target.files;
+        const filePreviews = document.getElementById('filePreviews');
+        
+        // Limpiar los previos elementos
+        filePreviews.innerHTML = '';
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const fileType = file.type;
+            const fileName = file.name;
+            const fileURL = URL.createObjectURL(file);
+
+            // Crear una tarjeta para cada archivo
+            const card = document.createElement('div');
+            card.classList.add('card', 'file-card');
+            
+            const cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+            
+            // Condicional para tipo de archivo
+            if (fileType.startsWith('image/')) {
+                // Vista previa de imagen
+                const image = document.createElement('img');
+                image.src = fileURL;
+                image.alt = fileName;
+                cardBody.appendChild(image);
+            } else if (fileType === 'application/pdf') {
+                // Vista previa de PDF
+                const iframe = document.createElement('iframe');
+                iframe.src = fileURL;
+                iframe.title = fileName;
+                cardBody.appendChild(iframe);
+            } else {
+                // Otro tipo de archivo
+                const icon = document.createElement('i');
+                icon.classList.add('fas', 'fa-file-alt', 'fa-3x');
+                cardBody.appendChild(icon);
+            }
+
+            // Añadir nombre de archivo y tipo
+            const fileInfo = document.createElement('p');
+            fileInfo.classList.add('mt-2');
+            fileInfo.textContent = `Nombre: ${fileName}`;
+            cardBody.appendChild(fileInfo);
+
+            // Agregar la tarjeta al contenedor de previsualización
+            card.appendChild(cardBody);
+            filePreviews.appendChild(card);
+        }
+    }
+</script>
 </body>
 
 </html>

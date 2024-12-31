@@ -23,6 +23,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
     <!-- CSS personalizado -->
     <link rel="stylesheet" href="css/card_asegurado.css">
+    <link rel="stylesheet" href="css/chat.css">
 
     <!-- Font Awesome para iconos -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
@@ -250,43 +251,68 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                         <input type="hidden" id="id_us" name="id_us" value="">
                                     </div>
                                     <div class="card-body">
-                                        <div class="table-responsive custom-table-style-pagination custom-table-style-navigation">
-                                            <table class="table table-bordered custom-table-style-table" id="dataTable" width="100%" cellspacing="0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Usuario</th>
-                                                        <th>Fecha-Estatus</th>
-                                                        <th>Comentario</th>
-                                                    </tr>
-                                                </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>Usuario</th>
-                                                        <th>Fecha-Estatus</th>
-                                                        <th>Comentario</th>
-                                                    </tr>
-                                                </tfoot>
-                                                <tbody>
-                                                    <!-- Aquí se llenarán las filas con JavaScript -->
-                                                </tbody>
-                                            </table>
+                                        <div class="container">
+                                            <div class="row clearfix">
+                                                <div class="col-lg-12">
+                                                    <div class="card-chat chat-app">
+                                                        <div class="chat">
+                                                            <div class="chat-header clearfix">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                                                                        </a>
+                                                                        <div class="chat-about">
+                                                                            <h6 class="m-b-0" id="asegurado-nombre">Nombre del Asegurado</h6>
+                                                                            <small id="asegurado-telefono">Número de Teléfono</small>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 text-right d-flex justify-content-end align-items-center">
+                                                                        <a href="javascript:void(0);" class="btn btn-outline-secondary mx-2" id="open-camera-btn">
+                                                                            <i class="fa fa-camera"></i>
+                                                                        </a>
+                                                                        <a href="javascript:void(0);" class="btn btn-outline-primary mx-2">
+                                                                            <i class="fa fa-image"></i>
+                                                                        </a>
+                                                                        <a href="javascript:void(0);" class="btn btn-outline-info mx-2">
+                                                                            <i class="fa fa-cogs"></i>
+                                                                        </a>
+                                                                        <a href="javascript:void(0);" class="btn btn-outline-warning mx-2">
+                                                                            <i class="fa fa-question"></i>
+                                                                        </a>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="chat-history" id="chat-history" style="height: 400px; overflow-y: auto;">
+                                                                <ul class="m-b-0">
+                                                                    <!-- Los mensajes serán añadidos dinámicamente aquí -->
+                                                                </ul>
+                                                            </div>
+
+                                                            <!-- Input para escribir el mensaje -->
+                                                            <div class="chat-message clearfix">
+                                                                <div class="input-group mb-0">
+
+                                                                    <input type="text" class="form-control" placeholder="Mensaje" id="message-input" style="height: 50px;">
+                                                                    <div class="input-group-append">
+                                                                        <button class="btn " type="button" id="send-message-btn">Enviar</button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
                                     </div>
-                                    <div class="custom-form-group-editar form-group">
-                                        <label for="mensaje">
-                                            <h6>Mensaje:</h6>
-                                        </label>
-                                        <textarea id="mensaje" name="mensaje" rows="5" cols="80" style="resize: both; overflow: auto;" placeholder="Mensaje" class="custom-form-control form-control"></textarea>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                        <!-- Botón de envío -->
-                        <div class="text-center mt-3">
-                            <input type="button" value="Enviar" class="custom-submit-button custom-btn" id="btnEnviar">
-                        </div>
-
                 </div>
                 </form>
             </div>

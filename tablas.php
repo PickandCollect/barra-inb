@@ -387,12 +387,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                         <!-- Input para escribir el mensaje -->
                                                         <div class="chat-message clearfix">
                                                             <div class="input-group mb-0">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text"><i class="fa fa-send"></i></span>
-                                                                </div>
-                                                                <input type="text" class="form-control" placeholder="Enter text here..." id="message-input">
+                                                                <input type="text" class="form-control" placeholder="Mensaje" id="message-input" style="height: 50px;">
                                                                 <div class="input-group-append">
-                                                                    <button class="btn btn-outline-primary" type="button" id="send-message-btn">Send</button>
+                                                                    <button class="btn " type="button" id="send-message-btn">Enviar</button>
                                                                 </div>
                                                             </div>
                                                         </div>
