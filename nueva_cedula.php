@@ -141,6 +141,14 @@
                                 </select>
                             </div>
                             <div class="custom-form-group form-group">
+                                <label for="ebc">Monto EBC:</label>
+                                <input type="text" id="ebc" name="ebc" class="custom-form-control form-control" placeholder="Monto EBC">
+                            </div>
+                            <div class="custom-form-group form-group">
+                                <label for="ppm">Monto de pago parcial máximo:</label>
+                                <input type="text" id="ppm" name="ppm" class="custom-form-control form-control" placeholder="Comentarios Extra">
+                            </div>
+                            <div class="custom-form-group form-group">
                                 <label for="datosaudatex">Comentarios Extra:</label>
                                 <input type="text" id="datosaudatex" name="datosaudatex" class="custom-form-control form-control" placeholder="Comentarios Extra">
                             </div>

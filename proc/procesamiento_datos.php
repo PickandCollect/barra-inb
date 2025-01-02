@@ -36,6 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fecha_pag = isset($_POST['fecha_pago']) ? $_POST['fecha_pago'] : null;
     $linea = isset($_POST['linea']) ? $_POST['linea'] : null;
     $corralon = isset($_POST['corralon']) ? $_POST['corralon'] : null;
+    $folio = isset($_POST['poliza']) ? $_POST['corralon'] : null;//ced
+    $color = isset($_POST['color']) ? $_POST['color'] : null;//veh ced
+    $veh_estatus = isset($_POST['status']) ? $_POST['status'] : null; //ced
+    $hora_subida = isset($_POST['hora_subida']) ? $_POST['hora_subida'] : null;
+    $monto_ebc = isset($_POST['ebc']) ? $_POST['ebc'] : null; //veh
+    $pago_parcial_max = isset($_POST['ppm']) ? $_POST['ppm'] : null; //veh
+    /*folio varchar(50) 
+    color varchar(50) 
+    veh_estatus varchar(50) 
+    hora_subida time*/
 
     // Validar los campos obligatorios (ejemplo: fecha_subida y siniestro)
     if (empty($fecha_subida) || empty($siniestro)) {
@@ -68,8 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Insertar en Vehículo
-    $stmt = $conexion->prepare("INSERT INTO Vehiculo (marca, tipo, ano, pk_placas, pk_no_serie, fk_asegurado) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssi", $marca, $tipo, $ano, $placas, $no_serie, $fk_asegurado);
+    $stmt = $conexion->prepare("INSERT INTO Vehiculo (marca, tipo, ano, pk_placas, pk_no_serie, fk_asegurado,color,veh_estatus,monto_ebc,pago_parcial_max) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?)");
+    $stmt->bind_param("sssssissss", $marca, $tipo, $ano, $placas, $no_serie, $fk_asegurado,$color,$veh_estatus,$monto_ebc,$pago_parcial_max);
     if ($stmt->execute()) {
         $fk_vehiculo = $stmt->insert_id;
     } else {
@@ -106,12 +116,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $conexion->prepare("INSERT INTO Cedula (
     siniestro, poliza, marca, tipo, modelo, serie, fecha_siniestro, estacion, estatus, subestatus, porc_doc, porc_total, estado, fecha_subida, 
     no_reporte, fecha_asignacion, asegurado, email, tel1, celular, tel3, nom_estado, fk_asegurado, fk_vehiculo, fk_expediente, fk_direccion, 
-    fk_adicionales, fk_usuario
-) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    fk_adicionales, fk_usuario,folio,color,veh_estatus,hora_subida) 
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
     // Bind de los parámetros con los tipos correctos
     $stmt->bind_param(
-        "ssssssssssssssssssssssiiiiii", // Especificamos los tipos de las variables
+        "sssssssssssssssssssssssssiiiiii", // Especificamos los tipos de las variables
         $siniestro,
         $poliza,
         $marca,
@@ -139,7 +149,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fk_expediente,
         $fk_estado,
         $fk_adicionales,
-        $fk_usuario   // Se pasa como variable
+        $fk_usuario,   // Se pasa como variable
+        $folio,
+        $color,
+        $veh_estatus,
+        $hora_subida
     );
 
     // Ejecutar la consulta
