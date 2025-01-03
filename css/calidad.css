@@ -1,0 +1,203 @@
+/* Contenedor principal que envuelve los dos divs */
+#container {
+    display: flex; /* Esto coloca los elementos en una fila */
+    justify-content: space-between; /* Espacio entre los elementos */
+    gap: 20px; /* Espacio entre calidad1 y calidad2 */
+    width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho disponible */
+    box-sizing: border-box;
+}
+
+/* Estilo general del contenedor calidad1 */
+#calidad1 {
+    width: 50%; /* Esto reduce el ancho del contenedor a la mitad */
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo general del contenedor calidad2 */
+#calidad2 {
+    width: 50%; /* Esto reduce el ancho del contenedor a la mitad */
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo de la sección dentro de calidad1 y calidad2 */
+.custom-form-section-editar {
+    background-color: #f8f9fc;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    display: grid; /* Utilizado grid para organizar los elementos internos */
+    grid-template-columns: 1fr 1fr; /* Crea dos columnas dentro de la sección */
+    gap: 10px; /* Espacio entre las columnas */
+}
+
+/* Estilo de cada grupo de formulario */
+.custom-form-group-editar {
+    display: flex;
+    flex-direction: column; /* Asegura que los campos se alineen de manera vertical */
+    align-items: flex-start; /* Alinea los campos a la izquierda */
+    margin-bottom: 15px; /* Espacio inferior entre los campos */
+}
+
+/* Estilo de los labels dentro de cada grupo */
+.custom-form-group-editar label {
+    width: 100%; /* Ajusta el ancho para que ocupe todo el contenedor */
+    margin-bottom: 5px; /* Espacio debajo del label */
+    font-weight: bold;
+    min-height: 40px;
+    line-height: 20px;
+}
+
+/* Estilo de los select dentro de cada grupo */
+.custom-form-group-editar .custom-form-control {
+    width: 100%; /* El select ocupará el 100% del ancho disponible */
+    padding: 10px; /* Añade relleno para mayor visibilidad */
+    font-size: 16px; /* Ajusta el tamaño de la fuente dentro del select */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde del select */
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+/* Estilo de los encabezados dentro de la sección */
+.custom-form-section-editar h6 {
+    color: black;
+    margin-bottom: 1px;
+    font-weight: bold;
+}
+
+.custom-form-section-editar h3 {
+    color: #2d2a7b;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.custom-h2 {
+    color: #2d2a7b;
+    font-weight: bold;
+}
+
+/* Estilo del botón de envío */
+.custom-submit-button-editar {
+    background-color: #533392 !important;
+    color: white !important;
+    font-weight: bold;
+    padding: 10px 20px !important; /* Aumentado el padding para el botón */
+    margin: 0px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 50px;
+    display: inline-block !important;
+    vertical-align: middle;
+    height: 45px; /* Aumentado el tamaño del botón */
+}
+
+.custom-submit-button-editar:hover {
+    background-color: #2D2A7B !important;
+    color: white;
+}
+
+/* Estilo para el contenedor con un grid de 3 columnas */
+.custom-grid-container-ee {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+/* Estilo de la tarjeta con borde */
+.custom-card-border-editar {
+    background-color: #F3F3F3;
+    border-left: 5px solid #533392;
+    border-bottom: 5px solid #533392;
+}
+
+/* Estilo para los labels dentro de la sección del formulario */
+.custom-form-group-editar label {
+    font-weight: bold;
+    min-height: 40px; /* Ajusta el valor según la altura deseada */
+    line-height: 20px;
+}
+
+/* Estilos para los contenedores flex */
+.d-flex {
+    display: flex;
+}
+
+.d-flex.flex-column {
+    flex-direction: column;
+}
+
+.d-flex h6 {
+    color: black;
+    margin-bottom: 1px;
+    font-weight: bold;
+}
+
+.w-50 {
+    width: 50%; /* Asegura que los campos no ocupen todo el ancho */
+}
+
+.d-flex > .d-flex label,
+.d-flex > .d-flex input {
+    width: 100%; /* Hace que el input y label ocupen el 100% del contenedor */
+    margin-bottom: 10px; /* Espacio entre el label y el input */
+}
+
+.d-flex.justify-content-end {
+    justify-content: flex-end; /* Alinea los campos a la derecha */
+}
+
+.mb-2 {
+    margin-bottom: 15px; /* Espaciado entre los bloques */
+}
+
+.d-flex > .d-flex input {
+    width: 70%; /* Ajusta el ancho del input según tu preferencia */
+    margin-bottom: 10px; /* Espacio entre el label y el input */
+    padding: 8px; /* Reduce el padding dentro del input */
+    font-size: 14px; /* Ajusta el tamaño de la fuente dentro del input */
+}
+
+/* Estilo para el contenedor del grid */
+/* Estilo para el contenedor del grid */
+#calidad-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    grid-template-rows: repeat(16, auto); /* 16 filas con tamaño automático */
+    gap: 20px; /* Espacio entre celdas */
+    padding: 10px;
+    width: 100%;
+}
+
+/* Estilo para las celdas dentro del grid */
+#calidad-grid-container div {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc; /* Opcional: agrega borde a las celdas */
+    padding: 10px; /* Opcional: espacio dentro de las celdas */
+}
+
+/* Estilo para los campos del formulario */
+.calidad-form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+/* Estilo general de los grupos del formulario */
+.calidad-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los encabezados dentro de los grupos del formulario */
+.calidad-form-group h6 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}

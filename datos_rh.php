@@ -187,69 +187,86 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
             <!-- Sección 2: Dirección -->
             <div class="form-section" id="section-2">
-              <div class="container mt-5">
-              <div id="carouselExample" class="carousel slide custom-form-section-editar custom-card-border-editar" data-ride="carousel">
-                                        <!-- Indicadores -->
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
-                                            <li data-target="#carouselExample" data-slide-to="1"></li>
-                                            <li data-target="#carouselExample" data-slide-to="2"></li>
-                                            <li data-target="#carouselExample" data-slide-to="3"></li>
-                                        </ol>
+  <h2 class="text-center">Gestión de Archivos con Indicadores</h2>
+  <div class="row row-cols-1 row-cols-md-2 g-4 mt-4">
+    <!-- Modal Buttons -->
+    <div class="col">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Archivo 1</h5>
+          <p class="card-text" id="status1">Documento A: Pendiente de subir</p>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fileUploadModal1">Subir Archivo</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Archivo 2</h5>
+          <p class="card-text" id="status2">Documento B: Pendiente de subir</p>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fileUploadModal2">Subir Archivo</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Archivo 3</h5>
+          <p class="card-text" id="status3">Documento C: Pendiente de subir</p>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fileUploadModal3">Subir Archivo</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Archivo 4</h5>
+          <p class="card-text" id="status4">Documento D: Pendiente de subir</p>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fileUploadModal4">Subir Archivo</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Archivo 5</h5>
+          <p class="card-text" id="status5">Documento E: Pendiente de subir</p>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fileUploadModal5">Subir Archivo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-                                        <!-- Contenido del Carousel -->
-                                        <div class="carousel-inner">
-                                            <!-- Primer Item (Imagen) -->
-                                            <div class="carousel-item active">
-                                                <iframe src="https://www.pinterest.com/" width="800" height="700"></iframe>
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Etiqueta de la primera diapositiva (Imagen)</h5>
-                                                    <p>Contenido de la primera diapositiva con imagen.</p>
-                                                </div>
-                                            </div>
-
-                                            <!-- Segundo Item (PDF) -->
-                                            <div class="carousel-item">
-                                                <iframe src="https://www.pdf995.com/samples/pdf.pdf" class="d-block w-100" height="400px" allow="autoplay"></iframe>
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Etiqueta de la segunda diapositiva (PDF)</h5>
-                                                    <p>Vista previa del PDF en el carousel.</p>
-                                                </div>
-                                            </div>
-
-                                            <!-- Tercer Item (Imagen) -->
-                                            <div class="carousel-item">
-                                                <img src="https://place.dog/800/400" class="d-block w-100" alt="Imagen de un perrito">
-
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Etiqueta de la tercera diapositiva (Imagen)</h5>
-                                                    <p>Contenido de la tercera diapositiva con imagen.</p>
-                                                </div>
-                                            </div>
-
-                                            <!-- Cuarto Item (PDF) -->
-                                            <div class="carousel-item">
-                                                <iframe src="https://www.pdf995.com/samples/pdf.pdf" class="d-block w-100" height="400px" allow="autoplay"></iframe>
-
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Etiqueta de la cuarta diapositiva (PDF)</h5>
-                                                    <p>Vista de otro archivo PDF en el carousel.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Controles -->
-                                        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Anterior</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Siguiente</span>
-                                        </a>
-                                    </div>
-              </div>
-            </div>
+<!-- Modal Template -->
+<template id="modalTemplate">
+  <div class="modal fade" tabindex="-1" aria-labelledby="fileUploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Subir y Gestionar Archivos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- File Input -->
+          <div class="mb-3">
+            <label class="form-label">Selecciona un archivo</label>
+            <input type="file" class="form-control file-input" accept="image/*,application/pdf">
+          </div>
+          <!-- Preview Container -->
+          <div class="file-preview-container">
+            <img class="preview-image d-none" alt="Previsualización">
+            <iframe class="preview-pdf d-none"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary save-button" disabled>Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 
             <!-- Sección 3: Contacto -->
             <div class="form-section" id="section-3">
@@ -394,6 +411,47 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             filePreviews.appendChild(card);
         }
     }
+    const modalContainer = document.querySelector('body');
+  const modalTemplate = document.getElementById('modalTemplate');
+
+  for (let i = 1; i <= 5; i++) {
+    const modalClone = modalTemplate.content.cloneNode(true);
+    const modal = modalClone.querySelector('.modal');
+    modal.id = `fileUploadModal${i}`;
+
+    const fileInput = modalClone.querySelector('.file-input');
+    const previewImage = modalClone.querySelector('.preview-image');
+    const previewPdf = modalClone.querySelector('.preview-pdf');
+    const saveButton = modalClone.querySelector('.save-button');
+    const statusText = document.getElementById(`status${i}`);
+
+    // Manejo de archivo
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const fileURL = URL.createObjectURL(file);
+      if (file.type.startsWith('image/')) {
+        previewImage.src = fileURL;
+        previewImage.classList.remove('d-none');
+        previewPdf.classList.add('d-none');
+      } else if (file.type === 'application/pdf') {
+        previewPdf.src = fileURL;
+        previewPdf.classList.remove('d-none');
+        previewImage.classList.add('d-none');
+      }
+
+      saveButton.disabled = false;
+    });
+
+    // Guardar archivo
+    saveButton.addEventListener('click', () => {
+      statusText.textContent = "Archivo cargado correctamente";
+      modal.querySelector('[data-bs-dismiss="modal"]').click(); // Cerrar modal
+    });
+
+    modalContainer.appendChild(modalClone);
+  }
 </script>
 </body>
 

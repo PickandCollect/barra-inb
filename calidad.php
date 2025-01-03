@@ -29,8 +29,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/herramientas.css">
 
+    <link rel="stylesheet" href="css/calidad.css">
     <!-- Date Range Picker CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
@@ -42,80 +42,328 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <?php include 'topbar.php'; ?>
-
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <h2 class="custom-h2">Calidad</h2>
-                    </div>
-                    <div class="custom-form-section-editar custom-card-border-editar text-center">
-                        <div id="carouselExample" class="carousel slide custom-form-section-editar custom-card-border-editar" data-ride="carousel">
-                            <!-- Indicadores -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExample" data-slide-to="1"></li>
-                                <li data-target="#carouselExample" data-slide-to="2"></li>
-                                <li data-target="#carouselExample" data-slide-to="3"></li>
-                            </ol>
-
-                            <!-- Contenido del Carousel -->
-                            <div class="carousel-inner">
-                                <!-- Primer Item (Imagen) -->
-                                <div class="carousel-item active">
-                                    <iframe src="img/aguila-logo.jpg" width="550" height="350"></iframe>
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>Etiqueta de la primera diapositiva (Imagen)</h5>
-                                        <p>Contenido de la primera diapositiva con imagen.</p>
-                                    </div>
-                                </div>
-
-                                <!-- Segundo Item (PDF) -->
-                                <div class="carousel-item">
-                                    <iframe src="img/hdi-logo.png" width="550" height="350" allow="autoplay"></iframe>
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>Etiqueta de la segunda diapositiva (PDF)</h5>
-                                        <p>Vista previa del PDF en el carousel.</p>
-                                    </div>
-                                </div>
-
-                                <!-- Tercer Item (Imagen) -->
-                                <div class="carousel-item">
-                                    <img src="https://place.dog/800/400" class="d-block w-100" alt="Imagen de un perrito">
-
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>Etiqueta de la tercera diapositiva (Imagen)</h5>
-                                        <p>Contenido de la tercera diapositiva con imagen.</p>
-                                    </div>
-                                </div>
-
-                                <!-- Cuarto Item (PDF) -->
-                                <div class="carousel-item">
-                                    <iframe src="https://www.pdf995.com/samples/pdf.pdf" class="d-block w-100" height="400px" allow="autoplay"></iframe>
-
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>Etiqueta de la cuarta diapositiva (PDF)</h5>
-                                        <p>Vista de otro archivo PDF en el carousel.</p>
-                                    </div>
+                        <div class="d-flex">
+                            <div class="d-flex flex-column w-45">
+                                <label for="nota_c">
+                                    <h6>Nota de calidad:</h6>
+                                </label>
+                                <input type="text" id="nota_c" name="nota_c" class="custom-form-control form-control" placeholder="Nota de calidad">
+                            </div>
+                            <div class="d-flex justify-content-end mb-2">
+                                <div class="d-flex flex-column w-45">
+                                    <label for="performance">
+                                        <h6>Performance:</h6>
+                                    </label>
+                                    <input type="text" id="performance" name="performance" class="custom-form-control form-control" placeholder="Performance">
                                 </div>
                             </div>
-
-                            <!-- Controles -->
-                            <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Anterior</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Siguiente</span>
-                            </a>
                         </div>
                     </div>
 
+                    <div class="container">
+                        <!-- Contenedor flex que alineará calidad1 y calidad2 horizontalmente -->
+                        <div id="container" style="display: flex; gap: 20px; justify-content: space-between;">
+                            <div id="calidad1" style="flex: 1; padding-left: 0; padding-right: 0;">
+                                <div class="custom-form-section-editar custom-card-border-editar text-center">
+                                    <div class="custom-form-group-editar form-group">
+                                        <label for="nombre_c">
+                                            <h6>Nombre del agente:</h6>
+                                        </label>
+                                        <select id="nombre_c" name="nombre_c" class="custom-form-control form-control">
+                                            <option value="">Selecciona</option>
+                                            <option value="ASEGURADO">ASEGURADO</option>
+                                            <option value="TERCERO">TERCERO</option>
+                                        </select>
+                                    </div>
+                                    <div class="custom-form-group-editar form-group">
+                                        <label for="campana_c">
+                                            <h6>Campaña:</h6>
+                                        </label>
+                                        <select id="campana_c" name="campana_c" class="custom-form-control form-control">
+                                            <option value="">Selecciona</option>
+                                            <option value="ASEGURADO">ASEGURADO</option>
+                                            <option value="TERCERO">TERCERO</option>
+                                        </select>
+                                    </div>
+                                    <div class="custom-form-group-editar form-group">
+                                        <label for="supervisor_c">
+                                            <h6>Supervisor:</h6>
+                                        </label>
+                                        <select id="supervisor_c" name="supervisor_c" class="custom-form-control form-control">
+                                            <option value="">Selecciona</option>
+                                            <option value="ASEGURADO">ASEGURADO</option>
+                                            <option value="TERCERO">TERCERO</option>
+                                        </select>
+                                    </div>
+                                    <div class="custom-form-group-editar form-group">
+                                        <label for="posicion_c">
+                                            <h6>Posición:</h6>
+                                        </label>
+                                        <select id="posicion_c" name="posicion_c" class="custom-form-control form-control">
+                                            <option value="">Selecciona</option>
+                                            <option value="ASEGURADO">ASEGURADO</option>
+                                            <option value="TERCERO">TERCERO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="calidad2" style="flex: 1; padding-left: 0; padding-right: 0;">
+                                <div class="custom-form-section-editar custom-card-border-editar text-center">
+                                    <div class="custom-form-group-editar form-group">
+                                        <label for="id_c">
+                                            <h6>ID:</h6>
+                                        </label>
+                                        <select id="id_c" name="id_c" class="custom-form-control form-control">
+                                            <option value="">Selecciona</option>
+                                            <option value="ASEGURADO">ASEGURADO</option>
+                                            <option value="TERCERO">TERCERO</option>
+                                        </select>
+                                    </div>
+                                    <div class="custom-form-group-editar form-group">
+                                        <label for="nombre_tercero_c">
+                                            <h6>Nombre del tercero:</h6>
+                                        </label>
+                                        <select id="nombre_tercero_c" name="nombre_tercero_c" class="custom-form-control form-control">
+                                            <option value="">Selecciona</option>
+                                            <option value="ASEGURADO">ASEGURADO</option>
+                                            <option value="TERCERO">TERCERO</option>
+                                        </select>
+                                    </div>
+                                    <div class="custom-form-group-editar form-group">
+                                        <label for="tipo_tramite_c">
+                                            <h6>Tipo de tramite:</h6>
+                                        </label>
+                                        <select id="tipo_tramite_c" name="tipo_tramite_c" class="custom-form-control form-control">
+                                            <option value="">Selecciona</option>
+                                            <option value="ASEGURADO">ASEGURADO</option>
+                                            <option value="TERCERO">TERCERO</option>
+                                        </select>
+                                    </div>
+                                    <div class="custom-form-group-editar form-group">
+                                        <label for="siniestro_c">
+                                            <h6>Siniestro:</h6>
+                                        </label>
+                                        <select id="siniestro_c" name="siniestro_c" class="custom-form-control form-control">
+                                            <option value="">Selecciona</option>
+                                            <option value="ASEGURADO">ASEGURADO</option>
+                                            <option value="TERCERO">TERCERO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+                            <div id="calidad-grid-container" class="calidad-grid-container">
+                                <!-- Fila con los tres elementos en columnas -->
+
+                                <label for="rubro_c">
+                                    <h6>Rubro</h6>
+                                </label>
+
+                                <label for="ponderacion_c">
+                                    <h6>Ponderación</h6>
+                                </label>
+
+                                <label for="cumple_c">
+                                    <h6>Cumple / No cumple</h6>
+                                </label>
+
+                                <label for="presentacion_c">
+                                    <h6>Presentación institucional</h6>
+                                </label>
+
+                                <input type="text" id="pon1" name="pon1" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple" name="cumple" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <label for="despedida_c">
+                                    <h6>Despedida institucional</h6>
+                                </label>
+
+                                <input type="text" id="pon2" name="pon2" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple1" name="cumple1" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <label for="identifica_c">
+                                    <h6>Identifica al receptor</h6>
+                                </label>
+
+                                <input type="text" id="pon3" name="pon3" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple2" name="cumple2" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <label for="sondeo_c">
+                                    <h6>Sondeo y captura</h6>
+                                </label>
+
+                                <input type="text" id="pon4" name="pon4" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple3" name="cumple3" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
 
 
+                                <label for="escucha_c">
+                                    <h6>Escucha activa</h6>
+                                </label>
+
+                                <input type="text" id="pon5" name="pon5" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple4" name="cumple4" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <label for="brinda_c">
+                                    <h6>Brinda información correcta y completa</h6>
+                                </label>
+
+                                <input type="text" id="pon6" name="pon6" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple5" name="cumple5" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <label for="uso_c">
+                                    <h6>Uso del mute y tiempos de espera</h6>
+                                </label>
+
+                                <input type="text" id="pon7" name="pon7" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple6" name="cumple6" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <label for="manejo_c">
+                                    <h6>Manejo de objeciones</h6>
+                                </label>
+
+                                <input type="text" id="pon8" name="pon8" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple7" name="cumple7" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <label for="realiza_c">
+                                    <h6>Realiza pregunta de cortesía</h6>
+                                </label>
+
+                                <input type="text" id="pon9" name="pon9" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple8" name="cumple8" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <label for="personalizacion_c">
+                                    <h6>Personalización</h6>
+                                </label>
+
+                                <input type="text" id="pon10" name="pon10" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple9" name="cumple9" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <label for="manejo_v_c">
+                                    <h6>Manejo del vocabulario (Muletillas, pleonasmos, guturales y Extranjerismos). Dicción.</h6>
+                                </label>
+
+                                <input type="text" id="pon11" name="pon11" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple10" name="cumple10" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <label for="muestra_c">
+                                    <h6>Muestra control en la llamada. (Tono y ritmo de voz).</h6>
+                                </label>
+
+                                <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple11" name="cumple11" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <label for="muestra_ce_c">
+                                    <h6>Muestra cortesía y empatía</h6>
+                                </label>
+
+                                <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple12" name="cumple12" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <label for="maltrato_c">
+                                    <h6>Maltrato al cliente</h6>
+                                </label>
+
+                                <input type="text" id="pon14" name="pon14" class="calidad-form-control" placeholder="">
+
+                                <select id="cumple13" name="cumple13" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <label for="desprestigio_c">
+                                    <h6>Desprestigio institucional</h6>
+                                </label>
+
+                                <input type="text" id="pon15" name="pon15" class="calidad-form-control" placeholder="">
+                                
+                                <select id="cumple14" name="cumple14" class="calidad-form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
                 </div>
                 <?php include 'footer.php'; ?>
             </div>
         </div>
+
 
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
@@ -153,5 +401,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         });
     </script>
 </body>
+
+</html>
 
 </html>
