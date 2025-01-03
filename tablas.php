@@ -1025,7 +1025,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                         <label for="fecha_asignacion">Fecha de asignación:</label>
                                                         <input type="date" id="fecha_asignacion" name="fecha_asignacion" class="custom-form-control form-control">
                                                     </div>
-                                                    <div">
+                                                    <div>
                                                         <button type="button" class="btn custom-submit-button-editar1" id="btnAs">
                                                             Asignar
                                                         </button>

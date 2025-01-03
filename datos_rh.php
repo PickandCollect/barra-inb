@@ -266,7 +266,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
       </div>
     </div>
   </div>
-</template>
+</template> 
+
 
             <!-- Sección 3: Contacto -->
             <div class="form-section" id="section-3">
@@ -402,7 +403,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
             // Añadir nombre de archivo y tipo
             const fileInfo = document.createElement('p');
-            fileInfo.classList.add('mt-2');
+            fileInfo.classList.add('mt-2');8
             fileInfo.textContent = `Nombre: ${fileName}`;
             cardBody.appendChild(fileInfo);
 
@@ -412,9 +413,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         }
     }
     const modalContainer = document.querySelector('body');
-  const modalTemplate = document.getElementById('modalTemplate');
+    const modalTemplate = document.getElementById('modalTemplate');
 
-  for (let i = 1; i <= 5; i++) {
+   for (let i = 1; i <= 5; i++) {
     const modalClone = modalTemplate.content.cloneNode(true);
     const modal = modalClone.querySelector('.modal');
     modal.id = `fileUploadModal${i}`;
@@ -452,6 +453,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
     modalContainer.appendChild(modalClone);
   }
+
 </script>
 </body>
 

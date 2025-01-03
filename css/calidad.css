@@ -1,4 +1,4 @@
-/* Contenedor principal que envuelve los dos divs */
+ /* Contenedor principal que envuelve los dos divs */
 #container {
     display: flex; /* Esto coloca los elementos en una fila */
     justify-content: space-between; /* Espacio entre los elementos */
@@ -200,4 +200,32 @@
 .calidad-form-group h6 {
     font-size: 14px;
     margin-bottom: 5px;
+}
+
+/* Estilos para los botones en fila */
+.form-section-editar {
+    display: flex; /* Establece que los botones estén en una fila */
+    justify-content: center; /* Alinea los botones al centro */
+    gap: 15px; /* Espacio entre los botones */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    box-sizing: border-box;
+}
+
+.custom-submit-button-c {
+    background-color: #533392 !important;
+    color: white !important;
+    font-weight: bold !important;
+    padding: 5px 15px !important; /* Ajusta el tamaño que desees */
+    margin: 5px !important; /* Asegura de tener un margen consistente */
+    font-size: 1em !important;
+    border: none !important;
+    border-radius: 50px !important;
+    display: inline-block !important; /* Asegura que los botones estén en línea */
+    height: 45px; /* Tamaño uniforme de los botones */
+    min-width: 100px; /* Asegura que los botones tengan un tamaño mínimo */
+}
+
+.custom-submit-button-c:hover {
+    background-color: #2D2A7B !important;
+    color: white !important;
 }

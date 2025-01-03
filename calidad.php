@@ -346,60 +346,83 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                 </label>
 
                                 <input type="text" id="pon15" name="pon15" class="calidad-form-control" placeholder="">
-                                
+
                                 <select id="cumple14" name="cumple14" class="calidad-form-control">
                                     <option value="">Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
                             </div>
+                            <div>
+                                <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+                                    <button type="button" class="btn custom-submit-button-c" id="btnGC">
+                                        Guardar
+                                    </button>
+                                    <button type="button" class="btn custom-submit-button-c" id="btnLC">
+                                        Limpiar
+                                    </button>
+                                    <button type="button" class="btn custom-submit-button-c" id="btnCC">
+                                        Cedula
+                                    </button>
+                                </div>
+                                <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+                                    <label for="desprestigio_c">
+                                        <h6>Fortalezas</h6>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </label>
+                                    <label for="desprestigio_c">
+                                        <h6>Áreas de oportunidad</h6>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </label>
+                                </div>
+
+                            </div>
+
+
+
+
                         </div>
-
-
-
-
                     </div>
+                    <?php include 'footer.php'; ?>
                 </div>
-                <?php include 'footer.php'; ?>
             </div>
+
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
         </div>
 
+        <!-- Bootstrap core JavaScript (CDN)-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
-    </div>
+        <!-- Core plugin JavaScript-->
+        <script src="main/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Bootstrap core JavaScript (CDN)-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="main/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Page level plugins -->
+        <script src="main/datatables/jquery.dataTables.min.js"></script>
+        <script src="main/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+        <!-- Date Range Picker JS -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="main/datatables/jquery.dataTables.min.js"></script>
-    <script src="main/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Date Range Picker JS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
-    <!-- Inicialización de Date Range Picker -->
-    <script>
-        $(document).ready(function() {
-            $('#miFecha').daterangepicker({
-                locale: {
-                    format: 'YYYY-MM-DD'
-                }
+        <!-- Inicialización de Date Range Picker -->
+        <script>
+            $(document).ready(function() {
+                $('#miFecha').daterangepicker({
+                    locale: {
+                        format: 'YYYY-MM-DD'
+                    }
+                });
             });
-        });
-    </script>
+        </script>
 </body>
 
 </html>
