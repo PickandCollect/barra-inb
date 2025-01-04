@@ -1,3 +1,31 @@
+/* Clase para el contenedor que será dividido en 6 columnas */
+.columnas-6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Crea 6 columnas de igual tamaño */
+    gap: 10px; /* Espacio entre las columnas */
+    width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho disponible */
+}
+
+/* Estilo para cada columna */
+.col {
+    background-color: #f0f0f0; /* Color de fondo para cada columna */
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd; /* Borde para cada columna */
+}
+
+/* Opcional: mejorar la visibilidad de las columnas en tamaños pequeños */
+@media (max-width: 768px) {
+    .columnas-6 {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .columnas-6 {
+        grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
+    }
+}
  /* Contenedor principal que envuelve los dos divs */
 #container {
     display: flex; /* Esto coloca los elementos en una fila */
