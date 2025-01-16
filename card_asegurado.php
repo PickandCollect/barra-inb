@@ -369,7 +369,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                 <h6>
                                                     Factura de origen frente</h6>
                                                 <div class="file-upload" id="fileUpload3">
-                                                    <input type="file" id="fileInput3" name="factori" accept="image/*,application/pdf" />
+                                                    <input type="file" id="fileInput3" name="factorif" accept="image/*,application/pdf" />
                                                     <span id="fileName3">Seleccionar archivo</span>
                                                 </div>
                                             </label>
@@ -401,13 +401,13 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <h6>
                                                 Factura subsecuente 1 frente</h6>
                                             <div class="file-upload" id="fileUpload5">
-                                                <input type="file" id="fileInput5" name="subsec" accept="image/*,application/pdf" />
+                                                <input type="file" id="fileInput5" name="subsec1f" accept="image/*,application/pdf" />
                                                 <span id="fileName5">Seleccionar archivo</span>
                                             </div>
                                             <h6>
                                                 Factura subsecuente 1 trasero</h6>
                                             <div class="file-upload" id="fileUpload6">
-                                                <input type="file" id="fileInput6" name="subsec" accept="image/*,application/pdf" />
+                                                <input type="file" id="fileInput6" name="subsec1t" accept="image/*,application/pdf" />
                                                 <span id="fileName6">Seleccionar archivo</span>
                                             </div>
                                         </div>
@@ -415,13 +415,13 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <h6>
                                                 Factura subsecuente 2 frente</h6>
                                             <div class="file-upload" id="fileUpload7">
-                                                <input type="file" id="fileInput7" name="subsec" accept="image/*,application/pdf" />
+                                                <input type="file" id="fileInput7" name="subsec2f" accept="image/*,application/pdf" />
                                                 <span id="fileName7">Seleccionar archivo</span>
                                             </div>
                                             <h6>
                                                 Factura subsecuente 2 trasero</h6>
                                             <div class="file-upload" id="fileUpload8">
-                                                <input type="file" id="fileInput8" name="subsec" accept="image/*,application/pdf" />
+                                                <input type="file" id="fileInput8" name="subsec2t" accept="image/*,application/pdf" />
                                                 <span id="fileName8">Seleccionar archivo</span>
                                             </div>
                                         </div>
@@ -429,13 +429,13 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <h6>
                                                 Factura subsecuente 3 frente</h6>
                                             <div class="file-upload" id="fileUpload9">
-                                                <input type="file" id="fileInput9" name="subsec" accept="image/*,application/pdf" />
+                                                <input type="file" id="fileInput9" name="subsec3f" accept="image/*,application/pdf" />
                                                 <span id="fileName9">Seleccionar archivo</span>
                                             </div>
                                             <h6>
                                                 Factura subsecuente 3 trasero</h6>
                                             <div class="file-upload" id="fileUpload10">
-                                                <input type="file" id="fileInput10" name="subsec" accept="image/*,application/pdf" />
+                                                <input type="file" id="fileInput10" name="subsec3t" accept="image/*,application/pdf" />
                                                 <span id="fileName10">Seleccionar archivo</span>
                                             </div>
                                         </div>
@@ -472,7 +472,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                         <div class="custom-form-group-editar form-group invisible" id="tenencia1">
                                             <h6>Tenencia 1</h6>
                                             <div class="file-upload" id="fileUpload12">
-                                                <input type="file" id="fileInput12" name="pagotrans" accept="image/*,application/pdf" />
+                                                <input type="file" id="fileInput12" name="pagoten" accept="image/*,application/pdf" />
                                                 <span id="fileName12">Seleccionar archivo</span>
                                             </div>
                                             <h6>Comprobante de pago de tenencias o certificación 1</h6>
@@ -580,7 +580,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                         <div class="custom-form-group-editar form-group">
                                             <label for="duplicadollaves">
                                                 <h6>
-                                                    Tarjeta de circulación</h6>
+                                                    Duplicado de llaves</h6>
                                                 <div class="file-upload" id="fileUpload26">
                                                     <input type="file" id="fileInput26" name="duplicadollaves" accept="image/*,application/pdf" />
                                                     <span id="fileName26">Seleccionar archivo</span>
@@ -629,7 +629,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                         <div class="custom-form-group-editar form-group">
                                             <label for="rfc_contancia">
                                                 <h6>
-                                                    Cúedula fiscal de RFC / Constancia de situacion fiscal</h6>
+                                                    Cedúla fiscal de RFC / Constancia de situacion fiscal</h6>
                                                 <div class="file-upload" id="fileUpload30">
                                                     <input type="file" id="fileInput30" name="rfc_contancia" accept="image/*,application/pdf" />
                                                     <span id="fileName30">Seleccionar archivo</span>
@@ -654,9 +654,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <label for="solicfdi">
                                                 <h6>
                                                     Solicitud de expedición de CFDI</h6>
-                                                <div class="file-upload" id="fileUpload31">
-                                                    <input type="file" id="fileInput31" name="solicfdi" accept="image/*,application/pdf" />
-                                                    <span id="fileName31">Seleccionar archivo</span>
+                                                <div class="file-upload" id="fileUpload32">
+                                                    <input type="file" id="fileInput32" name="solicfdi" accept="image/*,application/pdf" />
+                                                    <span id="fileName32">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
@@ -666,9 +666,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <label for="cfdi">
                                                 <h6>
                                                     CFDI</h6>
-                                                <div class="file-upload" id="fileUpload32">
-                                                    <input type="file" id="fileInput32" name="cfdi" accept="image/*,application/pdf" />
-                                                    <span id="fileName32">Seleccionar archivo</span>
+                                                <div class="file-upload" id="fileUpload33">
+                                                    <input type="file" id="fileInput33" name="cfdi" accept="image/*,application/pdf" />
+                                                    <span id="fileName33">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
@@ -678,9 +678,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <label for="aceptacion_cfdi">
                                                 <h6>
                                                     Carta de aceptación para generar CFDI</h6>
-                                                <div class="file-upload" id="fileUpload33">
-                                                    <input type="file" id="fileInput33" name="aceptacion_cfdi" accept="image/*,application/pdf" />
-                                                    <span id="fileName33">Seleccionar archivo</span>
+                                                <div class="file-upload" id="fileUpload34">
+                                                    <input type="file" id="fileInput34" name="aceptacion_cfdi" accept="image/*,application/pdf" />
+                                                    <span id="fileName34">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
@@ -690,9 +690,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <label for="denunciarobo">
                                                 <h6>
                                                     Denuncia de robo</h6>
-                                                <div class="file-upload" id="fileUpload34">
-                                                    <input type="file" id="fileInput34" name="denunciarobo" accept="image/*,application/pdf" />
-                                                    <span id="fileName34">Seleccionar archivo</span>
+                                                <div class="file-upload" id="fileUpload35">
+                                                    <input type="file" id="fileInput35" name="denunciarobo" accept="image/*,application/pdf" />
+                                                    <span id="fileName35">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
@@ -700,9 +700,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <label for="acreditacion_propiedad">
                                                 <h6>
                                                     Acreditación de la propiedad certificada ante el Ministerio Público</h6>
-                                                <div class="file-upload" id="fileUpload35">
-                                                    <input type="file" id="fileInput35" name="acreditacion_propiedad" accept="image/*,application/pdf" />
-                                                    <span id="fileName35">Seleccionar archivo</span>
+                                                <div class="file-upload" id="fileUpload36">
+                                                    <input type="file" id="fileInput36" name="acreditacion_propiedad" accept="image/*,application/pdf" />
+                                                    <span id="fileName36">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
@@ -712,9 +712,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <label for="liberacionposesion">
                                                 <h6>
                                                     Liberación en posesión</h6>
-                                                <div class="file-upload" id="fileUpload36">
-                                                    <input type="file" id="fileInput36" name="liberacionposesion" accept="image/*,application/pdf" />
-                                                    <span id="fileName36">Seleccionar archivo</span>
+                                                <div class="file-upload" id="fileUpload37">
+                                                    <input type="file" id="fileInput37" name="liberacionposesion" accept="image/*,application/pdf" />
+                                                    <span id="fileName37">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
@@ -724,9 +724,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <label for="solicitud_contrato">
                                                 <h6>
                                                     Solicitud correpondiente al tipo de cuenta</h6>
-                                                <div class="file-upload" id="fileUpload37">
-                                                    <input type="file" id="fileInput37" name="solicitud_contrato1" accept="image/*,application/pdf" />
-                                                    <span id="fileName37">Seleccionar archivo</span>
+                                                <div class="file-upload" id="fileUpload38">
+                                                    <input type="file" id="fileInput38" name="solicitud_contrato1" accept="image/*,application/pdf" />
+                                                    <span id="fileName38">Seleccionar archivo</span>
                                                 </div>
 
                                             </label>
@@ -735,9 +735,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <label for="solicitud_contrato2">
                                                 <h6>
                                                     Contrato correpondiente al tipo de cuenta</h6>
-                                                <div class="file-upload" id="fileUpload38">
-                                                    <input type="file" id="fileInput38" name="solicitud_contrato2" accept="image/*,application/pdf" />
-                                                    <span id="fileName38">Seleccionar archivo</span>
+                                                <div class="file-upload" id="fileUpload39">
+                                                    <input type="file" id="fileInput39" name="solicitud_contrato2" accept="image/*,application/pdf" />
+                                                    <span id="fileName39">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
@@ -747,9 +747,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <label for="identificacioncuenta">
                                                 <h6>
                                                     Identificación oficial (INE, pasaporte, o cédula profesional)</h6>
-                                                <div class="file-upload" id="fileUpload39">
-                                                    <input type="file" id="fileInput39" name="identificacioncuenta" accept="image/*,application/pdf" />
-                                                    <span id="fileName39">Seleccionar archivo</span>
+                                                <div class="file-upload" id="fileUpload40">
+                                                    <input type="file" id="fileInput40" name="identificacioncuenta" accept="image/*,application/pdf" />
+                                                    <span id="fileName40">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
@@ -759,9 +759,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <label for="comprobantedomi1">
                                                 <h6>
                                                     Comprobante de domicilio (No mayor a 3 meses de antigüedad)</h6>
-                                                <div class="file-upload" id="fileUpload40">
-                                                    <input type="file" id="fileInput40" name="comprobantedomi1" accept="image/*,application/pdf" />
-                                                    <span id="fileName40">Seleccionar archivo</span>
+                                                <div class="file-upload" id="fileUpload41">
+                                                    <input type="file" id="fileInput41" name="comprobantedomi1" accept="image/*,application/pdf" />
+                                                    <span id="fileName41">Seleccionar archivo</span>
                                                 </div>
                                             </label>
                                         </div>
@@ -786,6 +786,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
     </div>
     </div>
+
     <script>
         $(document).ready(function() {
             // Asignar evento de clic al botón con id #btnG
@@ -796,23 +797,47 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 var formData = new FormData();
 
                 // Añadir archivos al FormData (si están seleccionados)
-                formData.append('cfdi', $('#fileInput1')[0].files[0]);
-                formData.append('nfacturas', $('#fileInput5')[0].files[0]);
-                formData.append('tt_propiedad', $('#fileInput2')[0].files[0]);
-                formData.append('pedimento', $('#fileInput3')[0].files[0]);
-                formData.append('baja_permiso', $('#fileInput4')[0].files[0]);
-                formData.append('ntenencias', $('#fileInput6')[0].files[0]);
-                formData.append('bajaplacas', $('#fileInput7')[0].files[0]);
-                formData.append('verificacion', $('#fileInput8')[0].files[0]);
-                formData.append('averiguacion', $('#fileInput9')[0].files[0]);
-                formData.append('acreditacion', $('#fileInput10')[0].files[0]);
-                formData.append('aviso', $('#fileInput11')[0].files[0]);
-                formData.append('ine', $('#fileInput12')[0].files[0]);
-                formData.append('comprobante', $('#fileInput13')[0].files[0]);
-                formData.append('estadocuenta', $('#fileInput14')[0].files[0]);
-                formData.append('finiquito', $('#fileInput15')[0].files[0]);
-                formData.append('formato', $('#fileInput16')[0].files[0]);
-                formData.append('rfcfiscal', $('#fileInput17')[0].files[0]);
+                formData.append('pagotrans', $('#fileInput1')[0].files[0]);
+                formData.append('cartaidemn', $('#fileInput2')[0].files[0]);
+                formData.append('factorif', $('#fileInput3')[0].files[0]);
+                formData.append('factori', $('#fileInput4')[0].files[0]);
+                formData.append('subsec1f', $('#fileInput5')[0].files[0]);
+                formData.append('subsec1t', $('#fileInput6')[0].files[0]);
+                formData.append('subsec2f', $('#fileInput7')[0].files[0]);
+                formData.append('subsec2t', $('#fileInput8')[0].files[0]);
+                formData.append('subsec3f', $('#fileInput9')[0].files[0]);
+                formData.append('subsec3t', $('#fileInput10')[0].files[0]);
+                formData.append('factfina', $('#fileInput11')[0].files[0]);
+                formData.append('pagoten', $('#fileInput12')[0].files[0]);
+                formData.append('pagoten1', $('#fileInput13')[0].files[0]);
+                formData.append('pagoten2', $('#fileInput14')[0].files[0]);
+                formData.append('pagoten3', $('#fileInput15')[0].files[0]);
+                formData.append('pagoten4', $('#fileInput16')[0].files[0]);
+                formData.append('pagoten5', $('#fileInput17')[0].files[0]);
+                formData.append('pagoten6', $('#fileInput18')[0].files[0]);
+                formData.append('pagoten7', $('#fileInput19')[0].files[0]);
+                formData.append('pagoten8', $('#fileInput20')[0].files[0]);
+                formData.append('pagoten9', $('#fileInput21')[0].files[0]);
+                formData.append('compveri', $('#fileInput22')[0].files[0]);
+                formData.append('bajaplac', $('#fileInput23')[0].files[0]);
+                formData.append('recibobajaplac', $('#fileInput24')[0].files[0]);
+                formData.append('tarjetacirc', $('#fileInput25')[0].files[0]);
+                formData.append('duplicadollaves', $('#fileInput26')[0].files[0]);
+                formData.append('caractulapoliza', $('#fileInput27')[0].files[0]);
+                formData.append('identificacion', $('#fileInput28')[0].files[0]);
+                formData.append('comprobantedomi', $('#fileInput29')[0].files[0]);
+                formData.append('rfc_contancia', $('#fileInput30')[0].files[0]);
+                formData.append('curp', $('#fileInput31')[0].files[0]);
+                formData.append('solicfdi', $('#fileInput32')[0].files[0]);
+                formData.append('cfdi', $('#fileInput33')[0].files[0]);
+                formData.append('aceptacion_cfdi', $('#fileInput34')[0].files[0]);
+                formData.append('denunciarobo', $('#fileInput35')[0].files[0]);
+                formData.append('acreditacion_propiedad', $('#fileInput36')[0].files[0]);
+                formData.append('liberacionposesion', $('#fileInput37')[0].files[0]);
+                formData.append('solicitud_contrato1', $('#fileInput38')[0].files[0]);
+                formData.append('solicitud_contrato2', $('#fileInput39')[0].files[0]);
+                formData.append('identificacioncuenta', $('#fileInput40')[0].files[0]);
+                formData.append('comprobantedomi1', $('#fileInput41')[0].files[0]);
 
                 // Añadir también los demás campos del formulario
                 formData.append('id_asegurado', $('#id_asegurado').val());
@@ -857,6 +882,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     </script>
 
 
+
     <script>
         // Función para actualizar el nombre del archivo cuando se selecciona uno
         function actualizarNombreArchivo(inputId, spanId, uploadId) {
@@ -889,7 +915,6 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         actualizarNombreArchivo("fileInput7", "fileName7", "fileUpload7");
         actualizarNombreArchivo("fileInput8", "fileName8", "fileUpload8");
         actualizarNombreArchivo("fileInput9", "fileName9", "fileUpload9");
-
         actualizarNombreArchivo("fileInput10", "fileName10", "fileUpload10");
         actualizarNombreArchivo("fileInput11", "fileName11", "fileUpload11");
         actualizarNombreArchivo("fileInput12", "fileName12", "fileUpload12");
@@ -906,7 +931,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         actualizarNombreArchivo("fileInput23", "fileName23", "fileUpload23");
         actualizarNombreArchivo("fileInput24", "fileName24", "fileUpload24");
         actualizarNombreArchivo("fileInput25", "fileName25", "fileUpload25");
-        actualizarNombreArchivo("fileInput27", "fileName27", "fileUpload26");
+        actualizarNombreArchivo("fileInput26", "fileName26", "fileUpload26");
+        actualizarNombreArchivo("fileInput27", "fileName27", "fileUpload27");
         actualizarNombreArchivo("fileInput28", "fileName28", "fileUpload28");
         actualizarNombreArchivo("fileInput29", "fileName29", "fileUpload29");
         actualizarNombreArchivo("fileInput30", "fileName30", "fileUpload30");
@@ -920,6 +946,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         actualizarNombreArchivo("fileInput38", "fileName38", "fileUpload38");
         actualizarNombreArchivo("fileInput39", "fileName39", "fileUpload39");
         actualizarNombreArchivo("fileInput40", "fileName40", "fileUpload40");
+        actualizarNombreArchivo("fileInput41", "fileName41", "fileUpload41");
     </script>
 
 

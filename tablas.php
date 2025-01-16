@@ -230,55 +230,127 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                     <h6>Documento en registro:</h6>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkCFDI" checked disabled><b>CFDI y factura original endosada</b>
+                                                    <input type="checkbox" id="checkPagoTrans" checked disabled><b>Autorización de pago por transferencia</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkFacA" checked disabled><b>Factura original anverso</b>
+                                                    <input type="checkbox" id="checkCartaIndemnizacion" checked disabled><b>Carta petición de indemnización</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkTitulo" disabled><b>Titulo de propiedad original o certificado</b>
+                                                    <input type="checkbox" id="checkFacturaOriginalFrente" disabled><b>Factura de origen frente</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkPedimento" disabled><b>Pedimento de importacion original</b>
+                                                    <input type="checkbox" id="checkFacturaOriginalTrasero" disabled><b>Factura de origen trasero</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkBajaPermiso" disabled><b>Baja de permiso de internacion temporal</b>
+                                                    <input type="checkbox" id="checkFactSub1Frente" disabled><b>Factura subsecuente 1 frente</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkUltimas5Ten" disabled><b>Ultimas 5 tenencias</b>
+                                                    <input type="checkbox" id="checkFactSub1Trasero" disabled><b>Factura subsecuente 1 traseros</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkFactSub2Frente" disabled><b>Factura subsecuente 2 frente</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkFactSub2Trasero" disabled><b>Factura subsecuente 2 traseros</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkFactSub3Frente" disabled><b>Factura subsecuente 3 frente</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkFactSub3Trasero" disabled><b>Factura subsecuente 3 traseros</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkCartaFactura" disabled><b>Carta factura vigente</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkFactura1" disabled><B>Tenencia 1</B>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkComprobanteFact1" checked disabled><b>Comprobante de pago de tenencias o certificación 1</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkFactura2" disabled><b>Tenencia 2</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkComprobanteFact2" disabled><b>Comprobante de pago de tenencias o certificación 2</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkFactura3" disabled><b>Tenencia 3</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkComprobanteFact3" disabled><b>Comprobante de pago de tenencias o certificación 3</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkFactura4" disabled><b>Tenencia 4</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkComprobanteFact4" disabled><b>Comprobante de pago de tenencias o certificación 4</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkFactura5" disabled><b>Tenencia 5</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkComprobanteFact5" disabled><b>Comprobante de pago de tenencias o certificación 5</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkComprobanteVerificacion" disabled><b>Comprobante de verificación / Certificación de verificación</b>
                                                 </label>
                                                 <label>
                                                     <input type="checkbox" id="checkBajaPlacas" disabled><b>Baja de placas</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkVerificacion" disabled><b>Verificacion vehicular</b>
+                                                    <input type="checkbox" id="checkReciboBajaPlacas" disabled><b>Recibo de pago baja de placas</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkAveriguacion" disabled><b>Averiguacion previa</b>
+                                                    <input type="checkbox" id="checkTarjetaCirculacion" disabled><b>Tarjeta de circulación</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkAcreditacion" disabled><b>Acreditacion de propiedad</b>
+                                                    <input type="checkbox" id="checkDuplicadoLLaves" disabled><b>Duplicado de llaves</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkAviso" disabled><b>Aviso a la PFP</b>
+                                                    <input type="checkbox" id="checkCaratulaPoliza" disabled><b> Carátula de la póliza de seguro a nombre del asegurado</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkINE" disabled><B>Identificación oficial</B>
+                                                    <input type="checkbox" id="checkIdentificacion" disabled><b> Identificación oficial (INE, pasaporte, o cédula profesional)</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkComprobante" checked disabled><b>Comprobante de domicilio</b>
+                                                    <input type="checkbox" id="checkComprobanteDomicilio" disabled><b> Comprobante de domicilio (No mayor a 3 meses de antigüedad)</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkEstadoCuenta" disabled><b>Estado de cuenta bancario</b>
+                                                    <input type="checkbox" id="checkRFC" disabled><b> Cedúla fiscal de RFC / Constancia de situacion fiscal</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkFiniquito" disabled><b>Finiquiro firmado</b>
+                                                    <input type="checkbox" id="checkCURP" disabled><b>CURP</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkFormato" disabled><b>Formato conoce a tu cliente firmado</b>
+                                                    <input type="checkbox" id="checkSoliCFDI" disabled><b>Solicitud de expedición de CFDI</b>
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" id="checkRFC" disabled><b>Situacion fiscal - RFC</b>
+                                                    <input type="checkbox" id="checkCFDI" disabled><b>CFDI</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkAceptacionCFDI" disabled><b> Carta de aceptación para generar CFDI</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkDenunciaRobo" disabled><b>Denuncia de robo</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkAcreditacionPropiedad" disabled><b>Acreditación de la propiedad certificada ante el Ministerio Público</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkLiberacionPosesion" disabled><b>Liberación en posesión</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkSolicitudCuenta" disabled><b>Solicitud correpondiente al tipo de cuenta</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkContratoCuenta" disabled><b>Contrato correpondiente al tipo de cuenta</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkIdentificacionCuenta" disabled><b> Identificación oficial (INE, pasaporte, o cédula profesional)</b>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="checkComprobanteDomicilioCuenta" disabled><b> Comprobante de domicilio (No mayor a 3 meses de antigüedad)</b>
                                                 </label>
 
                                             </div>
@@ -1029,6 +1101,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                         <button type="button" class="btn custom-submit-button-editar1" id="btnAs">
                                                             Asignar
                                                         </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1036,1090 +1109,1089 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                 </div>
                             </div>
                     </div>
+                    </form>
                 </div>
-                </form>
+                <!--AQUI COMIENZA DOCS-->
+
             </div>
-            <!--AQUI COMIENZA DOCS-->
+
 
         </div>
 
+        <script>
+            $(document).ready(function() {
+                //ELIMINAR 
+                $('.custom-table-style-delete-btn').on('click', function() {
+                    // Obtener el ID del registro a eliminar directamente desde el botón de eliminación
+                    const idRegistro = $(this).data('id'); // Captura el 'data-id' del botón de eliminación
 
-    </div>
+                    // Verifica si el idRegistro es válido
+                    if (!idRegistro) {
+                        alert('No se ha encontrado un ID válido para la eliminación.');
+                        return;
+                    }
 
-    <script>
-        $(document).ready(function() {
-            //ELIMINAR 
-            $('.custom-table-style-delete-btn').on('click', function() {
-                // Obtener el ID del registro a eliminar directamente desde el botón de eliminación
-                const idRegistro = $(this).data('id'); // Captura el 'data-id' del botón de eliminación
+                    // Confirmación de eliminación
+                    if (confirm('¿Estás seguro de que deseas eliminar esta cédula?')) {
+                        // Llamada AJAX para eliminar la cédula
+                        $.ajax({
+                            url: 'proc/borra_cedula.php', // El archivo PHP que maneja la eliminación
+                            type: 'POST',
+                            data: {
+                                id: idRegistro
+                            },
+                            success: function(response) {
+                                console.log('Respuesta de eliminación:', response); // Ver la respuesta del servidor
+                                try {
+                                    const data = JSON.parse(response);
+                                    if (data.status === 'success') {
+                                        // Si la eliminación fue exitosa, eliminar la fila de la tabla
+                                        alert('Cédula eliminada exitosamente');
+                                        // Eliminar la fila de la tabla
+                                        $(`button[data-id="${idRegistro}"]`).closest('tr').remove();
+                                    } else {
+                                        alert('Error al eliminar la cédula: ' + data.message);
+                                    }
+                                } catch (e) {
+                                    console.error('Error al procesar la respuesta JSON:', e);
+                                    alert('Error en la respuesta del servidor.');
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                // Mostrar error detallado en la consola para depuración
+                                console.error('Error en la solicitud de eliminación:', error);
+                                console.log('Estado de la solicitud:', status);
+                                console.log('Respuesta completa:', xhr.responseText);
+                                alert('Error al eliminar la cédula: ' + xhr.responseText);
+                            }
+                        });
+                    }
+                });
 
-                // Verifica si el idRegistro es válido
-                if (!idRegistro) {
-                    alert('No se ha encontrado un ID válido para la eliminación.');
-                    return;
+                //EDITAR
+                $('.custom-table-style-edit-btn').on('click', function() {
+                    // Abrir el modal de edición
+                    $('#editarCedulaModal').modal('show');
+
+
+                });
+
+
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                // Al hacer clic en el encabezado
+                $('#estatus-heading').click(function() {
+                    // Alterna el colapso de la sección
+                    $('#collapseEstatus').collapse('toggle');
+                });
+            });
+            $(document).ready(function() {
+                // Al hacer clic en el encabezado
+                $('#vehiculo-heading').click(function() {
+                    // Alterna el colapso de la sección
+                    $('#collapseVehiculo').collapse('toggle');
+                });
+            });
+            $(document).ready(function() {
+                // Al hacer clic en el encabezado
+                $('#asegurado-heading').click(function() {
+                    // Alterna el colapso de la sección
+                    $('#collapseAsegurado').collapse('toggle');
+                });
+            });
+            $(document).ready(function() {
+                // Al hacer clic en el encabezado "Expediente"
+                $('#expediente-heading').click(function() {
+                    // Alterna el colapso de la sección
+                    $('#collapseExpediente').collapse('toggle');
+                });
+            });
+            $(document).ready(function() {
+                // Al hacer clic en el encabezado "Expediente"
+                $('#perdidas-heading').click(function() {
+                    // Alterna el colapso de la sección
+                    $('#collapsePerdidas').collapse('toggle');
+                });
+            });
+            $(document).ready(function() {
+                // Al hacer clic en el encabezado "Expediente"
+                $('#seguimiento-heading').click(function() {
+                    // Alterna el colapso de la sección
+                    $('#collapseSeguimiento').collapse('toggle');
+                });
+            });
+            $(document).ready(function() {
+                // Al hacer clic en el encabezado "Expediente"
+                $('#asignamiento-heading').click(function() {
+                    // Alterna el colapso de la sección
+                    $('#collapseAsignamiento').collapse('toggle');
+                });
+            });
+        </script>
+
+        <!--Expediente-->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const editButtons = document.querySelectorAll('.custom-table-style-edit-btn');
+
+                editButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const idExp = this.getAttribute('data-id'); // Obtener el ID de la cédula
+                        console.log('ID Expediente desde el botón:', idExp); // Verificar si obtenemos el id correcto
+
+                        // Verificar que el idExp no esté vacío
+                        if (!idExp) {
+                            console.error('No se encontró el ID de la cédula');
+                            alert('Error: No se encontró el ID de la cédula.');
+                            return; // Detener ejecución si no hay ID válido
+                        }
+
+                        // Cambiar la URL para enviar el parámetro id_cedula
+                        fetch('proc/get_expediente.php?id_cedula=' + idExp)
+                            .then(response => {
+                                console.log('Respuesta del servidor:', response);
+
+                                if (!response.ok) {
+                                    throw new Error('Error al obtener los datos: ' + response.statusText);
+                                }
+                                return response.json(); // Usamos .json() directamente para obtener la respuesta como JSON
+                            })
+                            .then(parsedData => {
+                                console.log('Datos JSON parseados:', parsedData);
+
+                                if (parsedData && !parsedData.error) {
+                                    // Asignar los valores al formulario
+                                    document.getElementById('fecha_carga_exp').value = parsedData.fecha_carga_exp || '';
+                                    document.getElementById('no_siniestro_exp').value = parsedData.no_siniestro || '';
+                                    document.getElementById('poliza_exp').value = parsedData.poliza || '';
+                                    document.getElementById('afectado_exp').value = parsedData.afectado || '';
+                                    document.getElementById('tipo_caso_exp').value = parsedData.tipo_caso || '';
+                                    document.getElementById('cobertura_exp').value = parsedData.cobertura || '';
+                                    document.getElementById('fecha_siniestro_exp').value = parsedData.fecha_siniestro || '';
+                                    document.getElementById('taller_corralon_exp').value = parsedData.taller_corralon || '';
+                                    document.getElementById('financiado_exp').value = parsedData.financiado || '';
+                                    document.getElementById('regimen_exp').value = parsedData.regimen || '';
+                                    document.getElementById('pass_ext_exp').value = parsedData.passw_ext || '';
+
+                                    // Corregir la asignación del valor a id_cedula_ed
+                                    document.getElementById('cedula_id_ed').value = parsedData.cedulaId || '';
+
+                                    // Agregar el nuevo campo 'id_expediente' al formulario
+                                    document.getElementById('id_expediente_exp').value = parsedData.id_expediente || '';
+
+                                    // Agregar el campo 'id_direccion' al formulario
+                                    document.getElementById('id_direccion_exp').value = parsedData.id_direccion || '';
+
+                                    // Los campos de dirección (estado, ciudad, región)
+                                    document.getElementById('estado_exp').value = parsedData.estado || '';
+                                    document.getElementById('ciudad_exp').value = parsedData.ciudad || '';
+                                    document.getElementById('region_exp').value = parsedData.region || '';
+                                } else {
+                                    // Manejar el caso donde el JSON tiene un error
+                                    console.error('Error en los datos recibidos:', parsedData.error);
+                                    alert('Error al obtener los datos del expediente: ' + parsedData.error);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error al obtener los datos:', error);
+                                alert('Ocurrió un error al obtener los datos del expediente.');
+                            });
+                    });
+                });
+            });
+        </script>
+        <!--Comentarios-->
+        <script>
+            $(document).ready(function() {
+
+                $('#editarCedulaModal').on('show.bs.modal', function(event) {
+
+                    var button = $(event.relatedTarget); // botón que abre el modal
+                    var noSiniestro = document.getElementById('no_siniestro_exp').value; // Asigna el valor de la sesión, o un valor vacío si no existe
+
+                    // Llamada AJAX para obtener los comentarios
+                    $.ajax({
+                        url: 'proc/get_mensajes.php', // archivo PHP que recupera los comentarios
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            no_siniestro: noSiniestro
+                        },
+                        success: function(data) {
+                            if (data.error) {
+                                $('#modalContent').html('<p>Error al cargar los comentarios: ' + data.error + '</p>');
+                            } else {
+                                // Limpiar la tabla antes de insertar los nuevos datos
+                                var comentariosTable = $('#dataTableC tbody');
+                                comentariosTable.empty(); // Limpiar la tabla para evitar duplicados al recargar los comentarios
+
+                                // Recorrer los comentarios y agregar las filas a la tabla
+                                data.comentarios.forEach(function(comment) {
+                                    var tr = $('<tr></tr>');
+                                    tr.append('<td>' + (comment.usuario_origen || 'Desconocido') + '</td>'); // Añadir un valor por defecto si es undefined
+                                    tr.append('<td>' + comment.fecha_comentario + '</td>');
+                                    tr.append('<td>' + comment.comentario + '</td>');
+                                    comentariosTable.append(tr); // Agregar fila a la tabla
+                                });
+
+
+                                // Insertar otros datos si es necesario, como el id del asegurado
+                                $('#id_us').val(data.id_asegurado);
+
+                            }
+                        },
+                        error: function() {
+                            $('#modalContent').html('<p>Error al cargar los comentarios</p>');
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <!--Vehiculo-->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const editButtons = document.querySelectorAll('.custom-table-style-edit-btn');
+
+                editButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const idExp = this.getAttribute('data-id'); // Obtener la cédula
+
+                        // Verificar que el idExp no esté vacío
+                        if (!idExp) {
+                            console.error('No se encontró el ID de la cédula');
+                            return; // Detener ejecución si no hay ID válido
+                        }
+
+                        console.log('ID de expediente:', idExp); // Agregar para depuración
+
+                        // Cambiar la URL para enviar el parámetro id_cedula
+                        fetch('proc/get_vehiculo.php?id_cedula=' + idExp)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Error al obtener los datos: ' + response.statusText);
+                                }
+                                return response.json(); // Usamos .json() directamente para obtener la respuesta como JSON
+                            })
+                            .then(parsedData => {
+                                console.log('Datos JSON parseados: ', parsedData);
+
+                                // Verificar si hay datos y asignarlos a los campos del formulario
+                                if (parsedData && !parsedData.error) {
+                                    document.getElementById('marca_veh').value = parsedData.marca || '';
+                                    document.getElementById('tipo_veh').value = parsedData.tipo || '';
+                                    document.getElementById('placas_veh').value = parsedData.pk_placas || '';
+                                    document.getElementById('no_serie_veh').value = parsedData.pk_no_serie || '';
+                                    document.getElementById('valor_indem_veh').value = parsedData.valor_indemnizacion || '';
+                                    document.getElementById('valor_comer_veh').value = parsedData.valor_comercial || '';
+
+                                    // Convertir el porcentaje de daño a formato 2 dígitos
+                                    const porcentajeDanio = parsedData.porc_dano; // Valor recibido del backend
+                                    const porcentajeDanioFormateado = Math.round(porcentajeDanio); // Redondear a entero
+                                    const porcentajeDanioString = String(porcentajeDanioFormateado).padStart(2, '0'); // Convertir a string con 2 dígitos
+
+                                    // Asignar el valor al select
+                                    const selectElement = document.getElementById('porc_dano_veh');
+                                    selectElement.value = porcentajeDanioString; // Establecer el valor del select
+
+                                    document.getElementById('valor_base_veh').value = parsedData.valor_base || '';
+
+                                    // Asignar el id_vehiculo al campo oculto
+                                    document.getElementById('id_vehiculo').value = parsedData.id_vehiculo || ''; // Campo oculto para el ID del vehículo
+                                } else {
+                                    // Manejar el caso donde el JSON tiene un error
+                                    console.error('Error en los datos recibidos:', parsedData.error);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error al obtener los datos:', error);
+                                alert('Ocurrió un error al obtener los datos del vehículo.');
+                            });
+                    });
+                });
+            });
+        </script>
+
+        <!--Asegurado-->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Variable global para almacenar el id_asegurado
+                let globalIdAsegurado = null;
+
+                // Declarar botones de edición
+                const editButtons = document.querySelectorAll('.custom-table-style-edit-btn');
+
+                // Función para obtener los datos del asegurado
+                async function obtenerDatosAsegurado(idAsegurado) {
+                    try {
+                        console.log("Obteniendo datos para el asegurado con id:", idAsegurado);
+                        const response = await fetch('proc/get_doc_aseg.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                id_asegurado: idAsegurado
+                            })
+                        });
+
+                        const data = await response.json();
+                        console.log("Datos obtenidos del asegurado:", data);
+
+                        if (data.error) {
+                            alert("Error al obtener los datos del asegurado: " + data.error);
+                        } else {
+                            actualizarCheckboxes(data);
+                        }
+                    } catch (error) {
+                        console.error('Error al obtener datos del asegurado:', error);
+                        alert('Hubo un error al obtener los datos del asegurado.');
+                    }
                 }
 
-                // Confirmación de eliminación
-                if (confirm('¿Estás seguro de que deseas eliminar esta cédula?')) {
-                    // Llamada AJAX para eliminar la cédula
-                    $.ajax({
-                        url: 'proc/borra_cedula.php', // El archivo PHP que maneja la eliminación
-                        type: 'POST',
-                        data: {
-                            id: idRegistro
+                // Función para actualizar los checkboxes basándose en los datos obtenidos
+                function actualizarCheckboxes(datos) {
+                    const checkboxes = [{
+                            id: 'checkCFDI',
+                            field: 'cfdi'
                         },
-                        success: function(response) {
-                            console.log('Respuesta de eliminación:', response); // Ver la respuesta del servidor
-                            try {
-                                const data = JSON.parse(response);
-                                if (data.status === 'success') {
-                                    // Si la eliminación fue exitosa, eliminar la fila de la tabla
-                                    alert('Cédula eliminada exitosamente');
-                                    // Eliminar la fila de la tabla
-                                    $(`button[data-id="${idRegistro}"]`).closest('tr').remove();
-                                } else {
-                                    alert('Error al eliminar la cédula: ' + data.message);
+                        {
+                            id: 'checkFacA',
+                            field: 'facturas'
+                        },
+                        {
+                            id: 'checkTitulo',
+                            field: 'titulo_propiedad'
+                        },
+                        {
+                            id: 'checkPedimento',
+                            field: 'pedimento'
+                        },
+                        {
+                            id: 'checkBajaPermiso',
+                            field: 'baja_permiso'
+                        },
+                        {
+                            id: 'checkUltimas5Ten',
+                            field: 'tenencias'
+                        },
+                        {
+                            id: 'checkBajaPlacas',
+                            field: 'baja_placas'
+                        },
+                        {
+                            id: 'checkVerificacion',
+                            field: 'verificacion'
+                        },
+                        {
+                            id: 'checkAveriguacion',
+                            field: 'averiguacion'
+                        },
+                        {
+                            id: 'checkAcreditacion',
+                            field: 'acreditacion'
+                        },
+                        {
+                            id: 'checkAviso',
+                            field: 'aviso'
+                        },
+                        {
+                            id: 'checkINE',
+                            field: 'ine'
+                        },
+                        {
+                            id: 'checkComprobante',
+                            field: 'comprobante'
+                        },
+                        {
+                            id: 'checkEstadoCuenta',
+                            field: 'estado_cuenta'
+                        },
+                        {
+                            id: 'checkFiniquito',
+                            field: 'finiquito'
+                        },
+                        {
+                            id: 'checkFormato',
+                            field: 'formato'
+                        },
+                        {
+                            id: 'checkRFC',
+                            field: 'rfc'
+                        }
+                    ];
+
+                    checkboxes.forEach(function(checkbox) {
+                        const isChecked = datos[checkbox.field];
+                        const checkboxElement = document.getElementById(checkbox.id);
+
+                        if (checkboxElement) {
+                            checkboxElement.checked = isChecked;
+                        }
+                    });
+                }
+
+                // Obtener datos del asegurado y asignar los valores a los campos del formulario
+                async function cargarDatosAsegurado(idExp) {
+                    try {
+                        const response = await fetch('proc/get_asegurado.php?id_cedula=' + idExp);
+
+                        if (!response.ok) {
+                            throw new Error('Error al obtener los datos: ' + response.statusText);
+                        }
+
+                        const data = await response.json();
+                        console.log('Datos obtenidos:', data);
+
+                        if (data && !data.error) {
+                            // Asignar los datos a los campos del formulario
+                            document.getElementById('asegurado_ed').value = data.nom_asegurado || '';
+                            document.getElementById('email_ed').value = data.email || '';
+                            document.getElementById('telefono1_ed').value = data.tel1 || '';
+                            document.getElementById('telefono2_ed').value = data.tel2 || '';
+                            document.getElementById('contacto_ed').value = data.contacto || '';
+                            document.getElementById('con_email_ed').value = data.contacto_email || '';
+                            document.getElementById('con_telefono1_ed').value = data.contacto_tel1 || '';
+                            document.getElementById('con_telefono2_ed').value = data.contacto_tel2 || '';
+
+                            // Asignar id_asegurado al campo oculto y a la variable global
+                            document.getElementById('id_asegurado').value = data.id_asegurado || '';
+                            globalIdAsegurado = data.id_asegurado || '';
+                            console.log('id_asegurado almacenado globalmente:', globalIdAsegurado);
+
+                            // Obtener datos adicionales del asegurado
+                            await obtenerDatosAsegurado(globalIdAsegurado);
+
+                            // Actualizar los elementos del modal con el nombre y teléfono
+                            document.getElementById('asegurado-nombre').textContent = data.nom_asegurado || 'Nombre no disponible';
+                            document.getElementById('asegurado-telefono').textContent = data.tel1 || 'Teléfono no disponible';
+                        } else {
+                            console.error('Error en los datos recibidos:', data.error);
+                            alert('No se encontraron datos para el asegurado.');
+                        }
+                    } catch (error) {
+                        console.error('Error al cargar los datos del asegurado:', error);
+                        alert('Hubo un error al cargar los datos del asegurado.');
+                    }
+                }
+
+                // Asignar event listeners a los botones de edición
+                editButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const idExp = this.getAttribute('data-id');
+                        if (idExp) {
+                            cargarDatosAsegurado(idExp);
+                        } else {
+                            console.error('No se encontró el ID de la cédula');
+                        }
+                    });
+                });
+            });
+        </script>
+
+
+
+        <!--Estatus, subestatus, estacion-->
+        <script>
+            // Función para actualizar las opciones en estatus y estacion según el subestatus
+            const updateOptionsSub = (subestatus) => {
+                const estatusSelect = document.getElementById('estatus_seg_ed');
+                const estacionSelect = document.getElementById('estacion_seg_ed');
+
+                // Limpiar las opciones previas
+                estatusSelect.innerHTML = '<option value="" selected>Selecciona</option>';
+                estacionSelect.innerHTML = '<option value="" selected>Selecciona</option>';
+
+                // Opciones según el subestatus seleccionado
+                const estatusOptions = {
+                    'NUEVO': ['ABIERTO'],
+                    'SIN CONTACTO': ['ABIERTO'],
+                    'CON CONTACTO SIN DOCUMENTOS': ['ABIERTO'],
+                    'CON CONTACTO SIN COOPERACIÓN DEL CLIENTE': ['ABIERTO'],
+                    'ALGUNOS DOCUMENTOS RECIBIDOS': ['ABIERTO'],
+                    '90% DE DOCUMENTOS RECIBIDOS': ['ABIERTO'],
+                    'TOTAL DE DOCUMENTOS RECIBIDOS': ['ABIERTO'],
+                    'EXPEDIENTE DIGITAL CORRECTO': ['ABIERTO'],
+                    'EXPEDIENTE SUBSANADO': ['ABIERTO'],
+                    'EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES': ['ABIERTO'],
+                    'ALTA DE CUENTA EXITOSA': ['ABIERTO'],
+                    'DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA': ['ABIERTO'],
+                    'INCIDENCIA EN EXPEDIENTE DIGITAL AOL': ['ABIERTO'],
+                    'EN PROCESO DE PAGO': ['TERMINADO'],
+                    'PAGO AUTORIZADO': ['TERMINADO'],
+                    'PAGADO': ['TERMINADO'],
+                    'RECHAZADO': ['TERMINADO'],
+                    'CANCELADO POR INACTIVIDAD': ['TERMINADO'],
+                    'CANCELADO POR ASEGURADORA': ['TERMINADO'],
+                    'DOCUMENTO EN BARRA': ['TERMINADO'],
+                };
+
+                const estacionOptions = {
+                    'NUEVO': ['NUEVO'],
+                    'SIN CONTACTO': ['MARCACIÓN'],
+                    'CON CONTACTO SIN DOCUMENTOS': ['MARCACIÓN'],
+                    'CON CONTACTO SIN COOPERACION DEL CLIENTE': ['MARCACIÓN'],
+
+                    'ALGUNOS DOCUMENTOS RECIBIDOS': ['EN SEGUIMIENTO AOL'],
+                    '90% DE DOCUMENTOS RECIBIDOS': ['EN SEGUIMIENTO AOL'],
+                    'TOTAL DE DOCUMENTOS RECIBIDOS': ['EN SEGUIMIENTO AOL'],
+                    'EXPEDIENTE DIGITAL CORRECTO': ['EN SEGUIMIENTO AOL'],
+                    'EXPEDIENTE SUBSANADO': ['EN SEGUIMIENTO AOL'],
+                    'EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES': ['EN SEGUIMIENTO INBURSA'],
+                    'ALTA DE CUENTA EXITOSA': ['EN SEGUIMIENTO AOL'],
+                    'DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA': ['EN SEGUIMIENTO INBURSA'],
+                    'INCIDENCIA EN EXPEDIENTE DIGITAL AOL': ['EN SEGUIMIENTO AOL'],
+                    'EN PROCESO DE PAGO': ['EN SEGUIMIENTO INBURSA'],
+                    'PAGO AUTORIZADO': ['EXPEDIENTE COMPLETO GESTIONADO'],
+                    'PAGO': ['EXPEDIENTE COMPLETO GESTIONADO'],
+                    'RECHAZADO': ['EXPEDIENTE COMPLETO GESTIONADO'],
+
+                    'CANCELADO POR INACTIVIDAD': ['CANCELADO'],
+                    'CANCELADO POR ASEGURADORA': ['CANCELADO'],
+                    'DOCUMENTO EN BARRA': ['CANCELADO'],
+                };
+
+                // Llenar estatus según el subestatus
+                if (estatusOptions[subestatus]) {
+                    estatusOptions[subestatus].forEach(option => {
+                        const opt = document.createElement('option');
+                        opt.value = option;
+                        opt.textContent = option;
+                        estatusSelect.appendChild(opt); // Usamos estatusSelect
+                    });
+                }
+
+                // Llenar estacion según el subestatus
+                if (estacionOptions[subestatus]) {
+                    estacionOptions[subestatus].forEach(option => {
+                        const opt = document.createElement('option');
+                        opt.value = option;
+                        opt.textContent = option;
+                        estacionSelect.appendChild(opt); // Usamos estacionSelect
+                    });
+                }
+
+                // Lógica adicional para que "CANCELADO" solo muestre "TERMINADO" en estatus
+                // y "MARCACIÓN" solo muestre "ABIERTO" en estatus
+                estacionSelect.addEventListener('change', function() {
+                    const estacionValue = estacionSelect.value;
+
+                    // Si se selecciona 'CANCELADO', solo se debe mostrar "TERMINADO" en estatus
+                    if (estacionValue === 'CANCELADO' || estacionValue === 'EXPEDIENTE COMPLETO GESTIONADO') {
+                        estatusSelect.innerHTML = '<option value="TERMINADO">TERMINADO</option>';
+                    }
+                    // Si se selecciona 'MARCACIÓN', solo se debe mostrar "ABIERTO" en estatus
+                    else if (estacionValue === 'MARCACIÓN' || estacionValue === 'EN SEGUIMIENTO AOL' || estacionValue === 'EN SEGUIMIENTO INBURSA') {
+                        estatusSelect.innerHTML = '<option value="ABIERTO">ABIERTO</option>';
+                    } else if (estacionValue === 'NUEVO') {
+                        estatusSelect.innerHTML = '<option value="ABIERTO">ABIERTO</option>';
+                    }
+                    // Si no es 'CANCELADO' ni 'MARCACIÓN', volver a las opciones del subestatus original
+                    else {
+                        if (estatusOptions[subestatus]) {
+                            estatusOptions[subestatus].forEach(option => {
+                                const opt = document.createElement('option');
+                                opt.value = option;
+                                opt.textContent = option;
+                                estatusSelect.appendChild(opt); // Usamos estatusSelect
+                            });
+                        }
+                    }
+                });
+            };
+
+            // Evento de cambio en el select de subestatus
+            document.getElementById('subestatus_seg_ed').addEventListener('change', function() {
+                const subestatus = this.value;
+                updateOptionsSub(subestatus); // Llamamos la función correcta
+            });
+        </script>
+
+        <script>
+            window.onload = function() {
+                // Obtener la fecha y hora actuales
+                const fechaHoy = new Date();
+
+                // Formatear la fecha en formato YYYY-MM-DD (para el campo de fecha)
+                const fechaFormateada = fechaHoy.toISOString().split('T')[0];
+
+                // Formatear la hora en formato HH:MM (para el campo de hora)
+                const horaFormateada = fechaHoy.toTimeString().split(' ')[0].substring(0, 5);
+
+                // Asignar la fecha y hora al formulario
+                document.getElementById('fecha_reconocimiento_seg').value = fechaFormateada;
+                document.getElementById('hora_seguimiento_seg').value = horaFormateada;
+            };
+        </script>
+
+        <!--Seguimiento-->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const editButtons = document.querySelectorAll('.custom-table-style-edit-btn'); // Botones de edición en la tabla
+
+                editButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const idSeguimiento = this.getAttribute('data-id'); // Obtener el ID de seguimiento
+
+                        // Verificar que el idSeguimiento no esté vacío
+                        if (!idSeguimiento) {
+                            console.error('No se encontró el ID de seguimiento');
+                            return; // Detener ejecución si no hay ID válido
+                        }
+
+                        console.log('ID de seguimiento:', idSeguimiento); // Agregar para depuración
+
+                        // Cambiar la URL para enviar el parámetro id_seguimiento
+                        fetch('proc/get_seguimiento.php?id_seguimiento=' + idSeguimiento) // Cambiar por la URL que corresponda para obtener los datos del seguimiento
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Error al obtener los datos: ' + response.statusText);
                                 }
-                            } catch (e) {
-                                console.error('Error al procesar la respuesta JSON:', e);
-                                alert('Error en la respuesta del servidor.');
+                                return response.json(); // Usamos .json() directamente para obtener la respuesta como JSON
+                            })
+                            .then(parsedData => {
+                                console.log('Datos JSON parseados: ', parsedData);
+
+                                // Verificar si hay datos y asignarlos a los campos del formulario
+                                if (parsedData && !parsedData.error) {
+                                    document.getElementById('estatus_seg').value = parsedData.estatus_seguimiento || '';
+                                    document.getElementById('sub_seg').value = parsedData.subestatus || '';
+                                    document.getElementById('estacion_seg').value = parsedData.estacion || '';
+                                    document.getElementById('fecha_ter_seg').value = parsedData.fecha_termino || '';
+                                } else {
+                                    // Manejar el caso donde el JSON tiene un error
+                                    console.error('Error en los datos recibidos:', parsedData.error);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error al obtener los datos:', error);
+                                alert('Ocurrió un error al obtener los datos del seguimiento.');
+                            });
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const btnActualizar = document.getElementById('btnActualizar'); // Asegúrate de tener el botón con id="btnActualizar"
+
+                btnActualizar.addEventListener('click', function(event) {
+                    event.preventDefault(); // Evita el envío del formulario
+
+                    // Obtener los datos del formulario para Vehículo
+                    const idVehiculo = document.getElementById('id_vehiculo').value;
+                    const marca = document.getElementById('marca_veh').value;
+                    const tipo = document.getElementById('tipo_veh').value;
+                    const placas = document.getElementById('placas_veh').value;
+                    const noSerie = document.getElementById('no_serie_veh').value;
+                    const valorIndemnizacion = document.getElementById('valor_indem_veh').value;
+                    const valorComercial = document.getElementById('valor_comer_veh').value;
+                    const porcDano = document.getElementById('porc_dano_veh').value;
+                    const valorBase = document.getElementById('valor_base_veh').value;
+
+                    // Obtener los datos del formulario para Asegurado
+                    const idAsegurado = document.getElementById('id_asegurado').value;
+                    const asegurado = document.getElementById('asegurado_ed').value;
+                    const email = document.getElementById('email_ed').value;
+                    const telefono1 = document.getElementById('telefono1_ed').value;
+                    const telefono2 = document.getElementById('telefono2_ed').value;
+                    const contacto = document.getElementById('contacto_ed').value;
+                    const contactoEmail = document.getElementById('con_email_ed').value;
+                    const contactoTel1 = document.getElementById('con_telefono1_ed').value;
+                    const contactoTel2 = document.getElementById('con_telefono2_ed').value;
+
+                    // Realizar las llamadas AJAX para ambos formularios
+                    Promise.all([
+                            fetch('proc/update_vehiculo.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded'
+                                },
+                                body: `id_vehiculo=${idVehiculo}&marca=${marca}&tipo=${tipo}&placas=${placas}&no_serie=${noSerie}&valor_indemnizacion=${valorIndemnizacion}&valor_comercial=${valorComercial}&porc_dano=${porcDano}&valor_base=${valorBase}`
+                            }).then(response => response.json()),
+
+                            fetch('proc/update_asegurado.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded'
+                                },
+                                body: `id_asegurado=${idAsegurado}&nom_asegurado=${asegurado}&email=${email}&tel1=${telefono1}&tel2=${telefono2}&contacto=${contacto}&contacto_email=${contactoEmail}&contacto_tel1=${contactoTel1}&contacto_tel2=${contactoTel2}`
+                            }).then(response => response.json())
+                        ])
+                        .then(responses => {
+                            const [vehiculoData, aseguradoData] = responses;
+
+                            if (vehiculoData.status === 'success' && aseguradoData.success) {
+                                alert('Actualización realizada');
+                            } else {
+                                alert('Hubo un error al actualizar: ' + (vehiculoData.error || aseguradoData.error || 'desconocido'));
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error al realizar la solicitud:', error);
+                            alert('Ocurrió un error inesperado');
+                        });
+                });
+            });
+        </script>
+        <!--Actualizar expediente-->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const btnActualizar = document.getElementById('btnActualizar'); // Asegúrate de tener el botón con id="btnActualizar"
+
+                btnActualizar.addEventListener('click', function(event) {
+                    event.preventDefault(); // Evita el envío del formulario
+
+                    // Obtener los datos del formulario
+                    const idExpediente = document.getElementById('id_expediente_exp').value;
+                    const fechaCarga = document.getElementById('fecha_carga_exp').value;
+                    const noSiniestro = document.getElementById('no_siniestro_exp').value;
+                    const poliza = document.getElementById('poliza_exp').value;
+                    const afectado = document.getElementById('afectado_exp').value;
+                    const tipoCaso = document.getElementById('tipo_caso_exp').value;
+                    const cobertura = document.getElementById('cobertura_exp').value;
+                    const fechaSiniestro = document.getElementById('fecha_siniestro_exp').value;
+                    const tallerCorralon = document.getElementById('taller_corralon_exp').value;
+                    const financiado = document.querySelector('input[name="financiado_exp"]:checked')?.value || '';
+                    const regimen = document.getElementById('regimen_exp').value;
+                    const passwExt = document.getElementById('pass_ext_exp').value;
+                    const estado = document.getElementById('estado_exp').value;
+
+
+                    // Mostrar en consola el valor de id_expediente
+                    console.log("ID Expediente: ", idExpediente);
+
+                    // Realizar la llamada AJAX para actualizar el expediente
+                    fetch('proc/update_expediente.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            },
+                            body: `id_expediente=${idExpediente}&fecha_carga_exp=${fechaCarga}&no_siniestro_exp=${noSiniestro}&poliza_exp=${poliza}&afectado_exp=${afectado}&tipo_caso_exp=${tipoCaso}&cobertura_exp=${cobertura}&fecha_siniestro_exp=${fechaSiniestro}&taller_corralon_exp=${tallerCorralon}&financiado_exp=${financiado}&regimen_exp=${regimen}&pass_ext_exp=${passwExt}&estado_exp=${estado}`
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('Expediente actualizado correctamente');
+                            } else {
+                                alert('Error al actualizar expediente: ' + (data.error || 'desconocido'));
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error al realizar la solicitud:', error);
+                            alert('Ocurrió un error inesperado');
+                        });
+                });
+            });
+        </script>
+        <!--Insertar seguimiento-->
+        <script>
+            $(document).ready(function() {
+                // Cuando se haga click en el botón con el id "btnSeg"
+                $("#btnSeg").click(function() {
+                    // Obtener los valores de los campos del formulario
+                    var fecha_seguimiento = $("#fecha_reconocimiento_seg").val();
+                    var estatus_seg = $("#estatus_seg_ed").val();
+                    var sub_seg = $("#subestatus_seg_ed").val();
+                    var estacion_seg = $("#estacion_seg_ed").val();
+                    var comentario = $("#comentario_seg").val();
+                    var estatus_seg_ed = $("#estatus_seg_ed").val();
+                    var subestatus_seg_ed = $("#subestatus_seg_ed").val();
+                    var estacion_seg_ed = $("#estacion_seg_ed").val();
+                    var mensaje_seg_ed = $("#mensaje_seg_ed").val();
+                    var fecha_reconocimiento_seg = $("#fecha_reconocimiento_seg").val();
+                    var hora_seguimiento_seg = $("#hora_seguimiento_seg").val();
+                    var fecha_cita_seg = $("#fecha_cita_seg").val();
+                    var hora_cita_seg = $("#hora_cita_seg").val();
+                    var persona_seg = $("#persona_seg").val();
+                    var tipo_persona_seg = $("#tipo_persona_seg").val();
+                    var contacto_p_seg = $("#contacto_p_seg").val();
+                    var fecha_envio_seg = $("#fecha_envio_seg").val();
+                    var fecha_expediente_seg = $("#fecha_expediente_seg").val();
+                    var fecha_fact_seg = $("#fecha_fact_seg").val();
+                    var fecha_termino_Seg = $("#fecha_termino_Seg").val();
+
+                    // Obtener el valor de "cedula_id_ed" y el ID del asegurado
+                    var fk_cedula = $("#cedula_id_ed").val();
+                    var id_asegurado = $("#id_asegurado").val();
+                    var no_siniestro_exp = $("#no_siniestro_exp").val();
+
+                    // Validar que no falten datos necesarios
+                    if (!mensaje_seg_ed || !id_asegurado || !no_siniestro_exp) {
+                        alert("Faltan datos necesarios: número de siniestro, usuario receptor o mensaje.");
+                        return; // Detener la ejecución si falta algún dato
+                    }
+
+                    // Crear un objeto con los datos del formulario
+                    var data = {
+                        fecha_seguimiento: fecha_seguimiento,
+                        estatus_seg: estatus_seg,
+                        sub_seg: sub_seg,
+                        estacion_seg: estacion_seg,
+                        comentario: comentario,
+                        estatus_seg_ed: estatus_seg_ed,
+                        subestatus_seg_ed: subestatus_seg_ed,
+                        estacion_seg_ed: estacion_seg_ed,
+                        mensaje_seg_ed: mensaje_seg_ed,
+                        fecha_reconocimiento_seg: fecha_reconocimiento_seg,
+                        hora_seguimiento_seg: hora_seguimiento_seg,
+                        fecha_cita_seg: fecha_cita_seg,
+                        hora_cita_seg: hora_cita_seg,
+                        persona_seg: persona_seg,
+                        tipo_persona_seg: tipo_persona_seg,
+                        contacto_p_seg: contacto_p_seg,
+                        fecha_envio_seg: fecha_envio_seg,
+                        fecha_expediente_seg: fecha_expediente_seg,
+                        fecha_fact_seg: fecha_fact_seg,
+                        fecha_termino_Seg: fecha_termino_Seg,
+                        fk_cedula: fk_cedula,
+                        no_siniestro: no_siniestro_exp,
+                        usuario_emisor: "<?php echo $_SESSION['id_usuario'] ?? ''; ?>", // El usuario_emisor es el ID del usuario actual
+                        usuario_receptor: id_asegurado // El receptor es el ID del asegurado
+                    };
+
+                    // Mostrar los datos que se enviarán a insert_seguimiento.php
+                    console.log("Datos enviados a insert_seguimiento.php:", data);
+
+                    // Enviar los datos al servidor usando AJAX para el insert_seguimiento.php
+                    $.ajax({
+                        url: 'proc/insert_seguimiento.php',
+                        type: 'POST',
+                        data: data, // Verifica que 'data' sea un objeto o string válido
+                        success: function(response) {
+                            console.log(response);
+                            if (response.success) {
+                                var messageData = {
+                                    id_usuario_emisor: id_asegurado,
+                                    id_usuario_receptor: "<?php echo $_SESSION['id_usuario'] ?? ''; ?>",
+                                    mensaje: comentario,
+                                    fecha_envio: fecha_envio_seg,
+                                    no_siniestro: no_siniestro_exp
+                                };
+
+                                console.log("Enviados a insert_mensajes_op.php:", messageData);
+
+                                $.ajax({
+                                    url: 'proc/insert_mensajes_op.php',
+                                    type: 'POST',
+                                    data: messageData, // Los datos se deben enviar correctamente formateados
+                                    success: function(response) {
+                                        if (response.success) {
+                                            alert('Mensaje enviado correctamente.');
+                                        } else {
+                                            alert('Error al enviar el mensaje.');
+                                        }
+                                    },
+                                    error: function(xhr, status, error) {
+                                        console.log(xhr.responseText); // Muestra más detalles sobre el error
+                                        alert('Hubo un error al enviar el mensaje.');
+                                    }
+                                });
+                            } else {
+                                alert(response.error);
                             }
                         },
                         error: function(xhr, status, error) {
-                            // Mostrar error detallado en la consola para depuración
-                            console.error('Error en la solicitud de eliminación:', error);
-                            console.log('Estado de la solicitud:', status);
-                            console.log('Respuesta completa:', xhr.responseText);
-                            alert('Error al eliminar la cédula: ' + xhr.responseText);
+                            console.log(xhr.responseText); // Ver el detalle del error para el seguimiento
+                            alert('Hubo un error al enviar los datos de seguimiento.');
                         }
                     });
-                }
-            });
 
-            //EDITAR
-            $('.custom-table-style-edit-btn').on('click', function() {
-                // Abrir el modal de edición
-                $('#editarCedulaModal').modal('show');
-
-
-            });
-
-
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            // Al hacer clic en el encabezado
-            $('#estatus-heading').click(function() {
-                // Alterna el colapso de la sección
-                $('#collapseEstatus').collapse('toggle');
-            });
-        });
-        $(document).ready(function() {
-            // Al hacer clic en el encabezado
-            $('#vehiculo-heading').click(function() {
-                // Alterna el colapso de la sección
-                $('#collapseVehiculo').collapse('toggle');
-            });
-        });
-        $(document).ready(function() {
-            // Al hacer clic en el encabezado
-            $('#asegurado-heading').click(function() {
-                // Alterna el colapso de la sección
-                $('#collapseAsegurado').collapse('toggle');
-            });
-        });
-        $(document).ready(function() {
-            // Al hacer clic en el encabezado "Expediente"
-            $('#expediente-heading').click(function() {
-                // Alterna el colapso de la sección
-                $('#collapseExpediente').collapse('toggle');
-            });
-        });
-        $(document).ready(function() {
-            // Al hacer clic en el encabezado "Expediente"
-            $('#perdidas-heading').click(function() {
-                // Alterna el colapso de la sección
-                $('#collapsePerdidas').collapse('toggle');
-            });
-        });
-        $(document).ready(function() {
-            // Al hacer clic en el encabezado "Expediente"
-            $('#seguimiento-heading').click(function() {
-                // Alterna el colapso de la sección
-                $('#collapseSeguimiento').collapse('toggle');
-            });
-        });
-        $(document).ready(function() {
-            // Al hacer clic en el encabezado "Expediente"
-            $('#asignamiento-heading').click(function() {
-                // Alterna el colapso de la sección
-                $('#collapseAsignamiento').collapse('toggle');
-            });
-        });
-    </script>
-
-    <!--Expediente-->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const editButtons = document.querySelectorAll('.custom-table-style-edit-btn');
-
-            editButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const idExp = this.getAttribute('data-id'); // Obtener el ID de la cédula
-                    console.log('ID Expediente desde el botón:', idExp); // Verificar si obtenemos el id correcto
-
-                    // Verificar que el idExp no esté vacío
-                    if (!idExp) {
-                        console.error('No se encontró el ID de la cédula');
-                        alert('Error: No se encontró el ID de la cédula.');
-                        return; // Detener ejecución si no hay ID válido
-                    }
-
-                    // Cambiar la URL para enviar el parámetro id_cedula
-                    fetch('proc/get_expediente.php?id_cedula=' + idExp)
-                        .then(response => {
-                            console.log('Respuesta del servidor:', response);
-
-                            if (!response.ok) {
-                                throw new Error('Error al obtener los datos: ' + response.statusText);
-                            }
-                            return response.json(); // Usamos .json() directamente para obtener la respuesta como JSON
-                        })
-                        .then(parsedData => {
-                            console.log('Datos JSON parseados:', parsedData);
-
-                            if (parsedData && !parsedData.error) {
-                                // Asignar los valores al formulario
-                                document.getElementById('fecha_carga_exp').value = parsedData.fecha_carga_exp || '';
-                                document.getElementById('no_siniestro_exp').value = parsedData.no_siniestro || '';
-                                document.getElementById('poliza_exp').value = parsedData.poliza || '';
-                                document.getElementById('afectado_exp').value = parsedData.afectado || '';
-                                document.getElementById('tipo_caso_exp').value = parsedData.tipo_caso || '';
-                                document.getElementById('cobertura_exp').value = parsedData.cobertura || '';
-                                document.getElementById('fecha_siniestro_exp').value = parsedData.fecha_siniestro || '';
-                                document.getElementById('taller_corralon_exp').value = parsedData.taller_corralon || '';
-                                document.getElementById('financiado_exp').value = parsedData.financiado || '';
-                                document.getElementById('regimen_exp').value = parsedData.regimen || '';
-                                document.getElementById('pass_ext_exp').value = parsedData.passw_ext || '';
-
-                                // Corregir la asignación del valor a id_cedula_ed
-                                document.getElementById('cedula_id_ed').value = parsedData.cedulaId || '';
-
-                                // Agregar el nuevo campo 'id_expediente' al formulario
-                                document.getElementById('id_expediente_exp').value = parsedData.id_expediente || '';
-
-                                // Agregar el campo 'id_direccion' al formulario
-                                document.getElementById('id_direccion_exp').value = parsedData.id_direccion || '';
-
-                                // Los campos de dirección (estado, ciudad, región)
-                                document.getElementById('estado_exp').value = parsedData.estado || '';
-                                document.getElementById('ciudad_exp').value = parsedData.ciudad || '';
-                                document.getElementById('region_exp').value = parsedData.region || '';
-                            } else {
-                                // Manejar el caso donde el JSON tiene un error
-                                console.error('Error en los datos recibidos:', parsedData.error);
-                                alert('Error al obtener los datos del expediente: ' + parsedData.error);
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error al obtener los datos:', error);
-                            alert('Ocurrió un error al obtener los datos del expediente.');
-                        });
                 });
             });
-        });
-    </script>
-    <!--Comentarios-->
-    <script>
-        $(document).ready(function() {
+        </script>
 
-            $('#editarCedulaModal').on('show.bs.modal', function(event) {
 
-                var button = $(event.relatedTarget); // botón que abre el modal
-                var noSiniestro = document.getElementById('no_siniestro_exp').value; // Asigna el valor de la sesión, o un valor vacío si no existe
 
-                // Llamada AJAX para obtener los comentarios
+        <!--Obtener asignacion-->
+        <script>
+            // Al cargar la página, hacer la solicitud GET para obtener las asignaciones (usuarios)
+            $(document).ready(function() {
                 $.ajax({
-                    url: 'proc/get_mensajes.php', // archivo PHP que recupera los comentarios
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        no_siniestro: noSiniestro
-                    },
-                    success: function(data) {
-                        if (data.error) {
-                            $('#modalContent').html('<p>Error al cargar los comentarios: ' + data.error + '</p>');
-                        } else {
-                            // Limpiar la tabla antes de insertar los nuevos datos
-                            var comentariosTable = $('#dataTableC tbody');
-                            comentariosTable.empty(); // Limpiar la tabla para evitar duplicados al recargar los comentarios
-
-                            // Recorrer los comentarios y agregar las filas a la tabla
-                            data.comentarios.forEach(function(comment) {
-                                var tr = $('<tr></tr>');
-                                tr.append('<td>' + (comment.usuario_origen || 'Desconocido') + '</td>'); // Añadir un valor por defecto si es undefined
-                                tr.append('<td>' + comment.fecha_comentario + '</td>');
-                                tr.append('<td>' + comment.comentario + '</td>');
-                                comentariosTable.append(tr); // Agregar fila a la tabla
-                            });
-
-
-                            // Insertar otros datos si es necesario, como el id del asegurado
-                            $('#id_us').val(data.id_asegurado);
-
-                        }
-                    },
-                    error: function() {
-                        $('#modalContent').html('<p>Error al cargar los comentarios</p>');
-                    }
-                });
-            });
-        });
-    </script>
-
-    <!--Vehiculo-->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const editButtons = document.querySelectorAll('.custom-table-style-edit-btn');
-
-            editButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const idExp = this.getAttribute('data-id'); // Obtener la cédula
-
-                    // Verificar que el idExp no esté vacío
-                    if (!idExp) {
-                        console.error('No se encontró el ID de la cédula');
-                        return; // Detener ejecución si no hay ID válido
-                    }
-
-                    console.log('ID de expediente:', idExp); // Agregar para depuración
-
-                    // Cambiar la URL para enviar el parámetro id_cedula
-                    fetch('proc/get_vehiculo.php?id_cedula=' + idExp)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Error al obtener los datos: ' + response.statusText);
-                            }
-                            return response.json(); // Usamos .json() directamente para obtener la respuesta como JSON
-                        })
-                        .then(parsedData => {
-                            console.log('Datos JSON parseados: ', parsedData);
-
-                            // Verificar si hay datos y asignarlos a los campos del formulario
-                            if (parsedData && !parsedData.error) {
-                                document.getElementById('marca_veh').value = parsedData.marca || '';
-                                document.getElementById('tipo_veh').value = parsedData.tipo || '';
-                                document.getElementById('placas_veh').value = parsedData.pk_placas || '';
-                                document.getElementById('no_serie_veh').value = parsedData.pk_no_serie || '';
-                                document.getElementById('valor_indem_veh').value = parsedData.valor_indemnizacion || '';
-                                document.getElementById('valor_comer_veh').value = parsedData.valor_comercial || '';
-
-                                // Convertir el porcentaje de daño a formato 2 dígitos
-                                const porcentajeDanio = parsedData.porc_dano; // Valor recibido del backend
-                                const porcentajeDanioFormateado = Math.round(porcentajeDanio); // Redondear a entero
-                                const porcentajeDanioString = String(porcentajeDanioFormateado).padStart(2, '0'); // Convertir a string con 2 dígitos
-
-                                // Asignar el valor al select
-                                const selectElement = document.getElementById('porc_dano_veh');
-                                selectElement.value = porcentajeDanioString; // Establecer el valor del select
-
-                                document.getElementById('valor_base_veh').value = parsedData.valor_base || '';
-
-                                // Asignar el id_vehiculo al campo oculto
-                                document.getElementById('id_vehiculo').value = parsedData.id_vehiculo || ''; // Campo oculto para el ID del vehículo
-                            } else {
-                                // Manejar el caso donde el JSON tiene un error
-                                console.error('Error en los datos recibidos:', parsedData.error);
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error al obtener los datos:', error);
-                            alert('Ocurrió un error al obtener los datos del vehículo.');
-                        });
-                });
-            });
-        });
-    </script>
-
-    <!--Asegurado-->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Variable global para almacenar el id_asegurado
-            let globalIdAsegurado = null;
-
-            // Declarar botones de edición
-            const editButtons = document.querySelectorAll('.custom-table-style-edit-btn');
-
-            // Función para obtener los datos del asegurado
-            async function obtenerDatosAsegurado(idAsegurado) {
-                try {
-                    console.log("Obteniendo datos para el asegurado con id:", idAsegurado);
-                    const response = await fetch('proc/get_doc_aseg.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            id_asegurado: idAsegurado
-                        })
-                    });
-
-                    const data = await response.json();
-                    console.log("Datos obtenidos del asegurado:", data);
-
-                    if (data.error) {
-                        alert("Error al obtener los datos del asegurado: " + data.error);
-                    } else {
-                        actualizarCheckboxes(data);
-                    }
-                } catch (error) {
-                    console.error('Error al obtener datos del asegurado:', error);
-                    alert('Hubo un error al obtener los datos del asegurado.');
-                }
-            }
-
-            // Función para actualizar los checkboxes basándose en los datos obtenidos
-            function actualizarCheckboxes(datos) {
-                const checkboxes = [{
-                        id: 'checkCFDI',
-                        field: 'cfdi'
-                    },
-                    {
-                        id: 'checkFacA',
-                        field: 'facturas'
-                    },
-                    {
-                        id: 'checkTitulo',
-                        field: 'titulo_propiedad'
-                    },
-                    {
-                        id: 'checkPedimento',
-                        field: 'pedimento'
-                    },
-                    {
-                        id: 'checkBajaPermiso',
-                        field: 'baja_permiso'
-                    },
-                    {
-                        id: 'checkUltimas5Ten',
-                        field: 'tenencias'
-                    },
-                    {
-                        id: 'checkBajaPlacas',
-                        field: 'baja_placas'
-                    },
-                    {
-                        id: 'checkVerificacion',
-                        field: 'verificacion'
-                    },
-                    {
-                        id: 'checkAveriguacion',
-                        field: 'averiguacion'
-                    },
-                    {
-                        id: 'checkAcreditacion',
-                        field: 'acreditacion'
-                    },
-                    {
-                        id: 'checkAviso',
-                        field: 'aviso'
-                    },
-                    {
-                        id: 'checkINE',
-                        field: 'ine'
-                    },
-                    {
-                        id: 'checkComprobante',
-                        field: 'comprobante'
-                    },
-                    {
-                        id: 'checkEstadoCuenta',
-                        field: 'estado_cuenta'
-                    },
-                    {
-                        id: 'checkFiniquito',
-                        field: 'finiquito'
-                    },
-                    {
-                        id: 'checkFormato',
-                        field: 'formato'
-                    },
-                    {
-                        id: 'checkRFC',
-                        field: 'rfc'
-                    }
-                ];
-
-                checkboxes.forEach(function(checkbox) {
-                    const isChecked = datos[checkbox.field];
-                    const checkboxElement = document.getElementById(checkbox.id);
-
-                    if (checkboxElement) {
-                        checkboxElement.checked = isChecked;
-                    }
-                });
-            }
-
-            // Obtener datos del asegurado y asignar los valores a los campos del formulario
-            async function cargarDatosAsegurado(idExp) {
-                try {
-                    const response = await fetch('proc/get_asegurado.php?id_cedula=' + idExp);
-
-                    if (!response.ok) {
-                        throw new Error('Error al obtener los datos: ' + response.statusText);
-                    }
-
-                    const data = await response.json();
-                    console.log('Datos obtenidos:', data);
-
-                    if (data && !data.error) {
-                        // Asignar los datos a los campos del formulario
-                        document.getElementById('asegurado_ed').value = data.nom_asegurado || '';
-                        document.getElementById('email_ed').value = data.email || '';
-                        document.getElementById('telefono1_ed').value = data.tel1 || '';
-                        document.getElementById('telefono2_ed').value = data.tel2 || '';
-                        document.getElementById('contacto_ed').value = data.contacto || '';
-                        document.getElementById('con_email_ed').value = data.contacto_email || '';
-                        document.getElementById('con_telefono1_ed').value = data.contacto_tel1 || '';
-                        document.getElementById('con_telefono2_ed').value = data.contacto_tel2 || '';
-
-                        // Asignar id_asegurado al campo oculto y a la variable global
-                        document.getElementById('id_asegurado').value = data.id_asegurado || '';
-                        globalIdAsegurado = data.id_asegurado || '';
-                        console.log('id_asegurado almacenado globalmente:', globalIdAsegurado);
-
-                        // Obtener datos adicionales del asegurado
-                        await obtenerDatosAsegurado(globalIdAsegurado);
-
-                        // Actualizar los elementos del modal con el nombre y teléfono
-                        document.getElementById('asegurado-nombre').textContent = data.nom_asegurado || 'Nombre no disponible';
-                        document.getElementById('asegurado-telefono').textContent = data.tel1 || 'Teléfono no disponible';
-                    } else {
-                        console.error('Error en los datos recibidos:', data.error);
-                        alert('No se encontraron datos para el asegurado.');
-                    }
-                } catch (error) {
-                    console.error('Error al cargar los datos del asegurado:', error);
-                    alert('Hubo un error al cargar los datos del asegurado.');
-                }
-            }
-
-            // Asignar event listeners a los botones de edición
-            editButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const idExp = this.getAttribute('data-id');
-                    if (idExp) {
-                        cargarDatosAsegurado(idExp);
-                    } else {
-                        console.error('No se encontró el ID de la cédula');
-                    }
-                });
-            });
-        });
-    </script>
-
-
-
-    <!--Estatus, subestatus, estacion-->
-    <script>
-        // Función para actualizar las opciones en estatus y estacion según el subestatus
-        const updateOptionsSub = (subestatus) => {
-            const estatusSelect = document.getElementById('estatus_seg_ed');
-            const estacionSelect = document.getElementById('estacion_seg_ed');
-
-            // Limpiar las opciones previas
-            estatusSelect.innerHTML = '<option value="" selected>Selecciona</option>';
-            estacionSelect.innerHTML = '<option value="" selected>Selecciona</option>';
-
-            // Opciones según el subestatus seleccionado
-            const estatusOptions = {
-                'NUEVO': ['ABIERTO'],
-                'SIN CONTACTO': ['ABIERTO'],
-                'CON CONTACTO SIN DOCUMENTOS': ['ABIERTO'],
-                'CON CONTACTO SIN COOPERACIÓN DEL CLIENTE': ['ABIERTO'],
-                'ALGUNOS DOCUMENTOS RECIBIDOS': ['ABIERTO'],
-                '90% DE DOCUMENTOS RECIBIDOS': ['ABIERTO'],
-                'TOTAL DE DOCUMENTOS RECIBIDOS': ['ABIERTO'],
-                'EXPEDIENTE DIGITAL CORRECTO': ['ABIERTO'],
-                'EXPEDIENTE SUBSANADO': ['ABIERTO'],
-                'EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES': ['ABIERTO'],
-                'ALTA DE CUENTA EXITOSA': ['ABIERTO'],
-                'DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA': ['ABIERTO'],
-                'INCIDENCIA EN EXPEDIENTE DIGITAL AOL': ['ABIERTO'],
-                'EN PROCESO DE PAGO': ['TERMINADO'],
-                'PAGO AUTORIZADO': ['TERMINADO'],
-                'PAGADO': ['TERMINADO'],
-                'RECHAZADO': ['TERMINADO'],
-                'CANCELADO POR INACTIVIDAD': ['TERMINADO'],
-                'CANCELADO POR ASEGURADORA': ['TERMINADO'],
-                'DOCUMENTO EN BARRA': ['TERMINADO'],
-            };
-
-            const estacionOptions = {
-                'NUEVO': ['NUEVO'],
-                'SIN CONTACTO': ['MARCACIÓN'],
-                'CON CONTACTO SIN DOCUMENTOS': ['MARCACIÓN'],
-                'CON CONTACTO SIN COOPERACION DEL CLIENTE': ['MARCACIÓN'],
-
-                'ALGUNOS DOCUMENTOS RECIBIDOS': ['EN SEGUIMIENTO AOL'],
-                '90% DE DOCUMENTOS RECIBIDOS': ['EN SEGUIMIENTO AOL'],
-                'TOTAL DE DOCUMENTOS RECIBIDOS': ['EN SEGUIMIENTO AOL'],
-                'EXPEDIENTE DIGITAL CORRECTO': ['EN SEGUIMIENTO AOL'],
-                'EXPEDIENTE SUBSANADO': ['EN SEGUIMIENTO AOL'],
-                'EXPEDIENTE DIGITAL VÁLIDO, SOLICITAR ORIGINALES': ['EN SEGUIMIENTO INBURSA'],
-                'ALTA DE CUENTA EXITOSA': ['EN SEGUIMIENTO AOL'],
-                'DEPÓSITO RECHAZADO, SOLICITAR OTRA CUENTA': ['EN SEGUIMIENTO INBURSA'],
-                'INCIDENCIA EN EXPEDIENTE DIGITAL AOL': ['EN SEGUIMIENTO AOL'],
-                'EN PROCESO DE PAGO': ['EN SEGUIMIENTO INBURSA'],
-                'PAGO AUTORIZADO': ['EXPEDIENTE COMPLETO GESTIONADO'],
-                'PAGO': ['EXPEDIENTE COMPLETO GESTIONADO'],
-                'RECHAZADO': ['EXPEDIENTE COMPLETO GESTIONADO'],
-
-                'CANCELADO POR INACTIVIDAD': ['CANCELADO'],
-                'CANCELADO POR ASEGURADORA': ['CANCELADO'],
-                'DOCUMENTO EN BARRA': ['CANCELADO'],
-            };
-
-            // Llenar estatus según el subestatus
-            if (estatusOptions[subestatus]) {
-                estatusOptions[subestatus].forEach(option => {
-                    const opt = document.createElement('option');
-                    opt.value = option;
-                    opt.textContent = option;
-                    estatusSelect.appendChild(opt); // Usamos estatusSelect
-                });
-            }
-
-            // Llenar estacion según el subestatus
-            if (estacionOptions[subestatus]) {
-                estacionOptions[subestatus].forEach(option => {
-                    const opt = document.createElement('option');
-                    opt.value = option;
-                    opt.textContent = option;
-                    estacionSelect.appendChild(opt); // Usamos estacionSelect
-                });
-            }
-
-            // Lógica adicional para que "CANCELADO" solo muestre "TERMINADO" en estatus
-            // y "MARCACIÓN" solo muestre "ABIERTO" en estatus
-            estacionSelect.addEventListener('change', function() {
-                const estacionValue = estacionSelect.value;
-
-                // Si se selecciona 'CANCELADO', solo se debe mostrar "TERMINADO" en estatus
-                if (estacionValue === 'CANCELADO' || estacionValue === 'EXPEDIENTE COMPLETO GESTIONADO') {
-                    estatusSelect.innerHTML = '<option value="TERMINADO">TERMINADO</option>';
-                }
-                // Si se selecciona 'MARCACIÓN', solo se debe mostrar "ABIERTO" en estatus
-                else if (estacionValue === 'MARCACIÓN' || estacionValue === 'EN SEGUIMIENTO AOL' || estacionValue === 'EN SEGUIMIENTO INBURSA') {
-                    estatusSelect.innerHTML = '<option value="ABIERTO">ABIERTO</option>';
-                } else if (estacionValue === 'NUEVO') {
-                    estatusSelect.innerHTML = '<option value="ABIERTO">ABIERTO</option>';
-                }
-                // Si no es 'CANCELADO' ni 'MARCACIÓN', volver a las opciones del subestatus original
-                else {
-                    if (estatusOptions[subestatus]) {
-                        estatusOptions[subestatus].forEach(option => {
-                            const opt = document.createElement('option');
-                            opt.value = option;
-                            opt.textContent = option;
-                            estatusSelect.appendChild(opt); // Usamos estatusSelect
-                        });
-                    }
-                }
-            });
-        };
-
-        // Evento de cambio en el select de subestatus
-        document.getElementById('subestatus_seg_ed').addEventListener('change', function() {
-            const subestatus = this.value;
-            updateOptionsSub(subestatus); // Llamamos la función correcta
-        });
-    </script>
-
-    <script>
-        window.onload = function() {
-            // Obtener la fecha y hora actuales
-            const fechaHoy = new Date();
-
-            // Formatear la fecha en formato YYYY-MM-DD (para el campo de fecha)
-            const fechaFormateada = fechaHoy.toISOString().split('T')[0];
-
-            // Formatear la hora en formato HH:MM (para el campo de hora)
-            const horaFormateada = fechaHoy.toTimeString().split(' ')[0].substring(0, 5);
-
-            // Asignar la fecha y hora al formulario
-            document.getElementById('fecha_reconocimiento_seg').value = fechaFormateada;
-            document.getElementById('hora_seguimiento_seg').value = horaFormateada;
-        };
-    </script>
-
-    <!--Seguimiento-->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const editButtons = document.querySelectorAll('.custom-table-style-edit-btn'); // Botones de edición en la tabla
-
-            editButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const idSeguimiento = this.getAttribute('data-id'); // Obtener el ID de seguimiento
-
-                    // Verificar que el idSeguimiento no esté vacío
-                    if (!idSeguimiento) {
-                        console.error('No se encontró el ID de seguimiento');
-                        return; // Detener ejecución si no hay ID válido
-                    }
-
-                    console.log('ID de seguimiento:', idSeguimiento); // Agregar para depuración
-
-                    // Cambiar la URL para enviar el parámetro id_seguimiento
-                    fetch('proc/get_seguimiento.php?id_seguimiento=' + idSeguimiento) // Cambiar por la URL que corresponda para obtener los datos del seguimiento
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Error al obtener los datos: ' + response.statusText);
-                            }
-                            return response.json(); // Usamos .json() directamente para obtener la respuesta como JSON
-                        })
-                        .then(parsedData => {
-                            console.log('Datos JSON parseados: ', parsedData);
-
-                            // Verificar si hay datos y asignarlos a los campos del formulario
-                            if (parsedData && !parsedData.error) {
-                                document.getElementById('estatus_seg').value = parsedData.estatus_seguimiento || '';
-                                document.getElementById('sub_seg').value = parsedData.subestatus || '';
-                                document.getElementById('estacion_seg').value = parsedData.estacion || '';
-                                document.getElementById('fecha_ter_seg').value = parsedData.fecha_termino || '';
-                            } else {
-                                // Manejar el caso donde el JSON tiene un error
-                                console.error('Error en los datos recibidos:', parsedData.error);
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error al obtener los datos:', error);
-                            alert('Ocurrió un error al obtener los datos del seguimiento.');
-                        });
-                });
-            });
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const btnActualizar = document.getElementById('btnActualizar'); // Asegúrate de tener el botón con id="btnActualizar"
-
-            btnActualizar.addEventListener('click', function(event) {
-                event.preventDefault(); // Evita el envío del formulario
-
-                // Obtener los datos del formulario para Vehículo
-                const idVehiculo = document.getElementById('id_vehiculo').value;
-                const marca = document.getElementById('marca_veh').value;
-                const tipo = document.getElementById('tipo_veh').value;
-                const placas = document.getElementById('placas_veh').value;
-                const noSerie = document.getElementById('no_serie_veh').value;
-                const valorIndemnizacion = document.getElementById('valor_indem_veh').value;
-                const valorComercial = document.getElementById('valor_comer_veh').value;
-                const porcDano = document.getElementById('porc_dano_veh').value;
-                const valorBase = document.getElementById('valor_base_veh').value;
-
-                // Obtener los datos del formulario para Asegurado
-                const idAsegurado = document.getElementById('id_asegurado').value;
-                const asegurado = document.getElementById('asegurado_ed').value;
-                const email = document.getElementById('email_ed').value;
-                const telefono1 = document.getElementById('telefono1_ed').value;
-                const telefono2 = document.getElementById('telefono2_ed').value;
-                const contacto = document.getElementById('contacto_ed').value;
-                const contactoEmail = document.getElementById('con_email_ed').value;
-                const contactoTel1 = document.getElementById('con_telefono1_ed').value;
-                const contactoTel2 = document.getElementById('con_telefono2_ed').value;
-
-                // Realizar las llamadas AJAX para ambos formularios
-                Promise.all([
-                        fetch('proc/update_vehiculo.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded'
-                            },
-                            body: `id_vehiculo=${idVehiculo}&marca=${marca}&tipo=${tipo}&placas=${placas}&no_serie=${noSerie}&valor_indemnizacion=${valorIndemnizacion}&valor_comercial=${valorComercial}&porc_dano=${porcDano}&valor_base=${valorBase}`
-                        }).then(response => response.json()),
-
-                        fetch('proc/update_asegurado.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded'
-                            },
-                            body: `id_asegurado=${idAsegurado}&nom_asegurado=${asegurado}&email=${email}&tel1=${telefono1}&tel2=${telefono2}&contacto=${contacto}&contacto_email=${contactoEmail}&contacto_tel1=${contactoTel1}&contacto_tel2=${contactoTel2}`
-                        }).then(response => response.json())
-                    ])
-                    .then(responses => {
-                        const [vehiculoData, aseguradoData] = responses;
-
-                        if (vehiculoData.status === 'success' && aseguradoData.success) {
-                            alert('Actualización realizada');
-                        } else {
-                            alert('Hubo un error al actualizar: ' + (vehiculoData.error || aseguradoData.error || 'desconocido'));
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error al realizar la solicitud:', error);
-                        alert('Ocurrió un error inesperado');
-                    });
-            });
-        });
-    </script>
-    <!--Actualizar expediente-->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const btnActualizar = document.getElementById('btnActualizar'); // Asegúrate de tener el botón con id="btnActualizar"
-
-            btnActualizar.addEventListener('click', function(event) {
-                event.preventDefault(); // Evita el envío del formulario
-
-                // Obtener los datos del formulario
-                const idExpediente = document.getElementById('id_expediente_exp').value;
-                const fechaCarga = document.getElementById('fecha_carga_exp').value;
-                const noSiniestro = document.getElementById('no_siniestro_exp').value;
-                const poliza = document.getElementById('poliza_exp').value;
-                const afectado = document.getElementById('afectado_exp').value;
-                const tipoCaso = document.getElementById('tipo_caso_exp').value;
-                const cobertura = document.getElementById('cobertura_exp').value;
-                const fechaSiniestro = document.getElementById('fecha_siniestro_exp').value;
-                const tallerCorralon = document.getElementById('taller_corralon_exp').value;
-                const financiado = document.querySelector('input[name="financiado_exp"]:checked')?.value || '';
-                const regimen = document.getElementById('regimen_exp').value;
-                const passwExt = document.getElementById('pass_ext_exp').value;
-                const estado = document.getElementById('estado_exp').value;
-
-
-                // Mostrar en consola el valor de id_expediente
-                console.log("ID Expediente: ", idExpediente);
-
-                // Realizar la llamada AJAX para actualizar el expediente
-                fetch('proc/update_expediente.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body: `id_expediente=${idExpediente}&fecha_carga_exp=${fechaCarga}&no_siniestro_exp=${noSiniestro}&poliza_exp=${poliza}&afectado_exp=${afectado}&tipo_caso_exp=${tipoCaso}&cobertura_exp=${cobertura}&fecha_siniestro_exp=${fechaSiniestro}&taller_corralon_exp=${tallerCorralon}&financiado_exp=${financiado}&regimen_exp=${regimen}&pass_ext_exp=${passwExt}&estado_exp=${estado}`
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            alert('Expediente actualizado correctamente');
-                        } else {
-                            alert('Error al actualizar expediente: ' + (data.error || 'desconocido'));
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error al realizar la solicitud:', error);
-                        alert('Ocurrió un error inesperado');
-                    });
-            });
-        });
-    </script>
-    <!--Insertar seguimiento-->
-    <script>
-        $(document).ready(function() {
-            // Cuando se haga click en el botón con el id "btnSeg"
-            $("#btnSeg").click(function() {
-                // Obtener los valores de los campos del formulario
-                var fecha_seguimiento = $("#fecha_reconocimiento_seg").val();
-                var estatus_seg = $("#estatus_seg_ed").val();
-                var sub_seg = $("#subestatus_seg_ed").val();
-                var estacion_seg = $("#estacion_seg_ed").val();
-                var comentario = $("#comentario_seg").val();
-                var estatus_seg_ed = $("#estatus_seg_ed").val();
-                var subestatus_seg_ed = $("#subestatus_seg_ed").val();
-                var estacion_seg_ed = $("#estacion_seg_ed").val();
-                var mensaje_seg_ed = $("#mensaje_seg_ed").val();
-                var fecha_reconocimiento_seg = $("#fecha_reconocimiento_seg").val();
-                var hora_seguimiento_seg = $("#hora_seguimiento_seg").val();
-                var fecha_cita_seg = $("#fecha_cita_seg").val();
-                var hora_cita_seg = $("#hora_cita_seg").val();
-                var persona_seg = $("#persona_seg").val();
-                var tipo_persona_seg = $("#tipo_persona_seg").val();
-                var contacto_p_seg = $("#contacto_p_seg").val();
-                var fecha_envio_seg = $("#fecha_envio_seg").val();
-                var fecha_expediente_seg = $("#fecha_expediente_seg").val();
-                var fecha_fact_seg = $("#fecha_fact_seg").val();
-                var fecha_termino_Seg = $("#fecha_termino_Seg").val();
-
-                // Obtener el valor de "cedula_id_ed" y el ID del asegurado
-                var fk_cedula = $("#cedula_id_ed").val();
-                var id_asegurado = $("#id_asegurado").val();
-                var no_siniestro_exp = $("#no_siniestro_exp").val();
-
-                // Validar que no falten datos necesarios
-                if (!mensaje_seg_ed || !id_asegurado || !no_siniestro_exp) {
-                    alert("Faltan datos necesarios: número de siniestro, usuario receptor o mensaje.");
-                    return; // Detener la ejecución si falta algún dato
-                }
-
-                // Crear un objeto con los datos del formulario
-                var data = {
-                    fecha_seguimiento: fecha_seguimiento,
-                    estatus_seg: estatus_seg,
-                    sub_seg: sub_seg,
-                    estacion_seg: estacion_seg,
-                    comentario: comentario,
-                    estatus_seg_ed: estatus_seg_ed,
-                    subestatus_seg_ed: subestatus_seg_ed,
-                    estacion_seg_ed: estacion_seg_ed,
-                    mensaje_seg_ed: mensaje_seg_ed,
-                    fecha_reconocimiento_seg: fecha_reconocimiento_seg,
-                    hora_seguimiento_seg: hora_seguimiento_seg,
-                    fecha_cita_seg: fecha_cita_seg,
-                    hora_cita_seg: hora_cita_seg,
-                    persona_seg: persona_seg,
-                    tipo_persona_seg: tipo_persona_seg,
-                    contacto_p_seg: contacto_p_seg,
-                    fecha_envio_seg: fecha_envio_seg,
-                    fecha_expediente_seg: fecha_expediente_seg,
-                    fecha_fact_seg: fecha_fact_seg,
-                    fecha_termino_Seg: fecha_termino_Seg,
-                    fk_cedula: fk_cedula,
-                    no_siniestro: no_siniestro_exp,
-                    usuario_emisor: "<?php echo $_SESSION['id_usuario'] ?? ''; ?>", // El usuario_emisor es el ID del usuario actual
-                    usuario_receptor: id_asegurado // El receptor es el ID del asegurado
-                };
-
-                // Mostrar los datos que se enviarán a insert_seguimiento.php
-                console.log("Datos enviados a insert_seguimiento.php:", data);
-
-                // Enviar los datos al servidor usando AJAX para el insert_seguimiento.php
-                $.ajax({
-                    url: 'proc/insert_seguimiento.php',
-                    type: 'POST',
-                    data: data, // Verifica que 'data' sea un objeto o string válido
+                    url: 'proc/get_asignacion.php', // Nombre del archivo PHP que devuelve los usuarios
+                    type: 'GET',
                     success: function(response) {
-                        console.log(response);
+                        // Verificar si la respuesta es exitosa
                         if (response.success) {
-                            var messageData = {
-                                id_usuario_emisor: id_asegurado,
-                                id_usuario_receptor: "<?php echo $_SESSION['id_usuario'] ?? ''; ?>",
-                                mensaje: comentario,
-                                fecha_envio: fecha_envio_seg,
-                                no_siniestro: no_siniestro_exp
-                            };
+                            var select = $('#asignacion'); // El elemento select con id 'asignacion'
 
-                            console.log("Enviados a insert_mensajes_op.php:", messageData);
+                            // Iterar sobre los usuarios y agregar opciones al select
+                            response.data.forEach(function(user) {
+                                // Crear un nuevo elemento option
+                                var option = $('<option></option>')
+                                    .text(user.nombre); // Establece el texto de la opción
 
-                            $.ajax({
-                                url: 'proc/insert_mensajes_op.php',
-                                type: 'POST',
-                                data: messageData, // Los datos se deben enviar correctamente formateados
-                                success: function(response) {
-                                    if (response.success) {
-                                        alert('Mensaje enviado correctamente.');
-                                    } else {
-                                        alert('Error al enviar el mensaje.');
-                                    }
-                                },
-                                error: function(xhr, status, error) {
-                                    console.log(xhr.responseText); // Muestra más detalles sobre el error
-                                    alert('Hubo un error al enviar el mensaje.');
-                                }
+                                // Agregar la opción al select
+                                select.append(option);
                             });
                         } else {
-                            alert(response.error);
+                            console.error('No se pudieron cargar las asignaciones:', response.error);
                         }
                     },
                     error: function(xhr, status, error) {
-                        console.log(xhr.responseText); // Ver el detalle del error para el seguimiento
-                        alert('Hubo un error al enviar los datos de seguimiento.');
+                        console.error('Error en la solicitud:', error);
                     }
                 });
-
             });
-        });
-    </script>
+        </script>
 
 
+        <!--Visibilidad de los divs-->
+        <script>
+            document.getElementById('btnDoc').addEventListener('click', function() {
+                var mainDocs = document.getElementById('mainDocs');
+                var mainDatos = document.getElementById('mainDatos');
+                var mainWp = document.getElementById('mainWP');
 
-    <!--Obtener asignacion-->
-    <script>
-        // Al cargar la página, hacer la solicitud GET para obtener las asignaciones (usuarios)
-        $(document).ready(function() {
-            $.ajax({
-                url: 'proc/get_asignacion.php', // Nombre del archivo PHP que devuelve los usuarios
-                type: 'GET',
-                success: function(response) {
-                    // Verificar si la respuesta es exitosa
-                    if (response.success) {
-                        var select = $('#asignacion'); // El elemento select con id 'asignacion'
-
-                        // Iterar sobre los usuarios y agregar opciones al select
-                        response.data.forEach(function(user) {
-                            // Crear un nuevo elemento option
-                            var option = $('<option></option>')
-                                .text(user.nombre); // Establece el texto de la opción
-
-                            // Agregar la opción al select
-                            select.append(option);
-                        });
-                    } else {
-                        console.error('No se pudieron cargar las asignaciones:', response.error);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error en la solicitud:', error);
-                }
-            });
-        });
-    </script>
-
-
-    <!--Visibilidad de los divs-->
-    <script>
-        document.getElementById('btnDoc').addEventListener('click', function() {
-            var mainDocs = document.getElementById('mainDocs');
-            var mainDatos = document.getElementById('mainDatos');
-            var mainWp = document.getElementById('mainWP');
-
-            if (mainDocs.classList.contains('invisible')) {
-                mainDocs.classList.remove('invisible'); // Mostrar mainDocs
-                mainDatos.classList.add('invisible'); // Ocultar mainDatos
-                mainWp.classList.add('invisible');
-            } else {
-                mainDocs.classList.add('invisible'); // Ocultar mainDocs
-            }
-        });
-
-        document.getElementById('btnE').addEventListener('click', function() {
-            var mainDocs = document.getElementById('mainDocs');
-            var mainDatos = document.getElementById('mainDatos');
-            var mainWp = document.getElementById('mainWP');
-
-            if (mainDatos.classList.contains('invisible')) {
-                mainDatos.classList.remove('invisible'); // Mostrar mainDatos
-                mainDocs.classList.add('invisible'); // Ocultar mainDocs
-                mainWp.classList.add('invisible');
-            } else {
-                mainDatos.classList.add('invisible'); // Ocultar mainDatos
-            }
-        });
-        document.getElementById('btnWp').addEventListener('click', function() {
-            var mainDocs = document.getElementById('mainDocs');
-            var mainDatos = document.getElementById('mainDatos');
-            var mainWp = document.getElementById('mainWP');
-
-            if (mainWp.classList.contains('invisible')) {
-                mainWp.classList.remove('invisible'); // Mostrar mainDatos
-                mainDocs.classList.add('invisible'); // Ocultar mainDocs
-                mainDatos.classList.add('invisible');
-            } else {
-                mainWp.classList.add('invisible'); // Ocultar mainDatos
-            }
-        });
-    </script>
-
-    <script>
-        function updateFileName() {
-            var fileInput = document.getElementById('fileInput');
-            var fileNameField = document.getElementById('fileName');
-
-            var fileName = fileInput.files[0] ? fileInput.files[0].name : 'No se ha seleccionado un archivo';
-            fileNameField.value = fileName; // Muestra el nombre del archivo seleccionado
-        }
-    </script>
-
-    <script>
-        // Obtener elementos del DOM
-        const openCameraBtn = document.getElementById('open-camera-btn');
-        const videoElement = document.getElementById('video');
-
-        // Función para iniciar la cámara
-        function startCamera() {
-            // Verificar si el navegador admite getUserMedia
-            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                // Solicitar acceso a la cámara
-                navigator.mediaDevices.getUserMedia({
-                        video: true
-                    })
-                    .then(function(stream) {
-                        // Asignar el stream de la cámara al elemento de video
-                        videoElement.srcObject = stream;
-                        videoElement.play(); // Iniciar la reproducción
-                    })
-                    .catch(function(error) {
-                        console.error('Error al acceder a la cámara: ', error);
-                        alert('No se pudo acceder a la cámara. Asegúrate de haber otorgado permisos.');
-                    });
-            } else {
-                alert('Tu navegador no soporta el acceso a la cámara.');
-            }
-        }
-
-        // Función para detener la cámara
-        function stopCamera() {
-            const stream = videoElement.srcObject;
-            if (stream) {
-                const tracks = stream.getTracks(); // Obtener los tracks de video
-                tracks.forEach(track => track.stop()); // Detener cada track
-                videoElement.srcObject = null; // Limpiar la fuente del video
-            }
-        }
-
-        // Abrir el modal y empezar la cámara cuando el usuario hace clic
-        openCameraBtn.addEventListener('click', function() {
-            $('#cameraModal').modal('show'); // Mostrar el modal
-            startCamera(); // Iniciar la cámara
-        });
-
-        // Detener la cámara cuando el modal se cierra
-        $('#cameraModal').on('hidden.bs.modal', function() {
-            stopCamera(); // Detener la cámara al cerrar el modal
-        });
-    </script>
-
-
-    <script>
-        document.getElementById("btnAs").addEventListener("click", function() {
-            // Obtener los valores de los campos
-            let operador = document.getElementById("asignacion").value;
-            let fecha_asignacion = document.getElementById("fecha_asignacion").value;
-            let fk_cedula = document.getElementById("cedula_id_ed").value; // Aquí puedes obtener la cédula
-
-
-
-            // Crear un objeto FormData para incluir los datos y el archivo
-            let formData = new FormData();
-            formData.append("operador", operador);
-            formData.append("fecha_asignacion", fecha_asignacion);
-            formData.append("fk_cedula", fk_cedula);
-
-            // Crear el objeto XMLHttpRequest para enviar la solicitud AJAX
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "proc/insert_asignacion.php", true); // Asegúrate de usar el nombre correcto de tu archivo PHP
-
-            // Manejar la respuesta del servidor
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    let response = JSON.parse(xhr.responseText);
-                    if (response.success) {
-                        alert('Asignación realizada correctamente');
-                    } else {
-                        alert('Error: ' + response.error);
-                    }
+                if (mainDocs.classList.contains('invisible')) {
+                    mainDocs.classList.remove('invisible'); // Mostrar mainDocs
+                    mainDatos.classList.add('invisible'); // Ocultar mainDatos
+                    mainWp.classList.add('invisible');
                 } else {
-                    alert('Error en la solicitud AJAX');
+                    mainDocs.classList.add('invisible'); // Ocultar mainDocs
                 }
-            };
+            });
 
-            // Enviar los datos
-            xhr.send(formData);
-        });
-    </script>
+            document.getElementById('btnE').addEventListener('click', function() {
+                var mainDocs = document.getElementById('mainDocs');
+                var mainDatos = document.getElementById('mainDatos');
+                var mainWp = document.getElementById('mainWP');
 
-    <script>
-        $(document).ready(function() {
-            // Función para enviar mensaje
-            $('#send-message-btn').click(function() {
-                const message = $('#message-input').val(); // Obtener el mensaje ingresado
-                const telefono = $('#telefono').val(); // Obtener el teléfono del asegurado
-                const nombre = $('#nombre').val(); // Obtener el nombre del asegurado
+                if (mainDatos.classList.contains('invisible')) {
+                    mainDatos.classList.remove('invisible'); // Mostrar mainDatos
+                    mainDocs.classList.add('invisible'); // Ocultar mainDocs
+                    mainWp.classList.add('invisible');
+                } else {
+                    mainDatos.classList.add('invisible'); // Ocultar mainDatos
+                }
+            });
+            document.getElementById('btnWp').addEventListener('click', function() {
+                var mainDocs = document.getElementById('mainDocs');
+                var mainDatos = document.getElementById('mainDatos');
+                var mainWp = document.getElementById('mainWP');
 
-                if (message.trim() !== "") {
-                    // Crear el nuevo mensaje para la vista de chat
-                    const messageHtml = `
+                if (mainWp.classList.contains('invisible')) {
+                    mainWp.classList.remove('invisible'); // Mostrar mainDatos
+                    mainDocs.classList.add('invisible'); // Ocultar mainDocs
+                    mainDatos.classList.add('invisible');
+                } else {
+                    mainWp.classList.add('invisible'); // Ocultar mainDatos
+                }
+            });
+        </script>
+
+        <script>
+            function updateFileName() {
+                var fileInput = document.getElementById('fileInput');
+                var fileNameField = document.getElementById('fileName');
+
+                var fileName = fileInput.files[0] ? fileInput.files[0].name : 'No se ha seleccionado un archivo';
+                fileNameField.value = fileName; // Muestra el nombre del archivo seleccionado
+            }
+        </script>
+
+        <script>
+            // Obtener elementos del DOM
+            const openCameraBtn = document.getElementById('open-camera-btn');
+            const videoElement = document.getElementById('video');
+
+            // Función para iniciar la cámara
+            function startCamera() {
+                // Verificar si el navegador admite getUserMedia
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                    // Solicitar acceso a la cámara
+                    navigator.mediaDevices.getUserMedia({
+                            video: true
+                        })
+                        .then(function(stream) {
+                            // Asignar el stream de la cámara al elemento de video
+                            videoElement.srcObject = stream;
+                            videoElement.play(); // Iniciar la reproducción
+                        })
+                        .catch(function(error) {
+                            console.error('Error al acceder a la cámara: ', error);
+                            alert('No se pudo acceder a la cámara. Asegúrate de haber otorgado permisos.');
+                        });
+                } else {
+                    alert('Tu navegador no soporta el acceso a la cámara.');
+                }
+            }
+
+            // Función para detener la cámara
+            function stopCamera() {
+                const stream = videoElement.srcObject;
+                if (stream) {
+                    const tracks = stream.getTracks(); // Obtener los tracks de video
+                    tracks.forEach(track => track.stop()); // Detener cada track
+                    videoElement.srcObject = null; // Limpiar la fuente del video
+                }
+            }
+
+            // Abrir el modal y empezar la cámara cuando el usuario hace clic
+            openCameraBtn.addEventListener('click', function() {
+                $('#cameraModal').modal('show'); // Mostrar el modal
+                startCamera(); // Iniciar la cámara
+            });
+
+            // Detener la cámara cuando el modal se cierra
+            $('#cameraModal').on('hidden.bs.modal', function() {
+                stopCamera(); // Detener la cámara al cerrar el modal
+            });
+        </script>
+
+
+        <script>
+            document.getElementById("btnAs").addEventListener("click", function() {
+                // Obtener los valores de los campos
+                let operador = document.getElementById("asignacion").value;
+                let fecha_asignacion = document.getElementById("fecha_asignacion").value;
+                let fk_cedula = document.getElementById("cedula_id_ed").value; // Aquí puedes obtener la cédula
+
+
+
+                // Crear un objeto FormData para incluir los datos y el archivo
+                let formData = new FormData();
+                formData.append("operador", operador);
+                formData.append("fecha_asignacion", fecha_asignacion);
+                formData.append("fk_cedula", fk_cedula);
+
+                // Crear el objeto XMLHttpRequest para enviar la solicitud AJAX
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "proc/insert_asignacion.php", true); // Asegúrate de usar el nombre correcto de tu archivo PHP
+
+                // Manejar la respuesta del servidor
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            alert('Asignación realizada correctamente');
+                        } else {
+                            alert('Error: ' + response.error);
+                        }
+                    } else {
+                        alert('Error en la solicitud AJAX');
+                    }
+                };
+
+                // Enviar los datos
+                xhr.send(formData);
+            });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                // Función para enviar mensaje
+                $('#send-message-btn').click(function() {
+                    const message = $('#message-input').val(); // Obtener el mensaje ingresado
+                    const telefono = $('#telefono').val(); // Obtener el teléfono del asegurado
+                    const nombre = $('#nombre').val(); // Obtener el nombre del asegurado
+
+                    if (message.trim() !== "") {
+                        // Crear el nuevo mensaje para la vista de chat
+                        const messageHtml = `
                     <li class="clearfix">
                         <div class="message-data text-right">
                             <span class="message-data-time">${new Date().toLocaleTimeString()}, Today</span>
@@ -2127,48 +2199,48 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         <div class="message my-message">${message}</div>
                     </li>
                 `;
-                    // Añadir el mensaje a la historia del chat
-                    $('#chat-history ul').append(messageHtml);
-                    $('#message-input').val(''); // Limpiar el campo de entrada
-                    $('#chat-history')[0].scrollTop = $('#chat-history')[0].scrollHeight; // Desplazar hacia abajo
+                        // Añadir el mensaje a la historia del chat
+                        $('#chat-history ul').append(messageHtml);
+                        $('#message-input').val(''); // Limpiar el campo de entrada
+                        $('#chat-history')[0].scrollTop = $('#chat-history')[0].scrollHeight; // Desplazar hacia abajo
 
-                    // Enviar el mensaje al servidor PHP usando AJAX
+                        // Enviar el mensaje al servidor PHP usando AJAX
+                        $.ajax({
+                            url: 'proc/mensajes_wa.php', // URL de tu archivo PHP
+                            type: 'POST',
+                            data: {
+                                message: message,
+                                telefono: telefono, // Enviar teléfono del asegurado
+                                nombre: nombre, // Enviar nombre del asegurado
+                                type: 'sent' // Marcar como mensaje enviado
+                            },
+                            success: function(response) {
+                                console.log('Mensaje enviado con éxito:', response);
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error al enviar mensaje:', error);
+                            }
+                        });
+                    }
+                });
+
+                // Función para cargar mensajes recibidos periódicamente
+                function cargarMensajesRecibidos() {
+                    const telefono = $('#telefono').val(); // Obtener el teléfono del asegurado para filtrar los mensajes
+                    const nombre = $('#nombre').val(); // Obtener el nombre del asegurado para mostrarlo en la vista
+
                     $.ajax({
-                        url: 'proc/mensajes_wa.php', // URL de tu archivo PHP
-                        type: 'POST',
-                        data: {
-                            message: message,
-                            telefono: telefono, // Enviar teléfono del asegurado
-                            nombre: nombre, // Enviar nombre del asegurado
-                            type: 'sent' // Marcar como mensaje enviado
-                        },
+                        url: 'proc/historial_' + telefono + "_" + nombre + '.json', // Cargar el archivo específico del asegurado
+                        dataType: 'json',
                         success: function(response) {
-                            console.log('Mensaje enviado con éxito:', response);
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error al enviar mensaje:', error);
-                        }
-                    });
-                }
-            });
+                            console.log('Mensajes cargados:', response);
 
-            // Función para cargar mensajes recibidos periódicamente
-            function cargarMensajesRecibidos() {
-                const telefono = $('#telefono').val(); // Obtener el teléfono del asegurado para filtrar los mensajes
-                const nombre = $('#nombre').val(); // Obtener el nombre del asegurado para mostrarlo en la vista
+                            // Limpiar y volver a cargar toda la conversación
+                            $('#chat-history ul').empty();
 
-                $.ajax({
-                    url: 'proc/historial_' + telefono + "_" + nombre + '.json', // Cargar el archivo específico del asegurado
-                    dataType: 'json',
-                    success: function(response) {
-                        console.log('Mensajes cargados:', response);
-
-                        // Limpiar y volver a cargar toda la conversación
-                        $('#chat-history ul').empty();
-
-                        response.forEach((msg) => {
-                            const isSent = msg.type === 'sent'; // Verificar si el mensaje es enviado o recibido
-                            const messageHtml = `
+                            response.forEach((msg) => {
+                                const isSent = msg.type === 'sent'; // Verificar si el mensaje es enviado o recibido
+                                const messageHtml = `
                             <li class="clearfix">
                                 <div class="message-data ${isSent ? 'text-right' : ''}">
                                     <span class="message-data-time">${new Date(msg.timestamp * 1000).toLocaleTimeString()}, Today</span>
@@ -2176,56 +2248,56 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                 <div class="message ${isSent ? 'my-message' : 'other-message'}">${msg.mensaje}</div>
                             </li>
                         `;
-                            $('#chat-history ul').append(messageHtml);
-                        });
+                                $('#chat-history ul').append(messageHtml);
+                            });
 
-                        // Desplazar hacia abajo
-                        $('#chat-history')[0].scrollTop = $('#chat-history')[0].scrollHeight;
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error al cargar mensajes:', error);
-                        console.error('Respuesta completa del servidor:', xhr.responseText);
-                    }
+                            // Desplazar hacia abajo
+                            $('#chat-history')[0].scrollTop = $('#chat-history')[0].scrollHeight;
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error al cargar mensajes:', error);
+                            console.error('Respuesta completa del servidor:', xhr.responseText);
+                        }
+                    });
+                }
+
+                // Función para establecer los datos del asegurado cuando se abra el modal
+                function setFormData() {
+                    const nombreAsegurado = document.getElementById("asegurado-nombre").innerText;
+                    const telefonoAsegurado = document.getElementById("asegurado-telefono").innerText;
+
+                    // Colocar esos valores en los campos del formulario
+                    $('#nombre').val(nombreAsegurado);
+                    $('#telefono').val(telefonoAsegurado);
+                }
+
+                // Llamada para establecer los datos del asegurado al abrir el modal
+                $('#view_info').on('shown.bs.modal', function() {
+                    setFormData();
                 });
-            }
 
-            // Función para establecer los datos del asegurado cuando se abra el modal
-            function setFormData() {
-                const nombreAsegurado = document.getElementById("asegurado-nombre").innerText;
-                const telefonoAsegurado = document.getElementById("asegurado-telefono").innerText;
-
-                // Colocar esos valores en los campos del formulario
-                $('#nombre').val(nombreAsegurado);
-                $('#telefono').val(telefonoAsegurado);
-            }
-
-            // Llamada para establecer los datos del asegurado al abrir el modal
-            $('#view_info').on('shown.bs.modal', function() {
-                setFormData();
+                // Actualizar mensajes cada 1 segundo
+                setInterval(cargarMensajesRecibidos, 1000);
             });
-
-            // Actualizar mensajes cada 1 segundo
-            setInterval(cargarMensajesRecibidos, 1000);
-        });
-    </script>
+        </script>
 
 
-    <script>
-        // Llama a noConflict para evitar problemas con el símbolo $
-        var $j = jQuery.noConflict();
+        <script>
+            // Llama a noConflict para evitar problemas con el símbolo $
+            var $j = jQuery.noConflict();
 
-        // Usa $j como alias de jQuery en lugar de $
-        $j(document).ready(function() {
-            // Vincula el evento click para abrir el modal
-            $j('#btnEditTabla').on('click', function() {
-                $j('#editarCedulaModal').modal('show');
+            // Usa $j como alias de jQuery en lugar de $
+            $j(document).ready(function() {
+                // Vincula el evento click para abrir el modal
+                $j('#btnEditTabla').on('click', function() {
+                    $j('#editarCedulaModal').modal('show');
+                });
             });
-        });
-    </script>
+        </script>
 
 
 
-    <!-- Se eliminó el script que abre el modal -->
+        <!-- Se eliminó el script que abre el modal -->
 </body>
 
 </html>
