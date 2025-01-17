@@ -53,27 +53,20 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         <div class="custom-form-group-editar form-group">
                             <label for="arch">
                                 <h6>Selecciona archivo(.xlsx):</h6>
-                                <!-- Archivo de carga con el ícono y el nombre del archivo -->
                                 <div class="file-upload" id="fileUpload">
-                                    <!-- Botón con ícono de archivo -->
                                     <label for="fileInput" class="file-label">
                                         <i class="fas fa-file-upload"></i>
                                     </label>
-
-                                    <!-- Input de archivo (hidden para ocultar el campo estándar) -->
-                                    <input type="file" id="fileInput" name="arch" accept="image/*,application/pdf" style="display:none;" onchange="updateFileName()" />
-
-                                    <!-- Caja de texto deshabilitada para mostrar el nombre del archivo -->
+                                    <input type="file" id="fileInput" name="arch" accept=".xlsx" style="display:none;" />
                                     <input type="text" id="fileName" class="file-name" disabled placeholder="No se ha seleccionado un archivo" />
-
                                     <button type="button" id="btnCargaMasiva" class="btn custom-submit-button-editar" style="display: inline-block; margin-left: -10px; margin-right: auto; margin-bottom: 10px;">
                                         Cargar archivo
                                     </button>
                                 </div>
-
                             </label>
                         </div>
                     </div>
+
 
                     <div class="custom-form-section-editar custom-card-border-editar text-center">
                         <h2 class="custom-h2">Asignación de operadores</h2>
@@ -244,6 +237,51 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 locale: {
                     format: 'YYYY-MM-DD'
                 }
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fileInput = document.getElementById('fileInput');
+            const fileName = document.getElementById('fileName');
+            const btnCargaMasiva = document.getElementById('btnCargaMasiva');
+
+            // Actualizar el nombre del archivo seleccionado
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files.length > 0) {
+                    fileName.value = fileInput.files[0].name;
+                } else {
+                    fileName.value = 'No se ha seleccionado un archivo';
+                }
+            });
+
+            // Enviar el archivo al servidor
+            btnCargaMasiva.addEventListener('click', () => {
+                if (fileInput.files.length === 0) {
+                    alert('Por favor, selecciona un archivo antes de cargar.');
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('fileInput', fileInput.files[0]);
+
+                fetch('proc/cargamasiva.php', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.success);
+                        } else if (data.error) {
+                            alert(`Error: ${data.error}`);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error al procesar la carga:', error);
+                        alert('Hubo un problema al procesar la carga. Intenta nuevamente.');
+                    });
             });
         });
     </script>
