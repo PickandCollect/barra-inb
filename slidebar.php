@@ -77,13 +77,13 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 </a>
             </li>
 
-            <!-- Nav Item - Calidad -->
+            <!-- Nav Item - Calidad 
             <li class="nav-item">
                 <a class="nav-link" href="calidad.php">
                     <i class="fa-solid fa-medal"></i>
                     <span>Calidad</span>
                 </a>
-            </li>
+            </li>-->
         <?php endif; ?>
 
         <?php if ($rol == 'asegurado'): ?>
