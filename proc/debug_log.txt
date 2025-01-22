@@ -1,0 +1,238 @@
+Procesando fila 1: Siniestro: 401007744698, Poliza: 22946573, ID Usuario: 16
+Procesando fila 1: Siniestro: 401007744698, Poliza: 22946573, ID Usuario: 16
+Procesando fila 1: Siniestro: 401007744698, Poliza: 22946573, ID Usuario: 16
+Procesando fila 1: Siniestro: 401007744698, Poliza: 22946573, ID Usuario: 16
+Error en la fila 1: Duplicate entry 'MVN4376' for key 'vehiculo.pk_placas'
+Procesando fila 2: Siniestro: 401007707610, Poliza: 20089306, ID Usuario: 16
+Error en la fila 2: Duplicate entry 'V12ACW' for key 'vehiculo.pk_placas'
+Procesando fila 3: Siniestro: 401007742743, Poliza: 20740682, ID Usuario: 16
+Error en la fila 3: Duplicate entry 'MPL6802' for key 'vehiculo.pk_placas'
+Procesando fila 4: Siniestro: 401007705895, Poliza: 22971269, ID Usuario: 16
+Error en la fila 4: Duplicate entry 'S/P' for key 'vehiculo.pk_placas'
+Procesando fila 5: Siniestro: 401007719158, Poliza: 20005762, ID Usuario: 16
+Error en la fila 5: Duplicate entry 'NCX6757' for key 'vehiculo.pk_placas'
+Procesando fila 6: Siniestro: 401007753428, Poliza: 20936515, ID Usuario: 16
+Error en la fila 6: Duplicate entry 'RCL583A' for key 'vehiculo.pk_placas'
+Procesando fila 7: Siniestro: 401007743747, Poliza: 20913031, ID Usuario: 16
+Error en la fila 7: Duplicate entry 'LC48408' for key 'vehiculo.pk_placas'
+Procesando fila 8: Siniestro: 401007612452, Poliza: 20037103, ID Usuario: 16
+Error en la fila 8: Duplicate entry 'T57AXT' for key 'vehiculo.pk_placas'
+Procesando fila 9: Siniestro: 401007730690, Poliza: 21020244, ID Usuario: 16
+Error en la fila 9: Duplicate entry 'S/P' for key 'vehiculo.pk_placas'
+Procesando fila 10: Siniestro: 401007702060, Poliza: 20852043, ID Usuario: 16
+Error en la fila 10: Duplicate entry 'PBB5470' for key 'vehiculo.pk_placas'
+Procesando fila 11: Siniestro: 401007772809, Poliza: 36323674, ID Usuario: 16
+Error en la fila 11: Duplicate entry 'RBY415C' for key 'vehiculo.pk_placas'
+Procesando fila 12: Siniestro: 401007798248, Poliza: 20012335, ID Usuario: 16
+Error en la fila 12: Duplicate entry '582ZCY' for key 'vehiculo.pk_placas'
+Procesando fila 13: Siniestro: 401007751211, Poliza: 20941199, ID Usuario: 16
+Error en la fila 13: Duplicate entry 'T34BBP' for key 'vehiculo.pk_placas'
+Procesando fila 14: Siniestro: 401007800713, Poliza: 22664270, ID Usuario: 16
+Error en la fila 14: Duplicate entry 'NSV8012' for key 'vehiculo.pk_placas'
+Procesando fila 15: Siniestro: 401007817862, Poliza: 20668298, ID Usuario: 16
+Error en la fila 15: Duplicate entry '898XWJ' for key 'vehiculo.pk_placas'
+Procesando fila 16: Siniestro: 401007904208, Poliza: 20402342, ID Usuario: 16
+Error en la fila 16: Duplicate entry 'MZD501A' for key 'vehiculo.pk_placas'
+Procesando fila 17: Siniestro: 401007904147, Poliza: 20119480, ID Usuario: 16
+Error en la fila 17: Duplicate entry 'NZW8669' for key 'vehiculo.pk_placas'
+Procesando fila 18: Siniestro: 401007902921, Poliza: 20016046, ID Usuario: 16
+Error en la fila 18: Duplicate entry 'NRS9203' for key 'vehiculo.pk_placas'
+Procesando fila 19: Siniestro: 401007903520, Poliza: 20098010, ID Usuario: 16
+Error en la fila 19: Duplicate entry 'MPR628A' for key 'vehiculo.pk_placas'
+Procesando fila 20: Siniestro: 401007905039, Poliza: 21131197, ID Usuario: 16
+Error en la fila 20: Duplicate entry 'LKZ019B' for key 'vehiculo.pk_placas'
+Procesando fila 21: Siniestro: 401007905059, Poliza: 20881716, ID Usuario: 16
+Error en la fila 21: Duplicate entry '792ZYE' for key 'vehiculo.pk_placas'
+Procesando fila 22: Siniestro: 401007904928, Poliza: 20008590, ID Usuario: 16
+Error en la fila 22: Duplicate entry 'ME104A4' for key 'vehiculo.pk_placas'
+Procesando fila 23: Siniestro: 401007898461, Poliza: 21013895, ID Usuario: 16
+Error en la fila 23: Duplicate entry 'NMS8445' for key 'vehiculo.pk_placas'
+Procesando fila 24: Siniestro: 401007902717, Poliza: 23105300, ID Usuario: 16
+Error en la fila 24: Duplicate entry 'MPZ680A' for key 'vehiculo.pk_placas'
+Procesando fila 25: Siniestro: 401007906705, Poliza: 21102012, ID Usuario: 16
+Error en la fila 25: Duplicate entry 'NUX657A' for key 'vehiculo.pk_placas'
+Procesando fila 26: Siniestro: 401007906829, Poliza: 21007866, ID Usuario: 16
+Error en la fila 26: Duplicate entry '640UJJ' for key 'vehiculo.pk_placas'
+Procesando fila 27: Siniestro: 401007893070, Poliza: 21205786, ID Usuario: 16
+Error en la fila 27: Duplicate entry '732TZ' for key 'vehiculo.pk_placas'
+Procesando fila 28: Siniestro: 401007869398, Poliza: 20089208, ID Usuario: 16
+Error en la fila 28: Duplicate entry 'M26APB' for key 'vehiculo.pk_placas'
+Procesando fila 29: Siniestro: 401007901916, Poliza: 20409746, ID Usuario: 16
+Error en la fila 29: Duplicate entry 'J79BCV' for key 'vehiculo.pk_placas'
+Procesando fila 30: Siniestro: 401007909522, Poliza: 20002765, ID Usuario: 16
+Error en la fila 30: Duplicate entry 'NRF1730' for key 'vehiculo.pk_placas'
+Procesando fila 1: Siniestro: 401007744698, Poliza: 22946573, ID Usuario: 16
+Procesando fila 2: Siniestro: 401007707610, Poliza: 20089306, ID Usuario: 16
+Procesando fila 3: Siniestro: 401007742743, Poliza: 20740682, ID Usuario: 16
+Procesando fila 4: Siniestro: 401007705895, Poliza: 22971269, ID Usuario: 16
+Procesando fila 5: Siniestro: 401007719158, Poliza: 20005762, ID Usuario: 16
+Procesando fila 6: Siniestro: 401007753428, Poliza: 20936515, ID Usuario: 16
+Procesando fila 7: Siniestro: 401007743747, Poliza: 20913031, ID Usuario: 16
+Procesando fila 8: Siniestro: 401007612452, Poliza: 20037103, ID Usuario: 16
+Procesando fila 9: Siniestro: 401007730690, Poliza: 21020244, ID Usuario: 16
+Error en la fila 9: Duplicate entry 'S/P' for key 'vehiculo.pk_placas'
+Procesando fila 10: Siniestro: 401007702060, Poliza: 20852043, ID Usuario: 16
+Procesando fila 11: Siniestro: 401007772809, Poliza: 36323674, ID Usuario: 16
+Procesando fila 12: Siniestro: 401007798248, Poliza: 20012335, ID Usuario: 16
+Procesando fila 13: Siniestro: 401007751211, Poliza: 20941199, ID Usuario: 16
+Procesando fila 14: Siniestro: 401007800713, Poliza: 22664270, ID Usuario: 16
+Procesando fila 15: Siniestro: 401007817862, Poliza: 20668298, ID Usuario: 16
+Procesando fila 16: Siniestro: 401007904208, Poliza: 20402342, ID Usuario: 16
+Procesando fila 17: Siniestro: 401007904147, Poliza: 20119480, ID Usuario: 16
+Procesando fila 18: Siniestro: 401007902921, Poliza: 20016046, ID Usuario: 16
+Procesando fila 19: Siniestro: 401007903520, Poliza: 20098010, ID Usuario: 16
+Procesando fila 20: Siniestro: 401007905039, Poliza: 21131197, ID Usuario: 16
+Procesando fila 21: Siniestro: 401007905059, Poliza: 20881716, ID Usuario: 16
+Procesando fila 22: Siniestro: 401007904928, Poliza: 20008590, ID Usuario: 16
+Procesando fila 23: Siniestro: 401007898461, Poliza: 21013895, ID Usuario: 16
+Procesando fila 24: Siniestro: 401007902717, Poliza: 23105300, ID Usuario: 16
+Procesando fila 25: Siniestro: 401007906705, Poliza: 21102012, ID Usuario: 16
+Procesando fila 26: Siniestro: 401007906829, Poliza: 21007866, ID Usuario: 16
+Procesando fila 27: Siniestro: 401007893070, Poliza: 21205786, ID Usuario: 16
+Procesando fila 28: Siniestro: 401007869398, Poliza: 20089208, ID Usuario: 16
+Procesando fila 29: Siniestro: 401007901916, Poliza: 20409746, ID Usuario: 16
+Procesando fila 30: Siniestro: 401007909522, Poliza: 20002765, ID Usuario: 16
+Procesando fila 1: Siniestro: 401007744698, Poliza: 22946573, ID Usuario: 16
+Error en la fila 1: Duplicate entry 'MVN4376' for key 'vehiculo.pk_placas'
+Procesando fila 2: Siniestro: 401007707610, Poliza: 20089306, ID Usuario: 16
+Error en la fila 2: Duplicate entry 'V12ACW' for key 'vehiculo.pk_placas'
+Procesando fila 3: Siniestro: 401007742743, Poliza: 20740682, ID Usuario: 16
+Error en la fila 3: Duplicate entry 'MPL6802' for key 'vehiculo.pk_placas'
+Procesando fila 4: Siniestro: 401007705895, Poliza: 22971269, ID Usuario: 16
+Error en la fila 4: Duplicate entry 'S/P' for key 'vehiculo.pk_placas'
+Procesando fila 5: Siniestro: 401007719158, Poliza: 20005762, ID Usuario: 16
+Error en la fila 5: Duplicate entry 'NCX6757' for key 'vehiculo.pk_placas'
+Procesando fila 6: Siniestro: 401007753428, Poliza: 20936515, ID Usuario: 16
+Error en la fila 6: Duplicate entry 'RCL583A' for key 'vehiculo.pk_placas'
+Procesando fila 7: Siniestro: 401007743747, Poliza: 20913031, ID Usuario: 16
+Error en la fila 7: Duplicate entry 'LC48408' for key 'vehiculo.pk_placas'
+Procesando fila 8: Siniestro: 401007612452, Poliza: 20037103, ID Usuario: 16
+Error en la fila 8: Duplicate entry 'T57AXT' for key 'vehiculo.pk_placas'
+Procesando fila 9: Siniestro: 401007730690, Poliza: 21020244, ID Usuario: 16
+Error en la fila 9: Duplicate entry 'S/P' for key 'vehiculo.pk_placas'
+Procesando fila 10: Siniestro: 401007702060, Poliza: 20852043, ID Usuario: 16
+Error en la fila 10: Duplicate entry 'PBB5470' for key 'vehiculo.pk_placas'
+Procesando fila 11: Siniestro: 401007772809, Poliza: 36323674, ID Usuario: 16
+Error en la fila 11: Duplicate entry 'RBY415C' for key 'vehiculo.pk_placas'
+Procesando fila 12: Siniestro: 401007798248, Poliza: 20012335, ID Usuario: 16
+Error en la fila 12: Duplicate entry '582ZCY' for key 'vehiculo.pk_placas'
+Procesando fila 13: Siniestro: 401007751211, Poliza: 20941199, ID Usuario: 16
+Error en la fila 13: Duplicate entry 'T34BBP' for key 'vehiculo.pk_placas'
+Procesando fila 14: Siniestro: 401007800713, Poliza: 22664270, ID Usuario: 16
+Error en la fila 14: Duplicate entry 'NSV8012' for key 'vehiculo.pk_placas'
+Procesando fila 15: Siniestro: 401007817862, Poliza: 20668298, ID Usuario: 16
+Error en la fila 15: Duplicate entry '898XWJ' for key 'vehiculo.pk_placas'
+Procesando fila 16: Siniestro: 401007904208, Poliza: 20402342, ID Usuario: 16
+Error en la fila 16: Duplicate entry 'MZD501A' for key 'vehiculo.pk_placas'
+Procesando fila 17: Siniestro: 401007904147, Poliza: 20119480, ID Usuario: 16
+Error en la fila 17: Duplicate entry 'NZW8669' for key 'vehiculo.pk_placas'
+Procesando fila 18: Siniestro: 401007902921, Poliza: 20016046, ID Usuario: 16
+Error en la fila 18: Duplicate entry 'NRS9203' for key 'vehiculo.pk_placas'
+Procesando fila 19: Siniestro: 401007903520, Poliza: 20098010, ID Usuario: 16
+Error en la fila 19: Duplicate entry 'MPR628A' for key 'vehiculo.pk_placas'
+Procesando fila 20: Siniestro: 401007905039, Poliza: 21131197, ID Usuario: 16
+Error en la fila 20: Duplicate entry 'LKZ019B' for key 'vehiculo.pk_placas'
+Procesando fila 21: Siniestro: 401007905059, Poliza: 20881716, ID Usuario: 16
+Error en la fila 21: Duplicate entry '792ZYE' for key 'vehiculo.pk_placas'
+Procesando fila 22: Siniestro: 401007904928, Poliza: 20008590, ID Usuario: 16
+Error en la fila 22: Duplicate entry 'ME104A4' for key 'vehiculo.pk_placas'
+Procesando fila 23: Siniestro: 401007898461, Poliza: 21013895, ID Usuario: 16
+Error en la fila 23: Duplicate entry 'NMS8445' for key 'vehiculo.pk_placas'
+Procesando fila 24: Siniestro: 401007902717, Poliza: 23105300, ID Usuario: 16
+Error en la fila 24: Duplicate entry 'MPZ680A' for key 'vehiculo.pk_placas'
+Procesando fila 25: Siniestro: 401007906705, Poliza: 21102012, ID Usuario: 16
+Error en la fila 25: Duplicate entry 'NUX657A' for key 'vehiculo.pk_placas'
+Procesando fila 26: Siniestro: 401007906829, Poliza: 21007866, ID Usuario: 16
+Error en la fila 26: Duplicate entry '640UJJ' for key 'vehiculo.pk_placas'
+Procesando fila 27: Siniestro: 401007893070, Poliza: 21205786, ID Usuario: 16
+Error en la fila 27: Duplicate entry '732TZ' for key 'vehiculo.pk_placas'
+Procesando fila 28: Siniestro: 401007869398, Poliza: 20089208, ID Usuario: 16
+Error en la fila 28: Duplicate entry 'M26APB' for key 'vehiculo.pk_placas'
+Procesando fila 29: Siniestro: 401007901916, Poliza: 20409746, ID Usuario: 16
+Error en la fila 29: Duplicate entry 'J79BCV' for key 'vehiculo.pk_placas'
+Procesando fila 30: Siniestro: 401007909522, Poliza: 20002765, ID Usuario: 16
+Error en la fila 30: Duplicate entry 'NRF1730' for key 'vehiculo.pk_placas'
+Procesando fila 1: Siniestro: 401007744698, Poliza: 22946573, ID Usuario: 16
+Procesando fila 2: Siniestro: 401007707610, Poliza: 20089306, ID Usuario: 16
+Procesando fila 3: Siniestro: 401007742743, Poliza: 20740682, ID Usuario: 16
+Procesando fila 4: Siniestro: 401007705895, Poliza: 22971269, ID Usuario: 16
+Procesando fila 5: Siniestro: 401007719158, Poliza: 20005762, ID Usuario: 16
+Procesando fila 6: Siniestro: 401007753428, Poliza: 20936515, ID Usuario: 16
+Procesando fila 7: Siniestro: 401007743747, Poliza: 20913031, ID Usuario: 16
+Procesando fila 8: Siniestro: 401007612452, Poliza: 20037103, ID Usuario: 16
+Procesando fila 9: Siniestro: 401007730690, Poliza: 21020244, ID Usuario: 16
+Error en la fila 9: Duplicate entry 'S/P' for key 'vehiculo.pk_placas'
+Procesando fila 10: Siniestro: 401007702060, Poliza: 20852043, ID Usuario: 16
+Procesando fila 11: Siniestro: 401007772809, Poliza: 36323674, ID Usuario: 16
+Procesando fila 12: Siniestro: 401007798248, Poliza: 20012335, ID Usuario: 16
+Procesando fila 13: Siniestro: 401007751211, Poliza: 20941199, ID Usuario: 16
+Procesando fila 14: Siniestro: 401007800713, Poliza: 22664270, ID Usuario: 16
+Procesando fila 15: Siniestro: 401007817862, Poliza: 20668298, ID Usuario: 16
+Procesando fila 16: Siniestro: 401007904208, Poliza: 20402342, ID Usuario: 16
+Procesando fila 17: Siniestro: 401007904147, Poliza: 20119480, ID Usuario: 16
+Procesando fila 18: Siniestro: 401007902921, Poliza: 20016046, ID Usuario: 16
+Procesando fila 19: Siniestro: 401007903520, Poliza: 20098010, ID Usuario: 16
+Procesando fila 20: Siniestro: 401007905039, Poliza: 21131197, ID Usuario: 16
+Procesando fila 21: Siniestro: 401007905059, Poliza: 20881716, ID Usuario: 16
+Procesando fila 22: Siniestro: 401007904928, Poliza: 20008590, ID Usuario: 16
+Procesando fila 23: Siniestro: 401007898461, Poliza: 21013895, ID Usuario: 16
+Procesando fila 24: Siniestro: 401007902717, Poliza: 23105300, ID Usuario: 16
+Procesando fila 25: Siniestro: 401007906705, Poliza: 21102012, ID Usuario: 16
+Procesando fila 26: Siniestro: 401007906829, Poliza: 21007866, ID Usuario: 16
+Procesando fila 27: Siniestro: 401007893070, Poliza: 21205786, ID Usuario: 16
+Procesando fila 28: Siniestro: 401007869398, Poliza: 20089208, ID Usuario: 16
+Procesando fila 29: Siniestro: 401007901916, Poliza: 20409746, ID Usuario: 16
+Procesando fila 30: Siniestro: 401007909522, Poliza: 20002765, ID Usuario: 16
+Procesando fila 1: Siniestro: 401007744698, Poliza: 22946573, ID Usuario: 16
+Procesando fila 2: Siniestro: 401007707610, Poliza: 20089306, ID Usuario: 16
+Procesando fila 3: Siniestro: 401007742743, Poliza: 20740682, ID Usuario: 16
+Procesando fila 4: Siniestro: 401007705895, Poliza: 22971269, ID Usuario: 16
+Procesando fila 5: Siniestro: 401007719158, Poliza: 20005762, ID Usuario: 16
+Procesando fila 6: Siniestro: 401007753428, Poliza: 20936515, ID Usuario: 16
+Procesando fila 7: Siniestro: 401007743747, Poliza: 20913031, ID Usuario: 16
+Procesando fila 8: Siniestro: 401007612452, Poliza: 20037103, ID Usuario: 16
+Procesando fila 9: Siniestro: 401007730690, Poliza: 21020244, ID Usuario: 16
+Procesando fila 10: Siniestro: 401007702060, Poliza: 20852043, ID Usuario: 16
+Procesando fila 11: Siniestro: 401007772809, Poliza: 36323674, ID Usuario: 16
+Procesando fila 12: Siniestro: 401007798248, Poliza: 20012335, ID Usuario: 16
+Procesando fila 13: Siniestro: 401007751211, Poliza: 20941199, ID Usuario: 16
+Procesando fila 14: Siniestro: 401007800713, Poliza: 22664270, ID Usuario: 16
+Procesando fila 15: Siniestro: 401007817862, Poliza: 20668298, ID Usuario: 16
+Procesando fila 16: Siniestro: 401007904208, Poliza: 20402342, ID Usuario: 16
+Procesando fila 17: Siniestro: 401007904147, Poliza: 20119480, ID Usuario: 16
+Procesando fila 18: Siniestro: 401007902921, Poliza: 20016046, ID Usuario: 16
+Procesando fila 19: Siniestro: 401007903520, Poliza: 20098010, ID Usuario: 16
+Procesando fila 20: Siniestro: 401007905039, Poliza: 21131197, ID Usuario: 16
+Procesando fila 21: Siniestro: 401007905059, Poliza: 20881716, ID Usuario: 16
+Procesando fila 22: Siniestro: 401007904928, Poliza: 20008590, ID Usuario: 16
+Procesando fila 23: Siniestro: 401007898461, Poliza: 21013895, ID Usuario: 16
+Procesando fila 24: Siniestro: 401007902717, Poliza: 23105300, ID Usuario: 16
+Procesando fila 25: Siniestro: 401007906705, Poliza: 21102012, ID Usuario: 16
+Procesando fila 26: Siniestro: 401007906829, Poliza: 21007866, ID Usuario: 16
+Procesando fila 27: Siniestro: 401007893070, Poliza: 21205786, ID Usuario: 16
+Procesando fila 28: Siniestro: 401007869398, Poliza: 20089208, ID Usuario: 16
+Procesando fila 29: Siniestro: 401007901916, Poliza: 20409746, ID Usuario: 16
+Procesando fila 30: Siniestro: 401007909522, Poliza: 20002765, ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+ID Usuario: 16
+Usuario válido para fk_usuario: id_usuario=16Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 412Insertando en la tabla Expediente: fecha_carga=2022-07-14, no_siniestro=401007730690, poliza=21020244, afectado=ARRIAGA GARCIA ADOLFO, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 338Insertando en la tabla Cedula: siniestro=401007730690, poliza=21020244, fk_asegurado=, fk_vehiculo=412, fk_expediente=338, fk_usuario=16ID Usuario: 16
+Usuario válido para fk_usuario: id_usuario=16Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 413Insertando en la tabla Expediente: fecha_carga=2022-07-14, no_siniestro=401007730690, poliza=21020244, afectado=ARRIAGA GARCIA ADOLFO, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 339Insertando en la tabla Cedula: siniestro=401007730690, poliza=21020244, fk_asegurado=, fk_vehiculo=413, fk_expediente=339, fk_usuario=16ID Usuario: 16
+Usuario válido para fk_usuario: id_usuario=16Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 414Insertando en la tabla Expediente: fecha_carga=2022-07-14, no_siniestro=401007730690, poliza=21020244, afectado=ARRIAGA GARCIA ADOLFO, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 340Insertando en la tabla Cedula: siniestro=401007730690, poliza=21020244, fk_asegurado=, fk_vehiculo=414, fk_expediente=340, fk_usuario=16Inserción exitosa en la tabla Cedula.ID Usuario: 16
+Usuario válido para fk_usuario: id_usuario=16Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 415Insertando en la tabla Expediente: fecha_carga=2022-03-11, no_siniestro=401007744698, poliza=22946573, afectado=BOTANAS METROPOLI SA DE CV, tipo_caso=MORAL, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 341Insertando en la tabla Cedula: siniestro=401007744698, poliza=22946573, fk_asegurado=, fk_vehiculo=415, fk_expediente=341, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 416Insertando en la tabla Expediente: fecha_carga=2022-03-18, no_siniestro=401007707610, poliza=20089306, afectado=PELLEGRINI MARTINEZ LINA, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 342Insertando en la tabla Cedula: siniestro=401007707610, poliza=20089306, fk_asegurado=, fk_vehiculo=416, fk_expediente=342, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 417Insertando en la tabla Expediente: fecha_carga=2022-06-03, no_siniestro=401007742743, poliza=20740682, afectado=CALDERON OCAÑA JOSE LUIS, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 343Insertando en la tabla Cedula: siniestro=401007742743, poliza=20740682, fk_asegurado=, fk_vehiculo=417, fk_expediente=343, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 418Insertando en la tabla Expediente: fecha_carga=2022-06-13, no_siniestro=401007705895, poliza=22971269, afectado=MARTINEZ ESTRADA ENRIQUE PARMENIDEZ, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 344Insertando en la tabla Cedula: siniestro=401007705895, poliza=22971269, fk_asegurado=, fk_vehiculo=418, fk_expediente=344, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 419Insertando en la tabla Expediente: fecha_carga=2022-06-13, no_siniestro=401007719158, poliza=20005762, afectado=HARO RIVERA GERARDO, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 345Insertando en la tabla Cedula: siniestro=401007719158, poliza=20005762, fk_asegurado=, fk_vehiculo=419, fk_expediente=345, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 420Insertando en la tabla Expediente: fecha_carga=2022-06-17, no_siniestro=401007753428, poliza=20936515, afectado=PRESTEMOS SAPI DE CV, tipo_caso=MORAL, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 346Insertando en la tabla Cedula: siniestro=401007753428, poliza=20936515, fk_asegurado=, fk_vehiculo=420, fk_expediente=346, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 421Insertando en la tabla Expediente: fecha_carga=2022-07-01, no_siniestro=401007743747, poliza=20913031, afectado=RANGEL RAMIREZ JOSE ANTONIO, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 347Insertando en la tabla Cedula: siniestro=401007743747, poliza=20913031, fk_asegurado=, fk_vehiculo=421, fk_expediente=347, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 422Insertando en la tabla Expediente: fecha_carga=2022-07-14, no_siniestro=401007612452, poliza=20037103, afectado=DUPLAN MOLINA ENRIQUE, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 348Insertando en la tabla Cedula: siniestro=401007612452, poliza=20037103, fk_asegurado=, fk_vehiculo=422, fk_expediente=348, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 423Insertando en la tabla Expediente: fecha_carga=2022-08-04, no_siniestro=401007702060, poliza=20852043, afectado=GRAHAM PACKAGING PLASTIC PRODUCTS DE MEXICO,S DERL DE CV, tipo_caso=MORAL, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 349Insertando en la tabla Cedula: siniestro=401007702060, poliza=20852043, fk_asegurado=, fk_vehiculo=423, fk_expediente=349, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 424Insertando en la tabla Expediente: fecha_carga=2022-09-07, no_siniestro=401007772809, poliza=36323674, afectado=DELGADO VERA CHRISTIAN, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 350Insertando en la tabla Cedula: siniestro=401007772809, poliza=36323674, fk_asegurado=, fk_vehiculo=424, fk_expediente=350, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 425Insertando en la tabla Expediente: fecha_carga=2023-02-05, no_siniestro=401007798248, poliza=20012335, afectado=BIO PAPPEL SCRIBE S.A. DE C.V., tipo_caso=MORAL, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 351Insertando en la tabla Cedula: siniestro=401007798248, poliza=20012335, fk_asegurado=, fk_vehiculo=425, fk_expediente=351, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 426Insertando en la tabla Expediente: fecha_carga=2023-02-13, no_siniestro=401007751211, poliza=20941199, afectado=SOFOM INBURSA S.A. DE C.V. SOFOM, E.R., GRUPO FINANCIERO INBURSA, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 352Insertando en la tabla Cedula: siniestro=401007751211, poliza=20941199, fk_asegurado=, fk_vehiculo=426, fk_expediente=352, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 427Insertando en la tabla Expediente: fecha_carga=2023-02-19, no_siniestro=401007800713, poliza=22664270, afectado=FONSECA RODRIGUEZ MARTHA, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 353Insertando en la tabla Cedula: siniestro=401007800713, poliza=22664270, fk_asegurado=, fk_vehiculo=427, fk_expediente=353, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 428Insertando en la tabla Expediente: fecha_carga=2023-06-04, no_siniestro=401007817862, poliza=20668298, afectado=HERNANDEZ CALDERON ISAAC, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 354Insertando en la tabla Cedula: siniestro=401007817862, poliza=20668298, fk_asegurado=, fk_vehiculo=428, fk_expediente=354, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 429Insertando en la tabla Expediente: fecha_carga=2024-09-29, no_siniestro=401007904208, poliza=20402342, afectado=GARCIA VAZQUEZ ZENAIDA, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 355Insertando en la tabla Cedula: siniestro=401007904208, poliza=20402342, fk_asegurado=, fk_vehiculo=429, fk_expediente=355, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 430Insertando en la tabla Expediente: fecha_carga=2024-10-01, no_siniestro=401007904147, poliza=20119480, afectado=CANO CALDERON GABRIEL ENRIQUE, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 356Insertando en la tabla Cedula: siniestro=401007904147, poliza=20119480, fk_asegurado=, fk_vehiculo=430, fk_expediente=356, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 431Insertando en la tabla Expediente: fecha_carga=2024-10-01, no_siniestro=401007902921, poliza=20016046, afectado=CRUZ MARTINEZ MAURO, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 357Insertando en la tabla Cedula: siniestro=401007902921, poliza=20016046, fk_asegurado=, fk_vehiculo=431, fk_expediente=357, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 432Insertando en la tabla Expediente: fecha_carga=2024-10-02, no_siniestro=401007903520, poliza=20098010, afectado=DOMINGUEZ PADRON FRANCISCO, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 358Insertando en la tabla Cedula: siniestro=401007903520, poliza=20098010, fk_asegurado=, fk_vehiculo=432, fk_expediente=358, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 433Insertando en la tabla Expediente: fecha_carga=2024-10-04, no_siniestro=401007905039, poliza=21131197, afectado=OLIVEROS ANGELES FRANCISCO, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 359Insertando en la tabla Cedula: siniestro=401007905039, poliza=21131197, fk_asegurado=, fk_vehiculo=433, fk_expediente=359, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 434Insertando en la tabla Expediente: fecha_carga=2024-10-04, no_siniestro=401007905059, poliza=20881716, afectado=CRUZ SOSA MARIO, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 360Insertando en la tabla Cedula: siniestro=401007905059, poliza=20881716, fk_asegurado=, fk_vehiculo=434, fk_expediente=360, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 435Insertando en la tabla Expediente: fecha_carga=2024-10-04, no_siniestro=401007904928, poliza=20008590, afectado=INTEGRA ARRENDA S.A. DE C.V. SOFOM ENR, tipo_caso=MORAL, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 361Insertando en la tabla Cedula: siniestro=401007904928, poliza=20008590, fk_asegurado=, fk_vehiculo=435, fk_expediente=361, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 436Insertando en la tabla Expediente: fecha_carga=2024-10-04, no_siniestro=401007898461, poliza=21013895, afectado=CONCENSOL SA DE CV (EMPLEADOS), tipo_caso=MORAL, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 362Insertando en la tabla Cedula: siniestro=401007898461, poliza=21013895, fk_asegurado=, fk_vehiculo=436, fk_expediente=362, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 437Insertando en la tabla Expediente: fecha_carga=2024-10-10, no_siniestro=401007902717, poliza=23105300, afectado=PEREZ ANGELES ROBERTO, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 363Insertando en la tabla Cedula: siniestro=401007902717, poliza=23105300, fk_asegurado=, fk_vehiculo=437, fk_expediente=363, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 438Insertando en la tabla Expediente: fecha_carga=2024-10-12, no_siniestro=401007906705, poliza=21102012, afectado=GUERRERO GALAN JULIA, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 364Insertando en la tabla Cedula: siniestro=401007906705, poliza=21102012, fk_asegurado=, fk_vehiculo=438, fk_expediente=364, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 439Insertando en la tabla Expediente: fecha_carga=2024-10-13, no_siniestro=401007906829, poliza=21007866, afectado=EMALLUGE SOCIEDAD ANONIMA DE CAPITAL VARIABLE, tipo_caso=MORAL, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 365Insertando en la tabla Cedula: siniestro=401007906829, poliza=21007866, fk_asegurado=, fk_vehiculo=439, fk_expediente=365, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 440Insertando en la tabla Expediente: fecha_carga=2024-10-14, no_siniestro=401007893070, poliza=21205786, afectado=SANSON SERRANO BRENDA LILIA, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 366Insertando en la tabla Cedula: siniestro=401007893070, poliza=21205786, fk_asegurado=, fk_vehiculo=440, fk_expediente=366, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 441Insertando en la tabla Expediente: fecha_carga=2024-10-14, no_siniestro=401007869398, poliza=20089208, afectado=CHAPARRO GUTIERREZ MANUEL ANTONIO, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 367Insertando en la tabla Cedula: siniestro=401007869398, poliza=20089208, fk_asegurado=, fk_vehiculo=441, fk_expediente=367, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 442Insertando en la tabla Expediente: fecha_carga=2024-10-21, no_siniestro=401007901916, poliza=20409746, afectado=CDA PROYECTOS, S.A. DE C.V., tipo_caso=MORAL, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 368Insertando en la tabla Cedula: siniestro=401007901916, poliza=20409746, fk_asegurado=, fk_vehiculo=442, fk_expediente=368, fk_usuario=16Inserción exitosa en la tabla Cedula.Inserción exitosa en Asegurado.Inserción exitosa en Vehiculo. fkVehiculo: 443Insertando en la tabla Expediente: fecha_carga=2024-10-28, no_siniestro=401007909522, poliza=20002765, afectado=ANGELES TINOCO OFELIA, tipo_caso=FISICA, cobertura=DM, fk_asegurado=, fk_usuario=16Inserción exitosa en la tabla Expediente. fkExpediente: 369Insertando en la tabla Cedula: siniestro=401007909522, poliza=20002765, fk_asegurado=, fk_vehiculo=443, fk_expediente=369, fk_usuario=16Inserción exitosa en la tabla Cedula.ID Usuario: 16
+Usuario válido para fk_usuario: id_usuario=16

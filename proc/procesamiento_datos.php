@@ -1,8 +1,21 @@
 <?php
 include 'conexion.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
+// Verificar si la conexión es exitosa
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
+echo "Conexión exitosa.";
+
 
 // Validar que los datos han sido enviados
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    // Depuración de datos enviados por el formulario
+   
 
     // Recoger los datos del formulario con validación básica
     $fecha_subida = isset($_POST['fecha_subida']) ? $_POST['fecha_subida'] : null;
@@ -19,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $datosau = isset($_POST['datosaudatex']) ? $_POST['datosaudatex'] : null;
     $marca = isset($_POST['marca']) ? $_POST['marca'] : null;
     $tipo = isset($_POST['tipo_caso']) ? $_POST['tipo_caso'] : null;
+    $modelo = isset($_POST['tipo']) ? $_POST['tipo'] : null;
     $ano = isset($_POST['ano']) ? $_POST['ano'] : null;
     $placas = isset($_POST['placas']) ? $_POST['placas'] : null;
     $no_serie = isset($_POST['no_serie']) ? $_POST['no_serie'] : null;
@@ -29,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $hr_seg = isset($_POST['hora_seguimiento']) ? $_POST['hora_seguimiento'] : null;
     $estatus = isset($_POST['estatus_seg_ed']) ? $_POST['estatus_seg_ed'] : null;
     $subestatus = isset($_POST['subestatus_seg_ed']) ? $_POST['subestatus_seg_ed'] : null;
-    $estacion = isset($_POST['estacion_seg_ed']) ? $_POST['estacion_seg_ed'] : null;
+    $estacion = isset($_POST['estacion_sed_ed']) ? $_POST['estacion_sed_ed'] : null;
     $proyecto = isset($_POST['proyecto']) ? $_POST['proyecto'] : null;
     $siniestro = isset($_POST['siniestro']) ? $_POST['siniestro'] : null;
     $fecha_sin = isset($_POST['fecha_siniestro']) ? $_POST['fecha_siniestro'] : null;
@@ -70,12 +84,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Insertar en Asegurado usando sentencias preparadas
     $stmt = $conexion->prepare("INSERT INTO Asegurado (nom_asegurado, email, tel1, tel2, contacto) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("sssss", $asegurado, $email, $tel1, $cel, $tel3);
-    if ($stmt->execute()) {
-        $fk_asegurado = $stmt->insert_id;
-    } else {
-        echo json_encode(['status' => 'error', 'message' => 'Error al insertar en Asegurado']);
+
+    if (!$stmt->execute()) {
+        echo "Error al insertar en Asegurado: " . $stmt->error;
         exit;
+    } else {
+        echo "Inserción en Asegurado exitosa.";
     }
+    $fk_asegurado = $stmt->insert_id;
 
     // Insertar en Vehículo
     $stmt = $conexion->prepare("INSERT INTO Vehiculo (marca, tipo, ano, pk_placas, pk_no_serie, fk_asegurado,color,veh_estatus,monto_ebc,pago_parcial_max) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?)");
@@ -109,31 +125,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Insertar en Cedula
     // Asigna los valores predeterminados antes de bind_param()
-    $porc_doc = 70.00;  // Asignando un valor predeterminado
-    $porc_total = 85.00; // Asignando otro valor predeterminado
-    $fk_usuario = 1;     // Asignando el valor predeterminado para fk_usuario
+    // Asignar valores predeterminados
+    $porc_doc = 00.00;  // Porcentaje de documentos
+    $porc_total = 00.00; // Porcentaje total
+    $fk_usuario = 1;     // ID del usuario predeterminado
 
-    $stmt = $conexion->prepare("INSERT INTO Cedula (
-    siniestro, poliza, marca, tipo, modelo, serie, fecha_siniestro, estacion, estatus, subestatus, porc_doc, porc_total, estado, fecha_subida, 
-    no_reporte, fecha_asignacion, asegurado, email, tel1, celular, tel3, nom_estado, fk_asegurado, fk_vehiculo, fk_expediente, fk_direccion, 
-    fk_adicionales, fk_usuario,folio,color,veh_estatus,hora_subida) 
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    // Preparar la consulta de inserción en la tabla cedula
+    // Asegúrate de que todas las variables tienen valores válidos
+    $folio = $folio ?? 'Sin folio';
+    $color = $color ?? 'Sin color';
+    $veh_estatus = $veh_estatus ?? 'Desconocido';
+    $hora_subida = $hora_subida ?? date('H:i:s'); // Hora actual si no está definida
 
-    // Bind de los parámetros con los tipos correctos
+    echo "Debugging variables:<br>";
+    echo "Folio: $folio<br>";
+    echo "Color: $color<br>";
+    echo "Vehículo Estatus: $veh_estatus<br>";
+    echo "Hora Subida: $hora_subida<br>";
+
+    $stmt = $conexion->prepare("
+    INSERT INTO Cedula (
+        siniestro, poliza, marca, tipo, modelo, serie, fecha_siniestro, estacion, 
+        estatus, subestatus, porc_doc, porc_total, estado, fecha_subida, no_reporte, 
+        fecha_asignacion, asegurado, email, tel1, celular, tel3, nom_estado, fk_asegurado, 
+        fk_vehiculo, fk_expediente, fk_direccion, fk_adicionales, fk_usuario, folio, 
+        color, veh_estatus, hora_subida
+    ) 
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+");
+
     $stmt->bind_param(
-        "sssssssssssssssssssssssssiiiiii", // Especificamos los tipos de las variables
+        "ssssssssssssssssssssssssssiiiiii",
         $siniestro,
         $poliza,
         $marca,
+        $modelo,
         $tipo,
-        $ano,
         $no_serie,
         $fecha_sin,
         $estacion,
         $estatus,
         $subestatus,
-        $porc_doc,    // Se pasa como variable
-        $porc_total,  // Se pasa como variable
+        $porc_doc,
+        $porc_total,
         $estado,
         $fecha_subida,
         $no_reporte,
@@ -149,20 +183,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fk_expediente,
         $fk_estado,
         $fk_adicionales,
-        $fk_usuario,   // Se pasa como variable
+        $fk_usuario,
         $folio,
         $color,
         $veh_estatus,
         $hora_subida
     );
 
-    // Ejecutar la consulta
     if ($stmt->execute()) {
         echo "Cédula creada correctamente.";
     } else {
         echo "Error al insertar en Cedula: " . $stmt->error;
     }
 
+    $stmt->close();
 
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Método no permitido']);

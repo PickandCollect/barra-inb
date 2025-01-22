@@ -31,7 +31,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 <body>
     <!-- Tabla -->
-    <div class="custom-table-style-main-container card shadow mb-4" style="border-radius: 20px;">
+    <div class="custom-table-style-main-container  card shadow mb-4" style="border-radius: 20px;">
         <div class="card-header py-3" style="background-color: #e0e0e0;">
             <h6 class="m-0 font-weight-bold custom-table-style-text-primary">Consulta referencias</h6>
         </div>

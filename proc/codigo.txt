@@ -1,0 +1,175 @@
+<?php
+session_start();
+
+// Configuración para mostrar errores
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Verificar sesión
+if (!isset($_SESSION['id_usuario'])) {
+    echo json_encode(['error' => 'El usuario no está autenticado. Por favor, inicie sesión.']);
+    exit;
+}
+
+$idUsuario = $_SESSION['id_usuario'];
+
+// Validar que el ID del usuario no esté vacío
+if (empty($idUsuario)) {
+    echo json_encode(['error' => 'El ID del usuario no es válido.']);
+    exit;
+}
+
+require '../vendor/autoload.php'; // PhpSpreadsheet
+require 'conexion.php'; // Archivo de conexión a la base de datos
+
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_FILES['fileInput']) || $_FILES['fileInput']['error'] !== UPLOAD_ERR_OK) {
+        echo json_encode(['error' => 'Error al subir el archivo.']);
+        exit;
+    }
+
+    $fileTmpPath = $_FILES['fileInput']['tmp_name'];
+
+    try {
+        $spreadsheet = IOFactory::load($fileTmpPath);
+        $worksheet = $spreadsheet->getActiveSheet();
+        $rows = $worksheet->toArray();
+
+        // Validar que hay datos
+        if (count($rows) <= 1) {
+            echo json_encode(['error' => 'El archivo está vacío o no tiene datos válidos.']);
+            exit;
+        }
+
+        $conexion->begin_transaction(); // Iniciar transacción
+        $errores = []; // Para registrar los errores
+
+        foreach ($rows as $index => $row) {
+            if ($index === 0) continue; // Saltar cabeceras
+
+            // Asignación y validación de datos
+            $fechaIngreso = isset($row[0]) ? date('Y-m-d', strtotime($row[0])) : null;
+            $horaIngreso = isset($row[1]) ? date('H:i:s', strtotime($row[1])) : null;
+            $marca = trim($row[5] ?? '');
+            $modelo = trim($row[6] ?? '');
+            $serie = trim($row[10] ?? '');
+            $nombreAsegurado = trim($row[14] ?? '');
+            $poliza = trim($row[12] ?? '');
+            $siniestro = trim($row[3] ?? '');
+            $placas = trim($row[9] ?? '');
+            
+            if (!$marca || !$modelo || !$serie || !$nombreAsegurado || !$poliza || !$siniestro || !$placas) {
+                $errores[] = "Faltan datos obligatorios en la fila $index.";
+                continue;
+            }
+
+            // Debugging de datos críticos
+            file_put_contents('debug_log.txt', "Procesando fila $index: Siniestro: $siniestro, Poliza: $poliza, ID Usuario: $idUsuario\n", FILE_APPEND);
+
+            try {
+                // Insertar en Asegurado
+                // Asignar valores a variables antes de pasarlas a bind_param
+                $email = $row[16] ?? '';
+                $tel1 = $row[15] ?? '';
+
+                // Insertar en Asegurado
+                $stmtAsegurado = $conexion->prepare(
+                    "INSERT INTO Asegurado (nom_asegurado, email, tel1, contacto) VALUES (?, ?, ?, ?)"
+                );
+                $stmtAsegurado->bind_param(
+                    "ssss",
+                    $nombreAsegurado,
+                    $email,
+                    $tel1,
+                    $nombreAsegurado
+                );
+                $stmtAsegurado->execute();
+                $fkAsegurado = $stmtAsegurado->insert_id;
+
+                if (!$fkAsegurado) {
+                    throw new Exception("Error al insertar en Asegurado (fila $index).");
+                }
+
+                // Insertar en Vehiculo
+                // Asignar valores a variables antes de pasarlas a bind_param
+                $ano = $row[7] ?? null;
+                $color = $row[8] ?? '';
+                $veh_estatus = $row[11] ?? '';
+                $monto_ebc = $row[17] ?? 0;
+                $pago_parcial_max = $row[19] ?? 0;
+
+                // Insertar en Vehiculo
+                $stmtVehiculo = $conexion->prepare(
+                        "INSERT INTO Vehiculo (marca, tipo, ano, pk_placas, pk_no_serie, color, veh_estatus, monto_ebc, pago_parcial_max, fk_asegurado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                    );
+                $stmtVehiculo->bind_param(
+                    "sssssssssi",
+                    $marca,
+                    $modelo,
+                    $ano,
+                    $placas,
+                    $serie,
+                    $color,
+                    $veh_estatus,
+                    $monto_ebc,
+                    $pago_parcial_max,
+                    $fkAsegurado
+                );
+                $stmtVehiculo->execute();
+                $fkVehiculo = $stmtVehiculo->insert_id;
+
+                if (!$fkVehiculo) {
+                    throw new Exception("Error al insertar en Vehiculo (fila $index).");
+                }
+
+                // Asignar valores a variables antes de pasarlas a bind_param
+                $tipo_caso = $row[13] ?? '';
+                $cobertura = $row[2] ?? '';
+
+                // Insertar en Expediente
+                $stmtExpediente = $conexion->prepare(
+                    "INSERT INTO Expediente (fecha_carga, no_siniestro, poliza, afectado, tipo_caso, cobertura, fk_asegurado, fk_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+                );
+                $stmtExpediente->bind_param(
+                    "ssssssii",
+                    $fechaIngreso,
+                    $siniestro,
+                    $poliza,
+                    $nombreAsegurado,
+                    $tipo_caso,
+                    $cobertura,
+                    $fkAsegurado,
+                    $idUsuario
+                );
+                $stmtExpediente->execute();
+                $fkExpediente = $stmtExpediente->insert_id;
+
+                if (!$fkExpediente) {
+                    throw new Exception("Error al insertar en Expediente (fila $index).");
+                }
+
+
+            } catch (Exception $e) {
+                $errores[] = "Error en la fila $index: " . $e->getMessage();
+                file_put_contents('debug_log.txt', "Error en la fila $index: " . $e->getMessage() . "\n", FILE_APPEND);
+                continue;
+            }
+        }
+
+        $conexion->commit();
+
+        echo json_encode([
+            'success' => 'Archivo procesado y datos guardados correctamente.',
+            'errores' => $errores
+        ]);
+    } catch (Exception $e) {
+        $conexion->rollback();
+        echo json_encode(['error' => 'Error al procesar el archivo: ' . $e->getMessage()]);
+        file_put_contents('debug_log.txt', "Error global: " . $e->getMessage() . "\n", FILE_APPEND);
+    }
+} else {
+    echo json_encode(['error' => 'Método no permitido.']);
+}

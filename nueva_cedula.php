@@ -378,12 +378,12 @@
                 .then(response => response.text()) // Procesamos la respuesta como texto
                 .then(data => {
                     // Mostrar un mensaje de éxito o el contenido que devuelve el PHP
-                    alert('Datos enviados correctamente: ' + data);
+                    //alert('Datos enviados correctamente: ' + data);
                 })
                 .catch(error => {
                     // Manejo de errores
                     console.error('Error al enviar los datos:', error);
-                    alert('Hubo un error al enviar los datos.');
+                    //alert('Hubo un error al enviar los datos.');
                 });
         });
     </script>
