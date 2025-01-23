@@ -1441,6 +1441,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         console.log("Datos obtenidos del asegurado:", data);
 
                         if (data.error) {
+                            console.log("error: " + data.error);
                             alert("Error al obtener los datos del asegurado: " + data.error);
                         } else {
                             actualizarCheckboxes(data);
@@ -2181,7 +2182,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             });
         </script>
 
-        <script>
+        <!--<script>
             $(document).ready(function() {
                 // Función para enviar mensaje
                 $('#send-message-btn').click(function() {
@@ -2279,7 +2280,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 // Actualizar mensajes cada 1 segundo
                 setInterval(cargarMensajesRecibidos, 1000);
             });
-        </script>
+        </script>-->
 
 
         <script>

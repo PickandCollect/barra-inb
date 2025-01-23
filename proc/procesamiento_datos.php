@@ -192,15 +192,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($stmt->execute()) {
         echo "Cédula creada correctamente.";
+        $fk_cedula = $stmt->insert_id;
     } else {
         echo "Error al insertar en Cedula: " . $stmt->error;
     }
 
+    $stmt = $conexion->prepare("
+    INSERT INTO Seguimiento (
+      fecha_seguimiento, hr_seguimiento, estatus_seguimiento, subestatus, estacion, usuario, fk_cedula
+    ) 
+    VALUES (?,?,?,?,?,?,?)");
+
+  
+    $stmt->bind_param(
+        "ssssssi",
+        $fecha_asignacion,
+        $hora_subida,
+        $estatus,
+        $subestatus,
+        $estacion,
+        $usuario,
+        $fk_cedula
+    );
+
+    if ($stmt->execute()) {
+        echo "Seguimiento creada correctamente.";
+    } else {
+        echo "Error al insertar en seguimiento: " . $stmt->error;
+    }
+
     $stmt->close();
 
-} else {
-    echo json_encode(['status' => 'error', 'message' => 'Método no permitido']);
-}
+    } else {    
+        echo json_encode(['status' => 'error', 'message' => 'Método no permitido']);
+    }
 
 // Cerrar conexión
 $conexion->close();

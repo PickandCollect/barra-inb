@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $resultCheck = $stmtCheck->get_result();
 
             if ($resultCheck->num_rows > 0) {
-                $errores[] = "Registro duplicado en la fila $index: Siniestro: $siniestro, Poliza: $poliza, Placas: $placas, Serie: $serie.";
+                $errores[] = "Registro duplicado en la fila $index: Siniestro: $siniestro, Poliza: $poliza, Serie: $serie.";
                 continue;
             }
 
@@ -145,21 +145,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             );
            
             $stmtAsegurado->bind_param("sssss", $nombreAsegurado, $correoAsegurado, $telefonoAsegurado, $nombreAsegurado, $contrasenaGenerada);
-            
-            if (!$stmtAsegurado->execute()) {
-                error_log("Error al ejecutar la consulta para Asegurado: " . $stmtAsegurado->error, 3, "debug_log.txt");
+
+            // Ejecutar la consulta
+            if ($stmtAsegurado->execute()) {
+                // Obtener el ID del último asegurado insertado
+                $fkAsegurado = $conexion->insert_id;
+
+                // Mostrar el ID del asegurado insertado
+                echo "Asegurado insertado con éxito. ID: " . $fkAsegurado;
             } else {
-                error_log("Inserción exitosa en Asegurado.", 3, "debug_log.txt");
+                // Manejar el error si la inserción falla
+                echo "Error al insertar asegurado: " . $stmtAsegurado->error;
             }
-           
-
-
-            // Insertar en la tabla vehiculo
+            // Preparar la consulta de inserción en la tabla Vehiculo
             $stmtVehiculo = $conexion->prepare(
-                "INSERT INTO Vehiculo (marca, tipo, ano, pk_placas, pk_no_serie, color, veh_estatus, monto_ebc, pago_parcial_max, fk_asegurado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-            );
+                    "INSERT INTO Vehiculo (marca, tipo, ano, pk_placas, pk_no_serie, color, veh_estatus, monto_ebc, pago_parcial_max, fk_asegurado) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                );
+
+            // Vincular los parámetros
             $stmtVehiculo->bind_param(
-                "sssssssssi",
+                "sssssssssi",  // Los tipos de datos corresponden a las columnas
                 $marca,
                 $modelo,
                 $ano,
@@ -172,18 +178,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $fkAsegurado
             );
 
-            if (!$stmtVehiculo->execute()) {
-                error_log("Error al insertar en la tabla Vehiculo: " . $stmtVehiculo->error, 3, "debug_log.txt");
-                throw new Exception("Error al insertar en Vehiculo. Ver log para más detalles.");
+            // Ejecutar la consulta
+            if ($stmtVehiculo->execute()) {
+                // Obtener el ID del vehículo insertado
+                $fkVehiculo = $conexion->insert_id;
+
+                // Mostrar el ID del vehículo insertado
+                echo "Vehículo insertado con éxito. ID del vehículo: " . $fkVehiculo;
             } else {
-                $fkVehiculo = $stmtVehiculo->insert_id;
-                error_log("Inserción exitosa en Vehiculo. fkVehiculo: $fkVehiculo", 3, "debug_log.txt");
+                // Manejar el error si la inserción falla
+                echo "Error al insertar vehículo: " . $stmtVehiculo->error;
             }
 
 
             // Insertar en la tabla expediente
             // Registro de los valores antes de la inserción en la tabla Expediente
             error_log("Insertando en la tabla Expediente: fecha_carga=$fechaIngreso, no_siniestro=$siniestro, poliza=$poliza, afectado=$nombreAsegurado, tipo_caso=$tipoPersona, cobertura=$cobertura, fk_asegurado=$fkAsegurado, fk_usuario=$idUsuario", 3, "debug_log.txt");
+
             $stmtCheckUsuario = $conexion->prepare("SELECT id_usuario FROM Usuario WHERE id_usuario = ?");
             $stmtCheckUsuario->bind_param("i", $idUsuario);
             $stmtCheckUsuario->execute();
@@ -191,12 +202,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Insertar en la tabla expediente
             $stmtExpediente = $conexion->prepare(
-                "INSERT INTO Expediente (fecha_carga, no_siniestro, poliza, afectado, tipo_caso, cobertura, fk_asegurado, fk_usuario, regimen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                "INSERT INTO Expediente (fecha_carga, no_siniestro, poliza, afectado, tipo_caso, cobertura, fk_asegurado, fk_usuario, regimen) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
             );
-            $tipo = 'COLISION';
+
+            // Asignar el valor para tipo_caso
+            $tipo = 'COLISION';  // O el valor que se requiera
 
             $stmtExpediente->bind_param(
-                "ssssssiis",
+                "ssssssiis",  // Tipos de datos para cada columna
                 $fechaIngreso,
                 $siniestro,
                 $poliza,
@@ -208,34 +222,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $tipoPersona
             );
 
-            // Ejecutar y registrar errores si ocurren
+            // Ejecutar la consulta
             if ($stmtExpediente->execute()) {
-                $fkExpediente = $stmtExpediente->insert_id;
-                error_log("Inserción exitosa en la tabla Expediente. fkExpediente: $fkExpediente", 3, "debug_log.txt");
+                // Obtener el ID del expediente insertado
+                $fkExpediente = $conexion->insert_id;
+
+                // Mostrar el ID del expediente insertado
+                echo "Expediente insertado con éxito. ID del expediente: " . $fkExpediente;
             } else {
-                error_log("Error al insertar en la tabla Expediente: " . $stmtExpediente->error . " - fk_usuario: $idUsuario", 3, "debug_log.txt");
-                throw new Exception("Error al insertar en Expediente. Ver log para más detalles.");
+                // Manejar el error si la inserción falla
+                echo "Error al insertar expediente: " . $stmtExpediente->error;
             }
 
 
-            // Insertar en la tabla cedula
-            error_log("Insertando en la tabla Cedula: siniestro=$siniestro, poliza=$poliza, fk_asegurado=$fkAsegurado, fk_vehiculo=$fkVehiculo, fk_expediente=$fkExpediente, fk_usuario=$idUsuario", 3, "debug_log.txt");
-            
+            // Preparamos la consulta para insertar en la tabla Cedula
             $stmtCedula = $conexion->prepare(
-                "INSERT INTO Cedula (siniestro, poliza, marca, tipo, modelo, serie, fecha_siniestro, estacion, estatus, subestatus, porc_doc, porc_total, estado, fecha_subida, no_reporte, fecha_asignacion, asegurado, afectado, cobertura, tel1, celular, tel3, email, datos_audatex, fk_asegurado, fk_vehiculo, fk_expediente, fk_usuario, folio, color, veh_estatus, hora_subida) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-            );
+                "INSERT INTO Cedula (
+                siniestro, poliza, marca, tipo, modelo, serie, fecha_siniestro, estacion, estatus, subestatus,
+                porc_doc, porc_total, estado, fecha_subida, no_reporte, fecha_asignacion, asegurado, cobertura,
+                tel1, celular, email,datos_audatex, nom_estado, fk_asegurado, fk_vehiculo, fk_expediente, fk_direccion,fk_usuario,
+                color, folio, veh_estatus, hora_subida
+            ) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+                    );
 
+            // Inicializamos las variables (esto es solo un ejemplo, los valores pueden venir de un formulario o base de datos)
             $estacion = 'NUEVO';
             $subestatus = 'NUEVO';
             $estatus_ced = 'ABIERTO';
-            $estado = '';
+            $estado = 'Ciudad de México';
             $datosAudatex = '';
+            $fkDireccion = 10;
             $porcDoc = 0;
             $porcTotal = 0;
-           
+            $fecha_siniestro = '0000-00-00';  // Ejemplo de valor por defecto
+            // Obtener la fecha actual en formato YYYY-MM-DD
+            $fecha_subida = date('Y-m-d');  // Fecha actual
+            $fecha_asignacion = date('Y-m-d');  // Fecha actual
+
+            // Si necesitas la fecha y hora actuales
+            $hora_subida = date('H:i:s');  // Hora actual (sin la fecha)
+
+            // Procedemos a vincular los parámetros de la consulta con las variables
             $stmtCedula->bind_param(
-                "sssssssssssddsssssssssssssiissss",
+                "ssssssssssiissssssiisssiiiiissss",  // Tipos de datos correctos para 36 columnas
                 $siniestro,
                 $poliza,
                 $marca,
@@ -249,33 +279,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $porcDoc,
                 $porcTotal,
                 $estado,
-                $fechaIngreso,
-                $folio,
-                $fechaIngreso,
+                $fecha_subida,
+                $siniestro,
+                $fecha_asignacion,
                 $nombreAsegurado,
-                $tipoPersona,
                 $cobertura,
                 $telefonoAsegurado,
                 $telefonoAsegurado,
-                $telefonoAsegurado,
                 $correoAsegurado,
-                $datosAudatex,
+                $comentariosExtra,
+                $estado,
                 $fkAsegurado,
                 $fkVehiculo,
                 $fkExpediente,
+                $fkDireccion,
                 $idUsuario,
-                $folio,
                 $color,
+                $folio,
                 $estatus,
                 $horaIngreso
-        
+
             );
 
-            // Ejecutar la consulta y registrar errores
+            // Ejecutar la consulta
             if ($stmtCedula->execute()) {
+                // Si la inserción fue exitosa, registrar el éxito en el archivo de logs
                 error_log("Inserción exitosa en la tabla Cedula.", 3, "debug_log.txt");
                 echo "Registro insertado en la tabla Cedula con éxito.";
             } else {
+                // Si hubo un error, registrar el error en el archivo de logs
                 error_log("Error al insertar en la tabla Cedula: " . $stmtCedula->error . " - fk_usuario: $idUsuario", 3, "debug_log.txt");
                 throw new Exception("Error al insertar en Cedula. Ver log para más detalles.");
             }
