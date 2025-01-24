@@ -366,23 +366,47 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                             <h6>Descripcion del archivo:</h6>
                                                         </label>
                                                         <select id="descripcion_arch" name="descripcion_arch" class="custom-form-control form-control">
-                                                            <option value="CFDI Y FACTURA ORIGINAL ENDOSADA" selected>CFDI Y FACTURA ORIGINAL ENDOSADA</option>
-                                                            <option value="FACTURA ORIGINAL ANVERSO" selected>FACTURA ORIGINAL ANVERSO</option>
-                                                            <option value="TITULO DE PROPIEDAD ORIGINAL O CERTIFICADO" selected>TITULO DE PROPIEDAD ORIGINAL O CERTIFICADO</option>
-                                                            <option value="PEDIMENTO DE IMPORTACION ORIGINAL" selected>PEDIMENTO DE IMPORTACION ORIGINAL</option>
-                                                            <option value="BAJA DE PERMISO DE INTERNACION TEMPORAL" selected>BAJA DE PERMISO DE INTERNACION TEMPORAL</option>
-                                                            <option value="ULTIMAS 5 TENENCIAS" selected>ULTIMAS 5 TENENCIAS</option>
-                                                            <option value="BAJA DE PLACAS" selected>BAJA DE PLACAS</option>
-                                                            <option value="VERIFICACION VEHICULAR" selected>VERIFICACION VEHICULAR</option>
-                                                            <option value="AVERIGUACION PREVIA" selected>AVERIGUACION PREVIA</option>
-                                                            <option value="ACREDITACION DE PROPIEDAD" selected>ACREDITACION DE PROPIEDAD</option>
-                                                            <option value="AVISO A LA PFP" selected>AVISO A LA PFP</option>
-                                                            <option value="IDENTIFICACION OFICIAL" selected>IDENTIFICACION OFICIAL</option>
-                                                            <option value="COMPROBANTE DE DOMICILIO" selected>COMPROBANTE DE DOMICILIO</option>
-                                                            <option value="ESTADO DE CUENTA BANCARIO" selected>ESTADO DE CUENTA BANCARIO</option>
-                                                            <option value="FINIQUITO FIRMADO" selected>FINIQUITO FIRMADO</option>
-                                                            <option value="FORMATO CONOCE A TU CLIENTE FIRMADO" selected>FORMATO CONOCE A TU CLIENTE FIRMADO</option>
-                                                            <option value="SITUACION FISCAL - RFCS" selected>SITUACION FISCAL - RFC</option>
+                                                            <option value="Autorización de pago por transferencia" selected>Autorización de pago por transferencia</option>
+                                                            <option value="Carta petición de indemnización" selected>Carta petición de indemnización</option>
+                                                            <option value="Factura de origen frente" selected>Factura de origen frente</option>
+                                                            <option value="Factura de origen trasero" selected>Factura de origen trasero</option>
+                                                            <option value="Factura subsecuente 1 frente" selected>Factura subsecuente 1 frente</option>
+                                                            <option value="Factura subsecuente 1 traseros" selected>Factura subsecuente 1 traseros</option>
+                                                            <option value="Factura subsecuente 2 frente" selected>Factura subsecuente 2 frente</option>
+                                                            <option value="Factura subsecuente 2 traseros" selected>Factura subsecuente 2 traseros</option>
+                                                            <option value="Factura subsecuente 3 frente" selected>Factura subsecuente 3 frente</option>
+                                                            <option value="Factura subsecuente 3 traseros" selected>Factura subsecuente 3 traseros</option>
+                                                            <option value="Carta factura vigente" selected>Carta factura vigente</option>
+                                                            <option value="Tenencia 1" selected>Tenencia 1</option>
+                                                            <option value="Comprobante de pago de tenencias o certificación 1" selected>Comprobante de pago de tenencias o certificación 1</option>
+                                                            <option value="Tenencia 2" selected>Tenencia 2</option>
+                                                            <option value="Comprobante de pago de tenencias o certificación 2" selected>Comprobante de pago de tenencias o certificación 2</option>
+                                                            <option value="Tenencia 3" selected>Tenencia 3</option>
+                                                            <option value="Comprobante de pago de tenencias o certificación 3" selected>Comprobante de pago de tenencias o certificación 3</option>
+                                                            <option value="Tenencia 2" selected>Tenencia 4</option>
+                                                            <option value="Comprobante de pago de tenencias o certificación 4" selected>Comprobante de pago de tenencias o certificación 4</option>
+                                                            <option value="Tenencia 5" selected>Tenencia 5</option>
+                                                            <option value="Comprobante de pago de tenencias o certificación 5" selected>Comprobante de pago de tenencias o certificación 5</option>
+                                                            <option value="Comprobante de verificación / Certificación de verificación" selected>Comprobante de verificación / Certificación de verificación</option>
+                                                            <option value="Baja de placas" selected>Baja de placas</option>
+                                                            <option value="Recibo de pago baja de placas" selected>Recibo de pago baja de placas</option>
+                                                            <option value="Tarjeta de circulación" selected>Tarjeta de circulación</option>
+                                                            <option value="Duplicado de llaves" selected>Duplicado de llaves</option>
+                                                            <option value="Carátula de la póliza de seguro a nombre del asegurado" selected>Carátula de la póliza de seguro a nombre del asegurado</option>
+                                                            <option value="Identificación oficial (INE, pasaporte, o cédula profesional)" selected>Identificación oficial (INE, pasaporte, o cédula profesional)</option>
+                                                            <option value="Comprobante de domicilio (No mayor a 3 meses de antigüedad)" selected>Comprobante de domicilio (No mayor a 3 meses de antigüedad)</option>
+                                                            <option value="Cedúla fiscal de RFC / Constancia de situacion fiscal" selected>Cedúla fiscal de RFC / Constancia de situacion fiscal</option>
+                                                            <option value="CURP" selected>CURP</option>
+                                                            <option value="Solicitud de expedición de CFDI" selected>Solicitud de expedición de CFDI</option>
+                                                            <option value="CFDI" selected>CFDI</option>
+                                                            <option value="Carta de aceptación para generar CFDI" selected>Carta de aceptación para generar CFDI</option>
+                                                            <option value="Denuncia de robo" selected>Denuncia de robo</option>
+                                                            <option value="Acreditación de la propiedad certificada ante el Ministerio Público" selected>Acreditación de la propiedad certificada ante el Ministerio Público</option>
+                                                            <option value="Liberación en posesión" selected>Liberación en posesión</option>
+                                                            <option value="Solicitud correpondiente al tipo de cuenta" selected>Solicitud correpondiente al tipo de cuenta</option>
+                                                            <option value="Contrato correpondiente al tipo de cuenta" selected>Contrato correpondiente al tipo de cuenta</option>
+                                                            <option value="Identificación oficial (INE, pasaporte, o cédula profesional)" selected>Identificación oficial (INE, pasaporte, o cédula profesional)</option>
+                                                            <option value="Comprobante de domicilio (No mayor a 3 meses de antigüedad)" selected>Comprobante de domicilio (No mayor a 3 meses de antigüedad)</option>
                                                         </select>
                                                         <div class="custom-form-group-editar form-group">
                                                             <label for="arch">
@@ -1426,7 +1450,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 // Función para obtener los datos del asegurado
                 async function obtenerDatosAsegurado(idAsegurado) {
                     try {
-                        console.log("Obteniendo datos para el asegurado con id:", idAsegurado);
+                        console.log("Obteniendo datos para el asegurado con id:", );
                         const response = await fetch('proc/get_doc_aseg.php', {
                             method: 'POST',
                             headers: {
@@ -1589,6 +1613,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         }
                     });
                 });
+
+
             });
         </script>
 
@@ -2151,8 +2177,6 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 let fecha_asignacion = document.getElementById("fecha_asignacion").value;
                 let fk_cedula = document.getElementById("cedula_id_ed").value; // Aquí puedes obtener la cédula
 
-
-
                 // Crear un objeto FormData para incluir los datos y el archivo
                 let formData = new FormData();
                 formData.append("operador", operador);
@@ -2295,6 +2319,91 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 });
             });
         </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Elementos del DOM
+                const btnCargaArch = document.getElementById("btnCargaArch");
+                const fileInput = document.getElementById("fileInput");
+                const fileName = document.getElementById("fileName");
+                const descripcionArch = "Autorización de pago por transferencia"; // Cambiar según la descripción deseada
+                let idAsegurado = id_asegurado; // Reemplaza con el valor dinámico o almacenado de id_asegurado
+
+                // Función para actualizar el nombre del archivo en la caja de texto
+                function updateFileName() {
+                    const file = fileInput.files[0];
+                    if (file) {
+                        fileName.value = file.name;
+                    } else {
+                        fileName.value = "No se ha seleccionado un archivo";
+                    }
+                }
+
+                // Asignar evento onchange al input de archivo
+                fileInput.addEventListener("change", updateFileName);
+
+                // Función para convertir el archivo a Base64
+                function convertToBase64(file) {
+                    return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onload = () => resolve(reader.result.split(",")[1]); // Obtener solo la parte base64
+                        reader.onerror = (error) => reject(error);
+                        reader.readAsDataURL(file);
+                    });
+                }
+
+                // Función para cargar el archivo al servidor
+                async function cargarArchivo() {
+                    const file = fileInput.files[0];
+
+                    if (!file) {
+                        alert("Por favor, selecciona un archivo.");
+                        return;
+                    }
+
+                    if (!idAsegurado) {
+                        alert("ID del asegurado no encontrado. Asegúrate de que esté definido.");
+                        return;
+                    }
+
+                    try {
+                        // Convertir el archivo a base64
+                        const archivoBase64 = await convertToBase64(file);
+
+                        // Crear el cuerpo de la solicitud
+                        const payload = {
+                            id_asegurado: idAsegurado,
+                            descripcion_arch: descripcionArch,
+                            archivo: archivoBase64,
+                        };
+
+                        // Enviar datos al servidor con fetch
+                        const response = await fetch("insert_docs.php", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(payload),
+                        });
+
+                        const data = await response.json();
+
+                        if (data.success) {
+                            alert("Archivo cargado exitosamente.");
+                        } else {
+                            alert("Error al cargar archivo: " + (data.error || "Error desconocido."));
+                        }
+                    } catch (error) {
+                        console.error("Error al cargar el archivo:", error);
+                        alert("Hubo un error al cargar el archivo.");
+                    }
+                }
+
+                // Asignar evento al botón de carga
+                btnCargaArch.addEventListener("click", cargarArchivo);
+            });
+        </script>
+
 
 
 

@@ -15,7 +15,7 @@ if ($idAsegurado === '' || !is_numeric($idAsegurado)) {
 
 // Consulta para verificar si los archivos están vacíos o tienen datos
 $sqlCheckFiles = "SELECT
-    (CASE WHEN cfdi_arch IS NOT NULL AND cfdi_arch != '' THEN TRUE ELSE FALSE END) AS cfdi,
+(CASE WHEN cfdi_arch IS NOT NULL AND cfdi_arch != '' THEN TRUE ELSE FALSE END) AS cfdi,
 (CASE WHEN fact_arch IS NOT NULL AND fact_arch != '' THEN TRUE ELSE FALSE END) AS facturas,
 (CASE WHEN titulo_propiedad_arch IS NOT NULL AND titulo_propiedad_arch != '' THEN TRUE ELSE FALSE END) AS titulo_propiedad,
 (CASE WHEN pedimento_arch IS NOT NULL AND pedimento_arch != '' THEN TRUE ELSE FALSE END) AS pedimento,
