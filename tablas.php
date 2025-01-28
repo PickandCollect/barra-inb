@@ -160,55 +160,87 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                             <div class="invisible" id="mainDocs">
                                 <div id="modal-docs">
+                                    <div class="additional-content" style="text-align: center;">
+                                        <div class="checkbox-container custom-form-section-editar custom-card-border-editar" style="height: 275px; padding: 5px; box-sizing: border-box;">
+                                            <label for="doc_reg">
+                                                <h4 style="margin: 2px 0; font-size: 16px;"><b>Documento en registro</b></h4>
+                                            </label>
+                                            <div class="custom-form-group form-group" style="margin: 0; padding: 0;">
+                                                <label for="descripcion_arch">
+                                                    <h3 style="margin: 2px 0; font-size: 16px;">Descripción del archivo:</h3>
+                                                </label>
+                                                <select id="descripcion_arch" name="descripcion_arch" class="custom-form-control form-control" style="margin: 2px 0; padding: 2px; height: 30px;">
+                                                    <option value="Autorización de pago por transferencia" selected>Autorización de pago por transferencia</option>
+                                                    <option value="Carta petición de indemnización" selected>Carta petición de indemnización</option>
+                                                    <option value="Factura de origen frente" selected>Factura de origen frente</option>
+                                                    <option value="Factura de origen trasero" selected>Factura de origen trasero</option>
+                                                    <option value="Factura subsecuente 1 frente" selected>Factura subsecuente 1 frente</option>
+                                                    <option value="Factura subsecuente 1 traseros" selected>Factura subsecuente 1 traseros</option>
+                                                    <option value="Factura subsecuente 2 frente" selected>Factura subsecuente 2 frente</option>
+                                                    <option value="Factura subsecuente 2 traseros" selected>Factura subsecuente 2 traseros</option>
+                                                    <option value="Factura subsecuente 3 frente" selected>Factura subsecuente 3 frente</option>
+                                                    <option value="Factura subsecuente 3 traseros" selected>Factura subsecuente 3 traseros</option>
+                                                    <option value="Carta factura vigente" selected>Carta factura vigente</option>
+                                                    <option value="Tenencia 1" selected>Tenencia 1</option>
+                                                    <option value="Comprobante de pago de tenencias o certificación 1" selected>Comprobante de pago de tenencias o certificación 1</option>
+                                                    <option value="Tenencia 2" selected>Tenencia 2</option>
+                                                    <option value="Comprobante de pago de tenencias o certificación 2" selected>Comprobante de pago de tenencias o certificación 2</option>
+                                                    <option value="Tenencia 3" selected>Tenencia 3</option>
+                                                    <option value="Comprobante de pago de tenencias o certificación 3" selected>Comprobante de pago de tenencias o certificación 3</option>
+                                                    <option value="Tenencia 2" selected>Tenencia 4</option>
+                                                    <option value="Comprobante de pago de tenencias o certificación 4" selected>Comprobante de pago de tenencias o certificación 4</option>
+                                                    <option value="Tenencia 5" selected>Tenencia 5</option>
+                                                    <option value="Comprobante de pago de tenencias o certificación 5" selected>Comprobante de pago de tenencias o certificación 5</option>
+                                                    <option value="Comprobante de verificación / Certificación de verificación" selected>Comprobante de verificación / Certificación de verificación</option>
+                                                    <option value="Baja de placas" selected>Baja de placas</option>
+                                                    <option value="Recibo de pago baja de placas" selected>Recibo de pago baja de placas</option>
+                                                    <option value="Tarjeta de circulación" selected>Tarjeta de circulación</option>
+                                                    <option value="Duplicado de llaves" selected>Duplicado de llaves</option>
+                                                    <option value="Carátula de la póliza de seguro a nombre del asegurado" selected>Carátula de la póliza de seguro a nombre del asegurado</option>
+                                                    <option value="Identificación oficial (INE, pasaporte, o cédula profesional)" selected>Identificación oficial (INE, pasaporte, o cédula profesional)</option>
+                                                    <option value="Comprobante de domicilio (No mayor a 3 meses de antigüedad)" selected>Comprobante de domicilio (No mayor a 3 meses de antigüedad)</option>
+                                                    <option value="Cedúla fiscal de RFC / Constancia de situacion fiscal" selected>Cedúla fiscal de RFC / Constancia de situacion fiscal</option>
+                                                    <option value="CURP" selected>CURP</option>
+                                                    <option value="Solicitud de expedición de CFDI" selected>Solicitud de expedición de CFDI</option>
+                                                    <option value="CFDI" selected>CFDI</option>
+                                                    <option value="Carta de aceptación para generar CFDI" selected>Carta de aceptación para generar CFDI</option>
+                                                    <option value="Denuncia de robo" selected>Denuncia de robo</option>
+                                                    <option value="Acreditación de la propiedad certificada ante el Ministerio Público" selected>Acreditación de la propiedad certificada ante el Ministerio Público</option>
+                                                    <option value="Liberación en posesión" selected>Liberación en posesión</option>
+                                                    <option value="Solicitud correpondiente al tipo de cuenta" selected>Solicitud correpondiente al tipo de cuenta</option>
+                                                    <option value="Contrato correpondiente al tipo de cuenta" selected>Contrato correpondiente al tipo de cuenta</option>
+                                                    <option value="Identificación oficial (INE, pasaporte, o cédula profesional)" selected>Identificación oficial (INE, pasaporte, o cédula profesional)</option>
+                                                    <option value="Comprobante de domicilio (No mayor a 3 meses de antigüedad)" selected>Comprobante de domicilio (No mayor a 3 meses de antigüedad)</option>
+                                                </select>
+                                            </div>
+                                            <div class="custom-form-group-editar form-group" style="margin: 0; padding: 0;">
+                                                <label for="arch">
+                                                    <h3 style="margin: 2px 0; font-size: 16px;">Selecciona archivo:</h3>
+                                                    <div class="file-upload" id="fileUpload" style="margin: 2px 0;">
+                                                        <label for="fileInput" class="file-label" style="margin: 0;">
+                                                            <i class="fas fa-file-upload"></i>
+                                                        </label>
+                                                        <input type="file" id="fileInput" name="arch" accept="image/*,application/pdf" style="display:none;" onchange="updateFileName()" />
+                                                        <input type="text" id="fileName" class="file-name" disabled placeholder="No se ha seleccionado un archivo" style="margin: 2px 0; font-size: 16px;" />
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <button type="button" id="btnCargaArch" class="btn custom-submit-button-editar" style="display: block; margin: 5px auto; padding: 5px 10px;">
+                                                Cargar archivo
+                                            </button>
+                                        </div>
+
+                                    </div>
                                     <!--<h3 id="docs-heading" style="cursor: pointer;">Documentación</h3>-->
                                     <div id="carouselExample" class="carousel slide custom-form-section-editar custom-card-border-editar" data-ride="carousel">
                                         <!-- Indicadores -->
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
-                                            <li data-target="#carouselExample" data-slide-to="1"></li>
-                                            <li data-target="#carouselExample" data-slide-to="2"></li>
-                                            <li data-target="#carouselExample" data-slide-to="3"></li>
+                                        <ol class="carousel-indicators" id="carouselIndicators">
+                                            <!-- Los indicadores se generarán dinámicamente -->
                                         </ol>
 
                                         <!-- Contenido del Carousel -->
-                                        <div class="carousel-inner">
-                                            <!-- Primer Item (Imagen) -->
-                                            <div class="carousel-item active">
-                                                <iframe src="https://www.pinterest.com/" width="800" height="700"></iframe>
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Etiqueta de la primera diapositiva (Imagen)</h5>
-                                                    <p>Contenido de la primera diapositiva con imagen.</p>
-                                                </div>
-                                            </div>
-
-                                            <!-- Segundo Item (PDF) -->
-                                            <div class="carousel-item">
-                                                <iframe src="https://www.pdf995.com/samples/pdf.pdf" class="d-block w-100" height="400px" allow="autoplay"></iframe>
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Etiqueta de la segunda diapositiva (PDF)</h5>
-                                                    <p>Vista previa del PDF en el carousel.</p>
-                                                </div>
-                                            </div>
-
-                                            <!-- Tercer Item (Imagen) -->
-                                            <div class="carousel-item">
-                                                <img src="https://place.dog/800/400" class="d-block w-100" alt="Imagen de un perrito">
-
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Etiqueta de la tercera diapositiva (Imagen)</h5>
-                                                    <p>Contenido de la tercera diapositiva con imagen.</p>
-                                                </div>
-                                            </div>
-
-                                            <!-- Cuarto Item (PDF) -->
-                                            <div class="carousel-item">
-                                                <iframe src="https://www.pdf995.com/samples/pdf.pdf" class="d-block w-100" height="400px" allow="autoplay"></iframe>
-
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h5>Etiqueta de la cuarta diapositiva (PDF)</h5>
-                                                    <p>Vista de otro archivo PDF en el carousel.</p>
-                                                </div>
-                                            </div>
+                                        <div class="carousel-inner" id="carouselItems">
+                                            <!-- Los items del carrusel se generarán dinámicamente -->
                                         </div>
 
                                         <!-- Controles -->
@@ -221,13 +253,14 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             <span class="sr-only">Siguiente</span>
                                         </a>
                                     </div>
+
                                     <div class="" id="collapseDocs" class="collapse show card-body">
                                         <div class=" checkbox-container-wrapper ">
                                             <!-- Columna izquierda -->
 
                                             <div class=" checkbox-container custom-form-section-editar custom-card-border-editar">
                                                 <label for="doc_reg">
-                                                    <h6>Documento en registro:</h6>
+                                                    <h4><b>Documento en registro</b></h4>
                                                 </label>
                                                 <label>
                                                     <input type="checkbox" id="checkPagoTrans" checked disabled><b>Autorización de pago por transferencia</b>
@@ -356,83 +389,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                             </div>
 
                                             <!-- Columna derecha (puedes agregar contenido adicional aquí) -->
-                                            <div class="additional-content">
-                                                <div class=" checkbox-container custom-form-section-editar custom-card-border-editar">
-                                                    <label for="doc_reg">
-                                                        <h6>Documento en registro:</h6>
-                                                    </label>
-                                                    <div class="custom-form-group form-group">
-                                                        <label for="descripcion_arch">
-                                                            <h6>Descripcion del archivo:</h6>
-                                                        </label>
-                                                        <select id="descripcion_arch" name="descripcion_arch" class="custom-form-control form-control">
-                                                            <option value="Autorización de pago por transferencia" selected>Autorización de pago por transferencia</option>
-                                                            <option value="Carta petición de indemnización" selected>Carta petición de indemnización</option>
-                                                            <option value="Factura de origen frente" selected>Factura de origen frente</option>
-                                                            <option value="Factura de origen trasero" selected>Factura de origen trasero</option>
-                                                            <option value="Factura subsecuente 1 frente" selected>Factura subsecuente 1 frente</option>
-                                                            <option value="Factura subsecuente 1 traseros" selected>Factura subsecuente 1 traseros</option>
-                                                            <option value="Factura subsecuente 2 frente" selected>Factura subsecuente 2 frente</option>
-                                                            <option value="Factura subsecuente 2 traseros" selected>Factura subsecuente 2 traseros</option>
-                                                            <option value="Factura subsecuente 3 frente" selected>Factura subsecuente 3 frente</option>
-                                                            <option value="Factura subsecuente 3 traseros" selected>Factura subsecuente 3 traseros</option>
-                                                            <option value="Carta factura vigente" selected>Carta factura vigente</option>
-                                                            <option value="Tenencia 1" selected>Tenencia 1</option>
-                                                            <option value="Comprobante de pago de tenencias o certificación 1" selected>Comprobante de pago de tenencias o certificación 1</option>
-                                                            <option value="Tenencia 2" selected>Tenencia 2</option>
-                                                            <option value="Comprobante de pago de tenencias o certificación 2" selected>Comprobante de pago de tenencias o certificación 2</option>
-                                                            <option value="Tenencia 3" selected>Tenencia 3</option>
-                                                            <option value="Comprobante de pago de tenencias o certificación 3" selected>Comprobante de pago de tenencias o certificación 3</option>
-                                                            <option value="Tenencia 2" selected>Tenencia 4</option>
-                                                            <option value="Comprobante de pago de tenencias o certificación 4" selected>Comprobante de pago de tenencias o certificación 4</option>
-                                                            <option value="Tenencia 5" selected>Tenencia 5</option>
-                                                            <option value="Comprobante de pago de tenencias o certificación 5" selected>Comprobante de pago de tenencias o certificación 5</option>
-                                                            <option value="Comprobante de verificación / Certificación de verificación" selected>Comprobante de verificación / Certificación de verificación</option>
-                                                            <option value="Baja de placas" selected>Baja de placas</option>
-                                                            <option value="Recibo de pago baja de placas" selected>Recibo de pago baja de placas</option>
-                                                            <option value="Tarjeta de circulación" selected>Tarjeta de circulación</option>
-                                                            <option value="Duplicado de llaves" selected>Duplicado de llaves</option>
-                                                            <option value="Carátula de la póliza de seguro a nombre del asegurado" selected>Carátula de la póliza de seguro a nombre del asegurado</option>
-                                                            <option value="Identificación oficial (INE, pasaporte, o cédula profesional)" selected>Identificación oficial (INE, pasaporte, o cédula profesional)</option>
-                                                            <option value="Comprobante de domicilio (No mayor a 3 meses de antigüedad)" selected>Comprobante de domicilio (No mayor a 3 meses de antigüedad)</option>
-                                                            <option value="Cedúla fiscal de RFC / Constancia de situacion fiscal" selected>Cedúla fiscal de RFC / Constancia de situacion fiscal</option>
-                                                            <option value="CURP" selected>CURP</option>
-                                                            <option value="Solicitud de expedición de CFDI" selected>Solicitud de expedición de CFDI</option>
-                                                            <option value="CFDI" selected>CFDI</option>
-                                                            <option value="Carta de aceptación para generar CFDI" selected>Carta de aceptación para generar CFDI</option>
-                                                            <option value="Denuncia de robo" selected>Denuncia de robo</option>
-                                                            <option value="Acreditación de la propiedad certificada ante el Ministerio Público" selected>Acreditación de la propiedad certificada ante el Ministerio Público</option>
-                                                            <option value="Liberación en posesión" selected>Liberación en posesión</option>
-                                                            <option value="Solicitud correpondiente al tipo de cuenta" selected>Solicitud correpondiente al tipo de cuenta</option>
-                                                            <option value="Contrato correpondiente al tipo de cuenta" selected>Contrato correpondiente al tipo de cuenta</option>
-                                                            <option value="Identificación oficial (INE, pasaporte, o cédula profesional)" selected>Identificación oficial (INE, pasaporte, o cédula profesional)</option>
-                                                            <option value="Comprobante de domicilio (No mayor a 3 meses de antigüedad)" selected>Comprobante de domicilio (No mayor a 3 meses de antigüedad)</option>
-                                                        </select>
-                                                        <div class="custom-form-group-editar form-group">
-                                                            <label for="arch">
-                                                                <h6>Selecciona archivo:</h6>
-                                                                <!-- Archivo de carga con el ícono y el nombre del archivo -->
-                                                                <div class="file-upload" id="fileUpload">
-                                                                    <!-- Botón con ícono de archivo -->
-                                                                    <label for="fileInput" class="file-label">
-                                                                        <i class="fas fa-file-upload"></i>
-                                                                    </label>
 
-                                                                    <!-- Input de archivo (hidden para ocultar el campo estándar) -->
-                                                                    <input type="file" id="fileInput" name="arch" accept="image/*,application/pdf" style="display:none;" onchange="updateFileName()" />
-
-                                                                    <!-- Caja de texto deshabilitada para mostrar el nombre del archivo -->
-                                                                    <input type="text" id="fileName" class="file-name" disabled placeholder="No se ha seleccionado un archivo" />
-                                                                </div>
-
-                                                            </label>
-                                                        </div>
-                                                        <button type="button" id="btnCargaArch" class="btn custom-submit-button-editar" style="display: block; margin-left: auto; margin-right: auto;">
-                                                            Cargar archivo
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1441,7 +1398,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         <!--Asegurado-->
         <script>
             document.addEventListener("DOMContentLoaded", function() {
-                // Variable global para almacenar el id_asegurado
+                // Variable global para almacenar el id_asegurados
                 let globalIdAsegurado = null;
 
                 // Declarar botones de edición
@@ -1450,14 +1407,14 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 // Función para obtener los datos del asegurado
                 async function obtenerDatosAsegurado(idAsegurado) {
                     try {
-                        console.log("Obteniendo datos para el asegurado con id:", );
+                        console.log("Obteniendo datos para el asegurado con id:", globalIdAsegurado);
                         const response = await fetch('proc/get_doc_aseg.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({
-                                id_asegurado: idAsegurado
+                                id_asegurado: globalIdAsegurado
                             })
                         });
 
@@ -1478,75 +1435,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 // Función para actualizar los checkboxes basándose en los datos obtenidos
                 function actualizarCheckboxes(datos) {
-                    const checkboxes = [{
-                            id: 'checkCFDI',
-                            field: 'cfdi'
-                        },
-                        {
-                            id: 'checkFacA',
-                            field: 'facturas'
-                        },
-                        {
-                            id: 'checkTitulo',
-                            field: 'titulo_propiedad'
-                        },
-                        {
-                            id: 'checkPedimento',
-                            field: 'pedimento'
-                        },
-                        {
-                            id: 'checkBajaPermiso',
-                            field: 'baja_permiso'
-                        },
-                        {
-                            id: 'checkUltimas5Ten',
-                            field: 'tenencias'
-                        },
-                        {
-                            id: 'checkBajaPlacas',
-                            field: 'baja_placas'
-                        },
-                        {
-                            id: 'checkVerificacion',
-                            field: 'verificacion'
-                        },
-                        {
-                            id: 'checkAveriguacion',
-                            field: 'averiguacion'
-                        },
-                        {
-                            id: 'checkAcreditacion',
-                            field: 'acreditacion'
-                        },
-                        {
-                            id: 'checkAviso',
-                            field: 'aviso'
-                        },
-                        {
-                            id: 'checkINE',
-                            field: 'ine'
-                        },
-                        {
-                            id: 'checkComprobante',
-                            field: 'comprobante'
-                        },
-                        {
-                            id: 'checkEstadoCuenta',
-                            field: 'estado_cuenta'
-                        },
-                        {
-                            id: 'checkFiniquito',
-                            field: 'finiquito'
-                        },
-                        {
-                            id: 'checkFormato',
-                            field: 'formato'
-                        },
-                        {
-                            id: 'checkRFC',
-                            field: 'rfc'
-                        }
-                    ];
+                    const checkboxes = [ /* Aquí van los checkboxes, como en tu script original */ ];
 
                     checkboxes.forEach(function(checkbox) {
                         const isChecked = datos[checkbox.field];
@@ -1568,10 +1457,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         }
 
                         const data = await response.json();
-                        console.log('Datos obtenidos:', data);
+                        console.log('Datos obtenidos aseg:', data);
 
                         if (data && !data.error) {
-                            // Asignar los datos a los campos del formulario
                             document.getElementById('asegurado_ed').value = data.nom_asegurado || '';
                             document.getElementById('email_ed').value = data.email || '';
                             document.getElementById('telefono1_ed').value = data.tel1 || '';
@@ -1581,17 +1469,17 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                             document.getElementById('con_telefono1_ed').value = data.contacto_tel1 || '';
                             document.getElementById('con_telefono2_ed').value = data.contacto_tel2 || '';
 
-                            // Asignar id_asegurado al campo oculto y a la variable global
                             document.getElementById('id_asegurado').value = data.id_asegurado || '';
                             globalIdAsegurado = data.id_asegurado || '';
                             console.log('id_asegurado almacenado globalmente:', globalIdAsegurado);
 
-                            // Obtener datos adicionales del asegurado
                             await obtenerDatosAsegurado(globalIdAsegurado);
 
-                            // Actualizar los elementos del modal con el nombre y teléfono
                             document.getElementById('asegurado-nombre').textContent = data.nom_asegurado || 'Nombre no disponible';
                             document.getElementById('asegurado-telefono').textContent = data.tel1 || 'Teléfono no disponible';
+
+                            // Obtener documentos del asegurado
+                            await obtenerDocumentos(globalIdAsegurado);
                         } else {
                             console.error('Error en los datos recibidos:', data.error);
                             alert('No se encontraron datos para el asegurado.');
@@ -1599,6 +1487,103 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     } catch (error) {
                         console.error('Error al cargar los datos del asegurado:', error);
                         alert('Hubo un error al cargar los datos del asegurado.');
+                    }
+                }
+                
+                async function obtenerDocumentos(idAsegurado) {
+                    try {
+                        const response = await fetch('proc/get_doc_carrusel.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                id_asegurado: idAsegurado
+                            })
+                        });
+
+                        const data = await response.json();
+
+                        if (data.files && Object.keys(data.files).length > 0) {
+                            const carouselIndicators = document.getElementById('carouselIndicators');
+                            const carouselItems = document.getElementById('carouselItems');
+                            const noDocumentsMessage = document.getElementById('noDocumentsMessage');
+
+                            // Limpiar carrusel antes de agregar nuevos elementos
+                            carouselIndicators.innerHTML = '';
+                            carouselItems.innerHTML = '';
+
+                            // Asegúrate de ocultar el mensaje de "no documentos" si hay archivos
+                            if (noDocumentsMessage) {
+                                noDocumentsMessage.style.display = 'none';
+                            }
+
+                            // Generar los indicadores y los items del carrusel
+                            let index = 0;
+                            Object.keys(data.files).forEach((key) => {
+                                const filePath = data.files[key]; // Ruta del archivo
+                                console.log("Archivo PDF: ", filePath); // Verifica la ruta aquí
+                                const fileExtension = filePath.split('.').pop().toLowerCase(); // Obtener la extensión del archivo
+
+                                // Crear indicadores
+                                const indicator = document.createElement('li');
+                                indicator.setAttribute('data-target', '#carouselExample');
+                                indicator.setAttribute('data-slide-to', index);
+                                if (index === 0) {
+                                    indicator.classList.add('active');
+                                }
+                                carouselIndicators.appendChild(indicator);
+
+                                // Crear elementos del carrusel
+                                const carouselItem = document.createElement('div');
+                                carouselItem.classList.add('carousel-item');
+                                if (index === 0) {
+                                    carouselItem.classList.add('active');
+                                }
+
+                                // Verificar el tipo de archivo y agregarlo al carrusel
+                                let content = '';
+                                if (fileExtension === 'pdf') {
+                                    // Si es PDF, se agrega un iframe
+                                    content = `<iframe src="${filePath}" class="d-block w-100" height="1000px" allow="autoplay" frameborder="0"></iframe>`;
+                                } else if (fileExtension === 'txt') {
+                                    // Si es un archivo de texto, mostrar su contenido dentro de un contenedor
+                                    content = `<pre class="d-block w-100">${filePath}</pre>`;
+                                } else {
+                                    // Manejo de otro tipo de archivos (imágenes u otros)
+                                    content = `<img src="${filePath}" class="d-block w-100" alt="Documento del asegurado">`;
+                                }
+
+                                carouselItem.innerHTML = `
+                    ${content}
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Documento ${index + 1}</h5>
+                        <p>Vista del documento ${index + 1}</p>
+                    </div>
+                `;
+
+                                // Agregar el item al carrusel
+                                carouselItems.appendChild(carouselItem);
+                                index++;
+                            });
+                        } else {
+                            // Mostrar mensaje si no hay documentos
+                            const noDocumentsMessage = document.getElementById('noDocumentsMessage');
+                            if (noDocumentsMessage) {
+                                noDocumentsMessage.style.display = 'block';
+                                noDocumentsMessage.textContent = 'No se encontraron documentos para este asegurado.';
+                            }
+                            console.log('No se encontraron documentos para este asegurado.');
+                        }
+                    } catch (error) {
+                        console.error('Error al cargar los documentos:', error);
+
+                        // Mostrar mensaje de error
+                        const noDocumentsMessage = document.getElementById('noDocumentsMessage');
+                        if (noDocumentsMessage) {
+                            noDocumentsMessage.style.display = 'block';
+                            noDocumentsMessage.textContent = 'Hubo un error al cargar los documentos. Por favor, intente más tarde.';
+                        }
                     }
                 }
 
@@ -1614,9 +1599,85 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     });
                 });
 
+                // Script para cargar archivos
+                const btnCargaArch = document.getElementById("btnCargaArch");
+                const fileInput = document.getElementById("fileInput");
+                const fileName = document.getElementById("fileName");
+                const selectDescripcionArch = document.getElementById("descripcion_arch");
 
+                // Función para actualizar el nombre del archivo en la caja de texto
+                function updateFileName() {
+                    const file = fileInput.files[0];
+                    if (file) {
+                        fileName.value = file.name;
+                    } else {
+                        fileName.value = "No se ha seleccionado un archivo";
+                    }
+                }
+
+                // Asignar evento onchange al input de archivo
+                fileInput.addEventListener("change", updateFileName);
+
+                // Función para convertir el archivo a Base64
+                function convertToBase64(file) {
+                    return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onload = () => resolve(reader.result.split(",")[1]); // Obtener solo la parte base64
+                        reader.onerror = (error) => reject(error);
+                        reader.readAsDataURL(file);
+                    });
+                }
+
+                // Función para cargar el archivo al servidor
+                async function cargarArchivo() {
+                    const file = fileInput.files[0];
+                    const descripcionArch = selectDescripcionArch.value; // Obtener el valor seleccionado del <select>
+
+                    if (!file) {
+                        alert("Por favor, selecciona un archivo.");
+                        return;
+                    }
+
+                    if (!globalIdAsegurado) {
+                        alert("ID del asegurado no encontrado. Asegúrate de que esté definido.");
+                        return;
+                    }
+
+                    try {
+                        const archivoBase64 = await convertToBase64(file);
+
+                        const payload = {
+                            id_asegurado: globalIdAsegurado,
+                            descripcion_arch: descripcionArch, // Usar el valor dinámico del select
+                            archivo: archivoBase64,
+                        };
+
+                        const response = await fetch("proc/insert_docs.php", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(payload),
+                        });
+
+                        const data = await response.json();
+
+                        if (data.success) {
+                            alert("Archivo cargado exitosamente.");
+                        } else {
+                            alert("Error al cargar archivo: " + (data.error || "Error desconocido."));
+                        }
+                    } catch (error) {
+                        console.error("Error al cargar el archivo:", error);
+                        alert("Hubo un error al cargar el archivo.");
+                    }
+                }
+
+                // Asignar evento al botón de carga
+                btnCargaArch.addEventListener("click", cargarArchivo);
             });
         </script>
+
 
 
 
@@ -2320,89 +2381,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             });
         </script>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                // Elementos del DOM
-                const btnCargaArch = document.getElementById("btnCargaArch");
-                const fileInput = document.getElementById("fileInput");
-                const fileName = document.getElementById("fileName");
-                const descripcionArch = "Autorización de pago por transferencia"; // Cambiar según la descripción deseada
-                let idAsegurado = id_asegurado; // Reemplaza con el valor dinámico o almacenado de id_asegurado
+        <!--CARGA ARCHIVOS MANUAL-->
 
-                // Función para actualizar el nombre del archivo en la caja de texto
-                function updateFileName() {
-                    const file = fileInput.files[0];
-                    if (file) {
-                        fileName.value = file.name;
-                    } else {
-                        fileName.value = "No se ha seleccionado un archivo";
-                    }
-                }
-
-                // Asignar evento onchange al input de archivo
-                fileInput.addEventListener("change", updateFileName);
-
-                // Función para convertir el archivo a Base64
-                function convertToBase64(file) {
-                    return new Promise((resolve, reject) => {
-                        const reader = new FileReader();
-                        reader.onload = () => resolve(reader.result.split(",")[1]); // Obtener solo la parte base64
-                        reader.onerror = (error) => reject(error);
-                        reader.readAsDataURL(file);
-                    });
-                }
-
-                // Función para cargar el archivo al servidor
-                async function cargarArchivo() {
-                    const file = fileInput.files[0];
-
-                    if (!file) {
-                        alert("Por favor, selecciona un archivo.");
-                        return;
-                    }
-
-                    if (!idAsegurado) {
-                        alert("ID del asegurado no encontrado. Asegúrate de que esté definido.");
-                        return;
-                    }
-
-                    try {
-                        // Convertir el archivo a base64
-                        const archivoBase64 = await convertToBase64(file);
-
-                        // Crear el cuerpo de la solicitud
-                        const payload = {
-                            id_asegurado: idAsegurado,
-                            descripcion_arch: descripcionArch,
-                            archivo: archivoBase64,
-                        };
-
-                        // Enviar datos al servidor con fetch
-                        const response = await fetch("insert_docs.php", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify(payload),
-                        });
-
-                        const data = await response.json();
-
-                        if (data.success) {
-                            alert("Archivo cargado exitosamente.");
-                        } else {
-                            alert("Error al cargar archivo: " + (data.error || "Error desconocido."));
-                        }
-                    } catch (error) {
-                        console.error("Error al cargar el archivo:", error);
-                        alert("Hubo un error al cargar el archivo.");
-                    }
-                }
-
-                // Asignar evento al botón de carga
-                btnCargaArch.addEventListener("click", cargarArchivo);
-            });
-        </script>
 
 
 
