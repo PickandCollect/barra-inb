@@ -35,11 +35,11 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 
+
 <body id="page-top">
     <div id="wrapper">
 
-
-        <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
           
                 <div class="container-fluid">
@@ -170,6 +170,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                         <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
                             <div id="calidad-grid-container" class="calidad-grid-container">
+
                                 <!-- Fila con los tres elementos en columnas -->
 
                                 <label for="rubro_c">

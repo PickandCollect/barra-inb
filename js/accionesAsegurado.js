@@ -109,81 +109,62 @@ document.addEventListener("DOMContentLoaded", function () {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          id_asegurado: idAsegurado,
-        }),
+        body: JSON.stringify({ id_asegurado: idAsegurado }),
       });
 
       const data = await response.json();
 
+      const carouselIndicators = document.getElementById("carouselIndicators");
+      const carouselItems = document.getElementById("carouselItems");
+      const noDocumentsMessage = document.getElementById("noDocumentsMessage");
+
+      // Limpiar carrusel antes de agregar nuevos elementos
+      carouselIndicators.innerHTML = "";
+      carouselItems.innerHTML = "";
+
       if (data.files && Object.keys(data.files).length > 0) {
-        const carouselIndicators =
-          document.getElementById("carouselIndicators");
-        const carouselItems = document.getElementById("carouselItems");
-        const noDocumentsMessage =
-          document.getElementById("noDocumentsMessage");
+        if (noDocumentsMessage) noDocumentsMessage.style.display = "none";
 
-        // Limpiar carrusel antes de agregar nuevos elementos
-        carouselIndicators.innerHTML = "";
-        carouselItems.innerHTML = "";
-
-        // Asegúrate de ocultar el mensaje de "no documentos" si hay archivos
-        if (noDocumentsMessage) {
-          noDocumentsMessage.style.display = "none";
-        }
-
-        // Generar los indicadores y los items del carrusel
         let index = 0;
-        Object.keys(data.files).forEach((key) => {
-          const filePath = data.files[key]; // Ruta del archivo
-          console.log("Archivo PDF: ", filePath); // Verifica la ruta aquí
-          const fileExtension = filePath.split(".").pop().toLowerCase(); // Obtener la extensión del archivo
+        Object.entries(data.files).forEach(([key, filePath]) => {
+          console.log("Archivo encontrado:", filePath);
+          const fileExtension = filePath.split(".").pop().toLowerCase();
 
-          // Crear indicadores
+          // Crear indicador
           const indicator = document.createElement("li");
           indicator.setAttribute("data-target", "#carouselExample");
           indicator.setAttribute("data-slide-to", index);
-          if (index === 0) {
-            indicator.classList.add("active");
-          }
+          if (index === 0) indicator.classList.add("active");
           carouselIndicators.appendChild(indicator);
 
-          // Crear elementos del carrusel
+          // Crear item del carrusel
           const carouselItem = document.createElement("div");
           carouselItem.classList.add("carousel-item");
-          if (index === 0) {
-            carouselItem.classList.add("active");
-          }
+          if (index === 0) carouselItem.classList.add("active");
 
-          // Verificar el tipo de archivo y agregarlo al carrusel
           let content = "";
           if (fileExtension === "pdf") {
-            // Si es PDF, se agrega un iframe
-            content = `<iframe src="${filePath}" class="d-block w-100" height="1000px" allow="autoplay" frameborder="0"></iframe>`;
+            content = `<iframe src="${filePath}" class="d-block w-100" height="600px" allow="autoplay" frameborder="0"></iframe>`;
+          } else if (["jpg", "jpeg", "png", "gif"].includes(fileExtension)) {
+            content = `<img src="${filePath}" class="d-block w-100" alt="Documento">`;
           } else if (fileExtension === "txt") {
-            // Si es un archivo de texto, mostrar su contenido dentro de un contenedor
             content = `<pre class="d-block w-100">${filePath}</pre>`;
           } else {
-            // Manejo de otro tipo de archivos (imágenes u otros)
-            content = `<img src="${filePath}" class="d-block w-100" alt="Documento del asegurado">`;
+            content = `<p>Archivo no compatible: <a href="${filePath}" target="_blank">Descargar</a></p>`;
           }
 
           carouselItem.innerHTML = `
                     ${content}
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Documento ${index + 1}</h5>
+                        <h5>${key.replace(/_/g, " ")}</h5>
                         <p>Vista del documento ${index + 1}</p>
                     </div>
                 `;
 
-          // Agregar el item al carrusel
           carouselItems.appendChild(carouselItem);
           index++;
         });
       } else {
-        // Mostrar mensaje si no hay documentos
-        const noDocumentsMessage =
-          document.getElementById("noDocumentsMessage");
         if (noDocumentsMessage) {
           noDocumentsMessage.style.display = "block";
           noDocumentsMessage.textContent =
@@ -193,9 +174,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     } catch (error) {
       console.error("Error al cargar los documentos:", error);
-
-      // Mostrar mensaje de error
-      const noDocumentsMessage = document.getElementById("noDocumentsMessage");
       if (noDocumentsMessage) {
         noDocumentsMessage.style.display = "block";
         noDocumentsMessage.textContent =
