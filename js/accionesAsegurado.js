@@ -102,86 +102,81 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  async function obtenerDocumentos(idAsegurado) {
-    try {
-      const response = await fetch("proc/get_doc_carrusel.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id_asegurado: idAsegurado }),
-      });
+ async function obtenerDocumentos(idAsegurado) {
+   try {
+     const response = await fetch("proc/get_doc_carrusel.php", {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify({ id_asegurado: idAsegurado }),
+     });
 
-      const data = await response.json();
+     const data = await response.json();
 
-      const carouselIndicators = document.getElementById("carouselIndicators");
-      const carouselItems = document.getElementById("carouselItems");
-      const noDocumentsMessage = document.getElementById("noDocumentsMessage");
+     const carouselIndicators = document.getElementById("carouselIndicators");
+     const carouselItems = document.getElementById("carouselItems");
+     const noDocumentsMessage = document.getElementById("noDocumentsMessage");
 
-      // Limpiar carrusel antes de agregar nuevos elementos
-      carouselIndicators.innerHTML = "";
-      carouselItems.innerHTML = "";
+     // Limpiar carrusel antes de agregar nuevos elementos
+     carouselIndicators.innerHTML = "";
+     carouselItems.innerHTML = "";
 
-      if (data.files && Object.keys(data.files).length > 0) {
-        if (noDocumentsMessage) noDocumentsMessage.style.display = "none";
+     if (data.files && data.files.length > 0) {
+       if (noDocumentsMessage) noDocumentsMessage.style.display = "none";
 
-        let index = 0;
-        Object.entries(data.files).forEach(([key, filePath]) => {
-          console.log("Archivo encontrado:", filePath);
-          const fileExtension = filePath.split(".").pop().toLowerCase();
+       data.files.forEach((filePath, index) => {
+         console.log("Archivo encontrado:", filePath);
+         const fileExtension = filePath.split(".").pop().toLowerCase();
 
-          // Crear indicador
-          const indicator = document.createElement("li");
-          indicator.setAttribute("data-target", "#carouselExample");
-          indicator.setAttribute("data-slide-to", index);
-          if (index === 0) indicator.classList.add("active");
-          carouselIndicators.appendChild(indicator);
+         // Crear indicador
+         const indicator = document.createElement("li");
+         indicator.setAttribute("data-target", "#carouselExample");
+         indicator.setAttribute("data-slide-to", index);
+         if (index === 0) indicator.classList.add("active");
+         carouselIndicators.appendChild(indicator);
 
-          // Crear item del carrusel
-          const carouselItem = document.createElement("div");
-          carouselItem.classList.add("carousel-item");
-          if (index === 0) carouselItem.classList.add("active");
+         // Crear item del carrusel
+         const carouselItem = document.createElement("div");
+         carouselItem.classList.add("carousel-item");
+         if (index === 0) carouselItem.classList.add("active");
 
-          let content = "";
-          if (fileExtension === "pdf") {
-            content = `<iframe src="${filePath}" class="d-block w-100" height="600px" allow="autoplay" frameborder="0"></iframe>`;
-          } else if (["jpg", "jpeg", "png", "gif"].includes(fileExtension)) {
-            content = `<img src="${filePath}" class="d-block w-100" alt="Documento">`;
-          } else if (fileExtension === "txt") {
-            content = `<pre class="d-block w-100">${filePath}</pre>`;
-          } else {
-            content = `<p>Archivo no compatible: <a href="${filePath}" target="_blank">Descargar</a></p>`;
-          }
+         let content = "";
+         if (fileExtension === "pdf") {
+           content = `<iframe src="${filePath}" class="d-block w-100" height="600px" allow="autoplay" frameborder="0"></iframe>`;
+         } else if (["jpg", "jpeg", "png", "gif"].includes(fileExtension)) {
+           content = `<img src="${filePath}" class="d-block w-100" alt="Documento">`;
+         } else {
+           content = `<p>Archivo no compatible: <a href="${filePath}" target="_blank">Descargar</a></p>`;
+         }
 
-          carouselItem.innerHTML = `
+         carouselItem.innerHTML = `
                     ${content}
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>${key.replace(/_/g, " ")}</h5>
+                        <h5>Documento ${index + 1}</h5>
                         <p>Vista del documento ${index + 1}</p>
                     </div>
                 `;
 
-          carouselItems.appendChild(carouselItem);
-          index++;
-        });
-      } else {
-        if (noDocumentsMessage) {
-          noDocumentsMessage.style.display = "block";
-          noDocumentsMessage.textContent =
-            "No se encontraron documentos para este asegurado.";
-        }
-        console.log("No se encontraron documentos para este asegurado.");
-      }
-    } catch (error) {
-      console.error("Error al cargar los documentos:", error);
-      if (noDocumentsMessage) {
-        noDocumentsMessage.style.display = "block";
-        noDocumentsMessage.textContent =
-          "Hubo un error al cargar los documentos. Por favor, intente más tarde.";
-      }
-    }
-  }
-
+         carouselItems.appendChild(carouselItem);
+       });
+     } else {
+       if (noDocumentsMessage) {
+         noDocumentsMessage.style.display = "block";
+         noDocumentsMessage.textContent =
+           "No se encontraron documentos para este asegurado.";
+       }
+       console.log("No se encontraron documentos para este asegurado.");
+     }
+   } catch (error) {
+     console.error("Error al cargar los documentos:", error);
+     if (noDocumentsMessage) {
+       noDocumentsMessage.style.display = "block";
+       noDocumentsMessage.textContent =
+         "Hubo un error al cargar los documentos. Por favor, intente más tarde.";
+     }
+   }
+ }
   // Asignar event listeners a los botones de edición
   editButtons.forEach((button) => {
     button.addEventListener("click", function () {

@@ -13,6 +13,9 @@ if (!isset($_SESSION['rol'])) {
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
 ?>
 
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -41,9 +44,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
     <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-          
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between align-items-center mb-2">
+
                         <!-- Imagen del logo-->
                         <div class="div-circular">
                             <img src="img/logos2.gif" id="logosCalidad" class="logo-estilo">
@@ -76,7 +79,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                         <label for="nombre_c">
                                             <h6>Nombre del agente:</h6>
                                             <select id="nombre_c" name="nombre_c" class="custom-form-control">
-                                                <option value="">Selecciona</option>
+                                                <option value="" hidden>Selecciona</option>
                                                 <option value="ASEGURADO">ASEGURADO</option>
                                                 <option value="TERCERO">TERCERO</option>
                                             </select>
@@ -87,7 +90,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                         <label for="campana_c">
                                             <h6>Campaña:</h6>
                                             <select id="campana_c" name="campana_c" class="custom-form-control">
-                                                <option value="">Selecciona</option>
+                                                <option value="" hidden>Selecciona</option>
                                                 <option value="ASEGURADO">ASEGURADO</option>
                                                 <option value="TERCERO">TERCERO</option>
                                             </select>
@@ -98,7 +101,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                         <label for="supervisor_c">
                                             <h6>Supervisor:</h6>
                                             <select id="supervisor_c" name="supervisor_c" class="custom-form-control">
-                                                <option value="">Selecciona</option>
+                                                <option value="" hidden>Selecciona</option>
                                                 <option value="ASEGURADO">ASEGURADO</option>
                                                 <option value="TERCERO">TERCERO</option>
                                             </select>
@@ -109,7 +112,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                         <label for="posicion_c">
                                             <h6>Posición:</h6>
                                             <select id="posicion_c" name="posicion_c" class="custom-form-control">
-                                                <option value="">Selecciona</option>
+                                                <option value="" hidden>Selecciona</option>
                                                 <option value="ASEGURADO">ASEGURADO</option>
                                                 <option value="TERCERO">TERCERO</option>
                                             </select>
@@ -129,8 +132,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                 <option value="TERCERO">TERCERO</option>
                                             </select>
                                         </label>
-
                                     </div>
+
                                     <div class="custom-form-group-editar form-group">
                                         <label for="nombre_tercero_c">
                                             <h6>Nombre del tercero:</h6>
@@ -140,8 +143,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                 <option value="TERCERO">TERCERO</option>
                                             </select>
                                         </label>
-
                                     </div>
+
                                     <div class="custom-form-group-editar form-group">
                                         <label for="tipo_tramite_c">
                                             <h6>Tipo de tramite:</h6>
@@ -168,6 +171,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                             </div>
                         </div>
 
+                        <!-- Comienza la cedula -->
                         <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
                             <div id="calidad-grid-container" class="calidad-grid-container">
 
@@ -188,11 +192,14 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                 <label for="presentacion_c">
                                     <h6>Presentación institucional</h6>
                                 </label>
+                                <!-- agregamos un readonly para hacer estatico el valor con style directo jsjsjs en todos-->
 
-                                <input type="text" id="pon1" name="pon1" class="calidad-form-control" placeholder="">
+
+                                <input type="text" id="pon1" name="pon1" class="calidad-form-control" placeholder="" value="6" readonly style="text-align: center;">
 
                                 <select id="cumple" name="cumple" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    #ocultamos esta seleccion para el usuario
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -201,10 +208,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Despedida institucional</h6>
                                 </label>
 
-                                <input type="text" id="pon2" name="pon2" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon2" name="pon2" class="calidad-form-control" placeholder="" value="6" readonly style="text-align: center;">
 
                                 <select id="cumple1" name="cumple1" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -213,10 +220,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Identifica al receptor</h6>
                                 </label>
 
-                                <input type="text" id="pon3" name="pon3" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon3" name="pon3" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
                                 <select id="cumple2" name="cumple2" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -225,10 +232,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Sondeo y captura</h6>
                                 </label>
 
-                                <input type="text" id="pon4" name="pon4" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon4" name="pon4" class="calidad-form-control" placeholder="" value="15" readonly style="text-align: center;">
 
                                 <select id="cumple3" name="cumple3" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -238,10 +245,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Escucha activa</h6>
                                 </label>
 
-                                <input type="text" id="pon5" name="pon5" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon5" name="pon5" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                                 <select id="cumple4" name="cumple4" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -250,10 +257,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Brinda información correcta y completa</h6>
                                 </label>
 
-                                <input type="text" id="pon6" name="pon6" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon6" name="pon6" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
 
                                 <select id="cumple5" name="cumple5" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -262,10 +269,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Uso del mute y tiempos de espera</h6>
                                 </label>
 
-                                <input type="text" id="pon7" name="pon7" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon7" name="pon7" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                                 <select id="cumple6" name="cumple6" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -274,10 +281,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Manejo de objeciones</h6>
                                 </label>
 
-                                <input type="text" id="pon8" name="pon8" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon8" name="pon8" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                                 <select id="cumple7" name="cumple7" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -286,10 +293,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Realiza pregunta de cortesía</h6>
                                 </label>
 
-                                <input type="text" id="pon9" name="pon9" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon9" name="pon9" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
                                 <select id="cumple8" name="cumple8" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -298,10 +305,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Personalización</h6>
                                 </label>
 
-                                <input type="text" id="pon10" name="pon10" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon10" name="pon10" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
                                 <select id="cumple9" name="cumple9" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -310,10 +317,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Manejo del vocabulario (Muletillas, pleonasmos, guturales y Extranjerismos). Dicción.</h6>
                                 </label>
 
-                                <input type="text" id="pon11" name="pon11" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon11" name="pon11" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                                 <select id="cumple10" name="cumple10" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -322,10 +329,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Muestra control en la llamada. (Tono y ritmo de voz).</h6>
                                 </label>
 
-                                <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                                 <select id="cumple11" name="cumple11" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -334,10 +341,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Muestra cortesía y empatía</h6>
                                 </label>
 
-                                <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                                 <select id="cumple12" name="cumple12" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -346,10 +353,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Maltrato al cliente</h6>
                                 </label>
 
-                                <input type="text" id="pon14" name="pon14" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon14" name="pon14" class="calidad-form-control" placeholder="" value="0" readonly style="text-align: center;">
 
                                 <select id="cumple13" name="cumple13" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
@@ -358,77 +365,87 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                     <h6>Desprestigio institucional</h6>
                                 </label>
 
-                                <input type="text" id="pon15" name="pon15" class="calidad-form-control" placeholder="">
+                                <input type="text" id="pon15" name="pon15" class="calidad-form-control" placeholder="" value="0" readonly style="text-align: center;">
 
                                 <select id="cumple14" name="cumple14" class="calidad-form-control">
-                                    <option value="">Selecciona</option>
+                                    <option value="" hidden>Selecciona</option>
                                     <option value="SI">SI</option>
                                     <option value="NO">NO</option>
                                 </select>
                             </div>
-                            <div>
-                                <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
-                                    <button type="button" class="btn custom-submit-button-c" id="btnGC">
-                                        Guardar
-                                    </button>
-                                    <button type="button" class="btn custom-submit-button-c" id="btnLC">
-                                        Limpiar
-                                    </button>
-                                    <button type="button" class="btn custom-submit-button-c" id="btnCC">
-                                        Cedula
-                                    </button>
-                                </div>
-                                <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
-                                    <label for="desprestigio_c">
-                                        <h6>Fortalezas</h6>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </label>
-                                    <label for="desprestigio_c">
-                                        <h6>Áreas de oportunidad</h6>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </label>
-                                </div>
-                                <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
-                                    <label for="comentarios_C">
-                                        <h6>Comentarios</h6>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </label>
-                                    <label for="compromiso_c">
-                                        <h6>Compromiso</h6>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </label>
-                                </div>
-                                <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
-                                    <div class="firma-container">
-                                        <label for="firma_a_c">
-                                            <h6>Firma del asesor</h6>
-                                            <canvas id="firmaCanvas" width="300" height="200"></canvas>
-                                            <button id="limpiarCanvas1" class="btn custom-submit-button-c">Limpiar</button>
-                                            <button id="capturarCanvas1" class="btn custom-submit-button-c">Capturar</button>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
-                                    <div class="firma-container">
-                                        <label for="firma_an_c">
-                                            <h6>Firma del analista</h6>
-                                            <canvas id="firmaCanvas2" width="300" height="200"></canvas>
-                                            <button id="limpiarCanvas2" class="btn custom-submit-button-c">Limpiar</button>
-                                            <button id="capturarCanvas2" class="btn custom-submit-button-c">Capturar</button>
-                                        </label>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-
-
-
                         </div>
                     </div>
-                    
+
+                    <!-- Contenedor de botonoes G,L,C-->
+
+                    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+                        <button type="button" class="btn custom-submit-button-c" id="btnGC">
+                            Guardar
+                        </button>
+                        <button type="button" class="btn custom-submit-button-c" id="btnLC">
+                            Limpiar
+                        </button>
+                        <button type="button" class="btn custom-submit-button-c" id="btnCC">
+                            Cedula
+                        </button>
+                    </div>
+
+                    <!--CONTENEDOR DE FACC y firmas-->
+                    <div>
+                        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+                            <label for="desprestigio_c">
+                                <h6>Fortalezas</h6>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </label>
+                        </div>
+
+                        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+                            <label for="desprestigio_c">
+                                <h6>Áreas de oportunidad</h6>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </label>
+                        </div>
+
+                        <!-- Apartado de comentarios y compromiso-->
+                        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+                            <label for="comentarios_C">
+                                <h6>Comentarios</h6>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </label>
+                        </div>
+
+                        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+                            <label for="compromiso_c">
+                                <h6>Compromiso</h6>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </label>
+                        </div>
+
+                        <!-- cONTENEDOR DE FIRMAS-->
+                        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+                            <div class="firma-container">
+                                <label for="firma_a_c">
+                                    <h6>Firma del asesor</h6>
+                                    <canvas id="firmaCanvas" width="300" height="200"></canvas>
+                                    <button id="limpiarCanvas1" class="btn custom-submit-button-c">Limpiar</button>
+                                    <button id="capturarCanvas1" class="btn custom-submit-button-c">Capturar</button>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+                            <div class="firma-container">
+                                <label for="firma_an_c">
+                                    <h6>Firma del analista</h6>
+                                    <canvas id="firmaCanvas2" width="300" height="200"></canvas>
+                                    <button id="limpiarCanvas2" class="btn custom-submit-button-c">Limpiar</button>
+                                    <button id="capturarCanvas2" class="btn custom-submit-button-c">Capturar</button>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
 

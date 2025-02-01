@@ -1,4 +1,4 @@
- /* Contenedor principal que envuelve los dos divs */
+/* Contenedor principal que envuelve los dos divs */
 #container {
     display: flex; /* Esto coloca los elementos en una fila */
     justify-content: space-between; /* Espacio entre los elementos */
@@ -162,7 +162,7 @@
 }
 
 /* Estilo para el contenedor del grid */
-/* Estilo para el contenedor del grid */
+/* Estilo para el contenedor de la tabla ponderacion */
 #calidad-grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columnas */
@@ -202,15 +202,16 @@
     margin-bottom: 5px;
 }
 
-/* Estilos para los botones en fila */
+/* Estilos para los botones en fila (G, L, C)*/
 .form-section-editar {
     display: flex; /* Establece que los botones estén en una fila */
     justify-content: center; /* Alinea los botones al centro */
-    gap: 15px; /* Espacio entre los botones */
+    gap: 10px; /* Espacio entre los botones */
     width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
     box-sizing: border-box;
 }
 
+/* Styles de los botones */
 .custom-submit-button-c {
     background-color: #533392 !important;
     color: white !important;
@@ -226,10 +227,12 @@
 }
 
 .custom-submit-button-c:hover {
-    background-color: #2D2A7B !important;
+    background-color: #5d58ec !important;
     color: white !important;
 }
-/* Contenedor circular */
+
+
+/* Contenedor circular de los botones*/
 .div-circular {
     width: 100px; /* Establece el tamaño del contenedor */
     height: 100px; /* Establece el tamaño del contenedor */
@@ -254,6 +257,9 @@
 .logo-estilo:hover {
     transform: scale(1.1); /* Aumenta el tamaño al pasar el ratón */
 }
+
+
+/* Styles de las firmas*/
 .firma-container {
     text-align: center;
     margin-top: 20px;
@@ -278,5 +284,3 @@
 #limpiar:hover {
     background-color: #0056b3;
 }
-
-
