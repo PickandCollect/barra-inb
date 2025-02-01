@@ -102,55 +102,84 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
- async function obtenerDocumentos(idAsegurado) {
-   try {
-     const response = await fetch("proc/get_doc_carrusel.php", {
-       method: "POST",
-       headers: {
-         "Content-Type": "application/json",
-       },
-       body: JSON.stringify({ id_asegurado: idAsegurado }),
-     });
+async function obtenerDocumentos(idAsegurado) {
+  const noDocumentsMessage = document.getElementById("noDocumentsMessage");
 
-     const data = await response.json();
+  try {
+    const response = await fetch("proc/get_doc_carrusel.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id_asegurado: idAsegurado }),
+    });
 
-     const carouselIndicators = document.getElementById("carouselIndicators");
-     const carouselItems = document.getElementById("carouselItems");
-     const noDocumentsMessage = document.getElementById("noDocumentsMessage");
+    // Obtenemos la respuesta como texto primero
+    const textResponse = await response.text();
+    console.log("Respuesta del servidor:", textResponse);
 
-     // Limpiar carrusel antes de agregar nuevos elementos
-     carouselIndicators.innerHTML = "";
-     carouselItems.innerHTML = "";
+    let data;
+    try {
+      // Intentamos convertir la respuesta a JSON
+      data = JSON.parse(textResponse);
+    } catch (jsonError) {
+      console.error("Error al parsear JSON:", jsonError);
+      if (noDocumentsMessage) {
+        noDocumentsMessage.style.display = "block";
+        noDocumentsMessage.textContent =
+          "Error al procesar los datos del servidor. Por favor, intente más tarde.";
+      }
+      return;
+    }
 
-     if (data.files && data.files.length > 0) {
-       if (noDocumentsMessage) noDocumentsMessage.style.display = "none";
+    const carouselIndicators = document.getElementById("carouselIndicators");
+    const carouselItems = document.getElementById("carouselItems");
 
-       data.files.forEach((filePath, index) => {
-         console.log("Archivo encontrado:", filePath);
-         const fileExtension = filePath.split(".").pop().toLowerCase();
+    // Limpiar carrusel antes de agregar nuevos elementos
+    if (carouselIndicators && carouselItems) {
+      carouselIndicators.innerHTML = "";
+      carouselItems.innerHTML = "";
+    }
 
-         // Crear indicador
-         const indicator = document.createElement("li");
-         indicator.setAttribute("data-target", "#carouselExample");
-         indicator.setAttribute("data-slide-to", index);
-         if (index === 0) indicator.classList.add("active");
-         carouselIndicators.appendChild(indicator);
+    if (data.error) {
+      // Mostrar mensaje de error si el servidor responde con un error
+      if (noDocumentsMessage) {
+        noDocumentsMessage.style.display = "block";
+        noDocumentsMessage.textContent = data.error;
+      }
+      console.log(data.error);
+      return;
+    }
 
-         // Crear item del carrusel
-         const carouselItem = document.createElement("div");
-         carouselItem.classList.add("carousel-item");
-         if (index === 0) carouselItem.classList.add("active");
+    if (data.files && data.files.length > 0) {
+      if (noDocumentsMessage) noDocumentsMessage.style.display = "none";
 
-         let content = "";
-         if (fileExtension === "pdf") {
-           content = `<iframe src="${filePath}" class="d-block w-100" height="600px" allow="autoplay" frameborder="0"></iframe>`;
-         } else if (["jpg", "jpeg", "png", "gif"].includes(fileExtension)) {
-           content = `<img src="${filePath}" class="d-block w-100" alt="Documento">`;
-         } else {
-           content = `<p>Archivo no compatible: <a href="${filePath}" target="_blank">Descargar</a></p>`;
-         }
+      data.files.forEach((filePath, index) => {
+        console.log("Archivo encontrado:", filePath);
+        const fileExtension = filePath.split(".").pop().toLowerCase();
 
-         carouselItem.innerHTML = `
+        // Crear indicador
+        const indicator = document.createElement("li");
+        indicator.setAttribute("data-target", "#carouselExample");
+        indicator.setAttribute("data-slide-to", index);
+        if (index === 0) indicator.classList.add("active");
+        carouselIndicators.appendChild(indicator);
+
+        // Crear item del carrusel
+        const carouselItem = document.createElement("div");
+        carouselItem.classList.add("carousel-item");
+        if (index === 0) carouselItem.classList.add("active");
+
+        let content = "";
+        if (fileExtension === "pdf") {
+          content = `<iframe src="${filePath}" class="d-block w-100" height="600px" allow="autoplay" frameborder="0"></iframe>`;
+        } else if (["jpg", "jpeg", "png", "gif"].includes(fileExtension)) {
+          content = `<img src="${filePath}" class="d-block w-100" alt="Documento">`;
+        } else {
+          content = `<p>Archivo no compatible: <a href="${filePath}" target="_blank">Descargar</a></p>`;
+        }
+
+        carouselItem.innerHTML = `
                     ${content}
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Documento ${index + 1}</h5>
@@ -158,25 +187,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 `;
 
-         carouselItems.appendChild(carouselItem);
-       });
-     } else {
-       if (noDocumentsMessage) {
-         noDocumentsMessage.style.display = "block";
-         noDocumentsMessage.textContent =
-           "No se encontraron documentos para este asegurado.";
-       }
-       console.log("No se encontraron documentos para este asegurado.");
-     }
-   } catch (error) {
-     console.error("Error al cargar los documentos:", error);
-     if (noDocumentsMessage) {
-       noDocumentsMessage.style.display = "block";
-       noDocumentsMessage.textContent =
-         "Hubo un error al cargar los documentos. Por favor, intente más tarde.";
-     }
-   }
- }
+        carouselItems.appendChild(carouselItem);
+      });
+    } else {
+      if (noDocumentsMessage) {
+        noDocumentsMessage.style.display = "block";
+        noDocumentsMessage.textContent =
+          "No se encontraron documentos para este asegurado.";
+      }
+      console.log("No se encontraron documentos para este asegurado.");
+    }
+  } catch (error) {
+    console.error("Error al cargar los documentos:", error);
+    if (noDocumentsMessage) {
+      noDocumentsMessage.style.display = "block";
+      noDocumentsMessage.textContent =
+        "Hubo un error al cargar los documentos. Por favor, intente más tarde.";
+    }
+  }
+}
+
   // Asignar event listeners a los botones de edición
   editButtons.forEach((button) => {
     button.addEventListener("click", function () {
