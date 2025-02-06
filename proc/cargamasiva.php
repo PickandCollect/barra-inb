@@ -306,15 +306,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Si la inserción fue exitosa, registrar el éxito en el archivo de logs
                 error_log("Inserción exitosa en la tabla Cedula.", 3, "debug_log.txt");
                 echo "Registro insertado en la tabla Cedula con éxito.";
+                $fkCedula = $conexion->insert_id;
             } else {
                 // Si hubo un error, registrar el error en el archivo de logs
                 error_log("Error al insertar en la tabla Cedula: " . $stmtCedula->error . " - fk_usuario: $idUsuario", 3, "debug_log.txt");
                 throw new Exception("Error al insertar en Cedula. Ver log para más detalles.");
             }
 
-        }
+            $stmtSeguimiento = $conexion->prepare(
+            "INSERT INTO Seguimiento (
+            fecha_seguimiento, hr_seguimiento, estatus_seguimiento, subestatus, estacion, usuario, fk_cedula
+            ) 
+            VALUES (?,?,?,?,?,?,?)");
 
+            $stmtSeguimiento -> bind_param(
+                "ssssssi",
+                $fecha_asignacion,
+                $hora_subida,
+                $estacion,
+                $estatus_ced,
+                $subestatus,
+                $idUsuario,
+                $fkCedula
+            );
+
+            if ($stmtSeguimiento->execute()) {
+                echo "Seguimiento creada correctamente.";
+            } else {
+                echo "Error al insertar en seguimiento: " . $stmt->error;
+            }
+
+        }
+        
         $conexion->commit();
+        
 
         echo json_encode([
             'success' => 'Archivo procesado y datos guardados correctamente.',

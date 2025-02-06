@@ -8,45 +8,114 @@ document.addEventListener("DOMContentLoaded", function () {
   // Función para obtener los datos del asegurado
   async function obtenerDatosAsegurado(idAsegurado) {
     try {
-      console.log(
-        "Obteniendo datos para el asegurado con id:",
-        globalIdAsegurado
-      );
+      console.log("Obteniendo datos para el asegurado con id:", idAsegurado);
+
       const response = await fetch("proc/get_doc_aseg.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id_asegurado: globalIdAsegurado,
+          id_asegurado: idAsegurado,
         }),
       });
 
-      const data = await response.json();
-      console.log("Datos obtenidos del asegurado:", data);
-
-      if (data.error) {
-        console.log("error: " + data.error);
-        alert("Error al obtener los datos del asegurado: " + data.error);
-      } else {
-        actualizarCheckboxes(data);
+      // Verificar si la respuesta es exitosa
+      if (!response.ok) {
+        console.error(
+          `Error HTTP: ${response.status} - ${response.statusText}`
+        );
+        throw new Error("Error en la respuesta del servidor.");
       }
+
+      // Leer respuesta como texto
+      const textResponse = await response.text();
+      console.log("Texto de respuesta del servidor:", textResponse);
+
+      // Intentar parsear la respuesta como JSON
+      let data;
+      try {
+        data = JSON.parse(textResponse);
+      } catch (error) {
+        console.error("Error al parsear la respuesta JSON:", error);
+        throw new Error("La respuesta del servidor no es un JSON válido.");
+      }
+
+      // Verificar si el servidor devolvió un error
+      if (!data || data.error) {
+        console.error(
+          "Error recibido del servidor:",
+          data?.error || "Desconocido"
+        );
+        alert(
+          "Error al obtener los datos del asegurado: " +
+            (data?.error || "Error desconocido.")
+        );
+        return;
+      }
+
+      console.log("Datos obtenidos del asegurado:", data);
+      actualizarCheckboxes(data);
     } catch (error) {
       console.error("Error al obtener datos del asegurado:", error);
-      alert("Hubo un error al obtener los datos del asegurado.");
+      alert(
+        "Hubo un error al obtener los datos del asegurado: " + error.message
+      );
     }
   }
 
   // Función para actualizar los checkboxes basándose en los datos obtenidos
   function actualizarCheckboxes(datos) {
     const checkboxes = [
-      /* Aquí van los checkboxes, como en tu script original */
+      { id: "checkPagoTrans", field: "autorizacion_pago" },
+      { id: "checkCartaIndemnizacion", field: "carta_indemnizacion" },
+      { id: "checkFacturaOriginalFrente", field: "factura_original_frente" },
+      { id: "checkFacturaOriginalTrasero", field: "factura_original_trasero" },
+      { id: "checkFactSub1Frente", field: "factura_original_frente1" },
+      { id: "checkFactSub1Trasero", field: "factura_original_trasero1" },
+      { id: "checkFactSub2Frente", field: "factura_original_frente2" },
+      { id: "checkFactSub2Trasero", field: "factura_original_trasero2" },
+      { id: "checkFactSub3Frente", field: "factura_original_frente3" },
+      { id: "checkFactSub3Trasero", field: "factura_original_trasero3" },
+      { id: "checkCartaFactura", field: "carta_factura" },
+      { id: "checkFactura1", field: "tenencia1" },
+      { id: "checkComprobanteFact1", field: "comprobante_verificacion" },
+      { id: "checkFactura2", field: "tenencia2" },
+      { id: "checkComprobanteFact2", field: "comprobante_verificacion" },
+      { id: "checkFactura3", field: "tenencia3" },
+      { id: "checkComprobanteFact3", field: "comprobante_verificacion" },
+      { id: "checkFactura4", field: "tenencia4" },
+      { id: "checkComprobanteFact4", field: "comprobante_verificacion" },
+      { id: "checkFactura5", field: "tenencia5" },
+      { id: "checkComprobanteFact5", field: "comprobante_verificacion" },
+      { id: "checkComprobanteVerificacion", field: "comprobante_verificacion" },
+      { id: "checkBajaPlacas", field: "baja_placas" },
+      { id: "checkReciboBajaPlacas", field: "recibo_baja_placas" },
+      { id: "checkTarjetaCirculacion", field: "tarjeta_circulacion" },
+      { id: "checkDuplicadoLLaves", field: "duplicado_llaves" },
+      { id: "checkCaratulaPoliza", field: "poliza_seguro" },
+      { id: "checkIdentificacion", field: "identificacion_arch" },
+      { id: "checkComprobanteDomicilio", field: "comprobante_arch" },
+      { id: "checkRFC", field: "rfc_arch" },
+      { id: "checkCURP", field: "curp" },
+      { id: "checkSoliCFDI", field: "solicitud_cfdi" },
+      { id: "checkCFDI", field: "cfdi_arch" },
+      { id: "checkAceptacionCFDI", field: "aceptacion_cfdi" },
+      { id: "checkDenunciaRobo", field: "denuncia_robo" },
+      { id: "checkAcreditacionPropiedad", field: "acreditacion_propiedad" },
+      { id: "checkLiberacionPosesion", field: "liberacion_posesion" },
+      { id: "checkSolicitudCuenta", field: "solicitud_cuenta" },
+      { id: "checkContratoCuenta", field: "contrato_cuenta" },
+      { id: "checkIdentificacionCuenta", field: "ine_cuenta" },
+      { id: "checkComprobanteDomicilioCuenta", field: "comprobante_cuenta" },
     ];
 
+    // Iterar sobre cada checkbox y actualizar el estado
     checkboxes.forEach(function (checkbox) {
       const isChecked = datos[checkbox.field];
       const checkboxElement = document.getElementById(checkbox.id);
 
+      // Si el checkbox existe, actualizar el estado checked
       if (checkboxElement) {
         checkboxElement.checked = isChecked;
       }
@@ -102,84 +171,84 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-async function obtenerDocumentos(idAsegurado) {
-  const noDocumentsMessage = document.getElementById("noDocumentsMessage");
+  async function obtenerDocumentos(idAsegurado) {
+    const noDocumentsMessage = document.getElementById("noDocumentsMessage");
 
-  try {
-    const response = await fetch("proc/get_doc_carrusel.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id_asegurado: idAsegurado }),
-    });
-
-    // Obtenemos la respuesta como texto primero
-    const textResponse = await response.text();
-    console.log("Respuesta del servidor:", textResponse);
-
-    let data;
     try {
-      // Intentamos convertir la respuesta a JSON
-      data = JSON.parse(textResponse);
-    } catch (jsonError) {
-      console.error("Error al parsear JSON:", jsonError);
-      if (noDocumentsMessage) {
-        noDocumentsMessage.style.display = "block";
-        noDocumentsMessage.textContent =
-          "Error al procesar los datos del servidor. Por favor, intente más tarde.";
-      }
-      return;
-    }
+      const response = await fetch("proc/get_doc_carrusel.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id_asegurado: idAsegurado }),
+      });
 
-    const carouselIndicators = document.getElementById("carouselIndicators");
-    const carouselItems = document.getElementById("carouselItems");
+      // Obtenemos la respuesta como texto primero
+      const textResponse = await response.text();
+      console.log("Respuesta del servidor:", textResponse);
 
-    // Limpiar carrusel antes de agregar nuevos elementos
-    if (carouselIndicators && carouselItems) {
-      carouselIndicators.innerHTML = "";
-      carouselItems.innerHTML = "";
-    }
-
-    if (data.error) {
-      // Mostrar mensaje de error si el servidor responde con un error
-      if (noDocumentsMessage) {
-        noDocumentsMessage.style.display = "block";
-        noDocumentsMessage.textContent = data.error;
-      }
-      console.log(data.error);
-      return;
-    }
-
-    if (data.files && data.files.length > 0) {
-      if (noDocumentsMessage) noDocumentsMessage.style.display = "none";
-
-      data.files.forEach((filePath, index) => {
-        console.log("Archivo encontrado:", filePath);
-        const fileExtension = filePath.split(".").pop().toLowerCase();
-
-        // Crear indicador
-        const indicator = document.createElement("li");
-        indicator.setAttribute("data-target", "#carouselExample");
-        indicator.setAttribute("data-slide-to", index);
-        if (index === 0) indicator.classList.add("active");
-        carouselIndicators.appendChild(indicator);
-
-        // Crear item del carrusel
-        const carouselItem = document.createElement("div");
-        carouselItem.classList.add("carousel-item");
-        if (index === 0) carouselItem.classList.add("active");
-
-        let content = "";
-        if (fileExtension === "pdf") {
-          content = `<iframe src="${filePath}" class="d-block w-100" height="600px" allow="autoplay" frameborder="0"></iframe>`;
-        } else if (["jpg", "jpeg", "png", "gif"].includes(fileExtension)) {
-          content = `<img src="${filePath}" class="d-block w-100" alt="Documento">`;
-        } else {
-          content = `<p>Archivo no compatible: <a href="${filePath}" target="_blank">Descargar</a></p>`;
+      let data;
+      try {
+        // Intentamos convertir la respuesta a JSON
+        data = JSON.parse(textResponse);
+      } catch (jsonError) {
+        console.error("Error al parsear JSON:", jsonError);
+        if (noDocumentsMessage) {
+          noDocumentsMessage.style.display = "block";
+          noDocumentsMessage.textContent =
+            "Error al procesar los datos del servidor. Por favor, intente más tarde.";
         }
+        return;
+      }
 
-        carouselItem.innerHTML = `
+      const carouselIndicators = document.getElementById("carouselIndicators");
+      const carouselItems = document.getElementById("carouselItems");
+
+      // Limpiar carrusel antes de agregar nuevos elementos
+      if (carouselIndicators && carouselItems) {
+        carouselIndicators.innerHTML = "";
+        carouselItems.innerHTML = "";
+      }
+
+      if (data.error) {
+        // Mostrar mensaje de error si el servidor responde con un error
+        if (noDocumentsMessage) {
+          noDocumentsMessage.style.display = "block";
+          noDocumentsMessage.textContent = data.error;
+        }
+        console.log(data.error);
+        return;
+      }
+
+      if (data.files && data.files.length > 0) {
+        if (noDocumentsMessage) noDocumentsMessage.style.display = "none";
+
+        data.files.forEach((filePath, index) => {
+          console.log("Archivo encontrado:", filePath);
+          const fileExtension = filePath.split(".").pop().toLowerCase();
+
+          // Crear indicador
+          const indicator = document.createElement("li");
+          indicator.setAttribute("data-target", "#carouselExample");
+          indicator.setAttribute("data-slide-to", index);
+          if (index === 0) indicator.classList.add("active");
+          carouselIndicators.appendChild(indicator);
+
+          // Crear item del carrusel
+          const carouselItem = document.createElement("div");
+          carouselItem.classList.add("carousel-item");
+          if (index === 0) carouselItem.classList.add("active");
+
+          let content = "";
+          if (fileExtension === "pdf") {
+            content = `<iframe src="${filePath}" class="d-block w-100" height="600px" allow="autoplay" frameborder="0"></iframe>`;
+          } else if (["jpg", "jpeg", "png", "gif"].includes(fileExtension)) {
+            content = `<img src="${filePath}" class="d-block w-100" alt="Documento">`;
+          } else {
+            content = `<p>Archivo no compatible: <a href="${filePath}" target="_blank">Descargar</a></p>`;
+          }
+
+          carouselItem.innerHTML = `
                     ${content}
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Documento ${index + 1}</h5>
@@ -187,25 +256,25 @@ async function obtenerDocumentos(idAsegurado) {
                     </div>
                 `;
 
-        carouselItems.appendChild(carouselItem);
-      });
-    } else {
+          carouselItems.appendChild(carouselItem);
+        });
+      } else {
+        if (noDocumentsMessage) {
+          noDocumentsMessage.style.display = "block";
+          noDocumentsMessage.textContent =
+            "No se encontraron documentos para este asegurado.";
+        }
+        console.log("No se encontraron documentos para este asegurado.");
+      }
+    } catch (error) {
+      console.error("Error al cargar los documentos:", error);
       if (noDocumentsMessage) {
         noDocumentsMessage.style.display = "block";
         noDocumentsMessage.textContent =
-          "No se encontraron documentos para este asegurado.";
+          "Hubo un error al cargar los documentos. Por favor, intente más tarde.";
       }
-      console.log("No se encontraron documentos para este asegurado.");
-    }
-  } catch (error) {
-    console.error("Error al cargar los documentos:", error);
-    if (noDocumentsMessage) {
-      noDocumentsMessage.style.display = "block";
-      noDocumentsMessage.textContent =
-        "Hubo un error al cargar los documentos. Por favor, intente más tarde.";
     }
   }
-}
 
   // Asignar event listeners a los botones de edición
   editButtons.forEach((button) => {
@@ -268,7 +337,7 @@ async function obtenerDocumentos(idAsegurado) {
     formData.append("archivo", file); // Agregar el archivo
     formData.append("id_asegurado", globalIdAsegurado); // Agregar el ID del asegurado
     formData.append("descripcion_arch", descripcionArch); // Agregar la descripción
-   
+
     try {
       const response = await fetch("proc/insert_docs.php", {
         method: "POST",

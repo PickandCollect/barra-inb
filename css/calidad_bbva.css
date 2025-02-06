@@ -1,310 +1,371 @@
-/* Clase para el contenedor que será dividido en 6 columnas */
-.columnas-6 {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); /* Crea 6 columnas de igual tamaño */
-    gap: 10px; /* Espacio entre las columnas */
-    width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho disponible */
+/* Estilos específicos para el header */
+.header {
+    display: flex; /* Usa flexbox para alinear elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: space-between; /* Separa el título y el logo a los extremos */
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #f8f8f8; /* Color de fondo */
+    border-bottom: 1px solid #ddd; /* Borde inferior */
+    margin-bottom: 40px; /* Margen inferior */
 }
 
-/* Estilo para cada columna */
-.col {
-    background-color: #f0f0f0; /* Color de fondo para cada columna */
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ddd; /* Borde para cada columna */
+/* Estilos para el título dentro del header */
+.header .title {
+    font-size: 45px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    color: #54259e; /* Color del texto */
+    margin-left: 10px; /* Margen izquierdo */
 }
 
-/* Opcional: mejorar la visibilidad de las columnas en tamaños pequeños */
-@media (max-width: 768px) {
-    .columnas-6 {
-        grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas pequeñas */
-    }
+/* Estilos para el contenedor del logo */
+.header .container_logo img {
+    height: 120px; /* Altura de la imagen */
+    width: 310px; /* Ancho de la imagen */
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2)); /* Sombra para efecto visual */
+    margin-right: 50px; /* Margen derecho */
+    border-radius: 50%; /* Bordes redondeados para hacerlo circular */
 }
 
-@media (max-width: 480px) {
-    .columnas-6 {
-        grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
-    }
-}
- /* Contenedor principal que envuelve los dos divs */
+/* Contenedor principal que envuelve los dos divs */
 #container {
-    display: flex; /* Esto coloca los elementos en una fila */
+    display: flex; /* Usa flexbox para organizar los elementos en fila */
     justify-content: space-between; /* Espacio entre los elementos */
-    gap: 20px; /* Espacio entre calidad1 y calidad2 */
-    width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho disponible */
-    box-sizing: border-box;
+    gap: 20px; /* Espacio entre los elementos hijos */
+    width: 100%; /* Ocupa el 100% del ancho disponible */
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
 }
 
-/* Estilo general del contenedor calidad1 */
-#calidad1 {
-    width: 50%; /* Esto reduce el ancho del contenedor a la mitad */
-    padding-left: 0;
-    padding-right: 0;
-    box-sizing: border-box;
+/* Estilos para los contenedores calidad1 y performance */
+#calidad1, #calidad2 {
+    flex: 1; /* Cada contenedor ocupa el espacio disponible */
+    padding: 0; /* Sin padding */
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
+    min-width: 200px; /* Ancho mínimo para evitar que se hagan demasiado pequeños */
+    max-width: 100%; /* Ancho máximo para evitar desbordamientos */
 }
 
-/* Estilo general del contenedor calidad2 */
-#calidad2 {
-    width: 50%; /* Esto reduce el ancho del contenedor a la mitad */
-    padding-left: 0;
-    padding-right: 0;
-    box-sizing: border-box;
-}
+ /* Contenedor de la nota de calidad */
+    .container_nota_calidad {
+        text-align: center; /* Centrar el contenido */
+        margin: 0 auto; /* Centrar el contenedor */
+        max-width: 200px; /* Ancho máximo */
+    }
+    /* Estilo para el valor de la nota de calidad */
+    .nota-calidad-valor {
+        font-size: 3rem; /* Tamaño grande */
+        font-weight: bold; /* Texto en negrita */
+        color: black; /* Color inicial */
+        transition: color 0.5s ease-in-out; /* Transición suave para el color */
+        margin-top: 10px; /* Espacio superior */
+    }
 
-/* Estilo de la sección dentro de calidad1 y calidad2 */
+    /* Colores según el rango */
+    .nota-calidad-valor.rojo {
+        color: red;
+    }
+
+    .nota-calidad-valor.amarillo {
+        color:  #ffcc00;
+    }
+
+    .nota-calidad-valor.verde {
+        color: green;
+    }
+
+/* Estilos para la sección del formulario */
 .custom-form-section-editar {
-    background-color: #f8f9fc;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    display: grid; /* Utilizado grid para organizar los elementos internos */
-    grid-template-columns: 1fr 1fr; /* Crea dos columnas dentro de la sección */
-    gap: 10px; /* Espacio entre las columnas */
+    background-color: #f8f9fc; /* Color de fondo */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin-bottom: 20px; /* Margen inferior */
+    display: grid; /* Usa grid para organizar los elementos */
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    gap: 10px; /* Espacio entre columnas */
 }
 
-/* Estilo de cada grupo de formulario */
+/* Estilos para los grupos de formulario */
 .custom-form-group-editar {
-    display: flex;
-    flex-direction: column; /* Asegura que los campos se alineen de manera vertical */
-    align-items: flex-start; /* Alinea los campos a la izquierda */
-    margin-bottom: 15px; /* Espacio inferior entre los campos */
+    display: flex; /* Usa flexbox para organizar elementos */
+    flex-direction: column; /* Alinea elementos verticalmente */
+    align-items: flex-start; /* Alinea elementos a la izquierda */
+    margin: 0; /* Sin margen */
 }
 
-/* Estilo de los labels dentro de cada grupo */
+/* Estilos para las etiquetas dentro de los grupos de formulario */
 .custom-form-group-editar label {
-    width: 100%; /* Ajusta el ancho para que ocupe todo el contenedor */
-    margin-bottom: 5px; /* Espacio debajo del label */
-    font-weight: bold;
-    min-height: 40px;
-    line-height: 20px;
+    width: 100%; /* Ocupa el 100% del ancho */
+    margin-bottom: 5px; /* Margen inferior */
+    font-weight: bold; /* Negrita */
+    min-height: 20px; /* Altura mínima */
+    line-height: 20px; /* Altura de línea */
 }
 
-/* Estilo de los select dentro de cada grupo */
+/* Estilos para los inputs y selects dentro de los grupos de formulario */
 .custom-form-group-editar .custom-form-control {
-    width: 100%; /* El select ocupará el 100% del ancho disponible */
-    padding: 10px; /* Añade relleno para mayor visibilidad */
-    font-size: 16px; /* Ajusta el tamaño de la fuente dentro del select */
+    width: 100%; /* Ocupa el 100% del ancho */
+    padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
     border-radius: 5px; /* Bordes redondeados */
-    border: 1px solid #ccc; /* Borde del select */
-    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+    border: 1px solid #ccc; /* Borde */
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
+    color: #000000ab; /* Color del texto */
+    margin-top: 3px;
+    margin-bottom: 20px;
 }
 
-/* Estilo de los encabezados dentro de la sección */
+/* Estilos para los encabezados h6 dentro de la sección del formulario */
 .custom-form-section-editar h6 {
-    color: black;
-    margin-bottom: 1px;
-    font-weight: bold;
+    color: rgb(0, 0, 0); /* Color del texto */
+    margin-bottom: 1px; /* Margen inferior */
+    font-weight: bold; /* Negrita */
 }
 
+/* Estilos para los encabezados h3 dentro de la sección del formulario */
 .custom-form-section-editar h3 {
-    color: #2d2a7b;
-    margin-bottom: 15px;
-    font-weight: bold;
+    color: #5854e4; /* Color del texto */
+    margin-bottom: 15px; /* Margen inferior */
+    font-weight: bold; /* Negrita */
 }
 
+/* Estilos para los encabezados h2 */
 .custom-h2 {
-    color: #2d2a7b;
-    font-weight: bold;
+    color: #2d2a7b; /* Color del texto */
+    font-weight: bold; /* Negrita */
 }
 
-/* Estilo del botón de envío */
+/* Estilos para el botón de envío */
 .custom-submit-button-editar {
-    background-color: #533392 !important;
-    color: white !important;
-    font-weight: bold;
-    padding: 10px 20px !important; /* Aumentado el padding para el botón */
-    margin: 0px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 50px;
-    display: inline-block !important;
-    vertical-align: middle;
-    height: 45px; /* Aumentado el tamaño del botón */
+    background-color: #533392 !important; /* Color de fondo */
+    color: white !important; /* Color del texto */
+    font-weight: bold; /* Negrita */
+    padding: 10px 20px !important; /* Espaciado interno */
+    margin: 0; /* Sin margen */
+    font-size: 1.2em; /* Tamaño de fuente */
+    border: none; /* Sin borde */
+    border-radius: 50px; /* Bordes redondeados */
+    display: inline-block !important; /* Muestra como bloque en línea */
+    height: 45px; /* Altura */
 }
 
+/* Estilos para el botón de envío al pasar el mouse */
 .custom-submit-button-editar:hover {
-    background-color: #2D2A7B !important;
-    color: white;
+    background-color: #2D2A7B !important; /* Cambia el color de fondo */
 }
 
-/* Estilo para el contenedor con un grid de 3 columnas */
+/* Estilos para el contenedor con grid de 3 columnas */
 .custom-grid-container-ee {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    display: grid; /* Usa grid para organizar elementos */
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
+    gap: 10px; /* Espacio entre columnas */
 }
 
-/* Estilo de la tarjeta con borde */
+/* Estilos para la tarjeta con borde */
 .custom-card-border-editar {
-    background-color: #F3F3F3;
-    border-left: 5px solid #533392;
-    border-bottom: 5px solid #533392;
+    background-color: #F3F3F3; /* Color de fondo */
+    border-left: 5px solid #533392; /* Borde izquierdo */
+    border-bottom: 5px solid #533392; /* Borde inferior */
 }
 
-/* Estilo para los labels dentro de la sección del formulario */
-.custom-form-group-editar label {
-    font-weight: bold;
-    min-height: 40px; /* Ajusta el valor según la altura deseada */
-    line-height: 20px;
+/* Estilos para el contenedor de impacto */
+.container_impacto {
+    margin: 30px 0 30px 30px; /* Margen superior, inferior e izquierdo */
+    color: #2d2a7b; /* Color del texto */
+    font-weight: bold; /* Negrita */
 }
 
-/* Estilos para los contenedores flex */
+/* Estilos para contenedores flexibles */
 .d-flex {
-    display: flex;
+    display: flex; /* Usa flexbox */
 }
 
 .d-flex.flex-column {
-    flex-direction: column;
+    flex-direction: column; /* Alinea elementos verticalmente */
 }
 
 .d-flex h6 {
-    color: black;
-    margin-bottom: 1px;
-    font-weight: bold;
+    color: black; /* Color del texto */
+    margin-bottom: 1px; /* Margen inferior */
+    font-weight: bold; /* Negrita */
 }
 
 .w-50 {
-    width: 50%; /* Asegura que los campos no ocupen todo el ancho */
+    width: 50%; /* Ocupa el 50% del ancho */
 }
 
 .d-flex > .d-flex label,
 .d-flex > .d-flex input {
-    width: 100%; /* Hace que el input y label ocupen el 100% del contenedor */
-    margin-bottom: 10px; /* Espacio entre el label y el input */
+    width: 100%; /* Ocupa el 100% del ancho */
+    margin-bottom: 10px; /* Margen inferior */
 }
 
 .d-flex.justify-content-end {
-    justify-content: flex-end; /* Alinea los campos a la derecha */
+    justify-content: flex-end; /* Alinea elementos a la derecha */
 }
 
 .mb-2 {
-    margin-bottom: 15px; /* Espaciado entre los bloques */
+    margin-bottom: 15px; /* Margen inferior */
 }
 
 .d-flex > .d-flex input {
-    width: 70%; /* Ajusta el ancho del input según tu preferencia */
-    margin-bottom: 10px; /* Espacio entre el label y el input */
-    padding: 8px; /* Reduce el padding dentro del input */
-    font-size: 14px; /* Ajusta el tamaño de la fuente dentro del input */
+    width: 70%; /* Ocupa el 70% del ancho */
+    margin-bottom: 10px; /* Margen inferior */
+    padding: 8px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de fuente */
 }
 
-/* Estilo para el contenedor del grid */
-/* Estilo para el contenedor del grid */
+/* Estilos para el contenedor del grid de calidad */
+/* Asegurar que el contenedor se ajuste al contenido */
 #calidad-grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-    grid-template-rows: repeat(16, auto); /* 16 filas con tamaño automático */
-    gap: 20px; /* Espacio entre celdas */
-    padding: 10px;
-    width: 100%;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
+    gap: 10px; /* Espacio entre elementos */
+    align-items: start; /* Alinea los elementos al inicio */
+    padding: 10px; /* Espaciado interno */
+    width: 100%; /* Ocupa el 100% del ancho */
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
 }
 
-/* Estilo para las celdas dentro del grid */
-#calidad-grid-container div {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ccc; /* Opcional: agrega borde a las celdas */
-    padding: 10px; /* Opcional: espacio dentro de las celdas */
+/* Estilos para las etiquetas y elementos dentro del grid */
+#calidad-grid-container label,
+#calidad-grid-container h6 {
+    margin: 0; /* Elimina márgenes predeterminados */
+    padding: 0; /* Elimina paddings predeterminados */
+    font-weight: bold; /* Texto en negrita */
+    color: black; /* Color del texto */
 }
 
-/* Estilo para los campos del formulario */
+/* Estilos para los inputs y selects */
 .calidad-form-control {
-    width: 100%;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
+    width: 100%; /* Ocupa el 100% del ancho */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde */
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
+    font-size: 14px; /* Tamaño de fuente */
 }
 
-/* Estilo general de los grupos del formulario */
+/* Ajustes adicionales para el contenedor de impacto */
+.container_impacto {
+    margin: 30px 0 30px 30px; /* Margen superior, inferior e izquierdo */
+    color: #2d2a7b; /* Color del texto */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilos para la sección del formulario */
+.custom-form-section-editar {
+    background-color: #f8f9fc; /* Color de fondo */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+
+/* Estilos para las celdas dentro del grid */
+#calidad-grid-container div {
+    display: flex; /* Usa flexbox */
+    flex-direction: column; /* Alinea elementos verticalmente */
+    border: 1px solid #ccc; /* Borde */
+    padding: 10px; /* Espaciado interno */
+}
+
+/* Estilos para los campos del formulario */
+.calidad-form-control {
+    width: 100%; /* Ocupa el 100% del ancho */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde */
+    margin-bottom: 10px; /* Margen inferior */
+}
+
+/* Estilos para los grupos del formulario */
 .calidad-form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
+    display: flex; /* Usa flexbox */
+    flex-direction: column; /* Alinea elementos verticalmente */
+    margin-bottom: 10px; /* Margen inferior */
 }
 
-/* Estilo para los encabezados dentro de los grupos del formulario */
+/* Estilos para los encabezados dentro de los grupos del formulario */
 .calidad-form-group h6 {
-    font-size: 14px;
-    margin-bottom: 5px;
+    font-size: 14px; /* Tamaño de fuente */
+    margin-bottom: 5px; /* Margen inferior */
 }
 
-/* Estilos para los botones en fila */
+/* Estilos para la sección de botones en fila */
 .form-section-editar {
-    display: flex; /* Establece que los botones estén en una fila */
-    justify-content: center; /* Alinea los botones al centro */
-    gap: 15px; /* Espacio entre los botones */
-    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
-    box-sizing: border-box;
+    display: flex; /* Usa flexbox */
+    justify-content: center; /* Centra los elementos */
+    gap: 10px; /* Espacio entre elementos */
+    width: 100%; /* Ocupa el 100% del ancho */
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
 }
 
+/* Estilos para los botones de acción */
 .custom-submit-button-c {
-    background-color: #533392 !important;
-    color: white !important;
-    font-weight: bold !important;
-    padding: 5px 15px !important; /* Ajusta el tamaño que desees */
-    margin: 5px !important; /* Asegura de tener un margen consistente */
-    font-size: 1em !important;
-    border: none !important;
-    border-radius: 50px !important;
-    display: inline-block !important; /* Asegura que los botones estén en línea */
-    height: 45px; /* Tamaño uniforme de los botones */
-    min-width: 100px; /* Asegura que los botones tengan un tamaño mínimo */
+    background-color: #533392 !important; /* Color de fondo */
+    color: white !important; /* Color del texto */
+    font-weight: bold !important; /* Negrita */
+    padding: 5px 15px !important; /* Espaciado interno */
+    margin: 5px !important; /* Margen */
+    font-size: 1em !important; /* Tamaño de fuente */
+    border: none !important; /* Sin borde */
+    border-radius: 50px !important; /* Bordes redondeados */
+    display: inline-block !important; /* Muestra como bloque en línea */
+    height: 45px; /* Altura */
+    min-width: 100px; /* Ancho mínimo */
 }
 
+/* Estilos para los botones de acción al pasar el mouse */
 .custom-submit-button-c:hover {
-    background-color: #2D2A7B !important;
-    color: white !important;
+    background-color: #5d58ec !important; /* Cambia el color de fondo */
 }
-/* Contenedor circular */
+
+/* Estilos para el contenedor circular */
 .div-circular {
-    width: 100px; /* Establece el tamaño del contenedor */
-    height: 100px; /* Establece el tamaño del contenedor */
-    border-radius: 50%; /* Hace el contenedor circular */
-    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100px; /* Ancho */
+    height: 100px; /* Altura */
+    border-radius: 50%; /* Bordes redondeados para hacerlo circular */
+    overflow: hidden; /* Oculta el contenido que sobresale */
+    display: flex; /* Usa flexbox */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
 }
 
-/* Estilos para la imagen */
-.logo-estilo {
-    width: 100%; /* Ajusta el tamaño de la imagen al 100% del contenedor */
-    height: 100%; /* Ajusta la altura al 100% del contenedor */
-    object-fit: fill; /* Recorta la imagen y mantiene su aspecto */
-    object-position: top; /* Alinea la imagen desde la parte superior, recortando verticalmente */
-    filter: brightness(1.2); /* Aumenta el brillo de la imagen */
-    transition: transform 0.3s ease; /* Transición suave para el zoom */
-}
-
-/* Efecto de hover para la imagen */
-.logo-estilo:hover {
-    transform: scale(1.1); /* Aumenta el tamaño al pasar el ratón */
-}
+/* Estilos para el contenedor de la firma */
 .firma-container {
-    text-align: center;
-    margin-top: 20px;
+    text-align: center; /* Centra el contenido */
+    margin-top: 20px; /* Margen superior */
 }
 
-#firmaCanvas , #firmaCanvas2{
-    border: 2px solid #000; /* Agrega un borde alrededor del canvas */
-    background-color: #f1f1f1; /* Color de fondo del canvas */
-    cursor: crosshair; /* Cambia el cursor a un cruz cuando se dibuja */
+/* Estilos para el canvas de la firma */
+#firmaCanvas, #firmaCanvas2 {
+    border: 2px solid #000; /* Borde */
+    background-color: #f1f1f1; /* Color de fondo */
+    cursor: crosshair; /* Cambia el cursor al dibujar */
 }
 
+/* Estilos para el botón de limpiar firma */
 #limpiar {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    margin-top: 10px; /* Margen superior */
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #007BFF; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
 }
 
+/* Estilos para el botón de limpiar firma al pasar el mouse */
 #limpiar:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Cambia el color de fondo */
 }
 
 
+
+/* vamos a subir este bloque*/
+/* OTRSOS ESTILOS PARA SUBIR*/
+
+.container_performance{
+    text-align: center;
+}
