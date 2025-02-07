@@ -1,6 +1,7 @@
 {
     "require": {
         "phpoffice/phpspreadsheet": "^3.8",
-        "aws/aws-sdk-php": "^3.339"
+        "aws/aws-sdk-php": "^3.339",
+        "kreait/firebase-php": "^7.16"
     }
 }

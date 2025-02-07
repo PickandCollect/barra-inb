@@ -44,7 +44,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <?php include 'topbar.php'; ?>
 
                 <div class="container-fluid">
-                    <?php include 'calidad_bbva.php'; ?>
+                    <?php include 'calidad_parciales.php'; ?>
 
                 </div>
                 <?php include 'footer.php'; ?>

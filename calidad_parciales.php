@@ -133,44 +133,30 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
 
         <!-- Sección Calidad 2 (nota de calidad y performance) -->
-        <div id="calidad2" style="padding-left: 0; padding-right: 0;">
-            <div class="custom-form-section-editar custom-card-border-editar text-center">
-                <div class="container_nota_calidad" value="" placeholder="">
-                    <label for="nota_c">
-                        <h6>Nota de calidad:</h6>
-                    </label>
-                    <!-- Contenedor para el porcentaje -->
-                    <div id="nota_c" name="nota_c"></div>
+        <div class="container_notacalidad">
+            <div class="container_nota_calidad">
+                <label for="nota_c">
+                    <h4>Nota de calidad:</h4>
+                </label>
+                <!-- Contenedor para el porcentaje -->
+                <div id="nota_c" name="nota_c"></div>
+
+                <div class="container_performance">
+                    <h4>Performance:</h4>
+                    <!-- Contenedor para la imagen dinámica -->
+                    <img id="performance_img" src="" alt="performance">
                 </div>
-                <!-- Contenedor para la imagen dinámica -->
-                <div id="imagen-nota-calidad" class="imagen-nota-calidad">
-                    <img src="img/img_calidad/bien.jpeg" alt="">
-                </div>
-                
-            </div>
-            <div class="container_performance">
-                <h6>Indicador de Performance:</h6>
-            </div>
-            <!-- Contenedor para el indicador de barra -->
-            <div id="indicador-barra">
-                <div id="barra-colores"></div>
-                <div id="aguja-barra"></div>
             </div>
         </div>
     </div>
-
-    <!-- Botones de acción -->
-    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
-        <button type="button" class="btn custom-submit-button-c" id="btnGC">Guardar</button>
-        <button type="button" class="btn custom-submit-button-c" id="btnLC">Limpiar</button>
-        <button type="button" class="btn custom-submit-button-c" id="btnCC">Cedula</button>
-        <button type="button" class="btn custom-submit-button-c" id="btnEC">Enviar</button>
-    </div>
-
     <!-- Sección de Impacto Negocio -->
     <div class="container_impacto">
-        <h1>Impacto Negocio</h1>
+    <h1>Impacto Negocio</h1>
+    <div class="button-container">
+        <button type="button" class="btn custom-submit-button-c" id="btnLC">Limpiar</button>
+        <button type="button" class="btn custom-submit-button-c" id="btnEC">Enviar</button>
     </div>
+</div>
     <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
         <div id="calidad-grid-container" class="calidad-grid-container">
             <label for="rubro_c" style="margin-bottom: 30px;">
@@ -383,27 +369,95 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
     </div>
 
+    <!--CONTENEDOR DE FACC-->
+    
+        <div class="container_FA">
+            <label for="desprestigio_c">
+                <h6>Fortalezas</h6>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </label>
+            <label for="desprestigio_c">
+                <h6>Áreas de oportunidad</h6>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </label>
+        </div>
+    
+        <!-- Apartado de comentarios y compromiso-->
+        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+            <label for="comentarios_C">
+                <h6>Comentarios</h6>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </label>
+        </div>
+
+        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+            <label for="compromiso_c">
+                <h6>Compromiso</h6>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </label>
+        </div>
+    
+
+    
+        <!-- cONTENEDOR DE FIRMAS-->
+        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+            <div class="firma-container">
+                <label for="firma_a_c">
+                    <h6>Firma del asesor</h6>
+                    <canvas id="firmaCanvas" width="300" height="200"></canvas>
+                    <button id="limpiarCanvas1" class="btn custom-submit-button-c">Limpiar</button>
+                    <button id="capturarCanvas1" class="btn custom-submit-button-c">Capturar</button>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+            <div class="firma-container">
+                <label for="firma_an_c">
+                    <h6>Firma del analista</h6>
+                    <canvas id="firmaCanvas2" width="300" height="200"></canvas>
+                    <button id="limpiarCanvas2" class="btn custom-submit-button-c">Limpiar</button>
+                    <button id="capturarCanvas2" class="btn custom-submit-button-c">Capturar</button>
+                </label>
+            </div>
+        </div>
+
+
+    </div>
+
 
     <!-- SCRIPT PARA CALCULAR LOS VALORES EN PORCENTAJE-->
     <script>
-        // Función para calcular la nota de calidad y cambiar el color del valor
+        function actualizarImagen(porcentaje) {
+            let imagen = document.getElementById("performance_img");
+
+            // Verifica el rango y cambia la imagen
+            if (porcentaje >= 0 && porcentaje <= 75) {
+                imagen.src = "img/cuidado.jpg";
+            } else if (porcentaje > 75 && porcentaje <= 89) {
+                imagen.src = "img/mejora.jpg";
+            } else if (porcentaje >= 90 && porcentaje <= 100) {
+                imagen.src = "img/bien.jpg";
+            } else {
+                imagen.src = ""; // En caso de valores fuera del rango
+            }
+        }
+
         function calcularNotaCalidad() {
-            // Obtener todos los campos de ponderación y selección de "Cumple / No Cumple"
             const ponderaciones = document.querySelectorAll('input[id^="pon"]');
             const cumpleSelects = document.querySelectorAll('select[id^="cumple"]');
 
             let sumaPonderaciones = 0;
             let sumaTotalPosible = 0;
 
-            // Recorrer los campos de ponderación y selección
             ponderaciones.forEach((ponderacion, index) => {
-                const valorPonderacion = parseFloat(ponderacion.value); // Obtener el valor de ponderación
-                const cumple = cumpleSelects[index].value; // Obtener la selección de "Cumple / No Cumple"
+                const valorPonderacion = parseFloat(ponderacion.value);
+                const cumple = cumpleSelects[index].value;
 
-                sumaTotalPosible += valorPonderacion; // Sumar al total posible
+                sumaTotalPosible += valorPonderacion;
 
                 if (cumple === "SI") {
-                    sumaPonderaciones += valorPonderacion; // Sumar solo si se selecciona "SI"
+                    sumaPonderaciones += valorPonderacion;
                 }
             });
 
@@ -412,16 +466,19 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
             // Mostrar el resultado en el contenedor de la nota de calidad
             const notaCalidadValor = document.getElementById('nota_c');
-            notaCalidadValor.textContent = porcentaje.toFixed(0) + "%"; // Mostrar con 2 decimales
+            notaCalidadValor.textContent = porcentaje.toFixed(0) + "%";
 
             // Cambiar el color según el rango
             if (porcentaje >= 0 && porcentaje <= 75) {
-                notaCalidadValor.className = "nota-calidad-valor rojo"; // Rojo
+                notaCalidadValor.className = "nota-calidad-valor rojo";
             } else if (porcentaje >= 76 && porcentaje <= 89) {
-                notaCalidadValor.className = "nota-calidad-valor amarillo"; // Amarillo
+                notaCalidadValor.className = "nota-calidad-valor amarillo";
             } else if (porcentaje >= 90 && porcentaje <= 100) {
-                notaCalidadValor.className = "nota-calidad-valor verde"; // Verde
+                notaCalidadValor.className = "nota-calidad-valor verde";
             }
+
+            // Llamamos a actualizarImagen para reflejar el cambio 
+            actualizarImagen(porcentaje);
         }
 
         // Asignar la función a los eventos de cambio en los selectores
@@ -430,7 +487,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             select.addEventListener('change', calcularNotaCalidad);
         });
 
-        // Calcular la nota de calidad al cargar la página (opcional)
+        // Calcular la nota de calidad al cargar la página
         window.addEventListener('load', calcularNotaCalidad);
     </script>
 

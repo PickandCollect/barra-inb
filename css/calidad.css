@@ -19,7 +19,7 @@
 
 /* Estilos para el contenedor del logo */
 .header .container_logo img {
-    height: 120px; /* Altura de la imagen */
+    height: 160px; /* Altura de la imagen */
     width: 310px; /* Ancho de la imagen */
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2)); /* Sombra para efecto visual */
     margin-right: 50px; /* Margen derecho */
@@ -35,30 +35,55 @@
     box-sizing: border-box; /* Incluye padding y border en el ancho */
 }
 
-/* Estilos para los contenedores calidad1 y performance */
-#calidad1, #calidad2 {
-    flex: 1; /* Cada contenedor ocupa el espacio disponible */
-    padding: 0; /* Sin padding */
-    box-sizing: border-box; /* Incluye padding y border en el ancho */
-    min-width: 200px; /* Ancho mínimo para evitar que se hagan demasiado pequeños */
-    max-width: 100%; /* Ancho máximo para evitar desbordamientos */
+.container_impacto {
+    display: flex; /* Activa flexbox */
+    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: space-between; /* Coloca el texto y los botones en extremos opuestos */
+}
+
+.button-container {
+    display: flex; /* Alinea los botones horizontalmente */
+    gap: 10px; /* Espacio entre los botones */
+}
+
+/* Estilos para el contenedor principal */
+.container_notacalidad {
+    width: 400px; /* Ancho máximo */
+    margin: 0 auto; /* Centrar el contenedor */
+    padding: 20px; /* Espaciado interno */
+    background-color: #f8f9fc; /* Color de fondo */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    text-align: center; /* Centrar el contenido */
+    padding: 20px; /* Espaciado interno */
+    margin-bottom: 20px; /* Margen inferior */
+    border-left: 5px solid #533392; /* Borde izquierdo */
+    border-bottom: 5px solid #533392; /* Borde inferior */
+    margin-left: 20px; /* Margen izquierdo */   
+}
+
+/* Estilos para la etiqueta de la nota de calidad */
+.container_nota_calidad label h4 {
+    color: #54259e; /* Color del texto */
+    font-weight: bold; /* Negrita */
+    margin-bottom: 0px; /* Margen inferior */
 }
 
  /* Contenedor de la nota de calidad */
     .container_nota_calidad {
         text-align: center; /* Centrar el contenido */
         margin: 0 auto; /* Centrar el contenedor */
-        max-width: 200px; /* Ancho máximo */
+        max-width: 100%; /* Ancho máximo */
     }
     /* Estilo para el valor de la nota de calidad */
     .nota-calidad-valor {
-        font-size: 3rem; /* Tamaño grande */
+        font-size: 70px; /* Tamaño grande */
         font-weight: bold; /* Texto en negrita */
         color: black; /* Color inicial */
         transition: color 0.5s ease-in-out; /* Transición suave para el color */
         margin-top: 10px; /* Espacio superior */
     }
-
+    
     /* Colores según el rango */
     .nota-calidad-valor.rojo {
         color: red;
@@ -71,6 +96,38 @@
     .nota-calidad-valor.verde {
         color: green;
     }
+
+    .container_performance h4{
+    max-width: 100%;
+    text-align: center;
+    font-size: 20px;
+     margin-top: 20px; /* Margen superior */
+     color: #54259e; /* Color del texto */
+    font-weight: bold; /* Negrita */
+    margin-bottom: 35px; /* Margen inferior */
+}
+
+.container_performance{
+    width: 100%;
+}
+
+/* Imagen dentro del bloque */
+#performance_img {
+    width: 300px; /* Tamaño fijo para mantener consistencia */
+    height: 180px; /* Altura fija para que todas se vean iguales */
+    max-width: 100%;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    object-fit: cover; /* Recorta la imagen sin distorsionarla */
+    object-position: center; /* Centra la imagen si es más grande */
+}
+
+/* Estilos para la imagen dinámica */
+#imagen-nota-calidad img {
+    width: 100px; /* Tamaño de la imagen */
+    height: auto; /* Mantener la proporción */
+    margin-top: 10px; /* Espacio superior */
+}
 
 /* Estilos para la sección del formulario */
 .custom-form-section-editar {
@@ -134,25 +191,6 @@
     font-weight: bold; /* Negrita */
 }
 
-/* Estilos para el botón de envío */
-.custom-submit-button-editar {
-    background-color: #533392 !important; /* Color de fondo */
-    color: white !important; /* Color del texto */
-    font-weight: bold; /* Negrita */
-    padding: 10px 20px !important; /* Espaciado interno */
-    margin: 0; /* Sin margen */
-    font-size: 1.2em; /* Tamaño de fuente */
-    border: none; /* Sin borde */
-    border-radius: 50px; /* Bordes redondeados */
-    display: inline-block !important; /* Muestra como bloque en línea */
-    height: 45px; /* Altura */
-}
-
-/* Estilos para el botón de envío al pasar el mouse */
-.custom-submit-button-editar:hover {
-    background-color: #2D2A7B !important; /* Cambia el color de fondo */
-}
-
 /* Estilos para el contenedor con grid de 3 columnas */
 .custom-grid-container-ee {
     display: grid; /* Usa grid para organizar elementos */
@@ -172,6 +210,8 @@
     margin: 30px 0 30px 30px; /* Margen superior, inferior e izquierdo */
     color: #2d2a7b; /* Color del texto */
     font-weight: bold; /* Negrita */
+    display: flex; /* Activa flexbox */
+    align-items: center; /* Centra verticalmente los elementos */
 }
 
 /* Estilos para contenedores flexibles */
@@ -245,12 +285,6 @@
     font-size: 14px; /* Tamaño de fuente */
 }
 
-/* Ajustes adicionales para el contenedor de impacto */
-.container_impacto {
-    margin: 30px 0 30px 30px; /* Margen superior, inferior e izquierdo */
-    color: #2d2a7b; /* Color del texto */
-    font-weight: bold; /* Texto en negrita */
-}
 
 /* Estilos para la sección del formulario */
 .custom-form-section-editar {
@@ -359,13 +393,4 @@
 /* Estilos para el botón de limpiar firma al pasar el mouse */
 #limpiar:hover {
     background-color: #0056b3; /* Cambia el color de fondo */
-}
-
-
-
-/* vamos a subir este bloque*/
-/* OTRSOS ESTILOS PARA SUBIR*/
-
-.container_performance{
-    text-align: center;
 }
