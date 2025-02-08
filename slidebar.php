@@ -44,7 +44,34 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         <hr class="sidebar-divider my-0">
 
         <!-- Opciones del sidebar según el rol -->
-        <?php if ($rol == 'administrador'): ?>
+        <?php if ($rol == 'OPERADOR' || $rol == 'CALL CENTER' || $rol == 'INTEGRACION'): ?>
+            <!-- Nav Item - Datos -->
+            <li class="nav-item">
+                <a class="nav-link" href="datos.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Datos</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Gráficas -->
+            <li class="nav-item">
+                <a class="nav-link" href="charts.php">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Gráficas</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Herramientas -->
+            <li class="nav-item">
+                <a class="nav-link" href="herramientas.php">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Herramientas</span>
+                </a>
+            </li>
+
+        <?php endif; ?>
+
+        <?php if ($rol == 'SUPERVISOR' || $rol == 'ROOT'): ?>
             <!-- Nav Item - Datos -->
             <li class="nav-item">
                 <a class="nav-link" href="datos.php">
