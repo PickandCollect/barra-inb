@@ -44,9 +44,6 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <?php include 'topbar.php'; ?>
                 <div id="content-wrapper" class="d-flex flex-column">
                     <div id="content">
-                    
-
-                        
                     </div>
                 </div>
 
