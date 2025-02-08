@@ -44,33 +44,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <?php include 'topbar.php'; ?>
                 <div id="content-wrapper" class="d-flex flex-column">
                     <div id="content">
+                    
+
                         
-
-                        <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
-                        <script>
-                            // Cambia la URL aquí por la de tu servidor de producción
-                            const socket = io("https://bestcontact.mx:22");
-
-                            // Escuchar los mensajes entrantes
-                            socket.on("mensaje", (data) => {
-                                console.log("Nuevo mensaje recibido:", data);
-                                // Aquí puedes mostrar el mensaje en la interfaz de usuario si lo deseas
-                                alert("Nuevo mensaje de " + data.usuario + ": " + data.texto);
-                            });
-
-                            // Función para enviar un mensaje
-                            function enviarMensaje() {
-                                let mensaje = document.getElementById("mensaje").value;
-                                socket.emit("mensaje", {
-                                    usuario: "User1", // Puedes obtener el nombre de usuario de alguna otra manera
-                                    texto: mensaje
-                                });
-                            }
-                        </script>
-
-                        <!-- Interfaz para enviar mensajes -->
-                        <input type="text" id="mensaje" placeholder="Escribe tu mensaje">
-                        <button onclick="enviarMensaje()">Enviar</button>
                     </div>
                 </div>
 

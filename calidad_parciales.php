@@ -27,6 +27,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/calidad.css">
@@ -45,6 +46,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
     <!-- Contenedor principal -->
     <div style="display: flex;">
+
         <!-- Sección Calidad 1 -->
         <div id="calidad1" style="flex: 1; padding-left: 0; padding-right: 0;">
             <div class="custom-form-section-editar custom-card-border-editar text-center">
@@ -151,14 +153,20 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     </div>
     <!-- Sección de Impacto Negocio -->
     <div class="container_impacto">
-    <h1>Impacto Negocio</h1>
-    <div class="button-container">
-        <button type="button" class="btn custom-submit-button-c" id="btnLC">Limpiar</button>
+        <div class="seccion-titulo">
+            <h1>Impacto Negocio</h1>
+            <span class="flecha" onclick="toggleSeccion(this)">
+                <i class="fas fa-chevron-down"></i> <!-- Icono de flecha hacia abajo -->
+            </span>
+        </div>
+        <div class="button-container">
+        <button type="button" class="btn custom-submit-button-c" id="btnLimpiar">Limpiar</button>
         <button type="button" class="btn custom-submit-button-c" id="btnEC">Enviar</button>
+        </div>
     </div>
-</div>
-    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros">
         <div id="calidad-grid-container" class="calidad-grid-container">
+            <!-- Rubros de Impacto Negocio -->
             <label for="rubro_c" style="margin-bottom: 30px;">
                 <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
             </label>
@@ -264,10 +272,16 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
     <!-- Sección de Impacto Operativo -->
     <div class="container_impacto">
-        <h2>Impacto Operativo</h2>
+        <div class="seccion-titulo">
+            <h1>Impacto Operativo</h1>
+            <span class="flecha" onclick="toggleSeccion(this)">
+                <i class="fas fa-chevron-down"></i> <!-- Icono de flecha hacia abajo -->
+            </span>
+        </div>
     </div>
-    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros">
         <div id="calidad-grid-container" class="calidad-grid-container">
+            <!-- Rubros de Impacto Operativo -->
             <label for="rubro_c" style="margin-bottom: 30px;">
                 <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
             </label>
@@ -328,12 +342,18 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
     </div>
 
-    <!-- Sección de Error Critico -->
+    <!-- Sección de Error Crítico -->
     <div class="container_impacto">
-        <h2>Error Critico</h2>
+        <div class="seccion-titulo">
+            <h1>Error Crítico</h1>
+            <span class="flecha" onclick="toggleSeccion(this)">
+                <i class="fas fa-chevron-down"></i> <!-- Icono de flecha hacia abajo -->
+            </span>
+        </div>
     </div>
-    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
+    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros">
         <div id="calidad-grid-container" class="calidad-grid-container">
+            <!-- Rubros de Error Crítico -->
             <label for="rubro_c" style="margin-bottom: 30px;">
                 <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
             </label>
@@ -369,62 +389,54 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
     </div>
 
-    <!--CONTENEDOR DE FACC-->
-    
-        <div class="container_FA">
-            <label for="desprestigio_c">
+    <!-- Contenedor de Fortalezas y Áreas de Oportunidad -->
+    <div class="container_FA">
+        <div class="fortalezas-container">
+            <label for="fortalezas">
                 <h6>Fortalezas</h6>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </label>
-            <label for="desprestigio_c">
-                <h6>Áreas de oportunidad</h6>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea id="fortalezas" class="fortalezas-textarea" readonly></textarea>
+        </div>
+        <div class="oportunidades-container">
+            <label for="oportunidades">
+                <h6>Áreas de Oportunidad</h6>
             </label>
+            <textarea id="oportunidades" class="oportunidades-textarea" readonly></textarea>
         </div>
-    
-        <!-- Apartado de comentarios y compromiso-->
-        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
-            <label for="comentarios_C">
-                <h6>Comentarios</h6>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </label>
-        </div>
-
-        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
-            <label for="compromiso_c">
-                <h6>Compromiso</h6>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </label>
-        </div>
-    
-
-    
-        <!-- cONTENEDOR DE FIRMAS-->
-        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
-            <div class="firma-container">
-                <label for="firma_a_c">
-                    <h6>Firma del asesor</h6>
-                    <canvas id="firmaCanvas" width="300" height="200"></canvas>
-                    <button id="limpiarCanvas1" class="btn custom-submit-button-c">Limpiar</button>
-                    <button id="capturarCanvas1" class="btn custom-submit-button-c">Capturar</button>
-                </label>
-            </div>
-        </div>
-
-        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar">
-            <div class="firma-container">
-                <label for="firma_an_c">
-                    <h6>Firma del analista</h6>
-                    <canvas id="firmaCanvas2" width="300" height="200"></canvas>
-                    <button id="limpiarCanvas2" class="btn custom-submit-button-c">Limpiar</button>
-                    <button id="capturarCanvas2" class="btn custom-submit-button-c">Capturar</button>
-                </label>
-            </div>
-        </div>
-
-
     </div>
 
+    <!-- Apartado de comentarios y compromiso -->
+    <div class="container_com">
+        <h6>Comentarios</h6>
+        <textarea class="form-control" id="comentariosTextarea" rows="3"></textarea>
+    </div>
+    <div class="container_com">
+        <h6>Compromiso</h6>
+        <textarea class="form-control" id="compromisoTextarea" rows="3"></textarea>
+    </div>
+
+    <!-- Contenedor de firmas -->
+    <div class="firmas-container">
+        <!-- Firma del asesor -->
+        <div class="firma-item">
+            <h6>Firma del asesor</h6>
+            <canvas id="firmaAsesorCanvas" width="470" height="150"></canvas>
+            <div class="firma-botones">
+                <button id="limpiarAsesor" class="btn btn-limpiar">Limpiar</button>
+                <button id="capturarAsesor" class="btn btn-capturar">Capturar</button>
+            </div>
+        </div>
+
+        <!-- Firma del analista -->
+        <div class="firma-item">
+            <h6>Firma del analista</h6>
+            <canvas id="firmaAnalistaCanvas" width="470" height="150"></canvas>
+            <div class="firma-botones">
+                <button id="limpiarAnalista" class="btn btn-limpiar">Limpiar</button>
+                <button id="capturarAnalista" class="btn btn-capturar">Capturar</button>
+            </div>
+        </div>
+    </div>
 
     <!-- SCRIPT PARA CALCULAR LOS VALORES EN PORCENTAJE-->
     <script>
@@ -450,6 +462,26 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             let sumaPonderaciones = 0;
             let sumaTotalPosible = 0;
 
+            // Verificar si hay un error crítico (selección "SI" en Error Crítico)
+            const errorCriticoSi = document.querySelectorAll('select[id^="cumple13"], select[id^="cumple14"]');
+            let hayErrorCritico = false;
+
+            errorCriticoSi.forEach(select => {
+                if (select.value === "SI") {
+                    hayErrorCritico = true;
+                }
+            });
+
+            // Si hay error crítico, el porcentaje es 0
+            if (hayErrorCritico) {
+                const notaCalidadValor = document.getElementById('nota_c');
+                notaCalidadValor.textContent = "0%";
+                notaCalidadValor.className = "nota-calidad-valor rojo"; // Cambiar color a rojo
+                actualizarImagen(0); // Actualizar la imagen de performance
+                return; // Salir de la función sin calcular el resto
+            }
+
+            // Si no hay error crítico, calcular el porcentaje normal
             ponderaciones.forEach((ponderacion, index) => {
                 const valorPonderacion = parseFloat(ponderacion.value);
                 const cumple = cumpleSelects[index].value;
@@ -477,7 +509,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 notaCalidadValor.className = "nota-calidad-valor verde";
             }
 
-            // Llamamos a actualizarImagen para reflejar el cambio 
+            // Llamamos a actualizarImagen para reflejar el cambio
             actualizarImagen(porcentaje);
         }
 
@@ -490,6 +522,186 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         // Calcular la nota de calidad al cargar la página
         window.addEventListener('load', calcularNotaCalidad);
     </script>
+
+    <!-- Script para manejar Fortalezas, Áreas de Oportunidad y Error Crítico -->
+    <script>
+        // Función para agregar texto a Fortalezas o Áreas de Oportunidad
+        function agregarTextoARubro(selectElement) {
+            // Obtener el texto del rubro (etiqueta h6 anterior al select)
+            const rubroTexto = selectElement.previousElementSibling.previousElementSibling.textContent.trim();
+            const fortalezasTextarea = document.getElementById('fortalezas');
+            const oportunidadesTextarea = document.getElementById('oportunidades');
+
+            // Verificar si es un rubro de Error Crítico (cumple13 o cumple14)
+            const esErrorCritico = (selectElement.id === "cumple13" || selectElement.id === "cumple14");
+
+            if (esErrorCritico) {
+                // Manejar Error Crítico
+                if (selectElement.value === "SI") {
+                    // Agregar a Áreas de Oportunidad con color rojo
+                    const textoFormateado = `✘ ${rubroTexto}`;
+                    if (!oportunidadesTextarea.value.includes(rubroTexto)) {
+                        oportunidadesTextarea.value += (oportunidadesTextarea.value ? "\n" : "") + textoFormateado;
+                    }
+                } else if (selectElement.value === "NO") {
+                    // Eliminar el rubro de Áreas de Oportunidad si ya estaba allí
+                    oportunidadesTextarea.value = oportunidadesTextarea.value
+                        .replace(`✘ ${rubroTexto}`, "") // Eliminar el rubro
+                        .split("\n") // Dividir en líneas
+                        .filter(line => line.trim() !== "") // Eliminar líneas vacías
+                        .join("\n"); // Unir las líneas restantes
+                }
+            } else {
+                // Manejar rubros normales (no Error Crítico)
+                if (selectElement.value === "SI") {
+                    // Agregar a Fortalezas
+                    if (!fortalezasTextarea.value.includes(rubroTexto)) {
+                        fortalezasTextarea.value += (fortalezasTextarea.value ? "\n" : "") + "✔ " + rubroTexto;
+                    }
+                    // Eliminar de Áreas de Oportunidad si ya estaba allí
+                    oportunidadesTextarea.value = oportunidadesTextarea.value
+                        .replace("✘ " + rubroTexto, "") // Eliminar el rubro
+                        .split("\n") // Dividir en líneas
+                        .filter(line => line.trim() !== "") // Eliminar líneas vacías
+                        .join("\n"); // Unir las líneas restantes
+                } else if (selectElement.value === "NO") {
+                    // Agregar a Áreas de Oportunidad
+                    if (!oportunidadesTextarea.value.includes(rubroTexto)) {
+                        oportunidadesTextarea.value += (oportunidadesTextarea.value ? "\n" : "") + "✘ " + rubroTexto;
+                    }
+                    // Eliminar de Fortalezas si ya estaba allí
+                    fortalezasTextarea.value = fortalezasTextarea.value
+                        .replace("✔ " + rubroTexto, "") // Eliminar el rubro
+                        .split("\n") // Dividir en líneas
+                        .filter(line => line.trim() !== "") // Eliminar líneas vacías
+                        .join("\n"); // Unir las líneas restantes
+                }
+            }
+        }
+
+        // Asignar la función a los eventos de cambio en los selectores
+        const cumpleSelectss = document.querySelectorAll('select[id^="cumple"]');
+        cumpleSelects.forEach(select => {
+            select.addEventListener('change', function() {
+                agregarTextoARubro(this); // Enviar el texto al área correspondiente
+            });
+        });
+    </script>
+
+    <!-- Script para las firmas-->
+    <script>
+        // Función para inicializar el canvas de firma
+        function inicializarFirma(canvasId, limpiarId, capturarId) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext("2d");
+            let dibujando = false;
+
+            // Eventos para dibujar
+            canvas.addEventListener("mousedown", (e) => {
+                dibujando = true;
+                ctx.beginPath();
+                ctx.moveTo(e.offsetX, e.offsetY);
+            });
+
+            canvas.addEventListener("mousemove", (e) => {
+                if (dibujando) {
+                    ctx.lineTo(e.offsetX, e.offsetY);
+                    ctx.stroke();
+                }
+            });
+
+            canvas.addEventListener("mouseup", () => {
+                dibujando = false;
+            });
+
+            canvas.addEventListener("mouseleave", () => {
+                dibujando = false;
+            });
+
+            // Botón para limpiar
+            document.getElementById(limpiarId).addEventListener("click", () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            });
+
+            // Botón para capturar (puedes guardar la firma como imagen)
+            document.getElementById(capturarId).addEventListener("click", () => {
+                const imagen = canvas.toDataURL("image/png");
+                alert("Firma capturada. Puedes guardarla como imagen.");
+                console.log(imagen); // Aquí puedes enviar la imagen al servidor
+            });
+        }
+
+        // Inicializar las firmas
+        inicializarFirma("firmaAsesorCanvas", "limpiarAsesor", "capturarAsesor");
+        inicializarFirma("firmaAnalistaCanvas", "limpiarAnalista", "capturarAnalista");
+    </script>
+
+    <!-- script para la flecha -->
+    <script>
+        // Función para alternar la visibilidad de los rubros
+        function toggleSeccion(flecha) {
+            const seccion = flecha.closest(".container_impacto").nextElementSibling;
+            const rubros = seccion;
+
+            // Alternar la visibilidad de los rubros
+            if (rubros.style.display === "none" || rubros.style.display === "") {
+                rubros.style.display = "block"; // Mostrar rubros
+                flecha.classList.add("activo"); // Añadir clase para rotar el icono
+            } else {
+                rubros.style.display = "none"; // Ocultar rubros
+                flecha.classList.remove("activo"); // Quitar clase para restaurar el icono
+            }
+        }
+    </script>
+
+    <!-- SCRIPT DE LIMPIAR FORMULARIO -->
+     <script>
+// Función para limpiar todos los campos del formulario
+function limpiarFormulario() {
+    // Restablecer campos de texto
+    const inputsTexto = document.querySelectorAll('input[type="text"]');
+    inputsTexto.forEach(input => {
+        input.value = input.defaultValue; // Restablecer al valor inicial
+    });
+
+    // Restablecer selectores
+    const selects = document.querySelectorAll('select');
+    selects.forEach(select => {
+        select.selectedIndex = 0; // Seleccionar la primera opción (por defecto)
+    });
+
+    // Limpiar áreas de texto (Fortalezas y Áreas de Oportunidad)
+    const fortalezasTextarea = document.getElementById('fortalezas');
+    const oportunidadesTextarea = document.getElementById('oportunidades');
+    if (fortalezasTextarea) fortalezasTextarea.value = "";
+    if (oportunidadesTextarea) oportunidadesTextarea.value = "";
+
+    // Limpiar firmas (si hay canvas)
+    const canvases = document.querySelectorAll('canvas');
+    canvases.forEach(canvas => {
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar el canvas
+    });
+
+    // Restablecer la nota de calidad (si existe)
+    const notaCalidad = document.getElementById('nota_c');
+    if (notaCalidad) {
+        notaCalidad.textContent = "0%";
+        notaCalidad.className = "nota-calidad-valor rojo"; // Restablecer color
+    }
+
+    // Restablecer la imagen de performance (si existe)
+    const performanceImg = document.getElementById('performance_img');
+    if (performanceImg) {
+        performanceImg.src = "img/cuidado.jpg"; // Limpiar la imagen
+    }
+
+    alert("Formulario limpiado correctamente."); // Feedback al usuario
+}
+
+// Asignar la función al botón "Limpiar"
+document.getElementById('btnLimpiar').addEventListener('click', limpiarFormulario);
+     </script>
 
     <!-- Scripts -->
     <script src="js/firma.js"></script>

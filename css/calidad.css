@@ -19,7 +19,7 @@
 
 /* Estilos para el contenedor del logo */
 .header .container_logo img {
-    height: 160px; /* Altura de la imagen */
+    height: 140px; /* Altura de la imagen */
     width: 310px; /* Ancho de la imagen */
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2)); /* Sombra para efecto visual */
     margin-right: 50px; /* Margen derecho */
@@ -366,31 +366,184 @@
     align-items: center; /* Centra verticalmente */
 }
 
-/* Estilos para el contenedor de la firma */
-.firma-container {
-    text-align: center; /* Centra el contenido */
-    margin-top: 20px; /* Margen superior */
+/* Estilos para los contenedores de Fortalezas y Áreas de Oportunidad */
+.container_FA {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-/* Estilos para el canvas de la firma */
-#firmaCanvas, #firmaCanvas2 {
-    border: 2px solid #000; /* Borde */
-    background-color: #f1f1f1; /* Color de fondo */
+.fortalezas-container,
+.oportunidades-container {
+    flex: 1;
+    background-color: #f8f9fc;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.fortalezas-container {
+    border-left: 5px solid green; /* Verde para Fortalezas */
+}
+
+.oportunidades-container {
+    border-left: 5px solid red; /* Naranja para Áreas de Oportunidad */
+}
+
+.fortalezas-textarea,
+.oportunidades-textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none; /* Evita que el usuario cambie el tamaño */
+    background-color: #fff;
+    color: #333;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.fortalezas-textarea:focus,
+.oportunidades-textarea:focus {
+    outline: none;
+    border-color: #54259e;
+}
+
+
+/* Estilos para los contenedores de Comentarios y Compromiso */
+.container_com {
+    margin-bottom: 20px; /* Espacio entre los contenedores */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 15px; /* Espaciado interno */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+     background-color: #F3F3F3; /* Color de fondo */
+    border-left: 5px solid #533392; /* Borde izquierdo */
+    border-bottom: 5px solid #533392; /* Borde inferior */
+ }
+
+.container_com h6 {
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    color: #54259e; /* Color del texto */
+    margin-bottom: 10px; /* Espacio inferior */
+}
+
+.container_com textarea {
+    width: 100%; /* Ocupa el 100% del ancho */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño de fuente */
+    resize: vertical; /* Permite redimensionar verticalmente */
+    background-color: #fff; /* Color de fondo */
+    color: #333; /* Color del texto */
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra interna */
+}
+
+.container_com textarea:focus {
+    outline: none; /* Quita el borde al hacer foco */
+    border-color: #54259e; /* Cambia el color del borde al hacer foco */
+}
+
+   
+/* Contenedor principal de firmas */
+.firmas-container {
+    display: flex; /* Usar Flexbox */
+    gap: 20px; /* Espacio entre las firmas */
+     text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilos para cada contenedor de firma */
+.firma-item {
+    flex: 1; /* Cada contenedor ocupa el mismo espacio */
+    background-color: #f8f9fc; /* Color de fondo */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 15px; /* Espaciado interno */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-left: 5px solid #54259e; /* Borde lateral izquierdo */
+}
+
+.firma-item h6 {
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    color: #54259e; /* Color del texto */
+    margin-bottom: 10px; /* Espacio inferior */
+}
+
+/* Estilos para el canvas (área de dibujo) */
+.firma-item canvas {
+    width: 100%; /* Ocupa el 100% del ancho */
+    height: 150px; /* Altura fija */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #fff; /* Color de fondo */
     cursor: crosshair; /* Cambia el cursor al dibujar */
 }
 
-/* Estilos para el botón de limpiar firma */
-#limpiar {
-    margin-top: 10px; /* Margen superior */
-    padding: 10px 20px; /* Espaciado interno */
-    background-color: #007BFF; /* Color de fondo */
-    color: white; /* Color del texto */
+/* Estilos para los botones */
+.btn {
+    padding: 8px 15px; /* Espaciado interno */
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño de fuente */
     cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s ease; /* Transición suave */
 }
 
-/* Estilos para el botón de limpiar firma al pasar el mouse */
-#limpiar:hover {
-    background-color: #0056b3; /* Cambia el color de fondo */
+.btn-limpiar {
+    background-color: #54259e; /* Color de fondo (rojo) */
+    color: white; /* Color del texto */
+    font-weight: bold; /* Negrita */
+}
+
+.btn-limpiar:hover {
+    background-color: #7933d6; /* Cambia el color al pasar el mouse */
+     color: rgb(255, 255, 255); /* Color del texto */
+     font-weight: bold; /* Negrita */
+}
+
+.btn-capturar {
+    background-color: #54259e; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-weight: bold; /* Negrita */
+}
+
+.btn-capturar:hover {
+   background-color: #5b39b8; /* Cambia el color al pasar el mouse */
+   color: rgb(255, 255, 255); /* Color del texto */
+   font-weight: bold; /* Negrita */
+}
+
+
+/* Estilos para el título y la flecha */
+.seccion-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: default; /* Cambia el cursor al pasar el mouse */
+}
+
+.flecha {
+    font-size: 20px;
+    color: #891fc7;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Animación suave */
+    margin-left: 20px;
+}
+
+.flecha i {
+    transition: transform 0.3s ease; /* Animación suave para el icono */
+}
+
+/* Rotar la flecha cuando la sección está expandida */
+.flecha.activo i {
+    transform: rotate(180deg); /* Gira el icono 180 grados */
+}
+
+/* Contenedor de rubros (oculto por defecto) */
+.rubros {
+    display: none; /* Ocultar los rubros inicialmente */
 }
