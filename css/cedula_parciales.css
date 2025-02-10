@@ -1,0 +1,200 @@
+/* Estilos generales */
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 10px; /* Reducir el padding para ahorrar espacio */
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 12px; /* Reducir el tamaño de la fuente */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.header .title {
+    font-size: 18px; /* Reducir el tamaño del título */
+    font-weight: bold;
+}
+
+.container_logo img {
+    height: 40px; /* Reducir el tamaño del logo */
+}
+
+.main-container {
+    display: flex;
+    gap: 10px; /* Reducir el espacio entre secciones */
+    margin-bottom: 10px;
+}
+
+.section-calidad, .section-nota-calidad {
+    flex: 1;
+    background-color: white;
+    padding: 10px; /* Reducir el padding */
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reducir la sombra */
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Reducir el espacio entre campos */
+}
+
+.form-group label {
+    font-weight: bold;
+    font-size: 10px; /* Reducir el tamaño de las etiquetas */
+}
+
+.form-control {
+    width: 100%;
+    padding: 6px; /* Reducir el padding */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 10px; /* Reducir el tamaño de la fuente */
+}
+
+.section-nota-calidad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Reducir el espacio */
+}
+
+.nota-calidad, .performance {
+    text-align: center;
+}
+
+.nota-calidad h4, .performance h4 {
+    margin-bottom: 5px; /* Reducir el margen */
+    font-size: 14px; /* Reducir el tamaño del título */
+}
+
+#nota_c {
+    font-size: 18px; /* Reducir el tamaño de la nota */
+    font-weight: bold;
+    color: #007bff;
+}
+
+#performance_img {
+    width: 80px; /* Reducir el tamaño de la imagen */
+    height: auto;
+}
+
+.section-impacto {
+    padding: 10px; /* Reducir el padding */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reducir la sombra */
+    margin-bottom: 10px;
+}
+
+.seccion-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.seccion-titulo h1 {
+    font-size: 16px; /* Reducir el tamaño del título */
+    margin: 0;
+}
+
+.flecha {
+    cursor: pointer;
+}
+
+.rubros-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 6px; /* Reducir el espacio entre rubros */
+}
+
+.section-fortalezas-oportunidades {
+    display: flex;
+    gap: 10px; /* Reducir el espacio */
+    padding: 10px; /* Reducir el padding */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reducir la sombra */
+    margin-bottom: 10px;
+}
+
+.fortalezas, .oportunidades {
+    flex: 1;
+}
+
+.fortalezas textarea, .oportunidades textarea {
+    width: 100%;
+    height: 80px; /* Reducir la altura */
+    padding: 6px; /* Reducir el padding */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 10px; /* Reducir el tamaño de la fuente */
+}
+
+.section-comentarios-compromiso {
+    padding: 10px; /* Reducir el padding */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reducir la sombra */
+    margin-bottom: 10px;
+}
+
+.comentarios, .compromiso {
+    margin-bottom: 10px;
+}
+
+.comentarios textarea, .compromiso textarea {
+    width: 100%;
+    height: 80px; /* Reducir la altura */
+    padding: 6px; /* Reducir el padding */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 10px; /* Reducir el tamaño de la fuente */
+}
+
+.section-firmas {
+    display: flex;
+    gap: 10px; /* Reducir el espacio */
+    padding: 10px; /* Reducir el padding */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reducir la sombra */
+}
+
+.firma-asesor, .firma-analista {
+    flex: 1;
+    text-align: center;
+}
+
+canvas {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 6px; /* Reducir el margen */
+}
+
+.btn-limpiar, .btn-capturar {
+    padding: 6px 12px; /* Reducir el padding */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px; /* Reducir el tamaño de la fuente */
+}
+
+.btn-limpiar {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-capturar {
+    background-color: #28a745;
+    color: white;
+}
