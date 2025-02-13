@@ -130,7 +130,8 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
         import {
             getDatabase,
             ref,
-            onValue
+            onValue,
+            update
         } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
         const firebaseConfig = {
@@ -161,13 +162,17 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
                 if (notificacion.operador === operadorActual && notificacion.leido === false) {
                     contador++;
                     htmlNotificaciones += `
-                    <a class="dropdown-item d-flex align-items-center" href="#" data-id="${key}" data-siniestro="${notificacion.siniestro}" data-fecha="${notificacion.fecha}" onclick="mostrarSiniestro(this)">
-                        <div>
-                            <div class="text-truncate">${notificacion.mensaje}</div>
-                            <div class="text-truncate">Siniestro: ${notificacion.siniestro}</div>
-                            <div class="small text-gray-500">${notificacion.fecha}</div>
-                        </div>
-                    </a>`;
+            <a class="dropdown-item d-flex align-items-center" href="#" 
+               data-id="${key}" 
+               data-siniestro="${notificacion.siniestro}" 
+               data-fecha="${notificacion.fecha}" 
+               onclick="leerNotificacion(this)">
+                <div>
+                    <div class="text-truncate">${notificacion.mensaje}</div>
+                    <div class="text-truncate">Siniestro: ${notificacion.siniestro}</div>
+                    <div class="small text-gray-500">${notificacion.fecha}</div>
+                </div>
+            </a>`;
 
                     // Mostrar Toast Notification (Pop-up)
                     mostrarToast(notificacion.mensaje);
@@ -184,7 +189,7 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
 
         // Crear el AudioContext para manejar restricciones de autoplay
         let audioContext = new(window.AudioContext || window.webkitAudioContext)();
-        let permisoSonido = false; // Variable para habilitar sonido tras la primera interacción
+        let permisoSonido = false;
 
         // Detectar la primera interacción del usuario para permitir el sonido
         document.addEventListener("click", () => {
@@ -229,25 +234,46 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
                 audioContext.resume(); // Reactivar el contexto si está pausado
             }
 
-            const audio = new Audio("assets/sounds/notificacion.mp3"); // Ruta del sonido
+            const audio = new Audio("assets/sounds/discord.mp3"); // Ruta del sonido
 
             audio.play().catch(error => console.error("Error reproduciendo el sonido:", error));
         }
 
+        // 🔹 Función para marcar la notificación como leída en Firebase y abrir el modal
+        window.leerNotificacion = function(element) {
+            const notificacionId = element.getAttribute("data-id"); // ID de la notificación en Firebase
+            const siniestroId = element.getAttribute("data-siniestro"); // ID del siniestro
 
-        window.mostrarSiniestro = function(element) {
-            const siniestroId = element.getAttribute("data-siniestro"); // ID de la cédula
-            console.log("Notificación clickeada, ID Expediente:", siniestroId);
+            console.log("📌 Notificación clickeada, ID Expediente:", siniestroId);
 
             // Buscar el botón de la tabla que tenga el mismo ID de cédula
             const btnEditar = document.querySelector(`.custom-table-style-edit-btn[data-id="${siniestroId}"]`);
 
             if (btnEditar) {
-                console.log("Botón encontrado, simulando clic...");
+                console.log("✅ Botón encontrado, simulando clic...");
                 btnEditar.click(); // Simular clic en el botón de editar
             } else {
-                console.warn("No se encontró el botón en la tabla. Abriendo modal manualmente.");
+                console.warn("⚠️ No se encontró el botón en la tabla. Abriendo modal manualmente.");
                 $j('#editarCedulaModal').modal('show'); // Abre el modal sin cargar datos
+            }
+
+            // 🔹 Marcar como leído en Firebase
+            const notificacionRef = ref(db, `notificaciones/${notificacionId}`);
+            update(notificacionRef, {
+                    leido: true
+                })
+                .then(() => console.log(`✅ Notificación ${notificacionId} marcada como leída`))
+                .catch((error) => console.error("❌ Error al actualizar la notificación:", error));
+
+            // 🔹 Quitar la notificación del dropdown y actualizar el contador
+            element.style.display = "none"; // Ocultar la notificación clickeada
+            const badge = document.querySelector("#alertsDropdown .badge-counter");
+            let count = parseInt(badge.textContent) || 0;
+            if (count > 0) {
+                badge.textContent = count - 1;
+                if (count - 1 === 0) {
+                    badge.style.display = "none";
+                }
             }
         };
     </script>
