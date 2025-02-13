@@ -11,6 +11,7 @@ if (!isset($_SESSION['rol'])) {
 }
 
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
+
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +33,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/calidad.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -46,6 +50,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
     <!-- Contenedor principal -->
     <div style="display: flex;">
+        
 
         <!-- Sección Calidad 1 -->
         <div id="calidad1" style="flex: 1; padding-left: 0; padding-right: 0;">
@@ -160,8 +165,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             </span>
         </div>
         <div class="button-container">
-        <button type="button" class="btn custom-submit-button-c" id="btnLimpiar">Limpiar</button>
-        <button type="button" class="btn custom-submit-button-c" id="btnEC">Enviar</button>
+            <button type="button" class="btn custom-submit-button-c" id="btnLimpiar">Limpiar</button>
+            <button type="button" class="btn custom-submit-button-c" id="btnEC">Enviar</button>
         </div>
     </div>
     <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros">
@@ -174,7 +179,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
             </label>
             <label for="cumple_c">
-                <h6 style="background: linear-gradient(to right, rgb(0, 255, 0), rgb(73, 46, 226)); -webkit-background-clip: text; color: transparent;">Cumple / No cumple</h6>
+                <h6 style="color:rgb(9, 133, 150);">Cumple / No cumple</h6>
             </label>
 
             <!-- Rubros con ponderaciones -->
@@ -289,7 +294,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
             </label>
             <label for="cumple_c">
-                <h6 style="background: linear-gradient(to right, rgb(0, 255, 0), rgb(73, 46, 226)); -webkit-background-clip: text; color: transparent;">Cumple / No cumple</h6>
+                <h6 style="color:rgb(9, 133, 150);">Cumple / No cumple</h6>
             </label>
 
             <!-- Rubros con ponderaciones -->
@@ -361,7 +366,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
             </label>
             <label for="cumple_c">
-                <h6 style="background: linear-gradient(to right, rgb(0, 255, 0), rgb(73, 46, 226)); -webkit-background-clip: text; color: transparent;">Cumple / No cumple</h6>
+                <h6 style="color:rgb(9, 133, 150);">Cumple / No cumple</h6>
             </label>
 
             <!-- Rubros con ponderaciones -->
@@ -408,9 +413,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <!-- Apartado de comentarios y compromiso -->
     <div class="container_com">
         <h6>Comentarios</h6>
-        <textarea class="form-control" id="comentariosTextarea" rows="3"></textarea>
-    </div>
-    <div class="container_com">
+        <textarea class="form-control" id="comentariosTextarea" rows="3" style="margin-bottom: 30px;"></textarea>
         <h6>Compromiso</h6>
         <textarea class="form-control" id="compromisoTextarea" rows="3"></textarea>
     </div>
@@ -437,7 +440,6 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             </div>
         </div>
     </div>
-
     <!-- SCRIPT PARA CALCULAR LOS VALORES EN PORCENTAJE-->
     <script>
         function actualizarImagen(porcentaje) {
@@ -588,52 +590,88 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         });
     </script>
 
-    <!-- Script para las firmas-->
+    <!-- Script para las firmas -->
     <script>
-        // Función para inicializar el canvas de firma
-        function inicializarFirma(canvasId, limpiarId, capturarId) {
-            const canvas = document.getElementById(canvasId);
-            const ctx = canvas.getContext("2d");
-            let dibujando = false;
+        document.addEventListener("DOMContentLoaded", function() {
+            function inicializarFirma(canvasId, limpiarId, capturarId) {
+                const canvas = document.getElementById(canvasId);
+                const limpiarBtn = document.getElementById(limpiarId);
+                const capturarBtn = document.getElementById(capturarId);
 
-            // Eventos para dibujar
-            canvas.addEventListener("mousedown", (e) => {
-                dibujando = true;
-                ctx.beginPath();
-                ctx.moveTo(e.offsetX, e.offsetY);
-            });
+                if (!canvas || !limpiarBtn || !capturarBtn) {
+                    console.error(`Error: No se encontró uno de los elementos con IDs: ${canvasId}, ${limpiarId}, ${capturarId}`);
+                    return;
+                }
 
-            canvas.addEventListener("mousemove", (e) => {
-                if (dibujando) {
-                    ctx.lineTo(e.offsetX, e.offsetY);
+                const ctx = canvas.getContext("2d");
+                let dibujando = false;
+
+                // Configuración del contexto del canvas
+                ctx.lineWidth = 2;
+                ctx.lineCap = "round";
+                ctx.strokeStyle = "#000";
+
+                // Función para obtener coordenadas correctas
+                function obtenerCoordenadas(evento) {
+                    const rect = canvas.getBoundingClientRect();
+                    return {
+                        x: (evento.clientX || evento.touches[0].clientX) - rect.left,
+                        y: (evento.clientY || evento.touches[0].clientY) - rect.top
+                    };
+                }
+
+                // Eventos para iniciar el dibujo
+                function comenzarDibujo(evento) {
+                    evento.preventDefault();
+                    const coord = obtenerCoordenadas(evento);
+                    dibujando = true;
+                    ctx.beginPath();
+                    ctx.moveTo(coord.x, coord.y);
+                }
+
+                function dibujar(evento) {
+                    if (!dibujando) return;
+                    evento.preventDefault();
+                    const coord = obtenerCoordenadas(evento);
+                    ctx.lineTo(coord.x, coord.y);
                     ctx.stroke();
                 }
-            });
 
-            canvas.addEventListener("mouseup", () => {
-                dibujando = false;
-            });
+                function terminarDibujo() {
+                    dibujando = false;
+                }
 
-            canvas.addEventListener("mouseleave", () => {
-                dibujando = false;
-            });
+                // Eventos para mouse
+                canvas.addEventListener("mousedown", comenzarDibujo);
+                canvas.addEventListener("mousemove", dibujar);
+                canvas.addEventListener("mouseup", terminarDibujo);
+                canvas.addEventListener("mouseleave", terminarDibujo);
 
-            // Botón para limpiar
-            document.getElementById(limpiarId).addEventListener("click", () => {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-            });
+                // Eventos para dispositivos táctiles
+                canvas.addEventListener("touchstart", comenzarDibujo);
+                canvas.addEventListener("touchmove", dibujar);
+                canvas.addEventListener("touchend", terminarDibujo);
+                canvas.addEventListener("touchcancel", terminarDibujo);
 
-            // Botón para capturar (puedes guardar la firma como imagen)
-            document.getElementById(capturarId).addEventListener("click", () => {
-                const imagen = canvas.toDataURL("image/png");
-                alert("Firma capturada. Puedes guardarla como imagen.");
-                console.log(imagen); // Aquí puedes enviar la imagen al servidor
-            });
-        }
+                // Botón para limpiar la firma
+                limpiarBtn.addEventListener("click", () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                });
 
-        // Inicializar las firmas
-        inicializarFirma("firmaAsesorCanvas", "limpiarAsesor", "capturarAsesor");
-        inicializarFirma("firmaAnalistaCanvas", "limpiarAnalista", "capturarAnalista");
+                // Botón para capturar la firma
+                capturarBtn.addEventListener("click", () => {
+                    const imagen = canvas.toDataURL("image/png");
+                    alert("Firma capturada. Puedes guardarla como imagen.");
+                    console.log(imagen); // Aquí puedes enviar la imagen al servidor
+                });
+            }
+
+            setTimeout(function() {
+                inicializarFirma("firmaAsesorCanvas", "limpiarAsesor", "capturarAsesor");
+                inicializarFirma("firmaAnalistaCanvas", "limpiarAnalista", "capturarAnalista");
+            }, 100);
+
+        });
     </script>
 
     <!-- script para la flecha -->
@@ -655,55 +693,97 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     </script>
 
     <!-- SCRIPT DE LIMPIAR FORMULARIO -->
-     <script>
-// Función para limpiar todos los campos del formulario
-function limpiarFormulario() {
-    // Restablecer campos de texto
-    const inputsTexto = document.querySelectorAll('input[type="text"]');
-    inputsTexto.forEach(input => {
-        input.value = input.defaultValue; // Restablecer al valor inicial
+    <script>
+        // Función para limpiar todos los campos del formulario
+        function limpiarFormulario() {
+            // Restablecer campos de texto
+            const inputsTexto = document.querySelectorAll('input[type="text"]');
+            inputsTexto.forEach(input => {
+                input.value = input.defaultValue; // Restablecer al valor inicial
+            });
+
+            // Restablecer selectores
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.selectedIndex = 0; // Seleccionar la primera opción (por defecto)
+            });
+
+            // Limpiar áreas de texto (Fortalezas y Áreas de Oportunidad)
+            const fortalezasTextarea = document.getElementById('fortalezas');
+            const oportunidadesTextarea = document.getElementById('oportunidades');
+            if (fortalezasTextarea) fortalezasTextarea.value = "";
+            if (oportunidadesTextarea) oportunidadesTextarea.value = "";
+
+            // Limpiar el campo de compromiso
+            const compromisoTextarea = document.getElementById('compromisoTextarea');
+            if (compromisoTextarea) compromisoTextarea.value = ""; // Limpiar el contenido
+
+            // Limpiar el campo de compromiso
+            const comentariosTextarea = document.getElementById('comentariosTextarea');
+            if (comentariosTextarea) comentariosTextarea.value = ""; // Limpiar el contenido
+
+            // Limpiar firmas (si hay canvas)
+            const canvases = document.querySelectorAll('canvas');
+            canvases.forEach(canvas => {
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar el canvas
+            });
+
+            // Restablecer la nota de calidad (si existe)
+            const notaCalidad = document.getElementById('nota_c');
+            if (notaCalidad) {
+                notaCalidad.textContent = "0%";
+                notaCalidad.className = "nota-calidad-valor rojo"; // Restablecer color
+            }
+
+            // Restablecer la imagen de performance (si existe)
+            const performanceImg = document.getElementById('performance_img');
+            if (performanceImg) {
+                performanceImg.src = "img/cuidado.jpg"; // Limpiar la imagen
+            }
+
+            alert("Formulario limpiado correctamente."); // Feedback al usuario
+        }
+
+        // Asignar la función al botón "Limpiar"
+        document.getElementById('btnLimpiar').addEventListener('click', limpiarFormulario);
+    </script>
+
+    <!-- SCRIP PARA ENVIAR FORMULARIO -->
+
+    <script>
+        document.getElementById("btnEC").addEventListener("click", function () {
+    // Capturar todos los valores del formulario
+    let formData = new FormData();
+
+    document.querySelectorAll("select, input").forEach((element) => {
+        if (element.name) {
+            formData.append(element.name, element.value);
+        }
     });
 
-    // Restablecer selectores
-    const selects = document.querySelectorAll('select');
-    selects.forEach(select => {
-        select.selectedIndex = 0; // Seleccionar la primera opción (por defecto)
-    });
+    // Enviar los datos con Fetch
+    fetch("cedula_parciales.php", {
+        method: "POST",
+        body: formData,
+    })
+        .then((response) => response.json()) // Si el servidor responde en JSON
+        .then((data) => {
+            alert("Formulario enviado correctamente.");
+            console.log("Respuesta del servidor:", data);
+        })
+        .catch((error) => {
+            console.error("Error al enviar el formulario:", error);
+        });
+});
+    </script>
 
-    // Limpiar áreas de texto (Fortalezas y Áreas de Oportunidad)
-    const fortalezasTextarea = document.getElementById('fortalezas');
-    const oportunidadesTextarea = document.getElementById('oportunidades');
-    if (fortalezasTextarea) fortalezasTextarea.value = "";
-    if (oportunidadesTextarea) oportunidadesTextarea.value = "";
 
-    // Limpiar firmas (si hay canvas)
-    const canvases = document.querySelectorAll('canvas');
-    canvases.forEach(canvas => {
-        const ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar el canvas
-    });
 
-    // Restablecer la nota de calidad (si existe)
-    const notaCalidad = document.getElementById('nota_c');
-    if (notaCalidad) {
-        notaCalidad.textContent = "0%";
-        notaCalidad.className = "nota-calidad-valor rojo"; // Restablecer color
-    }
-
-    // Restablecer la imagen de performance (si existe)
-    const performanceImg = document.getElementById('performance_img');
-    if (performanceImg) {
-        performanceImg.src = "img/cuidado.jpg"; // Limpiar la imagen
-    }
-
-    alert("Formulario limpiado correctamente."); // Feedback al usuario
-}
-
-// Asignar la función al botón "Limpiar"
-document.getElementById('btnLimpiar').addEventListener('click', limpiarFormulario);
-     </script>
 
     <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="js/firma.js"></script>
     <script src="js/firma2.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

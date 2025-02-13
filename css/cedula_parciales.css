@@ -1,200 +1,287 @@
-/* Estilos generales */
-body {
-    font-family: 'Nunito', sans-serif;
-    margin: 0;
-    padding: 10px; /* Reducir el padding para ahorrar espacio */
-    background-color: #f8f9fa;
-    color: #333;
-    font-size: 12px; /* Reducir el tamaño de la fuente */
-}
-
+/* Encabezado */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; /* Usa flexbox para organizar los elementos */
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center; /* Centra los elementos verticalmente */
     padding: 10px;
-    background-color: #007bff;
-    color: white;
+    background-color: #f8f9fc; /* Color de fondo */
+    border-bottom: 2px solid #ccc; /* Línea de separación en la parte inferior */
     margin-bottom: 10px;
 }
 
-.header .title {
-    font-size: 18px; /* Reducir el tamaño del título */
+.title {
+    font-size: 24px;
     font-weight: bold;
+    color: #533392 ;
 }
 
 .container_logo img {
-    height: 40px; /* Reducir el tamaño del logo */
+    max-height: 50px; /* Limita la altura de la imagen del logo */
 }
 
+/* Contenedor principal */
 .main-container {
-    display: flex;
-    gap: 10px; /* Reducir el espacio entre secciones */
-    margin-bottom: 10px;
-}
-
-.section-calidad, .section-nota-calidad {
-    flex: 1;
-    background-color: white;
-    padding: 10px; /* Reducir el padding */
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reducir la sombra */
-}
-
-.form-section {
-    display: flex;
-    flex-direction: column;
-    gap: 8px; /* Reducir el espacio entre campos */
-}
-
-.form-group label {
-    font-weight: bold;
-    font-size: 10px; /* Reducir el tamaño de las etiquetas */
-}
-
-.form-control {
+    display: flex; /* Usa flexbox para la disposición */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten si es necesario */
+    gap: 10px; /* Espacio entre los elementos */
     width: 100%;
-    padding: 6px; /* Reducir el padding */
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 10px; /* Reducir el tamaño de la fuente */
+    max-width: 100%; /* Ajusta el ancho máximo */
 }
 
-.section-nota-calidad {
+/* Estilos para la sección Calidad 1 */
+.form-section {
+    flex: 1.8; /* Ocupa más espacio que otras secciones */
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fc; /* Color de fondo */
+    border-left: 5px solid #533392; /* Borde izquierdo */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* Contenedor de la cuadrícula */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
+    grid-template-rows: repeat(2, auto); /* 2 filas */
+    gap: 3.5px; /* Espacio entre los campos */
+}
+
+/* Estilos para cada grupo de formulario */
+.custom-form-group-editar {
+    display: flex;
+    flex-direction: column; /* Organiza los elementos de forma vertical */
+}
+
+.custom-form-control {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    font-size: 8px;
+}
+
+/* Estilos para la sección Calidad 2 */
+.container_notacalidad {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fc; /* Color de fondo */
+    border-left: 5px solid #533392; /* Borde izquierdo */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.container_nota_calidad {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+    gap: 20px; /* Espacio entre los elementos */
+}
+
+.nota-calidad {
+    flex: 1;
+    text-align: center; /* Centra el texto */
+}
+
+.nota-calidad h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.nota-porcentaje {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+    width: 170px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; /* Centra el círculo */
+}
+
+.container_performance {
+    flex: 1;
+    text-align: center; /* Centra el contenido */
+}
+
+.container_performance h4 {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.container_performance img {
+    max-width: 160px; /* Limita el ancho de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+
+/*#########################################*/
+
+/* Contenedor principal que envuelve ambos bloques */
+.container-fila {
+    display: flex; /* Utilizamos flexbox para alinear los elementos en fila */
+    gap: 20px; /* Espacio entre los bloques */
+    justify-content: space-between; /* Alineamos los bloques con espacio entre ellos */
+    width: 100%; /* Ancho completo */
+}
+
+/* Estilos para el bloque de Impacto Negocio */
+.container_negocio,
+.container_operativo {
+    width: 50%; /* Cada bloque ocupa el 48% del ancho */
+    padding: 15px;
+    margin: 0;
+     border: 1px solid #ddd;
+    background-color: #f8f9fc; /* Color de fondo */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    border-left: 5px solid #533392; /* Borde izquierdo */
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px; /* Reducir el espacio */
+    gap: 5px;
+    margin-top: 10px;
 }
 
-.nota-calidad, .performance {
-    text-align: center;
-}
-
-.nota-calidad h4, .performance h4 {
-    margin-bottom: 5px; /* Reducir el margen */
-    font-size: 14px; /* Reducir el tamaño del título */
-}
-
-#nota_c {
-    font-size: 18px; /* Reducir el tamaño de la nota */
+/* Ajuste para el título de cada bloque */
+.container_negocio h3,
+.container_operativo h3 {
+    font-size: 15px;
     font-weight: bold;
-    color: #007bff;
-}
-
-#performance_img {
-    width: 80px; /* Reducir el tamaño de la imagen */
-    height: auto;
-}
-
-.section-impacto {
-    padding: 10px; /* Reducir el padding */
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reducir la sombra */
     margin-bottom: 10px;
 }
 
-.seccion-titulo {
+/* Estilos comunes para los inputs y selects */
+.calidad-form-control {
+    width: 100%;
+    padding: 0px;
+    margin: 3px 0;
+    font-size: 10px;
+     border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Ajustes visuales para las etiquetas */
+.container_negocio label h6,
+.container_operativo label h6 {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Estilo de la cuadrícula interna */
+#calidad-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    grid-gap: 3px;
+    margin-top: 3px;
+    align-items: center;
+}
+
+/* Ajustes visuales para los campos dentro de la cuadrícula */
+#calidad-grid-container input[readonly] {
+    background-color: #e9ecef;
+}
+
+#calidad-grid-container label,
+#calidad-grid-container input,
+#calidad-grid-container select {
+    font-size: 13px;
+    padding: 3px;
+}
+
+#calidad-grid-container select {
+    margin-bottom: 5px;
+}
+
+/*####################################################*/
+/* Contenedor principal */
+.contenedor-principal {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.seccion-titulo h1 {
-    font-size: 16px; /* Reducir el tamaño del título */
-    margin: 0;
-}
-
-.flecha {
-    cursor: pointer;
-}
-
-.rubros-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 6px; /* Reducir el espacio entre rubros */
-}
-
-.section-fortalezas-oportunidades {
-    display: flex;
-    gap: 10px; /* Reducir el espacio */
-    padding: 10px; /* Reducir el padding */
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reducir la sombra */
-    margin-bottom: 10px;
-}
-
-.fortalezas, .oportunidades {
-    flex: 1;
-}
-
-.fortalezas textarea, .oportunidades textarea {
+    gap: 20px; /* Espacio entre los bloques */
+    margin-top: 10px;
     width: 100%;
-    height: 80px; /* Reducir la altura */
-    padding: 6px; /* Reducir el padding */
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 10px; /* Reducir el tamaño de la fuente */
+    font-size: 10px;
 }
 
-.section-comentarios-compromiso {
-    padding: 10px; /* Reducir el padding */
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reducir la sombra */
-    margin-bottom: 10px;
-}
-
-.comentarios, .compromiso {
-    margin-bottom: 10px;
-}
-
-.comentarios textarea, .compromiso textarea {
-    width: 100%;
-    height: 80px; /* Reducir la altura */
-    padding: 6px; /* Reducir el padding */
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 10px; /* Reducir el tamaño de la fuente */
-}
-
-.section-firmas {
+/* Fortalezas y Áreas de Oportunidad */
+.container_FA {
     display: flex;
-    gap: 10px; /* Reducir el espacio */
-    padding: 10px; /* Reducir el padding */
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reducir la sombra */
+    flex-direction: row;
+    gap: 5px;
+    width: 50%;
 }
 
-.firma-asesor, .firma-analista {
+/* Asegurar que los textareas ocupen todo el espacio */
+.fortalezas-textarea,
+.oportunidades-textarea {
+    flex-grow: 1;
+    height: 100%;
+}
+
+
+.fortalezas-container,
+.oportunidades-container {
     flex: 1;
+    padding: 15px;
+     border: 1px solid #ddd;
+    background-color: #f8f9fc; /* Color de fondo */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    border-left: 5px solid #533392; /* Borde izquierdo */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 330px; /* Altura fija para que ambas sean iguales */
+}
+
+textarea {
+    width: 100%;
+    height: 600px;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Comentarios y compromiso */
+.container_com {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 30%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    color: #533392  ;
+     font-weight: bold;
+}
+
+/* Firmas */
+.firmas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 30%;
+    margin-top: 3px;
+    color: #533392  ;
+}
+
+.firma-item {
+    padding: 10px;
+    border-radius: 10px;
     text-align: center;
 }
 
 canvas {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 6px; /* Reducir el margen */
+    border: 1px solid #533392 ;
+    border-radius: 5px;
+    width: 100%;
+    height: 110px;
 }
 
-.btn-limpiar, .btn-capturar {
-    padding: 6px 12px; /* Reducir el padding */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 10px; /* Reducir el tamaño de la fuente */
-}
 
-.btn-limpiar {
-    background-color: #dc3545;
-    color: white;
-}
-
-.btn-capturar {
-    background-color: #28a745;
-    color: white;
-}
+/*####################################################*/

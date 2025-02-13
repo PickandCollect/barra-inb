@@ -20,352 +20,324 @@
 /* Estilos para el contenedor del logo */
 .header .container_logo img {
     height: 120px; /* Altura de la imagen */
-    width: 310px; /* Ancho de la imagen */
+    width: 120px; /* Ancho de la imagen */
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2)); /* Sombra para efecto visual */
     margin-right: 50px; /* Margen derecho */
     border-radius: 50%; /* Bordes redondeados para hacerlo circular */
 }
 
-/* Contenedor principal que envuelve los dos divs */
-#container {
-    display: flex; /* Usa flexbox para organizar los elementos en fila */
-    justify-content: space-between; /* Espacio entre los elementos */
-    gap: 20px; /* Espacio entre los elementos hijos */
-    width: 100%; /* Ocupa el 100% del ancho disponible */
-    box-sizing: border-box; /* Incluye padding y border en el ancho */
+/*###################################*/
+
+.contenedor-principal {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Estilos para los contenedores calidad1 y performance */
-#calidad1, #calidad2 {
-    flex: 1; /* Cada contenedor ocupa el espacio disponible */
-    padding: 0; /* Sin padding */
-    box-sizing: border-box; /* Incluye padding y border en el ancho */
-    min-width: 200px; /* Ancho mínimo para evitar que se hagan demasiado pequeños */
-    max-width: 100%; /* Ancho máximo para evitar desbordamientos */
+.container_datos1, .metrica {
+    flex: 1;
+    margin: 0;
 }
 
- /* Contenedor de la nota de calidad */
-    .container_nota_calidad {
-        text-align: center; /* Centrar el contenido */
-        margin: 0 auto; /* Centrar el contenedor */
-        max-width: 200px; /* Ancho máximo */
+@media (max-width: 768px) {
+    .contenedor-principal {
+        flex-direction: column;
     }
-    /* Estilo para el valor de la nota de calidad */
-    .nota-calidad-valor {
-        font-size: 3rem; /* Tamaño grande */
-        font-weight: bold; /* Texto en negrita */
-        color: black; /* Color inicial */
-        transition: color 0.5s ease-in-out; /* Transición suave para el color */
-        margin-top: 10px; /* Espacio superior */
-    }
+}
 
-    /* Colores según el rango */
-    .nota-calidad-valor.rojo {
-        color: red;
-    }
-
-    .nota-calidad-valor.amarillo {
-        color:  #ffcc00;
-    }
-
-    .nota-calidad-valor.verde {
-        color: green;
-    }
-
-/* Estilos para la sección del formulario */
-.custom-form-section-editar {
-    background-color: #f8f9fc; /* Color de fondo */
-    padding: 20px; /* Espaciado interno */
+/* Estilos generales para el contenedor */
+.container_datos1 {
+    display: flex; /* Coloca los elementos en una fila horizontal */
+    justify-content: space-around; /* Distribuye el espacio uniformemente */
+    align-items: center; /* Centra verticalmente los elementos */
     border-radius: 20px; /* Bordes redondeados */
+    margin: 0 auto 20px; /* Centrar el contenedor y agregar margen inferior */
+    background-color: #f8f9fc; /* Color de fondo */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
-    margin-bottom: 20px; /* Margen inferior */
-    display: grid; /* Usa grid para organizar los elementos */
-    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
-    gap: 10px; /* Espacio entre columnas */
+    text-align: center; /* Centrar el contenido */
+    padding: 20px; /* Espaciado interno */
+    border-left: 5px solid #533392; /* Borde izquierdo */
+    border-bottom: 5px solid #533392; /* Borde inferior */
 }
 
-/* Estilos para los grupos de formulario */
-.custom-form-group-editar {
-    display: flex; /* Usa flexbox para organizar elementos */
-    flex-direction: column; /* Alinea elementos verticalmente */
-    align-items: flex-start; /* Alinea elementos a la izquierda */
-    margin: 0; /* Sin margen */
+/* Estilos para cada bloque de datos */
+.datos_us {
+    flex: 1; /* Hace que cada bloque ocupe el mismo espacio */
+    margin: 0 5px; /* Espacio entre los bloques */
+    text-align: center; /* Centra el texto */
 }
 
-/* Estilos para las etiquetas dentro de los grupos de formulario */
-.custom-form-group-editar label {
-    width: 100%; /* Ocupa el 100% del ancho */
-    margin-bottom: 5px; /* Margen inferior */
-    font-weight: bold; /* Negrita */
-    min-height: 20px; /* Altura mínima */
-    line-height: 20px; /* Altura de línea */
+/* Estilos para las etiquetas */
+.datos_us label h6 {
+    color: #54259e;
+    font-weight: bold;
+    margin: 0 0 10px 0; /* Espacio debajo del título */
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: 600; /* Texto semibold */
 }
 
-/* Estilos para los inputs y selects dentro de los grupos de formulario */
-.custom-form-group-editar .custom-form-control {
+/* Estilos para los select */
+.custom-form-control {
     width: 100%; /* Ocupa el 100% del ancho */
     padding: 10px; /* Espaciado interno */
     font-size: 16px; /* Tamaño de fuente */
     border-radius: 5px; /* Bordes redondeados */
     border: 1px solid #ccc; /* Borde */
-    box-sizing: border-box; /* Incluye padding y border en el ancho */
     color: #000000ab; /* Color del texto */
-    margin-top: 3px;
     margin-bottom: 20px;
 }
 
-/* Estilos para los encabezados h6 dentro de la sección del formulario */
-.custom-form-section-editar h6 {
-    color: rgb(0, 0, 0); /* Color del texto */
-    margin-bottom: 1px; /* Margen inferior */
-    font-weight: bold; /* Negrita */
+/* Estilos para las opciones del select */
+.custom-form-control option {
+    background-color: #6a46b1; /* Fondo de las opciones */
+    color: #fff; /* Color del texto */
 }
 
-/* Estilos para los encabezados h3 dentro de la sección del formulario */
-.custom-form-section-editar h3 {
-    color: #5854e4; /* Color del texto */
-    margin-bottom: 15px; /* Margen inferior */
-    font-weight: bold; /* Negrita */
-}
+/*#################################*/
 
-/* Estilos para los encabezados h2 */
-.custom-h2 {
-    color: #2d2a7b; /* Color del texto */
-    font-weight: bold; /* Negrita */
-}
-
-/* Estilos para el botón de envío */
-.custom-submit-button-editar {
-    background-color: #533392 !important; /* Color de fondo */
-    color: white !important; /* Color del texto */
-    font-weight: bold; /* Negrita */
-    padding: 10px 20px !important; /* Espaciado interno */
-    margin: 0; /* Sin margen */
-    font-size: 1.2em; /* Tamaño de fuente */
-    border: none; /* Sin borde */
-    border-radius: 50px; /* Bordes redondeados */
-    display: inline-block !important; /* Muestra como bloque en línea */
-    height: 45px; /* Altura */
-}
-
-/* Estilos para el botón de envío al pasar el mouse */
-.custom-submit-button-editar:hover {
-    background-color: #2D2A7B !important; /* Cambia el color de fondo */
-}
-
-/* Estilos para el contenedor con grid de 3 columnas */
-.custom-grid-container-ee {
-    display: grid; /* Usa grid para organizar elementos */
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
-    gap: 10px; /* Espacio entre columnas */
-}
-
-/* Estilos para la tarjeta con borde */
-.custom-card-border-editar {
-    background-color: #F3F3F3; /* Color de fondo */
+/* Estilos generales para el contenedor de llamadas */
+.container_llamadas {
+    display: flex; /* Coloca los elementos en una fila horizontal */
+    justify-content: space-around; /* Distribuye el espacio uniformemente */
+    align-items: center; /* Centra verticalmente los elementos */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en múltiples filas */
+    border-radius: 20px; /* Bordes redondeados */
+    margin: 0 auto 20px; /* Centrar el contenedor y agregar margen inferior */
+    background-color: #f8f9fc; /* Color de fondo */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    text-align: center; /* Centrar el contenido */
+    padding: 20px; /* Espaciado interno */
     border-left: 5px solid #533392; /* Borde izquierdo */
     border-bottom: 5px solid #533392; /* Borde inferior */
 }
 
-/* Estilos para el contenedor de impacto */
-.container_impacto {
-    margin: 30px 0 30px 30px; /* Margen superior, inferior e izquierdo */
-    color: #2d2a7b; /* Color del texto */
-    font-weight: bold; /* Negrita */
+/* Estilos para cada bloque de llamadas */
+.llamadas {
+    flex: 1; /* Hace que cada bloque ocupe el mismo espacio */
+    margin: 10px; /* Espacio entre los bloques */
+    text-align: center; /* Centra el texto */
 }
 
-/* Estilos para contenedores flexibles */
-.d-flex {
-    display: flex; /* Usa flexbox */
+/* Estilos para las etiquetas */
+.llamadas label h6 {
+    color: #54259e;
+    font-weight: bold;
+    margin: 0 0 10px 0; /* Espacio debajo del título */
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: 600; /* Texto semibold */
 }
 
-.d-flex.flex-column {
-    flex-direction: column; /* Alinea elementos verticalmente */
-}
-
-.d-flex h6 {
-    color: black; /* Color del texto */
-    margin-bottom: 1px; /* Margen inferior */
-    font-weight: bold; /* Negrita */
-}
-
-.w-50 {
-    width: 50%; /* Ocupa el 50% del ancho */
-}
-
-.d-flex > .d-flex label,
-.d-flex > .d-flex input {
-    width: 100%; /* Ocupa el 100% del ancho */
-    margin-bottom: 10px; /* Margen inferior */
-}
-
-.d-flex.justify-content-end {
-    justify-content: flex-end; /* Alinea elementos a la derecha */
-}
-
-.mb-2 {
-    margin-bottom: 15px; /* Margen inferior */
-}
-
-.d-flex > .d-flex input {
-    width: 70%; /* Ocupa el 70% del ancho */
-    margin-bottom: 10px; /* Margen inferior */
-    padding: 8px; /* Espaciado interno */
-    font-size: 14px; /* Tamaño de fuente */
-}
-
-/* Estilos para el contenedor del grid de calidad */
-/* Asegurar que el contenedor se ajuste al contenido */
-#calidad-grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
-    gap: 10px; /* Espacio entre elementos */
-    align-items: start; /* Alinea los elementos al inicio */
-    padding: 10px; /* Espaciado interno */
-    width: 100%; /* Ocupa el 100% del ancho */
-    box-sizing: border-box; /* Incluye padding y border en el ancho */
-}
-
-/* Estilos para las etiquetas y elementos dentro del grid */
-#calidad-grid-container label,
-#calidad-grid-container h6 {
-    margin: 0; /* Elimina márgenes predeterminados */
-    padding: 0; /* Elimina paddings predeterminados */
-    font-weight: bold; /* Texto en negrita */
-    color: black; /* Color del texto */
-}
-
-/* Estilos para los inputs y selects */
-.calidad-form-control {
+/* Estilos para los inputs */
+.custom-form-control {
     width: 100%; /* Ocupa el 100% del ancho */
     padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
     border-radius: 5px; /* Bordes redondeados */
     border: 1px solid #ccc; /* Borde */
-    box-sizing: border-box; /* Incluye padding y border en el ancho */
-    font-size: 14px; /* Tamaño de fuente */
+    color: #000000ab; /* Color del texto */
+    margin-bottom: 20px; /* Espacio entre inputs */
 }
 
-/* Ajustes adicionales para el contenedor de impacto */
-.container_impacto {
-    margin: 30px 0 30px 30px; /* Margen superior, inferior e izquierdo */
-    color: #2d2a7b; /* Color del texto */
-    font-weight: bold; /* Texto en negrita */
+/* Estilos para los inputs de tipo date y time */
+.custom-form-control[type="date"],
+.custom-form-control[type="time"] {
+    padding: 8px; /* Espaciado ajustado para inputs de fecha y hora */
 }
 
-/* Estilos para la sección del formulario */
-.custom-form-section-editar {
-    background-color: #f8f9fc; /* Color de fondo */
-    padding: 20px; /* Espaciado interno */
-    border-radius: 20px; /* Bordes redondeados */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
-    margin-bottom: 20px; /* Margen inferior */
+/* Estilos para las opciones del select (si las añades más adelante) */
+.custom-form-control option {
+    background-color: #6a46b1; /* Fondo de las opciones */
+    color: #fff; /* Color del texto */
 }
 
+/*#############################################*/
 
-/* Estilos para las celdas dentro del grid */
-#calidad-grid-container div {
-    display: flex; /* Usa flexbox */
-    flex-direction: column; /* Alinea elementos verticalmente */
-    border: 1px solid #ccc; /* Borde */
-    padding: 10px; /* Espaciado interno */
+/* Contenedor principal */
+.container_semanas {
+    display: flex;
+    justify-content: center; /* Centra los bloques horizontalmente */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fc;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #533392;
+    border-bottom: 5px solid #533392;
 }
 
-/* Estilos para los campos del formulario */
-.calidad-form-control {
-    width: 100%; /* Ocupa el 100% del ancho */
-    padding: 10px; /* Espaciado interno */
-    border-radius: 4px; /* Bordes redondeados */
-    border: 1px solid #ccc; /* Borde */
-    margin-bottom: 10px; /* Margen inferior */
+/* Contenedor de las semanas */
+.semanas {
+    display: flex;
+    flex-direction: row; /* Coloca los elementos en fila */
+    gap: 30px; /* Espaciado entre las semanas */
 }
 
-/* Estilos para los grupos del formulario */
-.calidad-form-group {
-    display: flex; /* Usa flexbox */
-    flex-direction: column; /* Alinea elementos verticalmente */
-    margin-bottom: 10px; /* Margen inferior */
-}
-
-/* Estilos para los encabezados dentro de los grupos del formulario */
-.calidad-form-group h6 {
-    font-size: 14px; /* Tamaño de fuente */
-    margin-bottom: 5px; /* Margen inferior */
-}
-
-/* Estilos para la sección de botones en fila */
-.form-section-editar {
-    display: flex; /* Usa flexbox */
-    justify-content: center; /* Centra los elementos */
-    gap: 10px; /* Espacio entre elementos */
-    width: 100%; /* Ocupa el 100% del ancho */
-    box-sizing: border-box; /* Incluye padding y border en el ancho */
-}
-
-/* Estilos para los botones de acción */
-.custom-submit-button-c {
-    background-color: #533392 !important; /* Color de fondo */
-    color: white !important; /* Color del texto */
-    font-weight: bold !important; /* Negrita */
-    padding: 5px 15px !important; /* Espaciado interno */
-    margin: 5px !important; /* Margen */
-    font-size: 1em !important; /* Tamaño de fuente */
-    border: none !important; /* Sin borde */
-    border-radius: 50px !important; /* Bordes redondeados */
-    display: inline-block !important; /* Muestra como bloque en línea */
-    height: 45px; /* Altura */
-    min-width: 100px; /* Ancho mínimo */
-}
-
-/* Estilos para los botones de acción al pasar el mouse */
-.custom-submit-button-c:hover {
-    background-color: #5d58ec !important; /* Cambia el color de fondo */
-}
-
-/* Estilos para el contenedor circular */
-.div-circular {
-    width: 100px; /* Ancho */
-    height: 100px; /* Altura */
-    border-radius: 50%; /* Bordes redondeados para hacerlo circular */
-    overflow: hidden; /* Oculta el contenido que sobresale */
-    display: flex; /* Usa flexbox */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-}
-
-/* Estilos para el contenedor de la firma */
-.firma-container {
-    text-align: center; /* Centra el contenido */
-    margin-top: 20px; /* Margen superior */
-}
-
-/* Estilos para el canvas de la firma */
-#firmaCanvas, #firmaCanvas2 {
-    border: 2px solid #000; /* Borde */
-    background-color: #f1f1f1; /* Color de fondo */
-    cursor: crosshair; /* Cambia el cursor al dibujar */
-}
-
-/* Estilos para el botón de limpiar firma */
-#limpiar {
-    margin-top: 10px; /* Margen superior */
-    padding: 10px 20px; /* Espaciado interno */
-    background-color: #007BFF; /* Color de fondo */
-    color: white; /* Color del texto */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar el mouse */
-}
-
-/* Estilos para el botón de limpiar firma al pasar el mouse */
-#limpiar:hover {
-    background-color: #0056b3; /* Cambia el color de fondo */
-}
-
-
-
-/* vamos a subir este bloque*/
-/* OTRSOS ESTILOS PARA SUBIR*/
-
-.container_performance{
+/* Cada bloque de semana */
+.semana-item {
+    display: flex;
+    flex-direction: column; /* Pone el título arriba y el div abajo */
+    align-items: center; /* Centra el contenido */
     text-align: center;
 }
+
+/* Estilos para el título de cada semana */
+.semana-item h6 {
+    color: #54259e;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el div de cada semana */
+.semana {
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    color: #000000ab;
+    background-color: #fff;
+    text-align: center;
+    width: 100px; /* Tamaño fijo para uniformidad */
+}
+
+/*###############################################*/
+/* Estilos para el contenedor principal */
+.container_notabbva {
+    width: 400px; /* Ancho máximo */
+    margin: 0 auto; /* Centrar el contenedor */
+    padding: 20px; /* Espaciado interno */
+    background-color: #f8f9fc; /* Color de fondo */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    text-align: center; /* Centrar el contenido */
+    margin-bottom: 20px; /* Margen inferior */
+    border-left: 5px solid #533392; /* Borde izquierdo */
+    border-bottom: 5px solid #533392; /* Borde inferior */
+    margin-left: 20px; /* Margen izquierdo */
+}
+
+/* Estilos para la etiqueta de la nota de calidad */
+.container_nota_bbva label h4 {
+    color: #54259e; /* Color del texto */
+    font-weight: bold; /* Negrita */
+    margin-bottom: 0px; /* Margen inferior */
+}
+
+/* Contenedor de la nota de calidad */
+.container_nota_bbva {
+    text-align: center; /* Centrar el contenido */
+    margin: 0 auto; /* Centrar el contenedor */
+    max-width: 100%; /* Ancho máximo */
+}
+
+/* Estilo para el valor de la nota de calidad */
+#nota_bbva {
+    font-size: 70px; /* Tamaño grande */
+    font-weight: bold; /* Texto en negrita */
+    color: black; /* Color inicial */
+    transition: color 0.5s ease-in-out; /* Transición suave para el color */
+    margin-top: 10px; /* Espacio superior */
+}
+
+/* Colores según el rango */
+#nota_bbva.rojo {
+    color: red;
+}
+
+#nota_bbva.amarillo {
+    color: #ffcc00;
+}
+
+#nota_bbva.verde {
+    color: green;
+}
+
+/* Estilos para la sección de performance */
+.container_performancebbva h4 {
+    max-width: 100%;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px; /* Margen superior */
+    color: #54259e; /* Color del texto */
+    font-weight: bold; /* Negrita */
+    margin-bottom: 35px; /* Margen inferior */
+}
+
+.container_performancebbva {
+    width: 100%;
+}
+
+/* Imagen dentro del bloque */
+#performancebbva_img {
+    width: 400px; /* Tamaño fijo para mantener consistencia */
+    height: 250px; /* Altura fija para que todas se vean iguales */
+    max-width: 100%;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7); /* Sombra sutil */
+    object-fit: cover; /* Recorta la imagen sin distorsionarla */
+    object-position: center; /* Centra la imagen si es más grande */
+}
+
+/*###################################################*/
+/* Contenedor de los botones */
+.btn_inicial {
+    margin-left: 15px;
+    display: flex;
+    justify-content: center; /* Centra los botones */
+    gap: 40px; /* Más separación entre los botones */
+    margin-top: 80px; /* Mayor espacio superior */
+    width: 100%;
+}
+
+/* Estilos generales de botones */
+.custom-submit-button-c {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 16px 32px; /* Botones un poco más grandes */
+    border-radius: 50px; /* Bordes más suaves */
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espacio entre icono y texto */
+    min-width: 150px; /* Tamaño mínimo para uniformidad */
+}
+
+/* Efecto de clic (más natural) */
+.custom-submit-button-c:active {
+    transform: scale(0.95); /* Se reduce ligeramente */
+}
+
+/* Botón Limpiar (Azul Suave) */
+#btnlimpiar {
+    background-color: #fd8181;
+    color: #000000;
+  box-shadow: 0px 4px 6px rgba(83, 51, 146, 0.3);
+  
+}
+
+#btnlimpiar:hover {
+    background-color: #fd6363;
+    color: #f8f9fc;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Botón Enviar (Morado) */
+#btnenviar {
+    background-color: #b38dff;
+    color: #000000;
+    box-shadow: 0px 4px 6px rgba(83, 51, 146, 0.3);
+}
+
+#btnenviar:hover {
+    background-color: #533392;
+    color: #f8f9fc;
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+

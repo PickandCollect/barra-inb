@@ -11,6 +11,8 @@ if (!isset($_SESSION['rol'])) {
 }
 
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
+$nombre_usuario = $_SESSION['nombre_usuario'];
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -30,6 +32,11 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 </head>
 
 <body>
+    <script>
+        var nombreUsuario = "<?php echo $rol; ?>";
+        console.log("Nombre de usuario:", nombreUsuario);
+    </script>
+
     <!-- Tabla -->
     <div class="custom-table-style-main-container  card shadow mb-4" style="border-radius: 20px;">
         <div class="card-header py-3" style="background-color: #e0e0e0;">
@@ -1529,13 +1536,66 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             });
         </script>
 
-        <!--CARGA ARCHIVOS MANUAL-->
+        <!--Asignacion de casos notifiaciones firebase realtime-->
+        <script type="module">
+            import {
+                initializeApp
+            } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+            import {
+                getDatabase,
+                ref,
+                onValue,
+                push,
+                set
+            } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+            // 🔹 Configuración de Firebase
+            const firebaseConfig = {
+                apiKey: "AIzaSyD1XIbEFJ28sqWcF5Ws3i8zA2o1OhYC7JU",
+                authDomain: "prueba-pickcollect.firebaseapp.com",
+                databaseURL: "https://prueba-pickcollect-default-rtdb.firebaseio.com",
+                projectId: "prueba-pickcollect",
+                storageBucket: "prueba-pickcollect.firebasestorage.app",
+                messagingSenderId: "343351102325",
+                appId: "1:343351102325:web:a6e4184d4752c6cbcfe13c",
+                measurementId: "G-6864KLZWKP"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
+            const notificacionesRef = ref(db, "notificaciones");
+
+            // 🔹 Función para enviar notificación al operador seleccionado
+            document.getElementById("btnAs").addEventListener("click", function() {
+                const usuarioActual = '<?php echo $rol; ?>'; // 🔹 Reemplázalo con el ID real del usuario logueado
+                const operadorSeleccionado = document.getElementById("asignacion").value;
+                const fechaAsignacion = document.getElementById("fecha_asignacion").value;
+                const num_siniestro = document.getElementById("no_siniestro_exp").value;
+                const id_cedula = document.getElementById("cedula_id_ed").value;
+                const id_asegurado = document.getElementById("id_asegurado").value;
+                const id_vehiculo = document.getElementById("id_vehiculo").value;
 
 
+                if (operadorSeleccionado === "") {
+                    alert("Selecciona un operador antes de asignar.");
+                    return;
+                }
+
+                const nuevaNotificacion = push(notificacionesRef);
+                set(nuevaNotificacion, {
+                    asignador: usuarioActual,
+                    operador: operadorSeleccionado,
+                    mensaje: `Tienes una nueva asignación`,
+                    siniestro: id_cedula,
+                    fecha: fechaAsignacion,
+                    leido: false
+                });
+
+                alert("Asignación enviada correctamente.");
+            });
+        </script>
 
 
-
-        <!-- Se eliminó el script que abre el modal -->
 </body>
 
 </html>

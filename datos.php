@@ -11,6 +11,7 @@ if (!isset($_SESSION['rol'])) {
 }
 
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
+             
 ?>
 
 <!DOCTYPE html>

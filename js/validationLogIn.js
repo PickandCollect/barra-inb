@@ -11,9 +11,8 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     .then((data) => {
       if (data.success) {
         alert(data.message);
-
         // Redirigir dependiendo del rol
-        if (data.rol === "administrador") {
+        if (data.rol === "SUPERVISOR") {
           window.location.href = "datos.php"; // Redirigir a la página del administrador
         } else if (data.rol === "asegurado") {
           window.location.href = "asegurado.php"; // Redirigir a la página del asegurado
