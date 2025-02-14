@@ -1105,8 +1105,10 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
 
         </div>
-
-        <script src="js/deleteCedula.js"></script>
+        <script src="main/jquery/jquery.min.js"></script>
+        <script src="main/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="main/jquery-easing/jquery.easing.min.js"></script>
+        <script src="js/demo/datatables-demo.js"></script>
 
         <script>
             $(document).ready(function() {

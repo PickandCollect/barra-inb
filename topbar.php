@@ -234,7 +234,7 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
                 audioContext.resume(); // Reactivar el contexto si está pausado
             }
 
-            const audio = new Audio("assets/sounds/discord.mp3"); // Ruta del sonido
+            const audio = new Audio("assets/sounds/lg_crystal_2021.mp3"); // Ruta del sonido
 
             audio.play().catch(error => console.error("Error reproduciendo el sonido:", error));
         }

@@ -28,14 +28,13 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Estilos personalizados -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/calidad.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -50,94 +49,99 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
     <!-- Contenedor principal -->
     <div style="display: flex;">
-        
+
 
         <!-- Sección Calidad 1 -->
         <div id="calidad1" style="flex: 1; padding-left: 0; padding-right: 0;">
-            <div class="custom-form-section-editar custom-card-border-editar text-center">
-                <!-- Campos de formulario -->
-                <div class="custom-form-group-editar form-group">
-                    <label for="nombre_c">
-                        <h6>Nombre del agente:</h6>
-                    </label>
-                    <select id="nombre_c" name="nombre_c" class="custom-form-control">
-                        <option value="" hidden>Selecciona</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="TERCERO">TERCERO</option>
-                    </select>
+
+            <!-- FORMULARIO PARA ENVIAR AL OTRO FORMULARIO ALV-->
+            <form id="miFormulario" method="POST" action="cedula_parciales.php">
+                <div class="custom-form-section-editar custom-card-border-editar text-center">
+                    <!-- Campos de formulario -->
+
+                    <div class="custom-form-group-editar form-group">
+                        <label for="nombre_c">
+                            <h6>Nombre del agente:</h6>
+                        </label>
+                        <select id="nombre_c" name="nombre_c" class="custom-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="ASEGURADO">ASEGURADO</option>
+                            <option value="TERCERO">TERCERO</option>
+                        </select>
+                    </div>
+                    <div class="custom-form-group-editar form-group">
+                        <label for="campana_c">
+                            <h6>Campaña:</h6>
+                        </label>
+                        <select id="campana_c" name="campana_c" class="custom-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="ASEGURADO">ASEGURADO</option>
+                            <option value="TERCERO">TERCERO</option>
+                        </select>
+                    </div>
+                    <div class="custom-form-group-editar form-group">
+                        <label for="supervisor_c">
+                            <h6>Supervisor:</h6>
+                        </label>
+                        <select id="supervisor_c" name="supervisor_c" class="custom-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="ASEGURADO">ASEGURADO</option>
+                            <option value="TERCERO">TERCERO</option>
+                        </select>
+                    </div>
+                    <div class="custom-form-group-editar form-group">
+                        <label for="posicion_c">
+                            <h6>Posición:</h6>
+                        </label>
+                        <select id="posicion_c" name="posicion_c" class="custom-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="ASEGURADO">ASEGURADO</option>
+                            <option value="TERCERO">TERCERO</option>
+                        </select>
+                    </div>
+                    <div class="custom-form-group-editar form-group">
+                        <label for="id_c">
+                            <h6>ID:</h6>
+                        </label>
+                        <select id="id_c" name="id_c" class="custom-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="ASEGURADO">ASEGURADO</option>
+                            <option value="TERCERO">TERCERO</option>
+                        </select>
+                    </div>
+                    <div class="custom-form-group-editar form-group">
+                        <label for="nombre_tercero_c">
+                            <h6>Nombre del tercero:</h6>
+                        </label>
+                        <select id="nombre_tercero_c" name="nombre_tercero_c" class="custom-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="ASEGURADO">ASEGURADO</option>
+                            <option value="TERCERO">TERCERO</option>
+                        </select>
+                    </div>
+                    <div class="custom-form-group-editar form-group">
+                        <label for="tipo_tramite_c">
+                            <h6>Tipo de trámite:</h6>
+                        </label>
+                        <select id="tipo_tramite_c" name="tipo_tramite_c" class="custom-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="ASEGURADO">ASEGURADO</option>
+                            <option value="TERCERO">TERCERO</option>
+                        </select>
+                    </div>
+                    <div class="custom-form-group-editar form-group">
+                        <label for="siniestro_c">
+                            <h6>Siniestro:</h6>
+                        </label>
+                        <select id="siniestro_c" name="siniestro_c" class="custom-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="ASEGURADO">ASEGURADO</option>
+                            <option value="TERCERO">TERCERO</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="custom-form-group-editar form-group">
-                    <label for="campana_c">
-                        <h6>Campaña:</h6>
-                    </label>
-                    <select id="campana_c" name="campana_c" class="custom-form-control">
-                        <option value="" hidden>Selecciona</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="TERCERO">TERCERO</option>
-                    </select>
-                </div>
-                <div class="custom-form-group-editar form-group">
-                    <label for="supervisor_c">
-                        <h6>Supervisor:</h6>
-                    </label>
-                    <select id="supervisor_c" name="supervisor_c" class="custom-form-control">
-                        <option value="" hidden>Selecciona</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="TERCERO">TERCERO</option>
-                    </select>
-                </div>
-                <div class="custom-form-group-editar form-group">
-                    <label for="posicion_c">
-                        <h6>Posición:</h6>
-                    </label>
-                    <select id="posicion_c" name="posicion_c" class="custom-form-control">
-                        <option value="" hidden>Selecciona</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="TERCERO">TERCERO</option>
-                    </select>
-                </div>
-                <div class="custom-form-group-editar form-group">
-                    <label for="id_c">
-                        <h6>ID:</h6>
-                    </label>
-                    <select id="id_c" name="id_c" class="custom-form-control">
-                        <option value="" hidden>Selecciona</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="TERCERO">TERCERO</option>
-                    </select>
-                </div>
-                <div class="custom-form-group-editar form-group">
-                    <label for="nombre_tercero_c">
-                        <h6>Nombre del tercero:</h6>
-                    </label>
-                    <select id="nombre_tercero_c" name="nombre_tercero_c" class="custom-form-control">
-                        <option value="" hidden>Selecciona</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="TERCERO">TERCERO</option>
-                    </select>
-                </div>
-                <div class="custom-form-group-editar form-group">
-                    <label for="tipo_tramite_c">
-                        <h6>Tipo de trámite:</h6>
-                    </label>
-                    <select id="tipo_tramite_c" name="tipo_tramite_c" class="custom-form-control">
-                        <option value="" hidden>Selecciona</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="TERCERO">TERCERO</option>
-                    </select>
-                </div>
-                <div class="custom-form-group-editar form-group">
-                    <label for="siniestro_c">
-                        <h6>Siniestro:</h6>
-                    </label>
-                    <select id="siniestro_c" name="siniestro_c" class="custom-form-control">
-                        <option value="" hidden>Selecciona</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="TERCERO">TERCERO</option>
-                    </select>
-                </div>
-            </div>
         </div>
+
 
         <!-- Sección Calidad 2 (nota de calidad y performance) -->
         <div class="container_notacalidad">
@@ -151,11 +155,13 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <div class="container_performance">
                     <h4>Performance:</h4>
                     <!-- Contenedor para la imagen dinámica -->
-                    <img id="performance_img" src="" alt="performance">
+                    <img id="performance_img" alt="performance">
                 </div>
             </div>
         </div>
     </div>
+    <input type="hidden" name="nota_c" id="hiddenNotaCalidad">
+    <input type="hidden" name="performance_img" id="hiddenPerformanceImg">
     <!-- Sección de Impacto Negocio -->
     <div class="container_impacto">
         <div class="seccion-titulo">
@@ -400,46 +406,56 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             <label for="fortalezas">
                 <h6>Fortalezas</h6>
             </label>
-            <textarea id="fortalezas" class="fortalezas-textarea" readonly></textarea>
+            <textarea id="fortalezas" name="fortalezas" class="fortalezas-textarea" readonly></textarea>
         </div>
         <div class="oportunidades-container">
             <label for="oportunidades">
                 <h6>Áreas de Oportunidad</h6>
             </label>
-            <textarea id="oportunidades" class="oportunidades-textarea" readonly></textarea>
+            <textarea id="oportunidades" name="oportunidades" class="oportunidades-textarea" readonly></textarea>
         </div>
     </div>
 
-    <!-- Apartado de comentarios y compromiso -->
-    <div class="container_com">
-        <h6>Comentarios</h6>
-        <textarea class="form-control" id="comentariosTextarea" rows="3" style="margin-bottom: 30px;"></textarea>
-        <h6>Compromiso</h6>
-        <textarea class="form-control" id="compromisoTextarea" rows="3"></textarea>
-    </div>
+
 
     <!-- Contenedor de firmas -->
     <div class="firmas-container">
-        <!-- Firma del asesor -->
-        <div class="firma-item">
-            <h6>Firma del asesor</h6>
-            <canvas id="firmaAsesorCanvas" width="470" height="150"></canvas>
-            <div class="firma-botones">
-                <button id="limpiarAsesor" class="btn btn-limpiar">Limpiar</button>
-                <button id="capturarAsesor" class="btn btn-capturar">Capturar</button>
-            </div>
-        </div>
 
         <!-- Firma del analista -->
         <div class="firma-item">
             <h6>Firma del analista</h6>
             <canvas id="firmaAnalistaCanvas" width="470" height="150"></canvas>
             <div class="firma-botones">
-                <button id="limpiarAnalista" class="btn btn-limpiar">Limpiar</button>
-                <button id="capturarAnalista" class="btn btn-capturar">Capturar</button>
+                <button id="limpiarAN" type="button">Limpiar</button>
+                <button id="capturarAN" type="button" hidden></button>
             </div>
         </div>
+
+        <!-- Apartado de comentarios y compromiso -->
+        <div class="container_com">
+            <h6>Comentarios</h6>
+            <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="3" style="margin-bottom: 30px;"></textarea>
+            <!-- APAGADO <h6>Compromiso</h6>
+        <textarea class="form-control" id="compromisoTextarea" name="compromisoTextarea" rows="3"></textarea>-->
+        </div>
+
+        <!-- Firma del asesor -->
+        <!-- APAGADO <div class="firma-item">
+            <h6>Firma del asesor</h6>
+            <canvas id="firmaAsesorCanvas" width="470" height="150"> </canvas>
+            <div class="firma-botones">
+                <button id="limpiarA" type="button">Limpiar</button>
+                <button id="capturarA" type="button">Capturar</button>
+            </div>
+        </div>-->
+
     </div>
+    <!-- Campos ocultos para enviar las firmas -->
+    <input type="hidden" name="firma_asesor" id="hiddenFirmaAsesor">
+    <input type="hidden" name="firma_analista" id="hiddenFirmaAnalista">
+
+    </form>
+
     <!-- SCRIPT PARA CALCULAR LOS VALORES EN PORCENTAJE-->
     <script>
         function actualizarImagen(porcentaje) {
@@ -606,17 +622,41 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 const ctx = canvas.getContext("2d");
                 let dibujando = false;
 
-                // Configuración del contexto del canvas
-                ctx.lineWidth = 2;
-                ctx.lineCap = "round";
-                ctx.strokeStyle = "#000";
+                // Función para ajustar el tamaño físico del canvas
+                function ajustarTamanioCanvas() {
+                    const rect = canvas.getBoundingClientRect(); // Obtener el tamaño lógico (CSS)
+                    const ancho = rect.width;
+                    const alto = rect.height;
+
+                    // Ajustar el tamaño físico del canvas
+                    canvas.width = ancho;
+                    canvas.height = alto;
+
+                    // Reiniciar el contexto del canvas
+                    ctx.lineWidth = 2;
+                    ctx.lineCap = "round";
+                    ctx.strokeStyle = "#000";
+                }
+
+                // Ajustar el tamaño del canvas al cargar la página
+                ajustarTamanioCanvas();
+
+                // Ajustar el tamaño del canvas cuando cambie el tamaño de la ventana
+                window.addEventListener("resize", ajustarTamanioCanvas);
 
                 // Función para obtener coordenadas correctas
                 function obtenerCoordenadas(evento) {
                     const rect = canvas.getBoundingClientRect();
+                    const clientX = evento.clientX || (evento.touches && evento.touches[0].clientX);
+                    const clientY = evento.clientY || (evento.touches && evento.touches[0].clientY);
+
+                    // Escalar las coordenadas según el tamaño físico y lógico del canvas
+                    const x = (clientX - rect.left) * (canvas.width / rect.width);
+                    const y = (clientY - rect.top) * (canvas.height / rect.height);
+
                     return {
-                        x: (evento.clientX || evento.touches[0].clientX) - rect.left,
-                        y: (evento.clientY || evento.touches[0].clientY) - rect.top
+                        x,
+                        y
                     };
                 }
 
@@ -666,11 +706,11 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 });
             }
 
+            // Inicializamos las funciones para las firmas del asesor y del analista
             setTimeout(function() {
-                inicializarFirma("firmaAsesorCanvas", "limpiarAsesor", "capturarAsesor");
-                inicializarFirma("firmaAnalistaCanvas", "limpiarAnalista", "capturarAnalista");
+                inicializarFirma("firmaAsesorCanvas", "limpiarA", "capturarA");
+                inicializarFirma("firmaAnalistaCanvas", "limpiarAN", "capturarAN");
             }, 100);
-
         });
     </script>
 
@@ -749,36 +789,43 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         document.getElementById('btnLimpiar').addEventListener('click', limpiarFormulario);
     </script>
 
-    <!-- SCRIP PARA ENVIAR FORMULARIO -->
-
+    <!-- script para enviar el formulario -->
     <script>
-        document.getElementById("btnEC").addEventListener("click", function () {
-    // Capturar todos los valores del formulario
-    let formData = new FormData();
+        document.getElementById('btnEC').addEventListener('click', function() {
+            console.log("Botón clickeado"); // Verifica que el evento se dispare
 
-    document.querySelectorAll("select, input").forEach((element) => {
-        if (element.name) {
-            formData.append(element.name, element.value);
-        }
-    });
+            // Obtener el formulario por su id
+            const formulario = document.getElementById('miFormulario');
 
-    // Enviar los datos con Fetch
-    fetch("cedula_parciales.php", {
-        method: "POST",
-        body: formData,
-    })
-        .then((response) => response.json()) // Si el servidor responde en JSON
-        .then((data) => {
-            alert("Formulario enviado correctamente.");
-            console.log("Respuesta del servidor:", data);
-        })
-        .catch((error) => {
-            console.error("Error al enviar el formulario:", error);
+            if (!formulario) {
+                console.error("No se encontró el formulario.");
+                return;
+            }
+
+            // Captura los datos del bloque de nota de calidad y performance
+            const notaCalidad = document.getElementById('nota_c') ? document.getElementById('nota_c').innerText : '';
+            const performanceImg = document.getElementById('performance_img') ? document.getElementById('performance_img').src : '';
+
+            // Asigna los datos a los campos ocultos
+            document.getElementById('hiddenNotaCalidad').value = notaCalidad;
+            document.getElementById('hiddenPerformanceImg').value = performanceImg;
+
+            // Captura las firmas (canvas) y las convierte a base64
+            const firmaAsesorCanvas = document.getElementById('firmaAsesorCanvas');
+            const firmaAnalistaCanvas = document.getElementById('firmaAnalistaCanvas');
+
+            // Verifica si los canvas existen antes de intentar convertirlos
+            const firmaAsesor = firmaAsesorCanvas ? firmaAsesorCanvas.toDataURL() : '';
+            const firmaAnalista = firmaAnalistaCanvas ? firmaAnalistaCanvas.toDataURL() : '';
+
+            // Asigna las firmas a los campos ocultos
+            document.getElementById('hiddenFirmaAsesor').value = firmaAsesor;
+            document.getElementById('hiddenFirmaAnalista').value = firmaAnalista;
+
+            // Enviar el formulario y redirigir a cedula_parciales.php
+            formulario.submit(); // Envía el formulario
         });
-});
     </script>
-
-
 
 
     <!-- Scripts -->
