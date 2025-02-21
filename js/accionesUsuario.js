@@ -33,6 +33,7 @@ $(document).ready(function () {
           $("#usuario").val(usuario.usuario || "");
           $("#contrasena").val(usuario.contrasena || "");
           $("#perfil").val(usuario.perfil || "");
+          $("#tipo").val(usuario.tipo || "");
 
           // Si hay imagen de perfil, mostrarla
           if (usuario.imagen_perfil) {

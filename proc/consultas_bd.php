@@ -55,7 +55,8 @@
                     U.tipo AS Tipo,
                     U.extension AS Extension
 
-                    FROM Usuario U";
+                    FROM Usuario U
+                    WHERE usuario != 'root'";
 
     // Ejecutar la consulta
     $resultado_us = $conexion->query($sql_usuarios);

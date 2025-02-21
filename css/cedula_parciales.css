@@ -1,66 +1,114 @@
+.contenido{
+    max-width: 100%;
+    width: 100%;
+    padding: 0px;
+}
+
 /* Encabezado */
 .header {
-    display: flex; /* Usa flexbox para organizar los elementos */
-    justify-content: space-between; /* Espacio entre los elementos */
-    align-items: center; /* Centra los elementos verticalmente */
-    padding: 10px;
-    background-color: #f8f9fc; /* Color de fondo */
-    border-bottom: 2px solid #ccc; /* Línea de separación en la parte inferior */
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px; /* Mayor padding para más espacio */
+    background-color: #ffffff;
+    border-bottom: 2px solid #e0e0e0;
+    border-left: 5px solid #533392; /* Borde lateral para destacar la sección */
+    border-bottom: 5px solid #533392;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    margin-bottom: 20px; /* Más espacio debajo */
+    border-radius: 15px; /* Bordes redondeados */
 }
 
+/* Título */
 .title {
-    font-size: 24px;
+    font-size: 32px; /* Aumenté el tamaño del título */
     font-weight: bold;
-    color: #533392 ;
+    color: #533392;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.container_logo img {
-    max-height: 50px; /* Limita la altura de la imagen del logo */
+/* Contenedor del logo con 3 imágenes */
+.container_logo {
+    display: flex;
+    gap: 20px; /* Espacio entre las imágenes */
+    align-items: center;
+    justify-content: center; /* Centra las imágenes horizontalmente */
 }
+
+/* Asegúrate de que las imágenes tengan un tamaño adecuado */
+.container_logo img {
+    width: 98px; /* Ajusta el tamaño de las imágenes */
+    height: auto; /* Mantiene la proporción */
+}
+
+
+
+/*################*/
 
 /* Contenedor principal */
 .main-container {
-    display: flex; /* Usa flexbox para la disposición */
-    flex-wrap: wrap; /* Permite que los elementos se ajusten si es necesario */
-    gap: 10px; /* Espacio entre los elementos */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     width: 100%;
-    max-width: 100%; /* Ajusta el ancho máximo */
+    max-width: 100%;
 }
 
-/* Estilos para la sección Calidad 1 */
-.form-section {
-    flex: 1.8; /* Ocupa más espacio que otras secciones */
+/* Sección Calidad 1 */
+#calidad1 {
+    flex: 1.8; /* Proporción de espacio dentro del contenedor principal */
     padding: 10px;
     border: 1px solid #ddd;
-    background-color: #f8f9fc; /* Color de fondo */
-    border-left: 5px solid #533392; /* Borde izquierdo */
-    border-radius: 20px; /* Bordes redondeados */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    background-color: #f8f9fc; /* Color de fondo ligero */
+    border-left: 5px solid #533392; /* Borde lateral para destacar la sección */
+    border-radius: 20px; /* Bordes redondeados para diseño moderno */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
 }
 
-/* Contenedor de la cuadrícula */
+/* Contenedor de la tarjeta dentro de la sección */
+.custom-form-section-editar {
+    text-align: center; /* Centrar el contenido */
+    padding: 15px;
+}
+
+/* Disposición en cuadrícula para los campos del formulario */
 .form-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
-    grid-template-rows: repeat(2, auto); /* 2 filas */
-    gap: 3.5px; /* Espacio entre los campos */
+    grid-template-rows: repeat(2, auto); /* 2 filas con altura automática */
+    gap: 10px; /* Espacio entre los campos */
 }
 
-/* Estilos para cada grupo de formulario */
+/* Estilos para cada campo del formulario */
 .custom-form-group-editar {
     display: flex;
-    flex-direction: column; /* Organiza los elementos de forma vertical */
+    flex-direction: column; /* Alinear contenido en columna */
 }
 
+.custom-form-group-editar label h6 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000; /* Color oscuro para mejor legibilidad */
+    margin-bottom: 5px;
+}
+
+/*imputs*/
 .custom-form-control {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     background-color: #ffffff;
-    font-size: 8px;
+    font-size: 12px;
+    border: 1.2px solid #533392;
+    border-radius: 50px;
+    text-align: center; /* Centrar el texto */
+    font-weight: bold;
+    color: #000000;
 }
 
-/* Estilos para la sección Calidad 2 */
+/*#############################*/
+
+/* Sección Nota de Calidad */
 .container_notacalidad {
     flex: 1;
     padding: 20px;
@@ -68,13 +116,14 @@
     background-color: #f8f9fc; /* Color de fondo */
     border-left: 5px solid #533392; /* Borde izquierdo */
     border-radius: 20px; /* Bordes redondeados */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */   
 }
 
 .container_nota_calidad {
     display: flex;
     align-items: center; /* Centra verticalmente los elementos */
     gap: 20px; /* Espacio entre los elementos */
+    justify-content: space-between;
 }
 
 .nota-calidad {
@@ -82,13 +131,16 @@
     text-align: center; /* Centra el texto */
 }
 
-.nota-calidad h4 {
-    margin-bottom: 10px;
+.nota-calidad h2 {
+    text-align: center;
+    margin-bottom: 0px;
     font-size: 18px;
+    font-weight: bold;
+    color: #000000;
 }
 
 .nota-porcentaje {
-    font-size: 24px;
+    font-size: 65px;
     font-weight: bold;
     padding: 10px;
     width: 170px;
@@ -97,6 +149,8 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto; /* Centra el círculo */
+    border-radius: 10px;
+    color: #533392;
 }
 
 .container_performance {
@@ -104,184 +158,416 @@
     text-align: center; /* Centra el contenido */
 }
 
-.container_performance h4 {
-    margin-bottom: 20px;
+.container_performance h2 {
+    margin-bottom: 10px;
     font-size: 18px;
+    font-weight: bold;
+    color: #000000;
 }
 
 .container_performance img {
-    max-width: 160px; /* Limita el ancho de la imagen */
-    height: auto; /* Mantiene la proporción de la imagen */
+    max-width: 170px; /* Limita el ancho de la imagen */
+    height: 140px; /* Mantiene la proporción de la imagen */
     border-radius: 8px; /* Bordes redondeados */
+    padding: 5px;
+    background-color: #fff;
 }
 
+/*################################*/
 
-/*#########################################*/
-
-/* Contenedor principal que envuelve ambos bloques */
-.container-fila {
-    display: flex; /* Utilizamos flexbox para alinear los elementos en fila */
-    gap: 20px; /* Espacio entre los bloques */
-    justify-content: space-between; /* Alineamos los bloques con espacio entre ellos */
-    width: 100%; /* Ancho completo */
-}
-
-/* Estilos para el bloque de Impacto Negocio */
-.container_negocio,
-.container_operativo {
-    width: 50%; /* Cada bloque ocupa el 48% del ancho */
-    padding: 15px;
-    margin: 0;
-     border: 1px solid #ddd;
-    background-color: #f8f9fc; /* Color de fondo */
-    border-radius: 20px; /* Bordes redondeados */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
-    border-left: 5px solid #533392; /* Borde izquierdo */
-    box-sizing: border-box;
+.container-fila{
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: 10px;
+    gap: 10px;
 }
 
-/* Ajuste para el título de cada bloque */
-.container_negocio h3,
-.container_operativo h3 {
-    font-size: 15px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
+/*##################################*/
 
-/* Estilos comunes para los inputs y selects */
-.calidad-form-control {
+/* Contenedor principal de Impacto Negocio */
+.container_negocio {
     width: 100%;
-    padding: 0px;
-    margin: 3px 0;
-    font-size: 10px;
-     border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-/* Ajustes visuales para las etiquetas */
-.container_negocio label h6,
-.container_operativo label h6 {
-    font-size: 13px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-/* Estilo de la cuadrícula interna */
-#calidad-grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
-    grid-gap: 3px;
-    margin-top: 3px;
-    align-items: center;
-}
-
-/* Ajustes visuales para los campos dentro de la cuadrícula */
-#calidad-grid-container input[readonly] {
-    background-color: #e9ecef;
-}
-
-#calidad-grid-container label,
-#calidad-grid-container input,
-#calidad-grid-container select {
-    font-size: 13px;
-    padding: 3px;
-}
-
-#calidad-grid-container select {
-    margin-bottom: 5px;
-}
-
-/*####################################################*/
-/* Contenedor principal */
-.contenedor-principal {
     display: flex;
-    justify-content: space-between;
-    gap: 20px; /* Espacio entre los bloques */
-    margin-top: 10px;
-    width: 100%;
-    font-size: 10px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-/* Fortalezas y Áreas de Oportunidad */
-.container_FA {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    width: 50%;
-}
-
-/* Asegurar que los textareas ocupen todo el espacio */
-.fortalezas-textarea,
-.oportunidades-textarea {
-    flex-grow: 1;
-    height: 100%;
-}
-
-
-.fortalezas-container,
-.oportunidades-container {
+/* Sección Impacto Negocio */
+.container_negocio .form-section-editar.rubros {
     flex: 1;
     padding: 15px;
-     border: 1px solid #ddd;
+    border: 1px solid #ddd;
     background-color: #f8f9fc; /* Color de fondo */
+    border-left: 5px solid #533392; /* Borde lateral izquierdo */
     border-radius: 20px; /* Bordes redondeados */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
-    border-left: 5px solid #533392; /* Borde izquierdo */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 330px; /* Altura fija para que ambas sean iguales */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
 }
 
-textarea {
-    width: 100%;
-    height: 600px;
-    resize: none;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 14px;
+/* Estilo del título */
+.container_negocio .form-section-editar.rubros h3 {
+    font-size: 2opx;
+    font-weight: bold;
+    color: #533392;;
+    margin-bottom: 20px;
 }
 
-/* Comentarios y compromiso */
-.container_com {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 30%;
-    padding: 10px;
-    border-radius: 10px;
-    margin-top: 10px;
-    color: #533392  ;
-     font-weight: bold;
-}
-
-/* Firmas */
-.firmas-container {
-    display: flex;
-    flex-direction: column;
+/* Contenedor de la cuadrícula */
+.container_negocio .calidad-grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
     gap: 10px;
-    width: 30%;
-    margin-top: 3px;
-    color: #533392  ;
-}
-
-.firma-item {
-    padding: 10px;
-    border-radius: 10px;
+    align-items: center;
     text-align: center;
 }
 
-canvas {
-    border: 1px solid #533392 ;
-    border-radius: 5px;
+/* Estilos para los labels */
+.container_negocio .calidad-grid-container label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+}
+
+/* Inputs del formulario */
+.container_negocio .calidad-grid-container .calidad-form-control,
+.container_negocio .calidad-grid-container .custom-form-control {
     width: 100%;
-    height: 110px;
+    padding: 8px;
+    font-size: 12px;
+    border: 1.2px solid #533392;
+    border-radius: 50px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #ffffff;
+    color: #000;
+     margin-bottom: 20px;
+}
+
+/* Inputs de solo lectura */
+.container_negocio .calidad-grid-container .calidad-form-control[readonly],
+.container_negocio .calidad-grid-container .custom-form-control[readonly] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .container_negocio .calidad-grid-container {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .container_negocio .calidad-grid-container .calidad-form-control,
+    .container_negocio .calidad-grid-container .custom-form-control {
+        width: 100%;
+    }
 }
 
 
-/*####################################################*/
+/*#############################*/
+
+/* Contenedor principal de Impacto Operativo */
+.container_operativo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Sección Impacto Operativo */
+.container_operativo .form-section-editar.rubros {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fc; /* Color de fondo */
+    border-left: 5px solid #533392; /* Borde lateral izquierdo */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+}
+
+/* Estilo del título */
+.container_operativo .form-section-editar.rubros h3 {
+    font-size: 2opx;
+    font-weight: bold;
+    color: #533392;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de la cuadrícula */
+.container_operativo .calidad-grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+}
+
+/* Estilos para los labels */
+.container_operativo .calidad-grid-container label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+}
+
+/* Inputs del formulario */
+.container_operativo .calidad-grid-container .calidad-form-control,
+.container_operativo .calidad-grid-container .custom-form-control {
+    width: 100%;
+    padding: 8px;
+    font-size: 12px;
+    border: 1.2px solid #533392;
+    border-radius: 50px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #ffffff;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* Inputs de solo lectura */
+.container_operativo .calidad-grid-container .calidad-form-control[readonly],
+.container_operativo .calidad-grid-container .custom-form-control[readonly] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* Sección de Error Crítico */
+.container_operativo .form-section-editar.rubros h3 {
+    margin-top: 20px;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .container_operativo .calidad-grid-container {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .container_operativo .calidad-grid-container .calidad-form-control,
+    .container_operativo .calidad-grid-container .custom-form-control {
+        width: 100%;
+    }
+}
+
+/*#############################*/
+.container_firmcom{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+/*##########################*/
+/* Contenedor principal de fortalezas y áreas de oportunidad */
+.contenedor-fortalezas {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+}
+
+/* Estilo para el contenedor de fortalezas y áreas de oportunidad */
+.container_FA {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    height: 450px;
+}
+
+/* Estilo para el contenedor de Fortalezas */
+.fortalezas-container {
+    flex: 1;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fc;
+    border-left: 5px solid #533392;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo de los títulos dentro de Fortalezas */
+.fortalezas-container label h6 {
+    font-size: 18px;
+    font-weight: bold;
+    color:  #533392;
+    margin-bottom: 10px;
+}
+
+/* Estilo para los textareas de Fortalezas */
+.fortalezas-textarea {
+    width: 100%;
+    height: 90%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1.2px solid #533392;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #000;
+    resize: none;
+    font-weight: bold;
+}
+
+/* Textarea de solo lectura en Fortalezas */
+.fortalezas-textarea[readonly] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* Estilo para el contenedor de Áreas de Oportunidad */
+.oportunidades-container {
+    flex: 1;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fc;
+    border-left: 5px solid #533392;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo de los títulos dentro de Áreas de Oportunidad */
+.oportunidades-container label h6 {
+    font-size: 18px;
+    font-weight: bold;
+    color:  #533392;
+    margin-bottom: 10px;
+}
+
+/* Estilo para los textareas de Áreas de Oportunidad */
+.oportunidades-textarea {
+    width: 100%;
+    height: 90%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1.2px solid #533392;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #000;
+    resize: none;
+    font-weight: bold;
+}
+
+/* Textarea de solo lectura en Áreas de Oportunidad */
+.oportunidades-textarea[readonly] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/*####################################*/
+
+/* Contenedor de comentarios */
+.container_comentariosF {
+    width: 100%;
+    align-content: center;
+}
+
+/* Estilo para los comentarios y compromiso */
+.container_com {
+    margin-top: 20px;
+
+}
+
+/* Estilo de los títulos de comentarios y compromiso */
+.container_com h6 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+/* Estilo para los textareas de comentarios y compromiso */
+.container_com .form-control {
+    width: 100%;
+    height: 140px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1.2px solid rgb(83, 51, 146);
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #000;
+    resize: none;
+    font-weight: bold;
+}
+
+/*##########################*/
+
+/* Contenedor de firmas */
+.firmas-container {
+    display: flex;
+    gap: 20px; /* Espacio entre las firmas */
+    margin-top: 20px;
+    width: 100%; /* Asegura que ocupe el 100% del contenedor */
+}
+
+/* Estilo para cada firma */
+.firma-item {
+    width: 100%; /* Ocupa el 100% del contenedor */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fc;
+    border-left: 5px solid #533392;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para los títulos de firma */
+.firma-item h6 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #533392;
+    margin-bottom: 10px;
+}
+
+/* Estilo para las imágenes de firma */
+.firma-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px; /* Separación entre la imagen y el lienzo */
+}
+
+/* Estilo para el lienzo de firmas */
+.firma-item canvas {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #5e5e5e;
+    border-radius: 10px;
+    margin-top: 10px; /* Separación entre el título y el lienzo */
+}
+
+/*#############################*/
+
+/* Estilo para el botón de salir */
+#botonSalir {
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px; /* Radio más suave para bordes */
+    cursor: pointer;
+    background-color: #6c5ce7; /* Color de fondo más atractivo */
+    color: #ffffff; /* Texto blanco */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efecto hover */
+#botonSalir:hover {
+    background-color: #5a4bcb; /* Color más oscuro al pasar el mouse */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Efecto clic */
+#botonSalir:active {
+    transform: scale(0.95);
+}
+
+
+/* Ocultar el botón al imprimir o generar PDF */
+@media print {
+    #botonSalir {
+        display: none;
+    }
+}

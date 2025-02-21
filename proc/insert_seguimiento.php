@@ -94,9 +94,9 @@ if ($stmt = $conexion->prepare($query_insert)) {
 
         // Ejecutar la consulta
         if ($stmtCedula->execute()) {
-            echo ("Actualización de cédula realizada correctamente");
+            error_log ("Actualización de cédula realizada correctamente");
         } else {
-            echo ("Error al actualizar la cédula");
+            error_log ("Error al actualizar la cédula");
         }
     } else {
         echo json_encode(['error' => 'Error al preparar la consulta para actualizar la cédula']);

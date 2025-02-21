@@ -26,15 +26,15 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <!-- Fuentes personalizadas -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Estilos personalizados -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/calidad.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!-- Estilos personalizados -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -782,7 +782,13 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 performanceImg.src = "img/cuidado.jpg"; // Limpiar la imagen
             }
 
-            alert("Formulario limpiado correctamente."); // Feedback al usuario
+            // Feedback al usuario con SweetAlert2
+            Swal.fire({
+                icon: 'success',
+                title: 'Formulario limpio ✨',
+                showConfirmButton: false,
+                timer: 1000
+            });
         }
 
         // Asignar la función al botón "Limpiar"

@@ -75,6 +75,8 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
     <link rel="stylesheet" href="css/cedula_parciales.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -86,7 +88,9 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
         <div class="header">
             <div class="title">CEDULA PARCIALES</div>
             <div class="container_logo">
-                <img src="img/logos2.gif" alt="Logo de la página">
+                <img src="img/hdi-logo.png" alt="Logo de la página">
+                <img src="img/logo-GNP.jpeg" alt="Logo de la página">
+                <img src="img/aguila-logo.jpg" alt="Logo de la página">
             </div>
         </div>
 
@@ -164,24 +168,38 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                     <!-- Nota de calidad -->
                     <div class="nota-calidad">
                         <label for="nota_c">
-                            <h4>Nota de calidad:</h4>
+                            <h2>Nota de calidad:</h2>
                         </label>
                         <!-- Contenedor para el porcentaje -->
-                        <div id="nota_c" name="nota_c" class="nota-porcentaje">
+                        <div id="nota_c" name="nota_c" class="nota-porcentaje"
+                            <?php
+                            // Verifica el valor de la nota y aplica un color de fondo según el valor
+                            if (isset($_POST['nota_c'])) {
+                                $nota = intval($_POST['nota_c']);
+                                if ($nota <= 75) {
+                                    echo 'style="color: red;"';
+                                } elseif ($nota >= 76 && $nota <= 89) {
+                                    echo 'style="color: #ffcc00;"';
+                                } elseif ($nota >= 90 && $nota <= 100) {
+                                    echo 'style="color: green;"';
+                                }
+                            }
+                            ?>>
                             <?php
                             // Mostrar la nota de calidad enviada por POST
                             if (isset($_POST['nota_c'])) {
                                 echo htmlspecialchars($_POST['nota_c']);
                             } else {
-                                echo "No hay datos"; // Mensaje por defecto si no hay datos
+                                echo "%"; // Mensaje por defecto si no hay datos
                             }
                             ?>
                         </div>
                     </div>
 
+
                     <!-- Performance -->
                     <div class="container_performance">
-                        <h4>Performance:</h4>
+                        <h2>Performance:</h2>
                         <!-- Contenedor para la imagen dinámica -->
                         <img id="performance_img" src="<?php
                                                         // Mostrar la imagen de performance enviada por POST
@@ -280,8 +298,8 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         <label for="rubro_c">
                             <h6>Rubro</h6>
                         </label>
-
-                        <h6>Ponderación</h6>
+                        <label for="ponderacion_c">
+                            <h6>Ponderación</h6>
                         </label>
                         <label for="cumple_c">
                             <h6>Cumple / No cumple</h6>
@@ -313,7 +331,7 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         <input type="text" id="cumple12" name="cumple12" class="custom-form-control" value="<?php echo htmlspecialchars($cumple12); ?>" readonly>
 
                     </div>
-                    <h3 style="margin-top: 20px;">Error Crítico</h3>
+                    <h3 style="margin-top: 40px; margin-bottom: 20px;">Error Crítico</h3>
                     <div id="calidad-grid-container" class="calidad-grid-container">
                         <!-- Rubros con ponderaciones -->
                         <label for="maltrato_c">
@@ -329,21 +347,22 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         <input type="text" id="cumple14" name="cumple14" class="custom-form-control" value="<?php echo htmlspecialchars($cumple14); ?>" readonly>
                     </div>
                 </div>
+
             </div>
         </div>
 
-        <div class="contenedor-principal">
-            <!-- Contenedor de Fortalezas y Áreas de Oportunidad -->
-            <div class="container_FA">
-                <div class="fortalezas-container">
-                    <label for="fortalezas">
-                        <h6>Fortalezas</h6>
-                    </label>
-                    <!-- Aquí se coloca el valor recibido desde el POST en el textarea -->
-                    <textarea id="fortalezas" class="fortalezas-textarea" readonly><?php echo htmlspecialchars($fortalezas); ?></textarea>
-                </div>
+        <div class="container_firmcom">
+            <div class="contenedor-fortalezas">
                 <!-- Contenedor de Fortalezas y Áreas de Oportunidad -->
                 <div class="container_FA">
+                    <div class="fortalezas-container">
+                        <label for="fortalezas">
+                            <h6>Fortalezas</h6>
+                        </label>
+                        <!-- Aquí se coloca el valor recibido desde el POST en el textarea -->
+                        <textarea id="fortalezas" class="fortalezas-textarea" readonly><?php echo htmlspecialchars($fortalezas); ?></textarea>
+                    </div>
+                    <!-- Contenedor de Fortalezas y Áreas de Oportunidad -->
                     <div class="oportunidades-container">
                         <label for="oportunidades">
                             <h6>Áreas de Oportunidad</h6>
@@ -354,107 +373,152 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                 </div>
             </div>
 
-            <!-- Apartado de comentarios y compromiso -->
-            <div class="container_com">
-                <h6>Comentarios</h6>
-                <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="3" style="margin-bottom: 30px;" readonly> <?php echo htmlspecialchars($comentariosTextarea); ?></textarea>
-                <h6>Compromiso</h6>
-                <textarea class="form-control" id="compromisoTextarea" name="compromisoTextarea" rows="3" readonly> <?php echo htmlspecialchars($compromisoTextarea); ?> </textarea>
-            </div>
+            <div class="container_comentariosF">
 
-            <!-- Contenedor de firmas -->
-            <div class="firmas-container">
-                <!-- Firma del asesor -->
-                <div class="firma-item">
-                    <h6>Firma del asesor</h6>
-                    <?php
-                    if (isset($_POST['firma_asesor'])) {
-                        echo '<img src="' . htmlspecialchars($_POST['firma_asesor']) . '" alt="Firma del asesor">';
-                    } else {
-                        echo '<canvas id="firmaAsesorCanvas" width="470" height="150"></canvas>';
-                    }
-                    ?>
-                </div>
-
-                <!-- Firma del analista -->
-                <div class="firma-item">
-                    <h6>Firma del analista</h6>
-                    <?php
-                    if (isset($_POST['firma_analista'])) {
-                        echo '<img src="' . htmlspecialchars($_POST['firma_analista']) . '" alt="Firma del analista">';
-                    } else {
-                        echo '<canvas id="firmaAnalistaCanvas" width="470" height="150"></canvas>';
-                    }
-                    ?>
+                <!-- Apartado de comentarios y compromiso -->
+                <div class="container_com">
+                    <h6>Comentarios</h6>
+                    <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="3" style="margin-bottom: 30px;" readonly> <?php echo htmlspecialchars($comentariosTextarea); ?></textarea>
+                    <h6>Compromiso</h6>
+                    <textarea class="form-control" id="compromisoTextarea" name="compromisoTextarea" rows="3" readonly> <?php echo htmlspecialchars($compromisoTextarea); ?> </textarea>
                 </div>
             </div>
+        </div>
+        <!-- Contenedor de firmas -->
+        <div class="firmas-container">
 
+            <!-- Firma del analista -->
+            <div class="firma-item">
+                <h6>Firma del analista</h6>
+                <?php
+                if (isset($_POST['firma_analista'])) {
+                    echo '<img src="' . htmlspecialchars($_POST['firma_analista']) . '" alt="Firma del analista">';
+                } else {
+                    echo '<canvas id="firmaAnalistaCanvas" width="470" height="150"></canvas>';
+                }
+                ?>
+            </div>
+            <!-- Firma del asesor -->
+            <div class="firma-item">
+                <h6>Firma del asesor</h6>
+                <canvas id="firmaAsesorCanvas" width="470" height="150"> </canvas>
+                <div class="firma-botones">
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- SCRIPT PARA GENRERAR EL PDF-->
-
+    <!-- SCRIPT PARA GENERAR EL PDF -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('img');
-            let loadedImages = 0;
+            const totalImages = images.length;
 
-            images.forEach(img => {
-                if (img.complete) {
-                    loadedImages++;
-                } else {
-                    img.addEventListener('load', () => {
-                        loadedImages++;
-                        if (loadedImages === images.length) {
-                            captureScreen();
-                        }
-                    });
-                    img.addEventListener('error', () => {
-                        console.error("Error cargando la imagen:", img.src);
-                        loadedImages++;
-                        if (loadedImages === images.length) {
-                            captureScreen();
-                        }
-                    });
-                }
-            });
-
-            if (loadedImages === images.length) {
-                captureScreen();
+            if (totalImages === 0) {
+                waitForStylesThenCapture();
+                return;
             }
+
+            Promise.all(Array.from(images).map(img => {
+                return new Promise((resolve, reject) => {
+                    if (img.complete && img.naturalHeight !== 0) {
+                        convertToBase64(img);
+                        resolve();
+                    } else {
+                        img.addEventListener('load', () => {
+                            convertToBase64(img);
+                            resolve();
+                        });
+                        img.addEventListener('error', () => {
+                            console.error("Error cargando la imagen:", img.src);
+                            resolve(); // Resolvemos incluso si hay un error para no bloquear el proceso
+                        });
+                    }
+                });
+            })).then(() => {
+                waitForStylesThenCapture();
+            });
         });
 
-        function captureScreen() {
-            html2canvas(document.getElementById('contenido'), {
-                logging: true,
-                useCORS: true,
-                scale: 2, // Aumenta la escala para mejorar la calidad
-                allowTaint: true, // Permite el uso de imágenes externas
-                foreignObjectRendering: true, // Mejora la compatibilidad con estilos CSS
-            }).then(canvas => {
-                const imgData = canvas.toDataURL('image/png', 1.0); // Calidad máxima (1.0)
+        function convertToBase64(img) {
+            if (img.src && !img.src.startsWith('data:image')) {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = img.naturalWidth;
+                canvas.height = img.naturalHeight;
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                img.src = canvas.toDataURL('image/png');
+            }
+        }
+
+        function waitForStylesThenCapture() {
+            setTimeout(captureScreen, 1000);
+        }
+
+        async function captureScreen() {
+            try {
+                const contenido = document.getElementById('contenido');
+
+                const styles = window.getComputedStyle(contenido);
+                console.log("Estilos detectados:", styles);
+
+                const canvas = await html2canvas(contenido, {
+                    useCORS: true,
+                    logging: true,
+                    scale: 2,
+                    backgroundColor: null,
+                    foreignObjectRendering: true,
+                    imageTimeout: 15000,
+                    width: contenido.scrollWidth,
+                    height: contenido.scrollHeight
+                });
+
+                const imgData = canvas.toDataURL('image/png', 1.0);
                 const {
                     jsPDF
                 } = window.jspdf;
-                const doc = new jsPDF('l', 'mm', 'a4'); // 'l' para landscape (horizontal)
+                const doc = new jsPDF('p', 'mm', 'a4');
 
-                // Ajustar las dimensiones de la imagen al PDF
-                const imgWidth = doc.internal.pageSize.getWidth();
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                const pdfWidth = doc.internal.pageSize.getWidth();
+                const pdfHeight = doc.internal.pageSize.getHeight();
+                const imgRatio = canvas.width / canvas.height;
 
-                // Agregar la imagen al PDF
-                doc.addImage(imgData, 'PNG', 5, 5, imgWidth - 10, imgHeight - 76); // Ajusta márgenes
+                let imgWidth = pdfWidth;
+                let imgHeight = pdfWidth / imgRatio;
 
-                // Descargar el PDF
-                doc.save('captura_pantalla.pdf');
-            }).catch(error => {
-                console.error("Error en html2canvas:", error);
-            });
+                if (imgHeight > pdfHeight) {
+                    imgHeight = pdfHeight;
+                    imgWidth = pdfHeight * imgRatio;
+                }
+
+                const x = (pdfWidth - imgWidth) / 2;
+                const y = (pdfHeight - imgHeight) / 2;
+
+                doc.addImage(imgData, 'PNG', x, y, imgWidth, imgHeight);
+                doc.save('documento_PRUEBA.pdf');
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Cédula enviada',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Regresar',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: false,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.history.back();
+                    }
+                });
+
+            } catch (error) {
+                console.error("Error en el proceso:", error);
+            }
         }
     </script>
 
     <!-- Script para la firma -->
-     
+
 </body>
 
 </html>

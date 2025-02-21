@@ -114,8 +114,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Insertar en Expediente
-    $stmt = $conexion->prepare("INSERT INTO Expediente (fecha_carga, no_siniestro, poliza, afectado, cobertura, fecha_siniestro, datos_audatex, fk_estado, taller_corralon, regimen, fk_asegurado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssssssi", $fecha_subida, $siniestro, $poliza, $afectado, $cobertura, $fecha_sin, $datosau, $fk_estado, $taller, $regimen, $fk_asegurado);
+    $stmt = $conexion->prepare("INSERT INTO Expediente (fecha_carga, no_siniestro, poliza, afectado, cobertura, fecha_siniestro, datos_audatex, fk_estado, taller_corralon, regimen, fk_asegurado, passw_ext) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $pass_ext = $poliza . $afectado;
+    $stmt->bind_param("ssssssssssis", $fecha_subida, $siniestro, $poliza, $afectado, $cobertura, $fecha_sin, $datosau, $fk_estado, $taller, $regimen, $fk_asegurado, $pass_ext);
     if ($stmt->execute()) {
         $fk_expediente = $stmt->insert_id;
     } else {

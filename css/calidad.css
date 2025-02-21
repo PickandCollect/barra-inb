@@ -138,6 +138,7 @@
     height: auto; /* Mantener la proporción */
     margin-top: 10px; /* Espacio superior */
 }
+/*########################################*/
 
 /* Estilos para la sección del formulario */
 .custom-form-section-editar {
@@ -352,38 +353,35 @@
     box-sizing: border-box; /* Incluye padding y border en el ancho */
 }
 
-/* Estilos para los botones de acción */
-.custom-submit-button-c {
-    background-color: #533392 !important; /* Color de fondo */
-    color: white !important; /* Color del texto */
-    font-weight: bold !important; /* Negrita */
-    padding: 5px 15px !important; /* Espaciado interno */
-    margin: 5px !important; /* Margen */
-    font-size: 1em !important; /* Tamaño de fuente */
-    border: none !important; /* Sin borde */
-    border-radius: 50px !important; /* Bordes redondeados */
-    display: inline-block !important; /* Muestra como bloque en línea */
-    height: 45px; /* Altura */
-    min-width: 100px; /* Ancho mínimo */
+/*###########################################*/
+
+/* Estilo para los botones Limpiar y Enviar */
+#btnLimpiar, #btnEC {
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px; /* Radio más suave para bordes */
+    cursor: pointer;
+    background-color: #6c5ce7; /* Color de fondo más atractivo */
+    color: #ffffff; /* Texto blanco */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
-/* Estilos para los botones de acción al pasar el mouse */
-.custom-submit-button-c:hover {
-    background-color: #5d58ec !important; /* Cambia el color de fondo */
+/* Efecto hover */
+#btnLimpiar:hover, #btnEC:hover {
+    background-color: #463d8a; /* Color más oscuro al pasar el mouse */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Efecto clic */
+#btnLimpiar:active, #btnEC:active {
+  transform: scale(0.60);
 }
 
 
-
-/* Estilos para el contenedor circular */
-.div-circular {
-    width: 100px; /* Ancho */
-    height: 100px; /* Altura */
-    border-radius: 50%; /* Bordes redondeados para hacerlo circular */
-    overflow: hidden; /* Oculta el contenido que sobresale */
-    display: flex; /* Usa flexbox */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-}
+/*########################################*/
 
 /* Estilos para los contenedores de Fortalezas y Áreas de Oportunidad */
 .container_FA {
@@ -432,6 +430,7 @@
     border-color: #54259e;
 }
 
+/*###############################################*/
 
 /* Estilos para los contenedores de Comentarios y Compromiso */
 .container_com {
@@ -470,6 +469,8 @@
     border-color: #54259e; /* Cambia el color del borde al hacer foco */
 }
 
+
+/*###########################################*/
    
 /* Contenedor principal de firmas */
 .firmas-container {
@@ -509,13 +510,8 @@
 
 /* Estilos para los botones */
 
-.firma-botones {
-    display: flex;
-    justify-content: center; /* Alinea los botones al centro */
-    gap: 15px; /* Espaciado mayor entre botones */
-}
-
-.firma-botones button {
+/* Estilo para los botones de firma */
+#limpiarAN, #capturarAN {
     padding: 10px 25px;
     font-size: 16px;
     font-weight: 600;
@@ -525,18 +521,20 @@
     background-color: #6c5ce7; /* Color de fondo más atractivo */
     color: #ffffff; /* Texto blanco */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
-.firma-botones button:hover {
-    background-color: #4e4cd3; /* Color más oscuro al hacer hover */
-    color: #f8f9fc; /* Asegura que el texto sea claro en hover */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más profunda */
-    transform: translateY(-1px); /* Efecto de elevación */
+/* Efecto hover */
+#limpiarAN:hover, #capturarAN:hover {
+    background-color: #5a4bcb; /* Color más oscuro al pasar el mouse */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.firma-botones button:active {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra más profunda para simular el clic */
+/* Efecto clic */
+#limpiarAN:active, #capturarAN:active {
+    transform: scale(0.60);
 }
+
 
 
 

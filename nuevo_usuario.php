@@ -30,7 +30,7 @@
                                 <label for="nombre_us">Nombre:</label>
                                 <input type="text" id="nombre_us" name="nombre_us" class="custom-form-control form-control" placeholder="Nombre completo">
                             </div>
-                            <div class="custom-form-group form-group">
+                            <!--<div class="custom-form-group form-group">
                                 <label for="curp">CURP:</label>
                                 <input type="text" id="curp" name="curp" class="custom-form-control form-control" placeholder="CURP">
                             </div>
@@ -38,10 +38,10 @@
                                 <label for="rfc">RFC:</label>
                                 <input type="text" id="rfc" name="rfc" class="custom-form-control form-control" placeholder="RFC">
                             </div>
-                            <div class="custom-form-group form-group">
+                             <div class="custom-form-group form-group">
                                 <label for="telefono1">Teléfono fijo:</label>
                                 <input type="text" id="telefono1" name="telefono1" class="custom-form-control form-control" placeholder="Teléfono fijo">
-                            </div>
+                            </div> -->
 
                             <!-- Segunda Columna -->
                             <div class="custom-form-group form-group">
@@ -52,25 +52,21 @@
                                 <label for="email">Email:</label>
                                 <input type="email" id="email" name="email" class="custom-form-control form-control" placeholder="Email">
                             </div>
-                            <div class="custom-form-group form-group">
+
+                            <!--<div class="custom-form-group form-group">
                                 <label for="passemail">PassEmail:</label>
                                 <input type="password" id="passemail" name="passemail" class="custom-form-control form-control" placeholder="PassEmail">
-                            </div>
-                            <div class="custom-form-group form-group">
-                                <label for="extension">Extensión:</label>
-                                <input type="text" id="extension" name="extension" class="custom-form-control form-control" placeholder="Extensión">
-                            </div>
+                            </div>-->
 
                             <!-- Tercera Columna -->
                             <div class="custom-form-group form-group">
                                 <label for="jefe">Jefe directo:</label>
                                 <select id="jefe" name="jefe" class="custom-form-control form-control">
                                     <option value="" selected>Selecciona</option>
-                                    <option value="1">Persona Física</option>
-                                    <option value="2">Persona Física con Actividad Empresarial</option>
-                                    <option value="3">Persona Moral</option>
+
                                 </select>
                             </div>
+
                             <div class="custom-form-group form-group">
                                 <label for="usuario">Usuario:</label>
                                 <input type="text" id="usuario" name="usuario" class="custom-form-control form-control" placeholder="Usuario">
@@ -86,7 +82,16 @@
                                     <option value="ROOT">ROOT</option>
                                     <option value="SUPERVISOR">SUPERVISOR</option>
                                     <option value="OPERADOR">OPERADOR</option>
-                                    <option value="CONSULTA">CONSULTA</option>
+
+                                </select>
+                            </div>
+                            <div class="custom-form-group form-group">
+                                <label for="tipo">Tipo:</label>
+                                <select id="tipo" name="tipo" class="custom-form-control form-control">
+                                    <option value="" selected>Selecciona</option>
+                                    <option value="INTEGRACION">INTEGRACION</option>
+                                    <option value="SUPERVISOR">SUPERVISOR</option>
+                                    <option value="CALL CENTER">CALL CENTER</option>
                                 </select>
                             </div>
                         </div>
@@ -113,6 +118,8 @@
         </div>
     </form>
 
+    <!--Supervisor-->
+    <script src="js/getSupervisor.js"></script>
     <!-- JavaScript para mostrar el nombre del archivo -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <script>
@@ -139,7 +146,7 @@
             }
         });
     </script>
-    
+
     <script src="js/procesamientoUsuario.js"></script>
 
 

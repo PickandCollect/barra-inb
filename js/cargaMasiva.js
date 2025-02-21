@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const fileInput = document.getElementById("fileInput");
-  const fileName = document.getElementById("fileName");
+  const fileInput = document.getElementById("fileInput1");
+  const fileName = document.getElementById("fileName1");
   const btnCargaMasiva = document.getElementById("btnCargaMasiva");
 
   // Actualizar el nombre del archivo seleccionado

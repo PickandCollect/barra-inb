@@ -21,7 +21,7 @@ $(document).ready(function () {
       type: "POST",
       data: data,
       xhrFields: {
-        responseType: "blob", // Permite recibir el archivo binario
+        responseType: "blob",
       },
       success: function (response) {
         // Descargar el archivo Excel
@@ -30,7 +30,7 @@ $(document).ready(function () {
         });
         const link = document.createElement("a");
         link.href = window.URL.createObjectURL(blob);
-        link.download = "exportado_filtros.xlsx"; // Nombre del archivo exportado
+        link.download = "exportado_filtros.xlsx";
         link.click();
       },
       error: function (xhr, status, error) {
@@ -89,14 +89,11 @@ $(document).ready(function () {
     $("#accion").val("");
     $("#cobertura").val("");
 
-    // Limpiar las opciones de los selects de Estado y Región
-    $("#estado").html('<option value="">Selecciona</option>'); // Vaciar opciones de estado
-    $("#region").html('<option value="">Selecciona</option>'); // Vaciar opciones de región
+    $("#estado").html('<option value="">Selecciona</option>');
+    $("#region").html('<option value="">Selecciona</option>');
 
-    // Realizar la llamada AJAX para cargar todos los datos de Estado y Región
     cargarEstadosYRegiones();
 
-    // Realizar la solicitud para filtrar la tabla (sin valores para Estado y Región)
     const data = {
       fecha_inicio: $("#fecha_inicio").val(),
       fecha_fin: $("#fecha_fin").val(),
@@ -128,19 +125,17 @@ $(document).ready(function () {
     });
   });
 
-  // Función para cargar todos los estados y regiones
   function cargarEstadosYRegiones() {
     $.ajax({
-      url: "proc/get_direccion.php", // Asegúrate de que esta URL sea correcta
+      url: "proc/get_direccion.php",
       type: "POST",
       data: {
-        filterType: "all", // Tipo de filtro para obtener todos los estados y regiones
+        filterType: "all",
       },
       dataType: "json",
       success: function (data) {
-        console.log(data); // Para verificar la respuesta JSON en la consola
+        console.log(data);
 
-        // Cargar todos los estados
         if (data.estado && data.estado.length > 0) {
           $("#estado").html('<option value="">Selecciona</option>');
           data.estado.forEach(function (estado) {
@@ -148,7 +143,6 @@ $(document).ready(function () {
           });
         }
 
-        // Cargar todas las regiones
         if (data.region && data.region.length > 0) {
           $("#region").html('<option value="">Selecciona</option>');
           data.region.forEach(function (region) {
@@ -162,7 +156,6 @@ $(document).ready(function () {
     });
   }
 
-  // Función para actualizar la tabla con datos filtrados
   function actualizarTabla(data) {
     let rows = "";
     data.forEach((item) => {
@@ -198,31 +191,26 @@ $(document).ready(function () {
 
   // Delegar la acción de eliminación de forma adecuada
   $("#dataTable").on("click", ".custom-table-style-delete-btn", function () {
-    const idRegistro = $(this).data("id"); // Captura el 'data-id' del botón de eliminación
+    const idRegistro = $(this).data("id");
 
-    // Verifica si el idRegistro es válido
     if (!idRegistro) {
       alert("No se ha encontrado un ID válido para la eliminación.");
       return;
     }
 
-    // Confirmación de eliminación
     if (confirm("¿Estás seguro de que deseas eliminar esta cédula?")) {
-      // Llamada AJAX para eliminar la cédula
       $.ajax({
-        url: "proc/borra_cedula.php", // El archivo PHP que maneja la eliminación
+        url: "proc/borra_cedula.php",
         type: "POST",
         data: {
           id: idRegistro,
         },
         success: function (response) {
-          console.log("Respuesta de eliminación:", response); // Ver la respuesta del servidor
+          console.log("Respuesta de eliminación:", response);
           try {
             const data = JSON.parse(response);
             if (data.status === "success") {
-              // Si la eliminación fue exitosa, eliminar la fila de la tabla
               alert("Cédula eliminada exitosamente");
-              // Eliminar la fila de la tabla
               $(`button[data-id="${idRegistro}"]`).closest("tr").remove();
             } else {
               alert("Error al eliminar la cédula: " + data.message);
@@ -233,20 +221,133 @@ $(document).ready(function () {
           }
         },
         error: function (xhr, status, error) {
-          // Mostrar error detallado en la consola para depuración
           console.error("Error en la solicitud de eliminación:", error);
-          console.log("Estado de la solicitud:", status);
-          console.log("Respuesta completa:", xhr.responseText);
           alert("Error al eliminar la cédula: " + xhr.responseText);
         },
       });
     }
   });
+
+  // Acción del botón Editar
   $("#dataTable").on("click", ".custom-table-style-edit-btn", function () {
-    // Obtener el ID del registro
     const idRegistro = $(this).data("id");
 
-    // Llamar al modal para edición
-    $("#editarCedulaModal").modal("show");
+    if (!idRegistro) {
+      alert("No se ha encontrado un ID válido para editar.");
+      return;
+    }
+
+
+   $.when(
+     $.ajax({
+       url: `proc/get_expediente.php?id_cedula=${idRegistro}`,
+       type: "GET",
+       dataType: "json",
+     }),
+     $.ajax({
+       url: `proc/get_vehiculo.php?id_cedula=${idRegistro}`,
+       type: "GET",
+       dataType: "json",
+     }),
+     $.ajax({
+       url: `proc/get_asegurado.php?id_cedula=${idRegistro}`,
+       type: "GET",
+       dataType: "json",
+     }),
+     $.ajax({
+       url: `proc/get_seguimiento.php?id_seguimiento=${idRegistro}`,
+       type: "GET",
+       dataType: "json",
+     })
+   )
+     .done(function (expedienteData, vehiculoData, aseguradoData, seguimientoData) {
+       let dataExpediente = expedienteData[0];
+       let dataVehiculo = vehiculoData[0];
+       let dataAsegurado = aseguradoData[0];
+       let dataSeguimineto = seguimientoData[0];
+
+       console.log("Datos del expediente:", dataExpediente);
+       console.log("Datos del vehículo:", dataVehiculo);
+       console.log("Datos del asegurado:", dataAsegurado);
+       console.log("Datos del seguimiento:",dataSeguimineto);
+
+       function setValue(id, value) {
+         let element = document.getElementById(id);
+         if (element) {
+           element.value = value || "";
+         } else {
+           console.warn(`Elemento con id '${id}' no encontrado.`);
+         }
+       }
+
+       // Asignar valores del expediente
+       setValue("fecha_carga_exp", dataExpediente.fecha_carga_exp);
+       setValue("no_siniestro_exp", dataExpediente.no_siniestro);
+       setValue("poliza_exp", dataExpediente.poliza);
+       setValue("afectado_exp", dataExpediente.afectado);
+       setValue("tipo_caso_exp", dataExpediente.tipo_caso);
+       setValue("cobertura_exp", dataExpediente.cobertura);
+       setValue("fecha_siniestro_exp", dataExpediente.fecha_siniestro);
+       setValue("taller_corralon_exp", dataExpediente.taller_corralon);
+       setValue("financiado_exp", dataExpediente.financiado);
+       setValue("regimen_exp", dataExpediente.regimen);
+       setValue("pass_ext_exp", dataExpediente.passw_ext);
+       setValue("estado_exp", dataExpediente.estado);
+       setValue("ciudad_exp", dataExpediente.ciudad);
+       setValue("region_exp", dataExpediente.region);
+
+       // Asignar valores del vehículo
+       setValue("marca_veh", dataVehiculo.marca);
+       setValue("tipo_veh", dataVehiculo.tipo);
+       setValue("no_serie_veh", dataVehiculo.pk_no_serie);
+       setValue("placas_veh", dataVehiculo.pk_placas);
+       setValue("no_serie_veh", dataVehiculo.pk_no_serie);
+       setValue("valor_indem_veh", dataVehiculo.valor_indemnizacion);
+       setValue("valor_comer_veh", dataVehiculo.valor_comercial);
+       setValue("valor_base_veh", dataVehiculo.valor_base);
+       setValue("id_vehiculo", dataVehiculo.id_vehiculo);
+       // Convertir porcentaje de daño a formato de dos dígitos
+       if (dataVehiculo.porc_dano !== undefined) {
+         let porcentajeDanioFormateado = String(
+           Math.round(dataVehiculo.porc_dano)
+         ).padStart(2, "0");
+         let selectElement = document.getElementById("porc_dano_veh");
+         if (selectElement) {
+           selectElement.value = porcentajeDanioFormateado;
+         } else {
+           console.warn("Elemento con id 'porc_dano_veh' no encontrado.");
+         }
+       }
+
+       // Asignar valores del asegurado
+       setValue("asegurado_ed", dataAsegurado.nom_asegurado);
+       setValue("email_ed", dataAsegurado.email);
+       setValue("telefono1_ed", dataAsegurado.tel1);
+       setValue("telefono2_ed", dataAsegurado.tel2);
+       setValue("contacto_ed", dataAsegurado.contacto);
+       setValue("con_email_ed", dataAsegurado.contacto_email);
+       setValue("con_telefono1_ed", dataAsegurado.contacto_tel1);
+       setValue("con_telefono2_ed", dataAsegurado.contacto_tel2);
+       setValue("id_asegurado", dataAsegurado.id_asegurado);
+
+       //Asignar valores del segumiento
+       setValue("estatus_seg", dataSeguimineto.estatus_seguimiento);
+       setValue("sub_seg", dataSeguimineto.subestatus);
+       setValue("estacion_seg", dataSeguimineto.estacion);
+       setValue("fecha_ter_seg", dataSeguimineto.fecha_termino);
+       // Mostrar el modal
+       $("#editarCedulaModal").modal("show");
+     })
+     .fail(function (xhr, status, error) {
+       console.error("Error al cargar los datos:", error);
+       alert(
+         "Error al obtener los datos del expediente, vehículo o asegurado."
+       );
+     });
+
+
+
+
+
   });
 });
