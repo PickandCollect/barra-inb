@@ -148,33 +148,31 @@
     justify-content: center;
     display: flex;
     font-size: 20px; /* Tamaño del icono */
-    background-color: #b38dff;
-    color: white; /* Color del texto */
+    background-color: #cab3f8;
+    box-shadow: 0px 0px 5px #5900ffc9;
     height: 40px; /* Aumento de la altura para un mejor clic */
     width: 150px; /* Aumento de ancho */
     border: none;
     border-radius: 50px; /* Bordes redondeados */
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out, transform 0.1s ease-in-out; /* Suaviza la transición */
+    transition: transform 0.1s ease-in-out; /* Suaviza la transición */
     padding: 5px 10px; /* Espaciado interno */
 }
 
 /* Hover */
 .btn-llamadas:hover {
-    background-color: #53339244;
-    color: #000000;
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0.2, 0.2);
 }
 
 /* Efecto de clic */
 .btn-llamadas:active {
-    transform: scale(0.85);
+    transform: scale(0.95);
 }
 
 /*#############################################*/
 
 /* Contenedor principal */
-.container_semanas {
+.container_califica {
     display: flex;
     justify-content: center; /* Centra los bloques horizontalmente */
     margin: 20px auto;
@@ -187,14 +185,14 @@
 }
 
 /* Contenedor de las semanas */
-.semanas {
+.calificacion {
     display: flex;
     flex-direction: row; /* Coloca los elementos en fila */
     gap: 30px; /* Espaciado entre las semanas */
 }
 
 /* Cada bloque de semana */
-.semana-item {
+.califica-item {
     display: flex;
     flex-direction: column; /* Pone el título arriba y el div abajo */
     align-items: center; /* Centra el contenido */
@@ -202,7 +200,7 @@
 }
 
 /* Estilos para el título de cada semana */
-.semana-item h6 {
+.califica-item h6 {
     color: #54259e;
     font-weight: bold;
     font-size: 16px;
@@ -210,15 +208,20 @@
 }
 
 /* Estilos para el div de cada semana */
-.semana {
-    font-size: 16px;
-    padding: 10px 15px;
-    border-radius: 5px;
+.califica-box {
+    text-align: center;
+    justify-content: center;
+    width: 120px;
+    height: 50px;
+    font-size: 26px;
+    padding: 5px 5px;
+    border-radius: 8px; /* Aumenta el radio para esquinas más suaves */
     border: 1px solid #ccc;
     color: #000000ab;
-    background-color: #fff;
+    background-color: #f9f9f9; /* Color de fondo más suave */
     text-align: center;
-    width: 100px; /* Tamaño fijo para uniformidad */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: background-color 0.3s ease; /* Transición suave */
 }
 
 /*###############################################*/
@@ -287,9 +290,7 @@
 
 /* Contenedor de los botones */
 .btn_inicial {
-    margin-bottom: 20px;
-    margin-top: 20px;
-    margin-left: 200px;
+    margin-left: 300px;
     display: flex;
     justify-content: center; /* Centra los botones */
     gap: 30px; /* Más separación entre los botones */
@@ -300,7 +301,7 @@
 .custom-submit-button-c {
     font-size: 20px;
     font-weight: bold;
-    padding: 16px 32px; /* Botones un poco más grandes */
+    padding: 13px; /* Botones un poco más grandes */
     border-radius: 50px; /* Bordes más suaves */
     border: none;
     cursor: pointer;
@@ -319,14 +320,14 @@
 
 /* Botón Limpiar (Azul Suave) */
 #btnlimpiar {
-    background-color: #fd8181;
-    color: #000000;
+    background-color: #923333;;
+    color: #ffffff;
   box-shadow: 0px 4px 6px rgba(83, 51, 146, 0.3);
   
 }
 
 #btnlimpiar:hover {
-    background-color: #fd6363;
+    background-color:#b38dff;
     color: #f8f9fc;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
 }
@@ -344,6 +345,7 @@
       box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
 }
 /*###############################*/
+
 /* Estilos para el título y la flecha */
 .seccion-titulo {
     display: flex;
@@ -369,10 +371,6 @@
     transform: rotate(180deg); /* Gira el icono 180 grados */
 }
 
-/* Contenedor de rubros (oculto por defecto) */
-.rubros {
-    display: none; /* Ocultar los rubros inicialmente */
-}
 /*##############################*/
 
 /* Estilos para la sección del formulario */
@@ -567,7 +565,9 @@
 }
 
 /* Estilos para los grupos del formulario */
+
 .calidad-form-group {
+     display: flex; /* Usa flexbox */
     flex-direction: column; /* Alinea elementos verticalmente */
     margin-bottom: 10px; /* Margen inferior */
 }
