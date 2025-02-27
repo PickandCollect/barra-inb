@@ -30,7 +30,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/calidad_bbva.css">
+    <link rel="stylesheet" href="css/calidad.css">
     <!-- Date Range Picker CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
@@ -44,7 +44,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <?php include 'topbar.php'; ?>
 
                 <div class="container-fluid">
-                    <?php include 'calidad_bbva.php'; ?>
+                    <?php include 'calidad_parciales.php'; ?>
 
                 </div>
                 <?php include 'footer.php'; ?>

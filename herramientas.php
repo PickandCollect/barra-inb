@@ -100,9 +100,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                         <label for="fileInput2" class="file-label">
                                             <i class="fas fa-file-upload"></i>
                                         </label>
-                                        <input type="file" id="fileInput2" name="arch2" accept="image/*,application/pdf" style="display:none;" onchange="updateFileName(this, 2)" />
+                                        <input type="file" id="fileInput2" name="arch2" accept=".xlsx" style="display:none;" onchange="updateFileName(this, 2)" />
                                         <input type="text" id="fileName2" class="file-name" disabled placeholder="No se ha seleccionado un archivo" />
-                                        <button type="button" id="btnCargaArchOp" class="btn custom-submit-button-editar" style="height: 40px; margin-left: -10px; margin-right: auto; margin-bottom: 10px;">
+                                        <button type="button" id="btnCargaArchOp1" class="btn custom-submit-button-editar btn-carga-individual" style="height: 40px; margin-left: -10px; margin-right: auto; margin-bottom: 10px;">
                                             Cargar
                                         </button>
                                     </div>
@@ -142,9 +142,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                         <label for="fileInput3" class="file-label">
                                             <i class="fas fa-file-upload"></i>
                                         </label>
-                                        <input type="file" id="fileInput3" name="arch3" accept="image/*,application/pdf" style="display:none;" onchange="updateFileName(this, 3)" />
+                                        <input type="file" id="fileInput3" name="arch3" accept=".xlsx" style="display:none;" onchange="updateFileName(this, 3)" />
                                         <input type="text" id="fileName3" class="file-name" disabled placeholder="No se ha seleccionado un archivo" />
-                                        <button type="button" id="btnCargaArchOp" class="btn custom-submit-button-editar" style="height: 40px; margin-left: -10px; margin-right: auto; margin-bottom: 10px;">
+                                        <button type="button" id="btnCargaArchOp2" class="btn custom-submit-button-editar btn-carga-individual" style="height: 40px; margin-left: -10px; margin-right: auto; margin-bottom: 10px;">
                                             Cargar
                                         </button>
                                     </div>
@@ -184,9 +184,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                         <label for="fileInput4" class="file-label">
                                             <i class="fas fa-file-upload"></i>
                                         </label>
-                                        <input type="file" id="fileInput4" name="arch4" accept="image/*,application/pdf" style="display:none;" onchange="updateFileName(this, 4)" />
+                                        <input type="file" id="fileInput4" name="arch4" accept=".xlsx" style="display:none;" onchange="updateFileName(this, 4)" />
                                         <input type="text" id="fileName4" class="file-name" disabled placeholder="No se ha seleccionado un archivo" />
-                                        <button type="button" id="btnCargaArchOp" class="btn custom-submit-button-editar" style="height: 40px; margin-left: -10px; margin-right: auto; margin-bottom: 10px;">
+                                        <button type="button" id="btnCargaArchOp3" class="btn custom-submit-button-editar btn-carga-individual" style="height: 40px; margin-left: -10px; margin-right: auto; margin-bottom: 10px;">
                                             Cargar
                                         </button>
                                     </div>
@@ -214,7 +214,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     </script>
 
     <script src="js/getOperadores.js"></script>
-
+    <script src="js/cargaMasiva.js"></script>
+    <script src="js/cargaIndividual.js"></script>
     <!-- Bootstrap core JavaScript (CDN)-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
@@ -244,7 +245,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         });
     </script>
 
-    <script src="js/cargaMasiva.js"></script>
+
+
+
 </body>
 
 </html>

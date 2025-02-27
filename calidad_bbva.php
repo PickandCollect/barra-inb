@@ -48,8 +48,6 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
     </div>
 
-
-
     <div class="contenedor-principal" style="display: flex;">
 
         <div class="datos">
@@ -90,31 +88,31 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 </div>
             </div>
 
-            <div class="container_semanas">
-                <div class="semanas">
-                    <div class="semana-item">
-                        <label for="semana1">
+            <div class="container_califica">
+                <div class="calificacion">
+                    <div class="califica-item">
+                        <label for="calificacion1">
                             <h6>Calificación 1:</h6>
                         </label>
-                        <div class="semana">1</div>
+                        <div class="califica-box" id="1">0</div>
                     </div>
-                    <div class="semana-item">
-                        <label for="semana2">
+                    <div class="califica-item">
+                        <label for="calificacion2">
                             <h6>Calificación 2:</h6>
                         </label>
-                        <div class="semana">2</div>
+                        <div class="califica-box" id="2">0</div>
                     </div>
-                    <div class="semana-item">
-                        <label for="semana3">
+                    <div class="califica-item">
+                        <label for="calificacion3">
                             <h6>Calificación 3:</h6>
                         </label>
-                        <div class="semana">3</div>
+                        <div class="califica-box" id="3">0</div>
                     </div>
-                    <div class="semana-item">
-                        <label for="semana4">
+                    <div class="califica-item">
+                        <label for="calificacion4">
                             <h6>Calificación 4:</h6>
                         </label>
-                        <div class="semana">4</div>
+                        <div class="califica-box" id="4">0</div>
                     </div>
                 </div>
             </div>
@@ -197,11 +195,11 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         <div class="button-container">
             <div class="btn_inicial">
                 <button type="button" class="btn custom-submit-button-c" id="btnlimpiar">Limpiar</button>
-                <button type="button" class="btn custom-submit-button-c" id="btnenviar">Enviar</button>
+                <!--<button type="button" class="btn custom-submit-button-c" id="btnenviar">Enviar</button>-->
             </div>
         </div>
     </div>
-    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros">
+    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="display: none;">
         <div id="calidad-grid-container" class="calidad-grid-container">
 
             <!-- Rubros de Impacto Negocio -->
@@ -227,251 +225,256 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
             <!-- Rubros con ponderaciones -->
 
-            <!--    llamada     1   -->
+            <!-- Rubro 1 -->
             <label for="identifica_cb">
                 <h6>Identifica al receptor</h6>
             </label>
             <input type="text" id="pon1" name="pon1" class="calidad-form-control" value="3" readonly style="text-align: center;">
 
-            <select id="cumple" name="cumple_llamada1_1" class="calidad-form-control">
-                <option value="" hidden>Selecciona</option>
-                <option value="SI">SI</option>
-                <option value="NO">NO</option>
-            </select>
-            <select id="cumple" name="cumple_llamada1_2" class="calidad-form-control">
-                <option value="" hidden>Selecciona</option>
-                <option value="SI">SI</option>
-                <option value="NO">NO</option>
-            </select>
-            <select id="cumple" name="cumple_llamada1_3" class="calidad-form-control">
-                <option value="" hidden>Selecciona</option>
-                <option value="SI">SI</option>
-                <option value="NO">NO</option>
-            </select>
-            <select id="cumple" name="cumple_llamada1_4" class="calidad-form-control">
+            <select id="cumple1_1" name="cumple1_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
 
+            <select id="cumple1_2" name="cumple1_2" class="calidad-form-control">
+                <option value="" hidden>Selecciona</option>
+                <option value="SI">SI</option>
+                <option value="NO">NO</option>
+            </select>
 
-            <!--    llamada     2   -->
+            <select id="cumple1_3" name="cumple1_3" class="calidad-form-control">
+                <option value="" hidden>Selecciona</option>
+                <option value="SI">SI</option>
+                <option value="NO">NO</option>
+            </select>
+
+            <select id="cumple1_4" name="cumple1_4" class="calidad-form-control">
+                <option value="" hidden>Selecciona</option>
+                <option value="SI">SI</option>
+                <option value="NO">NO</option>
+            </select>
+
+            <!-- Rubro 2 -->
             <label for="mute_cb">
                 <h6>Uso del mute y tiempo de espera</h6>
             </label>
+            <input type="text" id="pon2" name="pon2" class="calidad-form-control" value="4" readonly style="text-align: center;">
 
-            <input type="text" id="pon2" name="pont2" class="calidad-form-control" value="4" readonly style="text-align: center;">
-
-            <select id="cumple1" name="cumple_llamada2_1" class="calidad-form-control">
-                <option value="" hidden>Selecciona</option>
-                <option value="SI">SI</option>
-                <option value="NO">NO</option>
-            </select>
-            <select id="cumple1" name="cumple_llamada2_2" class="calidad-form-control">
-                <option value="" hidden>Selecciona</option>
-                <option value="SI">SI</option>
-                <option value="NO">NO</option>
-            </select>
-            <select id="cumple1" name="cumple_llamada2_3" class="calidad-form-control">
-                <option value="" hidden>Selecciona</option>
-                <option value="SI">SI</option>
-                <option value="NO">NO</option>
-            </select>
-            <select id="cumple1" name="cumple_llamada2_4" class="calidad-form-control">
+            <select id="cumple2_1" name="cumple2_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
 
+            <select id="cumple2_2" name="cumple2_2" class="calidad-form-control">
+                <option value="" hidden>Selecciona</option>
+                <option value="SI">SI</option>
+                <option value="NO">NO</option>
+            </select>
 
-            <!--    llamada     3   -->
+            <select id="cumple2_3" name="cumple2_3" class="calidad-form-control">
+                <option value="" hidden>Selecciona</option>
+                <option value="SI">SI</option>
+                <option value="NO">NO</option>
+            </select>
+
+            <select id="cumple2_4" name="cumple2_4" class="calidad-form-control">
+                <option value="" hidden>Selecciona</option>
+                <option value="SI">SI</option>
+                <option value="NO">NO</option>
+            </select>
+
+
+
+            <!--    Rubro     3   -->
             <label for="escucha_cb">
                 <h6>Escucha activa</h6>
             </label>
             <input type="text" id="pon3" name="pon3" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
-            <select id="cumple2" name="cumple_llamada3_1" class="calidad-form-control">
+            <select id="cumple3_1" name="cumple3_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple2" name="cumple_llamada3_2" class="calidad-form-control">
+            <select id="cumple3_2" name="cumple3_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple2" name="cumple_llamada3_3" class="calidad-form-control">
+            <select id="cumple3_3" name="cumple3_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple2" name="cumple_llamada3_4" class="calidad-form-control">
+            <select id="cumple3_4" name="cumple3_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
 
 
-            <!--    llamada     4   -->
+            <!--    Rubro     4   -->
             <label for="informacion_cb">
                 <h6>Informacion correcta y completa</h6>
             </label>
             <input type="text" id="pon4" name="pon4" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
 
-            <select id="cumple3" name="cumple_llamada4_1" class="calidad-form-control">
+            <select id="cumple4_1" name="cumple4_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple3" name="cumple_llamada4_2" class="calidad-form-control">
+            <select id="cumple4_2" name="cumple4_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple3" name="cumple_llamada4_3" class="calidad-form-control">
+            <select id="cumple4_3" name="cumple4_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple3" name="cumple_llamada4_4" class="calidad-form-control">
+            <select id="cumple4_4" name="cumple4_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
 
 
-            <!--    llamada     5   -->
+            <!--    Rubro     5   -->
             <label for="cortesia_cb">
                 <h6>Pregunta de cortesía</h6>
             </label>
             <input type="text" id="pon5" name="pon5" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
-            <select id="cumple4" name="cumple_llamada5_1" class="calidad-form-control">
+            <select id="cumple5_1" name="cumple5_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple4" name="cumple_llamada5_2" class="calidad-form-control">
+            <select id="cumple5_2" name="cumple5_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple4" name="cumple_llamada5_3" class="calidad-form-control">
+            <select id="cumple5_3" name="cumple5_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple4" name="cumple_llamada5_4" class="calidad-form-control">
+            <select id="cumple5_4" name="cumple5_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
 
 
-            <!--    llamada     6   -->
+            <!--    Rubro     6   -->
             <label for="sondeo_cb">
                 <h6>Sondeo</h6>
             </label>
             <input type="text" id="pon6" name="pon6" class="calidad-form-control" placeholder="" value="11" readonly style="text-align: center;">
 
-            <select id="cumple5" name="cumple_llamada6_4" class="calidad-form-control">
+            <select id="cumple6_1" name="cumple6_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple5" name="cumple_llamada6_4" class="calidad-form-control">
+            <select id="cumple6_2" name="cumple6_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple5" name="cumple_llamada6_4" class="calidad-form-control">
+            <select id="cumple6_3" name="cumple6_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple5" name="cumple_llamada6_4" class="calidad-form-control">
+            <select id="cumple6_4" name="cumple6_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
 
 
-            <!--    llamada     7   -->
+            <!--    Rubro     7   -->
             <label for="objeciones_cb">
                 <h6>Objeciónes</h6>
             </label>
             <input type="text" id="pon7" name="pon7" class="calidad-form-control" placeholder="" value="11" readonly style="text-align: center;">
 
-            <select id="cumple6" name="cumple_llamada7_1" class="calidad-form-control">
+            <select id="cumple7_1" name="cumple7_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple6" name="cumple_llamada7_2" class="calidad-form-control">
+            <select id="cumple7_2" name="cumple7_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple6" name="cumple_llamada7_3" class="calidad-form-control">
+            <select id="cumple7_3" name="cumple7_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple6" name="cumple_llamada7_4" class="calidad-form-control">
+            <select id="cumple7_4" name="cumple7_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
 
 
-            <!--    llamada     8   -->
+            <!--    Rubro     8   -->
             <label for="script_cb">
                 <h6>SCRIPT</h6>
             </label>
             <input type="text" id="pon8" name="pon8" class="calidad-form-control" placeholder="" value="11" readonly style="text-align: center;">
 
-            <select id="cumple7" name="cumple_llamada8_1" class="calidad-form-control">
+            <select id="cumple8_1" name="cumple8_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple7" name="cumple_llamada8_2" class="calidad-form-control">
+            <select id="cumple8_2" name="cumple8_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple7" name="cumple_llamada8_3" class="calidad-form-control">
+            <select id="cumple8_3" name="cumple8_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple7" name="cumple_llamada8_4" class="calidad-form-control">
+            <select id="cumple8_4" name="cumple8_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
 
-            <!--    llamada     9   -->
+            <!--    Rubro     9   -->
             <label for="cierres_cb">
                 <h6>Cierres de oferta</h6>
             </label>
             <input type="text" id="pon9" name="pon9" class="calidad-form-control" placeholder="" value="11" readonly style="text-align: center;">
-            <select id="cumple8" name="cumple_llamada9_1" class="calidad-form-control">
+            <select id="cumple9_1" name="cumple9_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple8" name="cumple_llamada9_2" class="calidad-form-control">
+            <select id="cumple9_2" name="cumple9_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple8" name="cumple_llamada9_3" class="calidad-form-control">
+            <select id="cumple9_3" name="cumple9_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple8" name="cumple_llamada9_4" class="calidad-form-control">
+            <select id="cumple9_4" name="cumple9_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
@@ -490,7 +493,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
     </div>
 
-    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros">
+    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="display: none;">
         <div id="calidad-grid-container" class="calidad-grid-container">
 
             <!-- Rubros de Impacto Negocio -->
@@ -515,137 +518,137 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
             <!-- Rubros con ponderaciones -->
 
-            <!--    llamada     10   -->
+            <!--    Rubro     10   -->
             <label for="tutea_c">
                 <h6>Tutea / Personaliza</h6>
             </label>
             <input type="text" id="pon10" name="pon10" class="calidad-form-control" value="5" readonly style="text-align: center;">
-            <select id="cumple9" name="cumple_llamada10_1" class="calidad-form-control">
+            <select id="cumple10_1" name="cumple10_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple9" name="cumple_llamada10_2" class="calidad-form-control">
+            <select id="cumple10_2" name="cumple10_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple9" name="cumple_llamada10_3" class="calidad-form-control">
+            <select id="cumple10_3" name="cumple10_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple9" name="cumple_llamada10_4" class="calidad-form-control">
+            <select id="cumple10_4" name="cumple10_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
 
-            <!--    llamada     11   -->
+            <!--    Rubro     11   -->
             <label for="ccc_cb">
                 <h6>CCC</h6>
             </label>
             <input type="text" id="pon11" name="pon11" class="calidad-form-control" placeholder="" value="9" readonly style="text-align: center;">
 
-            <select id="cumple10" name="cumple_llamada11_1" class="calidad-form-control">
+            <select id="cumple11_1" name="cumple11_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple10" name="cumple_llamada11_2" class="calidad-form-control">
+            <select id="cumple11_2" name="cumple11_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple10" name="cumple_llamada11_3" class="calidad-form-control">
+            <select id="cumple11_3" name="cumple11_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple10" name="cumple_llamada11_4" class="calidad-form-control">
+            <select id="cumple11_4" name="cumple11_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
 
 
-            <!--    llamada     12   -->
+            <!--    Rubro     12   -->
             <label for="etiqueta_cb">
                 <h6>Etiqueta telefónica</h6>
             </label>
-            <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
+            <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
-            <select id="cumple11" name="cumple_llamada12_1" class="calidad-form-control">
+            <select id="cumple12_1" name="cumple12_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple11" name="cumple_llamada12_2" class="calidad-form-control">
+            <select id="cumple12_2" name="cumple12_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple11" name="cumple_llamada12_3" class="calidad-form-control">
+            <select id="cumple12_3" name="cumple12_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple11" name="cumple_llamada12_4" class="calidad-form-control">
+            <select id="cumple12_4" name="cumple12_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
 
 
-            <!--    llamada     13   -->
+            <!--    Rubro     13   -->
             <label for="contrllamada_cb">
                 <h6>Control de la llamada</h6>
             </label>
-            <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
+            <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
 
-            <select id="cumple12" name="cumple_llamada13_1" class="calidad-form-control">
+            <select id="cumple13_1" name="cumple13_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple12" name="cumple_llamada13_2" class="calidad-form-control">
+            <select id="cumple13_2" name="cumple13_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple12" name="cumple_llamada13_3" class="calidad-form-control">
+            <select id="cumple13_3" name="cumple13_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple12" name="cumple_llamada13_4" class="calidad-form-control">
+            <select id="cumple13_4" name="cumple13_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
 
-            <!--    llamada     14   -->
+            <!--    Rubro     14   -->
             <label for="negativas_cb">
                 <h6>Frases negativas</h6>
             </label>
             <input type="text" id="pon14" name="pon14" class="calidad-form-control" placeholder="" value="6" readonly style="text-align: center;">
 
-            <select id="cumple13" name="cumple_llamada14_1" class="calidad-form-control">
+            <select id="cumple14_1" name="cumple_llamada14_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple13" name="cumple_llamada14_2" class="calidad-form-control">
+            <select id="cumple14_2" name="cumple_llamada14_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple13" name="cumple_llamada14_3" class="calidad-form-control">
+            <select id="cumple14_3" name="cumple_llamada14_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple13" name="cumple_llamada14_4" class="calidad-form-control">
+            <select id="cumple14_4" name="cumple_llamada14_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
@@ -663,7 +666,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
     </div>
 
-    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros">
+    <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="display: none;">
         <div id="calidad-grid-container" class="calidad-grid-container">
 
             <!-- Rubros de Error Crítico -->
@@ -688,56 +691,56 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
             <!-- Rubros con ponderaciones -->
 
-            <!--    llamada     15   -->
+            <!--    Rubro     15   -->
             <label for="maltrato_cb">
                 <h6>Maltrato al cliente</h6>
             </label>
             <input type="text" id="pon15" name="pon15" class="calidad-form-control" value="0" readonly style="text-align: center;">
 
-            <select id="cumple14" name="cumple_llamada15_1" class="calidad-form-control">
+            <select id="cumple15_1" name="cumple15_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple14" name="cumple_llamada15_2" class="calidad-form-control">
+            <select id="cumple15_2" name="cumple15_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple14" name="cumple_llamada15_3" class="calidad-form-control">
+            <select id="cumple15_3" name="cumple15_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple14" name="cumple_llamada15_4" class="calidad-form-control">
+            <select id="cumple15_4" name="cumple15_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
 
 
-            <!--    llamada     16   -->
+            <!--    Rubro     16   -->
             <label for="desprestigio_cb">
                 <h6>Desprestigio institucional</h6>
             </label>
             <input type="text" id="pon16" name="pon16" class="calidad-form-control" placeholder="" value="0" readonly style="text-align: center;">
 
-            <select id="cumple15" name="cumple_llamada16_1" class="calidad-form-control">
+            <select id="cumple16_1" name="cumple16_1" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple15" name="cumple_llamada16_2" class="calidad-form-control">
+            <select id="cumple16_2" name="cumple16_2" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple15" name="cumple_llamada16_3" class="calidad-form-control">
+            <select id="cumple16_3" name="cumple16_3" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
             </select>
-            <select id="cumple15" name="cumple_llamada16_4" class="calidad-form-control">
+            <select id="cumple16_4" name="cumple16_4" class="calidad-form-control">
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
@@ -770,6 +773,58 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             <textarea class="form-control" id="compromisoTextarea" name="compromisoTextarea" rows="5" style="margin-bottom: 30px;"></textarea>
         </div>
     </div>
+
+    <!-- script para la flecha -->
+    <script>
+        function toggleSeccion(flecha) {
+            const seccion = flecha.closest(".container_impacto").nextElementSibling;
+
+            if (seccion.style.display === "none" || seccion.style.display === "") {
+                seccion.style.display = "block"; // Mostrar contenido
+                flecha.classList.add("activo"); // Rotar flecha
+            } else {
+                seccion.style.display = "none"; // Ocultar contenido
+                flecha.classList.remove("activo"); // Restaurar flecha
+            }
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const calcularCalificacion = (llamada) => {
+                let suma = Array.from({
+                        length: 15
+                    }, (_, i) => i + 1)
+                    .reduce((acc, rubro) => {
+                        let select = document.getElementById(`cumple${rubro}_${llamada}`);
+                        let ponderacion = document.getElementById(`pon${rubro}`);
+                        return select && ponderacion && select.value === "SI" ?
+                            acc + parseInt(ponderacion.value) :
+                            acc;
+                    }, 0);
+
+                // Si cumple15 o cumple16 es "SI", la suma se pone a 0 y se muestra en rojo
+                if ([15, 16].some(num => document.getElementById(`cumple${num}_${llamada}`)?.value === "SI")) {
+                    suma = 0;
+                    document.getElementById(llamada).style.color = "red";
+                } else {
+                    document.getElementById(llamada).style.color = "black";
+                }
+
+                document.getElementById(llamada).textContent = suma;
+            };
+
+        document.querySelectorAll(".calidad-form-control").forEach(select => {
+            select.addEventListener("change", () => {
+                let [, llamada] = select.id.split("_");
+                if (llamada) calcularCalificacion(llamada);
+            });
+        });
+        });
+    </script>
+
+
+
 </body>
 
 </html>

@@ -18,6 +18,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 <html lang="es">
 
 <head>
+    <?php
+    include 'proc/consultas_bd.php';
+    ?>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -32,6 +36,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <link rel="stylesheet" href="css/calidad.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- Estilos personalizados -->
+    <script src="js/getOperadoresParciales.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -64,59 +69,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                             <h6>Nombre del agente:</h6>
                         </label>
                         <select id="nombre_c" name="nombre_c" class="custom-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="ASEGURADO">ASEGURADO</option>
-                            <option value="TERCERO">TERCERO</option>
-                        </select>
-                    </div>
-                    <div class="custom-form-group-editar form-group">
-                        <label for="campana_c">
-                            <h6>Campaña:</h6>
-                        </label>
-                        <select id="campana_c" name="campana_c" class="custom-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="ASEGURADO">ASEGURADO</option>
-                            <option value="TERCERO">TERCERO</option>
-                        </select>
-                    </div>
-                    <div class="custom-form-group-editar form-group">
-                        <label for="supervisor_c">
-                            <h6>Supervisor:</h6>
-                        </label>
-                        <select id="supervisor_c" name="supervisor_c" class="custom-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="ASEGURADO">ASEGURADO</option>
-                            <option value="TERCERO">TERCERO</option>
-                        </select>
-                    </div>
-                    <div class="custom-form-group-editar form-group">
-                        <label for="posicion_c">
-                            <h6>Posición:</h6>
-                        </label>
-                        <select id="posicion_c" name="posicion_c" class="custom-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="ASEGURADO">ASEGURADO</option>
-                            <option value="TERCERO">TERCERO</option>
-                        </select>
-                    </div>
-                    <div class="custom-form-group-editar form-group">
-                        <label for="id_c">
-                            <h6>ID:</h6>
-                        </label>
-                        <select id="id_c" name="id_c" class="custom-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="ASEGURADO">ASEGURADO</option>
-                            <option value="TERCERO">TERCERO</option>
-                        </select>
-                    </div>
-                    <div class="custom-form-group-editar form-group">
-                        <label for="nombre_tercero_c">
-                            <h6>Nombre del tercero:</h6>
-                        </label>
-                        <select id="nombre_tercero_c" name="nombre_tercero_c" class="custom-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="ASEGURADO">ASEGURADO</option>
-                            <option value="TERCERO">TERCERO</option>
+                            <option value="" hidden></option>
                         </select>
                     </div>
                     <div class="custom-form-group-editar form-group">
@@ -125,19 +78,46 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         </label>
                         <select id="tipo_tramite_c" name="tipo_tramite_c" class="custom-form-control">
                             <option value="" hidden>Selecciona</option>
-                            <option value="ASEGURADO">ASEGURADO</option>
-                            <option value="TERCERO">TERCERO</option>
+                            <option value="PAGOS PARCIALES">Pagos Parciales</option>
+                            <option value="PAGOS DE DAÑOS">Pagos de Daños</option>
+                            <option value="PERDIDAS TOTALES">Perdidas Totales</option>
                         </select>
+                    </div>
+                    <div class="custom-form-group-editar form-group">
+                        <label for="campana_c">
+                            <h6>Campaña:</h6>
+                        </label>
+                        <input type="text" id="campana_c" name="campana_c" class="custom-form-control" readonly></input>
+                    </div>
+                    <div class="custom-form-group-editar form-group">
+                        <label for="id_c">
+                            <h6>ID:</h6>
+                        </label>
+                        <input type="text" id="id_c" name="id_c" class="custom-form-control"></input>
+                    </div>
+                    <div class="custom-form-group-editar form-group">
+                        <label for="posicion_c">
+                            <h6>Posición:</h6>
+                        </label>
+                        <input type="text" id="posicion_c" name="posicion_c" class="custom-form-control" readonly></input>
+                    </div>
+                    <div class="custom-form-group-editar form-group">
+                        <label for="nombre_tercero_c">
+                            <h6>Nombre del tercero:</h6>
+                        </label>
+                        <input type="text" id="nombre_tercero_c" name="nombre_tercero_c" class="custom-form-control"></input>
+                    </div>
+                    <div class="custom-form-group-editar form-group">
+                        <label for="supervisor_c">
+                            <h6>Supervisor:</h6>
+                        </label>
+                        <input type="text" id="supervisor_c" name="supervisor_c" class="custom-form-control" readonly></input>
                     </div>
                     <div class="custom-form-group-editar form-group">
                         <label for="siniestro_c">
                             <h6>Siniestro:</h6>
                         </label>
-                        <select id="siniestro_c" name="siniestro_c" class="custom-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="ASEGURADO">ASEGURADO</option>
-                            <option value="TERCERO">TERCERO</option>
-                        </select>
+                        <input type="text" id="siniestro_c" name="siniestro_c" class="custom-form-control" style="text-align: center;"></input>
                     </div>
                 </div>
         </div>
@@ -852,6 +832,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         $(document).ready(function() {
             $('#miFecha').daterangepicker({
                 locale: {
+
                     format: 'YYYY-MM-DD'
                 }
             });

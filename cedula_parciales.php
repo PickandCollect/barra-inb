@@ -409,7 +409,7 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
     </div>
 
     <!-- SCRIPT PARA GENERAR EL PDF -->
-    <script>
+   <!-- <script>
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('img');
             const totalImages = images.length;
