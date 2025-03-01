@@ -234,7 +234,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <!-- Date Range Picker JS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
+    <!--Top bar pa que no se rompa-->
+    <script src="main/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#miFecha').daterangepicker({

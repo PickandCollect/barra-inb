@@ -231,6 +231,9 @@
     <script src="js/updateUsuario.js"></script>
     <!-- JavaScript para mostrar el nombre del archivo -->
 
+    <!--Top bar-->
+    <script src="main/bootstrap/js/bootstrap.bundle.min.js"></script>
+
     <script>
         const fileInput = document.getElementById('fileInput');
         const profilePreview = document.getElementById('profilePreview');

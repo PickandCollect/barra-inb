@@ -28,18 +28,15 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <title>Datos</title>
 
     <!-- Fuentes personalizadas -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/sb-admin-2.min.css">
+    <link rel="stylesheet" href="main/datatables/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="css/calidad.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <!-- Estilos personalizados -->
-    <script src="js/getOperadoresParciales.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
 </head>
 
 <body>
@@ -117,7 +114,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         <label for="siniestro_c">
                             <h6>Siniestro:</h6>
                         </label>
-                        <input type="text" id="siniestro_c" name="siniestro_c" class="custom-form-control" style="text-align: center;"></input>
+                        <input type="text" id="siniestro_c" name="siniestro_c" class="custom-form-control"></input>
                     </div>
                 </div>
         </div>
@@ -435,6 +432,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <input type="hidden" name="firma_analista" id="hiddenFirmaAnalista">
 
     </form>
+
+
 
     <!-- SCRIPT PARA CALCULAR LOS VALORES EN PORCENTAJE-->
     <script>
@@ -815,19 +814,15 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/getOperadoresParciales.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="js/firma.js"></script>
-    <script src="js/firma2.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="main/jquery-easing/jquery.easing.min.js"></script>
-    <script src="js/sb-admin-2.min.js"></script>
-    <script src="main/datatables/jquery.dataTables.min.js"></script>
-    <script src="main/datatables/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <!--Top bar pa que no se rompa-->
+    <script src="main/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
     <script>
         $(document).ready(function() {
             $('#miFecha').daterangepicker({
@@ -838,6 +833,73 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             });
         });
     </script>
+
+
+<!-- Firebase y script para enviar notificaciones -->
+<script type="module">
+    import {
+        initializeApp
+    } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    import {
+        getDatabase,
+        ref,
+        push,
+        set
+    } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+    // 🔹 Configuración de Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyD1XIbEFJ28sqWcF5Ws3i8zA2o1OhYC7JU",
+        authDomain: "prueba-pickcollect.firebaseapp.com",
+        databaseURL: "https://prueba-pickcollect-default-rtdb.firebaseio.com",
+        projectId: "prueba-pickcollect",
+        storageBucket: "prueba-pickcollect.firebasestorage.app",
+        messagingSenderId: "343351102325",
+        appId: "1:343351102325:web:a6e4184d4752c6cbcfe13c",
+        measurementId: "G-6864KLZWKP"
+    };
+
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const notificacionesRef = ref(db, "notificaciones");
+
+    // 🔹 Función para enviar notificación al operador seleccionado
+    document.getElementById("btnEC").addEventListener("click", function () {
+        const usuarioActual = '<?php echo $rol; ?>'; // 🔹 Reemplázalo con el ID real del usuario logueado
+        const operadorSeleccionado = document.getElementById("nombre_c").value;
+        const fechaEvaluacion = new Date().toISOString().split('T')[0];
+
+        // Validar que se haya seleccionado un operador
+        if (!operadorSeleccionado) {
+            alert("Selecciona un operador antes de asignar.");
+            return;
+        }
+
+        // Validar que el usuario actual esté definido
+        if (!usuarioActual) {
+            alert("No se pudo identificar al usuario actual. Inicia sesión nuevamente.");
+            return;
+        }
+
+        // Crear una nueva notificación en la base de datos
+        const nuevaNotificacion = push(notificacionesRef);
+        set(nuevaNotificacion, {
+            asignador: usuarioActual,
+            operador: operadorSeleccionado,
+            mensaje: `Tienes una nueva evaluación`,
+            fecha: fechaEvaluacion,
+            leido: false,
+            url: "https://bestcontact.mx/cedula_parciales.php", // 🔹 URL a la que se redirigirá al hacer clic en la notificación
+            tipo: "evaluacion" // 🔹 Campo para diferenciar entre tipos de notificaciones
+        }).then(() => {
+            alert("Evaluación enviada correctamente.");
+        }).catch((error) => {
+            console.error("Error al enviar la notificación:", error);
+            alert("Hubo un error al enviar la evaluación. Inténtalo de nuevo.");
+        });
+    });
+</script>
 </body>
 
 </html>

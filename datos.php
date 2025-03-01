@@ -11,7 +11,7 @@ if (!isset($_SESSION['rol'])) {
 }
 
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
-             
+
 ?>
 
 <!DOCTYPE html>
@@ -89,6 +89,11 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <!-- Date Range Picker JS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+   <!--Top bar-->
+    <script src="main/bootstrap/js/bootstrap.bundle.min.js"></script>
+   
+
 
     <!-- Inicialización de Date Range Picker -->
     <script>

@@ -4,13 +4,16 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start(); // Inicia la sesión si no está activa
 }
 
+// Redirigir al login si no hay rol en la sesión
 if (!isset($_SESSION['rol'])) {
-    // Si no hay rol en la sesión, redirige al login
+    echo 'No se encontró un rol en la sesión. Redirigiendo al login...';
     header('Location: login.php');
     exit();
 }
 
-$rol = $_SESSION['rol']; // Recupera el rol del usuario
+// Recuperar el rol de la sesión
+$rol = $_SESSION['rol'];
+$nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usuario en la sesión
 ?>
 
 <!DOCTYPE html>

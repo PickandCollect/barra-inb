@@ -140,6 +140,9 @@
     background-color: #6a46b1; /* Fondo de las opciones */
     color: #fff; /* Color del texto */
 }
+.calidad-form-control{
+    background-color:#d6cef3c7;
+}
 
 /*############################################*/
 /*boton llamda*/
@@ -320,7 +323,7 @@
 
 /* Botón Limpiar (Azul Suave) */
 #btnlimpiar {
-    background-color: #923333;;
+    background-color: #5854e4;
     color: #ffffff;
   box-shadow: 0px 4px 6px rgba(83, 51, 146, 0.3);
   

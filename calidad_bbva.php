@@ -17,6 +17,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 <html lang="es">
 
 <head>
+    <?php
+    include 'proc/consultas_bd.php';
+    ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -54,37 +57,25 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             <!-- APARTADO DE NOMBRE, EVALUADOR, ETC.-->
             <div class="container_datos1">
                 <div class="datos_us">
-                    <label for="posicion">
-                        <h6>Posición:</h6>
-                    </label>
-                    <select id="posicion" name="posicion" class="custom-form-control">
-                        <option value="" hidden>Selecciona</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                    </select>
-                </div>
-                <div class="datos_us">
                     <label for="nombre">
                         <h6>Nombre:</h6>
                     </label>
-                    <select id="nombre" name="nombre" class="custom-form-control">
+                    <select id="nombre_cb" name="nombre_cb" class="custom-form-control">
                         <option value="" hidden>Selecciona</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
                     </select>
                 </div>
+                <div class="datos_us">
+                    <label for="posicion">
+                        <h6>Posición:</h6>
+                    </label>
+                    <input type="text" id="posicion_cb" name="posicion_cb" class="custom-form-control" readonly></input>
+                </div>
+
                 <div class="datos_us">
                     <label for="evaluador">
                         <h6>Evaluador:</h6>
                     </label>
-                    <select id="evaluador" name="evaluador" class="custom-form-control">
-                        <option value="" hidden>Selecciona</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                        <option value="ASEGURADO">ASEGURADO</option>
-                    </select>
+                    <input type="text" id="evaluador_cb" name="evaluador_cb" class="custom-form-control" readonly></input>
                 </div>
             </div>
 
@@ -774,6 +765,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
     </div>
 
+    <!--Top bar pa que no se rompa-->
+    <script src="main/bootstrap/js/bootstrap.bundle.min.js"></script>
+
     <!-- script para la flecha -->
     <script>
         function toggleSeccion(flecha) {
@@ -814,16 +808,17 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 document.getElementById(llamada).textContent = suma;
             };
 
-        document.querySelectorAll(".calidad-form-control").forEach(select => {
-            select.addEventListener("change", () => {
-                let [, llamada] = select.id.split("_");
-                if (llamada) calcularCalificacion(llamada);
+            document.querySelectorAll(".calidad-form-control").forEach(select => {
+                select.addEventListener("change", () => {
+                    let [, llamada] = select.id.split("_");
+                    if (llamada) calcularCalificacion(llamada);
+                });
             });
-        });
         });
     </script>
 
-
+    <!--SCRIPT getOperadoresBBVA.js-->
+    <script src="js/getOperadoresBBVA.js"></script>
 
 </body>
 

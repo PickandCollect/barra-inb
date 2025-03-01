@@ -1703,7 +1703,8 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                     mensaje: `Tienes una nueva asignación`,
                     siniestro: id_cedula,
                     fecha: fechaAsignacion,
-                    leido: false
+                    leido: false,
+                    tipo: "asignacion"
                 });
 
                 alert("Asignación enviada correctamente.");

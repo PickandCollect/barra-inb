@@ -177,9 +177,14 @@
     border-radius: 5px; /* Bordes redondeados */
     border: 1px solid #ccc; /* Borde */
     box-sizing: border-box; /* Incluye padding y border en el ancho */
-    color: #000000ab; /* Color del texto */
+    color: #000000f8; /* Color del texto */
     margin-top: 3px;
     margin-bottom: 20px;
+    background-color: #d6cef3c7;
+}
+
+.calidad-form-control{
+    background-color:#d6cef3c7;
 }
 
 /* Estilos para los encabezados h6 dentro de la sección del formulario */
@@ -357,8 +362,8 @@
 
 /* Estilo para los botones Limpiar y Enviar */
 #btnLimpiar, #btnEC {
-    padding: 10px 25px;
-    font-size: 16px;
+    padding: 13px 30px;
+    font-size: 18px;
     font-weight: 600;
     border: none;
     border-radius: 30px; /* Radio más suave para bordes */
@@ -366,7 +371,7 @@
     background-color: #6c5ce7; /* Color de fondo más atractivo */
     color: #ffffff; /* Texto blanco */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 /* Efecto hover */
@@ -377,7 +382,7 @@
 
 /* Efecto clic */
 #btnLimpiar:active, #btnEC:active {
-  transform: scale(0.60);
+  transform: scale(0.9);
 }
 
 
@@ -521,7 +526,7 @@
     background-color: #6c5ce7; /* Color de fondo más atractivo */
     color: #ffffff; /* Texto blanco */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 /* Efecto hover */
@@ -532,7 +537,7 @@
 
 /* Efecto clic */
 #limpiarAN:active, #capturarAN:active {
-    transform: scale(0.60);
+    transform: scale(0.9);
 }
 
 

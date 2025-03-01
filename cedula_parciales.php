@@ -98,17 +98,30 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
         <div class="main-container">
             <!-- Sección Calidad 1 -->
             <div id="calidad1" class="form-section">
-                <div class="custom-form-section-editar custom-card-border-editar text-center">
-                    <!-- Contenedor de campos en 4 columnas y 2 filas -->
-                    <div class="form-grid">
-                        <!-- Campo 1 -->
+
+                <!-- Bloque separado para el ID -->
+                <div id="id-section" class="form-section">
+                    <div class="custom-form-section-editar custom-card-border-editar text-center">
+                        <div class="custom-form-group-editar form-group">
+                            <label for="id_c">
+                                <h6>ID:</h6>
+                            </label>
+                            <input type="text" id="id_c" name="id_c" class="custom-form-control" value="<?php echo htmlspecialchars($id_c); ?>" readonly>
+                        </div>
+                         <!-- Campo 1 -->
                         <div class="custom-form-group-editar form-group">
                             <label for="nombre_c">
                                 <h6>Nombre del agente:</h6>
                             </label>
                             <input type="text" id="nombre_c" name="nombre_c" class="custom-form-control" value="<?php echo htmlspecialchars($nombre_c); ?>" readonly>
                         </div>
+                    </div>
+                </div>
 
+                <div class="custom-form-section-editar custom-card-border-editar text-center">
+                    <!-- Contenedor de campos en 4 columnas y 2 filas -->
+                    <div class="form-grid">
+                       
                         <!-- Campo 2 -->
                         <div class="custom-form-group-editar form-group">
                             <label for="campana_c">
@@ -130,13 +143,7 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                             </label>
                             <input type="text" id="posicion_c" name="posicion_c" class="custom-form-control" value="<?php echo htmlspecialchars($posicion_c); ?>" readonly>
                         </div>
-                        <!-- Campo 5 -->
-                        <div class="custom-form-group-editar form-group">
-                            <label for="id_c">
-                                <h6>ID:</h6>
-                            </label>
-                            <input type="text" id="id_c" name="id_c" class="custom-form-control" value="<?php echo htmlspecialchars($id_c); ?>" readonly>
-                        </div>
+
                         <!-- Campo 6 -->
                         <div class="custom-form-group-editar form-group">
                             <label for="nombre_tercero_c">
@@ -161,6 +168,8 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                     </div>
                 </div>
             </div>
+
+
 
             <!-- Sección Calidad 2 (nota de calidad y performance) -->
             <div class="container_notacalidad">
@@ -380,7 +389,7 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                     <h6>Comentarios</h6>
                     <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="3" style="margin-bottom: 30px;" readonly> <?php echo htmlspecialchars($comentariosTextarea); ?></textarea>
                     <h6>Compromiso</h6>
-                    <textarea class="form-control" id="compromisoTextarea" name="compromisoTextarea" rows="3" readonly> <?php echo htmlspecialchars($compromisoTextarea); ?> </textarea>
+                    <textarea class="form-control" id="compromisoTextarea" name="compromisoTextarea" rows="3"></textarea>
                 </div>
             </div>
         </div>
@@ -406,10 +415,135 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                 </div>
             </div>
         </div>
+        <div class="container-btnfirmas">
+            <button type="button" class="BTN_Firmas" id="limpiar_f" name="limpiar_f">Limpiar</button>
+            <button type="button" class="BTN_Firmas" id="capturar_f" name="capturar_f">Capturar</button>
+        </div>
     </div>
 
+
+    <!--SCRIPT de firma canvas para el asesor-->
+    <script>
+        const canvas = document.getElementById("firmaAsesorCanvas");
+        const ctx = canvas.getContext("2d");
+        const limpiarBtn = document.getElementById("limpiarFirma");
+        const guardarBtn = document.getElementById("guardarFirma");
+
+        let dibujando = false;
+
+        // Función para obtener coordenadas ajustadas
+        function getCoordenadas(event) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            let x, y;
+
+            if (event.touches) {
+                x = (event.touches[0].clientX - rect.left) * scaleX;
+                y = (event.touches[0].clientY - rect.top) * scaleY;
+            } else {
+                x = (event.clientX - rect.left) * scaleX;
+                y = (event.clientY - rect.top) * scaleY;
+            }
+            return {
+                x,
+                y
+            };
+        }
+
+        // Función para empezar a dibujar
+        function empezarDibujo(event) {
+            event.preventDefault();
+            dibujando = true;
+            const {
+                x,
+                y
+            } = getCoordenadas(event);
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        // Función para dibujar
+        function dibujar(event) {
+            event.preventDefault();
+            if (!dibujando) return;
+            const {
+                x,
+                y
+            } = getCoordenadas(event);
+            ctx.lineTo(x, y);
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 2;
+            ctx.lineCap = "round";
+            ctx.stroke();
+        }
+
+        // Función para dejar de dibujar
+        function finalizarDibujo(event) {
+            event.preventDefault();
+            dibujando = false;
+            ctx.closePath();
+        }
+
+        // Eventos del mouse
+        canvas.addEventListener("mousedown", empezarDibujo);
+        canvas.addEventListener("mousemove", dibujar);
+        canvas.addEventListener("mouseup", finalizarDibujo);
+        canvas.addEventListener("mouseleave", finalizarDibujo);
+
+        // Eventos táctiles (para celulares o tablets)
+        canvas.addEventListener("touchstart", empezarDibujo);
+        canvas.addEventListener("touchmove", dibujar);
+        canvas.addEventListener("touchend", finalizarDibujo);
+
+        // Botón para limpiar la firma
+        limpiar_f.addEventListener("click", () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            desbloquearFirma(); // Permite volver a firmar después de limpiar
+        });
+
+        // Botón para guardar la firma como imagen y bloquear el campo
+        capturar_f.addEventListener("click", () => {
+            const firmaBase64 = canvas.toDataURL("image/png");
+            console.log(firmaBase64); // Puedes enviarla a tu backend o guardarla
+            alert("Firma guardada (revisar la consola)");
+            bloquearFirma(); // Bloquea el campo después de capturar
+
+            // Deshabilitar el botón de limpiar para que no se pueda borrar la firma
+            limpiar_f.disabled = true;
+        });
+
+        // Función para bloquear el campo de firma
+        function bloquearFirma() {
+            canvas.style.pointerEvents = "none"; // Desactiva la interacción con el canvas
+        }
+    </script>
+
+
+
+    <!--SCRIPT para el modal de cedula_calidad.php -->
+    <script>
+        $(document).ready(function() {
+            // Abrir el modal y cargar el contenido de cedula_parciales.php
+            $('#cedulaModal').on('show.bs.modal', function(e) {
+                var modal = $(this);
+                $.ajax({
+                    url: 'cedula_parciales.php', // Ruta al archivo PHP
+                    type: 'GET',
+                    success: function(data) {
+                        modal.find('#cedulaModalContent').html(data);
+                    },
+                    error: function() {
+                        modal.find('#cedulaModalContent').html('<p>Error al cargar el contenido.</p>');
+                    }
+                });
+            });
+        });
+    </script>
+
+
     <!-- SCRIPT PARA GENERAR EL PDF -->
-   <!-- <script>
+    <!--<script>
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('img');
             const totalImages = images.length;
@@ -515,9 +649,165 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                 console.error("Error en el proceso:", error);
             }
         }
-    </script>
+    </script> -->
 
-    <!-- Script para la firma -->
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;"></div>
+
+    <script type="module">
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        import {
+            getDatabase,
+            ref,
+            onValue,
+            update
+        } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1XIbEFJ28sqWcF5Ws3i8zA2o1OhYC7JU",
+            authDomain: "prueba-pickcollect.firebaseapp.com",
+            databaseURL: "https://prueba-pickcollect-default-rtdb.firebaseio.com",
+            projectId: "prueba-pickcollect",
+            storageBucket: "prueba-pickcollect.firebasestorage.app",
+            messagingSenderId: "343351102325",
+            appId: "1:343351102325:web:a6e4184d4752c6cbcfe13c",
+            measurementId: "G-6864KLZWKP"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const operadorActual = "<?php echo $_SESSION['nombre_usuario']; ?>";
+        const notificacionesRef = ref(db, "notificaciones");
+
+        onValue(notificacionesRef, (snapshot) => {
+            const notificaciones = snapshot.val();
+            let contador = 0;
+            let htmlNotificaciones = "";
+
+            for (let key in notificaciones) {
+                let notificacion = notificaciones[key];
+
+                // Mostrar solo notificaciones dirigidas al usuario logueado y no leídas
+                if (notificacion.operador === operadorActual && notificacion.leido === false) {
+                    contador++;
+                    htmlNotificaciones += `
+            <a class="dropdown-item d-flex align-items-center" href="#" 
+            data-id="${key}" 
+            data-siniestro="${notificacion.siniestro}" 
+            data-fecha="${notificacion.fecha}" 
+            onclick="leerNotificacion(this)">
+                <div>
+                    <div class="text-truncate">${notificacion.mensaje}</div>
+                    <div class="text-truncate">Siniestro: ${notificacion.siniestro}</div>
+                    <div class="small text-gray-500">${notificacion.fecha}</div>
+                </div>
+            </a>`;
+
+                    // Mostrar Toast Notification (Pop-up)
+                    mostrarToast(notificacion.mensaje);
+                }
+            }
+
+            const badge = document.querySelector("#alertsDropdown .badge-counter");
+            badge.textContent = contador > 0 ? contador : "";
+            badge.style.display = contador > 0 ? "inline-block" : "none";
+
+            const dropdown = document.querySelector("#alertsDropdown + .dropdown-menu");
+            dropdown.innerHTML = `<h6 class="dropdown-header">Centro de Alertas</h6>` + htmlNotificaciones;
+        });
+
+        // Crear el AudioContext para manejar restricciones de autoplay
+        let audioContext = new(window.AudioContext || window.webkitAudioContext)();
+        let permisoSonido = false;
+
+        // Detectar la primera interacción del usuario para permitir el sonido
+        document.addEventListener("click", () => {
+            if (!permisoSonido) {
+                permisoSonido = true;
+                console.log("✅ Sonido habilitado tras la interacción del usuario");
+            }
+        });
+
+        // Función para mostrar el Toast con sonido
+        function mostrarToast(mensaje) {
+            const toastContainer = document.getElementById("toastContainer");
+
+            // Crear el Toast HTML
+            const toast = document.createElement("div");
+            toast.classList.add("toast");
+            toast.innerHTML = mensaje;
+
+            // Agregar el toast al contenedor
+            toastContainer.appendChild(toast);
+
+            // Mostrar el toast inmediatamente
+            toast.style.display = "block";
+
+            // Si el usuario ya interactuó, reproducir el sonido al mismo tiempo
+            if (permisoSonido) {
+                reproducirSonido();
+            } else {
+                console.warn("🚫 Sonido bloqueado. Se activará tras la primera interacción.");
+            }
+
+            // Ocultar el toast después de 4 segundos
+            setTimeout(() => {
+                toast.style.display = "none";
+                toastContainer.removeChild(toast);
+            }, 4000);
+        }
+
+        // Función para reproducir el sonido con restricciones de navegador solucionadas
+        function reproducirSonido() {
+            if (audioContext.state === "suspended") {
+                audioContext.resume(); // Reactivar el contexto si está pausado
+            }
+
+            const audio = new Audio("assets/sounds/lg_crystal_2021.mp3"); // Ruta del sonido
+
+            audio.play().catch(error => console.error("Error reproduciendo el sonido:", error));
+        }
+
+        // 🔹 Función para marcar la notificación como leída en Firebase y abrir el modal
+        window.leerNotificacion = function(element) {
+            const notificacionId = element.getAttribute("data-id"); // ID de la notificación en Firebase
+            const siniestroId = element.getAttribute("data-siniestro"); // ID del siniestro
+
+            console.log("📌 Notificación clickeada, ID Expediente:", siniestroId);
+
+            // Buscar el botón de la tabla que tenga el mismo ID de cédula
+            const btnEditar = document.querySelector(`.custom-table-style-edit-btn[data-id="${siniestroId}"]`);
+
+            if (btnEditar) {
+                console.log("✅ Botón encontrado, simulando clic...");
+                btnEditar.click(); // Simular clic en el botón de editar
+            } else {
+                console.warn("⚠️ No se encontró el botón en la tabla. Abriendo modal manualmente.");
+                $j('#editarCedulaModal').modal('show'); // Abre el modal sin cargar datos
+            }
+
+            // 🔹 Marcar como leído en Firebase
+            const notificacionRef = ref(db, `notificaciones/${notificacionId}`);
+            update(notificacionRef, {
+                    leido: true
+                })
+                .then(() => console.log(`✅ Notificación ${notificacionId} marcada como leída`))
+                .catch((error) => console.error("❌ Error al actualizar la notificación:", error));
+
+            // 🔹 Quitar la notificación del dropdown y actualizar el contador
+            element.style.display = "none"; // Ocultar la notificación clickeada
+            const badge = document.querySelector("#alertsDropdown .badge-counter");
+            let count = parseInt(badge.textContent) || 0;
+            if (count > 0) {
+                badge.textContent = count - 1;
+                if (count - 1 === 0) {
+                    badge.style.display = "none";
+                }
+            }
+        };
+    </script>
 
 </body>
 
