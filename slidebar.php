@@ -12,33 +12,32 @@ if (!isset($_SESSION['rol'])) {
 
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
 ?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Estilos personalizados -->
+    <!-- slidebar.css: Estilos personalizados para la barra lateral -->
     <link rel="stylesheet" href="css/slidebar.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Fuentes personalizadas -->
+    <!-- Font Awesome: Librería de iconos (versión 6.0.0) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
     <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
-
+    <div class="container_sidebar custom-sidebar" id="accordionSidebar">
         <!-- Sidebar - Brand -->
         <div class="sidebar-brand d-flex align-items-center justify-content-center">
             <!-- Imagen del logo -->
             <img src="img/Solera_Logo_White.png" id="sidebarLogo" class="sidebar-logo">
         </div>
-
-        <!-- Sidebar Toggler -->
-        <li class="nav-item text-center">
-            <button class="rounded-circle border-0" id="sidebarToggle">
-
-            </button>
-        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -112,15 +111,6 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 </a>
             </li>
 
-
-            <!-- Nav Item - Evaluacion -->
-            <li class="nav-item">
-                <a class="nav-link" href="evaluacion.php">
-                    <i class="fa-solid fa-medal"></i>
-                    <span>Evaluación</span>
-                </a>
-            </li>
-
         <?php endif; ?>
 
         <?php if ($rol == 'asegurado'): ?>
@@ -135,26 +125,69 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
-    </ul>
-    <!-- End of Sidebar -->
+    </div>
 
-    <!-- Script para manejar el colapsado del sidebar -->
+    <!-- Content area -->
+    <div class="content">
+        <!-- Aquí va el contenido principal de la página -->
+    </div>
+    <!-- jQuery: Librería para manipulación del DOM y eventos -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--SCRIPT que controla el colapso del sliderbar-->
     <script>
         $(document).ready(function() {
-            $("#sidebarToggle").on("click", function() {
-                let sidebar = $("#accordionSidebar");
-                sidebar.toggleClass("collapsed");
+            const sidebar = $("#accordionSidebar");
+            const logo = $("#sidebarLogo");
+            const content = $(".content");
+            let hoverTimeout;
 
-                // Cambiar tamaño del logo
-                let logo = $("#sidebarLogo");
+            // Función para colapsar el sidebar
+            function collapseSidebar() {
+                sidebar.addClass("collapsed");
+                logo.attr("src", "img/Solera_Logo_White_nn.png"); // Logo pequeño
+                content.css("margin-left", "110px"); // Ajustar margen del contenido
+            }
+
+            // Función para expandir el sidebar
+            function expandSidebar() {
+                sidebar.removeClass("collapsed");
+                logo.attr("src", "img/Solera_Logo_White.png"); // Logo completo
+                content.css("margin-left", "210px"); // Ajustar margen del contenido
+            }
+
+            // Evento para alternar entre colapsado y expandido
+            $("#sidebarToggle").on("click", function() {
                 if (sidebar.hasClass("collapsed")) {
-                    logo.attr("src", "img/Solera_Logo_White_nn.png"); // Cambiar al logo pequeño
+                    expandSidebar();
                 } else {
-                    logo.attr("src", "img/Solera_Logo_White.png"); // Cambiar al logo completo
+                    collapseSidebar();
                 }
             });
+
+            // Evento hover para expandir el sidebar
+            sidebar.hover(
+                function() {
+                    clearTimeout(hoverTimeout); // Limpiar el timeout anterior
+                    if (sidebar.hasClass("collapsed")) {
+                        hoverTimeout = setTimeout(() => {
+                            expandSidebar();
+                        }, 100); // Retraso de 200ms para evitar colapso incorrecto
+                    }
+                },
+                function() {
+                    clearTimeout(hoverTimeout); // Limpiar el timeout anterior
+                    if (!sidebar.hasClass("collapsed")) {
+                        hoverTimeout = setTimeout(() => {
+                            collapseSidebar();
+                        }, 100); // Retraso de 200ms para evitar expansión incorrecta
+                    }
+                }
+            );
         });
     </script>
+
+
+
 </body>
 
 </html>

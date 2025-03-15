@@ -1,4 +1,3 @@
-// Event listener para el formulario
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault(); // Evitar el comportamiento predeterminado del formulario
 
@@ -7,7 +6,12 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     method: "POST",
     body: formData,
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error en la respuesta del servidor");
+      }
+      return response.json();
+    })
     .then((data) => {
       if (data.success) {
         alert(data.message);

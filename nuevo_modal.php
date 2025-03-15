@@ -13,10 +13,21 @@ if (!isset($_SESSION['rol'])) {
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/nuevo_modal.css">
+
+    <!-- Custom fonts for this template -->
+
+    <!-- Google Fonts: Carga la fuente "Nunito" con diferentes grosores y estilos. -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- dataTables.bootstrap4.min.css: Estilos para DataTables con Bootstrap 4. -->
+    <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -123,6 +134,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             });
         });
     </script>
+
+    <!-- Scripts -->
+    <!-- jQuery (CDN): Biblioteca de JavaScript para manipulación del DOM y eventos. -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </body>
 

@@ -172,57 +172,42 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function obtenerDocumentos(idAsegurado) {
-    const noDocumentsMessage = document.getElementById("noDocumentsMessage");
+    const carouselIndicators = document.getElementById("carouselIndicators");
+    const carouselItems = document.getElementById("carouselItems");
+
+    if (!carouselIndicators || !carouselItems) {
+      console.error("No se encontraron los elementos del carrusel.");
+      return;
+    }
 
     try {
       const response = await fetch("proc/get_doc_carrusel.php", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id_asegurado: idAsegurado }),
       });
 
-      // Obtenemos la respuesta como texto primero
       const textResponse = await response.text();
       console.log("Respuesta del servidor:", textResponse);
 
       let data;
       try {
-        // Intentamos convertir la respuesta a JSON
         data = JSON.parse(textResponse);
       } catch (jsonError) {
         console.error("Error al parsear JSON:", jsonError);
-        if (noDocumentsMessage) {
-          noDocumentsMessage.style.display = "block";
-          noDocumentsMessage.textContent =
-            "Error al procesar los datos del servidor. Por favor, intente más tarde.";
-        }
         return;
       }
 
-      const carouselIndicators = document.getElementById("carouselIndicators");
-      const carouselItems = document.getElementById("carouselItems");
-
-      // Limpiar carrusel antes de agregar nuevos elementos
-      if (carouselIndicators && carouselItems) {
-        carouselIndicators.innerHTML = "";
-        carouselItems.innerHTML = "";
-      }
+      // Limpiar carrusel antes de actualizarlo
+      carouselIndicators.innerHTML = "";
+      carouselItems.innerHTML = "";
 
       if (data.error) {
-        // Mostrar mensaje de error si el servidor responde con un error
-        if (noDocumentsMessage) {
-          noDocumentsMessage.style.display = "block";
-          noDocumentsMessage.textContent = data.error;
-        }
         console.log(data.error);
         return;
       }
 
       if (data.files && data.files.length > 0) {
-        if (noDocumentsMessage) noDocumentsMessage.style.display = "none";
-
         data.files.forEach((filePath, index) => {
           console.log("Archivo encontrado:", filePath);
           const fileExtension = filePath.split(".").pop().toLowerCase();
@@ -241,38 +226,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
           let content = "";
           if (fileExtension === "pdf") {
-            content = `<iframe src="${filePath}" class="d-block w-100" height="600px" allow="autoplay" frameborder="0"></iframe>`;
+            content = `<iframe src="${filePath}" class="d-block w-100" height="600px" allow="autoplay"></iframe>`;
           } else if (["jpg", "jpeg", "png", "gif"].includes(fileExtension)) {
             content = `<img src="${filePath}" class="d-block w-100" alt="Documento">`;
           } else {
             content = `<p>Archivo no compatible: <a href="${filePath}" target="_blank">Descargar</a></p>`;
           }
 
-          carouselItem.innerHTML = `
-                    ${content}
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Documento ${index + 1}</h5>
-                        <p>Vista del documento ${index + 1}</p>
-                    </div>
-                `;
-
+          carouselItem.innerHTML = content;
           carouselItems.appendChild(carouselItem);
         });
+
+        // Forzar la actualización del carrusel
+        $("#carouselExample").carousel(0);
       } else {
-        if (noDocumentsMessage) {
-          noDocumentsMessage.style.display = "block";
-          noDocumentsMessage.textContent =
-            "No se encontraron documentos para este asegurado.";
-        }
-        console.log("No se encontraron documentos para este asegurado.");
+        console.log("No se encontraron documentos.");
       }
     } catch (error) {
       console.error("Error al cargar los documentos:", error);
-      if (noDocumentsMessage) {
-        noDocumentsMessage.style.display = "block";
-        noDocumentsMessage.textContent =
-          "Hubo un error al cargar los documentos. Por favor, intente más tarde.";
-      }
     }
   }
 
@@ -294,36 +265,29 @@ document.addEventListener("DOMContentLoaded", function () {
   const fileName = document.getElementById("fileName");
   const selectDescripcionArch = document.getElementById("descripcion_arch");
 
-  // Función para actualizar el nombre del archivo en la caja de texto
+  // Función para actualizar el nombre de los archivos en la caja de texto
   function updateFileName() {
-    const file = fileInput.files[0];
-    if (file) {
-      fileName.value = file.name;
+    const files = fileInput.files;
+    if (files.length > 0) {
+      const fileNames = Array.from(files)
+        .map((file) => file.name)
+        .join(", ");
+      fileName.value = fileNames;
     } else {
-      fileName.value = "No se ha seleccionado un archivo";
+      fileName.value = "No se han seleccionado archivos";
     }
   }
 
   // Asignar evento onchange al input de archivo
   fileInput.addEventListener("change", updateFileName);
 
-  // Función para convertir el archivo a Base64
-  function convertToBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result.split(",")[1]); // Obtener solo la parte base64
-      reader.onerror = (error) => reject(error);
-      reader.readAsDataURL(file);
-    });
-  }
-
-  // Función para cargar el archivo al servidor
+  // Función para cargar los archivos al servidor
   async function cargarArchivo() {
-    const file = fileInput.files[0]; // Obtiene el archivo del input
+    const files = fileInput.files; // Obtener todos los archivos seleccionados
     const descripcionArch = selectDescripcionArch.value; // Obtener el valor seleccionado del <select>
 
-    if (!file) {
-      alert("Por favor, selecciona un archivo.");
+    if (files.length === 0) {
+      alert("Por favor, selecciona al menos un archivo.");
       return;
     }
 
@@ -332,33 +296,60 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Crear un objeto FormData para enviar el archivo junto con otros datos
+    // Crear un objeto FormData para enviar los archivos junto con otros datos
     const formData = new FormData();
-    formData.append("archivo", file); // Agregar el archivo
+    for (let i = 0; i < files.length; i++) {
+      formData.append("archivo[]", files[i]); // Agregar cada archivo (nota el uso de "archivo[]" para múltiples archivos)
+    }
     formData.append("id_asegurado", globalIdAsegurado); // Agregar el ID del asegurado
     formData.append("descripcion_arch", descripcionArch); // Agregar la descripción
 
     try {
-      const response = await fetch("proc/insert_docs.php", {
+      // 1. Subir los archivos
+      const uploadResponse = await fetch("proc/insert_docs.php", {
         method: "POST",
         body: formData, // Enviar los datos como FormData
       });
 
-      const data = await response.json();
+      const uploadData = await uploadResponse.json();
 
-      if (data.success) {
-        alert("Archivo cargado exitosamente.");
+      if (uploadData.success) {
+        alert("Archivos cargados exitosamente.");
+
+        // 2. Actualizar los campos booleanos en la tabla Asegurado
+        const updateResponse = await fetch("proc/update_doc_asegurado.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id_asegurado: globalIdAsegurado,
+          }),
+        });
+
+        const updateData = await updateResponse.json();
+
+        if (updateData.success) {
+          alert("Campos booleanos actualizados correctamente.");
+        } else {
+          alert(
+            "Error al actualizar campos booleanos: " +
+              (updateData.error || "Error desconocido.")
+          );
+        }
       } else {
         alert(
-          "Error al cargar archivo: " + (data.error || "Error desconocido.")
+          "Error al cargar archivos: " +
+            (uploadData.error || "Error desconocido.")
         );
       }
     } catch (error) {
-      console.error("Error al cargar el archivo:", error);
-      alert("Hubo un error al cargar el archivo.");
+      console.error("Error al cargar los archivos:", error);
+      alert("Hubo un error al cargar los archivos.");
     }
   }
 
   // Asignar evento al botón de carga
   btnCargaArch.addEventListener("click", cargarArchivo);
 });
+

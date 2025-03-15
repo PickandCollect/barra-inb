@@ -3,7 +3,7 @@ $(document).ready(function () {
 
   // Cargar operadores en los selects
   $.ajax({
-    url: "proc/getOperadoresParciales.php",
+    url: "proc/getOperadoresParcailes.php",
     type: "GET",
     dataType: "json",
     success: function (response) {

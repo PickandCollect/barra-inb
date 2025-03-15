@@ -46,19 +46,27 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
             <div id="content">
                 <?php include 'topbar.php'; ?>
 
-                <div class="container-fluid">
-                    <?php include 'calidad_parciales.php'; ?>
+                <?php if ($rol == 'SUPERVISOR' || $rol == 'INTEGRACION'): ?>
+                    <div class="container-fluid">
+                        <?php include 'calidad_parciales.php'; ?>
+                    </div>
+                <?php endif; ?>
 
-                </div>
+                <?php if ($rol == 'SUPERVISOR' || $rol == 'BBVA'): ?>
+                    <div class="container-fluid">
+                        <?php include 'calidad_bbva.php'; ?>
+                    </div>
+                <?php endif; ?>
+
                 <?php include 'footer.php'; ?>
             </div>
-
 
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fas fa-angle-up"></i>
             </a>
         </div>
+        
         <script src="js/firma.js"></script>
         <script src="js/firma2.js"></script>
         <!-- Bootstrap core JavaScript (CDN)-->

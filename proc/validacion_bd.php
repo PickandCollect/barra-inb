@@ -1,8 +1,9 @@
 <?php
-session_start(); // Iniciar sesión
+session_start();
 include 'conexion.php'; // Archivo de conexión a la base de datos
 
-header('Content-Type: application/json'); // Configurar la respuesta como JSON
+// Configurar la respuesta como JSON
+header('Content-Type: application/json');
 
 // Inicializar la respuesta
 $response = [
@@ -93,12 +94,14 @@ try {
                         $_SESSION['fk_asegurado'] = $expedienteData['fk_asegurado'];
                         $_SESSION['nombre_usuario'] = $aseguradoData['nom_asegurado']; // Guardar el nombre del asegurado
                         $_SESSION['rol'] = 'asegurado';
+                        $_SESSION['id_asegurado'] = $aseguradoData['id_asegurado'];
 
                         $response['success'] = true;
                         $response['message'] = 'Acceso asegurado exitoso.';
                         $response['rol'] = 'asegurado';
                         $response['no_siniestro'] = $expedienteData['no_siniestro'];
                         $response['nombre_usuario'] = $aseguradoData['nom_asegurado']; // Asegurar que se devuelve
+                        $response['fk_asegurado'] = $expedienteData['fk_asegurado'];
                     } else {
                         $response['message'] = 'No se encontró el asegurado asociado.';
                     }
@@ -119,8 +122,7 @@ try {
     $response['message'] = 'Error del servidor: ' . $e->getMessage();
 }
 
-// Registrar en el log de errores la respuesta final para depuración
-error_log("Respuesta JSON: " . json_encode($response));
-
 $conexion->close(); // Cerrar conexión
-echo json_encode($response); // Responder con JSON
+
+// Enviar la respuesta como JSON
+echo json_encode($response);

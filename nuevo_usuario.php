@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Usuario</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/nuevo_usuario.css">
+    <!-- Custom fonts for this template -->
+    <!-- Font Awesome 6 (CDN): Proporciona iconos escalables y vectoriales. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Font Awesome (local): Versión local de Font Awesome para iconos. -->
+    <link href="main/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Google Fonts: Carga la fuente "Nunito" con diferentes grosores y estilos. -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+    <!-- dataTables.bootstrap4.min.css: Estilos para DataTables con Bootstrap 4. -->
+    <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -118,10 +130,17 @@
         </div>
     </form>
 
-    <!--Supervisor-->
-    <script src="js/getSupervisor.js"></script>
-    <!-- JavaScript para mostrar el nombre del archivo -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <!-- Scripts -->
+    <!-- jQuery (CDN): Biblioteca de JavaScript para manipulación del DOM y eventos. -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Popper.js (CDN): Biblioteca para manejar tooltips, popovers, y dropdowns en Bootstrap. -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS (CDN): Funcionalidades de Bootstrap como modales, dropdowns, etc. -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <script>
         const fileInput = document.getElementById('fileInput');
         const profilePreview = document.getElementById('profilePreview');
@@ -146,10 +165,6 @@
             }
         });
     </script>
-
-    <script src="js/procesamientoUsuario.js"></script>
-
-
 
 </body>
 

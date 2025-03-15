@@ -15,41 +15,119 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 <?php
 // Captura los datos enviados de la primera parte
-$nombre_c = isset($_POST['nombre_c']) ? $_POST['nombre_c'] : '';
-$campana_c = isset($_POST['campana_c']) ? $_POST['campana_c'] : '';
-$supervisor_c = isset($_POST['supervisor_c']) ? $_POST['supervisor_c'] : '';
-$posicion_c = isset($_POST['posicion_c']) ? $_POST['posicion_c'] : '';
-$id_c = isset($_POST['id_c']) ? $_POST['id_c'] : '';
-$nombre_tercero_c = isset($_POST['nombre_tercero_c']) ? $_POST['nombre_tercero_c'] : '';
-$tipo_tramite_c = isset($_POST['tipo_tramite_c']) ? $_POST['tipo_tramite_c'] : '';
-$siniestro_c = isset($_POST['siniestro_c']) ? $_POST['siniestro_c'] : '';
+$nombre_cb = isset($_POST['nombre_cb']) ? htmlspecialchars($_POST['nombre_cb']) : '';
+$posicion_cb = isset($_POST['posicion_cb']) ? htmlspecialchars($_POST['posicion_cb']) : '';
+$evaluador_cb = isset($_POST['evaluador_cb']) ? htmlspecialchars($_POST['evaluador_cb']) : '';
 
-//Capturamos los datos de ponderacion
-$cumple = isset($_POST['cumple']) ? $_POST['cumple'] : '';
-$cumple1 = isset($_POST['cumple1']) ? $_POST['cumple1'] : '';
-$cumple2 = isset($_POST['cumple2']) ? $_POST['cumple2'] : '';
-$cumple3 = isset($_POST['cumple3']) ? $_POST['cumple3'] : '';
-$cumple4 = isset($_POST['cumple4']) ? $_POST['cumple4'] : '';
-$cumple5 = isset($_POST['cumple5']) ? $_POST['cumple5'] : '';
-$cumple6 = isset($_POST['cumple6']) ? $_POST['cumple6'] : '';
-$cumple7 = isset($_POST['cumple7']) ? $_POST['cumple7'] : '';
-$cumple8 = isset($_POST['cumple8']) ? $_POST['cumple8'] : '';
-$cumple9 = isset($_POST['cumple9']) ? $_POST['cumple9'] : '';
-$cumple10 = isset($_POST['cumple10']) ? $_POST['cumple10'] : '';
-$cumple11 = isset($_POST['cumple11']) ? $_POST['cumple11'] : '';
-$cumple12 = isset($_POST['cumple12']) ? $_POST['cumple12'] : '';
-$cumple13 = isset($_POST['cumple13']) ? $_POST['cumple13'] : '';
-$cumple14 = isset($_POST['cumple14']) ? $_POST['cumple14'] : '';
+// Captura del bloque calificacion
+$calificacion_1 = isset($_POST['calificacion_1']) ? $_POST['calificacion_1'] : '0';
+$calificacion_2 = isset($_POST['calificacion_2']) ? $_POST['calificacion_2'] : '0';
+$calificacion_3 = isset($_POST['calificacion_3']) ? $_POST['calificacion_3'] : '0';
+$calificacion_4 = isset($_POST['calificacion_4']) ? $_POST['calificacion_4'] : '0';
 
-//capturamos los datos de nota calidad
+// Evitar problemas con caracteres especiales
+$calificacion_1 = htmlspecialchars($calificacion_1, ENT_QUOTES, 'UTF-8');
+$calificacion_2 = htmlspecialchars($calificacion_2, ENT_QUOTES, 'UTF-8');
+$calificacion_3 = htmlspecialchars($calificacion_3, ENT_QUOTES, 'UTF-8');
+$calificacion_4 = htmlspecialchars($calificacion_4, ENT_QUOTES, 'UTF-8');
 
-// Captura los datos enviados a fortalezas y oportunidades
-$fortalezas = isset($_POST['fortalezas']) ? $_POST['fortalezas'] : '';
-$oportunidades = isset($_POST['oportunidades']) ? $_POST['oportunidades'] : '';
 
-// Captura los datos enviados a comentarios y  compromiso 
-$comentariosTextarea = isset($_POST['comentariosTextarea']) ? $_POST['comentariosTextarea'] : '';
-$compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTextarea'] : '';
+//Captura del bloque llamadas
+$llamada_1 = isset($_POST['llamada_1']) ? htmlspecialchars($_POST['llamada_1']) : '';
+$llamada_2 = isset($_POST['llamada_2']) ? htmlspecialchars($_POST['llamada_2']) : '';
+$llamada_3 = isset($_POST['llamada_3']) ? htmlspecialchars($_POST['llamada_3']) : '';
+$llamada_4 = isset($_POST['llamada_4']) ? htmlspecialchars($_POST['llamada_4']) : '';
+
+// Captura los datos de duración
+$duracion_1 = isset($_POST['duracion_1']) ? htmlspecialchars($_POST['duracion_1']) : '';
+$duracion_2 = isset($_POST['duracion_2']) ? htmlspecialchars($_POST['duracion_2']) : '';
+$duracion_3 = isset($_POST['duracion_3']) ? htmlspecialchars($_POST['duracion_3']) : '';
+$duracion_4 = isset($_POST['duracion_4']) ? htmlspecialchars($_POST['duracion_4']) : '';
+
+// Captura las fechas de llamada
+$fecha_llamada_1 = isset($_POST['fecha_llamada_1']) ? htmlspecialchars($_POST['fecha_llamada_1']) : '';
+$fecha_llamada_2 = isset($_POST['fecha_llamada_2']) ? htmlspecialchars($_POST['fecha_llamada_2']) : '';
+$fecha_llamada_3 = isset($_POST['fecha_llamada_3']) ? htmlspecialchars($_POST['fecha_llamada_3']) : '';
+$fecha_llamada_4 = isset($_POST['fecha_llamada_4']) ? htmlspecialchars($_POST['fecha_llamada_4']) : '';
+
+// Captura las horas de llamada
+$hora_llamada_1 = isset($_POST['hora_llamada_1']) ? htmlspecialchars($_POST['hora_llamada_1']) : '';
+$hora_llamada_2 = isset($_POST['hora_llamada_2']) ? htmlspecialchars($_POST['hora_llamada_2']) : '';
+$hora_llamada_3 = isset($_POST['hora_llamada_3']) ? htmlspecialchars($_POST['hora_llamada_3']) : '';
+$hora_llamada_4 = isset($_POST['hora_llamada_4']) ? htmlspecialchars($_POST['hora_llamada_4']) : '';
+
+//Captura de los valores enviados de los rubros 
+$cumple1_1 = isset($_POST['cumple1_1'])  ? htmlspecialchars($_POST['cumple1_1']) : '';
+$cumple1_2 = isset($_POST['cumple1_2'])  ? htmlspecialchars($_POST['cumple1_2']) : '';
+$cumple1_3 = isset($_POST['cumple1_3'])  ? htmlspecialchars($_POST['cumple1_3']) : '';
+$cumple1_4 = isset($_POST['cumple1_4'])  ? htmlspecialchars($_POST['cumple1_4']) : '';
+$cumple2_1 = isset($_POST['cumple2_1'])  ? htmlspecialchars($_POST['cumple2_1']) : '';
+$cumple2_2 = isset($_POST['cumple2_2'])  ? htmlspecialchars($_POST['cumple2_2']) : '';
+$cumple2_3 = isset($_POST['cumple2_3'])  ? htmlspecialchars($_POST['cumple2_3']) : '';
+$cumple2_4 = isset($_POST['cumple2_4'])  ? htmlspecialchars($_POST['cumple2_4']) : '';
+$cumple3_1 = isset($_POST['cumple3_1'])  ? htmlspecialchars($_POST['cumple3_1']) : '';
+$cumple3_2 = isset($_POST['cumple3_2'])  ? htmlspecialchars($_POST['cumple3_2']) : '';
+$cumple3_3 = isset($_POST['cumple3_3'])  ? htmlspecialchars($_POST['cumple3_3']) : '';
+$cumple3_4 = isset($_POST['cumple3_4'])  ? htmlspecialchars($_POST['cumple3_4']) : '';
+$cumple4_1 = isset($_POST['cumple4_1'])  ? htmlspecialchars($_POST['cumple4_1']) : '';
+$cumple4_2 = isset($_POST['cumple4_2'])  ? htmlspecialchars($_POST['cumple4_2']) : '';
+$cumple4_3 = isset($_POST['cumple4_3'])  ? htmlspecialchars($_POST['cumple4_3']) : '';
+$cumple4_4 = isset($_POST['cumple4_4'])  ? htmlspecialchars($_POST['cumple4_4']) : '';
+$cumple5_1 = isset($_POST['cumple5_1'])  ? htmlspecialchars($_POST['cumple5_1']) : '';
+$cumple5_2 = isset($_POST['cumple5_2'])  ? htmlspecialchars($_POST['cumple5_2']) : '';
+$cumple5_3 = isset($_POST['cumple5_3'])  ? htmlspecialchars($_POST['cumple5_3']) : '';
+$cumple5_4 = isset($_POST['cumple5_4'])  ? htmlspecialchars($_POST['cumple5_4']) : '';
+$cumple6_1 = isset($_POST['cumple6_1'])  ? htmlspecialchars($_POST['cumple6_1']) : '';
+$cumple6_2 = isset($_POST['cumple6_2'])  ? htmlspecialchars($_POST['cumple6_2']) : '';
+$cumple6_3 = isset($_POST['cumple6_3'])  ? htmlspecialchars($_POST['cumple6_3']) : '';
+$cumple6_4 = isset($_POST['cumple6_4'])  ? htmlspecialchars($_POST['cumple6_4']) : '';
+$cumple7_1 = isset($_POST['cumple7_1'])  ? htmlspecialchars($_POST['cumple7_1']) : '';
+$cumple7_2 = isset($_POST['cumple7_2'])  ? htmlspecialchars($_POST['cumple7_2']) : '';
+$cumple7_3 = isset($_POST['cumple7_3'])  ? htmlspecialchars($_POST['cumple7_3']) : '';
+$cumple7_4 = isset($_POST['cumple7_4'])  ? htmlspecialchars($_POST['cumple7_4']) : '';
+$cumple8_1 = isset($_POST['cumple8_1'])  ? htmlspecialchars($_POST['cumple8_1']) : '';
+$cumple8_2 = isset($_POST['cumple8_2'])  ? htmlspecialchars($_POST['cumple8_2']) : '';
+$cumple8_3 = isset($_POST['cumple8_3'])  ? htmlspecialchars($_POST['cumple8_3']) : '';
+$cumple8_4 = isset($_POST['cumple8_4'])  ? htmlspecialchars($_POST['cumple8_4']) : '';
+$cumple9_1 = isset($_POST['cumple9_1'])  ? htmlspecialchars($_POST['cumple9_1']) : '';
+$cumple9_2 = isset($_POST['cumple9_2'])  ? htmlspecialchars($_POST['cumple9_2']) : '';
+$cumple9_3 = isset($_POST['cumple9_3'])  ? htmlspecialchars($_POST['cumple9_3']) : '';
+$cumple9_4 = isset($_POST['cumple9_4'])  ? htmlspecialchars($_POST['cumple9_4']) : '';
+$cumple10_1 = isset($_POST['cumple10_1'])  ? htmlspecialchars($_POST['cumple10_1']) : '';
+$cumple10_2 = isset($_POST['cumple10_2'])  ? htmlspecialchars($_POST['cumple10_2']) : '';
+$cumple10_3 = isset($_POST['cumple10_3'])  ? htmlspecialchars($_POST['cumple10_3']) : '';
+$cumple10_4 = isset($_POST['cumple10_4'])  ? htmlspecialchars($_POST['cumple10_4']) : '';
+$cumple11_1 = isset($_POST['cumple11_1'])  ? htmlspecialchars($_POST['cumple11_1']) : '';
+$cumple11_2 = isset($_POST['cumple11_2'])  ? htmlspecialchars($_POST['cumple11_2']) : '';
+$cumple11_3 = isset($_POST['cumple11_3'])  ? htmlspecialchars($_POST['cumple11_3']) : '';
+$cumple11_4 = isset($_POST['cumple11_4'])  ? htmlspecialchars($_POST['cumple11_4']) : '';
+$cumple12_1 = isset($_POST['cumple12_1'])  ? htmlspecialchars($_POST['cumple12_1']) : '';
+$cumple12_2 = isset($_POST['cumple12_2'])  ? htmlspecialchars($_POST['cumple12_2']) : '';
+$cumple12_3 = isset($_POST['cumple12_3'])  ? htmlspecialchars($_POST['cumple12_3']) : '';
+$cumple12_4 = isset($_POST['cumple12_4'])  ? htmlspecialchars($_POST['cumple12_4']) : '';
+$cumple13_1 = isset($_POST['cumple13_1'])  ? htmlspecialchars($_POST['cumple13_1']) : '';
+$cumple13_2 = isset($_POST['cumple13_2'])  ? htmlspecialchars($_POST['cumple13_2']) : '';
+$cumple13_3 = isset($_POST['cumple13_3'])  ? htmlspecialchars($_POST['cumple13_3']) : '';
+$cumple13_4 = isset($_POST['cumple13_4'])  ? htmlspecialchars($_POST['cumple13_4']) : '';
+$cumple14_1 = isset($_POST['cumple14_1'])  ? htmlspecialchars($_POST['cumple14_1']) : '';
+$cumple14_2 = isset($_POST['cumple14_2'])  ? htmlspecialchars($_POST['cumple14_2']) : '';
+$cumple14_3 = isset($_POST['cumple14_3'])  ? htmlspecialchars($_POST['cumple14_3']) : '';
+$cumple14_4 = isset($_POST['cumple14_4'])  ? htmlspecialchars($_POST['cumple14_4']) : '';
+$cumple15_1 = isset($_POST['cumple15_1'])  ? htmlspecialchars($_POST['cumple15_1']) : '';
+$cumple15_2 = isset($_POST['cumple15_2'])  ? htmlspecialchars($_POST['cumple15_2']) : '';
+$cumple15_3 = isset($_POST['cumple15_3'])  ? htmlspecialchars($_POST['cumple15_3']) : '';
+$cumple15_4 = isset($_POST['cumple15_4'])  ? htmlspecialchars($_POST['cumple15_4']) : '';
+$cumple16_1 = isset($_POST['cumple16_1'])  ? htmlspecialchars($_POST['cumple16_1']) : '';
+$cumple16_2 = isset($_POST['cumple16_2'])  ? htmlspecialchars($_POST['cumple16_2']) : '';
+$cumple16_3 = isset($_POST['cumple16_3'])  ? htmlspecialchars($_POST['cumple16_3']) : '';
+$cumple16_4 = isset($_POST['cumple16_4'])  ? htmlspecialchars($_POST['cumple16_4']) : '';
+
+// Captura los valores de Fortalezas y Áreas de Oportunidad enviados por POST
+$fortalezas = isset($_POST['fortalezas']) ? htmlspecialchars($_POST['fortalezas']) : '';
+$oportunidades = isset($_POST['oportunidades']) ? htmlspecialchars($_POST['oportunidades']) : '';
+$comentarios = isset($_POST['comentarios']) ? htmlspecialchars($_POST['comentarios']) : '';
+$compromiso = isset($_POST['compromiso']) ? htmlspecialchars($_POST['compromiso']) : '';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,22 +177,20 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         <label for="nombre">
                             <h6>Nombre:</h6>
                         </label>
-                        <select id="nombre_cb" name="nombre_cb" class="custom-form-control">
-                            <option value="" hidden>Selecciona</option>
-                        </select>
+                        <input type="text" id="nombre_cb" name="nombre_cb" class="custom-form-control" value="<?php echo $nombre_cb; ?>" readonly>
                     </div>
                     <div class="datos_us">
                         <label for="posicion">
                             <h6>Posición:</h6>
                         </label>
-                        <input type="text" id="posicion_cb" name="posicion_cb" class="custom-form-control" readonly></input>
+                        <input type="text" id="posicion_cb" name="posicion_cb" class="custom-form-control" value="<?php echo $posicion_cb; ?>" readonly>
                     </div>
 
                     <div class="datos_us">
                         <label for="evaluador">
                             <h6>Evaluador:</h6>
                         </label>
-                        <input type="text" id="evaluador_cb" name="evaluador_cb" class="custom-form-control" readonly></input>
+                        <input type="text" id="evaluador_cb" name="evaluador_cb" class="custom-form-control" value="<?php echo $evaluador_cb; ?>" readonly>
                     </div>
                 </div>
 
@@ -124,28 +200,49 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                             <label for="calificacion1">
                                 <h6>Calificación 1:</h6>
                             </label>
-                            <div class="califica-box" id="1">0</div>
+                            <div class="califica-box" id="1">
+                                <?php
+                                // Mostrar la calificación recibida para el campo 1
+                                echo isset($_POST['calificacion_1']) ? htmlspecialchars($_POST['calificacion_1']) : '0';
+                                ?>
+                            </div>
                         </div>
                         <div class="califica-item">
                             <label for="calificacion2">
                                 <h6>Calificación 2:</h6>
                             </label>
-                            <div class="califica-box" id="2">0</div>
+                            <div class="califica-box" id="2">
+                                <?php
+                                // Mostrar la calificación recibida para el campo 2
+                                echo isset($_POST['calificacion_2']) ? htmlspecialchars($_POST['calificacion_2']) : '0';
+                                ?>
+                            </div>
                         </div>
                         <div class="califica-item">
                             <label for="calificacion3">
                                 <h6>Calificación 3:</h6>
                             </label>
-                            <div class="califica-box" id="3">0</div>
+                            <div class="califica-box" id="3">
+                                <?php
+                                // Mostrar la calificación recibida para el campo 3
+                                echo isset($_POST['calificacion_3']) ? htmlspecialchars($_POST['calificacion_3']) : '0';
+                                ?>
+                            </div>
                         </div>
                         <div class="califica-item">
                             <label for="calificacion4">
                                 <h6>Calificación 4:</h6>
                             </label>
-                            <div class="califica-box" id="4">0</div>
+                            <div class="califica-box" id="4">
+                                <?php
+                                // Mostrar la calificación recibida para el campo 4
+                                echo isset($_POST['calificacion_4']) ? htmlspecialchars($_POST['calificacion_4']) : '0';
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="metrica">
@@ -156,70 +253,102 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                             <h2>Nota de calidad:</h2>
                         </label>
                         <!-- Contenedor para el porcentaje -->
-                        <div id="nota_bbva" name="nota_bbva"> % </div>
+                        <div id="nota_bbva" name="nota_bbva" class="nota-porcentaje"
+
+                            <?php
+                            // Verifica el valor de la nota y aplica un color de fondo según el valor
+                            if (isset($_POST['nota_bbva'])) {
+                                $nota = intval($_POST['nota_bbva']);
+                                if ($nota <= 75) {
+                                    echo 'style="color: red;"';
+                                } elseif ($nota >= 76 && $nota <= 89) {
+                                    echo 'style="color: #ffcc00;"';
+                                } elseif ($nota >= 90 && $nota <= 100) {
+                                    echo 'style="color: green;"';
+                                }
+                            }
+                            ?>>
+                            <?php
+                            // Mostrar la nota de calidad enviada por POST
+                            if (isset($_POST['nota_bbva'])) {
+                                echo htmlspecialchars($_POST['nota_bbva']);
+                            } else {
+                                echo "%"; // Mensaje por defecto si no hay datos
+                            }
+                            ?>
+                        </div>
                     </div>
 
                     <div class="container_performancebbva">
                         <h2>Performance:</h2>
                         <!-- Contenedor para la imagen dinámica -->
-                        <img id="performancebbva_img" src="img/cuidado.jpg" alt="bbva">
+                        <img id="performance_img" src="
+                        <?php
+                        // Mostrar la imagen de performance enviada por POST
+                        if (isset($_POST['performance_img'])) {
+                            echo htmlspecialchars($_POST['performance_img']);
+                        } else {
+                            echo "img/cuidado.jpg"; // Imagen por defecto si no hay datos
+                        }
+                        ?>" alt="performance">
                     </div>
-
                 </div>
+
             </div>
         </div>
 
         <div class="container_llamadas">
-            <!-- APARTADO DEL RUBRO LLAMADAS-->
+            <!-- APARTADO DEL RUBRO LLAMADAS que reciben datos-->
             <div class="llamadas">
-                <label for="llamadas" style="display: flex;  justify-content: center;">
+                <label for="llamadas" style="display: flex; justify-content: center; padding: 10px;">
                     <h6> Por llamar: </h6>
                 </label>
-                <input type="text" id="llamadas" name="llamadas" class="custom-form-control" placeholder="Número" readonly style="cursor: not-allowed;">
-                <input type="text" id="llamadas" name="llamadas" class="custom-form-control" placeholder="Número" readonly style="cursor: not-allowed;">
-                <input type="text" id="llamadas" name="llamadas" class="custom-form-control" placeholder="Número" readonly style="cursor: not-allowed;">
-                <input type="text" id="llamadas" name="llamadas" class="custom-form-control" placeholder="Número" readonly style="cursor: not-allowed;">
+                <input type="text" id="llamada_1" name="llamada_1" class="custom-form-control" placeholder="Número" style="cursor: not-allowed;" readonly value="<?php echo htmlspecialchars($llamada_1); ?>">
+                <input type="text" id="llamada_2" name="llamada_2" class="custom-form-control" placeholder="Número" readonly style="cursor: not-allowed;" readonly value="<?php echo htmlspecialchars($llamada_2); ?>">
+                <input type="text" id="llamada_3" name="llamada_3" class="custom-form-control" placeholder="Número" readonly style="cursor: not-allowed;" readonly value="<?php echo htmlspecialchars($llamada_3); ?>">
+                <input type="text" id="llamada_4" name="llamada_4" class="custom-form-control" placeholder="Número" readonly style="cursor: not-allowed;" readonly value="<?php echo htmlspecialchars($llamada_4); ?>">
             </div>
 
             <div class="llamadas">
                 <label for="duracion">
                     <h6 style="padding: 10px;">Duración:</h6>
                 </label>
-                <input type="text" id="duracion" name="duracion" class="custom-form-control" placeholder="01:30m/hr">
-                <input type="text" id="duracion" name="duracion" class="custom-form-control" placeholder="01:30m/hr">
-                <input type="text" id="duracion" name="duracion" class="custom-form-control" placeholder="01:30m/hr">
-                <input type="text" id="duracion" name="duracion" class="custom-form-control" placeholder="01:30m/hr">
+                <input type="text" id="duracion_1" name="duracion_1" class="custom-form-control" placeholder="01:30m/hr" readonly value="<?php echo htmlspecialchars($duracion_1); ?>">
+                <input type="text" id="duracion_2" name="duracion_2" class="custom-form-control" placeholder="01:30m/hr" readonly value="<?php echo htmlspecialchars($duracion_2); ?>">
+                <input type="text" id="duracion_3" name="duracion_3" class="custom-form-control" placeholder="01:30m/hr" readonly value="<?php echo htmlspecialchars($duracion_3); ?>">
+                <input type="text" id="duracion_4" name="duracion_4" class="custom-form-control" placeholder="01:30m/hr" readonly value="<?php echo htmlspecialchars($duracion_4); ?>">
             </div>
 
             <div class="llamadas">
                 <label for="fecha_llamada">
                     <h6 style="padding: 10px;">Fecha:</h6>
                 </label>
-                <input type="date" id="fecha_llamada" name="fecha_llamada" class="custom-form-control">
-                <input type="date" id="fecha_llamada" name="fecha_llamada" class="custom-form-control">
-                <input type="date" id="fecha_llamada" name="fecha_llamada" class="custom-form-control">
-                <input type="date" id="fecha_llamada" name="fecha_llamada" class="custom-form-control">
+                <input type="date" id="fecha_llamada_1" name="fecha_llamada_1" class="custom-form-control" readonly value="<?php echo htmlspecialchars($fecha_llamada_1); ?>">
+                <input type="date" id="fecha_llamada_2" name="fecha_llamada_2" class="custom-form-control" readonly value="<?php echo htmlspecialchars($fecha_llamada_2); ?>">
+                <input type="date" id="fecha_llamada_3" name="fecha_llamada_3" class="custom-form-control" readonly value="<?php echo htmlspecialchars($fecha_llamada_3); ?>">
+                <input type="date" id="fecha_llamada_4" name="fecha_llamada_4" class="custom-form-control" readonly value="<?php echo htmlspecialchars($fecha_llamada_4); ?>">
             </div>
 
             <div class="llamadas">
                 <label for="hora_llamada">
                     <h6 style="padding: 10px;">Hora:</h6>
                 </label>
-                <input type="time" id="hora_llamada" name="hora_llamada" class="custom-form-control">
-                <input type="time" id="hora_llamada" name="hora_llamada" class="custom-form-control">
-                <input type="time" id="hora_llamada" name="hora_llamada" class="custom-form-control">
-                <input type="time" id="hora_llamada" name="hora_llamada" class="custom-form-control">
+                <input type="time" id="hora_llamada_1" name="hora_llamada_1" class="custom-form-control" readonly value="<?php echo htmlspecialchars($hora_llamada_1); ?>">
+                <input type="time" id="hora_llamada_2" name="hora_llamada_2" class="custom-form-control" readonly value="<?php echo htmlspecialchars($hora_llamada_2); ?>">
+                <input type="time" id="hora_llamada_3" name="hora_llamada_3" class="custom-form-control" readonly value="<?php echo htmlspecialchars($hora_llamada_3); ?>">
+                <input type="time" id="hora_llamada_4" name="hora_llamada_4" class="custom-form-control" readonly value="<?php echo htmlspecialchars($hora_llamada_4); ?>">
             </div>
         </div>
 
 
+
         <div class="container_flex" style="display: flex; gap: 30px; align-content: center;">
 
-            <div class="container_impactoN" style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="container_impactoN" style="flex-direction: column;">
                 <!-- Sección de Impacto Negocio -->
                 <div class="container_impacto">
-                    <div class="seccion-titulo">
-                        <h3>🟣Impacto Negocio</h3>
+                    <div class="seccion-titulo" style="width: 100%;">
+                        <h3>🌐Impacto Negocio</h3>
                     </div>
                 </div>
                 <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="width: 710px; height: 90%;">
@@ -227,22 +356,22 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
 
                         <!-- Rubros de Impacto Negocio -->
                         <label for="rubro_c" style="margin-bottom: 30px;">
-                            <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
+                            <h6 style="color:#276096;">Rubro</h6>
                         </label>
                         <label for="ponderacion_c">
-                            <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
+                            <h6 style="color:#276096;">Ponderación</h6>
                         </label>
                         <label for="llamada1_c">
-                            <h6 style="color:rgb(30, 9, 150);">llamada 1</h6>
+                            <h6 style="color:#276096;">llamada 1</h6>
                         </label>
                         <label for="llamada2_c">
-                            <h6 style="color:rgb(63, 9, 150);">llamada 2</h6>
+                            <h6 style="color:#276096;">llamada 2</h6>
                         </label>
                         <label for="llamada3_c">
-                            <h6 style="color:rgb(58, 9, 150);">llamada 3</h6>
+                            <h6 style="color:#276096;">llamada 3</h6>
                         </label>
                         <label for="llamada4_c">
-                            <h6 style="color:rgb(11, 9, 150);">llamada 4</h6>
+                            <h6 style="color:#276096;">llamada 4</h6>
                         </label>
 
 
@@ -254,29 +383,13 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         </label>
                         <input type="text" id="pon1" name="pon1" class="calidad-form-control" value="3" readonly style="text-align: center;">
 
-                        <select id="cumple1_1" name="cumple1_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple1_1" name="cumple1_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple1_1); ?>" readonly>
 
-                        <select id="cumple1_2" name="cumple1_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple1_2" name="cumple1_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple1_2); ?>" readonly>
 
-                        <select id="cumple1_3" name="cumple1_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple1_3" name="cumple1_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple1_3); ?>" readonly>
 
-                        <select id="cumple1_4" name="cumple1_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple1_4" name="cumple1_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple1_4); ?>" readonly>
 
                         <!-- Rubro 2 -->
                         <label for="mute_cb">
@@ -284,31 +397,13 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         </label>
                         <input type="text" id="pon2" name="pon2" class="calidad-form-control" value="4" readonly style="text-align: center;">
 
-                        <select id="cumple2_1" name="cumple2_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple2_1" name="cumple2_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple2_1); ?>" readonly>
 
-                        <select id="cumple2_2" name="cumple2_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple2_2" name="cumple2_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple2_2); ?>" readonly>
 
-                        <select id="cumple2_3" name="cumple2_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple2_3" name="cumple2_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple2_3); ?>" readonly>
 
-                        <select id="cumple2_4" name="cumple2_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-
-
+                        <input type="text" id="cumple2_4" name="cumple2_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple2_4); ?>" readonly>
 
                         <!--    Rubro     3   -->
                         <label for="escucha_cb">
@@ -316,26 +411,13 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         </label>
                         <input type="text" id="pon3" name="pon3" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
-                        <select id="cumple3_1" name="cumple3_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple3_2" name="cumple3_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple3_3" name="cumple3_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple3_4" name="cumple3_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple3_1" name="cumple3_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple3_1); ?>" readonly>
+
+                        <input type="text" id="cumple3_2" name="cumple3_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple3_2); ?>" readonly>
+
+                        <input type="text" id="cumple3_3" name="cumple3_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple3_3); ?>" readonly>
+
+                        <input type="text" id="cumple3_4" name="cumple3_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple3_4); ?>" readonly>
 
 
                         <!--    Rubro     4   -->
@@ -344,27 +426,13 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         </label>
                         <input type="text" id="pon4" name="pon4" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
 
-                        <select id="cumple4_1" name="cumple4_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple4_2" name="cumple4_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple4_3" name="cumple4_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple4_4" name="cumple4_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple4_1" name="cumple4_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple4_1); ?>" readonly>
 
+                        <input type="text" id="cumple4_2" name="cumple4_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple4_2); ?>" readonly>
+
+                        <input type="text" id="cumple4_3" name="cumple4_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple4_3); ?>" readonly>
+
+                        <input type="text" id="cumple4_4" name="cumple4_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple4_4); ?>" readonly>
 
                         <!--    Rubro     5   -->
                         <label for="cortesia_cb">
@@ -372,26 +440,13 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         </label>
                         <input type="text" id="pon5" name="pon5" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
-                        <select id="cumple5_1" name="cumple5_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple5_2" name="cumple5_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple5_3" name="cumple5_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple5_4" name="cumple5_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple5_1" name="cumple5_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple5_1); ?>" readonly>
+
+                        <input type="text" id="cumple5_2" name="cumple5_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple5_2); ?>" readonly>
+
+                        <input type="text" id="cumple5_3" name="cumple5_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple5_3); ?>" readonly>
+
+                        <input type="text" id="cumple5_4" name="cumple5_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple5_4); ?>" readonly>
 
 
                         <!--    Rubro     6   -->
@@ -400,26 +455,13 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         </label>
                         <input type="text" id="pon6" name="pon6" class="calidad-form-control" placeholder="" value="11" readonly style="text-align: center;">
 
-                        <select id="cumple6_1" name="cumple6_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple6_2" name="cumple6_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple6_3" name="cumple6_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple6_4" name="cumple6_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple6_1" name="cumple6_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple6_1); ?>" readonly>
+
+                        <input type="text" id="cumple6_2" name="cumple6_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple6_2); ?>" readonly>
+
+                        <input type="text" id="cumple6_3" name="cumple6_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple6_3); ?>" readonly>
+
+                        <input type="text" id="cumple6_4" name="cumple6_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple6_4); ?>" readonly>
 
 
                         <!--    Rubro     7   -->
@@ -428,26 +470,13 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         </label>
                         <input type="text" id="pon7" name="pon7" class="calidad-form-control" placeholder="" value="11" readonly style="text-align: center;">
 
-                        <select id="cumple7_1" name="cumple7_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple7_2" name="cumple7_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple7_3" name="cumple7_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple7_4" name="cumple7_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple7_1" name="cumple7_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple7_1); ?>" readonly>
+
+                        <input type="text" id="cumple7_2" name="cumple7_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple7_2); ?>" readonly>
+
+                        <input type="text" id="cumple7_3" name="cumple7_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple7_3); ?>" readonly>
+
+                        <input type="text" id="cumple7_4" name="cumple7_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple7_4); ?>" readonly>
 
 
                         <!--    Rubro     8   -->
@@ -456,61 +485,36 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         </label>
                         <input type="text" id="pon8" name="pon8" class="calidad-form-control" placeholder="" value="11" readonly style="text-align: center;">
 
-                        <select id="cumple8_1" name="cumple8_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple8_2" name="cumple8_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple8_3" name="cumple8_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple8_4" name="cumple8_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple8_1" name="cumple8_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple8_1); ?>" readonly>
+
+                        <input type="text" id="cumple8_2" name="cumple8_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple8_2); ?>" readonly>
+
+                        <input type="text" id="cumple8_3" name="cumple8_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple8_3); ?>" readonly>
+
+                        <input type="text" id="cumple8_4" name="cumple8_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple8_4); ?>" readonly>
 
                         <!--    Rubro     9   -->
                         <label for="cierres_cb">
                             <h6>Cierres de oferta</h6>
                         </label>
                         <input type="text" id="pon9" name="pon9" class="calidad-form-control" placeholder="" value="11" readonly style="text-align: center;">
-                        <select id="cumple9_1" name="cumple9_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple9_2" name="cumple9_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple9_3" name="cumple9_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple9_4" name="cumple9_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+
+                        <input type="text" id="cumple9_1" name="cumple9_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple9_1); ?>" readonly>
+
+                        <input type="text" id="cumple9_2" name="cumple9_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple9_2); ?>" readonly>
+
+                        <input type="text" id="cumple9_3" name="cumple9_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple9_3); ?>" readonly>
+
+                        <input type="text" id="cumple9_4" name="cumple9_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple9_4); ?>" readonly>
                     </div>
                 </div>
             </div>
 
-            <div class="container_impactoN" style="display: flex; flex-direction: column;">
+            <div class="container_impactoN">
                 <!-- Sección de Impacto Operativo -->
                 <div class="container_impacto">
                     <div class="seccion-titulo">
-                        <h3>🟣Impacto Operativo</h3>
+                        <h3>🌐Impacto Operativo</h3>
                     </div>
                 </div>
 
@@ -519,22 +523,22 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
 
                         <!-- Rubros de Impacto Negocio -->
                         <label for="rubro_c" style="margin-bottom: 30px;">
-                            <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
+                            <h6 style="color:#276096;">Rubro</h6>
                         </label>
                         <label for="ponderacion_c">
-                            <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
+                            <h6 style="color:#276096;">Ponderación</h6>
                         </label>
                         <label for="llamada1_c">
-                            <h6 style="color:rgb(30, 9, 150);">llamada 1</h6>
+                            <h6 style="color:#276096;">llamada 1</h6>
                         </label>
                         <label for="llamada2_c">
-                            <h6 style="color:rgb(63, 9, 150);">llamada 2</h6>
+                            <h6 style="color:#276096;">llamada 2</h6>
                         </label>
                         <label for="llamada3_c">
-                            <h6 style="color:rgb(58, 9, 150);">llamada 3</h6>
+                            <h6 style="color:#276096;">llamada 3</h6>
                         </label>
                         <label for="llamada4_c">
-                            <h6 style="color:rgb(11, 9, 150);">llamada 4</h6>
+                            <h6 style="color:#276096;">llamada 4</h6>
                         </label>
 
                         <!-- Rubros con ponderaciones -->
@@ -544,26 +548,14 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                             <h6>Tutea / Personaliza</h6>
                         </label>
                         <input type="text" id="pon10" name="pon10" class="calidad-form-control" value="5" readonly style="text-align: center;">
-                        <select id="cumple10_1" name="cumple10_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple10_2" name="cumple10_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple10_3" name="cumple10_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple10_4" name="cumple10_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+
+                        <input type="text" id="cumple10_1" name="cumple10_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple10_1); ?>" readonly>
+
+                        <input type="text" id="cumple10_2" name="cumple10_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple10_2); ?>" readonly>
+
+                        <input type="text" id="cumple10_3" name="cumple10_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple10_3); ?>" readonly>
+
+                        <input type="text" id="cumple10_4" name="cumple10_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple10_4); ?>" readonly>
 
                         <!--    Rubro     11   -->
                         <label for="ccc_cb">
@@ -571,26 +563,13 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         </label>
                         <input type="text" id="pon11" name="pon11" class="calidad-form-control" placeholder="" value="9" readonly style="text-align: center;">
 
-                        <select id="cumple11_1" name="cumple11_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple11_2" name="cumple11_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple11_3" name="cumple11_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple11_4" name="cumple11_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple11_1" name="cumple11_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple11_1); ?>" readonly>
+
+                        <input type="text" id="cumple11_2" name="cumple11_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple11_2); ?>" readonly>
+
+                        <input type="text" id="cumple11_3" name="cumple11_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple11_3); ?>" readonly>
+
+                        <input type="text" id="cumple11_4" name="cumple11_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple11_4); ?>" readonly>
 
 
                         <!--    Rubro     12   -->
@@ -599,26 +578,13 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         </label>
                         <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
-                        <select id="cumple12_1" name="cumple12_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple12_2" name="cumple12_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple12_3" name="cumple12_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple12_4" name="cumple12_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple12_1" name="cumple12_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple12_1); ?>" readonly>
+
+                        <input type="text" id="cumple12_2" name="cumple12_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple12_2); ?>" readonly>
+
+                        <input type="text" id="cumple12_3" name="cumple12_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple12_3); ?>" readonly>
+
+                        <input type="text" id="cumple12_4" name="cumple12_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple12_4); ?>" readonly>
 
 
                         <!--    Rubro     13   -->
@@ -627,26 +593,13 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         </label>
                         <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
 
-                        <select id="cumple13_1" name="cumple13_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple13_2" name="cumple13_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple13_3" name="cumple13_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple13_4" name="cumple13_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple13_1" name="cumple13_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple13_1); ?>" readonly>
+
+                        <input type="text" id="cumple13_2" name="cumple13_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple13_2); ?>" readonly>
+
+                        <input type="text" id="cumple13_3" name="cumple13_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple13_3); ?>" readonly>
+
+                        <input type="text" id="cumple13_4" name="cumple13_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple13_4); ?>" readonly>
 
                         <!--    Rubro     14   -->
                         <label for="negativas_cb">
@@ -654,32 +607,20 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         </label>
                         <input type="text" id="pon14" name="pon14" class="calidad-form-control" placeholder="" value="6" readonly style="text-align: center;">
 
-                        <select id="cumple14_1" name="cumple_llamada14_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple14_2" name="cumple_llamada14_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple14_3" name="cumple_llamada14_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple14_4" name="cumple_llamada14_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple14_1" name="cumple14_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple14_1); ?>" readonly>
+
+                        <input type="text" id="cumple14_2" name="cumple14_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple14_2); ?>" readonly>
+
+                        <input type="text" id="cumple14_3" name="cumple14_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple14_3); ?>" readonly>
+
+                        <input type="text" id="cumple14_4" name="cumple14_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple14_4); ?>" readonly>
+
                     </div>
                 </div>
                 <!-- Sección de Error Crítico -->
                 <div class="container_impacto">
                     <div class="seccion-titulo">
-                        <h4>🟣Error Crítico</h4>
+                        <h4>🌐Error Crítico</h4>
                     </div>
                 </div>
 
@@ -688,22 +629,22 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
 
                         <!-- Rubros de Error Crítico -->
                         <label for="rubro_c" style="margin-bottom: 30px;">
-                            <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
+                            <h6 style="color:#276096;">Rubro</h6>
                         </label>
                         <label for="ponderacion_c">
-                            <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
+                            <h6 style="color:#276096;">Ponderación</h6>
                         </label>
                         <label for="llamada1_c">
-                            <h6 style="color:rgb(30, 9, 150);">llamada 1</h6>
+                            <h6 style="color:#276096;">llamada 1</h6>
                         </label>
                         <label for="llamada2_c">
-                            <h6 style="color:rgb(63, 9, 150);">llamada 2</h6>
+                            <h6 style="color:#276096;">llamada 2</h6>
                         </label>
                         <label for="llamada3_c">
-                            <h6 style="color:rgb(58, 9, 150);">llamada 3</h6>
+                            <h6 style="color:#276096;">llamada 3</h6>
                         </label>
                         <label for="llamada4_c">
-                            <h6 style="color:rgb(11, 9, 150);">llamada 4</h6>
+                            <h6 style="color:#276096;">llamada 4</h6>
                         </label>
 
                         <!-- Rubros con ponderaciones -->
@@ -712,29 +653,15 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         <label for="maltrato_cb">
                             <h6>Maltrato al cliente</h6>
                         </label>
-                        <input type="text" id="pon15" name="pon15" class="calidad-form-control" value="0" readonly style="text-align: center;">
+                        <input type="text" id="pon15" name="pon15" class="calidad-form-control" value="0" readonly style="text-align: center; ">
 
-                        <select id="cumple15_1" name="cumple15_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple15_2" name="cumple15_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple15_3" name="cumple15_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple15_4" name="cumple15_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
+                        <input type="text" id="cumple15_1" name="cumple15_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple15_1); ?>" readonly>
 
+                        <input type="text" id="cumple15_2" name="cumple15_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple15_2); ?>" readonly>
+
+                        <input type="text" id="cumple15_3" name="cumple15_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple15_3); ?>" readonly>
+
+                        <input type="text" id="cumple15_4" name="cumple15_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple15_4); ?>" readonly>
 
                         <!--    Rubro     16   -->
                         <label for="desprestigio_cb">
@@ -742,93 +669,190 @@ $compromisoTextarea = isset($_POST['compromisoTextarea']) ? $_POST['compromisoTe
                         </label>
                         <input type="text" id="pon16" name="pon16" class="calidad-form-control" placeholder="" value="0" readonly style="text-align: center;">
 
-                        <select id="cumple16_1" name="cumple16_1" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple16_2" name="cumple16_2" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple16_3" name="cumple16_3" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <select id="cumple16_4" name="cumple16_4" class="calidad-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="container_firmcom">
-                <div class="contenedor-fortalezas">
-                    <!-- Contenedor de Fortalezas y Áreas de Oportunidad -->
-                    <div class="container_FA">
-                        <div class="fortalezas-container">
-                            <label for="fortalezas">
-                                <h6>Fortalezas</h6>
-                            </label>
-                            <!-- Aquí se coloca el valor recibido desde el POST en el textarea -->
-                            <textarea id="fortalezas" class="fortalezas-textarea" readonly><?php echo htmlspecialchars($fortalezas); ?></textarea>
-                        </div>
-                        <!-- Contenedor de Fortalezas y Áreas de Oportunidad -->
-                        <div class="oportunidades-container">
-                            <label for="oportunidades">
-                                <h6>Áreas de Oportunidad</h6>
-                            </label>
-                            <!-- Aquí se coloca el valor recibido desde el POST en el textarea -->
-                            <textarea id="oportunidades" class="oportunidades-textarea" readonly><?php echo htmlspecialchars($oportunidades); ?></textarea>
-                        </div>
-                    </div>
-                </div>
+                        <input type="text" id="cumple16_1" name="cumple16_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple16_1); ?>" readonly>
 
-                <div class="container_comentariosF">
+                        <input type="text" id="cumple16_2" name="cumple16_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple16_2); ?>" readonly>
 
-                    <!-- Apartado de comentarios y compromiso -->
-                    <div class="container_com">
-                        <h6>Comentarios</h6>
-                        <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="3" style="margin-bottom: 30px;" readonly> <?php echo htmlspecialchars($comentariosTextarea); ?></textarea>
-                        <h6>Compromiso</h6>
-                        <textarea class="form-control" id="compromisoTextarea" name="compromisoTextarea" rows="3"></textarea>
+                        <input type="text" id="cumple16_3" name="cumple16_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple16_3); ?>" readonly>
+
+                        <input type="text" id="cumple16_4" name="cumple16_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple16_4); ?>" readonly>
                     </div>
                 </div>
-            </div>
-            <!-- Contenedor de firmas -->
-            <div class="firmas-container">
-
-                <!-- Firma del analista -->
-                <div class="firma-item">
-                    <h6>Firma del analista</h6>
-                    <?php
-                    if (isset($_POST['firma_analista'])) {
-                        echo '<img src="' . htmlspecialchars($_POST['firma_analista']) . '" alt="Firma del analista">';
-                    } else {
-                        echo '<canvas id="firmaAnalistaCanvas" width="470" height="150"></canvas>';
-                    }
-                    ?>
-                </div>
-                <!-- Firma del asesor -->
-                <div class="firma-item">
-                    <h6>Firma del asesor</h6>
-                    <canvas id="firmaAsesorCanvas" width="470" height="150"> </canvas>
-                    <div class="firma-botones">
-                    </div>
-                </div>
-            </div>
-            <div class="container-btnfirmas">
-                <button type="button" class="BTN_Firmas" id="limpiar_f" name="limpiar_f">Limpiar</button>
-                <button type="button" class="BTN_Firmas" id="capturar_f" name="capturar_f">Capturar</button>
             </div>
         </div>
 
+        <!-- Contenedor que consume Fortalezas y Áreas de Oportunidad -->
+        <div class="container_FA" style="margin-top: -5px; justify-content: center;">
+            <div class="fortalezas-container">
+                <label for="fortalezas">
+                    <h6>Fortalezas</h6>
+                </label>
+                <textarea id="fortalezas" name="fortalezas" class="fortalezas-textarea" readonly style="cursor: not-allowed;"><?php echo $fortalezas; ?></textarea>
+            </div>
 
+            <div class="oportunidades-container">
+                <label for="oportunidades">
+                    <h6>Áreas de Oportunidad</h6>
+                </label>
+                <textarea id="oportunidades" name="oportunidades" class="oportunidades-textarea" readonly style="cursor: not-allowed;"><?php echo $oportunidades; ?></textarea>
+            </div>
 
+            <!-- Apartado de comentarios y compromiso -->
+            <div class="container_com">
+                <h6>Comentarios</h6>
+                <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="5" style="margin-bottom: 30px;"><?php echo $comentarios; ?></textarea>
+
+                <h6>Compromiso</h6>
+                <textarea class="form-control" id="compromisoTextarea" name="compromisoTextarea" rows="5" style="margin-bottom: 30px;"><?php echo $compromiso; ?></textarea>
+            </div>
+        </div>
     </div>
+
+
+    <!-- SCRIPT PARA GENERAR EL PDF -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const images = document.querySelectorAll('img');
+                const totalImages = images.length;
+
+                if (totalImages === 0) {
+                    await waitForStylesThenCapture();
+                    return;
+                }
+
+                await Promise.all(Array.from(images).map(img => {
+                    return new Promise((resolve, reject) => {
+                        if (img.complete && img.naturalHeight !== 0) {
+                            convertToBase64(img);
+                            resolve();
+                        } else {
+                            img.addEventListener('load', () => {
+                                convertToBase64(img);
+                                resolve();
+                            });
+                            img.addEventListener('error', () => {
+                                console.error("Error cargando la imagen:", img.src);
+                                resolve(); // Resolvemos incluso si hay un error para no bloquear el proceso
+                            });
+                        }
+                    });
+                }));
+
+                await waitForStylesThenCapture();
+            } catch (error) {
+                console.error("Error en el proceso de carga de imágenes:", error);
+            }
+        });
+
+        function convertToBase64(img) {
+            if (img.src && !img.src.startsWith('data:image')) {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = img.naturalWidth;
+                canvas.height = img.naturalHeight;
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                img.src = canvas.toDataURL('image/png');
+            }
+        }
+
+        function waitForStylesThenCapture() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    captureScreen().then(resolve);
+                }, 100); // Ajustamos el tiempo de espera para asegurar que los estilos se apliquen correctamente
+            });
+        }
+
+        async function captureScreen() {
+            try {
+                const contenido = document.getElementById('contenido_bbva');
+
+                if (!contenido) {
+                    throw new Error("El elemento 'contenido_bbva' no fue encontrado.");
+                }
+
+                // Ajustar el ancho del contenido al ancho del PDF
+                const pdfWidth = 210; // Ancho de una hoja A4 en mm
+                contenido.style.width = `${pdfWidth}mm`;
+
+                const canvas = await html2canvas(contenido, {
+                    useCORS: true,
+                    logging: true,
+                    scale: 2,
+                    backgroundColor: null,
+                    foreignObjectRendering: true,
+                    imageTimeout: 5000, // Aumentamos el tiempo de espera para imágenes
+                    width: contenido.scrollWidth,
+                    height: contenido.scrollHeight
+                });
+
+                const imgData = canvas.toDataURL('image/png', 1.0);
+                const {
+                    jsPDF
+                } = window.jspdf;
+                const doc = new jsPDF('p', 'mm', 'a4');
+
+                const pdfWidthFinal = doc.internal.pageSize.getWidth();
+                const pdfHeightFinal = doc.internal.pageSize.getHeight();
+
+                // Calcular la relación de aspecto de la imagen
+                const imgRatio = canvas.width / canvas.height;
+
+                // Ajustar la imagen para que ocupe todo el ancho del PDF
+                let imgWidth = pdfWidthFinal;
+                let imgHeight = pdfWidthFinal / imgRatio;
+
+                // Si la altura de la imagen es mayor que la altura del PDF, ajustamos la altura y recalculamos el ancho
+                if (imgHeight > pdfHeightFinal) {
+                    imgHeight = pdfHeightFinal;
+                    imgWidth = pdfHeightFinal * imgRatio;
+                }
+
+                // Centrar la imagen en la página (opcional)
+                const x = (pdfWidthFinal - imgWidth) / 2;
+                const y = (pdfHeightFinal - imgHeight) / 2;
+
+                // Obtener el valor del campo de entrada
+                const nombrePDFInput = document.getElementById('nombre_cb');
+                let nombrePDF = nombrePDFInput ? nombrePDFInput.value.trim() : '';
+
+                // Validar si el campo está vacío
+                if (!nombrePDF) {
+                    nombrePDF = 'documento_PRUEBA'; // Nombre por defecto
+                }
+
+                // Agregar el texto adicional al nombre
+                const nombreFinal = `${nombrePDF} calidad BBVA`;
+
+                // Agregar la imagen al PDF
+                doc.addImage(imgData, 'PNG', x, y, imgWidth, imgHeight);
+
+                // Guardar el PDF con el nombre final
+                doc.save(`${nombreFinal}.pdf`);
+
+                // Mostrar SweetAlert de éxito y redirigir después de un breve retraso
+                Swal.fire({
+                    icon: 'success',
+                    title: 'PDF descargado',
+                    text: 'El PDF se ha descargado correctamente.',
+                    showConfirmButton: false, // No mostrar botón de confirmación
+                    timer: 1500 // Mostrar la alerta durante 1.5 segundos
+                }).then(() => {
+                    // Redirigir a la página anterior después de que la alerta se cierre
+                    window.history.back();
+                });
+
+            } catch (error) {
+                console.error("Error en el proceso de captura de pantalla:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un error al generar el PDF. Por favor, inténtalo de nuevo.',
+                });
+            }
+        }
+    </script>-->
 
 </body>
 

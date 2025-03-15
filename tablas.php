@@ -13,13 +13,15 @@ if (!isset($_SESSION['rol'])) {
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
 $nombre_usuario = $_SESSION['nombre_usuario'];
 
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <!-- Bootstrap CSS -->
-
+    <!-- Bootstrap CSS -->
+    
     <!-- Optional JavaScript and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -1068,32 +1070,39 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                         </button>
                                     </div>
 
-                                    <div id="modal-asignamiento" class="custom-form-section-editar custom-card-border-editar">
-                                        <h3 id="asignamiento-heading" style="cursor: pointer;">Asignamiento</h3>
-                                        <div id="collapseAsignamiento" class="collapse hide">
-                                            <div class="custom-table-style-main-container card shadow mb-4">
-                                                <div class="custom-grid-container-ee custom-form-group-editar form-group">
-                                                    <div class="custom-form-group form-group">
-                                                        <label for="asignacion">Asignación:</label>
-                                                        <select id="asignacion" name="asignacion" class="custom-form-control form-control">
-                                                            <option value="" selected>Selecciona</option>
-
-
-                                                        </select>
-                                                    </div>
-                                                    <div class="custom-form-group form-group">
-                                                        <label for="fecha_asignacion">Fecha de asignación:</label>
-                                                        <input type="date" id="fecha_asignacion" name="fecha_asignacion" class="custom-form-control form-control">
-                                                    </div>
-                                                    <div>
-                                                        <button type="button" class="btn custom-submit-button-editar1" id="btnAs">
-                                                            Asignar
-                                                        </button>
+                                    <?php 
+                                        $rol = trim(strtolower($rol)); // Normalizar el rol
+                                    
+                                        if ($rol == 'supervisor'): ?>
+                                            <!-- Si el usuario es SUPERVISOR o root, se muestra el contenido -->
+                                            <div id="modal-asignamiento" class="custom-form-section-editar custom-card-border-editar">
+                                                <h3 id="asignamiento-heading" style="cursor: pointer;">Asignamiento</h3>
+                                                <div id="collapseAsignamiento" class="collapse hide">
+                                                    <div class="custom-table-style-main-container card shadow mb-4">
+                                                        <div class="custom-grid-container-ee custom-form-group-editar form-group">
+                                                            <div class="custom-form-group form-group">
+                                                                <label for="asignacion">Asignación:</label>
+                                                                <select id="asignacion" name="asignacion" class="custom-form-control form-control">
+                                                                    <option value="" selected>Selecciona</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="custom-form-group form-group">
+                                                                <label for="fecha_asignacion">Fecha de asignación:</label>
+                                                                <input type="date" id="fecha_asignacion" name="fecha_asignacion" class="custom-form-control form-control" 
+                                                                    value="<?php echo date('Y-m-d'); ?>" readonly>
+                                                            </div>
+                                                            <div>
+                                                                <button type="button" class="btn custom-submit-button-editar1" id="btnAs">
+                                                                    Asignar
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        <?php endif; ?>
+
+
                                 </div>
                             </div>
                     </div>
@@ -1103,8 +1112,8 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
             </div>
 
-
         </div>
+        
         <script src="main/jquery/jquery.min.js"></script>
         <script src="main/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="main/jquery-easing/jquery.easing.min.js"></script>
@@ -1646,7 +1655,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
             $j(document).ready(function() {
                 // Vincula el evento click para abrir el modal
                 $j('#btnEditTabla').on('click', function() {
-                    $j('#editarCedulaModal').modal('show');
+                    abrirModal('editarCedulaModal'); // Usar abrirModal en lugar de modal('show')
                 });
             });
         </script>

@@ -19,22 +19,29 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Datos</title>
+    <title>💻 Tú Integración</title>
 
     <!-- Custom fonts for this template -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome 6 (CDN): Proporciona iconos escalables y vectoriales. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Font Awesome (local): Versión local de Font Awesome para iconos. -->
     <link href="main/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Google Fonts: Carga la fuente "Nunito" con diferentes grosores y estilos. -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+    <!-- sb-admin-2.min.css: Estilos personalizados para la plantilla SB Admin 2. -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- dataTables.bootstrap4.min.css: Estilos para DataTables con Bootstrap 4. -->
     <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-
-    <!-- Date Range Picker CSS -->
+    <!-- Date Range Picker CSS: Estilos para el selector de rango de fechas. -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-
+    <!-- charts.css: Estilos personalizados para gráficos. -->
     <link rel="stylesheet" href="css/charts.css">
 </head>
 
@@ -213,23 +220,25 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     </div>
 
     <!-- Date Range Picker JS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <!-- Moment.js: Biblioteca para manipulación de fechas y horas. -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 
+        <!-- Date Range Picker: Plugin para seleccionar rangos de fechas. -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
-    <!--Top bar pa que no se rompa-->
-    <script src="main/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Inicialización de Date Range Picker -->
-    <script>
-        $(document).ready(function() {
-            $('#miFecha').daterangepicker({
-                locale: {
-                    format: 'YYYY-MM-DD'
-                }
+        <!-- Top bar pa que no se rompa -->
+        <!-- Bootstrap Bundle: Incluye Popper.js y Bootstrap JS en un solo archivo. -->
+        <script src="main/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Inicialización de Date Range Picker -->
+        <script>
+            $(document).ready(function() {
+                $('#miFecha').daterangepicker({
+                    locale: {
+                        format: 'YYYY-MM-DD'
+                    }
+                });
             });
-        });
-    </script>
+        </script>
 </body>
 
 </html>

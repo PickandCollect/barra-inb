@@ -30,6 +30,7 @@ return array(
     'AWS\\CRT\\OptionValue' => $vendorDir . '/aws/aws-crt-php/src/AWS/CRT/Options.php',
     'AWS\\CRT\\Options' => $vendorDir . '/aws/aws-crt-php/src/AWS/CRT/Options.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Dompdf\\Cpdf' => $vendorDir . '/dompdf/dompdf/lib/Cpdf.php',
     'GPBMetadata\\GrpcGcp' => $vendorDir . '/google/grpc-gcp/src/generated/GPBMetadata/GrpcGcp.php',
     'Grpc\\Gcp\\AffinityConfig' => $vendorDir . '/google/grpc-gcp/src/generated/Grpc/Gcp/AffinityConfig.php',
     'Grpc\\Gcp\\AffinityConfig_Command' => $vendorDir . '/google/grpc-gcp/src/generated/Grpc/Gcp/AffinityConfig_Command.php',

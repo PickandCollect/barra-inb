@@ -1,598 +1,587 @@
-.contenido{
-    max-width: 100%;
-    width: 100%;
-    padding: 0px;
-}
-
-/* Encabezado */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 30px; /* Mayor padding para más espacio */
-    background-color: #ffffff;
-    border-bottom: 2px solid #e0e0e0;
-    border-left: 5px solid #533392; /* Borde lateral para destacar la sección */
-    border-bottom: 5px solid #533392;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
-    margin-bottom: 20px; /* Más espacio debajo */
-    border-radius: 15px; /* Bordes redondeados */
-}
-
-/* Título */
-.title {
-    font-size: 32px; /* Aumenté el tamaño del título */
-    font-weight: bold;
-    color: #533392;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-/* Contenedor del logo con 3 imágenes */
-.container_logo {
-    display: flex;
-    gap: 20px; /* Espacio entre las imágenes */
-    align-items: center;
-    justify-content: center; /* Centra las imágenes horizontalmente */
-}
-
-/* Asegúrate de que las imágenes tengan un tamaño adecuado */
-.container_logo img {
-    width: 98px; /* Ajusta el tamaño de las imágenes */
-    height: auto; /* Mantiene la proporción */
-}
-
-
-
-/*################*/
-
-/* Contenedor principal */
-.main-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 100%;
-    max-width: 100%;
-}
-
-/* Sección Calidad 1 */
-#calidad1 {
-    flex: 1.8; /* Proporción de espacio dentro del contenedor principal */
-    padding: 10px;
-    border: 1px solid #ddd;
-    background-color: #f8f9fc; /* Color de fondo ligero */
-    border-left: 5px solid #533392; /* Borde lateral para destacar la sección */
-    border-radius: 20px; /* Bordes redondeados para diseño moderno */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
-}
-
-/* Contenedor de la tarjeta dentro de la sección */
-.custom-form-section-editar {
-    text-align: center; /* Centrar el contenido */
-    padding: 15px;
-}
-
-/* Disposición en flexbox para el primer bloque */
-#id-section .custom-form-section-editar {
-    justify-content: center;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin-bottom: -25px;
-    gap: 30px;
-}
-
-/* Disposición en cuadrícula para los campos del formulario */
-.form-grid {
-    margin-top: 0px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: space-between;
-}
-
-/* Cada campo ocupa el 30% del contenedor para una fila de 3 campos */
-.form-grid .custom-form-group-editar {
-    flex-basis: 30%;
-    margin-bottom: 20px;
-}
-
-/* Estilos para cada campo del formulario */
-.custom-form-group-editar {
-    display: flex;
-    flex-direction: column; /* Alinear contenido en columna */
-}
-
-.custom-form-group-editar label h6 {
-    font-size: 14px;
-    font-weight: bold;
-    color: #000000; /* Color oscuro para mejor legibilidad */
-    margin-bottom: 13x;
-}
-
-/* Inputs */
-.custom-form-control {
-    width: 100%;
-    padding: 8px;
-    background-color: #ffffff;
-    font-size: 12px;
-    border: 1.2px solid #533392;
-    border-radius: 50px;
-    text-align: center; /* Centrar el texto */
-    font-weight: bold;
-    color: #000000;
-}
-
-/* Hacer el input de ID más ancho */
-#id_c.custom-form-control {
-    width: 300px; /* Hacerlo más ancho */
-
-}
-
-/* Hacer el input de ID más ancho */
-#nombre_c.custom-form-control {
-    width: 300px; /* Hacerlo más ancho */
-
-}
-
-/*#############################*/
-
-/* Sección Nota de Calidad */
-.container_notacalidad {
-    width: 500px;
-    display: flex;
-    padding: 25px;
-     border: 1px solid #ddd;
-    background-color: #f8f9fc; /* Color de fondo ligero */
-    border-left: 5px solid #533392; /* Borde lateral para destacar la sección */
-    border-radius: 20px; /* Bordes redondeados para diseño moderno */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
-}
-
-.container_nota_calidad {
-    display: flex;
-    align-items: center; /* Centra verticalmente los elementos */
-    gap: 30px; /* Más espacio entre los elementos */
-}
-
-.nota-calidad {
-    flex: 1;
-    text-align: center; /* Centra el texto */
-}
-
-.nota-calidad h2 {
-    margin-bottom: 10px; /* Un poco más de espacio */
-    font-size: 20px;
-    font-weight: 700;
-    color: #54259e; /* Color más suave */
-}
-
-.nota-porcentaje {
-    font-size: 70px;
-    font-weight: 700;
-    padding: 15px;
-    width: 180px;
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto; /* Centra el círculo */
-    border-radius: 50%; /* Círculo perfecto */
-    color: #533392;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra más ligera */
-}
-
-.container_performance {
-    flex: 1;
-    text-align: center; /* Centra el contenido */
-}
-
-.container_performance h2 {
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: 700;
-    color: #54259e; /* Color más suave */
-}
-
-.container_performance img {
-    max-width:250px; /* Imagen más grande */
-    height: 180px; /* Ajusta la altura proporcionalmente */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 10px;
-}
-
-
-/*################################*/
-
-.container-fila{
-    display: flex;
-    gap: 10px;
-}
-
-/*##################################*/
-
-/* Contenedor principal de Impacto Negocio */
-.container_negocio {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-/* Sección Impacto Negocio */
-.container_negocio .form-section-editar.rubros {
-    flex: 1;
-    padding: 15px;
-    border: 1px solid #ddd;
-    background-color: #f8f9fc; /* Color de fondo */
-    border-left: 5px solid #533392; /* Borde lateral izquierdo */
-    border-radius: 20px; /* Bordes redondeados */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
-}
-
-/* Estilo del título */
-.container_negocio .form-section-editar.rubros h3 {
-    font-size: 2opx;
-    font-weight: bold;
-    color: #533392;;
-    margin-bottom: 20px;
-}
-
-/* Contenedor de la cuadrícula */
-.container_negocio .calidad-grid-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 10px;
-    align-items: center;
-    text-align: center;
-}
-
-/* Estilos para los labels */
-.container_negocio .calidad-grid-container label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #000000;
-    text-align: center;
-}
-
-/* Inputs del formulario */
-.container_negocio .calidad-grid-container .calidad-form-control,
-.container_negocio .calidad-grid-container .custom-form-control {
-    width: 100%;
-    padding: 8px;
-    font-size: 12px;
-    border: 1.2px solid #533392;
-    border-radius: 50px;
-    text-align: center;
-    font-weight: bold;
-    background-color: #ffffff;
-    color: #000;
-     margin-bottom: 20px;
-}
-
-/* Inputs de solo lectura */
-.container_negocio .calidad-grid-container .calidad-form-control[readonly],
-.container_negocio .calidad-grid-container .custom-form-control[readonly] {
-    background-color: #e9ecef;
-    cursor: not-allowed;
-}
-
-/* Ajustes responsivos */
-@media (max-width: 768px) {
-    .container_negocio .calidad-grid-container {
-        grid-template-columns: 1fr;
-        text-align: left;
+    /* Encabezado */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px; /* Mayor padding para más espacio */
+        background-color: #ffffff;
+        border-bottom: 2px solid #e0e0e0;
+        border-left: 5px solid #533392; /* Borde lateral para destacar la sección */
+        border-bottom: 5px solid #533392;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+        margin-bottom: 20px; /* Más espacio debajo */
+        border-radius: 15px; /* Bordes redondeados */
     }
 
+    /* Título */
+    .title {
+        font-size: 32px; /* Aumenté el tamaño del título */
+        font-weight: bold;
+        color: #533392;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    /* Contenedor del logo con 3 imágenes */
+    .container_logo {
+        display: flex;
+        gap: 20px; /* Espacio entre las imágenes */
+        align-items: center;
+        justify-content: center; /* Centra las imágenes horizontalmente */
+    }
+
+    /* Asegúrate de que las imágenes tengan un tamaño adecuado */
+    .container_logo img {
+        width: 98px; /* Ajusta el tamaño de las imágenes */
+        height: auto; /* Mantiene la proporción */
+    }
+
+
+
+    /*################*/
+
+    /* Contenedor principal */
+    .main-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    }
+
+    /* Sección Calidad 1 */
+    #calidad1 {
+        flex: 1.8; /* Proporción de espacio dentro del contenedor principal */
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #f8f9fc; /* Color de fondo ligero */
+        border-left: 5px solid #533392; /* Borde lateral para destacar la sección */
+        border-radius: 20px; /* Bordes redondeados para diseño moderno */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+        box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    }
+
+ #calidad1 .container_ID {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#calidad1 .custom-form-group-editar {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#calidad1 h6 {
+    font-weight: bold;
+    color: #533392;
+    margin-bottom: -5px;
+}
+
+#calidad1 .custom-form-control {
+        width: 90%;
+        padding: 8px;
+        font-size: 12px;
+        border: 1.2px solid #533392;
+        border-radius: 50px;
+        text-align: center;
+        font-weight: bold;
+        background-color: #ffffff;
+        color: #000;
+        margin-bottom: 10px;
+        margin-top: -2px;
+        cursor: no-drop;
+}
+
+#calidad1 .custom-form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#calidad1 .container_DATOS2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+   
+
+    /*##############################################*/
+
+    /* Sección Nota de Calidad */
+    .container_notacalidad {
+        width: 500px;
+        display: flex;
+        padding: 25px;
+        border: 1px solid #ddd;
+        background-color: #f8f9fc; /* Color de fondo ligero */
+        border-left: 5px solid #533392; /* Borde lateral para destacar la sección */
+        border-radius: 20px; /* Bordes redondeados para diseño moderno */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+    }
+
+    .container_nota_calidad {
+        display: flex;
+        align-items: center; /* Centra verticalmente los elementos */
+        gap: 30px; /* Más espacio entre los elementos */
+    }
+
+    .nota-calidad {
+        flex: 1;
+        text-align: center; /* Centra el texto */
+    }
+
+    .nota-calidad h2 {
+        margin-bottom: 10px; /* Un poco más de espacio */
+        font-size: 20px;
+        font-weight: 700;
+        color: #54259e; /* Color más suave */
+    }
+
+    .nota-porcentaje {
+        font-size: 70px;
+        font-weight: 700;
+        padding: 15px;
+        width: 180px;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto; /* Centra el círculo */
+        border-radius: 50%; /* Círculo perfecto */
+        color: #533392;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra más ligera */
+    }
+
+    .container_performance {
+        flex: 1;
+        text-align: center; /* Centra el contenido */
+    }
+
+    .container_performance h2 {
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: 700;
+        color: #54259e; /* Color más suave */
+    }
+
+    .container_performance img {
+        max-width:250px; /* Imagen más grande */
+        height: 180px; /* Ajusta la altura proporcionalmente */
+        border-radius: 10px; /* Bordes redondeados */
+        padding: 10px;
+    }
+
+
+    /*################################*/
+
+    .container-fila{
+        display: flex;
+        gap: 10px;
+    }
+
+    /*##################################*/
+
+    /* Contenedor principal de Impacto Negocio */
+    .container_negocio {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    /* Sección Impacto Negocio */
+    .container_negocio .form-section-editar.rubros {
+        flex: 1;
+        padding: 15px;
+        border: 1px solid #ddd;
+        background-color: #f8f9fc; /* Color de fondo */
+        border-left: 5px solid #533392; /* Borde lateral izquierdo */
+        border-radius: 20px; /* Bordes redondeados */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+    }
+
+    /* Estilo del título */
+    .container_negocio .form-section-editar.rubros h3 {
+        font-weight: bold;
+        color: #533392;;
+        margin-bottom: 20px;
+    }
+
+    /* Contenedor de la cuadrícula */
+    .container_negocio .calidad-grid-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 10px;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Estilos para los labels */
+    .container_negocio .calidad-grid-container label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #000000;
+        text-align: center;
+    }
+
+    /* Inputs del formulario */
     .container_negocio .calidad-grid-container .calidad-form-control,
     .container_negocio .calidad-grid-container .custom-form-control {
         width: 100%;
+        padding: 8px;
+        font-size: 12px;
+        border: 1.2px solid #533392;
+        border-radius: 50px;
+        text-align: center;
+        font-weight: bold;
+        background-color: #ffffff;
+        color: #000;
+        margin-bottom: 20px;
     }
-}
+
+    /* Inputs de solo lectura */
+    .container_negocio .calidad-grid-container .calidad-form-control[readonly],
+    .container_negocio .calidad-grid-container .custom-form-control[readonly] {
+        background-color: #e9ecef;
+        cursor: not-allowed;
+    }
+
+    /* Ajustes responsivos */
+    @media (max-width: 768px) {
+        .container_negocio .calidad-grid-container {
+            grid-template-columns: 1fr;
+            text-align: left;
+        }
+
+        .container_negocio .calidad-grid-container .calidad-form-control,
+        .container_negocio .calidad-grid-container .custom-form-control {
+            width: 100%;
+        }
+    }
 
 
-/*#############################*/
+    /*#############################*/
 
-/* Contenedor principal de Impacto Operativo */
-.container_operativo {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
+    /* Contenedor principal de Impacto Operativo */
+    .container_operativo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
 
-/* Sección Impacto Operativo */
-.container_operativo .form-section-editar.rubros {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    background-color: #f8f9fc; /* Color de fondo */
-    border-left: 5px solid #533392; /* Borde lateral izquierdo */
-    border-radius: 20px; /* Bordes redondeados */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
-}
+    /* Sección Impacto Operativo */
+    .container_operativo .form-section-editar.rubros {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #f8f9fc; /* Color de fondo */
+        border-left: 5px solid #533392; /* Borde lateral izquierdo */
+        border-radius: 20px; /* Bordes redondeados */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+    }
 
-/* Estilo del título */
-.container_operativo .form-section-editar.rubros h3 {
-    font-size: 2opx;
-    font-weight: bold;
-    color: #533392;
-    margin-bottom: 20px;
-}
+    /* Estilo del título */
+    .container_operativo .form-section-editar.rubros h3 {
+        font-size: 2opx;
+        font-weight: bold;
+        color: #533392;
+        margin-bottom: 20px;
+    }
 
-/* Contenedor de la cuadrícula */
-.container_operativo .calidad-grid-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 10px;
-    align-items: center;
-    text-align: center;
-}
-
-/* Estilos para los labels */
-.container_operativo .calidad-grid-container label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #000;
-    text-align: center;
-}
-
-/* Inputs del formulario */
-.container_operativo .calidad-grid-container .calidad-form-control,
-.container_operativo .calidad-grid-container .custom-form-control {
-    width: 100%;
-    padding: 8px;
-    font-size: 12px;
-    border: 1.2px solid #533392;
-    border-radius: 50px;
-    text-align: center;
-    font-weight: bold;
-    background-color: #ffffff;
-    color: #000;
-    margin-bottom: 20px;
-}
-
-/* Inputs de solo lectura */
-.container_operativo .calidad-grid-container .calidad-form-control[readonly],
-.container_operativo .calidad-grid-container .custom-form-control[readonly] {
-    background-color: #e9ecef;
-    cursor: not-allowed;
-}
-
-/* Sección de Error Crítico */
-.container_operativo .form-section-editar.rubros h3 {
-    margin-top: 20px;
-}
-
-/* Ajustes responsivos */
-@media (max-width: 768px) {
+    /* Contenedor de la cuadrícula */
     .container_operativo .calidad-grid-container {
-        grid-template-columns: 1fr;
-        text-align: left;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 10px;
+        align-items: center;
+        text-align: center;
     }
 
+    /* Estilos para los labels */
+    .container_operativo .calidad-grid-container label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #000;
+        text-align: center;
+    }
+
+    /* Inputs del formulario */
     .container_operativo .calidad-grid-container .calidad-form-control,
     .container_operativo .calidad-grid-container .custom-form-control {
         width: 100%;
+        padding: 8px;
+        font-size: 12px;
+        border: 1.2px solid #533392;
+        border-radius: 50px;
+        text-align: center;
+        font-weight: bold;
+        background-color: #ffffff;
+        color: #000;
+        margin-bottom: 20px;
     }
-}
 
-/*#############################*/
-.container_firmcom{
-    display: flex;
-    width: 100%;
-    gap: 10px;
-}
-
-/*##########################*/
-/* Contenedor principal de fortalezas y áreas de oportunidad */
-.contenedor-fortalezas {
-    width: 100%;
-    margin-top: 20px;
-    display: flex;
-}
-
-/* Estilo para el contenedor de fortalezas y áreas de oportunidad */
-.container_FA {
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    height: 450px;
-}
-
-/* Estilo para el contenedor de Fortalezas */
-.fortalezas-container {
-    flex: 1;
-    padding: 15px;
-    border: 1px solid #ddd;
-    background-color: #f8f9fc;
-    border-left: 5px solid #533392;
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Estilo de los títulos dentro de Fortalezas */
-.fortalezas-container label h6 {
-    font-size: 18px;
-    font-weight: bold;
-    color:  #533392;
-    margin-bottom: 10px;
-}
-
-/* Estilo para los textareas de Fortalezas */
-.fortalezas-textarea {
-    width: 100%;
-    height: 90%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1.2px solid #533392;
-    border-radius: 10px;
-    background-color: #ffffff;
-    color: #000;
-    resize: none;
-    font-weight: bold;
-}
-
-/* Textarea de solo lectura en Fortalezas */
-.fortalezas-textarea[readonly] {
-    background-color: #e9ecef;
-    cursor: not-allowed;
-}
-
-/* Estilo para el contenedor de Áreas de Oportunidad */
-.oportunidades-container {
-    flex: 1;
-    padding: 15px;
-    border: 1px solid #ddd;
-    background-color: #f8f9fc;
-    border-left: 5px solid #533392;
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Estilo de los títulos dentro de Áreas de Oportunidad */
-.oportunidades-container label h6 {
-    font-size: 18px;
-    font-weight: bold;
-    color:  #533392;
-    margin-bottom: 10px;
-}
-
-/* Estilo para los textareas de Áreas de Oportunidad */
-.oportunidades-textarea {
-    width: 100%;
-    height: 90%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1.2px solid #533392;
-    border-radius: 10px;
-    background-color: #ffffff;
-    color: #000;
-    resize: none;
-    font-weight: bold;
-}
-
-/* Textarea de solo lectura en Áreas de Oportunidad */
-.oportunidades-textarea[readonly] {
-    background-color: #e9ecef;
-    cursor: not-allowed;
-}
-
-/*####################################*/
-
-/* Contenedor de comentarios */
-.container_comentariosF {
-    width: 100%;
-    align-content: center;
-}
-
-/* Estilo para los comentarios y compromiso */
-.container_com {
-    margin-top: 20px;
-
-}
-
-/* Estilo de los títulos de comentarios y compromiso */
-.container_com h6 {
-    font-size: 16px;
-    font-weight: bold;
-    color: #000;
-    margin-bottom: 10px;
-}
-
-/* Estilo para los textareas de comentarios y compromiso */
-.container_com .form-control {
-    width: 100%;
-    height: 140px;
-    padding: 10px;
-    font-size: 14px;
-    border: 1.2px solid rgb(83, 51, 146);
-    border-radius: 10px;
-    background-color: #ffffff;
-    color: #000;
-    resize: none;
-    font-weight: bold;
-}
-
-/*##########################*/
-/* Contenedor principal de firmas */
-.firmas-container {
-    display: flex; /* Usar Flexbox */
-    gap: 20px; /* Espacio entre las firmas */
-     text-align: center;
-    margin-top: 20px;
-    width: 100%;
-}
-
-/* Estilos para cada contenedor de firma */
-.firma-item {
-    flex: 1; /* Cada contenedor ocupa el mismo espacio */
-    background-color: #f8f9fc; /* Color de fondo */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 15px; /* Espaciado interno */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    border-left: 5px solid #54259e; /* Borde lateral izquierdo */
-}
-
-.firma-item h6 {
-    font-size: 16px; /* Tamaño de fuente */
-    font-weight: bold; /* Negrita */
-    color: #54259e; /* Color del texto */
-    margin-bottom: 10px; /* Espacio inferior */
-}
-
-/* Estilos para el canvas (área de dibujo) */
-.firma-item canvas {
-    width: 100%; /* Ocupa el 100% del ancho */
-    height: 150px; /* Altura fija */
-    border: 1px solid #ccc; /* Borde */
-    border-radius: 5px; /* Bordes redondeados */
-    background-color: #fff; /* Color de fondo */
-    cursor: crosshair; /* Cambia el cursor al dibujar */
-}
-
-/*#############################*/
-
-.container-btnfirmas{
-    margin-left: 51%;
-    display: flex;
-    width: 50%;
-    gap: 20px;
-    margin-top: 18px;
-    margin-bottom: 30px;
-    justify-content: center;
-}
-
-/* Estilo para el botón de salir */
-.BTN_Firmas {
-    padding: 10px 25px;
-    font-size: 16px;
-    font-weight: 600;
-    border: none;
-    border-radius: 30px; /* Radio más suave para bordes */
-    cursor: pointer;
-    background-color: #6c5ce7; /* Color de fondo más atractivo */
-    color: #ffffff; /* Texto blanco */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.1s ease-in-out;
-}
-
-/* Efecto hover */
-.BTN_Firmas:hover {
-    background-color: #5a4bcb; /* Color más oscuro al pasar el mouse */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Efecto clic */
-.BTN_Firmas:active {
-    transform: scale(0.9);
-}
-
-
-/* Ocultar el botón al imprimir o generar PDF */
-@media print {
-    #botonSalir {
-        display: none;
+    /* Inputs de solo lectura */
+    .container_operativo .calidad-grid-container .calidad-form-control[readonly],
+    .container_operativo .calidad-grid-container .custom-form-control[readonly] {
+        background-color: #e9ecef;
+        cursor: not-allowed;
     }
+
+    /* Sección de Error Crítico */
+    .container_operativo .form-section-editar.rubros h3 {
+        margin-top: 20px;
+    }
+
+    /* Ajustes responsivos */
+    @media (max-width: 768px) {
+        .container_operativo .calidad-grid-container {
+            grid-template-columns: 1fr;
+            text-align: left;
+        }
+
+        .container_operativo .calidad-grid-container .calidad-form-control,
+        .container_operativo .calidad-grid-container .custom-form-control {
+            width: 100%;
+        }
+    }
+
+    /*#############################*/
+    .container_firmcom{
+        display: flex;
+        width: 100%;
+        gap: 10px;
+    }
+
+    /*##########################*/
+    /* Contenedor principal de fortalezas y áreas de oportunidad */
+    .contenedor-fortalezas {
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+    }
+
+    /* Estilo para el contenedor de fortalezas y áreas de oportunidad */
+    .container_FA {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        height: 450px;
+    }
+
+    /* Estilo para el contenedor de Fortalezas */
+    .fortalezas-container {
+        flex: 1;
+        padding: 15px;
+        border: 1px solid #ddd;
+        background-color: #f8f9fc;
+        border-left: 5px solid #533392;
+        border-radius: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Estilo de los títulos dentro de Fortalezas */
+    .fortalezas-container label h6 {
+        font-size: 18px;
+        font-weight: bold;
+        color:  #533392;
+        margin-bottom: 10px;
+    }
+
+    /* Estilo para los textareas de Fortalezas */
+    .fortalezas-textarea {
+        width: 100%;
+        height: 90%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1.2px solid #533392;
+        border-radius: 10px;
+        background-color: #ffffff;
+        color: #000;
+        resize: none;
+        font-weight: bold;
+    }
+
+    /* Textarea de solo lectura en Fortalezas */
+    .fortalezas-textarea[readonly] {
+        background-color: #e9ecef;
+        cursor: not-allowed;
+    }
+
+    /* Estilo para el contenedor de Áreas de Oportunidad */
+    .oportunidades-container {
+        flex: 1;
+        padding: 15px;
+        border: 1px solid #ddd;
+        background-color: #f8f9fc;
+        border-left: 5px solid #533392;
+        border-radius: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Estilo de los títulos dentro de Áreas de Oportunidad */
+    .oportunidades-container label h6 {
+        font-size: 18px;
+        font-weight: bold;
+        color:  #533392;
+        margin-bottom: 10px;
+    }
+
+    /* Estilo para los textareas de Áreas de Oportunidad */
+    .oportunidades-textarea {
+        width: 100%;
+        height: 90%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1.2px solid #533392;
+        border-radius: 10px;
+        background-color: #ffffff;
+        color: #000;
+        resize: none;
+        font-weight: bold;
+    }
+
+    /* Textarea de solo lectura en Áreas de Oportunidad */
+    .oportunidades-textarea[readonly] {
+        background-color: #e9ecef;
+        cursor: not-allowed;
+    }
+
+    /*####################################*/
+
+    /* Contenedor de comentarios */
+    .container_comentariosF {
+        width: 100%;
+        align-content: center;
+        
+    }
+
+    /* Estilo para los comentarios y compromiso */
+    .container_com {
+        margin-top: 20px;
+
+    }
+
+    /* Estilo de los títulos de comentarios y compromiso */
+    .container_com h6 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #000;
+        margin-bottom: 10px;
+    }
+
+    /* Estilo para los textareas de comentarios y compromiso */
+    .container_com .form-control {
+        width: 100%;
+        height: 140px;
+        padding: 10px;
+        font-size: 14px;
+        border: 1.2px solid rgb(83, 51, 146);
+        border-radius: 10px;
+        background-color: #ffffff;
+        color: #000;
+        resize: none;
+        font-weight: bold;
+    }
+
+    /*##########################*/
+    /* Contenedor principal de firmas */
+    .firmas-container {
+        display: flex; /* Usar Flexbox */
+        gap: 20px; /* Espacio entre las firmas */
+        text-align: center;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    /* Estilos para cada contenedor de firma */
+    .firma-item {
+        flex: 1; /* Cada contenedor ocupa el mismo espacio */
+        background-color: #f8f9fc; /* Color de fondo */
+        border-radius: 10px; /* Bordes redondeados */
+        padding: 15px; /* Espaciado interno */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        border-left: 5px solid #54259e; /* Borde lateral izquierdo */
+    }
+
+    .firma-item h6 {
+        font-size: 16px; /* Tamaño de fuente */
+        font-weight: bold; /* Negrita */
+        color: #54259e; /* Color del texto */
+        margin-bottom: 10px; /* Espacio inferior */
+    }
+
+    /* Estilos para el canvas (área de dibujo) */
+    .firma-item canvas {
+        width: 100%; /* Ocupa el 100% del ancho */
+        height: 250px; /* Altura fija */
+        border: 1px solid #ccc; /* Borde */
+        border-radius: 5px; /* Bordes redondeados */
+        background-color: #fff; /* Color de fondo */
+        cursor: crosshair; /* Cambia el cursor al dibujar */
+    }
+
+    /*#############################*/
+
+    .container-btnfirmas{
+        margin-left: 51%;
+        display: flex;
+        width: 50%;
+        gap: 20px;
+        margin-top: 18px;
+        margin-bottom: 30px;
+        justify-content: center;
+    }
+
+    /* Estilo para el botón de salir */
+    .BTN_Firmas {
+        padding: 10px 25px;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 30px; /* Radio más suave para bordes */
+        cursor: pointer;
+        background-color: #6c5ce7; /* Color de fondo más atractivo */
+        color: #ffffff; /* Texto blanco */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.1s ease-in-out;
+    }
+
+    /* Efecto hover */
+    .BTN_Firmas:hover {
+        background-color: #5a4bcb; /* Color más oscuro al pasar el mouse */
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Efecto clic */
+    .BTN_Firmas:active {
+        transform: scale(0.9);
+    }
+
+
+    /* Ocultar el botón al imprimir o generar PDF */
+    @media print {
+        #botonSalir {
+            display: none;
+        }
+    }
+
+.firma {
+    display: block;
+    max-width: 100%;
+    width: 420px;
+    height: auto;
+    object-fit: contain;
+    background: transparent;
+    opacity: 0.9;
+    filter: contrast(1.2) brightness(0.9) grayscale(10%) drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+    margin: 10px auto;
 }
+
+

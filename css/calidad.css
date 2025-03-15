@@ -25,7 +25,7 @@
     margin-right: 50px; /* Margen derecho */
     border-radius: 50%; /* Bordes redondeados para hacerlo circular */
 }
-
+/*#################################################################*/
 
 #formularioCalidad{
     display: flex; /* Usa flexbox para organizar los elementos en fila */
@@ -142,7 +142,7 @@
 
 /* Estilos para la sección del formulario */
 .custom-form-section-editar {
-    background-color: #f8f9fc; /* Color de fondo */
+    background-color: #0040ff; /* Color de fondo */
     padding: 20px; /* Espaciado interno */
     border-radius: 20px; /* Bordes redondeados */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
@@ -360,29 +360,43 @@
 
 /*###########################################*/
 
-/* Estilo para los botones Limpiar y Enviar */
-#btnLimpiar, #btnEC {
-    padding: 13px 30px;
-    font-size: 18px;
+/* Estilo base para los botones */
+#btnLimpiar, #btnEC, #btnSubir {
+    padding: 10px 25px;
+    font-size: 19px;
     font-weight: 600;
     border: none;
-    border-radius: 30px; /* Radio más suave para bordes */
+    border-radius: 30px;
     cursor: pointer;
-    background-color: #6c5ce7; /* Color de fondo más atractivo */
-    color: #ffffff; /* Texto blanco */
+    color: #ffffff; /* Texto blanco para contraste */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.1s ease-in-out;
 }
 
+/* Botón Limpiar (acción de reinicio o eliminar) */
+#btnLimpiar {
+    background-color: #5b90ce; /* Rojo suave */
+}
+
+/* Botón Capturar (acción principal) */
+#btnEC {
+    background-color: #199b81; /* Verde esmeralda */
+}
+
+/* Botón Subir (acción de carga) */
+#btnSubir {
+    background-color: #6c5ce7; /* Morado */
+}
+
 /* Efecto hover */
-#btnLimpiar:hover, #btnEC:hover {
-    background-color: #463d8a; /* Color más oscuro al pasar el mouse */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+#btnLimpiar:hover, #btnEC:hover, #btnSubir:hover {
+    opacity: 0.9; /* Ligera transparencia al pasar el mouse */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Efecto clic */
-#btnLimpiar:active, #btnEC:active {
-  transform: scale(0.9);
+#btnLimpiar:active, #btnEC:active, #btnSubir:active {
+    transform: scale(0.9);
 }
 
 
@@ -512,36 +526,6 @@
     background-color: #fff; /* Color de fondo */
     cursor: crosshair; /* Cambia el cursor al dibujar */
 }
-
-/* Estilos para los botones */
-
-/* Estilo para los botones de firma */
-#limpiarAN, #capturarAN {
-    padding: 10px 25px;
-    font-size: 16px;
-    font-weight: 600;
-    border: none;
-    border-radius: 30px; /* Radio más suave para bordes */
-    cursor: pointer;
-    background-color: #6c5ce7; /* Color de fondo más atractivo */
-    color: #ffffff; /* Texto blanco */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.1s ease-in-out;
-}
-
-/* Efecto hover */
-#limpiarAN:hover, #capturarAN:hover {
-    background-color: #5a4bcb; /* Color más oscuro al pasar el mouse */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Efecto clic */
-#limpiarAN:active, #capturarAN:active {
-    transform: scale(0.9);
-}
-
-
-
 
 /* Estilos para el título y la flecha */
 .seccion-titulo {

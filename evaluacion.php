@@ -57,16 +57,6 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <i class="fas fa-angle-up"></i>
             </a>
         </div>
-
-        <style>
-            .modal-dialog.custom-modal {
-                max-width: 90%;
-                /* Ajusta el tamaño máximo del modal a un porcentaje del ancho de la pantalla */
-                width: 100%;
-                /* Asegura que el modal se expanda hasta el 100% del espacio disponible */
-            }
-        </style>
-
         <!-- Modal -->
         <div class="modal fade" id="cedulaModalA" tabindex="-1" role="dialog" aria-labelledby="cedulaModalLabel" aria-hidden="true">
             <div class="modal-dialog custom-modal" role="document">

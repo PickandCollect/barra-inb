@@ -137,8 +137,8 @@
 
 /* Estilos para las opciones del select (si las añades más adelante) */
 .custom-form-control option {
-    background-color: #6a46b1; /* Fondo de las opciones */
-    color: #fff; /* Color del texto */
+    background-color:#d6cef3c7;
+    color: #000000; /* Color del texto */
 }
 .calidad-form-control{
     background-color:#d6cef3c7;
@@ -260,13 +260,32 @@
 
 /* Estilo para el valor de la nota de calidad */
 #nota_bbva {
-    font-size: 45px; /* Tamaño grande */
+    font-size: 65px; /* Tamaño grande */
     font-weight: bold; /* Texto en negrita */
     color: black; /* Color inicial */
     transition: color 0.5s ease-in-out; /* Transición suave para el color */
     margin-top: 10px; /* Espacio superior */
 }
 
+.nota-calidad-valor {
+    font-weight: bold;
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+    min-width: 120px;
+}
+
+.nota-calidad-valor.rojo {
+    color: red !important;
+}
+
+.nota-calidad-valor.amarillo {
+    color: orange !important;
+}
+
+.nota-calidad-valor.verde {
+    color: green !important;
+}
 
 /* Estilos para la sección de performance */
 .container_performancebbva h4 {
@@ -293,6 +312,7 @@
 
 /* Contenedor de los botones */
 .btn_inicial {
+    margin-top: 10px;
     margin-left: 300px;
     display: flex;
     justify-content: center; /* Centra los botones */
@@ -321,32 +341,45 @@
     transform: scale(0.95); /* Se reduce ligeramente */
 }
 
-/* Botón Limpiar (Azul Suave) */
+/* Estilo base para los botones */
+#btnlimpiar, #btnguardar, #btnSubir {
+    padding: 10px 25px;
+    font-size: 19px;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    color: #ffffff; /* Texto blanco para contraste */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.1s ease-in-out;
+}
+
+/* Botón Limpiar (acción de reinicio o eliminar) */
 #btnlimpiar {
-    background-color: #5854e4;
-    color: #ffffff;
-  box-shadow: 0px 4px 6px rgba(83, 51, 146, 0.3);
-  
+    background-color: #5b90ce; /* Rojo suave */
 }
 
-#btnlimpiar:hover {
-    background-color:#b38dff;
-    color: #f8f9fc;
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+/* Botón Capturar (acción principal) */
+#btnguardar {
+    background-color: #199b81; /* Verde esmeralda */
 }
 
-/* Botón Enviar (Morado) */
-#btnenviar {
-    background-color: #b38dff;
-    color: #000000;
-    box-shadow: 0px 4px 6px rgba(83, 51, 146, 0.3);
+/* Botón Subir (acción de carga) */
+#btnSubir {
+    background-color: #6c5ce7; /* Morado */
 }
 
-#btnenviar:hover {
-    background-color: #533392;
-    color: #f8f9fc;
-      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+/* Efecto hover */
+#btnlimpiar:hover, #btnguardar:hover, #btnSubir:hover {
+    opacity: 0.9; /* Ligera transparencia al pasar el mouse */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
+
+/* Efecto clic */
+#limpiarAN:active, #capturarAN:active, #btnSubir:active {
+    transform: scale(0.9);
+}
+
 /*###############################*/
 
 /* Estilos para el título y la flecha */
@@ -674,3 +707,4 @@
 }
 
 /*################################*/
+
