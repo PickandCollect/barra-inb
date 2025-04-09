@@ -44,6 +44,7 @@ $comentarios_c = isset($_POST['comentarios_c']) ? $_POST['comentarios_c'] : '';
 $nota_cedula = isset($_POST['notaCalidad']) ? $_POST['notaCalidad'] : '';
 $firmaAnalista = isset($_POST['firmaAnalista']) && !empty($_POST['firmaAnalista']) ? "Firmado por Analista de calidad" : "";
 //$firmaAnalista = isset($_POST['firmaAnalista']) ? $_POST['firmaAnalista'] : '';
+$firmaAnalistaImg = isset($_POST['firmaAnalistaImg']) ? $_POST['firmaAnalistaImg'] : '';
 
 // Verificar que el operador existe antes de procesar
 if ($operador) {
@@ -74,6 +75,7 @@ if ($operador) {
     $comentarios_cedula = $comentarios_c;
     $nota_c = $nota_cedula;
     $nombre_tercero_c = $nombreTer;
+    $firma_analista_img = $firmaAnalistaImg;
 } else {
     // Si no se recibe el operador, manejar el caso de alguna manera
     echo "No se ha enviado el operador correctamente.";
@@ -477,7 +479,12 @@ if ($operador) {
                 <!-- Firma del analista -->
                 <div class="firma-item">
                     <h6>Firma del analista</h6>
-                    <img src="img/Firma_sabina.jpg" alt="Firma" class="firma">
+                    <?php if (!empty($firma_analista_img)): ?>
+                        <img src="<?php echo htmlspecialchars($firma_analista_img); ?>" alt="Firma del analista" class="firma">
+                    <?php else: ?>
+                        <!-- Mostrar una imagen por defecto o mensaje si no hay firma -->
+                        <p>No hay firma disponible</p>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Firma del asesor -->

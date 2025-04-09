@@ -11,6 +11,7 @@ if (!isset($_SESSION['rol'])) {
 }
 
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
+$nombreUsuario = $_SESSION['nombre_usuario'];
 ?>
 
 
@@ -43,7 +44,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         <hr class="sidebar-divider my-0">
 
         <!-- Opciones del sidebar según el rol -->
-        <?php if ($rol == 'OPERADOR' || $rol == 'CALL CENTER' || $rol == 'INTEGRACION'): ?>
+        <?php if ($rol == 'Operador' || $rol == 'Call Center' || $rol == 'Integracion'): ?>
             <!-- Nav Item - Datos -->
             <li class="nav-item">
                 <a class="nav-link" href="datos.php">
@@ -70,7 +71,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
         <?php endif; ?>
 
-        <?php if ($rol == 'SUPERVISOR' || $rol == 'ROOT'): ?>
+        <?php if ($rol == 'Supervisor' || $rol == 'ROOT'): ?>
             <!-- Nav Item - Datos -->
             <li class="nav-item">
                 <a class="nav-link" href="datos.php">
@@ -102,16 +103,48 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     <span>Herramientas</span>
                 </a>
             </li>
+            <?php if ($nombreUsuario == 'Sabina Velásquez' || $nombreUsuario == 'Karen Correa Alcantara'): ?>
+                <!-- Nav Item - Calidad para Sabina y Karen -->
+                <li class="nav-item">
+                    <a class="nav-link" href="calidad.php">
+                        <i class="fa-solid fa-medal"></i>
+                        <span>Calidad</span>
+                    </a>
+                </li>
+            <?php endif; ?>
 
-            <!-- Nav Item - Calidad -->
+            <?php if ($nombreUsuario == 'Alberto Reyes'): ?>
+                <!-- Nav Items para Alberto Reyes -->
+                <li class="nav-item">
+                    <a class="nav-link" href="calidad.php?modulo=bbva">
+                        <i class="fa-solid fa-medal"></i>
+                        <span>Calidad BBVA</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="calidad.php?modulo=hdi">
+                        <i class="fa-solid fa-medal"></i>
+                        <span>Calidad HDI</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="datos_rh.php">
+                        <i class="fa-solid fa-medal"></i>
+                        <span>Calidad RH</span>
+                    </a>
+                </li>
+            <?php endif; ?>
+
+            <!-- Nav Item - Metricas -->
             <li class="nav-item">
-                <a class="nav-link" href="calidad.php">
-                    <i class="fa-solid fa-medal"></i>
-                    <span>Calidad</span>
+                <a class="nav-link" href="evaluacion.php">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Metricas</span>
                 </a>
             </li>
 
         <?php endif; ?>
+
 
         <?php if ($rol == 'asegurado'): ?>
             <!-- Nav Item - Asegurado -->
@@ -133,26 +166,43 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     </div>
     <!-- jQuery: Librería para manipulación del DOM y eventos -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!--SCRIPT que controla el colapso del sliderbar-->
+
+
     <script>
         $(document).ready(function() {
             const sidebar = $("#accordionSidebar");
             const logo = $("#sidebarLogo");
             const content = $(".content");
             let hoverTimeout;
+            let collapseTimeout;
+            const COLLAPSE_DELAY = 0;
+
+            // Estado para rastrear si el mouse está dentro del sidebar
+            let isMouseInsideSidebar = false;
 
             // Función para colapsar el sidebar
             function collapseSidebar() {
-                sidebar.addClass("collapsed");
-                logo.attr("src", "img/Solera_Logo_White_nn.png"); // Logo pequeño
-                content.css("margin-left", "110px"); // Ajustar margen del contenido
+                // Solo colapsar si el mouse no está dentro
+                if (!isMouseInsideSidebar) {
+                    sidebar.addClass("collapsed");
+                    logo.attr("src", "img/Solera_Logo_White_nn.png");
+                    content.css("margin-left", "110px");
+                }
             }
 
             // Función para expandir el sidebar
             function expandSidebar() {
                 sidebar.removeClass("collapsed");
-                logo.attr("src", "img/Solera_Logo_White.png"); // Logo completo
-                content.css("margin-left", "210px"); // Ajustar margen del contenido
+                logo.attr("src", "img/Solera_Logo_White.png");
+                content.css("margin-left", "210px");
+            }
+
+            // Iniciar temporizador de colapso
+            function startCollapseTimer() {
+                clearTimeout(collapseTimeout);
+                if (!sidebar.hasClass("collapsed") && !isMouseInsideSidebar) {
+                    collapseTimeout = setTimeout(collapseSidebar, COLLAPSE_DELAY);
+                }
             }
 
             // Evento para alternar entre colapsado y expandido
@@ -162,27 +212,44 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 } else {
                     collapseSidebar();
                 }
+                startCollapseTimer();
             });
 
             // Evento hover para expandir el sidebar
             sidebar.hover(
-                function() {
-                    clearTimeout(hoverTimeout); // Limpiar el timeout anterior
+                function() { // Mouse entra
+                    isMouseInsideSidebar = true;
+                    clearTimeout(hoverTimeout);
+                    clearTimeout(collapseTimeout); // Cancelar colapso automático
+
                     if (sidebar.hasClass("collapsed")) {
-                        hoverTimeout = setTimeout(() => {
-                            expandSidebar();
-                        }, 100); // Retraso de 200ms para evitar colapso incorrecto
+                        hoverTimeout = setTimeout(expandSidebar, 100);
                     }
                 },
-                function() {
-                    clearTimeout(hoverTimeout); // Limpiar el timeout anterior
+                function() { // Mouse sale
+                    isMouseInsideSidebar = false;
+                    clearTimeout(hoverTimeout);
+
                     if (!sidebar.hasClass("collapsed")) {
                         hoverTimeout = setTimeout(() => {
                             collapseSidebar();
-                        }, 100); // Retraso de 200ms para evitar expansión incorrecta
+                            startCollapseTimer(); // Reiniciar temporizador al salir
+                        }, 100);
                     }
+                    startCollapseTimer(); // Iniciar temporizador al salir
                 }
             );
+
+            // Detectar movimiento del mouse en el documento
+            $(document).mousemove(function() {
+                // Solo reiniciar el temporizador si el mouse no está dentro del sidebar
+                if (!isMouseInsideSidebar) {
+                    startCollapseTimer();
+                }
+            });
+
+            // Iniciar el temporizador al cargar la página
+            startCollapseTimer();
         });
     </script>
 

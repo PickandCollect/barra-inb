@@ -27,6 +27,7 @@ try {
     $contrasena = $_POST['contrasena'] ?? null;
     $perfil = $_POST['perfil'] ?? null;
     $tipo = $_POST['tipo'] ?? null;
+    $campana = $_POST['campana'] ?? null;
 
     // Validar campos obligatorios
     if (empty($nombre_us) || empty($usuario) || empty($tipo) || empty($perfil)) {
@@ -64,10 +65,10 @@ try {
     }
 
     // Inserta en la base de datos usando consultas preparadas
-    $stmt = $conexion->prepare("INSERT INTO Usuario (usuario, nombre, passw, perfil, celular, email, extension, imagen_perfil, curp, rfc, jefe_directo, pass_email, tipo)
-                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conexion->prepare("INSERT INTO Usuario (usuario, nombre, passw, perfil, celular, email, extension, imagen_perfil, curp, rfc, jefe_directo, pass_email, tipo, campana)
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param(
-        "sssssssssssss",
+        "ssssssssssssss",
         $usuario,
         $nombre_us,
         $contrasenaHash, // Usamos el hash de la contraseña
@@ -80,7 +81,8 @@ try {
         $rfc,
         $jefe,
         $passemail,
-        $tipo
+        $tipo,
+        $campana
     );
 
     if ($stmt->execute()) {

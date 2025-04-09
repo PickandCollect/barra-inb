@@ -18,52 +18,50 @@ $s3 = new S3Client([
 
 // Leer los datos enviados
 $operador = isset($_POST['operador']) ? $_POST['operador'] : '';
-$campana = isset($_POST['campana']) ? $_POST['campana'] : '';
+$numeroLlamada = isset($_POST['numero_llamada']) ? (int)$_POST['numero_llamada'] : 0;
 
-// Limpiar el nombre del operador (eliminar espacios)
+// Limpiar y validar el nombre del operador (eliminar espacios)
 $operador = str_replace(' ', '_', trim($operador));
 
-// Verificar que el nombre del operador y la campaña sean válidos
-if (empty($operador) || empty($campana)) {
-    echo json_encode([
-        'success' => false,
-        'error' => 'El nombre del operador o la campaña no son válidos'
-    ]);
+// Verificar que el nombre del operador sea válido
+if (empty($operador)) {
+    echo json_encode(['success' => false, 'error' => 'El nombre del operador no es válido']);
+    exit();
+}
+
+// Verificar que el número de llamada sea válido (1-4)
+if ($numeroLlamada < 1 || $numeroLlamada > 4) {
+    echo json_encode(['success' => false, 'error' => 'Número de llamada no válido (debe ser entre 1 y 4)']);
     exit();
 }
 
 // Verificar que se haya recibido un archivo
 if (!isset($_FILES['archivo']) || $_FILES['archivo']['error'] !== UPLOAD_ERR_OK) {
-    echo json_encode([
-        'success' => false,
-        'error' => 'No se ha enviado un archivo o hubo un error en la carga'
-    ]);
+    echo json_encode(['success' => false, 'error' => 'No se ha enviado un archivo o hubo un error en la carga']);
     exit();
 }
 
-// Verificar que el archivo sea PDF
+// Verificar que el archivo sea .wav
 $archivo = $_FILES['archivo'];
 $mimeType = mime_content_type($archivo['tmp_name']);
 
-// Tipos MIME válidos para archivos PDF
-$tiposMimeValidos = ['application/pdf'];
+// Tipos MIME válidos para archivos .wav
+$tiposMimeValidos = ['audio/wav', 'audio/x-wav', 'audio/wave'];
 
 if (!in_array($mimeType, $tiposMimeValidos)) {
-    echo json_encode([
-        'success' => false,
-        'error' => 'El archivo debe ser de tipo PDF (Tipo MIME detectado: ' . $mimeType . ')'
-    ]);
+    echo json_encode(['success' => false, 'error' => 'El archivo debe ser de tipo .wav (Tipo MIME detectado: ' . $mimeType . ')']);
     exit();
 }
-
-// Crear el nombre de la carpeta en S3
-$carpetaS3 = $operador . '_' . $campana . '/';
 
 // Obtener la fecha actual en formato YYYYMMDD
 $fechaActual = date('Ymd');
 
+// Crear la estructura de carpetas en S3 según la nomenclatura BBVA
+$carpetaS3 = $operador . '_HDI/';
+
 // Función para verificar si un archivo existe en S3
-function archivoExisteEnS3($s3, $bucket, $rutaCompleta) {
+function archivoExisteEnS3($s3, $bucket, $rutaCompleta)
+{
     try {
         $s3->headObject([
             'Bucket' => $bucket,
@@ -79,8 +77,8 @@ function archivoExisteEnS3($s3, $bucket, $rutaCompleta) {
 }
 
 // Generar nombre base del archivo
-$nombreBase = $operador . '_' . $fechaActual . '_evaluacion';
-$extension = '.pdf';
+$nombreBase = $operador . '_' . $fechaActual . '_llamada' . $numeroLlamada;
+$extension = '.wav';
 $contador = 1;
 
 // Nombre inicial sin sufijo numérico
@@ -95,20 +93,6 @@ while (archivoExisteEnS3($s3, 'tuasesoria', $s3FilePath)) {
 }
 
 try {
-    // Verificar si la carpeta ya existe en S3
-    $existeCarpeta = false;
-    try {
-        $resultadoListado = $s3->listObjectsV2([
-            'Bucket' => 'tuasesoria',
-            'Prefix' => $carpetaS3,
-            'MaxKeys' => 1,
-        ]);
-        $existeCarpeta = isset($resultadoListado['Contents']) && count($resultadoListado['Contents']) > 0;
-    } catch (AwsException $e) {
-        // Si hay error al listar, asumimos que la carpeta no existe
-        $existeCarpeta = false;
-    }
-
     // Subir el archivo a S3
     $result = $s3->putObject([
         'Bucket'      => 'tuasesoria',
@@ -117,33 +101,31 @@ try {
         'ContentType' => $mimeType,
     ]);
 
-    // Construir respuesta
+    // Construir respuesta exitosa
     $response = [
         'success' => true,
-        'message' => 'Evaluación PDF subida correctamente',
+        'message' => 'Llamada BBVA subida correctamente',
         'file_name' => $nombreArchivo,
-        'file_url' => $result['ObjectURL'],
         'file_path' => $s3FilePath,
+        'file_url' => $result['ObjectURL'],
         'operador' => $operador,
-        'campana' => $campana,
         'fecha' => $fechaActual,
-        'carpeta_existia' => $existeCarpeta
+        'numero_llamada' => $numeroLlamada
     ];
 
-    // Si se usó sufijo numérico
+    // Si se usó un sufijo numérico, agregar esta información a la respuesta
     if ($contador > 1) {
         $response['sufijo_numerico'] = $contador - 1;
-        $response['message'] = 'Evaluación PDF subida con sufijo numérico (' . ($contador - 1) . ')';
+        $response['message'] = 'Llamada BBVA subida con sufijo numérico (' . ($contador - 1) . ')';
     }
 
     echo json_encode($response);
-
 } catch (AwsException $e) {
     echo json_encode([
         'success' => false,
         'error' => 'Error al subir el archivo a S3: ' . $e->getMessage(),
         'operador' => $operador,
-        'campana' => $campana
+        'numero_llamada' => $numeroLlamada
     ]);
     exit();
 }

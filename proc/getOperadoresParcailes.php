@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 
 try {
     // Filtrar solo OPERADORES y excluir ROOT
-    $query = "SELECT nombre, tipo, campana, jefe_directo FROM Usuario WHERE perfil = 'OPERADOR' AND perfil != 'ROOT' AND campana != 'BBVA' AND jefe_directo != 'Alverto Reyes'" ;
+    $query = "SELECT nombre, tipo, campana, jefe_directo FROM Usuario WHERE perfil = 'Operador' AND perfil != 'ROOT' AND campana != 'BBVA' AND campana != 'HDI Seguros'  AND jefe_directo != 'Alberto Reyes'" ;
     $stmt = $conexion->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();

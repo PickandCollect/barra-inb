@@ -1073,7 +1073,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                     <?php 
                                         $rol = trim(strtolower($rol)); // Normalizar el rol
                                     
-                                        if ($rol == 'supervisor'): ?>
+                                        if ($rol == 'Supervisor'): ?>
                                             <!-- Si el usuario es SUPERVISOR o root, se muestra el contenido -->
                                             <div id="modal-asignamiento" class="custom-form-section-editar custom-card-border-editar">
                                                 <h3 id="asignamiento-heading" style="cursor: pointer;">Asignamiento</h3>

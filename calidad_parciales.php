@@ -57,7 +57,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         <div id="calidad1" style="flex: 1; padding-left: 0; padding-right: 0;">
 
             <!-- FORMULARIO PARA ENVIAR AL OTRO FORMULARIO ALV-->
-            <form id="miFormulario" method="POST" action="cedula_parciales.php">
+            <form id="miFormulario" method="POST" action="cedula_parciales2.php">
                 <div class="custom-form-section-editar custom-card-border-editar text-center">
                     <!-- Campos de formulario -->
 
@@ -147,12 +147,6 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <i class="fas fa-chevron-down"></i> <!-- Icono de flecha hacia abajo -->
             </span>
         </div>
-        <div class="button-container">
-            <button type="button" class="btn custom-submit-button-c" id="btnSubir">Subir LLamada</button>
-            <button type="button" class="btn custom-submit-button-c" id="btnLimpiar">Limpiar</button>
-
-            <button type="button" class="btn custom-submit-button-c" id="btnEC">Enviar</button>
-        </div>
     </div>
     <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros">
         <div id="calidad-grid-container" class="calidad-grid-container">
@@ -172,7 +166,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <h6>Presentación institucional</h6>
             </label>
             <input type="text" id="pon1" name="pon1" class="calidad-form-control" value="6" readonly style="text-align: center;">
-            <select id="cumple" name="cumple" class="calidad-form-control">
+            <select id="cumple" name="cumple" class="calidad-form-control" required>
                 <option value="" hidden>Selecciona</option>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
@@ -398,29 +392,21 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 
     <!-- Contenedor de firmas -->
-    <div class="firmas-container">
-        <style>
-            .firma-item img {
-                display: block;
-                max-width: 100%;
-                width: 420px;
-                height: auto;
-                object-fit: contain;
-                background: transparent;
-                opacity: 0.9;
-                filter: contrast(1.2) brightness(0.9) grayscale(10%) drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
-                margin: 10px auto;
-            }
-        </style>
+    <div class="firmas-container" style="justify-content: center;">
         <!-- Firma del analista -->
-        <div class="firma-item">
+        <div class="firma-item" id="firma-analista">
             <h6>Firma del analista</h6>
-            <img src="img/Firma_sabina.jpg" alt="">
-            <!-- <canvas id="firmaAnalistaCanvas" width="470" height="150"></canvas>
-            <div class="firma-botones">
-                <button id="limpiarAN" type="button">Limpiar</button>
-                <button id="capturarAN" type="button" hidden></button>
-            </div>-->
+            <?php
+            // Suponiendo que la variable $nombre tiene el valor correspondiente
+            if ($nombre == "Sabina Velásquez") {
+                echo '<img src="img/Firma_sabina.jpg" alt="Firma Sabina" id="imagen-firma">';
+            } elseif ($nombre == "Karen Correa Alcantara") {
+                echo '<img src="firma_karen.jpg" alt="Firma Karen" id="imagen-firma">';
+            } else {
+                // Si no es ninguno de los dos, puedes mostrar una imagen predeterminada o dejarlo vacío
+                echo '<img src="" alt="Firma no disponible" id="imagen-firma">';
+            }
+            ?>
         </div>
 
         <!-- Apartado de comentarios y compromiso -->
@@ -442,6 +428,14 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>-->
 
     </div>
+
+    <div class="button-container">
+        <button type="button" class="btn custom-submit-button-c" id="btnSubir">Subir LLamada</button>
+        <button type="button" class="btn custom-submit-button-c" id="btnLimpiar">Limpiar</button>
+
+        <button type="button" class="btn custom-submit-button-c" id="btnEC">Enviar</button>
+    </div>
+
     <!-- Campos ocultos para enviar las firmas -->
     <!--<input type="hidden" name="firma_asesor" id="hiddenFirmaAsesor">-->
     <input type="hidden" name="firma_analista" id="hiddenFirmaAnalista">
@@ -449,44 +443,62 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     </form>
 
 
-    <!-- SCRIPT PARA SUBIR LAS LLAMADAS -->
+    <!--script de envio de llamadas (btnSUBIRLLAMADA)-->
     <script>
+        let nombreArchivoSubido = ''; // Variable global para almacenar el nombre del archivo
+        let urlArchivoSubido = ''; // Variable global para almacenar la URL del archivo
+        let llamadaSubida = false; // Bandera para controlar si ya se subió una llamada
+
         document.getElementById('btnSubir').addEventListener('click', function() {
-            // Crear un input de tipo file
+            // Verificar si ya se subió una llamada
+            if (llamadaSubida) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Acción no permitida',
+                    text: 'Ya has subido una llamada. Debes enviar la cédula antes de subir otra.',
+                    confirmButtonText: 'Entendido'
+                });
+                return; // Detener la ejecución si ya hay una llamada subida
+            }
+
             const fileInput = document.createElement('input');
             fileInput.type = 'file';
             fileInput.accept = 'audio/wav'; // Aceptar solo archivos .wav
-
-            // Simular el clic en el input de tipo file
             fileInput.click();
 
-            // Cuando se selecciona un archivo
             fileInput.addEventListener('change', function() {
                 const file = fileInput.files[0];
                 if (file) {
-                    // Verificar que el archivo sea .wav
+                    // Mostrar alerta de carga solo cuando se selecciona un archivo
+                    Swal.fire({
+                        title: 'Subiendo llamada...',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
+
                     if (file.type !== 'audio/wav') {
-                        alert('Solo se permiten archivos .wav');
+                        Swal.fire({
+                            icon: 'error',
+                            title: '¡Error!',
+                            text: 'Solo se permiten archivos .wav',
+                        });
                         return;
                     }
 
-                    // Obtener los datos del formulario
                     const formData = new FormData();
-
-                    // Adjuntar el archivo al FormData
                     formData.append('archivo', file);
 
-                    // Obtener los valores del formulario (si los hay)
-                    const operador = document.getElementById('nombre_c').value;
-                    const campana = document.getElementById('campana_c').value;
-                    const idSiniestro = document.getElementById('siniestro_c').value;
+                    const operador = document.getElementById('nombre_c').value.trim();
+                    const campana = document.getElementById('campana_c').value.trim();
+                    const idSiniestro = document.getElementById('siniestro_c').value.trim();
 
-                    // Agregar los valores al FormData (si los campos existen)
                     if (operador) formData.append('operador', operador);
                     if (campana) formData.append('campana', campana);
                     if (idSiniestro) formData.append('id_siniestro', idSiniestro);
 
-                    // Enviar los datos al servidor
                     fetch('proc/insertLlamadaParciales.php', {
                             method: 'POST',
                             body: formData
@@ -494,22 +506,42 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                alert('Archivo subido correctamente');
+                                nombreArchivoSubido = data.file_name;
+                                urlArchivoSubido = data.file_url;
+                                llamadaSubida = true; // Marcar que ya se subió una llamada
+
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: '¡Listo!',
+                                    text: `Llamada.wav subida correctamente ✔ \n Nombre del archivo: ${nombreArchivoSubido}`,
+                                });
+
+                                // Actualizar el reproductor de audio
+                                const audioPlayer = document.getElementById('audioPlayer');
+                                if (audioPlayer) {
+                                    audioPlayer.src = urlArchivoSubido;
+                                    audioPlayer.load();
+                                }
                             } else {
-                                alert('Error al subir el archivo: ' + data.error);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error al subir el archivo',
+                                    text: data.error,
+                                });
                             }
                         })
                         .catch(error => {
                             console.error('Error:', error);
-                            alert('Ocurrió un error al subir el archivo');
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'Ocurrió un error al subir el archivo',
+                            });
                         });
                 }
             });
         });
     </script>
-
-
-
     <!-- SCRIPT PARA CALCULAR LOS VALORES EN PORCENTAJE-->
     <script>
         function actualizarImagen(porcentaje) {
@@ -767,75 +799,22 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
     <!-- SCRIPT DE LIMPIAR FORMULARIO -->
     <script>
-        // Función para limpiar todos los campos del formulario
-        function limpiarFormulario() {
-            // Restablecer campos de texto
-            const inputsTexto = document.querySelectorAll('input[type="text"]');
-            inputsTexto.forEach(input => {
-                input.value = input.defaultValue; // Restablecer al valor inicial
-            });
-
-            // Restablecer selectores
-            const selects = document.querySelectorAll('select');
-            selects.forEach(select => {
-                select.selectedIndex = 0; // Seleccionar la primera opción (por defecto)
-            });
-
-            // Limpiar áreas de texto (Fortalezas y Áreas de Oportunidad)
-            const fortalezasTextarea = document.getElementById('fortalezas');
-            const oportunidadesTextarea = document.getElementById('oportunidades');
-            if (fortalezasTextarea) fortalezasTextarea.value = "";
-            if (oportunidadesTextarea) oportunidadesTextarea.value = "";
-
-            // Limpiar el campo de compromiso
-            const compromisoTextarea = document.getElementById('compromisoTextarea');
-            if (compromisoTextarea) compromisoTextarea.value = ""; // Limpiar el contenido
-
-            // Limpiar el campo de comentarios
-            const comentariosTextarea = document.getElementById('comentariosTextarea');
-            if (comentariosTextarea) comentariosTextarea.value = ""; // Limpiar el contenido
-
-            // Limpiar firmas (si hay canvas)
-            const canvases = document.querySelectorAll('canvas');
-            canvases.forEach(canvas => {
-                const ctx = canvas.getContext('2d');
-                ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar el canvas
-            });
-
-            // Restablecer la nota de calidad (si existe)
-            const notaCalidad = document.getElementById('nota_c');
-            if (notaCalidad) {
-                notaCalidad.textContent = "0%";
-                notaCalidad.className = "nota-calidad-valor rojo"; // Restablecer color
-            }
-
-            // Restablecer la imagen de performance (si existe)
-            const performanceImg = document.getElementById('performance_img');
-            if (performanceImg) {
-                performanceImg.src = "img/cuidado.jpg"; // Limpiar la imagen
-            }
-
-            // 🔹 Eliminar todas las alertas textuales
-            const alertas = document.querySelectorAll('.alerta-campo');
-            alertas.forEach(alerta => {
-                alerta.remove(); // Eliminar cada alerta
-            });
-
-            // Feedback al usuario con SweetAlert2
+        document.getElementById("btnLimpiar").addEventListener("click", function() {
             Swal.fire({
-                icon: 'success',
-                title: 'Formulario limpio ✨',
-                showConfirmButton: false,
-                timer: 1000
+                icon: "success",
+                title: "Formulario limpiado",
+                text: "Los campos se han restablecido.",
+                timer: 2000, // 2 segundos
+                showConfirmButton: false
+            }).then(() => {
+                location.reload(true); // Recargar la página completamente (desde el servidor)
             });
-        }
-
-        // Asignar la función al botón "Limpiar"
-        document.getElementById('btnLimpiar').addEventListener('click', limpiarFormulario);
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!--script para enviar el formulario-->
     <script type="module">
         import {
             initializeApp
@@ -863,95 +842,133 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         const notificacionesRef = ref(db, "notificaciones");
+        const evaluacionesRef = ref(db, "evaluaciones");
 
-
-        // 🔹 Función para verificar si todos los campos están llenos
+        // 🔹 Función mejorada para verificar campos del formulario con resaltado rojo
         function verificarCampos() {
             const formulario = document.getElementById('miFormulario');
-            const campos = formulario.querySelectorAll('input, select, textarea');
             let todosLlenos = true;
 
-            // IDs de campos que deben ser excluidos de la validación
-            const camposExcluidos = ['campana_c', 'posicion_c', 'supervisor_c'];
+            // Configuración de validación
+            const config = {
+                excluidos: ['campana_c', 'posicion_c', 'supervisor_c'],
+                selectsRequeridos: [
+                    'nombre_c', 'tipo_tramite_c', 'pon1', 'pon2', 'pon3', 'pon4', 'pon5', 'pon6', 'pon7', 'pon8', 'pon9', 'pon10',
+                    'pon11', 'pon12', 'pon13', 'cumple', 'cumple1', 'cumple2', 'cumple3', 'cumple4', 'cumple5',
+                    'cumple6', 'cumple7', 'cumple8', 'cumple9', 'cumple10', 'cumple11', 'cumple12', 'cumple13', 'cumple14'
+                ],
+                camposRequeridos: [
+                    'comentariosTextarea', 'id_c', 'nombre_tercero_c', 'siniestro_c'
+                ]
+            };
 
-            // IDs de campos select que deben ser incluidos en la validación
-            const selectsIncluidos = [
-                'nombre_c', 'tipo_tramite_c', 'pon1', 'pon2', 'pon3', 'pon4', 'pon5', 'pon6', 'pon7', 'pon8', 'pon9', 'pon10', 'pon11', 'pon12', 'pon13', 'pon14', 'pon15',
-                'cumple', 'cumple1', 'cumple2', 'cumple3', 'cumple4', 'cumple5', 'cumple6', 'cumple7', 'cumple8', 'cumple9', 'cumple10', 'cumple11', 'cumple12', 'cumple13', 'cumple14'
-            ];
+            // Limpiar todos los estilos de error primero
+            limpiarErrores();
 
-            campos.forEach(campo => {
-                // Limpiar alertas anteriores
-                const alertaExistente = campo.nextElementSibling;
-                if (alertaExistente && alertaExistente.classList.contains('alerta-campo')) {
-                    alertaExistente.remove();
-                }
-
-                // Verificar si el campo debe ser excluido
-                if (camposExcluidos.includes(campo.id)) {
-                    return; // Saltar este campo
-                }
-
-                // Verificar si el campo es un select que debe ser incluido
-                const esSelectIncluido = campo.tagName === 'SELECT' && selectsIncluidos.includes(campo.id);
-
-                // Verificar si el campo está vacío
-                if ((!campo.value.trim() && campo.tagName !== 'SELECT') || (esSelectIncluido && !campo.value)) {
+            // Validar selects requeridos
+            config.selectsRequeridos.forEach(id => {
+                const select = document.getElementById(id);
+                if (select && !validarSelect(select)) {
                     todosLlenos = false;
+                }
+            });
 
-                    // Crear un elemento de alerta textual
-                    const alerta = document.createElement('span');
-                    alerta.textContent = '*Campo sin llenar';
-                    alerta.classList.add('alerta-campo');
-                    alerta.style.color = 'red';
-                    alerta.style.fontSize = '12px';
-                    alerta.style.display = 'block';
-                    alerta.style.marginTop = '5px';
-
-                    // Insertar la alerta debajo del campo
-                    campo.insertAdjacentElement('afterend', alerta);
-
-                    // Eliminar la alerta cuando el campo sea llenado
-                    if (campo.tagName === 'SELECT') {
-                        // Usar el evento 'change' para los select
-                        campo.addEventListener('change', function() {
-                            if (this.value) {
-                                const alerta = this.nextElementSibling;
-                                if (alerta && alerta.classList.contains('alerta-campo')) {
-                                    alerta.remove();
-                                }
-                            }
-                        });
-                    } else {
-                        // Usar el evento 'input' para inputs y textareas
-                        campo.addEventListener('input', function() {
-                            if (this.value.trim()) {
-                                const alerta = this.nextElementSibling;
-                                if (alerta && alerta.classList.contains('alerta-campo')) {
-                                    alerta.remove();
-                                }
-                            }
-                        });
-                    }
+            // Validar campos de texto requeridos
+            config.camposRequeridos.forEach(id => {
+                const campo = document.getElementById(id);
+                if (campo && !validarCampo(campo)) {
+                    todosLlenos = false;
                 }
             });
 
             return todosLlenos;
         }
 
+        // 🔹 Función para validar un select individual
+        function validarSelect(select) {
+            if (!select.value || select.value === '0') {
+                resaltarError(select);
+                return false;
+            }
+            return true;
+        }
+
+        // 🔹 Función para validar otros campos (inputs, textareas)
+        function validarCampo(campo) {
+            // Solo validar si el campo está visible (por si hay campos ocultos)
+            if (campo.offsetParent === null) return true;
+
+            if (!campo.value.trim()) {
+                resaltarError(campo);
+                return false;
+            }
+            return true;
+        }
+
+        // 🔹 Función para resaltar campos con error
+        function resaltarError(elemento) {
+            elemento.style.border = '2px solid rgba(255, 0, 0, 0.75)';
+            elemento.style.boxShadow = '0 0 5px rgba(201, 28, 28, 0.5)';
+
+            const evento = elemento.tagName === 'SELECT' ? 'change' : 'input';
+            elemento.addEventListener(evento, function manejarCorreccion() {
+                if ((elemento.tagName === 'SELECT' && elemento.value && elemento.value !== '0') ||
+                    (elemento.value.trim())) {
+                    limpiarEstiloError(elemento);
+                    elemento.removeEventListener(evento, manejarCorreccion);
+                }
+            });
+        }
+
+        // 🔹 Función para limpiar el estilo de error de un elemento
+        function limpiarEstiloError(elemento) {
+            elemento.style.border = '';
+            elemento.style.boxShadow = '';
+        }
+
+        // 🔹 Función para limpiar todos los errores del formulario
+        function limpiarErrores() {
+            const elementos = document.querySelectorAll('input, select, textarea');
+            elementos.forEach(limpiarEstiloError);
+        }
+
         // 🔹 Función para enviar evaluación como notificación
         document.getElementById('btnEC').addEventListener('click', function() {
             console.log("Botón clickeado");
 
+            // Verificar si subió la llamada
+            if (typeof urlArchivoSubido === 'undefined' || urlArchivoSubido == '') {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Archivo faltante',
+                    text: 'Por favor sube la llamada del operador',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Entendido'
+                });
+                return;
+            }
+
             // Verificar si todos los campos están llenos
             if (!verificarCampos()) {
-                console.log("Por favor, completa todos los campos antes de enviar el formulario.");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Campos incompletos',
+                    text: 'Por favor, completa todos los campos antes de enviar el formulario.',
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'Ok'
+                });
                 return;
             }
 
             const formulario = document.getElementById('miFormulario');
             if (!formulario) {
-                console.error("No se encontró el formulario.");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se encontró el formulario.',
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'Cerrar'
+                });
                 return;
             }
 
@@ -965,13 +982,13 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             // Capturar información adicional
             datosFormulario.notaCalidad = document.getElementById('nota_c')?.innerText || '';
             datosFormulario.performanceImg = document.getElementById('performance_img')?.src || '';
+            datosFormulario.firmaAnalistaImg = document.getElementById('imagen-firma')?.src || '';
             datosFormulario.firmaAsesor = document.getElementById('firmaAsesorCanvas')?.toDataURL() || '';
             datosFormulario.firmaAnalista = document.getElementById('firmaAnalistaCanvas')?.toDataURL() || '';
             datosFormulario.usuarioActual = '<?php echo $rol; ?>';
             datosFormulario.operadorSeleccionado = document.getElementById("nombre_c").value;
             datosFormulario.campana = document.getElementById("campana_c").value;
             datosFormulario.posicion = document.getElementById("posicion_c").value;
-
             datosFormulario.supervisor = document.getElementById("supervisor_c").value;
             datosFormulario.tipoTramite = document.getElementById("tipo_tramite_c").value;
             datosFormulario.id_c = document.getElementById("id_c").value;
@@ -1002,6 +1019,10 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             datosFormulario.idCedula = document.getElementById("cedula_id_ed")?.value || '';
             datosFormulario.idAsegurado = document.getElementById("id_asegurado")?.value || '';
             datosFormulario.idVehiculo = document.getElementById("id_vehiculo")?.value || '';
+            datosFormulario.evaluador = '<?php echo $nombre; ?>';
+            // 🔹 Agregar el nombre del archivo de la llamada subido
+            datosFormulario.nombreLlamada = typeof nombreArchivoSubido !== 'undefined' ? nombreArchivoSubido : '';
+            datosFormulario.urlArchivoSubido = typeof urlArchivoSubido !== 'undefined' ? urlArchivoSubido : '';
 
             if (!datosFormulario.operadorSeleccionado) {
                 console.log("Selecciona un operador antes de enviar la evaluación.");
@@ -1012,25 +1033,48 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 console.log("No se pudo identificar al usuario actual. Inicia sesión nuevamente.");
                 return;
             }
+            const fecha = new Date();
+            fecha.setMinutes(fecha.getMinutes() - fecha.getTimezoneOffset());
+            datosFormulario.fecha = fecha.toISOString().split('T')[0];
 
-            // Datos adicionales
-            datosFormulario.fecha = new Date().toISOString().split('T')[0];
+
+
             datosFormulario.leido = false;
             datosFormulario.tipo = "evaluacion";
-            datosFormulario.mensaje = `Tienes una nueva evaluación de Calidad Parciales ${datosFormulario.usuarioActual}`;
+            datosFormulario.mensaje = ` ✔ Tienes una nueva evaluación de Calidad Parciales ${datosFormulario.evaluador}`;
 
             console.log("Enviando datos a Firebase:", datosFormulario);
 
-            // 🔹 Enviar notificación
+            // 🔹 Enviar notificación de evaluación
+            const nuevaEvaluacion = push(evaluacionesRef);
+            set(nuevaEvaluacion, {
+                operador: datosFormulario.operadorSeleccionado,
+                nombreOperador: datosFormulario.operadorSeleccionado,
+                evaluador: datosFormulario.evaluador,
+                fecha: new Date().toISOString(),
+                campana: datosFormulario.campana,
+                posicion: datosFormulario.posicion,
+                siniestro: datosFormulario.notaCalidad
+            }).catch((error) => {
+                console.error("Error al enviar a evaluaciones:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un error al guardar la evaluación. Inténtalo de nuevo.',
+                    confirmButtonText: 'Entendido'
+                });
+            });
+
+            // 🔹 Enviar notificación principal
             const nuevaNotificacion = push(notificacionesRef);
             set(nuevaNotificacion, {
+                evaluador: datosFormulario.evaluador,
                 comentarios_c: datosFormulario.comentarios_c,
                 asignador: datosFormulario.usuarioActual,
                 operador: datosFormulario.operadorSeleccionado,
                 campana: datosFormulario.campana,
                 posicion: datosFormulario.posicion,
                 tipoTramite: datosFormulario.tipoTramite,
-
                 supervisor: datosFormulario.supervisor,
                 id_C: datosFormulario.id_c,
                 nombreTerc: datosFormulario.nombreTerc,
@@ -1053,7 +1097,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 fortalezas: datosFormulario.fortalezas,
                 areaOpor: datosFormulario.areas,
                 firmaAnalista: datosFormulario.firmaAnalista,
-
+                firmaAnalistaImg: datosFormulario.firmaAnalistaImg,
                 mensaje: datosFormulario.mensaje,
                 siniestro: datosFormulario.notaCalidad,
                 fecha: datosFormulario.fecha,
@@ -1063,39 +1107,37 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 numSiniestro: datosFormulario.numSiniestro,
                 idCedula: datosFormulario.idCedula,
                 idAsegurado: datosFormulario.idAsegurado,
-                idVehiculo: datosFormulario.idVehiculo
+                idVehiculo: datosFormulario.idVehiculo,
+                nombreLlamada: datosFormulario.nombreLlamada,
+                urlArchivoSubido: datosFormulario.urlArchivoSubido
             }).then(() => {
-                // 🔹 Mostrar alerta de éxito con SweetAlert2
                 Swal.fire({
                     icon: 'success',
-                    title: ' Evaluación Enviada !! ✅ ',
+                    title: 'Evaluación Enviada ✅',
                     showConfirmButton: false,
                     timer: 1200
                 }).then(() => {
-                    formulario.reset(); // Limpiar el formulario después de enviar
+                    formulario.reset();
+                    location.reload(true);
                 });
             }).catch((error) => {
                 console.error("Error al enviar la notificación:", error);
-                // 🔹 Mostrar alerta de error con SweetAlert2
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
                     text: 'Hubo un error al enviar la evaluación. Inténtalo de nuevo.',
-                    confirmButtonText: false,
+                    confirmButtonText: 'Entendido'
                 });
             });
         });
     </script>
-
-
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/getOperadoresParcailes.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!--Top bar pa que no se rompa-->
-    <script src="main/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
     <script>
         $(document).ready(function() {

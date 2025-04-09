@@ -93,10 +93,7 @@ $cumple8_1 = isset($_POST['cumple8_1'])  ? htmlspecialchars($_POST['cumple8_1'])
 $cumple8_2 = isset($_POST['cumple8_2'])  ? htmlspecialchars($_POST['cumple8_2']) : '';
 $cumple8_3 = isset($_POST['cumple8_3'])  ? htmlspecialchars($_POST['cumple8_3']) : '';
 $cumple8_4 = isset($_POST['cumple8_4'])  ? htmlspecialchars($_POST['cumple8_4']) : '';
-$cumple9_1 = isset($_POST['cumple9_1'])  ? htmlspecialchars($_POST['cumple9_1']) : '';
-$cumple9_2 = isset($_POST['cumple9_2'])  ? htmlspecialchars($_POST['cumple9_2']) : '';
-$cumple9_3 = isset($_POST['cumple9_3'])  ? htmlspecialchars($_POST['cumple9_3']) : '';
-$cumple9_4 = isset($_POST['cumple9_4'])  ? htmlspecialchars($_POST['cumple9_4']) : '';
+
 $cumple10_1 = isset($_POST['cumple10_1'])  ? htmlspecialchars($_POST['cumple10_1']) : '';
 $cumple10_2 = isset($_POST['cumple10_2'])  ? htmlspecialchars($_POST['cumple10_2']) : '';
 $cumple10_3 = isset($_POST['cumple10_3'])  ? htmlspecialchars($_POST['cumple10_3']) : '';
@@ -161,7 +158,7 @@ if ($nombre_cb) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/cedula_bbva.css">
+    <link rel="stylesheet" href="css/cedula_hdi.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -169,6 +166,744 @@ if ($nombre_cb) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+    <style>
+        /* Header styles */
+        .header {
+            width: 99%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background-color: #fff;
+            border-left: 5px solid #006a34;
+            border-bottom: 5px solid #006a34;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-radius: 15px;
+        }
+
+        .header .title {
+            font-size: 45px;
+            font-weight: 700;
+            color: #006a34;
+            margin-left: 10px;
+        }
+
+        .header .container_logo img {
+            height: 120px;
+            width: 120px;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+            margin-right: 50px;
+            border-radius: 50%;
+        }
+
+        /*###################################*/
+        /* Contenedor principal */
+        .contenedor-principal {
+            width: 99%;
+            display: flex;
+            gap: 20px;
+
+        }
+
+        /* Sección de datos */
+        .datos {
+            display: grid;
+            width: 100%;
+            /* Asegura que ocupe todo el ancho disponible */
+            gap: 15px;
+            /* Espacio entre elementos grid */
+        }
+
+        /* Contenedor de datos principal */
+        .container_datos1 {
+            width: 100%;
+            display: flex;
+            border-radius: 20px;
+            background-color: #f8f9fc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-left: 5px solid #006a34;
+            border-bottom: 5px solid #006a34;
+            padding: 20px;
+            /* Padding explícito en lugar de 'auto' */
+            box-sizing: border-box;
+            /* Incluye padding en el ancho */
+        }
+
+        /* Bloques de datos individuales */
+        .datos_us {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            /* Espaciado interno */
+        }
+
+        /* Estilos para etiquetas */
+        .datos_us label h6 {
+            color: #006a34;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Select personalizado */
+        .custom-form-control {
+            width: 90%;
+            max-width: 300px;
+            padding: 10px;
+            margin: 0 auto 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: rgba(0, 0, 0, 0.67);
+            background-color: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .custom-form-control:focus {
+            border-color: #006a34;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(39, 96, 150, 0.2);
+        }
+
+        /*###################################################*/
+
+        /* Contenedor de calificación */
+        .container_califica {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f8f9fc;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #006a34;
+            border-bottom: 5px solid #006a34;
+            margin-top: 20px;
+        }
+
+        /* Contenedor de semanas */
+        .calificacion {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Item de calificación individual */
+        .califica-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        /* Título de semana */
+        .califica-item h6 {
+            color: #006a34;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+            white-space: nowrap;
+        }
+
+        /* Caja de calificación */
+        .califica-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-width: 120px;
+            height: 50px;
+            font-size: 26px;
+            padding: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            color: #000000ab;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /*###############################################*/
+        /* Contenedor métrica - Lado derecho */
+        .metrica {
+            width: 45%;
+            padding: 30px;
+            background-color: #f8f9fc;
+            border: 1px solid #ddd;
+            border-left: 5px solid #006a34;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        /* Contenedor de nota BBVA */
+        .container_notabbva {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            text-align: center;
+        }
+
+        /* Sección de nota calidad */
+        .nota-calidad {
+            text-align: center;
+        }
+
+        /* Títulos */
+        .container_notabbva h2 {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #006a34;
+        }
+
+        /* Círculo de nota BBVA */
+        #nota_bbva {
+            margin-top: 10px;
+            font-size: 70px;
+            font-weight: 700;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #006a34;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contenedor de performance BBVA */
+        .container_performancebbva {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container_performancebbva h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #006a34;
+        }
+
+        /*####################################################*/
+
+        /* Estilos generales para el contenedor de llamadas */
+        .container_llamadas {
+            width: 99%;
+            margin-top: 20px;
+            display: flex;
+            /* Coloca los elementos en una fila horizontal */
+            justify-content: space-between;
+            /* Distribuye el espacio uniformemente */
+            align-items: center;
+            /* Centra verticalmente los elementos */
+            border-radius: 20px;
+            /* Bordes redondeados */
+            background-color: #f8f9fc;
+            /* Color de fondo */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            /* Sombra */
+            text-align: center;
+            /* Centrar el contenido */
+            padding: 20px;
+            /* Espaciado interno */
+            border-left: 5px solid #006a34;
+            /* Borde izquierdo */
+            border-bottom: 5px solid #006a34;
+            /* Borde inferior */
+        }
+
+        /* Estilos para cada bloque de llamadas */
+        .llamadas {
+            flex: 1;
+            /* Hace que cada bloque ocupe el mismo espacio */
+            margin: 10px;
+            /* Espacio entre los bloques */
+            text-align: center;
+            /* Centra el texto */
+        }
+
+        /* Estilos para las etiquetas */
+        .llamadas label h6 {
+            color: #006a34;
+            font-weight: bold;
+            font-size: 16px;
+            /* Tamaño de fuente */
+            font-weight: 600;
+            /* Texto semibold */
+        }
+
+        /* Estilos para los inputs */
+        .custom-form-control {
+            width: 100%;
+            /* Ocupa el 100% del ancho */
+            padding: 10px;
+            /* Espaciado interno */
+            font-size: 16px;
+            /* Tamaño de fuente */
+            border-radius: 5px;
+            /* Bordes redondeados */
+            border: 1px solid #ccc;
+            /* Borde */
+            color: #000000ab;
+            /* Color del texto */
+            margin-bottom: 20px;
+            /* Espacio entre inputs */
+        }
+
+        /* Estilos para los inputs de tipo date y time */
+        .custom-form-control[type="date"],
+        .custom-form-control[type="time"] {
+            padding: 8px;
+            /* Espaciado ajustado para inputs de fecha y hora */
+        }
+
+
+        /*############################################*/
+        .container_flex {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Estilos para la sección del formulario */
+        .custom-form-section-editar {
+            background-color: #f8f9fc;
+            /* Color de fondo */
+            padding: 20px;
+            /* Espaciado interno */
+            border-radius: 20px;
+            /* Bordes redondeados */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            /* Sombra */
+            margin-bottom: 5px;
+            /* Margen inferior */
+            display: grid;
+            /* Usa grid para organizar los elementos */
+            grid-template-columns: 1fr 1fr;
+            /* Dos columnas de igual tamaño */
+            gap: 10px;
+            /* Espacio entre columnas */
+        }
+
+        /* Estilos para los grupos de formulario */
+        .custom-form-group-editar {
+            display: flex;
+            /* Usa flexbox para organizar elementos */
+            flex-direction: column;
+            /* Alinea elementos verticalmente */
+            align-items: flex-start;
+            /* Alinea elementos a la izquierda */
+            margin: 0;
+            /* Sin margen */
+        }
+
+        /* Estilos para las etiquetas dentro de los grupos de formulario */
+        .custom-form-group-editar label {
+            width: 100%;
+            /* Ocupa el 100% del ancho */
+            margin-bottom: 5px;
+            /* Margen inferior */
+            font-weight: bold;
+            /* Negrita */
+            min-height: 20px;
+            /* Altura mínima */
+            line-height: 20px;
+            /* Altura de línea */
+        }
+
+        /* Estilos para los inputs y selects dentro de los grupos de formulario */
+        .custom-form-group-editar .custom-form-control {
+            width: 100%;
+            /* Ocupa el 100% del ancho */
+            padding: 10px;
+            /* Espaciado interno */
+            font-size: 16px;
+            /* Tamaño de fuente */
+            border-radius: 5px;
+            /* Bordes redondeados */
+            border: 1px solid #ccc;
+            /* Borde */
+            box-sizing: border-box;
+            /* Incluye padding y border en el ancho */
+            color: #000000ab;
+            /* Color del texto */
+            margin-top: 3px;
+        }
+
+        /* Estilos para los encabezados h6 dentro de la sección del formulario */
+        .custom-form-section-editar h6 {
+            color: rgb(0, 0, 0);
+            /* Color del texto */
+            margin-bottom: 1px;
+            /* Margen inferior */
+            font-weight: bold;
+            /* Negrita */
+        }
+
+        /* Estilos para los encabezados h3 dentro de la sección del formulario */
+        .custom-form-section-editar h3 {
+            color: #006a34;
+            /* Color del texto */
+            margin-bottom: 15px;
+            /* Margen inferior */
+            font-weight: bold;
+            /* Negrita */
+        }
+
+        /* Estilos para los encabezados h2 */
+        .custom-h2 {
+            color: #2d2a7b;
+            /* Color del texto */
+            font-weight: bold;
+            /* Negrita */
+        }
+
+        /* Estilos para el contenedor con grid de 3 columnas */
+        .custom-grid-container-ee {
+            display: grid;
+            /* Usa grid para organizar elementos */
+            grid-template-columns: repeat(6, 1fr);
+            /* Tres columnas de igual tamaño */
+            gap: 10px;
+            /* Espacio entre columnas */
+        }
+
+        .calidad-form-control[readonly] {
+            background-color: #e9e9e9;
+            /* Fondo gris para campos de solo lectura */
+            cursor: not-allowed;
+            border: none;
+        }
+
+        /* Estilos para la tarjeta con borde */
+        .custom-card-border-editar {
+            background-color: #F3F3F3;
+            /* Color de fondo */
+            border-left: 5px solid #006a34;
+
+            /* Borde izquierdo */
+            border-bottom: 5px solid #006a34;
+            /* Borde inferior */
+        }
+
+
+        /* Estilos para el contenedor de impacto */
+        .container_impacto {
+            margin: 30px 0 30px 30px;
+            /* Margen superior, inferior e izquierdo */
+            color: #006a34;
+            /* Color del texto */
+            font-weight: bold;
+            /* Negrita */
+            display: flex;
+            /* Activa flexbox */
+            align-items: center;
+            /* Centra verticalmente los elementos */
+        }
+
+        /* Estilos para contenedores flexibles */
+        .d-flex {
+            display: flex;
+            /* Usa flexbox */
+        }
+
+        .d-flex.flex-column {
+            flex-direction: column;
+            /* Alinea elementos verticalmente */
+        }
+
+        .d-flex h6 {
+            color: black;
+            /* Color del texto */
+            margin-bottom: 1px;
+            /* Margen inferior */
+            font-weight: bold;
+            /* Negrita */
+        }
+
+        .w-50 {
+            width: 50%;
+            /* Ocupa el 50% del ancho */
+        }
+
+        .d-flex>.d-flex label,
+        .d-flex>.d-flex input {
+            width: 100%;
+            /* Ocupa el 100% del ancho */
+            margin-bottom: 10px;
+            /* Margen inferior */
+        }
+
+        .d-flex.justify-content-end {
+            justify-content: flex-end;
+            /* Alinea elementos a la derecha */
+        }
+
+        .mb-2 {
+            margin-bottom: 15px;
+            /* Margen inferior */
+        }
+
+        .d-flex>.d-flex input {
+            width: 70%;
+            /* Ocupa el 70% del ancho */
+            margin-bottom: 10px;
+            /* Margen inferior */
+            padding: 8px;
+            /* Espaciado interno */
+            font-size: 14px;
+            /* Tamaño de fuente */
+        }
+
+        /* Estilos para el contenedor del grid de calidad */
+        /* Asegurar que el contenedor se ajuste al contenido */
+        #calidad-grid-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            /* Tres columnas de igual tamaño */
+            gap: 10px;
+            /* Espacio entre elementos */
+            align-items: start;
+            /* Alinea los elementos al inicio */
+            padding: 10px;
+            /* Espaciado interno */
+            box-sizing: border-box;
+            /* Incluye padding y border en el ancho */
+        }
+
+        /* Estilos para las etiquetas y elementos dentro del grid */
+        #calidad-grid-container label,
+        #calidad-grid-container h6 {
+            margin: 0;
+            /* Elimina márgenes predeterminados */
+            padding: 0;
+            /* Elimina paddings predeterminados */
+            font-weight: bold;
+            /* Texto en negrita */
+            color: black;
+            /* Color del texto */
+        }
+
+        /* Estilos para los inputs y selects */
+        .calidad-form-control {
+            width: 100%;
+            /* Ocupa el 100% del ancho */
+            padding: 10px;
+            /* Espaciado interno */
+            border-radius: 5px;
+            /* Bordes redondeados */
+            border: 1px solid #ccc;
+            /* Borde */
+            box-sizing: border-box;
+            /* Incluye padding y border en el ancho */
+            font-size: 14px;
+            /* Tamaño de fuente */
+        }
+
+
+        /* Estilos para la sección del formulario */
+        .custom-form-section-editar {
+            background-color: #f8f9fc;
+            /* Color de fondo */
+            padding: 20px;
+            /* Espaciado interno */
+            border-radius: 20px;
+            /* Bordes redondeados */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            /* Sombra */
+            margin-bottom: 20px;
+            /* Margen inferior */
+        }
+
+
+        /* Estilos para las celdas dentro del grid */
+        #calidad-grid-container div {
+            display: flex;
+            /* Usa flexbox */
+            flex-direction: column;
+            /* Alinea elementos verticalmente */
+            border: 1px solid #ccc;
+            /* Borde */
+            padding: 10px;
+            /* Espaciado interno */
+        }
+
+        /* Estilos para los campos del formulario */
+        .calidad-form-control {
+
+            padding: 10px;
+            /* Espaciado interno */
+            border-radius: 4px;
+            /* Bordes redondeados */
+            border: 1px solid #ccc;
+            /* Borde */
+            margin-bottom: 10px;
+            /* Margen inferior */
+        }
+
+        /* Estilos para los grupos del formulario */
+
+        .calidad-form-group {
+            display: flex;
+            /* Usa flexbox */
+            flex-direction: column;
+            /* Alinea elementos verticalmente */
+            margin-bottom: 10px;
+            /* Margen inferior */
+        }
+
+        /* Estilos para los encabezados dentro de los grupos del formulario */
+        .calidad-form-group h6 {
+            font-size: 14px;
+            /* Tamaño de fuente */
+            margin-bottom: 5px;
+            /* Margen inferior */
+        }
+
+        /* Estilos para la sección de botones en fila */
+        .form-section-editar {
+            display: flex;
+            /* Usa flexbox */
+            justify-content: center;
+            /* Centra los elementos */
+            gap: 10px;
+            /* Espacio entre elementos */
+            width: 99%;
+            /* Ocupa el 100% del ancho */
+            box-sizing: border-box;
+            /* Incluye padding y border en el ancho */
+        }
+
+        /*###########################################*/
+
+        /* Estilos para los contenedores de Fortalezas y Áreas de Oportunidad */
+        .container_FA {
+            max-width: 99%;
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+
+        .fortalezas-container,
+        .oportunidades-container {
+            flex: 1;
+            background-color: #f8f9fc;
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            height: 500px;
+        }
+
+        .fortalezas-container {
+            border-left: 6px solid green;
+            /* Verde para Fortalezas */
+
+        }
+
+        .oportunidades-container {
+            border-left: 6px solid red;
+            /* Naranja para Áreas de Oportunidad */
+        }
+
+        .fortalezas-textarea,
+        .oportunidades-textarea {
+            width: 100%;
+            height: 93%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 14px;
+            resize: none;
+            /* Evita que el usuario cambie el tamaño */
+            background-color: #fff;
+            color: #333;
+            box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .fortalezas-textarea:focus,
+        .oportunidades-textarea:focus {
+            outline: none;
+            border-color: #006a34;
+        }
+
+        /*##############################*/
+
+        /* Contenedor de comentarios y compromiso */
+        .container_com {
+            width: 40%;
+            height: 90%;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fc;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border-left: 5px solid #006a34;
+            border-bottom: 5px solid #006a34;
+            margin-top: -3px;
+        }
+
+        .container_com h6 {
+            color: #006a34;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        /* Textareas */
+        .container_com .form-control {
+            width: 100%;
+            padding: 15px;
+            font-size: 14px;
+            border-radius: 8px;
+            border: 1px solid #d0d7e3;
+            margin-bottom: 30px;
+            resize: vertical;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .container_com .form-control:focus {
+            border-color: #006a34;
+            box-shadow: 0 0 0 3px rgba(39, 96, 150, 0.2);
+            outline: none;
+        }
+
+        /* Checkbox de acuerdo */
+        .container_com .form-check {
+            display: flex;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px dashed #d0d7e3;
+        }
+
+        .container_com .form-check-input {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #006a34;
+        }
+
+        .container_com .form-check-label {
+            color: #006a34;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .container_com .form-check-label:hover {
+            color: #1a4b7a;
+        }
+
+        /*################################*/
+    </style>
 </head>
 
 <body>
@@ -178,7 +913,7 @@ if ($nombre_cb) {
         <div class="header">
             <div class="title">CALIDAD BBVA</div>
             <div class="container_logo">
-                <img src="img/BBVA-REDISENO-LOGO.jpg" alt="Logo de la página">
+                <img src="img/hdi-logo.png" alt="Logo de la página">
             </div>
         </div>
 
@@ -403,28 +1138,28 @@ if ($nombre_cb) {
                     <h3 style="margin-bottom: auto;">🌐Impacto Negocio</h3>
                 </div>
             </div>
-            <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="height: 85%;  border-left: 5px solid #276096;
-            border-bottom: 5px solid #276096;">
+            <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="height: 85%;  border-left: 5px solid #006a34;
+            border-bottom: 5px solid #006a34;">
                 <div id="calidad-grid-container" class="calidad-grid-container">
 
                     <!-- Rubros de Impacto Negocio -->
                     <label for="rubro_c" style="margin-bottom: 30px;">
-                        <h6 style="color:#276096;">Rubro</h6>
+                        <h6 style="color:#006a34;">Rubro</h6>
                     </label>
                     <label for="ponderacion_c">
-                        <h6 style="color:#276096;">Ponderación</h6>
+                        <h6 style="color:#006a34;">Ponderación</h6>
                     </label>
                     <label for="llamada1_c">
-                        <h6 style="color:#276096;">llamada 1</h6>
+                        <h6 style="color:#006a34;">llamada 1</h6>
                     </label>
                     <label for="llamada2_c">
-                        <h6 style="color:#276096;">llamada 2</h6>
+                        <h6 style="color:#006a34;">llamada 2</h6>
                     </label>
                     <label for="llamada3_c">
-                        <h6 style="color:#276096;">llamada 3</h6>
+                        <h6 style="color:#006a34;">llamada 3</h6>
                     </label>
                     <label for="llamada4_c">
-                        <h6 style="color:#276096;">llamada 4</h6>
+                        <h6 style="color:#006a34;">llamada 4</h6>
                     </label>
 
 
@@ -432,9 +1167,9 @@ if ($nombre_cb) {
 
                     <!-- Rubro 1 -->
                     <label for="identifica_cb">
-                        <h6>Identifica al receptor</h6>
+                        <h6>Presentación institucional</h6>
                     </label>
-                    <input type="text" id="pon1" name="pon1" class="calidad-form-control" value="3" readonly style="text-align: center;">
+                    <input type="text" id="pon1" name="pon1" class="calidad-form-control" value="6" readonly style="text-align: center;">
 
                     <input type="text" id="cumple1_1" name="cumple1_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple1_1); ?>" readonly>
 
@@ -446,9 +1181,9 @@ if ($nombre_cb) {
 
                     <!-- Rubro 2 -->
                     <label for="mute_cb">
-                        <h6>Uso del mute y tiempo de espera</h6>
+                        <h6>Despedida institucional</h6>
                     </label>
-                    <input type="text" id="pon2" name="pon2" class="calidad-form-control" value="4" readonly style="text-align: center;">
+                    <input type="text" id="pon2" name="pon2" class="calidad-form-control" value="6" readonly style="text-align: center;">
 
                     <input type="text" id="cumple2_1" name="cumple2_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple2_1); ?>" readonly>
 
@@ -460,9 +1195,9 @@ if ($nombre_cb) {
 
                     <!--    Rubro     3   -->
                     <label for="escucha_cb">
-                        <h6>Escucha activa</h6>
+                        <h6>Identifica al receptor</h6>
                     </label>
-                    <input type="text" id="pon3" name="pon3" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
+                    <input type="text" id="pon3" name="pon3" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
                     <input type="text" id="cumple3_1" name="cumple3_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple3_1); ?>" readonly>
 
@@ -475,9 +1210,9 @@ if ($nombre_cb) {
 
                     <!--    Rubro     4   -->
                     <label for="informacion_cb">
-                        <h6>Sentido de urgencia e información</h6>
+                        <h6>Sondeo y captura</h6>
                     </label>
-                    <input type="text" id="pon4" name="pon4" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
+                    <input type="text" id="pon4" name="pon4" class="calidad-form-control" placeholder="" value="15" readonly style="text-align: center;">
 
                     <input type="text" id="cumple4_1" name="cumple4_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple4_1); ?>" readonly>
 
@@ -489,9 +1224,9 @@ if ($nombre_cb) {
 
                     <!--    Rubro     5   -->
                     <label for="cortesia_cb">
-                        <h6>Pregunta de cortesía</h6>
+                        <h6>Escucha activa</h6>
                     </label>
-                    <input type="text" id="pon5" name="pon5" class="calidad-form-control" placeholder="" value="6" readonly style="text-align: center;">
+                    <input type="text" id="pon5" name="pon5" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                     <input type="text" id="cumple5_1" name="cumple5_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple5_1); ?>" readonly>
 
@@ -504,9 +1239,9 @@ if ($nombre_cb) {
 
                     <!--    Rubro     6   -->
                     <label for="sondeo_cb">
-                        <h6>Sondeo objetivo</h6>
+                        <h6>Brinda información correcta y completa</h6>
                     </label>
-                    <input type="text" id="pon6" name="pon6" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
+                    <input type="text" id="pon6" name="pon6" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
 
                     <input type="text" id="cumple6_1" name="cumple6_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple6_1); ?>" readonly>
 
@@ -519,7 +1254,7 @@ if ($nombre_cb) {
 
                     <!--    Rubro     7   -->
                     <label for="objeciones_cb">
-                        <h6>Objeciones</h6>
+                        <h6>Manejo de objeciónes</h6>
                     </label>
                     <input type="text" id="pon7" name="pon7" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
@@ -534,9 +1269,9 @@ if ($nombre_cb) {
 
                     <!--    Rubro     8   -->
                     <label for="script_cb">
-                        <h6>SCRIPT</h6>
+                        <h6>Pregunta de cortesía</h6>
                     </label>
-                    <input type="text" id="pon8" name="pon8" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
+                    <input type="text" id="pon8" name="pon8" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
                     <input type="text" id="cumple8_1" name="cumple8_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple8_1); ?>" readonly>
 
@@ -546,19 +1281,6 @@ if ($nombre_cb) {
 
                     <input type="text" id="cumple8_4" name="cumple8_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple8_4); ?>" readonly>
 
-                    <!--    Rubro     9   -->
-                    <label for="cierres_cb">
-                        <h6>Invitación a inspeccionar</h6>
-                    </label>
-                    <input type="text" id="pon9" name="pon9" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
-
-                    <input type="text" id="cumple9_1" name="cumple9_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple9_1); ?>" readonly>
-
-                    <input type="text" id="cumple9_2" name="cumple9_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple9_2); ?>" readonly>
-
-                    <input type="text" id="cumple9_3" name="cumple9_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple9_3); ?>" readonly>
-
-                    <input type="text" id="cumple9_4" name="cumple9_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple9_4); ?>" readonly>
                 </div>
             </div>
         </div>
@@ -571,37 +1293,37 @@ if ($nombre_cb) {
                 </div>
             </div>
 
-            <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="height: 50%; border-left: 5px solid #276096;
-            border-bottom: 5px solid #276096;">
+            <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="height: 50%; border-left: 5px solid #006a34;
+            border-bottom: 5px solid #006a34;">
                 <div id="calidad-grid-container" class="calidad-grid-container">
 
                     <!-- Rubros de Impacto Negocio -->
                     <label for="rubro_c" style="margin-bottom: 30px;">
-                        <h6 style="color:#276096;">Rubro</h6>
+                        <h6 style="color:#006a34;">Rubro</h6>
                     </label>
                     <label for="ponderacion_c">
-                        <h6 style="color:#276096;">Ponderación</h6>
+                        <h6 style="color:#006a34;">Ponderación</h6>
                     </label>
                     <label for="llamada1_c">
-                        <h6 style="color:#276096;">llamada 1</h6>
+                        <h6 style="color:#006a34;">llamada 1</h6>
                     </label>
                     <label for="llamada2_c">
-                        <h6 style="color:#276096;">llamada 2</h6>
+                        <h6 style="color:#006a34;">llamada 2</h6>
                     </label>
                     <label for="llamada3_c">
-                        <h6 style="color:#276096;">llamada 3</h6>
+                        <h6 style="color:#006a34;">llamada 3</h6>
                     </label>
                     <label for="llamada4_c">
-                        <h6 style="color:#276096;">llamada 4</h6>
+                        <h6 style="color:#006a34;">llamada 4</h6>
                     </label>
 
                     <!-- Rubros con ponderaciones -->
 
                     <!--    Rubro     10   -->
                     <label for="tutea_c">
-                        <h6>Tutea / Personaliza</h6>
+                        <h6>Personalización</h6>
                     </label>
-                    <input type="text" id="pon10" name="pon10" class="calidad-form-control" value="6" readonly style="text-align: center;">
+                    <input type="text" id="pon10" name="pon10" class="calidad-form-control" value="5" readonly style="text-align: center;">
 
                     <input type="text" id="cumple10_1" name="cumple10_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple10_1); ?>" readonly>
 
@@ -613,7 +1335,7 @@ if ($nombre_cb) {
 
                     <!--    Rubro     11   -->
                     <label for="ccc_cb">
-                        <h6>Empatía y cortesía</h6>
+                        <h6>Etiqueta telefónica</h6>
                     </label>
                     <input type="text" id="pon11" name="pon11" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
@@ -628,9 +1350,9 @@ if ($nombre_cb) {
 
                     <!--    Rubro     12   -->
                     <label for="etiqueta_cb">
-                        <h6>Etiqueta telefónica</h6>
+                        <h6>Uso del mute y tiempos de espera</h6>
                     </label>
-                    <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
+                    <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                     <input type="text" id="cumple12_1" name="cumple12_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple12_1); ?>" readonly>
 
@@ -645,7 +1367,7 @@ if ($nombre_cb) {
                     <label for="contrllamada_cb">
                         <h6>Control de la llamada</h6>
                     </label>
-                    <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
+                    <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                     <input type="text" id="cumple13_1" name="cumple13_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple13_1); ?>" readonly>
 
@@ -657,9 +1379,9 @@ if ($nombre_cb) {
 
                     <!--    Rubro     14   -->
                     <label for="negativas_cb">
-                        <h6>Frases negativas</h6>
+                        <h6>Cortesía y empatía</h6>
                     </label>
-                    <input type="text" id="pon14" name="pon14" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
+                    <input type="text" id="pon14" name="pon14" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                     <input type="text" id="cumple14_1" name="cumple14_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple14_1); ?>" readonly>
 
@@ -678,28 +1400,28 @@ if ($nombre_cb) {
                 </div>
             </div>
 
-            <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="height: 25%; border-left: 5px solid #276096;
-            border-bottom: 5px solid #276096;">
+            <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="height: 25%; border-left: 5px solid #006a34;
+            border-bottom: 5px solid #006a34;">
                 <div id="calidad-grid-container" class="calidad-grid-container">
 
                     <!-- Rubros de Error Crítico -->
                     <label for="rubro_c" style="margin-bottom: 30px;">
-                        <h6 style="color:#276096;">Rubro</h6>
+                        <h6 style="color:#006a34;">Rubro</h6>
                     </label>
                     <label for="ponderacion_c">
-                        <h6 style="color:#276096;">Ponderación</h6>
+                        <h6 style="color:#006a34;">Ponderación</h6>
                     </label>
                     <label for="llamada1_c">
-                        <h6 style="color:#276096;">llamada 1</h6>
+                        <h6 style="color:#006a34;">llamada 1</h6>
                     </label>
                     <label for="llamada2_c">
-                        <h6 style="color:#276096;">llamada 2</h6>
+                        <h6 style="color:#006a34;">llamada 2</h6>
                     </label>
                     <label for="llamada3_c">
-                        <h6 style="color:#276096;">llamada 3</h6>
+                        <h6 style="color:#006a34;">llamada 3</h6>
                     </label>
                     <label for="llamada4_c">
-                        <h6 style="color:#276096;">llamada 4</h6>
+                        <h6 style="color:#006a34;">llamada 4</h6>
                     </label>
 
                     <!-- Rubros con ponderaciones -->
@@ -755,10 +1477,10 @@ if ($nombre_cb) {
         <!-- Apartado de comentarios y compromiso -->
         <div class="container_com">
             <h6>Comentarios</h6>
-            <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="5" style="margin-bottom: 30px; cursor: not-allowed; resize: none;" readonly><?php echo $comentarios; ?></textarea>
+            <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="5" style="margin-bottom: 30px; cursor: not-allowed;" readonly><?php echo $comentarios; ?></textarea>
 
             <h6>Compromiso</h6>
-            <div contenteditable="true" class="form-control" id="compromiso_cedula" name="compromiso_cedula" rows="3" style="cursor: default; margin-bottom: 30px; height: 150px; resize: none;"></div>
+            <div contenteditable="true" class="form-control" id="compromiso_cedula" name="compromiso_cedula" rows="3" style="cursor: default; margin-bottom: 30px; height: 150px;"></div>
 
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="compromisoCheck" name="compromisoCheck" required>

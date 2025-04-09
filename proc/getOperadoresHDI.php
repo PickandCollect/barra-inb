@@ -11,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 }
 
 try {
-    // Filtrar solo OPERADORES y excluir ROOT
-    $query = "SELECT nombre FROM Usuario WHERE perfil = 'Operador' AND perfil != 'ROOT'";
+    // Filtrar solo OPERADORES bbva y excluir ROOT
+    $query = "SELECT nombre, tipo, jefe_directo FROM Usuario WHERE perfil = 'Operador' AND perfil != 'ROOT' AND campana = 'HDI seguros' ";
     $stmt = $conexion->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -21,7 +21,7 @@ try {
         $usuarios = [];
 
         while ($row = $result->fetch_assoc()) {
-            $usuarios[] = ['nombre' => $row['nombre']];
+            $usuarios[] = ['nombre' => $row['nombre'], 'tipo' => $row['tipo'], 'campana' => $row['campana'], 'jefe_directo' => $row['jefe_directo']];
         }
 
         $response['success'] = true;

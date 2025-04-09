@@ -51,11 +51,6 @@
     justify-content: space-between; /* Coloca el texto y los botones en extremos opuestos */
 }
 
-.button-container {
-    display: flex; /* Alinea los botones horizontalmente */
-    gap: 10px; /* Espacio entre los botones */
-}
-
 /* Estilos para el contenedor principal */
 .container_notacalidad {
     width: 400px; /* Ancho máximo */
@@ -360,45 +355,150 @@
 
 /*###########################################*/
 
-/* Estilo base para los botones */
-#btnLimpiar, #btnEC, #btnSubir {
-    padding: 10px 25px;
-    font-size: 19px;
-    font-weight: 600;
+.button-container{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    padding: 20px; /* Espaciado interno */
+    background-color: #f8f9fc; /* Color de fondo */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    text-align: center; /* Centrar el contenido */
+    margin-bottom: 40px; /* Margen inferior */
+    margin-top: 20px;
+    border-left: 5px solid #50b3e0; /* Borde izquierdo */
+}
+/* Estilo base común para todos los botones */
+.button-container .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: none;
-    border-radius: 30px;
+    border-radius: 50px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    color: #ffffff; /* Texto blanco para contraste */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 8px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* Botón Limpiar (acción de reinicio o eliminar) */
-#btnLimpiar {
-    background-color: #5b90ce; /* Rojo suave */
-}
-
-/* Botón Capturar (acción principal) */
-#btnEC {
-    background-color: #199b81; /* Verde esmeralda */
-}
-
-/* Botón Subir (acción de carga) */
+/* Botón Subir Llamada (Azul intenso - Acción principal) */
 #btnSubir {
-    background-color: #6c5ce7; /* Morado */
+    background: linear-gradient(135deg, #2B6CB0, #3182CE);
+    box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
+    color: white;
+    border: none;
+    font-weight: bold;
 }
 
-/* Efecto hover */
-#btnLimpiar:hover, #btnEC:hover, #btnSubir:hover {
-    opacity: 0.9; /* Ligera transparencia al pasar el mouse */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+#btnSubir:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(49, 130, 206, 0.4);
+    background: linear-gradient(135deg, #3182CE, #2B6CB0);
 }
 
-/* Efecto clic */
-#btnLimpiar:active, #btnEC:active, #btnSubir:active {
-    transform: scale(0.9);
+/* Botón Limpiar (Turquesa medio - Acción secundaria) */
+#btnLimpiar {
+    background: linear-gradient(135deg, #38B2AC, #319795);
+    box-shadow: 0 4px 12px rgba(56, 178, 172, 0.3);
+    color: white;
+    border: none;
 }
 
+#btnLimpiar:hover {
+    background: linear-gradient(135deg, #319795, #38B2AC);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(49, 151, 149, 0.4);
+}
+
+/* Botón Enviar (Turquesa claro - Para diferenciar claramente) */
+#btnEC {
+    background: linear-gradient(135deg, #9290eb, #563291);
+    box-shadow: 0 4px 12px rgba(65, 209, 197, 0.3);
+    color: white;
+    border: none;
+}
+
+#btnEC:hover {
+    background: linear-gradient(135deg,  #393883, #8c6dbe);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(129, 230, 217, 0.4);
+}
+/* Efectos comunes a todos los botones */
+.button-container .btn:hover {
+    transform: translateY(-2px);
+}
+
+.button-container .btn:active {
+    transform: translateY(0);
+}
+
+.button-container .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+/* Efecto de ripple para todos los botones */
+.button-container .btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.button-container .btn:focus:not(:active)::after {
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(20);
+        opacity: 0;
+    }
+}
+
+/* Contenedor de botones */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .button-container .btn {
+        width: 100%;
+        max-width: 250px;
+        margin: 5px 0;
+    }
+}
 
 /*########################################*/
 
@@ -417,7 +517,7 @@
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    height: 300px;
+    height: 320px;
 }
 
 .fortalezas-container {
@@ -453,8 +553,8 @@
 
 /* Estilos para los contenedores de Comentarios y Compromiso */
 .container_com {
-    width: 49%;
-    margin-bottom: 20px; /* Espacio entre los contenedores */
+    height: 300px;
+    width: 70%;
     border-radius: 10px; /* Bordes redondeados */
     padding: 15px; /* Espaciado interno */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
@@ -473,11 +573,12 @@
 .container_com textarea {
     height: 80%;
     width: 100%; /* Ocupa el 100% del ancho */
+
     padding: 10px; /* Espaciado interno */
     border: 1px solid #ccc; /* Borde */
     border-radius: 5px; /* Bordes redondeados */
     font-size: 14px; /* Tamaño de fuente */
-    resize: vertical; /* Permite redimensionar verticalmente */
+       resize: none; /* Desactiva el redimensionamiento */
     background-color: #fff; /* Color de fondo */
     color: #333; /* Color del texto */
     box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra interna */
@@ -495,9 +596,11 @@
 .firmas-container {
     display: flex; /* Usar Flexbox */
     gap: 20px; /* Espacio entre las firmas */
-     text-align: center;
+    text-align: center;
     margin-top: 20px;
     width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Estilos para cada contenedor de firma */
@@ -508,6 +611,7 @@
     padding: 15px; /* Espaciado interno */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
     border-left: 5px solid #54259e; /* Borde lateral izquierdo */
+    height: 50%;
 }
 
 .firma-item h6 {
@@ -526,6 +630,18 @@
     background-color: #fff; /* Color de fondo */
     cursor: crosshair; /* Cambia el cursor al dibujar */
 }
+
+            .firma-item img {
+                display: block;
+                max-width: 100%;
+                width: 420px;
+                height: auto;
+                object-fit: contain;
+                background: transparent;
+                opacity: 0.9;
+                filter: contrast(1.2) brightness(0.9) grayscale(10%) drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+                margin: 10px auto;
+            }
 
 /* Estilos para el título y la flecha */
 .seccion-titulo {
@@ -555,4 +671,58 @@
 /* Contenedor de rubros (oculto por defecto) */
 .rubros {
     display: none; /* Ocultar los rubros inicialmente */
+}
+/*##############################################*/
+#loadingIndicator {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #4f46e5, #9333ea);
+        color: white;
+        padding: 25px;
+        border-radius: 12px;
+        font-size: 20px;
+        text-align: center;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        align-items: center;
+        gap: 15px;
+}
+
+/* Loader con animación mejorada */
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-top: 5px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Efecto de parpadeo en el texto */
+#loadingIndicator p {
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+  animation: blink 1.5s infinite alternate;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }

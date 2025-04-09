@@ -8,27 +8,30 @@ require '../vendor/autoload.php';
 
 use Aws\S3\S3Client;
 use Aws\Exception\AwsException;
+use Aws\S3\Exception\S3Exception;
 
 // Inicializar el cliente de S3
 $s3 = new S3Client([
     'version' => 'latest',
-    'region'  => 'us-east-2', // Usa la región de tu bucket
+    'region'  => 'us-east-2',
 ]);
 
 // Leer los datos enviados
 $operador = isset($_POST['operador']) ? $_POST['operador'] : '';
 $campana = isset($_POST['campana']) ? $_POST['campana'] : '';
-$idSiniestro = isset($_POST['id_siniestro']) ? intval($_POST['id_siniestro']) : 0;
 
-// Verificar que el nombre del operador, la campaña y el ID del siniestro sean válidos
-if (empty($operador) || empty($campana) || $idSiniestro <= 0) {
-    echo json_encode(['error' => 'El nombre del operador, la campaña o el ID del siniestro no son válidos']);
+// Limpiar el nombre del operador (eliminar espacios)
+$operador = str_replace(' ', '_', trim($operador));
+
+// Verificar que el nombre del operador y la campaña sean válidos
+if (empty($operador) || empty($campana)) {
+    echo json_encode(['success' => false, 'error' => 'No has seleccionado a ningun operador o el operador no existe ❗']);
     exit();
 }
 
 // Verificar que se haya recibido un archivo
 if (!isset($_FILES['archivo']) || $_FILES['archivo']['error'] !== UPLOAD_ERR_OK) {
-    echo json_encode(['error' => 'No se ha enviado un archivo o hubo un error en la carga']);
+    echo json_encode(['success' => false, 'error' => 'No se ha enviado un archivo o hubo un error en la carga']);
     exit();
 }
 
@@ -40,49 +43,83 @@ $mimeType = mime_content_type($archivo['tmp_name']);
 $tiposMimeValidos = ['audio/wav', 'audio/x-wav', 'audio/wave'];
 
 if (!in_array($mimeType, $tiposMimeValidos)) {
-    echo json_encode(['error' => 'El archivo debe ser de tipo .wav (Tipo MIME detectado: ' . $mimeType . ')']);
+    echo json_encode(['success' => false, 'error' => 'El archivo debe ser de tipo .wav (Tipo MIME detectado: ' . $mimeType . ')']);
     exit();
 }
+
+// Obtener la fecha actual en formato YYYYMMDD
+$fechaActual = date('Ymd');
 
 // Crear el nombre de la carpeta en S3
 $carpetaS3 = $operador . '_' . $campana . '/';
 
-// Determinar el nombre del archivo en S3
-$nombreArchivo = $operador . '_' . $idSiniestro . '.wav';
+// Función para verificar si un archivo existe en S3
+function archivoExisteEnS3($s3, $bucket, $rutaCompleta) {
+    try {
+        $s3->headObject([
+            'Bucket' => $bucket,
+            'Key'    => $rutaCompleta
+        ]);
+        return true;
+    } catch (S3Exception $e) {
+        if ($e->getAwsErrorCode() == 'NotFound') {
+            return false;
+        }
+        throw $e;
+    }
+}
+
+// Generar nombre de archivo único
+$nombreBase = $operador . '_' . $fechaActual;
+$extension = '.wav';
+$contador = 1;
+
+// Nombre inicial sin sufijo numérico
+$nombreArchivo = $nombreBase . $extension;
 $s3FilePath = $carpetaS3 . $nombreArchivo;
 
+// Verificar si existe y generar nuevo nombre si es necesario
+while (archivoExisteEnS3($s3, 'tuasesoria', $s3FilePath)) {
+    $nombreArchivo = $nombreBase . '_' . $contador . $extension;
+    $s3FilePath = $carpetaS3 . $nombreArchivo;
+    $contador++;
+}
+
 try {
-    // Verificar si la carpeta ya existe en S3
-    $existeCarpeta = false;
-    $resultadoListado = $s3->listObjectsV2([
-        'Bucket' => 'tuasesoria',
-        'Prefix' => $carpetaS3,
-        'MaxKeys' => 1, // Solo necesitamos verificar si hay al menos un objeto
+    // Subir el archivo a S3
+    $result = $s3->putObject([
+        'Bucket'      => 'tuasesoria',
+        'Key'         => $s3FilePath,
+        'SourceFile'  => $archivo['tmp_name'],
+        'ContentType' => $mimeType,
     ]);
 
-    if (isset($resultadoListado['Contents']) && count($resultadoListado['Contents']) > 0) {
-        $existeCarpeta = true;
+    // Construir respuesta exitosa
+    $response = [
+        'success' => true,
+        'message' => 'Archivo subido correctamente',
+        'file_name' => $nombreArchivo,
+        'file_url' => $result['ObjectURL'],
+        'file_path' => $s3FilePath,
+        'operador' => $operador,
+        'campana' => $campana,
+        'fecha' => $fechaActual
+    ];
+
+    // Si se usó un sufijo numérico, agregar esta información a la respuesta
+    if ($contador > 1) {
+        $response['sufijo_numerico'] = $contador - 1;
+        $response['message'] = 'Archivo subido con sufijo numérico (' . ($contador - 1) . ')';
     }
 
-    // Subir el archivo a S3 con permisos públicos y Content-Type adecuado
-    $result = $s3->putObject([
-        'Bucket'      => 'tuasesoria',  // Nombre de tu bucket S3
-        'Key'         => $s3FilePath,  // Ruta del archivo en S3
-        'SourceFile'  => $archivo['tmp_name'],     // Archivo temporal cargado
-        'ContentType' => $mimeType,    // Tipo MIME del archivo
-    ]);
+    echo json_encode($response);
 
-    // Guardar la URL pública del archivo
-    $uploadedFiles[] = $result['ObjectURL'];
-
-    // Devolver una respuesta exitosa
-    echo json_encode([
-        'success' => true,
-        'files' => $uploadedFiles,
-        'message' => 'Archivo subido correctamente',
-        'carpeta_existia' => $existeCarpeta, // Indica si la carpeta ya existía
-    ]);
 } catch (AwsException $e) {
-    echo json_encode(['error' => 'Error al subir el archivo a S3: ' . $e->getMessage()]);
+    echo json_encode([
+        'success' => false,
+        'error' => 'Error al subir el archivo a S3: ' . $e->getMessage(),
+        'operador' => $operador,
+        'campana' => $campana
+    ]);
     exit();
 }

@@ -74,8 +74,12 @@
                             <div class="custom-form-group form-group">
                                 <label for="jefe">Jefe directo:</label>
                                 <select id="jefe" name="jefe" class="custom-form-control form-control">
-                                    <option value="" selected>Selecciona</option>
-
+                                    <option value="" selected hidden>Selecciona</option>
+                                    <option value="Sabina Velásquez">Sabina Velásquez</option>
+                                    <option value="Alberto Reyes">Alberto Reyes</option>
+                                    <option value="Tania Aleman">Tania Aleman</option>
+                                    <option value="Kevin Reyes">Kevin Reyes</option>
+                                    <option value="Isis Jimenez">Isis Jimenez</option>
                                 </select>
                             </div>
 
@@ -90,20 +94,32 @@
                             <div class="custom-form-group form-group">
                                 <label for="perfil">Perfil:</label>
                                 <select id="perfil" name="perfil" class="custom-form-control form-control">
-                                    <option value="" selected>Selecciona</option>
+                                    <option value="" selected hidden>Selecciona</option>
                                     <option value="ROOT">ROOT</option>
-                                    <option value="SUPERVISOR">SUPERVISOR</option>
-                                    <option value="OPERADOR">OPERADOR</option>
+                                    <option value="Supervisor">Supervisor</option>
+                                    <option value="Operador">Operador</option>
 
                                 </select>
                             </div>
                             <div class="custom-form-group form-group">
                                 <label for="tipo">Tipo:</label>
                                 <select id="tipo" name="tipo" class="custom-form-control form-control">
-                                    <option value="" selected>Selecciona</option>
-                                    <option value="INTEGRACION">INTEGRACION</option>
-                                    <option value="SUPERVISOR">SUPERVISOR</option>
-                                    <option value="CALL CENTER">CALL CENTER</option>
+                                    <option value="" selected hidden >Selecciona</option>
+                                    <option value="Integracion">Integracion</option>
+                                    <option value="Supervisor">Supervisor</option>
+                                    <option value="Call Center">Call Center</option>
+                                </select>
+                            </div>
+                            <div class="custom-form-group form-group">
+                                <label for="campana">Campaña:</label>
+                                <select id="campana" name="campana" class="custom-form-control form-control">
+                                    <option value="" selected hidden>Selecciona</option>
+                                    <option value="Pagos Parciales">Pagos Parciales</option>
+                                    <option value="HDI Seguros">HDI Seguros</option>
+                                    <option value="El Aguila">El Aguila</option>
+                                    <option value="BBVA">BBVA</option>
+                                    <option value="Solera">Solera</option>
+                                    <option value="RH">RH</option>
                                 </select>
                             </div>
                         </div>
@@ -123,9 +139,9 @@
                 </div>
             </div>
             <!-- Botón de envío -->
-            <div class="text-center mt-3">
-                <input type="button" value="Insertar" class="custom-submit-button custom-btn" id="btnInsertarUsuario">
-            </div>
+            <button type="button" value="Insertar" class="custom-submit-button custom-btn" id="btnInsertarUsuario">
+                Agregar
+            </button>
 
         </div>
     </form>
@@ -135,11 +151,58 @@
     <!-- jQuery (CDN): Biblioteca de JavaScript para manipulación del DOM y eventos. -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Popper.js (CDN): Biblioteca para manejar tooltips, popovers, y dropdowns en Bootstrap. -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 
     <!-- Bootstrap JS (CDN): Funcionalidades de Bootstrap como modales, dropdowns, etc. -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('btnInsertarUsuario').addEventListener('click', function(e) {
+            e.preventDefault(); // Previene el envío normal del formulario
+
+            const formData = new FormData(document.getElementById('miFormulario'));
+
+            fetch('proc/procesamiento_usuario.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Éxito',
+                            text: 'Usuario insertado correctamente',
+                            confirmButtonText: 'Aceptar'
+                        }).then(() => {
+                            // Opcional: Limpiar el formulario después del éxito
+                            document.getElementById('miFormulario').reset();
+                            // Restablecer la imagen de perfil
+                            document.getElementById('profilePreview').src = "https://via.placeholder.com/150";
+                            document.querySelector('.custom-file-upload span').textContent = "Selecciona imagen de perfil";
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: data.error || 'Ocurrió un error al procesar la solicitud',
+                            confirmButtonText: 'Aceptar'
+                        });
+                    }
+                })
+                .catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Error de conexión: ' + error.message,
+                        confirmButtonText: 'Aceptar'
+                    });
+                });
+        });
+    </script>
 
     <script>
         const fileInput = document.getElementById('fileInput');

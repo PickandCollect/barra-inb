@@ -42,7 +42,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/calidad_bbva.css">
+    <link rel="stylesheet" href="css/calidad_hdi.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -54,9 +54,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
     <!-- Encabezado -->
     <div class="header">
-        <div class="title">CALIDAD BBVA</div>
+        <div class="title">CALIDAD HDI</div>
         <div class="container_logo">
-            <img src="img/BBVA-REDISENO-LOGO.jpg" alt="Logo de la página">
+            <img src="img/hdi-logo.png" alt="Logo de la página">
         </div>
     </div>
     <!-- FORMULARIO PARA ENVIAR AL OTRO FORMULARIO ALV-->
@@ -126,7 +126,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     </div>
                 </div>
 
-                <div class="button-container-bbva" style="margin-bottom: -40px;">
+                <div class="button-container-hdi" style="margin-bottom: -40px;">
                     <button type="button" class="btn-llamadas" id="btnllamar"> <i class="fas fa-file-excel"></i> </button>
                     <!-- <button type="button" class="btn custom-submit-button-c" id="btnSubirBBVA">Subir LLamada</button>-->
                     <button type="button" class="btn-limpiar" id="btnlimpiar">Limpiar Formulario </button>
@@ -157,6 +157,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
         <input type="hidden" name="nota_bbva" id="hiddenNotaCalidadbbva">
         <input type="hidden" name="performancebbva_img" id="hiddenPerformanceImgbbva">
+
         <div class="container_llamadas">
             <!-- APARTADO DEL RUBRO LLAMADAS-->
             <div class="llamadas">
@@ -255,22 +256,22 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!-- Rubros de Impacto Negocio -->
                 <label for="rubro_c" style="margin-bottom: 30px;">
-                    <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
+                    <h6 style="color:rgb(0, 106, 52);">Rubro</h6>
                 </label>
                 <label for="ponderacion_c">
-                    <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
+                    <h6 style="color:rgb(0, 106, 52);">Ponderación</h6>
                 </label>
                 <label for="llamada1_c">
-                    <h6 style="color:rgb(30, 9, 150);">llamada 1</h6>
+                    <h6 style="color:rgb(0, 106, 52);">llamada 1</h6>
                 </label>
                 <label for="llamada2_c">
-                    <h6 style="color:rgb(63, 9, 150);">llamada 2</h6>
+                    <h6 style="color:rgb(0, 106, 52);">llamada 2</h6>
                 </label>
                 <label for="llamada3_c">
-                    <h6 style="color:rgb(58, 9, 150);">llamada 3</h6>
+                    <h6 style="color:rgb(0, 106, 52);">llamada 3</h6>
                 </label>
                 <label for="llamada4_c">
-                    <h6 style="color:rgb(11, 9, 150);">llamada 4</h6>
+                    <h6 style="color:rgb(0, 106, 52);">llamada 4</h6>
                 </label>
 
 
@@ -278,9 +279,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!-- Rubro 1 -->
                 <label for="identifica_cb">
-                    <h6>Identifica al receptor</h6>
+                    <h6>Presentación institucional</h6>
                 </label>
-                <input type="text" id="pon1" name="pon1" class="calidad-form-control" value="3" readonly style="text-align: center;">
+                <input type="text" id="pon1" name="pon1" class="calidad-form-control" value="6" readonly style="text-align: center;">
 
                 <select id="cumple1_1" name="cumple1_1" class="calidad-form-control">
                     <option value="" hidden>Selecciona</option>
@@ -308,9 +309,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!-- Rubro 2 -->
                 <label for="mute_cb">
-                    <h6>Uso del mute y tiempo de espera</h6>
+                    <h6>Despedida institucional</h6>
                 </label>
-                <input type="text" id="pon2" name="pon2" class="calidad-form-control" value="4" readonly style="text-align: center;">
+                <input type="text" id="pon2" name="pon2" class="calidad-form-control" value="6" readonly style="text-align: center;">
 
                 <select id="cumple2_1" name="cumple2_1" class="calidad-form-control">
                     <option value="" hidden>Selecciona</option>
@@ -340,9 +341,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!--    Rubro     3   -->
                 <label for="escucha_cb">
-                    <h6>Escucha activa</h6>
+                    <h6>Identifica al receptor</h6>
                 </label>
-                <input type="text" id="pon3" name="pon3" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
+                <input type="text" id="pon3" name="pon3" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
                 <select id="cumple3_1" name="cumple3_1" class="calidad-form-control">
                     <option value="" hidden>Selecciona</option>
@@ -368,9 +369,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!--    Rubro     4   -->
                 <label for="informacion_cb">
-                    <h6>Sentido de urgencia e información</h6>
+                    <h6>Sondeo y captura</h6>
                 </label>
-                <input type="text" id="pon4" name="pon4" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
+                <input type="text" id="pon4" name="pon4" class="calidad-form-control" placeholder="" value="15" readonly style="text-align: center;">
 
                 <select id="cumple4_1" name="cumple4_1" class="calidad-form-control">
                     <option value="" hidden>Selecciona</option>
@@ -396,9 +397,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!--    Rubro     5   -->
                 <label for="cortesia_cb">
-                    <h6>Pregunta de cortesía</h6>
+                    <h6>Escucha activa</h6>
                 </label>
-                <input type="text" id="pon5" name="pon5" class="calidad-form-control" placeholder="" value="6" readonly style="text-align: center;">
+                <input type="text" id="pon5" name="pon5" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                 <select id="cumple5_1" name="cumple5_1" class="calidad-form-control">
                     <option value="" hidden>Selecciona</option>
@@ -424,9 +425,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!--    Rubro     6   -->
                 <label for="sondeo_cb">
-                    <h6>Sondeo objetivo</h6>
+                    <h6>Brinda información correcta y completa</h6>
                 </label>
-                <input type="text" id="pon6" name="pon6" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
+                <input type="text" id="pon6" name="pon6" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
 
                 <select id="cumple6_1" name="cumple6_1" class="calidad-form-control">
                     <option value="" hidden>Selecciona</option>
@@ -452,7 +453,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!--    Rubro     7   -->
                 <label for="objeciones_cb">
-                    <h6>Objeciones</h6>
+                    <h6>Manejo de objeciónes</h6>
                 </label>
                 <input type="text" id="pon7" name="pon7" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
@@ -480,9 +481,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!--    Rubro     8   -->
                 <label for="script_cb">
-                    <h6>SCRIPT</h6>
+                    <h6>Pregunta de cortesía</h6>
                 </label>
-                <input type="text" id="pon8" name="pon8" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
+                <input type="text" id="pon8" name="pon8" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
                 <select id="cumple8_1" name="cumple8_1" class="calidad-form-control">
                     <option value="" hidden>Selecciona</option>
@@ -505,31 +506,6 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     <option value="NO">NO</option>
                 </select>
 
-                <!--    Rubro     9   -->
-                <label for="cierres_cb">
-                    <h6>Invitación a inspeccionar</h6>
-                </label>
-                <input type="text" id="pon9" name="pon9" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
-                <select id="cumple9_1" name="cumple9_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple9_2" name="cumple9_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple9_3" name="cumple9_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple9_4" name="cumple9_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
             </div>
         </div>
 
@@ -549,31 +525,31 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!-- Rubros de Impacto Negocio -->
                 <label for="rubro_c" style="margin-bottom: 30px;">
-                    <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
+                    <h6 style="color:rgb(0, 106, 52);">Rubro</h6>
                 </label>
                 <label for="ponderacion_c">
-                    <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
+                    <h6 style="color:rgb(0, 106, 52);">Ponderación</h6>
                 </label>
                 <label for="llamada1_c">
-                    <h6 style="color:rgb(30, 9, 150);">llamada 1</h6>
+                    <h6 style="color:rgb(0, 106, 52);">llamada 1</h6>
                 </label>
                 <label for="llamada2_c">
-                    <h6 style="color:rgb(63, 9, 150);">llamada 2</h6>
+                    <h6 style="color:rgb(0, 106, 52);">llamada 2</h6>
                 </label>
                 <label for="llamada3_c">
-                    <h6 style="color:rgb(58, 9, 150);">llamada 3</h6>
+                    <h6 style="color:rgb(0, 106, 52);">llamada 3</h6>
                 </label>
                 <label for="llamada4_c">
-                    <h6 style="color:rgb(11, 9, 150);">llamada 4</h6>
+                    <h6 style="color:rgb(0, 106, 52);">llamada 4</h6>
                 </label>
 
                 <!-- Rubros con ponderaciones -->
 
                 <!--    Rubro     10   -->
                 <label for="tutea_c">
-                    <h6>Tutea / Personaliza</h6>
+                    <h6>Personalización</h6>
                 </label>
-                <input type="text" id="pon10" name="pon10" class="calidad-form-control" value="6" readonly style="text-align: center;">
+                <input type="text" id="pon10" name="pon10" class="calidad-form-control" value="5" readonly style="text-align: center;">
                 <select id="cumple10_1" name="cumple10_1" class="calidad-form-control">
                     <option value="" hidden>Selecciona</option>
                     <option value="SI">SI</option>
@@ -597,7 +573,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!--    Rubro     11   -->
                 <label for="ccc_cb">
-                    <h6>Empatía y cortesía</h6>
+                    <h6>Etiqueta telefónica</h6>
                 </label>
                 <input type="text" id="pon11" name="pon11" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
@@ -625,9 +601,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!--    Rubro     12   -->
                 <label for="etiqueta_cb">
-                    <h6>Etiqueta telefónica</h6>
+                    <h6>Uso del mute y tiempos de espera</h6>
                 </label>
-                <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
+                <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                 <select id="cumple12_1" name="cumple12_1" class="calidad-form-control">
                     <option value="" hidden>Selecciona</option>
@@ -653,9 +629,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!--    Rubro     13   -->
                 <label for="contrllamada_cb">
-                    <h6>Control de la llamada</h6>
+                    <h6>Control de la llamada (tono y ritmo de voz)</h6>
                 </label>
-                <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
+                <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                 <select id="cumple13_1" name="cumple13_1" class="calidad-form-control">
                     <option value="" hidden>Selecciona</option>
@@ -680,9 +656,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!--    Rubro     14   -->
                 <label for="negativas_cb">
-                    <h6>Frases negativas</h6>
+                    <h6>Cortesía y empatía</h6>
                 </label>
-                <input type="text" id="pon14" name="pon14" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
+                <input type="text" id="pon14" name="pon14" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
                 <select id="cumple14_1" name="cumple14_1" class="calidad-form-control">
                     <option value="" hidden>Selecciona</option>
@@ -722,22 +698,22 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 <!-- Rubros de Error Crítico -->
                 <label for="rubro_c" style="margin-bottom: 30px;">
-                    <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
+                    <h6 style="color:rgb(0, 106, 52);">Rubro</h6>
                 </label>
                 <label for="ponderacion_c">
-                    <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
+                    <h6 style="color:rgb(0, 106, 52);">Ponderación</h6>
                 </label>
                 <label for="llamada1_c">
-                    <h6 style="color:rgb(30, 9, 150);">llamada 1</h6>
+                    <h6 style="color:rgb(0, 106, 52);">llamada 1</h6>
                 </label>
                 <label for="llamada2_c">
-                    <h6 style="color:rgb(63, 9, 150);">llamada 2</h6>
+                    <h6 style="color:rgb(0, 106, 52);">llamada 2</h6>
                 </label>
                 <label for="llamada3_c">
-                    <h6 style="color:rgb(58, 9, 150);">llamada 3</h6>
+                    <h6 style="color:rgb(0, 106, 52);">llamada 3</h6>
                 </label>
                 <label for="llamada4_c">
-                    <h6 style="color:rgb(11, 9, 150);">llamada 4</h6>
+                    <h6 style="color:rgb(0, 106, 52);">llamada 4</h6>
                 </label>
 
                 <!-- Rubros con ponderaciones -->
@@ -824,7 +800,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <textarea class="form-control" id="compromisoTextarea" name="compromisoTextarea" rows="5" style="margin-bottom: 3px;"></textarea>-->
         </div>
 
-        <div class="button-container-bbva">
+        <div class="button-container-hdi">
+            <button type="button" class="btn-llamadas" id="btnllamar"> <i class="fas fa-file-excel"></i> </button>
+            <!-- <button type="button" class="btn custom-submit-button-c" id="btnSubirBBVA">Subir LLamada</button>-->
             <button type="button" class="btn-limpiar" id="btnlimpiar">Limpiar Formulario </button>
             <button type="button" class="btn-enviar" id="btnEnviar">Enviar</button>
         </div>
@@ -1114,129 +1092,141 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             return true;
         }
 
-        const botonesEnviar = document.querySelectorAll('.btn-enviar');
+        // Función para enviar evaluación como notificación
+        document.getElementById('btnEnviar').addEventListener('click', function() {
+            console.log("Botón clickeado");
 
-        botonesEnviar.forEach(boton => {
-            boton.addEventListener('click', function() {
-                console.log("Botón clickeado");
+            const formulario = document.getElementById('miFormulariobbva');
+            if (!formulario) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se encontró el formulario.',
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'Cerrar'
+                });
+                return;
+            }
 
-                const formulario = document.getElementById('miFormulariobbva');
-                if (!formulario) {
+            // Primero verificar si las llamadas han sido subidas
+            if (!verificarLlamadasSubidas()) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'llamadas faltantes',
+                    html: 'Asegurate de subir tu archivo precionando el boton "A calificar" y sube las llamadas por individual precionanado el icono 📞',
+                    confirmButtonColor: '#3085d6',
+                });
+                return;
+            }
+
+            // Validar campos antes de continuar
+            if (!validarCamposRequeridos()) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Campos incompletos',
+                    text: 'Por favor complete todos los campos requeridos marcados en rojo.',
+                    confirmButtonColor: '#3085d6',
+                });
+                return;
+            }
+
+            const formData = new FormData(formulario);
+            const datosFormulario = {};
+
+            // Guardar los datos del formulario en un objeto
+            formData.forEach((value, key) => {
+                datosFormulario[key] = value;
+            });
+
+            // Capturar información adicional
+            datosFormulario.notaCalidad = document.getElementById('nota_bbva')?.innerText || '';
+            datosFormulario.performanceImg = document.getElementById('performancebbva_img')?.src || '';
+            datosFormulario.calificacion1 = document.getElementById('1')?.innerText || '';
+            datosFormulario.calificacion2 = document.getElementById('2')?.innerText || '';
+            datosFormulario.calificacion3 = document.getElementById('3')?.innerText || '';
+            datosFormulario.calificacion4 = document.getElementById('4')?.innerText || '';
+            datosFormulario.notaCalidad = document.getElementById('nota_bbva')?.innerText || '';
+            datosFormulario.performanceImg = document.getElementById('performancebbva_img')?.src || '';
+            datosFormulario.usuarioActual = '<?php echo $rol; ?>';
+            datosFormulario.operador = document.getElementById("nombre_cb").value;
+            datosFormulario.posicion = document.getElementById("posicion_cb").value;
+            datosFormulario.evaluador = document.getElementById("evaluador_cb").value;
+            // Agregar URLs de las 4 llamadas al formulario
+            datosFormulario.llamada1_url = llamadasSubidas[1]?.url || '';
+            datosFormulario.llamada2_url = llamadasSubidas[2]?.url || '';
+            datosFormulario.llamada3_url = llamadasSubidas[3]?.url || '';
+            datosFormulario.llamada4_url = llamadasSubidas[4]?.url || '';
+
+            // También puedes agregar los nombres de los archivos si lo necesitas
+            datosFormulario.llamada1_nombre = llamadasSubidas[1]?.nombre || '';
+            datosFormulario.llamada2_nombre = llamadasSubidas[2]?.nombre || '';
+            datosFormulario.llamada3_nombre = llamadasSubidas[3]?.nombre || '';
+            datosFormulario.llamada4_nombre = llamadasSubidas[4]?.nombre || '';
+
+
+            // Capturar las calificaciones, llamadas, duraciones, fechas y horas de las 4 llamadas
+            for (let i = 1; i <= 4; i++) {
+                datosFormulario[`llamada_${i}`] = document.getElementById(`llamada_${i}`)?.value || '';
+                datosFormulario[`duracion_${i}`] = document.getElementById(`duracion_${i}`)?.value || '';
+                datosFormulario[`fecha_llamada_${i}`] = document.getElementById(`fecha_llamada_${i}`)?.value || '';
+                datosFormulario[`hora_llamada_${i}`] = document.getElementById(`hora_llamada_${i}`)?.value || '';
+            }
+
+            // Capturar todos los valores cumpleX_Y
+            for (let i = 1; i <= 16; i++) {
+                for (let j = 1; j <= 4; j++) {
+                    datosFormulario[`cumple${i}_${j}`] = document.getElementById(`cumple${i}_${j}`)?.value || '';
+                }
+            }
+
+            // Datos adicionales
+            datosFormulario.fortalezas = document.getElementById("fortalezas").value || 'Sin informacion';
+            datosFormulario.oportunidades = document.getElementById("oportunidades").value || 'Sin informacion';
+            datosFormulario.comentarios_cb = document.getElementById("comentariosTextarea").value || 'Sin informacion';
+
+            // Validación de usuario
+            if (!datosFormulario.usuarioActual) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error de sesión',
+                    text: 'No se pudo identificar al usuario actual. Inicia sesión nuevamente.',
+                });
+                return;
+            }
+
+            // Datos adicionales
+            datosFormulario.fecha = new Date().toISOString().split('T')[0];
+            datosFormulario.leido = false;
+            datosFormulario.campana = "HDI";
+            datosFormulario.mensaje = `Tienes una nueva evaluación de Calidad HDI ${datosFormulario.usuarioActual}`;
+            datosFormulario.tipo = "HDI";
+            console.log("Enviando datos a Firebase:", datosFormulario);
+
+            // Enviar notificación
+            const nuevaNotificacion = push(notificacionesRef);
+            set(nuevaNotificacion, datosFormulario, {
+                    notaCalidad: datosFormulario.notaCalidad
+                })
+                .then(() => {
+                    console.log("Notificación enviada correctamente.");
+                    Swal.fire({
+                        icon: 'success',
+                        title: ' Evaluación Enviada !! ✅ ',
+                        showConfirmButton: false,
+                        timer: 1200
+                    }).then(() => {
+                        formulario.reset(); // Limpiar el formulario después de enviar
+                        location.reload(true); // Recargar la página completamente (desde el servidor)
+                    });
+                }).catch((error) => {
+                    console.error("Error al enviar la notificación:", error);
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'No se encontró el formulario.',
-                        confirmButtonColor: '#d33',
-                        confirmButtonText: 'Cerrar'
+                        text: 'Hubo un error al enviar la evaluación. Inténtalo de nuevo.',
+                        confirmButtonText: false,
                     });
-                    return;
-                }
-
-                if (!verificarLlamadasSubidas()) {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'llamadas faltantes',
-                        html: 'Asegúrate de subir tu archivo presionando el botón "A calificar" y sube las llamadas individualmente presionando el ícono 📞',
-                        confirmButtonColor: '#3085d6',
-                    });
-                    return;
-                }
-
-                if (!validarCamposRequeridos()) {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Campos incompletos',
-                        text: 'Por favor completa todos los campos requeridos marcados en rojo.',
-                        confirmButtonColor: '#3085d6',
-                    });
-                    return;
-                }
-
-                const formData = new FormData(formulario);
-                const datosFormulario = {};
-
-                formData.forEach((value, key) => {
-                    datosFormulario[key] = value;
                 });
-
-                datosFormulario.notaCalidad = document.getElementById('nota_bbva')?.innerText || '';
-                datosFormulario.performanceImg = document.getElementById('performancebbva_img')?.src || '';
-                datosFormulario.calificacion1 = document.getElementById('1')?.innerText || '';
-                datosFormulario.calificacion2 = document.getElementById('2')?.innerText || '';
-                datosFormulario.calificacion3 = document.getElementById('3')?.innerText || '';
-                datosFormulario.calificacion4 = document.getElementById('4')?.innerText || '';
-                datosFormulario.usuarioActual = '<?php echo $rol; ?>';
-                datosFormulario.operador = document.getElementById("nombre_cb").value;
-                datosFormulario.posicion = document.getElementById("posicion_cb").value;
-                datosFormulario.evaluador = document.getElementById("evaluador_cb").value;
-
-                datosFormulario.llamada1_url = llamadasSubidas[1]?.url || '';
-                datosFormulario.llamada2_url = llamadasSubidas[2]?.url || '';
-                datosFormulario.llamada3_url = llamadasSubidas[3]?.url || '';
-                datosFormulario.llamada4_url = llamadasSubidas[4]?.url || '';
-
-                datosFormulario.llamada1_nombre = llamadasSubidas[1]?.nombre || '';
-                datosFormulario.llamada2_nombre = llamadasSubidas[2]?.nombre || '';
-                datosFormulario.llamada3_nombre = llamadasSubidas[3]?.nombre || '';
-                datosFormulario.llamada4_nombre = llamadasSubidas[4]?.nombre || '';
-
-                for (let i = 1; i <= 4; i++) {
-                    datosFormulario[`llamada_${i}`] = document.getElementById(`llamada_${i}`)?.value || '';
-                    datosFormulario[`duracion_${i}`] = document.getElementById(`duracion_${i}`)?.value || '';
-                    datosFormulario[`fecha_llamada_${i}`] = document.getElementById(`fecha_llamada_${i}`)?.value || '';
-                    datosFormulario[`hora_llamada_${i}`] = document.getElementById(`hora_llamada_${i}`)?.value || '';
-                }
-
-                for (let i = 1; i <= 16; i++) {
-                    for (let j = 1; j <= 4; j++) {
-                        datosFormulario[`cumple${i}_${j}`] = document.getElementById(`cumple${i}_${j}`)?.value || '';
-                    }
-                }
-
-                datosFormulario.fortalezas = document.getElementById("fortalezas").value || 'Sin informacion';
-                datosFormulario.oportunidades = document.getElementById("oportunidades").value || 'Sin informacion';
-                datosFormulario.comentarios_cb = document.getElementById("comentariosTextarea").value || 'Sin informacion';
-
-                if (!datosFormulario.usuarioActual) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error de sesión',
-                        text: 'No se pudo identificar al usuario actual. Inicia sesión nuevamente.',
-                    });
-                    return;
-                }
-
-                datosFormulario.fecha = new Date().toISOString().split('T')[0];
-                datosFormulario.leido = false;
-                datosFormulario.campana = "BBVA";
-                datosFormulario.tipo = "BBVA";
-                datosFormulario.mensaje = `Tienes una nueva evaluación de Calidad BBVA ${datosFormulario.usuarioActual}`;
-
-                console.log("Enviando datos a Firebase:", datosFormulario);
-
-                const nuevaNotificacion = push(notificacionesRef);
-                set(nuevaNotificacion, datosFormulario)
-                    .then(() => {
-                        console.log("Notificación enviada correctamente.");
-                        Swal.fire({
-                            icon: 'success',
-                            title: ' Evaluación Enviada !! ✅ ',
-                            showConfirmButton: false,
-                            timer: 1200
-                        }).then(() => {
-                            formulario.reset();
-                            location.reload(true);
-                        });
-                    }).catch((error) => {
-                        console.error("Error al enviar la notificación:", error);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'Hubo un error al enviar la evaluación. Inténtalo de nuevo.',
-                            confirmButtonText: false,
-                        });
-                    });
-            });
         });
     </script>
 
@@ -1280,7 +1270,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 formData.append('excelFile', file);
                 formData.append('usuario', usuarioSeleccionado);
 
-                fetch('lector_excelbbva.php', {
+                fetch('lector_excelhdi.php', {
                         method: 'POST',
                         body: formData
                     })
@@ -1425,7 +1415,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 try {
                     // Enviar archivo al servidor
-                    const response = await fetch('proc/insertLlamadaBBVA.php', {
+                    const response = await fetch('proc/insertLlamadaHDI.php', {
                         method: 'POST',
                         body: formData
                     });
@@ -1707,25 +1697,21 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
     <!--SCRIPT QUE LIMPIA EL FORM-->
     <script>
-        const botonesLimpiar = document.querySelectorAll(".btn-limpiar");
-
-        botonesLimpiar.forEach(boton => {
-            boton.addEventListener("click", function() {
-                Swal.fire({
-                    icon: "success",
-                    title: "Formulario limpiado",
-                    text: "Los campos se han restablecido.",
-                    timer: 2000,
-                    showConfirmButton: false
-                }).then(() => {
-                    location.reload(true);
-                });
+        document.getElementById("btnlimpiar").addEventListener("click", function() {
+            Swal.fire({
+                icon: "success",
+                title: "Formulario limpiado",
+                text: "Los campos se han restablecido.",
+                timer: 2000, // 2 segundos
+                showConfirmButton: false
+            }).then(() => {
+                location.reload(true); // Recargar la página completamente (desde el servidor)
             });
         });
     </script>
 
     <!--SCRIPT getOperadoresBBVA.js-->
-    <script src="js/getOperadoresBBVA.js"></script>
+    <script src="js/getOperadoresHDI.js"></script>
     <!-- Cargar SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.3/dist/sweetalert2.all.min.js"></script>
 

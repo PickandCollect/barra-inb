@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 }
 
 try {
-    $query = "SELECT nombre FROM Usuario WHERE tipo = 'SUPERVISOR' AND usuario != 'root'";
+    $query = "SELECT nombre FROM Usuario WHERE tipo = 'Supervisor' AND usuario != 'root'";
     $stmt = $conexion->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();

@@ -14,17 +14,17 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     })
     .then((data) => {
       if (data.success) {
-        alert(data.message);
-        // Redirigir dependiendo del rol
-        if (data.rol === "SUPERVISOR") {
-          window.location.href = "datos.php"; // Redirigir a la página del administrador
+        // 🚨 Eliminamos el alert() en éxito para que no pida confirmación
+        // Redirigir dependiendo del rol sin mostrar mensaje
+        if (data.rol === "Supervisor") {
+          window.location.href = "datos.php";
         } else if (data.rol === "asegurado") {
-          window.location.href = "asegurado.php"; // Redirigir a la página del asegurado
+          window.location.href = "asegurado.php";
         } else {
-          window.location.href = "datos.php"; // Redirigir a la página principal o genérica
+          window.location.href = "datos.php";
         }
       } else {
-        alert(data.message); // Mostrar mensaje de error
+        alert(data.message); // ✅ Mantenemos el alert solo en errores
       }
     })
     .catch((error) => {

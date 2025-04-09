@@ -46,17 +46,24 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
             <div id="content">
                 <?php include 'topbar.php'; ?>
 
-                <?php if ($rol == 'SUPERVISOR' || $rol == 'INTEGRACION'): ?>
-                    <div class="container-fluid">
-                        <?php include 'calidad_parciales.php'; ?>
-                    </div>
-                <?php endif; ?>
+                <div class="container-fluid">
+                    <?php
+                    // Para Sabina y Karen
+                    if ($nombreUsuario == 'Sabina Velásquez' || $nombreUsuario == 'Karen Correa Alcantara') {
+                        include 'calidad_parciales.php';
+                    }
+                    // Para Alberto Reyes
+                    elseif ($nombreUsuario == 'Alberto Reyes') {
+                        $modulo = isset($_GET['modulo']) ? $_GET['modulo'] : 'bbva'; // Valor por defecto
 
-                <?php if ($rol == 'SUPERVISOR' || $rol == 'BBVA'): ?>
-                    <div class="container-fluid">
-                        <?php include 'calidad_bbva.php'; ?>
-                    </div>
-                <?php endif; ?>
+                        if ($modulo == 'hdi') {
+                            include 'calidad_hdi.php';
+                        } else {
+                            include 'calidad_bbva.php';
+                        }
+                    }
+                    ?>
+                </div>
 
                 <?php include 'footer.php'; ?>
             </div>
@@ -66,7 +73,7 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
                 <i class="fas fa-angle-up"></i>
             </a>
         </div>
-        
+
         <script src="js/firma.js"></script>
         <script src="js/firma2.js"></script>
         <!-- Bootstrap core JavaScript (CDN)-->

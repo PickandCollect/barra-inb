@@ -6,8 +6,8 @@
             align-items: center;
             padding: 20px 30px;
             background-color: #fff;
-            border-left: 5px solid #276096;
-            border-bottom: 5px solid #276096;
+            border-left: 5px solid #006a34;
+            border-bottom: 5px solid #006a34;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
             border-radius: 15px;
@@ -16,7 +16,7 @@
         .header .title {
             font-size: 45px;
             font-weight: 700;
-            color: #276096;
+            color: #006a34;
             margin-left: 10px;
         }
 
@@ -52,11 +52,10 @@
             background-color: #f8f9fc;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            border-left: 5px solid #276096;
-            border-bottom: 5px solid #276096;
+            border-left: 5px solid #006a34;
+            border-bottom: 5px solid #006a34;
             padding: 20px; /* Padding explícito en lugar de 'auto' */
             box-sizing: border-box; /* Incluye padding en el ancho */
-            align-items: center;
         }
 
         /* Bloques de datos individuales */
@@ -68,11 +67,10 @@
 
         /* Estilos para etiquetas */
         .datos_us label h6 {
-            color: #276096;
+            color: #006a34;
             font-weight: 600;
             font-size: 16px;
             margin-bottom: 10px;
-            width: 100%;
         }
 
         /* Select personalizado */
@@ -90,7 +88,7 @@
         }
 
         .custom-form-control:focus {
-            border-color: #276096;
+            border-color: #006a34;
             outline: none;
             box-shadow: 0 0 0 2px rgba(39, 96, 150, 0.2);
         }
@@ -105,8 +103,8 @@
             background-color: #f8f9fc;
             border-radius: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid #276096;
-            border-bottom: 5px solid #276096;
+            border-left: 5px solid #006a34;
+            border-bottom: 5px solid #006a34;
             margin-top: 20px;
         }
 
@@ -129,7 +127,7 @@
 
         /* Título de semana */
         .califica-item h6 {
-            color: #276096;
+            color: #006a34;
             font-weight: bold;
             font-size: 16px;
             margin-bottom: 10px;
@@ -160,7 +158,7 @@
             padding: 30px;
             background-color: #f8f9fc;
             border: 1px solid #ddd;
-            border-left: 5px solid #276096;
+            border-left: 5px solid #006a34;
             border-radius: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
             text-align: center;
@@ -184,7 +182,7 @@
             margin-bottom: 10px;
             font-size: 20px;
             font-weight: 700;
-            color: #276096;
+            color: #006a34;
         }
 
         /* Círculo de nota BBVA */
@@ -198,7 +196,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            color: #276096;
+            color: #006a34;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
@@ -215,7 +213,7 @@
             margin-bottom: 20px;
             font-size: 20px;
             font-weight: 700;
-            color: #276096;
+            color: #006a34;
         }
 
         /*####################################################*/
@@ -240,9 +238,9 @@
             /* Centrar el contenido */
             padding: 20px;
             /* Espaciado interno */
-            border-left: 5px solid #276096;
+            border-left: 5px solid #006a34;
             /* Borde izquierdo */
-            border-bottom: 5px solid #276096;
+            border-bottom: 5px solid #006a34;
             /* Borde inferior */
         }
 
@@ -258,7 +256,7 @@
 
         /* Estilos para las etiquetas */
         .llamadas label h6 {
-            color: #276096;
+            color: #006a34;
             font-weight: bold;
             font-size: 16px;
             /* Tamaño de fuente */
@@ -375,7 +373,7 @@
 
         /* Estilos para los encabezados h3 dentro de la sección del formulario */
         .custom-form-section-editar h3 {
-            color: #276096;
+            color: #006a34;
             /* Color del texto */
             margin-bottom: 15px;
             /* Margen inferior */
@@ -412,10 +410,10 @@
         .custom-card-border-editar {
             background-color: #F3F3F3;
             /* Color de fondo */
-            border-left: 5px solid #276096;
+            border-left: 5px solid #006a34;
 
             /* Borde izquierdo */
-            border-bottom: 5px solid #276096;
+            border-bottom: 5px solid #006a34;
             /* Borde inferior */
         }
 
@@ -424,7 +422,7 @@
         .container_impacto {
             margin: 30px 0 30px 30px;
             /* Margen superior, inferior e izquierdo */
-            color: #276096;
+            color: #006a34;
             /* Color del texto */
             font-weight: bold;
             /* Negrita */
@@ -656,7 +654,7 @@
         .fortalezas-textarea:focus,
         .oportunidades-textarea:focus {
             outline: none;
-            border-color: #276096;
+            border-color: #006a34;
         }
 
         /*##############################*/
@@ -672,13 +670,13 @@
             border-radius: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
-            border-left: 5px solid #276096;
-            border-bottom: 5px solid #276096;
+            border-left: 5px solid #006a34;
+            border-bottom: 5px solid #006a34;
             margin-top: -3px;
         }
 
         .container_com h6 {
-            color: #276096;
+            color: #006a34;
             font-weight: bold;
             font-size: 16px;
             margin-bottom: 15px;
@@ -698,7 +696,7 @@
         }
 
         .container_com .form-control:focus {
-            border-color: #276096;
+            border-color: #006a34;
             box-shadow: 0 0 0 3px rgba(39, 96, 150, 0.2);
             outline: none;
         }
@@ -716,11 +714,11 @@
             height: 18px;
             margin-right: 10px;
             cursor: pointer;
-            accent-color: #276096;
+            accent-color: #006a34;
         }
 
         .container_com .form-check-label {
-            color: #276096;
+            color: #006a34;
             font-weight: 600;
             cursor: pointer;
             transition: color 0.2s ease;
