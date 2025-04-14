@@ -1643,17 +1643,17 @@
         },
         {
             "name": "kreait/firebase-php",
-            "version": "7.16.1",
-            "version_normalized": "7.16.1.0",
+            "version": "7.18.0",
+            "version_normalized": "7.18.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kreait/firebase-php.git",
-                "reference": "81c35806ce57eed86d5dc865f756974a23e0e6a3"
+                "reference": "f43bc2509721ae2bff77f5232e5f56225440393b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kreait/firebase-php/zipball/81c35806ce57eed86d5dc865f756974a23e0e6a3",
-                "reference": "81c35806ce57eed86d5dc865f756974a23e0e6a3",
+                "url": "https://api.github.com/repos/kreait/firebase-php/zipball/f43bc2509721ae2bff77f5232e5f56225440393b",
+                "reference": "f43bc2509721ae2bff77f5232e5f56225440393b",
                 "shasum": ""
             },
             "require": {
@@ -1683,8 +1683,8 @@
                 "psr/log": "^1.1|^2.0|^3.0.2"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.65.0",
                 "google/cloud-firestore": "^1.47.2",
+                "php-cs-fixer/shim": "^3.68.5",
                 "phpstan/extension-installer": "^1.4.3",
                 "phpstan/phpstan": "^2.0.4",
                 "phpstan/phpstan-deprecation-rules": "^2.0.1",
@@ -1698,7 +1698,7 @@
             "suggest": {
                 "google/cloud-firestore": "^1.0 to use the Firestore component"
             },
-            "time": "2025-01-20T10:10:11+00:00",
+            "time": "2025-03-08T22:54:18+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {

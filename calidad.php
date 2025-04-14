@@ -54,13 +54,7 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
                     }
                     // Para Alberto Reyes
                     elseif ($nombreUsuario == 'Alberto Reyes') {
-                        $modulo = isset($_GET['modulo']) ? $_GET['modulo'] : 'bbva'; // Valor por defecto
-
-                        if ($modulo == 'hdi') {
-                            include 'calidad_hdi.php';
-                        } else {
-                            include 'calidad_bbva.php';
-                        }
+                        include 'moduloCalidadBBVA';
                     }
                     ?>
                 </div>

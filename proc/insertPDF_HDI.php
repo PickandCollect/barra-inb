@@ -26,8 +26,8 @@ $region = 'us-east-2'; // Región de tu bucket S3
 
 try {
     // Validar que los campos requeridos existen
-    if (!isset($_POST['nombre_cb'])) {
-        throw new Exception('El campo nombre_cb es requerido');
+    if (!isset($_POST['nombre_ch'])) {
+        throw new Exception('El campo nombre_ch es requerido');
     }
 
     if (!isset($_FILES['archivo'])) {
@@ -41,7 +41,7 @@ try {
     ]);
 
     // Sanitizar el nombre del operador
-    $operador = preg_replace('/[^a-zA-Z0-9_-]/', '', str_replace(' ', '_', trim($_POST['nombre_cb'])));
+    $operador = preg_replace('/[^a-zA-Z0-9_-]/', '', str_replace(' ', '_', trim($_POST['nombre_ch'])));
 
     if (empty($operador)) {
         throw new Exception('El nombre del operador no es válido');

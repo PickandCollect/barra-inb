@@ -64,6 +64,13 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                         <img src="img/logos2.gif" alt="Logo de la página">
                     </div>
                 </div>
+
+                <div class="container_select_fecha">
+                    <h3>Selecciona un rango de fechas</h3>
+                    <input type="text" id="filtroFecha2" placeholder="Selecciona rango de fechas" readonly>
+                </div>
+
+
                 <!-- Content Row -->
                 <div class="row">
                     <div class="card-container">
@@ -138,6 +145,68 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                                         </div>
 
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección de Visualización de PDFs -->
+                <div class="pdf-viewer-section">
+                    <h2>Evaluaciones PDF por Operador</h2>
+
+                    <div class="filters">
+                        <div class="form-group">
+                            <label for="pdfOperadorSelect">Operador:</label>
+                            <select id="pdfOperadorSelect" class="form-control select2">
+                                <option value="">-- Seleccione un operador --</option>
+                                <!-- Se llenará dinámicamente con JavaScript -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pdfFechaSelect">Filtrar por fecha:</label>
+                            <input type="text" id="pdfFechaSelect" class="form-control" placeholder="Seleccione rango de fechas">
+                        </div>
+
+                        <button id="btnLimpiarFiltrosPDF" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Limpiar filtros
+                        </button>
+                    </div>
+
+                    <div class="pdf-results">
+                        <div id="pdfLoading" class="loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Cargando evaluaciones...
+                        </div>
+
+                        <div id="pdfEmptyMessage" class="empty-message" style="display: none;">
+                            No se encontraron evaluaciones con los filtros aplicados
+                        </div>
+
+                        <div id="pdfListContainer" class="pdf-list-container">
+                            <h3>Evaluaciones encontradas</h3>
+                            <div id="pdfList" class="pdf-list"></div>
+
+                            <!-- Paginación -->
+                            <div class="pagination">
+                                <span id="pdfPaginationInfo"></span>
+                                <div class="pagination-controls">
+                                    <button id="pdfPrevPage" class="btn btn-sm btn-outline-primary" disabled>
+                                        <i class="fas fa-chevron-left"></i> Anterior
+                                    </button>
+                                    <button id="pdfNextPage" class="btn btn-sm btn-outline-primary" disabled>
+                                        Siguiente <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="pdfViewerContainer" class="pdf-viewer-container">
+                            <h3>Visualizador de PDF</h3>
+                            <div id="pdfViewer" class="pdf-viewer">
+                                <div class="pdf-placeholder">
+                                    <i class="far fa-file-pdf"></i>
+                                    <p>Seleccione una evaluación para visualizarla</p>
                                 </div>
                             </div>
                         </div>
@@ -301,6 +370,8 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
             </div>
         </div>
 
+        <script src="get_pdf.js"></script>
+
         <!-- Scripts en el orden CORRECTO -->
         <!-- 1. jQuery primero -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -343,6 +414,7 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
         <script src="js/firma.js"></script>
         <script src="js/firma2.js"></script>
 
+
         <!--SCRIPT de métricas - Promedio semanal con nombres (Permanente)-->
         <script>
             // Configuración de Firebase
@@ -373,63 +445,47 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                 // Campañas a excluir
                 const EXCLUDED_CAMPAIGNS = ['HDI Seguros', 'BBVA'];
 
-                // Fecha de inicio inicial (31 de marzo 2025)
-                const INITIAL_START_DATE = new Date(2025, 2, 31); // Meses 0-11 (marzo = 2)
+                // Variable para almacenar el rango de fechas seleccionado
+                let currentDateRange = null;
 
-                // Función para obtener el rango semanal actual (Lunes a Sábado)
-                function getWeeklyDateRange() {
-                    const now = new Date();
-                    const currentDay = now.getDay(); // 0=Domingo, 1=Lunes...
-                    const currentDate = now.getDate();
-
-                    // Calcular el último Lunes
-                    let monday = new Date(now);
-                    monday.setDate(currentDate - (currentDay === 0 ? 6 : currentDay - 1));
-                    monday.setHours(0, 0, 0, 0);
-
-                    // Calcular el próximo Sábado
-                    let saturday = new Date(now);
-                    saturday.setDate(currentDate + (5 - (currentDay === 0 ? 6 : currentDay - 1)));
-                    saturday.setHours(23, 59, 59, 999);
-
-                    // Si estamos en Domingo, mostrar la semana pasada (Lunes a Sábado)
-                    if (currentDay === 0) {
-                        monday.setDate(monday.getDate() - 7);
-                        saturday.setDate(saturday.getDate() - 7);
+                // Inicializar Flatpickr para el selector de fechas
+                flatpickr("#filtroFecha2", {
+                    mode: "range",
+                    dateFormat: "Y-m-d",
+                    locale: "es",
+                    minDate: "2020-01-01",
+                    maxDate: new Date().fp_incr(365),
+                    allowInput: true,
+                    onOpen: function(selectedDates, dateStr, instance) {
+                        instance.set('locale', {
+                            firstDayOfWeek: 1,
+                            weekdays: {
+                                shorthand: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+                                longhand: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+                            },
+                            months: {
+                                shorthand: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                                longhand: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+                            },
+                            rangeSeparator: ' a ',
+                            weekAbbreviation: 'Sem',
+                            scrollTitle: 'Desplazar para incrementar',
+                            toggleTitle: 'Click para cambiar',
+                        });
+                    },
+                    onChange: function(selectedDates, dateStr, instance) {
+                        if (selectedDates.length === 2) {
+                            currentDateRange = {
+                                start: selectedDates[0],
+                                end: selectedDates[1]
+                            };
+                            console.log("Nuevo rango de fechas seleccionado:", currentDateRange);
+                            processOperatorAverages();
+                        }
                     }
+                });
 
-                    // Para la primera ejecución, asegurarnos de no comenzar antes de la fecha inicial
-                    if (monday < INITIAL_START_DATE) {
-                        monday = new Date(INITIAL_START_DATE);
-                    }
-                    if (saturday < INITIAL_START_DATE) {
-                        saturday = new Date(INITIAL_START_DATE.getTime() + 5 * 24 * 60 * 60 * 1000); // +5 días (Lunes a Sábado)
-                    }
-
-                    return {
-                        start: monday,
-                        end: saturday,
-                        nextReset: new Date(saturday.getTime() + 1) // Momento exacto del reinicio (1ms después del sábado)
-                    };
-                }
-
-                // Función para limpiar y reiniciar las métricas
-                function resetMetricsForNewWeek() {
-                    console.log("Reiniciando métricas para nueva semana...");
-
-                    $urgencia02.html('<div class="text-info small">Preparando nueva semana...</div>');
-                    $urgencia35.html('<div class="text-info small">Preparando nueva semana...</div>');
-                    $urgencia614.html('<div class="text-info small">Preparando nueva semana...</div>');
-
-                    $cardTexts.eq(0).html('<strong>0-74%</strong> - 0 operadores');
-                    $cardTexts.eq(1).html('<strong>75-89%</strong> - 0 operadores');
-                    $cardTexts.eq(2).html('<strong>90-100%</strong> - 0 operadores');
-
-                    // Reprocesar para la nueva semana
-                    setTimeout(processOperatorAverages, 100);
-                }
-
-                // Función mejorada para parsear fechas
+                // Función para parsear fechas
                 function parseCardDate(fecha) {
                     try {
                         if (!fecha) return null;
@@ -443,10 +499,6 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                         if (typeof fecha === 'string' && fecha.includes('-')) {
                             const parts = fecha.split('-');
                             if (parts.length === 3) {
-                                // Manejo especial para la fecha inicial
-                                if (parts[0] === "2025" && parts[1] === "03" && parts[2] === "31") {
-                                    return new Date(2025, 2, 31);
-                                }
                                 return new Date(parts[0], parts[1] - 1, parts[2]);
                             }
                         }
@@ -491,10 +543,17 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                 // Función principal para procesar los datos
                 async function processOperatorAverages() {
                     try {
-                        const dateRange = getWeeklyDateRange();
-                        console.log("Rango semanal actual:",
-                            dateRange.start.toLocaleDateString(), "a",
-                            dateRange.end.toLocaleDateString());
+                        if (!currentDateRange) {
+                            console.log("Esperando selección de rango de fechas...");
+                            $urgencia02.html('<div class="text-info small">Selecciona un rango de fechas</div>');
+                            $urgencia35.html('<div class="text-info small">Selecciona un rango de fechas</div>');
+                            $urgencia614.html('<div class="text-info small">Selecciona un rango de fechas</div>');
+                            return;
+                        }
+
+                        console.log("Procesando datos para rango:",
+                            currentDateRange.start.toLocaleDateString(), "a",
+                            currentDateRange.end.toLocaleDateString());
 
                         const evaluationsRef = db_cards.ref('notificaciones');
                         const snapshot = await evaluationsRef.once('value');
@@ -530,7 +589,7 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                                     }
 
                                     // Verificar rango de fecha
-                                    if (evalDate < dateRange.start || evalDate > dateRange.end) {
+                                    if (evalDate < currentDateRange.start || evalDate > currentDateRange.end) {
                                         outOfRange++;
                                         return;
                                     }
@@ -571,13 +630,13 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                         }
 
                         // Log de depuración
-                        console.log(`Resumen semanal:
-  - Total evaluaciones: ${totalEvaluations}
-  - Evaluaciones válidas: ${validEvaluations}
-  - Excluidas por campaña: ${excludedByCampaign}
-  - Fechas inválidas: ${invalidDates}
-  - Fuera de rango: ${outOfRange}
-  - Valores siniestro inválidos: ${invalidSiniestro}`);
+                        console.log(`Resumen para el rango seleccionado:
+                - Total evaluaciones: ${totalEvaluations}
+                - Evaluaciones válidas: ${validEvaluations}
+                - Excluidas por campaña: ${excludedByCampaign}
+                - Fechas inválidas: ${invalidDates}
+                - Fuera de rango: ${outOfRange}
+                - Valores siniestro inválidos: ${invalidSiniestro}`);
 
                         // Calcular promedios y clasificar operadores
                         const lowOperators = [];
@@ -607,15 +666,6 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                         // Mostrar resultados
                         updateCardElements(lowOperators, midOperators, highOperators);
 
-                        // Programar reinicio automático para el final de la semana (sábado 23:59:59)
-                        const now = new Date();
-                        const timeToReset = dateRange.nextReset.getTime() - now.getTime();
-
-                        if (timeToReset > 0) {
-                            console.log(`Próximo reinicio programado en ${(timeToReset/1000/60/60).toFixed(2)} horas`);
-                            setTimeout(resetMetricsForNewWeek, timeToReset);
-                        }
-
                     } catch (error) {
                         console.error("Error al procesar promedios:", error);
                         updateCardElements([], [], []);
@@ -626,7 +676,7 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                 // Función para crear la lista de operadores
                 function createOperatorList(operators) {
                     if (!operators || operators.length === 0) {
-                        return '<div class="text-muted small">No hay evaluaciones esta semana</div>';
+                        return '<div class="text-muted small">No hay evaluaciones en este rango</div>';
                     }
 
                     const items = operators.map(operator =>
@@ -663,171 +713,163 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                     const style = document.createElement('style');
                     style.id = 'dynamic-card-styles';
                     style.textContent = `
-        /* Contenedor de la lista dentro de la card */
-        .card-list-container {
-            max-height: 260px;
-            overflow-y: auto;
-            margin-top: 15px;
-            padding: 0 5px;
-            scrollbar-width: thin;
-            flex-grow: 1;
-        }
-        
-        /* Personalización de la barra de desplazamiento */
-        .card-list-container::-webkit-scrollbar {
-            width: 5px;
-        }
-        
-        .card-list-container::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 3px;
-        }
-        
-        /* Estilos para listas pequeñas */
-        .card-list-container ul.small {
-            font-size: 0.9rem;
-            margin: 0;
-            padding: 0;
-            list-style-type: none;
-        }
-        
-        .card-list-container ul.small li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            color: #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.2s ease;
-        }
-        
-        .card-list-container ul.small li:hover {
-            background-color: rgba(0, 0, 0, 0.02);
-        }
-        
-        /* Elementos de la lista */
-        .card-list-container ul.small li .operator-name {
-            flex-grow: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            padding-right: 15px;
-            font-weight: 500;
-        }
-        
-        .card-list-container ul.small li .percentage {
-            font-weight: 600;
-            color: inherit;
-            min-width: 60px;
-            text-align: right;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .card-list-container ul.small li .eval-count {
-            color: rgba(0, 0, 0, 0.5);
-            min-width: 50px;
-            text-align: right;
-            font-size: 0.8rem;
-            font-weight: 400;
-        }
-        
-        /* Estilos para los indicadores de urgencia - ICONO CENTRADO */
-        #urgencia-0-2, 
-        #urgencia-3-5, 
-        #urgencia-6-14 {
-            min-height: 50px;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin: 10px 0;
-            line-height: 1;
-            letter-spacing: -1px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        /* Estados y mensajes */
-        .no-evaluations {
-            color: rgba(0, 0, 0, 0.4);
-            font-style: italic;
-            padding: 15px 10px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        
-        .text-info {
-            color: #17a2b8;
-            text-align: center;
-            font-weight: 500;
-        }
-        
-        .text-danger {
-            color: #dc3545;
-            text-align: center;
-            font-weight: 500;
-        }
-        
-        /* Ajustes específicos para cards */
-        .card-content .card-list-container {
-            margin-top: 10px;
-            padding: 0 10px;
-        }
-        
-        .card-content .card-list-container ul.small li {
-            padding: 6px 0;
-        }
-        
-        /* Adaptación para responsive */
-        @media (max-width: 768px) {
-            .card-list-container {
-                max-height: 150px;
-            }
-            
-            .card-list-container ul.small li {
-                padding: 6px 0;
-            }
-            
-            #urgencia-0-2, 
-            #urgencia-3-5, 
-            #urgencia-6-14 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .card-list-container {
-                max-height: 120px;
-            }
-            
-            .card-list-container ul.small {
-                font-size: 0.85rem;
-            }
-            
-            .card-list-container ul.small li .eval-count {
-                min-width: 40px;
-            }
-        }
-    `;
+                /* Contenedor de la lista dentro de la card */
+                .card-list-container {
+                    max-height: 260px;
+                    overflow-y: auto;
+                    margin-top: 15px;
+                    padding: 0 5px;
+                    scrollbar-width: thin;
+                    flex-grow: 1;
+                }
+                
+                /* Personalización de la barra de desplazamiento */
+                .card-list-container::-webkit-scrollbar {
+                    width: 5px;
+                }
+                
+                .card-list-container::-webkit-scrollbar-thumb {
+                    background: rgba(0, 0, 0, 0.2);
+                    border-radius: 3px;
+                }
+                
+                /* Estilos para listas pequeñas */
+                .card-list-container ul.small {
+                    font-size: 0.9rem;
+                    margin: 0;
+                    padding: 0;
+                    list-style-type: none;
+                }
+                
+                .card-list-container ul.small li {
+                    padding: 8px 0;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                    color: #333;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    transition: background-color 0.2s ease;
+                }
+                
+                .card-list-container ul.small li:hover {
+                    background-color: rgba(0, 0, 0, 0.02);
+                }
+                
+                /* Elementos de la lista */
+                .card-list-container ul.small li .operator-name {
+                    flex-grow: 1;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    padding-right: 15px;
+                    font-weight: 500;
+                }
+                
+                .card-list-container ul.small li .percentage {
+                    font-weight: 600;
+                    color: inherit;
+                    min-width: 60px;
+                    text-align: right;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                }
+                
+                .card-list-container ul.small li .eval-count {
+                    color: rgba(0, 0, 0, 0.5);
+                    min-width: 50px;
+                    text-align: right;
+                    font-size: 0.8rem;
+                    font-weight: 400;
+                }
+                
+                /* Estilos para los indicadores de urgencia - ICONO CENTRADO */
+                #urgencia-0-2, 
+                #urgencia-3-5, 
+                #urgencia-6-14 {
+                    min-height: 50px;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    margin: 10px 0;
+                    line-height: 1;
+                    letter-spacing: -1px;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                /* Estados y mensajes */
+                .no-evaluations {
+                    color: rgba(0, 0, 0, 0.4);
+                    font-style: italic;
+                    padding: 15px 10px;
+                    text-align: center;
+                    font-size: 0.9rem;
+                }
+                
+                .text-info {
+                    color:rgb(58, 23, 184);
+                    text-align: center;
+                    font-weight: 500;
+                }
+                
+                .text-danger {
+                    color: #dc3545;
+                    text-align: center;
+                    font-weight: 500;
+                }
+                
+                /* Ajustes específicos para cards */
+                .card-content .card-list-container {
+                    margin-top: 10px;
+                    padding: 0 10px;
+                }
+                
+                .card-content .card-list-container ul.small li {
+                    padding: 6px 0;
+                }
+                
+                /* Adaptación para responsive */
+                @media (max-width: 768px) {
+                    .card-list-container {
+                        max-height: 150px;
+                    }
+                    
+                    .card-list-container ul.small li {
+                        padding: 6px 0;
+                    }
+                    
+                    #urgencia-0-2, 
+                    #urgencia-3-5, 
+                    #urgencia-6-14 {
+                        font-size: 2rem;
+                    }
+                }
+                
+                @media (max-width: 480px) {
+                    .card-list-container {
+                        max-height: 120px;
+                    }
+                    
+                    .card-list-container ul.small {
+                        font-size: 0.85rem;
+                    }
+                    
+                    .card-list-container ul.small li .eval-count {
+                        min-width: 40px;
+                    }
+                }
+            `;
                     document.head.appendChild(style);
                 }
+
                 // Inicialización
                 function initialize() {
                     addCardStyles();
 
-                    // Cargar datos iniciales
-                    processOperatorAverages();
-
-                    // Verificar cada hora si necesitamos actualizar (por si el usuario deja la página abierta)
-                    setInterval(processOperatorAverages, 3600000); // 1 hora
-
-                    // También verificar al cambiar de día
-                    setInterval(() => {
-                        const now = new Date();
-                        if (now.getHours() === 0 && now.getMinutes() === 0) { // Medianoche
-                            processOperatorAverages();
-                        }
-                    }, 60000); // 1 minuto
+                    // Mostrar mensaje inicial
+                    $urgencia02.html('<div class="text-info small">Selecciona un rango de fechas</div>');
+                    $urgencia35.html('<div class="text-info small">Selecciona un rango de fechas</div>');
+                    $urgencia614.html('<div class="text-info small">Selecciona un rango de fechas</div>');
                 }
 
                 initialize();
@@ -1580,7 +1622,6 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                 actualizarGraficos();
             });
         </script>
-
 
 </body>
 

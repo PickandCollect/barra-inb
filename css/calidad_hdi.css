@@ -139,7 +139,7 @@
     gap: 15px;
 }
 
-.container_notabbva {
+.container_notahdi {
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -152,7 +152,7 @@
 }
 
 /* Contenedor de nota BBVA - ahora en columna */
-.container_nota_bbva {
+.container_nota_hdi {
     display: flex;
     flex-direction: column; /* Cambiado a columna */
     align-items: flex-start; /* Alineación a la izquierda */
@@ -161,7 +161,7 @@
 }
 
 /* Título "Nota de calidad" arriba */
-.container_nota_bbva h4 {
+.container_nota_hdi h4 {
     color: #006a34;
     font-weight: 600;
     font-size: clamp(16px, 2vw, 18px);
@@ -171,7 +171,7 @@
 }
 
 /* Valor de la nota */
-#nota_bbva {
+#nota_hdi {
     font-size: clamp(20px, 2.5vw, 24px);
     font-weight: bold;
     padding: 8px 15px;
@@ -182,7 +182,7 @@
 }
 
 /* Contenedor de performance - ahora en columna */
-.container_performancebbva {
+.container_performancehdi {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -190,7 +190,7 @@
 }
 
 /* Título "Performance" arriba */
-.container_performancebbva h4 {
+.container_performancehdi h4 {
     color: #006a34;
     font-weight: 600;
     font-size: clamp(16px, 2vw, 18px);
@@ -200,7 +200,7 @@
 }
 
 /* Imagen de performance */
-#performancebbva_img {
+#performancehdi_img {
     width: 100%;
     max-width: 100%;
     height: auto;
@@ -647,7 +647,7 @@
       max-width: 100%;
 }
 /* Estilos para el contenedor principal */
-.container_notabbva {
+.container_notahdi {
     width: 100%; /* Ancho máximo */
     padding: 20px; /* Espaciado interno */
     background-color: #f8f9fc; /* Color de fondo */
@@ -660,21 +660,21 @@
 }
 
 /* Estilos para la etiqueta de la nota de calidad */
-.container_nota_bbva label h4 {
+.container_nota_hdi label h4 {
     color: #006a34; /* Color del texto */
     font-weight: bold; /* Negrita */
     margin-bottom: 0px; /* Margen inferior */
 }
 
 /* Contenedor de la nota de calidad */
-.container_nota_bbva {
+.container_nota_hdi {
     text-align: center; /* Centrar el contenido */
     margin: 0 auto; /* Centrar el contenedor */
     max-width: 100%; /* Ancho máximo */
 }
 
 /* Estilo para el valor de la nota de calidad */
-#nota_bbva {
+#nota_hdi {
     font-size: 65px; /* Tamaño grande */
     font-weight: bold; /* Texto en negrita */
     color: black; /* Color inicial */
@@ -703,7 +703,7 @@
 }
 
 /* Estilos para la sección de performance */
-.container_performancebbva h4 {
+.container_performancehdi h4 {
     max-width: 100%;
     text-align: center;
     font-size: 20px;
@@ -715,7 +715,7 @@
 
 
 /* Imagen dentro del bloque */
-#performancebbva_img {
+#performancehdi_img {
     width: 80%; /* Tamaño fijo para mantener consistencia */
     height: 80%; /* Altura fija para que todas se vean iguales */
     border-radius: 10px; /* Bordes redondeados */

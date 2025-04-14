@@ -11,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 }
 
 try {
-    // Filtrar solo OPERADORES bbva y excluir ROOT
-    $query = "SELECT nombre, tipo, jefe_directo FROM Usuario WHERE perfil = 'Operador' AND perfil != 'ROOT' AND campana = 'HDI seguros' ";
+    // Filtrar solo OPERADORES hdi y excluir ROOT
+    $query = "SELECT nombre, tipo, jefe_directo FROM Usuario WHERE perfil = 'Operador' AND perfil != 'ROOT' AND campana = 'HDI Seguros' ";
     $stmt = $conexion->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();

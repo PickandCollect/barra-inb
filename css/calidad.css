@@ -367,7 +367,7 @@
     text-align: center; /* Centrar el contenido */
     margin-bottom: 40px; /* Margen inferior */
     margin-top: 20px;
-    border-left: 5px solid #50b3e0; /* Borde izquierdo */
+    border-left: 5px solid #3a2fa1; /* Borde izquierdo */
 }
 /* Estilo base común para todos los botones */
 .button-container .btn {

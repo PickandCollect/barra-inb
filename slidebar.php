@@ -111,37 +111,31 @@ $nombreUsuario = $_SESSION['nombre_usuario'];
                         <span>Calidad</span>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="evaluacion.php">
+                        <i class="fa-solid fa-medal"></i>
+                        <span>Metricas</span>
+                    </a>
+                </li>
             <?php endif; ?>
+
+
 
             <?php if ($nombreUsuario == 'Alberto Reyes'): ?>
                 <!-- Nav Items para Alberto Reyes -->
                 <li class="nav-item">
-                    <a class="nav-link" href="calidad.php?modulo=bbva">
+                    <a class="nav-link" href="moduloCalidadBBVA.php">
                         <i class="fa-solid fa-medal"></i>
-                        <span>Calidad BBVA</span>
+                        <span>Calidad</span>
                     </a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="calidad.php?modulo=hdi">
+                    <a class="nav-link" href="metricas.php">
                         <i class="fa-solid fa-medal"></i>
-                        <span>Calidad HDI</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="datos_rh.php">
-                        <i class="fa-solid fa-medal"></i>
-                        <span>Calidad RH</span>
+                        <span>Metricas</span>
                     </a>
                 </li>
             <?php endif; ?>
-
-            <!-- Nav Item - Metricas -->
-            <li class="nav-item">
-                <a class="nav-link" href="evaluacion.php">
-                    <i class="fa-solid fa-chart-pie"></i>
-                    <span>Metricas</span>
-                </a>
-            </li>
 
         <?php endif; ?>
 

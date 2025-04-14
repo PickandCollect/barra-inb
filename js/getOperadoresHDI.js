@@ -9,7 +9,7 @@ $(document).ready(function () {
     success: function (response) {
       if (response.success) {
         operadores = response.data; // Guardamos los datos en la variable
-        var selectNombre = $("#nombre_cb");
+        var selectNombre = $("#nombre_ch");
         selectNombre.empty();
         selectNombre.append('<option value="" selected>Selecciona</option>');
 
@@ -29,9 +29,9 @@ $(document).ready(function () {
   });
 
   // Evento change para llenar el select posicion_c basado en nombre_c
-  $("#nombre_cb").change(function () {
+  $("#nombre_ch").change(function () {
     var nombreSeleccionado = $(this).val();
-    var inputPosicion = $("#posicion_cb");
+    var inputPosicion = $("#posicion_ch");
 
     //limpiar imput
     inputPosicion.val("");
@@ -46,9 +46,9 @@ $(document).ready(function () {
   });
 
   // Evento change para llenar el select supervisor_c basado en nombre_c
-  $("#nombre_cb").change(function () {
+  $("#nombre_ch").change(function () {
     var nombreSeleccionado = $(this).val();
-    var inputEvaluador = $("#evaluador_cb");
+    var inputEvaluador = $("#evaluador_ch");
 
     inputEvaluador.val("");
 

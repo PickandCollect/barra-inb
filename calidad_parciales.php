@@ -432,7 +432,6 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <div class="button-container">
         <button type="button" class="btn custom-submit-button-c" id="btnSubir">Subir LLamada</button>
         <button type="button" class="btn custom-submit-button-c" id="btnLimpiar">Limpiar</button>
-
         <button type="button" class="btn custom-submit-button-c" id="btnEC">Enviar</button>
     </div>
 
@@ -542,6 +541,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             });
         });
     </script>
+    
     <!-- SCRIPT PARA CALCULAR LOS VALORES EN PORCENTAJE-->
     <script>
         function actualizarImagen(porcentaje) {

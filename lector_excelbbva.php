@@ -63,13 +63,13 @@ try {
 
         for ($row = $startRow; $row <= $highestRow; $row++) {
             $operador = trim($worksheet->getCell('A' . $row)->getValue());
-            $estatus = strtoupper(trim($worksheet->getCell('F' . $row)->getValue()));
+            $estatus = strtoupper(trim($worksheet->getCell('E' . $row)->getValue()));
 
             if ($operador === $usuario && in_array($estatus, $estatusPermitidos)) {
                 $registros[] = [
-                    'folio' => $worksheet->getCell('H' . $row)->getValue(),
-                    'fecha' => $worksheet->getCell('D' . $row)->getFormattedValue(),
-                    'hora' => $worksheet->getCell('E' . $row)->getFormattedValue(),
+                    'folio' => $worksheet->getCell('F' . $row)->getValue(),
+                    'fecha' => $worksheet->getCell('C' . $row)->getFormattedValue(),
+                    'hora' => $worksheet->getCell('D' . $row)->getFormattedValue(),
                     'operador' => $operador,
                     'estatus' => $estatus
                 ];

@@ -60,7 +60,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
     </div>
     <!-- FORMULARIO PARA ENVIAR AL OTRO FORMULARIO ALV-->
-    <form id="miFormulariobbva" method="POST" action="cedula_bbva.php">
+    <form id="miFormulariohdi" method="POST" action="cedula_hdi.php">
         <!--Formulario-->
         <div class="contenedor-principal" style="display: flex; width: 100%;">
 
@@ -71,7 +71,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         <label for="nombre">
                             <h6>Nombre:</h6>
                         </label>
-                        <select id="nombre_cb" name="nombre_cb" class="custom-form-control">
+                        <select id="nombre_ch" name="nombre_ch" class="custom-form-control">
                             <option value="" hidden>Selecciona</option>
                         </select>
                     </div>
@@ -79,21 +79,14 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         <label for="posicion">
                             <h6>Posición:</h6>
                         </label>
-                        <select id="posicion_cb" name="posicion_cb" class="custom-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="Call Center">Call Center</option>
-                            <option value="Inspector">Inspector</option>
-                            <option value="Solucionador">Solucionador</option>
-                            <option value="Whatsapp">Whatsapp</option>
-                            <option value="Comodin">Comodin</option>
-                        </select>
+                        <input id="posicion_ch" name="posicion_ch" class="custom-form-control" readonly style="cursor: not-allowed;"></input>
                     </div>
 
                     <div class="datos_us">
                         <label for="evaluador">
                             <h6>Evaluador:</h6>
                         </label>
-                        <input type="text" id="evaluador_cb" name="evaluador_cb" class="custom-form-control" readonly style="cursor: not-allowed;"></input>
+                        <input type="text" id="evaluador_ch" name="evaluador_ch" class="custom-form-control" readonly style="cursor: not-allowed;"></input>
                     </div>
                 </div>
 
@@ -137,26 +130,26 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
             <div class="metrica" style="justify-content: center;">
                 <!-- CONTENEDOR nota de calidad-->
-                <div class="container_notabbva">
-                    <div class="container_nota_bbva">
-                        <label for="nota_bbva">
+                <div class="container_notahdi">
+                    <div class="container_nota_hdi">
+                        <label for="nota_hdi">
                             <h4>Nota de calidad:</h4>
                         </label>
                         <!-- Contenedor para el porcentaje -->
-                        <div id="nota_bbva" name="nota_bbva"> % </div>
+                        <div id="nota_hdi" name="nota_hdi"> % </div>
                     </div>
 
-                    <div class="container_performancebbva">
+                    <div class="container_performancehdi">
                         <h4>Performance:</h4>
                         <!-- Contenedor para la imagen dinámica -->
-                        <img id="performancebbva_img" src="img/cuidado.jpg" alt="bbva">
+                        <img id="performancehdi_img" src="img/cuidado.jpg" alt="hdi">
                     </div>
 
                 </div>
             </div>
         </div>
-        <input type="hidden" name="nota_bbva" id="hiddenNotaCalidadbbva">
-        <input type="hidden" name="performancebbva_img" id="hiddenPerformanceImgbbva">
+        <input type="hidden" name="nota_hdi" id="hiddenNotaCalidadhdi">
+        <input type="hidden" name="performancehdi_img" id="hiddenPerformanceImghdi">
 
         <div class="container_llamadas">
             <!-- APARTADO DEL RUBRO LLAMADAS-->
@@ -278,7 +271,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <!-- Rubros con ponderaciones -->
 
                 <!-- Rubro 1 -->
-                <label for="identifica_cb">
+                <label for="identifica_ch">
                     <h6>Presentación institucional</h6>
                 </label>
                 <input type="text" id="pon1" name="pon1" class="calidad-form-control" value="6" readonly style="text-align: center;">
@@ -308,7 +301,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 </select>
 
                 <!-- Rubro 2 -->
-                <label for="mute_cb">
+                <label for="mute_ch">
                     <h6>Despedida institucional</h6>
                 </label>
                 <input type="text" id="pon2" name="pon2" class="calidad-form-control" value="6" readonly style="text-align: center;">
@@ -340,7 +333,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 
                 <!--    Rubro     3   -->
-                <label for="escucha_cb">
+                <label for="escucha_ch">
                     <h6>Identifica al receptor</h6>
                 </label>
                 <input type="text" id="pon3" name="pon3" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
@@ -368,7 +361,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 
                 <!--    Rubro     4   -->
-                <label for="informacion_cb">
+                <label for="informacion_ch">
                     <h6>Sondeo y captura</h6>
                 </label>
                 <input type="text" id="pon4" name="pon4" class="calidad-form-control" placeholder="" value="15" readonly style="text-align: center;">
@@ -396,7 +389,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 
                 <!--    Rubro     5   -->
-                <label for="cortesia_cb">
+                <label for="cortesia_ch">
                     <h6>Escucha activa</h6>
                 </label>
                 <input type="text" id="pon5" name="pon5" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
@@ -424,7 +417,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 
                 <!--    Rubro     6   -->
-                <label for="sondeo_cb">
+                <label for="sondeo_ch">
                     <h6>Brinda información correcta y completa</h6>
                 </label>
                 <input type="text" id="pon6" name="pon6" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
@@ -452,7 +445,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 
                 <!--    Rubro     7   -->
-                <label for="objeciones_cb">
+                <label for="objeciones_ch">
                     <h6>Manejo de objeciónes</h6>
                 </label>
                 <input type="text" id="pon7" name="pon7" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
@@ -480,7 +473,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 
                 <!--    Rubro     8   -->
-                <label for="script_cb">
+                <label for="script_ch">
                     <h6>Pregunta de cortesía</h6>
                 </label>
                 <input type="text" id="pon8" name="pon8" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
@@ -572,7 +565,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 </select>
 
                 <!--    Rubro     11   -->
-                <label for="ccc_cb">
+                <label for="ccc_ch">
                     <h6>Etiqueta telefónica</h6>
                 </label>
                 <input type="text" id="pon11" name="pon11" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
@@ -600,7 +593,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 
                 <!--    Rubro     12   -->
-                <label for="etiqueta_cb">
+                <label for="etiqueta_ch">
                     <h6>Uso del mute y tiempos de espera</h6>
                 </label>
                 <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
@@ -628,7 +621,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 
                 <!--    Rubro     13   -->
-                <label for="contrllamada_cb">
+                <label for="contrllamada_ch">
                     <h6>Control de la llamada (tono y ritmo de voz)</h6>
                 </label>
                 <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
@@ -655,7 +648,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 </select>
 
                 <!--    Rubro     14   -->
-                <label for="negativas_cb">
+                <label for="negativas_ch">
                     <h6>Cortesía y empatía</h6>
                 </label>
                 <input type="text" id="pon14" name="pon14" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
@@ -719,7 +712,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <!-- Rubros con ponderaciones -->
 
                 <!--    Rubro     15   -->
-                <label for="maltrato_cb">
+                <label for="maltrato_ch">
                     <h6>Maltrato al cliente</h6>
                 </label>
                 <input type="text" id="pon15" name="pon15" class="calidad-form-control" value="0" readonly style="text-align: center;">
@@ -747,7 +740,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 
                 <!--    Rubro     16   -->
-                <label for="desprestigio_cb">
+                <label for="desprestigio_ch">
                     <h6>Desprestigio institucional</h6>
                 </label>
                 <input type="text" id="pon16" name="pon16" class="calidad-form-control" placeholder="" value="0" readonly style="text-align: center;">
@@ -801,8 +794,6 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
 
         <div class="button-container-hdi">
-            <button type="button" class="btn-llamadas" id="btnllamar"> <i class="fas fa-file-excel"></i> </button>
-            <!-- <button type="button" class="btn custom-submit-button-c" id="btnSubirBBVA">Subir LLamada</button>-->
             <button type="button" class="btn-limpiar" id="btnlimpiar">Limpiar Formulario </button>
             <button type="button" class="btn-enviar" id="btnEnviar">Enviar</button>
         </div>
@@ -828,8 +819,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <!--Script de calcular nota calidad-->
     <script>
         function actualizarImagenYColor(porcentaje) {
-            let imagen = document.getElementById("performancebbva_img");
-            let notaCalidadValor = document.getElementById("nota_bbva");
+            let imagen = document.getElementById("performancehdi_img");
+            let notaCalidadValor = document.getElementById("nota_hdi");
 
             // Verifica el rango y cambia la imagen
             if (porcentaje >= 0 && porcentaje <= 75) {
@@ -868,8 +859,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             // Calcula el promedio
             let promedio = count > 0 ? (total / count).toFixed(0) : 0;
 
-            // Muestra el resultado en #nota_bbva
-            document.getElementById('nota_bbva').textContent = promedio + "%";
+            // Muestra el resultado en #nota_hdi
+            document.getElementById('nota_hdi').textContent = promedio + "%";
 
             // Actualizar la imagen y el color de la nota de calidad
             actualizarImagenYColor(promedio);
@@ -1064,7 +1055,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
             // Lista de otros campos requeridos
             const camposRequeridos = [
-                'nombre_cb', 'comentariosTextarea'
+                'nombre_ch', 'comentariosTextarea'
                 // Agrega aquí otros campos requeridos
             ];
 
@@ -1092,141 +1083,129 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             return true;
         }
 
-        // Función para enviar evaluación como notificación
-        document.getElementById('btnEnviar').addEventListener('click', function() {
-            console.log("Botón clickeado");
+        const botonesEnviar = document.querySelectorAll('.btn-enviar');
 
-            const formulario = document.getElementById('miFormulariobbva');
-            if (!formulario) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'No se encontró el formulario.',
-                    confirmButtonColor: '#d33',
-                    confirmButtonText: 'Cerrar'
-                });
-                return;
-            }
+        botonesEnviar.forEach(boton => {
+            boton.addEventListener('click', function() {
+                console.log("Botón clickeado");
 
-            // Primero verificar si las llamadas han sido subidas
-            if (!verificarLlamadasSubidas()) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'llamadas faltantes',
-                    html: 'Asegurate de subir tu archivo precionando el boton "A calificar" y sube las llamadas por individual precionanado el icono 📞',
-                    confirmButtonColor: '#3085d6',
-                });
-                return;
-            }
-
-            // Validar campos antes de continuar
-            if (!validarCamposRequeridos()) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Campos incompletos',
-                    text: 'Por favor complete todos los campos requeridos marcados en rojo.',
-                    confirmButtonColor: '#3085d6',
-                });
-                return;
-            }
-
-            const formData = new FormData(formulario);
-            const datosFormulario = {};
-
-            // Guardar los datos del formulario en un objeto
-            formData.forEach((value, key) => {
-                datosFormulario[key] = value;
-            });
-
-            // Capturar información adicional
-            datosFormulario.notaCalidad = document.getElementById('nota_bbva')?.innerText || '';
-            datosFormulario.performanceImg = document.getElementById('performancebbva_img')?.src || '';
-            datosFormulario.calificacion1 = document.getElementById('1')?.innerText || '';
-            datosFormulario.calificacion2 = document.getElementById('2')?.innerText || '';
-            datosFormulario.calificacion3 = document.getElementById('3')?.innerText || '';
-            datosFormulario.calificacion4 = document.getElementById('4')?.innerText || '';
-            datosFormulario.notaCalidad = document.getElementById('nota_bbva')?.innerText || '';
-            datosFormulario.performanceImg = document.getElementById('performancebbva_img')?.src || '';
-            datosFormulario.usuarioActual = '<?php echo $rol; ?>';
-            datosFormulario.operador = document.getElementById("nombre_cb").value;
-            datosFormulario.posicion = document.getElementById("posicion_cb").value;
-            datosFormulario.evaluador = document.getElementById("evaluador_cb").value;
-            // Agregar URLs de las 4 llamadas al formulario
-            datosFormulario.llamada1_url = llamadasSubidas[1]?.url || '';
-            datosFormulario.llamada2_url = llamadasSubidas[2]?.url || '';
-            datosFormulario.llamada3_url = llamadasSubidas[3]?.url || '';
-            datosFormulario.llamada4_url = llamadasSubidas[4]?.url || '';
-
-            // También puedes agregar los nombres de los archivos si lo necesitas
-            datosFormulario.llamada1_nombre = llamadasSubidas[1]?.nombre || '';
-            datosFormulario.llamada2_nombre = llamadasSubidas[2]?.nombre || '';
-            datosFormulario.llamada3_nombre = llamadasSubidas[3]?.nombre || '';
-            datosFormulario.llamada4_nombre = llamadasSubidas[4]?.nombre || '';
-
-
-            // Capturar las calificaciones, llamadas, duraciones, fechas y horas de las 4 llamadas
-            for (let i = 1; i <= 4; i++) {
-                datosFormulario[`llamada_${i}`] = document.getElementById(`llamada_${i}`)?.value || '';
-                datosFormulario[`duracion_${i}`] = document.getElementById(`duracion_${i}`)?.value || '';
-                datosFormulario[`fecha_llamada_${i}`] = document.getElementById(`fecha_llamada_${i}`)?.value || '';
-                datosFormulario[`hora_llamada_${i}`] = document.getElementById(`hora_llamada_${i}`)?.value || '';
-            }
-
-            // Capturar todos los valores cumpleX_Y
-            for (let i = 1; i <= 16; i++) {
-                for (let j = 1; j <= 4; j++) {
-                    datosFormulario[`cumple${i}_${j}`] = document.getElementById(`cumple${i}_${j}`)?.value || '';
-                }
-            }
-
-            // Datos adicionales
-            datosFormulario.fortalezas = document.getElementById("fortalezas").value || 'Sin informacion';
-            datosFormulario.oportunidades = document.getElementById("oportunidades").value || 'Sin informacion';
-            datosFormulario.comentarios_cb = document.getElementById("comentariosTextarea").value || 'Sin informacion';
-
-            // Validación de usuario
-            if (!datosFormulario.usuarioActual) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error de sesión',
-                    text: 'No se pudo identificar al usuario actual. Inicia sesión nuevamente.',
-                });
-                return;
-            }
-
-            // Datos adicionales
-            datosFormulario.fecha = new Date().toISOString().split('T')[0];
-            datosFormulario.leido = false;
-            datosFormulario.campana = "HDI";
-            datosFormulario.mensaje = `Tienes una nueva evaluación de Calidad HDI ${datosFormulario.usuarioActual}`;
-            datosFormulario.tipo = "HDI";
-            console.log("Enviando datos a Firebase:", datosFormulario);
-
-            // Enviar notificación
-            const nuevaNotificacion = push(notificacionesRef);
-            set(nuevaNotificacion, datosFormulario, {
-                    notaCalidad: datosFormulario.notaCalidad
-                })
-                .then(() => {
-                    console.log("Notificación enviada correctamente.");
-                    Swal.fire({
-                        icon: 'success',
-                        title: ' Evaluación Enviada !! ✅ ',
-                        showConfirmButton: false,
-                        timer: 1200
-                    }).then(() => {
-                        formulario.reset(); // Limpiar el formulario después de enviar
-                        location.reload(true); // Recargar la página completamente (desde el servidor)
-                    });
-                }).catch((error) => {
-                    console.error("Error al enviar la notificación:", error);
+                const formulario = document.getElementById('miFormulariohdi');
+                if (!formulario) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'Hubo un error al enviar la evaluación. Inténtalo de nuevo.',
-                        confirmButtonText: false,
+                        text: 'No se encontró el formulario.',
+                        confirmButtonColor: '#d33',
+                        confirmButtonText: 'Cerrar'
                     });
+                    return;
+                }
+
+                if (!verificarLlamadasSubidas()) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'llamadas faltantes',
+                        html: 'Asegúrate de subir tu archivo presionando el botón "A calificar" y sube las llamadas individualmente presionando el ícono 📞',
+                        confirmButtonColor: '#3085d6',
+                    });
+                    return;
+                }
+
+                if (!validarCamposRequeridos()) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Campos incompletos',
+                        text: 'Por favor completa todos los campos requeridos marcados en rojo.',
+                        confirmButtonColor: '#3085d6',
+                    });
+                    return;
+                }
+
+                const formData = new FormData(formulario);
+                const datosFormulario = {};
+
+                formData.forEach((value, key) => {
+                    datosFormulario[key] = value;
                 });
+
+                datosFormulario.notaCalidad = document.getElementById('nota_hdi')?.innerText || '';
+                datosFormulario.performanceImg = document.getElementById('performancehdi_img')?.src || '';
+                datosFormulario.calificacion1 = document.getElementById('1')?.innerText || '';
+                datosFormulario.calificacion2 = document.getElementById('2')?.innerText || '';
+                datosFormulario.calificacion3 = document.getElementById('3')?.innerText || '';
+                datosFormulario.calificacion4 = document.getElementById('4')?.innerText || '';
+                datosFormulario.usuarioActual = '<?php echo $rol; ?>';
+                datosFormulario.operador = document.getElementById("nombre_ch").value;
+                datosFormulario.posicion = document.getElementById("posicion_ch").value;
+                datosFormulario.evaluador = document.getElementById("evaluador_ch").value;
+
+                datosFormulario.llamada1_url = llamadasSubidas[1]?.url || '';
+                datosFormulario.llamada2_url = llamadasSubidas[2]?.url || '';
+                datosFormulario.llamada3_url = llamadasSubidas[3]?.url || '';
+                datosFormulario.llamada4_url = llamadasSubidas[4]?.url || '';
+
+                datosFormulario.llamada1_nombre = llamadasSubidas[1]?.nombre || '';
+                datosFormulario.llamada2_nombre = llamadasSubidas[2]?.nombre || '';
+                datosFormulario.llamada3_nombre = llamadasSubidas[3]?.nombre || '';
+                datosFormulario.llamada4_nombre = llamadasSubidas[4]?.nombre || '';
+
+                for (let i = 1; i <= 4; i++) {
+                    datosFormulario[`llamada_${i}`] = document.getElementById(`llamada_${i}`)?.value || '';
+                    datosFormulario[`duracion_${i}`] = document.getElementById(`duracion_${i}`)?.value || '';
+                    datosFormulario[`fecha_llamada_${i}`] = document.getElementById(`fecha_llamada_${i}`)?.value || '';
+                    datosFormulario[`hora_llamada_${i}`] = document.getElementById(`hora_llamada_${i}`)?.value || '';
+                }
+
+                for (let i = 1; i <= 16; i++) {
+                    for (let j = 1; j <= 4; j++) {
+                        datosFormulario[`cumple${i}_${j}`] = document.getElementById(`cumple${i}_${j}`)?.value || '';
+                    }
+                }
+
+                datosFormulario.fortalezas = document.getElementById("fortalezas").value || 'Sin informacion';
+                datosFormulario.oportunidades = document.getElementById("oportunidades").value || 'Sin informacion';
+                datosFormulario.comentarios_ch = document.getElementById("comentariosTextarea").value || 'Sin informacion';
+
+                if (!datosFormulario.usuarioActual) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error de sesión',
+                        text: 'No se pudo identificar al usuario actual. Inicia sesión nuevamente.',
+                    });
+                    return;
+                }
+
+                datosFormulario.fecha = new Date().toISOString().split('T')[0];
+                datosFormulario.leido = false;
+                datosFormulario.campana = "HDI";
+                datosFormulario.tipo = "HDI";
+                datosFormulario.mensaje = `Tienes una nueva evaluación de Calidad HDI Seguros ${datosFormulario.usuarioActual}`;
+
+                console.log("Enviando datos a Firebase:", datosFormulario);
+
+                const nuevaNotificacion = push(notificacionesRef);
+                set(nuevaNotificacion, datosFormulario)
+                    .then(() => {
+                        console.log("Notificación enviada correctamente.");
+                        Swal.fire({
+                            icon: 'success',
+                            title: ' Evaluación Enviada !! ✅ ',
+                            showConfirmButton: false,
+                            timer: 1200
+                        }).then(() => {
+                            formulario.reset();
+                            location.reload(true);
+                        });
+                    }).catch((error) => {
+                        console.error("Error al enviar la notificación:", error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Hubo un error al enviar la evaluación. Inténtalo de nuevo.',
+                            confirmButtonText: false,
+                        });
+                    });
+            });
         });
     </script>
 
@@ -1235,7 +1214,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         // Escuchar el clic en el botón
         document.getElementById('btnllamar').addEventListener('click', function() {
             // Obtener el usuario seleccionado
-            const usuarioSeleccionado = document.getElementById('nombre_cb').value;
+            const usuarioSeleccionado = document.getElementById('nombre_ch').value;
             if (!usuarioSeleccionado) {
                 Swal.fire({
                     icon: 'warning',
@@ -1263,7 +1242,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 });
 
                 // Obtener el usuario seleccionado (ya validado en el click)
-                const usuarioSeleccionado = document.getElementById('nombre_cb').value;
+                const usuarioSeleccionado = document.getElementById('nombre_ch').value;
 
                 // Subir el archivo al servidor junto con el usuario seleccionado
                 const formData = new FormData();
@@ -1399,7 +1378,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 formData.append('numero_llamada', llamadaNum);
 
                 // Obtener operador
-                const operador = document.getElementById('nombre_cb').value;
+                const operador = document.getElementById('nombre_ch').value;
                 if (!operador) {
                     Swal.close();
                     await Swal.fire({
@@ -1491,7 +1470,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             });
 
             // Habilitar inputs de archivo cuando se selecciona un operador
-            document.getElementById('nombre_cb').addEventListener('change', function() {
+            document.getElementById('nombre_ch').addEventListener('change', function() {
                 const operadorSeleccionado = this.value;
                 const inputsArchivo = document.querySelectorAll('.mod-archivo-container input[type="file"]');
 
@@ -1529,7 +1508,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                     if (input.files.length > 0) {
                         // Verificar nuevamente que hay un operador seleccionado
-                        const operador = document.getElementById('nombre_cb').value;
+                        const operador = document.getElementById('nombre_ch').value;
                         if (!operador) {
                             await Swal.fire({
                                 icon: 'error',
@@ -1558,6 +1537,25 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     event.stopPropagation();
                     const llamadaNum = input.classList.contains('auto-upload') ? parseInt(input.id.split('_')[2]) : null;
                     handleTrashButton(input, nombreArchivo, btnTrash, btnPlay, llamadaNum);
+                });
+            });
+        });
+    </script>
+
+    <!--SCRIPT QUE LIMPIA EL FORM-->
+    <script>
+        const botonesLimpiar = document.querySelectorAll(".btn-limpiar");
+
+        botonesLimpiar.forEach(boton => {
+            boton.addEventListener("click", function() {
+                Swal.fire({
+                    icon: "success",
+                    title: "Formulario limpiado",
+                    text: "Los campos se han restablecido.",
+                    timer: 2000,
+                    showConfirmButton: false
+                }).then(() => {
+                    location.reload(true);
                 });
             });
         });
@@ -1695,360 +1693,12 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         });
     </script>
 
-    <!--SCRIPT QUE LIMPIA EL FORM-->
-    <script>
-        document.getElementById("btnlimpiar").addEventListener("click", function() {
-            Swal.fire({
-                icon: "success",
-                title: "Formulario limpiado",
-                text: "Los campos se han restablecido.",
-                timer: 2000, // 2 segundos
-                showConfirmButton: false
-            }).then(() => {
-                location.reload(true); // Recargar la página completamente (desde el servidor)
-            });
-        });
-    </script>
 
     <!--SCRIPT getOperadoresBBVA.js-->
     <script src="js/getOperadoresHDI.js"></script>
     <!-- Cargar SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.3/dist/sweetalert2.all.min.js"></script>
 
-
-    <!-- SCRIPT DE LA SECCIÓN SUBIR LLAMADA 
-    <script>
-        function handleTrashButton(input, nombreArchivo, btnTrash) {
-            input.value = ''; // Limpiar el input
-            nombreArchivo.textContent = '...'; // Restaurar el texto por defecto
-            btnTrash.style.display = 'none'; // Ocultar el botón de borrar
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.mod-archivo-container').forEach(container => {
-                const input = container.querySelector('input[type="file"]');
-                const nombreArchivo = container.querySelector('.mod-archivo-nombre');
-                const btnTrash = container.querySelector('.mod-btnTrash');
-
-                input.addEventListener('change', (event) => {
-                    event.stopPropagation();
-                    if (input.files.length > 0) {
-                        const file = input.files[0];
-                        nombreArchivo.textContent = file.name;
-                        btnTrash.style.display = 'inline-block';
-                    }
-                });
-
-                btnTrash.addEventListener('click', (event) => {
-                    event.preventDefault(); // Evitar cualquier acción por defecto
-                    event.stopPropagation(); // Detener la propagación del evento
-                    handleTrashButton(input, nombreArchivo, btnTrash);
-                });
-            });
-        });
-    </script>-->
-    <!-- SCRIPT PARA SUBIR LAS LLAMADAS 
-    <script>
-        // Variables globales para almacenar nombres y URLs de las llamadas
-        let llamadasSubidas = {
-            1: {
-                nombre: '',
-                url: ''
-            },
-            2: {
-                nombre: '',
-                url: ''
-            },
-            3: {
-                nombre: '',
-                url: ''
-            },
-            4: {
-                nombre: '',
-                url: ''
-            }
-        };
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Estilo para el spinner
-            const spinnerStyle = document.createElement('style');
-            spinnerStyle.innerHTML = `
-            .spinner {
-                width: 50px;
-                height: 50px;
-                border: 5px solid #f3f3f3;
-                border-top: 5px solid #3498db;
-                border-radius: 50%;
-                animation: spin 1s linear infinite;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: 9999;
-                display: none;
-            }
-            @keyframes spin {
-                0% { transform: translate(-50%, -50%) rotate(0deg); }
-                100% { transform: translate(-50%, -50%) rotate(360deg); }
-            }`;
-            document.head.appendChild(spinnerStyle);
-
-            // Crear spinner
-            const spinner = document.createElement('div');
-            spinner.className = 'spinner';
-            document.body.appendChild(spinner);
-
-            // Configurar eventos para los inputs de llamadas
-            document.querySelectorAll('.auto-upload').forEach(input => {
-                input.addEventListener('change', function() {
-                    const file = this.files[0];
-                    const llamadaNum = parseInt(this.id.split('_')[2]); // Extrae el número de llamada del ID
-                    const container = this.closest('.mod-archivo-container');
-                    const nombreSpan = container.querySelector('.mod-archivo-nombre');
-                    const trashBtn = container.querySelector('.mod-btnTrash');
-                    const playBtn = container.querySelector('.mod-btnPlay') || createPlayButton(container);
-
-                    if (file) {
-                        // Validar tipo de archivo
-                        if (!file.type.match('audio/wav|audio/x-wav|audio/wave')) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: '¡Error!',
-                                text: 'Solo se permiten archivos .wav',
-                            });
-                            return;
-                        }
-
-                        // Mostrar spinner
-                        spinner.style.display = 'block';
-
-                        // Preparar datos del formulario
-                        const formData = new FormData();
-                        formData.append('archivo', file);
-                        formData.append('numero_llamada', llamadaNum);
-
-                        // Obtener operador
-                        const operador = document.getElementById('nombre_cb').value;
-                        if (!operador) {
-                            spinner.style.display = 'none';
-                            Swal.fire({
-                                icon: 'error',
-                                title: '¡Error!',
-                                text: 'Por favor, seleccione un operador válido.',
-                            });
-                            return;
-                        }
-                        formData.append('operador', operador);
-
-                        // Enviar archivo al servidor
-                        fetch('proc/insertLlamadaBBVA.php', {
-                                method: 'POST',
-                                body: formData
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                spinner.style.display = 'none';
-
-                                if (data.success) {
-                                    // Guardar información de la llamada
-                                    llamadasSubidas[llamadaNum] = {
-                                        nombre: data.file_name,
-                                        url: data.file_url
-                                    };
-
-                                    // Actualizar UI
-                                    nombreSpan.textContent = file.name;
-                                    trashBtn.style.display = 'inline-block';
-                                    playBtn.style.display = 'inline-block';
-
-                                    // Configurar botones
-                                    trashBtn.onclick = () => {
-                                        input.value = '';
-                                        nombreSpan.textContent = '...';
-                                        trashBtn.style.display = 'none';
-                                        playBtn.style.display = 'none';
-                                        llamadasSubidas[llamadaNum] = {
-                                            nombre: '',
-                                            url: ''
-                                        }; // Limpiar datos
-                                    };
-
-                                    playBtn.onclick = () => {
-                                        const audioPlayer = document.getElementById('audioPlayer');
-                                        if (audioPlayer) {
-                                            audioPlayer.src = llamadasSubidas[llamadaNum].url;
-                                            audioPlayer.load();
-                                            audioPlayer.play();
-                                        }
-                                    };
-
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: '¡Subido!',
-                                        text: `Llamada ${llamadaNum} subida correctamente`,
-                                        timer: 2000,
-                                        showConfirmButton: false
-                                    });
-
-                                    console.log('Llamadas subidas:', llamadasSubidas); // Verificar en consola
-                                } else {
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Error',
-                                        text: data.error || 'Error al subir la llamada',
-                                    });
-                                }
-                            })
-                            .catch(error => {
-                                spinner.style.display = 'none';
-                                console.error('Error:', error);
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Error',
-                                    text: 'Error al conectar con el servidor',
-                                });
-                            });
-                    }
-                });
-            });
-
-            // Función para crear botón de reproducción si no existe
-            //function createPlayButton(container) {
-            //  const btn = document.createElement('button');
-            // btn.className = 'mod-btnPlay';
-            // btn.innerHTML = '<i class="fa fa-play"></i>';
-            // btn.style.display = 'none';
-            // btn.style.marginLeft = '5px';
-            //  container.appendChild(btn);
-            // return btn;
-            // }
-        });
-    </script>-->
-    <!-- Script para manejar el envío del formulario prueba 1-->
-    <!-- <script type="module">
-        import {
-            initializeApp
-        } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-        import {
-            getDatabase,
-            ref,
-            push,
-            set
-        } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-
-        // Configuración de Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyD1XIbEFJ28sqWcF5Ws3i8zA2o1OhYC7JU",
-            authDomain: "prueba-pickcollect.firebaseapp.com",
-            databaseURL: "https://prueba-pickcollect-default-rtdb.firebaseio.com",
-            projectId: "prueba-pickcollect",
-            storageBucket: "prueba-pickcollect.firebasestorage.app",
-            messagingSenderId: "343351102325",
-            appId: "1:343351102325:web:a6e4184d4752c6cbcfe13c",
-            measurementId: "G-6864KLZWKP"
-        };
-
-        // Inicializar Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        const notificacionesRef = ref(db, "notificaciones");
-
-        // Función para enviar evaluación como notificación
-        document.getElementById('btnEnviar').addEventListener('click', function() {
-            console.log("Botón clickeado");
-
-            const formulario = document.getElementById('miFormulariobbva');
-            if (!formulario) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'No se encontró el formulario.',
-                    confirmButtonColor: '#d33',
-                    confirmButtonText: 'Cerrar'
-                });
-                return;
-            }
-
-            const formData = new FormData(formulario);
-            const datosFormulario = {};
-
-            // Guardar los datos del formulario en un objeto
-            formData.forEach((value, key) => {
-                datosFormulario[key] = value;
-            });
-
-            // Capturar información adicional
-            datosFormulario.calificacion1 = document.getElementById('1')?.innerText || '';
-            datosFormulario.calificacion2 = document.getElementById('2')?.innerText || '';
-            datosFormulario.calificacion3 = document.getElementById('3')?.innerText || '';
-            datosFormulario.calificacion4 = document.getElementById('4')?.innerText || '';
-            datosFormulario.notaCalidad = document.getElementById('nota_bbva')?.innerText || '';
-            datosFormulario.performanceImg = document.getElementById('performancebbva_img')?.src || '';
-            datosFormulario.usuarioActual = 
-            datosFormulario.operador = document.getElementById("nombre_cb").value;
-            datosFormulario.posicion = document.getElementById("posicion_cb").value;
-            datosFormulario.evaluador = document.getElementById("evaluador_cb").value;
-
-            // Capturar las calificaciones, llamadas, duraciones, fechas y horas de las 4 llamadas
-            for (let i = 1; i <= 4; i++) {
-                datosFormulario[`llamada_${i}`] = document.getElementById(`llamada_${i}`)?.value || '';
-                datosFormulario[`duracion_${i}`] = document.getElementById(`duracion_${i}`)?.value || '';
-                datosFormulario[`fecha_llamada_${i}`] = document.getElementById(`fecha_llamada_${i}`)?.value || '';
-                datosFormulario[`hora_llamada_${i}`] = document.getElementById(`hora_llamada_${i}`)?.value || '';
-
-                // Capturar los valores de cumple, si es necesario
-                for (let j = 1; j <= 4; j++) {
-                    datosFormulario[`cumple${i}_${j}`] = document.getElementById(`cumple${i}_${j}`)?.value || '';
-                }
-            }
-
-            // Datos adicionales
-            datosFormulario.fortalezas = document.getElementById("fortalezas").value || 'Sin informacion';
-            datosFormulario.oportunidades = document.getElementById("oportunidades").value || 'Sin informacion';
-            datosFormulario.comentarios_cb = document.getElementById("comentariosTextarea").value || 'Sin informacion';
-
-            // Validaciones previas al envío
-            if (!datosFormulario.operador) {
-                console.log("Selecciona un operador antes de enviar la evaluación.");
-                return;
-            }
-
-            if (!datosFormulario.usuarioActual) {
-                console.log("No se pudo identificar al usuario actual. Inicia sesión nuevamente.");
-                return;
-            }
-
-            // Datos adicionales
-            datosFormulario.fecha = new Date().toISOString().split('T')[0];
-            datosFormulario.leido = false;
-            datosFormulario.tipo= "BBVA";
-            datosFormulario.mensaje = `Tienes una nueva evaluación de Calidad BBVA ${datosFormulario.usuarioActual}`;
-
-            console.log("Enviando datos a Firebase:", datosFormulario);
-
-            // Enviar notificación
-            const nuevaNotificacion = push(notificacionesRef);
-            set(nuevaNotificacion, datosFormulario)
-                .then(() => {
-                    console.log("Notificación enviada correctamente.");
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Evaluación Enviada',
-                        text: 'La evaluación ha sido enviada correctamente.',
-                        confirmButtonText: 'Cerrar'
-                    });
-                })
-                .catch((error) => {
-                    console.error("Error al enviar la notificación:", error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Hubo un problema al enviar la evaluación.',
-                        confirmButtonText: 'Cerrar'
-                    });
-                });
-        });
-    </scrippt>-->
 
 </body>
 

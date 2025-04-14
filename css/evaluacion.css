@@ -995,3 +995,320 @@
             height: 250px;
         }
     }
+
+    /*##########################*/
+.pdf-viewer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.filters {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.pdf-results {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+    height: 600px;
+}
+
+.pdf-list-container {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.pdf-viewer-container {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pdf-viewer {
+    flex: 1;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.pdf-placeholder {
+    text-align: center;
+    color: #666;
+}
+
+.pdf-placeholder i {
+    font-size: 50px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.pdf-item {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.pdf-item:hover {
+    background: #f5f5f5;
+}
+
+.pdf-icon {
+    font-size: 24px;
+    color: #e74c3c;
+}
+
+.pdf-info {
+    flex: 1;
+}
+
+.pdf-name {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.pdf-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: #666;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-style: italic;
+}
+/*#####################################*/
+/* Estilos para el contenedor del selector de fechas */
+.container_select_fecha {
+    font-family: 'Segoe UI', sans-serif;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container_select_fecha h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+#filtroFecha2 {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #dfe6e9;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #2d3436;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#filtroFecha2:hover {
+    border-color: #74b9ff;
+    background-color: #fff;
+}
+
+#filtroFecha2:focus {
+    outline: none;
+    border-color: #0984e3;
+    box-shadow: 0 0 0 2px rgba(9, 132, 227, 0.2);
+}
+
+/* Estilos para el calendario de Flatpickr */
+.container_select_fecha .flatpickr-calendar {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.container_select_fecha .flatpickr-day.selected {
+    background: #0984e3;
+    border-color: #0984e3;
+}
+
+.container_select_fecha .flatpickr-day.inRange {
+    background: rgba(9, 132, 227, 0.1);
+    box-shadow: none;
+}
+
+/* Estilos para las cards de métricas */
+.card-list-container {
+    max-height: 260px;
+    overflow-y: auto;
+    margin-top: 15px;
+    padding: 0 5px;
+    scrollbar-width: thin;
+    flex-grow: 1;
+}
+
+.card-list-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.card-list-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.card-list-container ul.small {
+    font-size: 0.9rem;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.card-list-container ul.small li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.card-list-container ul.small li:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.card-list-container ul.small li .operator-name {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 15px;
+    font-weight: 500;
+}
+
+.card-list-container ul.small li .percentage {
+    font-weight: 600;
+    color: inherit;
+    min-width: 60px;
+    text-align: right;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card-list-container ul.small li .eval-count {
+    color: rgba(0, 0, 0, 0.5);
+    min-width: 50px;
+    text-align: right;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+#urgencia-0-2, 
+#urgencia-3-5, 
+#urgencia-6-14 {
+    min-height: 50px;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 10px 0;
+    line-height: 1;
+    letter-spacing: -1px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-evaluations {
+    color: rgba(0, 0, 0, 0.4);
+    font-style: italic;
+    padding: 15px 10px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.text-info {
+    color: #17a2b8;
+    text-align: center;
+    font-weight: 500;
+}
+
+.text-danger {
+    color: #dc3545;
+    text-align: center;
+    font-weight: 500;
+}
+
+.card-content .card-list-container {
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+.card-content .card-list-container ul.small li {
+    padding: 6px 0;
+}
+
+@media (max-width: 768px) {
+    .card-list-container {
+        max-height: 150px;
+    }
+    
+    .card-list-container ul.small li {
+        padding: 6px 0;
+    }
+    
+    #urgencia-0-2, 
+    #urgencia-3-5, 
+    #urgencia-6-14 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-list-container {
+        max-height: 120px;
+    }
+    
+    .card-list-container ul.small {
+        font-size: 0.85rem;
+    }
+    
+    .card-list-container ul.small li .eval-count {
+        min-width: 40px;
+    }
+}

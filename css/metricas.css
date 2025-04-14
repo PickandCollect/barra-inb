@@ -1,0 +1,61 @@
+/* Estilos específicos para el header */
+.header {
+    display: flex; /* Usa flexbox para alinear elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: space-between; /* Separa el título y el logo a los extremos */
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #f8f8f8; /* Color de fondo */
+    border-bottom: 1px solid #ddd; /* Borde inferior */
+    margin-bottom: 40px; /* Margen inferior */
+}
+
+/* Estilos para el título dentro del header */
+.header .title {
+    font-size: 45px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    color: #54259e; /* Color del texto */
+    margin-left: 10px; /* Margen izquierdo */
+}
+
+/* Estilos para el contenedor del logo */
+.header .container_logo img {
+    height: 120px; /* Altura de la imagen */
+    width: 120px; /* Ancho de la imagen */
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2)); /* Sombra para efecto visual */
+    margin-right: 50px; /* Margen derecho */
+    border-radius: 50%; /* Bordes redondeados para hacerlo circular */
+}
+/*#############################################*/
+.contenidos {
+        display: flex;
+        justify-content: space-around;
+        padding: 2rem;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .metric-box {
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: 2rem;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        cursor: pointer;
+    }
+
+    .metric-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        background-color: #f7f9fc;
+    }
+
+    .metric-box h1 {
+        font-size: 1.5rem;
+        margin: 0;
+        color: #333;
+    }
