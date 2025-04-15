@@ -114,7 +114,7 @@ $nombreUsuario = $_SESSION['nombre_usuario'];
 
                 <li class="nav-item">
                     <a class="nav-link" href="evaluacion.php">
-                        <i class="fa-solid fa-medal"></i>
+                        <i class="fa-solid fa-chart-pie"></i>
                         <span>Metricas</span>
                     </a>
                 </li>
@@ -130,8 +130,8 @@ $nombreUsuario = $_SESSION['nombre_usuario'];
                         <span>Calidad</span>
                     </a>
                 <li class="nav-item">
-                    <a class="nav-link" href="metricas.php">
-                        <i class="fa-solid fa-medal"></i>
+                    <a class="nav-link" href="moduloMetricasBBVA.php">
+                        <i class="fa-solid fa-chart-pie"></i>
                         <span>Metricas</span>
                     </a>
                 </li>

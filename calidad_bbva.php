@@ -51,785 +51,794 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 <body>
 
+    <div id="wrapper">
+        <?php include 'slidebar.php'; ?>
 
-    <!-- Encabezado -->
-    <div class="header">
-        <div class="title">CALIDAD BBVA</div>
-        <div class="container_logo">
-            <img src="img/BBVA-REDISENO-LOGO.jpg" alt="Logo de la página">
-        </div>
-    </div>
-    <!-- FORMULARIO PARA ENVIAR AL OTRO FORMULARIO ALV-->
-    <form id="miFormulariobbva" method="POST" action="cedula_bbva.php">
-        <!--Formulario-->
-        <div class="contenedor-principal" style="display: flex; width: 100%;">
+        <div id="content-wrapper">
+            <?php include 'topbar.php'; ?>
+            <!-- Encabezado -->
+            <div class="header">
+                <div class="title">CALIDAD BBVA</div>
+                <div class="container_logo">
+                    <img src="img/BBVA-REDISENO-LOGO.jpg" alt="Logo de la página">
+                </div>
+            </div>
+            <!-- FORMULARIO PARA ENVIAR AL OTRO FORMULARIO ALV-->
+            <form id="miFormulariobbva" method="POST" action="cedula_bbva.php">
+                <!--Formulario-->
+                <div class="contenedor-principal" style="display: flex; width: 100%;">
 
-            <div class="datos">
-                <!-- APARTADO DE NOMBRE, EVALUADOR, ETC.-->
-                <div class="container_datos1">
-                    <div class="datos_us">
-                        <label for="nombre">
-                            <h6>Nombre:</h6>
-                        </label>
-                        <select id="nombre_cb" name="nombre_cb" class="custom-form-control">
-                            <option value="" hidden>Selecciona</option>
-                        </select>
+                    <div class="datos">
+                        <!-- APARTADO DE NOMBRE, EVALUADOR, ETC.-->
+                        <div class="container_datos1">
+                            <div class="datos_us">
+                                <label for="nombre">
+                                    <h6>Nombre:</h6>
+                                </label>
+                                <select id="nombre_cb" name="nombre_cb" class="custom-form-control">
+                                    <option value="" hidden>Selecciona</option>
+                                </select>
+                            </div>
+                            <div class="datos_us">
+                                <label for="posicion">
+                                    <h6>Posición:</h6>
+                                </label>
+                                <select id="posicion_cb" name="posicion_cb" class="custom-form-control">
+                                    <option value="" hidden>Selecciona</option>
+                                    <option value="Call Center">Call Center</option>
+                                    <option value="Inspector">Inspector</option>
+                                    <option value="Solucionador">Solucionador</option>
+                                    <option value="Whatsapp">Whatsapp</option>
+                                    <option value="Comodin">Comodin</option>
+                                </select>
+                            </div>
+
+                            <div class="datos_us">
+                                <label for="evaluador">
+                                    <h6>Evaluador:</h6>
+                                </label>
+                                <input type="text" id="evaluador_cb" name="evaluador_cb" class="custom-form-control" readonly style="cursor: not-allowed;"></input>
+                            </div>
+                        </div>
+
+                        <div class="container_califica">
+                            <div class="calificacion">
+                                <div class="califica-item">
+                                    <label for="calificacion1">
+                                        <h6>Calificación 1:</h6>
+                                    </label>
+                                    <div class="califica-box" id="1" style="cursor: not-allowed;">0</div>
+                                </div>
+                                <div class="califica-item">
+                                    <label for="calificacion2">
+                                        <h6>Calificación 2:</h6>
+                                    </label>
+                                    <div class="califica-box" id="2" style="cursor: not-allowed;">0</div>
+                                </div>
+                                <div class="califica-item">
+                                    <label for="calificacion3">
+                                        <h6>Calificación 3:</h6>
+                                    </label>
+                                    <div class="califica-box" id="3" style="cursor: not-allowed;">0</div>
+                                </div>
+                                <div class="califica-item">
+                                    <label for="calificacion4">
+                                        <h6>Calificación 4:</h6>
+                                    </label>
+                                    <div class="califica-box" id="4" style="cursor: not-allowed;">0</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="button-container-bbva" style="margin-bottom: -40px;">
+
+                            <a href="moduloCalidadBBVA.php"> <button type="button" class="btn-regresar" id="btnregresar"> <i class="fa-solid fa-arrow-left"></i> </button> </a>
+                            <button type="button" class="btn-llamadas" id="btnllamar"> <i class="fas fa-file-excel"></i> </button>
+                            <!-- <button type="button" class="btn custom-submit-button-c" id="btnSubirBBVA">Subir LLamada</button>-->
+                            <button type="button" class="btn-limpiar" id="btnlimpiar">Limpiar Formulario </button>
+                            <button type="button" class="btn-enviar" id="btnEnviar">Enviar</button>
+                        </div>
+
                     </div>
-                    <div class="datos_us">
-                        <label for="posicion">
-                            <h6>Posición:</h6>
+
+                    <div class="metrica" style="justify-content: center;">
+                        <!-- CONTENEDOR nota de calidad-->
+                        <div class="container_notabbva">
+                            <div class="container_nota_bbva">
+                                <label for="nota_bbva">
+                                    <h4>Nota de calidad:</h4>
+                                </label>
+                                <!-- Contenedor para el porcentaje -->
+                                <div id="nota_bbva" name="nota_bbva"> % </div>
+                            </div>
+
+                            <div class="container_performancebbva">
+                                <h4>Performance:</h4>
+                                <!-- Contenedor para la imagen dinámica -->
+                                <img id="performancebbva_img" src="img/cuidado.jpg" alt="bbva">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="nota_bbva" id="hiddenNotaCalidadbbva">
+                <input type="hidden" name="performancebbva_img" id="hiddenPerformanceImgbbva">
+                <div class="container_llamadas">
+                    <!-- APARTADO DEL RUBRO LLAMADAS-->
+                    <div class="llamadas">
+                        <!-- Botón personalizado -->
+                        <label for="archivos">
+                            <h6 style="padding: 10px;">A calificar:</h6>
                         </label>
-                        <select id="posicion_cb" name="posicion_cb" class="custom-form-control">
-                            <option value="" hidden>Selecciona</option>
-                            <option value="Call Center">Call Center</option>
-                            <option value="Inspector">Inspector</option>
-                            <option value="Solucionador">Solucionador</option>
-                            <option value="Whatsapp">Whatsapp</option>
-                            <option value="Comodin">Comodin</option>
-                        </select>
+
+                        <!-- Input de archivo oculto -->
+                        <input type="file" id="fileInput" name="excelFile" accept=".xlsx, .xls">
+
+                        <input type="text" id="llamada_1" name="llamada_1" class="custom-form-control" placeholder="Número_1" readonly style="cursor: not-allowed;">
+                        <input type="text" id="llamada_2" name="llamada_2" class="custom-form-control" placeholder="Número_2" readonly style="cursor: not-allowed;">
+                        <input type="text" id="llamada_3" name="llamada_3" class="custom-form-control" placeholder="Número_3" readonly style="cursor: not-allowed;">
+                        <input type="text" id="llamada_4" name="llamada_4" class="custom-form-control" placeholder="Número_4" readonly style="cursor: not-allowed;">
                     </div>
 
-                    <div class="datos_us">
-                        <label for="evaluador">
-                            <h6>Evaluador:</h6>
+                    <div class="llamadas">
+                        <label for="duracion">
+                            <h6 style="padding: 10px;">Duración:</h6>
                         </label>
-                        <input type="text" id="evaluador_cb" name="evaluador_cb" class="custom-form-control" readonly style="cursor: not-allowed;"></input>
+                        <input type="text" id="duracion_1" name="duracion_1" class="custom-form-control">
+                        <input type="text" id="duracion_2" name="duracion_2" class="custom-form-control">
+                        <input type="text" id="duracion_3" name="duracion_3" class="custom-form-control">
+                        <input type="text" id="duracion_4" name="duracion_4" class="custom-form-control">
+                    </div>
+
+                    <div class="llamadas">
+                        <label for="fecha_llamada">
+                            <h6 style="padding: 10px;">Fecha:</h6>
+                        </label>
+                        <input type="date" id="fecha_llamada_1" name="fecha_llamada_1" class="custom-form-control" readonly style="cursor: not-allowed;">
+                        <input type="date" id="fecha_llamada_2" name="fecha_llamada_2" class="custom-form-control" readonly style="cursor: not-allowed;">
+                        <input type="date" id="fecha_llamada_3" name="fecha_llamada_3" class="custom-form-control" readonly style="cursor: not-allowed;">
+                        <input type="date" id="fecha_llamada_4" name="fecha_llamada_4" class="custom-form-control" readonly style="cursor: not-allowed;">
+                    </div>
+
+                    <div class="llamadas">
+                        <label for="hora_llamada">
+                            <h6 style="padding: 10px;">Hora:</h6>
+                        </label>
+                        <input type="time" id="hora_llamada_1" name="hora_llamada_1" class="custom-form-control" readonly style="cursor: not-allowed;">
+                        <input type="time" id="hora_llamada_2" name="hora_llamada_2" class="custom-form-control" readonly style="cursor: not-allowed;">
+                        <input type="time" id="hora_llamada_3" name="hora_llamada_3" class="custom-form-control" readonly style="cursor: not-allowed;">
+                        <input type="time" id="hora_llamada_4" name="hora_llamada_4" class="custom-form-control" readonly style="cursor: not-allowed;">
+                    </div>
+
+                    <div class="llamadas">
+                        <label for="archivo_llamada">
+                            <h6 style="padding: 10px;">Llamadas <i class="fas fa-play"></i> </h6>
+                        </label>
+
+                        <div class="mod-archivo-container" style="margin-bottom: 13px;">
+                            <label for="archivo_llamada_1" class="mod-archivo-label"><i class="fa fa-phone"></i></label>
+                            <span class="mod-archivo-nombre">...</span>
+                            <button class="mod-btnTrash" style="display: none;"><i class="fa fa-trash"></i></button>
+                            <input type="file" id="archivo_llamada_1" name="archivo_llamada_1" accept=".wav" class="auto-upload">
+                        </div>
+
+                        <div class="mod-archivo-container" style="margin-bottom: 13px;">
+                            <label for="archivo_llamada_2" class="mod-archivo-label"><i class="fa fa-phone"></i></label>
+                            <span class="mod-archivo-nombre">...</span>
+                            <button class="mod-btnTrash" style="display: none;"><i class="fa fa-trash"></i></button>
+                            <input type="file" id="archivo_llamada_2" name="archivo_llamada_2" accept=".wav" class="auto-upload">
+                        </div>
+
+                        <div class="mod-archivo-container" style="margin-bottom: 13px;">
+                            <label for="archivo_llamada_3" class="mod-archivo-label"><i class="fa fa-phone"></i></label>
+                            <span class="mod-archivo-nombre">...</span>
+                            <button class="mod-btnTrash" style="display: none;"><i class="fa fa-trash"></i></button>
+                            <input type="file" id="archivo_llamada_3" name="archivo_llamada_3" accept=".wav" class="auto-upload">
+                        </div>
+
+                        <div class="mod-archivo-container" style="margin-bottom: 13px;">
+                            <label for="archivo_llamada_4" class="mod-archivo-label"><i class="fa fa-phone"></i></label>
+                            <span class="mod-archivo-nombre">...</span>
+                            <button class="mod-btnTrash" style="display: none;"><i class="fa fa-trash"></i></button>
+                            <input type="file" id="archivo_llamada_4" name="archivo_llamada_4" accept=".wav" class="auto-upload">
+                        </div>
                     </div>
                 </div>
 
-                <div class="container_califica">
-                    <div class="calificacion">
-                        <div class="califica-item">
-                            <label for="calificacion1">
-                                <h6>Calificación 1:</h6>
-                            </label>
-                            <div class="califica-box" id="1" style="cursor: not-allowed;">0</div>
-                        </div>
-                        <div class="califica-item">
-                            <label for="calificacion2">
-                                <h6>Calificación 2:</h6>
-                            </label>
-                            <div class="califica-box" id="2" style="cursor: not-allowed;">0</div>
-                        </div>
-                        <div class="califica-item">
-                            <label for="calificacion3">
-                                <h6>Calificación 3:</h6>
-                            </label>
-                            <div class="califica-box" id="3" style="cursor: not-allowed;">0</div>
-                        </div>
-                        <div class="califica-item">
-                            <label for="calificacion4">
-                                <h6>Calificación 4:</h6>
-                            </label>
-                            <div class="califica-box" id="4" style="cursor: not-allowed;">0</div>
-                        </div>
+
+                <!-- Sección de Impacto Negocio -->
+                <div class="container_impacto">
+                    <div class="seccion-titulo">
+                        <h1>Impacto Negocio</h1>
+                        <span class="flecha" onclick="toggleSeccion(this)">
+                            <i class="fas fa-chevron-down"></i> <!-- Icono de flecha hacia abajo -->
+                        </span>
+                    </div>
+
+                </div>
+                <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="display: none;">
+                    <div id="calidad-grid-container" class="calidad-grid-container">
+
+                        <!-- Rubros de Impacto Negocio -->
+                        <label for="rubro_c" style="margin-bottom: 30px;">
+                            <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
+                        </label>
+                        <label for="ponderacion_c">
+                            <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
+                        </label>
+                        <label for="llamada1_c">
+                            <h6 style="color:rgb(30, 9, 150);">llamada 1</h6>
+                        </label>
+                        <label for="llamada2_c">
+                            <h6 style="color:rgb(63, 9, 150);">llamada 2</h6>
+                        </label>
+                        <label for="llamada3_c">
+                            <h6 style="color:rgb(58, 9, 150);">llamada 3</h6>
+                        </label>
+                        <label for="llamada4_c">
+                            <h6 style="color:rgb(11, 9, 150);">llamada 4</h6>
+                        </label>
+
+
+                        <!-- Rubros con ponderaciones -->
+
+                        <!-- Rubro 1 -->
+                        <label for="identifica_cb">
+                            <h6>Identifica al receptor</h6>
+                        </label>
+                        <input type="text" id="pon1" name="pon1" class="calidad-form-control" value="3" readonly style="text-align: center;">
+
+                        <select id="cumple1_1" name="cumple1_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+                        <select id="cumple1_2" name="cumple1_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+                        <select id="cumple1_3" name="cumple1_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+                        <select id="cumple1_4" name="cumple1_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+                        <!-- Rubro 2 -->
+                        <label for="mute_cb">
+                            <h6>Uso del mute y tiempo de espera</h6>
+                        </label>
+                        <input type="text" id="pon2" name="pon2" class="calidad-form-control" value="4" readonly style="text-align: center;">
+
+                        <select id="cumple2_1" name="cumple2_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+                        <select id="cumple2_2" name="cumple2_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+                        <select id="cumple2_3" name="cumple2_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+                        <select id="cumple2_4" name="cumple2_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+
+
+                        <!--    Rubro     3   -->
+                        <label for="escucha_cb">
+                            <h6>Escucha activa</h6>
+                        </label>
+                        <input type="text" id="pon3" name="pon3" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
+
+                        <select id="cumple3_1" name="cumple3_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple3_2" name="cumple3_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple3_3" name="cumple3_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple3_4" name="cumple3_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+
+                        <!--    Rubro     4   -->
+                        <label for="informacion_cb">
+                            <h6>Sentido de urgencia e información</h6>
+                        </label>
+                        <input type="text" id="pon4" name="pon4" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
+
+                        <select id="cumple4_1" name="cumple4_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple4_2" name="cumple4_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple4_3" name="cumple4_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple4_4" name="cumple4_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+
+                        <!--    Rubro     5   -->
+                        <label for="cortesia_cb">
+                            <h6>Pregunta de cortesía</h6>
+                        </label>
+                        <input type="text" id="pon5" name="pon5" class="calidad-form-control" placeholder="" value="6" readonly style="text-align: center;">
+
+                        <select id="cumple5_1" name="cumple5_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple5_2" name="cumple5_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple5_3" name="cumple5_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple5_4" name="cumple5_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+
+                        <!--    Rubro     6   -->
+                        <label for="sondeo_cb">
+                            <h6>Sondeo objetivo</h6>
+                        </label>
+                        <input type="text" id="pon6" name="pon6" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
+
+                        <select id="cumple6_1" name="cumple6_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple6_2" name="cumple6_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple6_3" name="cumple6_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple6_4" name="cumple6_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+
+                        <!--    Rubro     7   -->
+                        <label for="objeciones_cb">
+                            <h6>Objeciones</h6>
+                        </label>
+                        <input type="text" id="pon7" name="pon7" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
+
+                        <select id="cumple7_1" name="cumple7_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple7_2" name="cumple7_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple7_3" name="cumple7_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple7_4" name="cumple7_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+
+                        <!--    Rubro     8   -->
+                        <label for="script_cb">
+                            <h6>SCRIPT</h6>
+                        </label>
+                        <input type="text" id="pon8" name="pon8" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
+
+                        <select id="cumple8_1" name="cumple8_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple8_2" name="cumple8_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple8_3" name="cumple8_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple8_4" name="cumple8_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+                        <!--    Rubro     9   -->
+                        <label for="cierres_cb">
+                            <h6>Invitación a inspeccionar</h6>
+                        </label>
+                        <input type="text" id="pon9" name="pon9" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
+                        <select id="cumple9_1" name="cumple9_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple9_2" name="cumple9_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple9_3" name="cumple9_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple9_4" name="cumple9_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="button-container-bbva" style="margin-bottom: -40px;">
-                    <button type="button" class="btn-llamadas" id="btnllamar"> <i class="fas fa-file-excel"></i> </button>
-                    <!-- <button type="button" class="btn custom-submit-button-c" id="btnSubirBBVA">Subir LLamada</button>-->
+
+                <!-- Sección de Impacto Operativo -->
+                <div class="container_impacto">
+                    <div class="seccion-titulo">
+                        <h1>Impacto Operativo</h1>
+                        <span class="flecha" onclick="toggleSeccion(this)">
+                            <i class="fas fa-chevron-down"></i> <!-- Icono de flecha hacia abajo -->
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="display: none;">
+                    <div id="calidad-grid-container" class="calidad-grid-container">
+
+                        <!-- Rubros de Impacto Negocio -->
+                        <label for="rubro_c" style="margin-bottom: 30px;">
+                            <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
+                        </label>
+                        <label for="ponderacion_c">
+                            <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
+                        </label>
+                        <label for="llamada1_c">
+                            <h6 style="color:rgb(30, 9, 150);">llamada 1</h6>
+                        </label>
+                        <label for="llamada2_c">
+                            <h6 style="color:rgb(63, 9, 150);">llamada 2</h6>
+                        </label>
+                        <label for="llamada3_c">
+                            <h6 style="color:rgb(58, 9, 150);">llamada 3</h6>
+                        </label>
+                        <label for="llamada4_c">
+                            <h6 style="color:rgb(11, 9, 150);">llamada 4</h6>
+                        </label>
+
+                        <!-- Rubros con ponderaciones -->
+
+                        <!--    Rubro     10   -->
+                        <label for="tutea_c">
+                            <h6>Tutea / Personaliza</h6>
+                        </label>
+                        <input type="text" id="pon10" name="pon10" class="calidad-form-control" value="6" readonly style="text-align: center;">
+                        <select id="cumple10_1" name="cumple10_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple10_2" name="cumple10_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple10_3" name="cumple10_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple10_4" name="cumple10_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+                        <!--    Rubro     11   -->
+                        <label for="ccc_cb">
+                            <h6>Empatía y cortesía</h6>
+                        </label>
+                        <input type="text" id="pon11" name="pon11" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
+
+                        <select id="cumple11_1" name="cumple11_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple11_2" name="cumple11_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple11_3" name="cumple11_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple11_4" name="cumple11_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+
+                        <!--    Rubro     12   -->
+                        <label for="etiqueta_cb">
+                            <h6>Etiqueta telefónica</h6>
+                        </label>
+                        <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
+
+                        <select id="cumple12_1" name="cumple12_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple12_2" name="cumple12_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple12_3" name="cumple12_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple12_4" name="cumple12_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+
+                        <!--    Rubro     13   -->
+                        <label for="contrllamada_cb">
+                            <h6>Control de la llamada</h6>
+                        </label>
+                        <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
+
+                        <select id="cumple13_1" name="cumple13_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple13_2" name="cumple13_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple13_3" name="cumple13_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple13_4" name="cumple13_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+                        <!--    Rubro     14   -->
+                        <label for="negativas_cb">
+                            <h6>Frases negativas</h6>
+                        </label>
+                        <input type="text" id="pon14" name="pon14" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
+
+                        <select id="cumple14_1" name="cumple14_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple14_2" name="cumple14_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple14_3" name="cumple14_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple14_4" name="cumple14_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Sección de Error Crítico -->
+                <div class="container_impacto">
+                    <div class="seccion-titulo">
+                        <h1>Error Crítico</h1>
+                        <span class="flecha" onclick="toggleSeccion(this)">
+                            <i class="fas fa-chevron-down"></i> <!-- Icono de flecha hacia abajo -->
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="display: none;">
+                    <div id="calidad-grid-container" class="calidad-grid-container">
+
+                        <!-- Rubros de Error Crítico -->
+                        <label for="rubro_c" style="margin-bottom: 30px;">
+                            <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
+                        </label>
+                        <label for="ponderacion_c">
+                            <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
+                        </label>
+                        <label for="llamada1_c">
+                            <h6 style="color:rgb(30, 9, 150);">llamada 1</h6>
+                        </label>
+                        <label for="llamada2_c">
+                            <h6 style="color:rgb(63, 9, 150);">llamada 2</h6>
+                        </label>
+                        <label for="llamada3_c">
+                            <h6 style="color:rgb(58, 9, 150);">llamada 3</h6>
+                        </label>
+                        <label for="llamada4_c">
+                            <h6 style="color:rgb(11, 9, 150);">llamada 4</h6>
+                        </label>
+
+                        <!-- Rubros con ponderaciones -->
+
+                        <!--    Rubro     15   -->
+                        <label for="maltrato_cb">
+                            <h6>Maltrato al cliente</h6>
+                        </label>
+                        <input type="text" id="pon15" name="pon15" class="calidad-form-control" value="0" readonly style="text-align: center;">
+
+                        <select id="cumple15_1" name="cumple15_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple15_2" name="cumple15_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple15_3" name="cumple15_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple15_4" name="cumple15_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+
+                        <!--    Rubro     16   -->
+                        <label for="desprestigio_cb">
+                            <h6>Desprestigio institucional</h6>
+                        </label>
+                        <input type="text" id="pon16" name="pon16" class="calidad-form-control" placeholder="" value="0" readonly style="text-align: center;">
+
+                        <select id="cumple16_1" name="cumple16_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple16_2" name="cumple16_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple16_3" name="cumple16_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple16_4" name="cumple16_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Contenedor de Fortalezas y Áreas de Oportunidad -->
+                <div class="container_FA">
+                    <div class="fortalezas-container">
+                        <label for="fortalezas">
+                            <h6>Fortalezas</h6>
+                        </label>
+                        <textarea id="fortalezas" name="fortalezas" class="fortalezas-textarea" readonly style="cursor: not-allowed;"></textarea>
+                    </div>
+
+                    <div class="oportunidades-container">
+                        <label for="oportunidades">
+                            <h6>Áreas de Oportunidad</h6>
+                        </label>
+                        <textarea id="oportunidades" name="oportunidades" class="oportunidades-textarea" readonly style="cursor: not-allowed;"></textarea>
+                    </div>
+                </div>
+                <!-- Apartado de comentarios y compromiso -->
+                <div class="container_com" style="margin-left: auto; margin-right: auto;">
+                    <h6>Comentarios</h6>
+                    <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="5" style="margin-bottom: 30px;"></textarea>
+                    <!--<h6>Compromiso</h6>
+                <textarea class="form-control" id="compromisoTextarea" name="compromisoTextarea" rows="5" style="margin-bottom: 3px;"></textarea>-->
+                </div>
+
+                <div class="button-container-bbva">
                     <button type="button" class="btn-limpiar" id="btnlimpiar">Limpiar Formulario </button>
                     <button type="button" class="btn-enviar" id="btnEnviar">Enviar</button>
                 </div>
 
-            </div>
+            </form>
 
-            <div class="metrica" style="justify-content: center;">
-                <!-- CONTENEDOR nota de calidad-->
-                <div class="container_notabbva">
-                    <div class="container_nota_bbva">
-                        <label for="nota_bbva">
-                            <h4>Nota de calidad:</h4>
-                        </label>
-                        <!-- Contenedor para el porcentaje -->
-                        <div id="nota_bbva" name="nota_bbva"> % </div>
-                    </div>
-
-                    <div class="container_performancebbva">
-                        <h4>Performance:</h4>
-                        <!-- Contenedor para la imagen dinámica -->
-                        <img id="performancebbva_img" src="img/cuidado.jpg" alt="bbva">
-                    </div>
-
-                </div>
-            </div>
+            <?php include 'footer.php'; ?>
         </div>
-        <input type="hidden" name="nota_bbva" id="hiddenNotaCalidadbbva">
-        <input type="hidden" name="performancebbva_img" id="hiddenPerformanceImgbbva">
-        <div class="container_llamadas">
-            <!-- APARTADO DEL RUBRO LLAMADAS-->
-            <div class="llamadas">
-                <!-- Botón personalizado -->
-                <label for="archivos">
-                    <h6 style="padding: 10px;">A calificar:</h6>
-                </label>
-
-                <!-- Input de archivo oculto -->
-                <input type="file" id="fileInput" name="excelFile" accept=".xlsx, .xls">
-
-                <input type="text" id="llamada_1" name="llamada_1" class="custom-form-control" placeholder="Número_1" readonly style="cursor: not-allowed;">
-                <input type="text" id="llamada_2" name="llamada_2" class="custom-form-control" placeholder="Número_2" readonly style="cursor: not-allowed;">
-                <input type="text" id="llamada_3" name="llamada_3" class="custom-form-control" placeholder="Número_3" readonly style="cursor: not-allowed;">
-                <input type="text" id="llamada_4" name="llamada_4" class="custom-form-control" placeholder="Número_4" readonly style="cursor: not-allowed;">
-            </div>
-
-            <div class="llamadas">
-                <label for="duracion">
-                    <h6 style="padding: 10px;">Duración:</h6>
-                </label>
-                <input type="text" id="duracion_1" name="duracion_1" class="custom-form-control">
-                <input type="text" id="duracion_2" name="duracion_2" class="custom-form-control">
-                <input type="text" id="duracion_3" name="duracion_3" class="custom-form-control">
-                <input type="text" id="duracion_4" name="duracion_4" class="custom-form-control">
-            </div>
-
-            <div class="llamadas">
-                <label for="fecha_llamada">
-                    <h6 style="padding: 10px;">Fecha:</h6>
-                </label>
-                <input type="date" id="fecha_llamada_1" name="fecha_llamada_1" class="custom-form-control" readonly style="cursor: not-allowed;">
-                <input type="date" id="fecha_llamada_2" name="fecha_llamada_2" class="custom-form-control" readonly style="cursor: not-allowed;">
-                <input type="date" id="fecha_llamada_3" name="fecha_llamada_3" class="custom-form-control" readonly style="cursor: not-allowed;">
-                <input type="date" id="fecha_llamada_4" name="fecha_llamada_4" class="custom-form-control" readonly style="cursor: not-allowed;">
-            </div>
-
-            <div class="llamadas">
-                <label for="hora_llamada">
-                    <h6 style="padding: 10px;">Hora:</h6>
-                </label>
-                <input type="time" id="hora_llamada_1" name="hora_llamada_1" class="custom-form-control" readonly style="cursor: not-allowed;">
-                <input type="time" id="hora_llamada_2" name="hora_llamada_2" class="custom-form-control" readonly style="cursor: not-allowed;">
-                <input type="time" id="hora_llamada_3" name="hora_llamada_3" class="custom-form-control" readonly style="cursor: not-allowed;">
-                <input type="time" id="hora_llamada_4" name="hora_llamada_4" class="custom-form-control" readonly style="cursor: not-allowed;">
-            </div>
-
-            <div class="llamadas">
-                <label for="archivo_llamada">
-                    <h6 style="padding: 10px;">Llamadas <i class="fas fa-play"></i> </h6>
-                </label>
-
-                <div class="mod-archivo-container" style="margin-bottom: 13px;">
-                    <label for="archivo_llamada_1" class="mod-archivo-label"><i class="fa fa-phone"></i></label>
-                    <span class="mod-archivo-nombre">...</span>
-                    <button class="mod-btnTrash" style="display: none;"><i class="fa fa-trash"></i></button>
-                    <input type="file" id="archivo_llamada_1" name="archivo_llamada_1" accept=".wav" class="auto-upload">
-                </div>
-
-                <div class="mod-archivo-container" style="margin-bottom: 13px;">
-                    <label for="archivo_llamada_2" class="mod-archivo-label"><i class="fa fa-phone"></i></label>
-                    <span class="mod-archivo-nombre">...</span>
-                    <button class="mod-btnTrash" style="display: none;"><i class="fa fa-trash"></i></button>
-                    <input type="file" id="archivo_llamada_2" name="archivo_llamada_2" accept=".wav" class="auto-upload">
-                </div>
-
-                <div class="mod-archivo-container" style="margin-bottom: 13px;">
-                    <label for="archivo_llamada_3" class="mod-archivo-label"><i class="fa fa-phone"></i></label>
-                    <span class="mod-archivo-nombre">...</span>
-                    <button class="mod-btnTrash" style="display: none;"><i class="fa fa-trash"></i></button>
-                    <input type="file" id="archivo_llamada_3" name="archivo_llamada_3" accept=".wav" class="auto-upload">
-                </div>
-
-                <div class="mod-archivo-container" style="margin-bottom: 13px;">
-                    <label for="archivo_llamada_4" class="mod-archivo-label"><i class="fa fa-phone"></i></label>
-                    <span class="mod-archivo-nombre">...</span>
-                    <button class="mod-btnTrash" style="display: none;"><i class="fa fa-trash"></i></button>
-                    <input type="file" id="archivo_llamada_4" name="archivo_llamada_4" accept=".wav" class="auto-upload">
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Sección de Impacto Negocio -->
-        <div class="container_impacto">
-            <div class="seccion-titulo">
-                <h1>Impacto Negocio</h1>
-                <span class="flecha" onclick="toggleSeccion(this)">
-                    <i class="fas fa-chevron-down"></i> <!-- Icono de flecha hacia abajo -->
-                </span>
-            </div>
-
-        </div>
-        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="display: none;">
-            <div id="calidad-grid-container" class="calidad-grid-container">
-
-                <!-- Rubros de Impacto Negocio -->
-                <label for="rubro_c" style="margin-bottom: 30px;">
-                    <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
-                </label>
-                <label for="ponderacion_c">
-                    <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
-                </label>
-                <label for="llamada1_c">
-                    <h6 style="color:rgb(30, 9, 150);">llamada 1</h6>
-                </label>
-                <label for="llamada2_c">
-                    <h6 style="color:rgb(63, 9, 150);">llamada 2</h6>
-                </label>
-                <label for="llamada3_c">
-                    <h6 style="color:rgb(58, 9, 150);">llamada 3</h6>
-                </label>
-                <label for="llamada4_c">
-                    <h6 style="color:rgb(11, 9, 150);">llamada 4</h6>
-                </label>
-
-
-                <!-- Rubros con ponderaciones -->
-
-                <!-- Rubro 1 -->
-                <label for="identifica_cb">
-                    <h6>Identifica al receptor</h6>
-                </label>
-                <input type="text" id="pon1" name="pon1" class="calidad-form-control" value="3" readonly style="text-align: center;">
-
-                <select id="cumple1_1" name="cumple1_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-                <select id="cumple1_2" name="cumple1_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-                <select id="cumple1_3" name="cumple1_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-                <select id="cumple1_4" name="cumple1_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-                <!-- Rubro 2 -->
-                <label for="mute_cb">
-                    <h6>Uso del mute y tiempo de espera</h6>
-                </label>
-                <input type="text" id="pon2" name="pon2" class="calidad-form-control" value="4" readonly style="text-align: center;">
-
-                <select id="cumple2_1" name="cumple2_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-                <select id="cumple2_2" name="cumple2_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-                <select id="cumple2_3" name="cumple2_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-                <select id="cumple2_4" name="cumple2_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-
-
-                <!--    Rubro     3   -->
-                <label for="escucha_cb">
-                    <h6>Escucha activa</h6>
-                </label>
-                <input type="text" id="pon3" name="pon3" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
-
-                <select id="cumple3_1" name="cumple3_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple3_2" name="cumple3_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple3_3" name="cumple3_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple3_4" name="cumple3_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-
-                <!--    Rubro     4   -->
-                <label for="informacion_cb">
-                    <h6>Sentido de urgencia e información</h6>
-                </label>
-                <input type="text" id="pon4" name="pon4" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
-
-                <select id="cumple4_1" name="cumple4_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple4_2" name="cumple4_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple4_3" name="cumple4_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple4_4" name="cumple4_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-
-                <!--    Rubro     5   -->
-                <label for="cortesia_cb">
-                    <h6>Pregunta de cortesía</h6>
-                </label>
-                <input type="text" id="pon5" name="pon5" class="calidad-form-control" placeholder="" value="6" readonly style="text-align: center;">
-
-                <select id="cumple5_1" name="cumple5_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple5_2" name="cumple5_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple5_3" name="cumple5_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple5_4" name="cumple5_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-
-                <!--    Rubro     6   -->
-                <label for="sondeo_cb">
-                    <h6>Sondeo objetivo</h6>
-                </label>
-                <input type="text" id="pon6" name="pon6" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
-
-                <select id="cumple6_1" name="cumple6_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple6_2" name="cumple6_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple6_3" name="cumple6_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple6_4" name="cumple6_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-
-                <!--    Rubro     7   -->
-                <label for="objeciones_cb">
-                    <h6>Objeciones</h6>
-                </label>
-                <input type="text" id="pon7" name="pon7" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
-
-                <select id="cumple7_1" name="cumple7_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple7_2" name="cumple7_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple7_3" name="cumple7_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple7_4" name="cumple7_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-
-                <!--    Rubro     8   -->
-                <label for="script_cb">
-                    <h6>SCRIPT</h6>
-                </label>
-                <input type="text" id="pon8" name="pon8" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
-
-                <select id="cumple8_1" name="cumple8_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple8_2" name="cumple8_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple8_3" name="cumple8_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple8_4" name="cumple8_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-                <!--    Rubro     9   -->
-                <label for="cierres_cb">
-                    <h6>Invitación a inspeccionar</h6>
-                </label>
-                <input type="text" id="pon9" name="pon9" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
-                <select id="cumple9_1" name="cumple9_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple9_2" name="cumple9_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple9_3" name="cumple9_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple9_4" name="cumple9_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-            </div>
-        </div>
-
-
-        <!-- Sección de Impacto Operativo -->
-        <div class="container_impacto">
-            <div class="seccion-titulo">
-                <h1>Impacto Operativo</h1>
-                <span class="flecha" onclick="toggleSeccion(this)">
-                    <i class="fas fa-chevron-down"></i> <!-- Icono de flecha hacia abajo -->
-                </span>
-            </div>
-        </div>
-
-        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="display: none;">
-            <div id="calidad-grid-container" class="calidad-grid-container">
-
-                <!-- Rubros de Impacto Negocio -->
-                <label for="rubro_c" style="margin-bottom: 30px;">
-                    <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
-                </label>
-                <label for="ponderacion_c">
-                    <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
-                </label>
-                <label for="llamada1_c">
-                    <h6 style="color:rgb(30, 9, 150);">llamada 1</h6>
-                </label>
-                <label for="llamada2_c">
-                    <h6 style="color:rgb(63, 9, 150);">llamada 2</h6>
-                </label>
-                <label for="llamada3_c">
-                    <h6 style="color:rgb(58, 9, 150);">llamada 3</h6>
-                </label>
-                <label for="llamada4_c">
-                    <h6 style="color:rgb(11, 9, 150);">llamada 4</h6>
-                </label>
-
-                <!-- Rubros con ponderaciones -->
-
-                <!--    Rubro     10   -->
-                <label for="tutea_c">
-                    <h6>Tutea / Personaliza</h6>
-                </label>
-                <input type="text" id="pon10" name="pon10" class="calidad-form-control" value="6" readonly style="text-align: center;">
-                <select id="cumple10_1" name="cumple10_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple10_2" name="cumple10_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple10_3" name="cumple10_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple10_4" name="cumple10_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-                <!--    Rubro     11   -->
-                <label for="ccc_cb">
-                    <h6>Empatía y cortesía</h6>
-                </label>
-                <input type="text" id="pon11" name="pon11" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
-
-                <select id="cumple11_1" name="cumple11_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple11_2" name="cumple11_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple11_3" name="cumple11_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple11_4" name="cumple11_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-
-                <!--    Rubro     12   -->
-                <label for="etiqueta_cb">
-                    <h6>Etiqueta telefónica</h6>
-                </label>
-                <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
-
-                <select id="cumple12_1" name="cumple12_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple12_2" name="cumple12_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple12_3" name="cumple12_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple12_4" name="cumple12_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-
-                <!--    Rubro     13   -->
-                <label for="contrllamada_cb">
-                    <h6>Control de la llamada</h6>
-                </label>
-                <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
-
-                <select id="cumple13_1" name="cumple13_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple13_2" name="cumple13_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple13_3" name="cumple13_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple13_4" name="cumple13_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-                <!--    Rubro     14   -->
-                <label for="negativas_cb">
-                    <h6>Frases negativas</h6>
-                </label>
-                <input type="text" id="pon14" name="pon14" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
-
-                <select id="cumple14_1" name="cumple14_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple14_2" name="cumple14_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple14_3" name="cumple14_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple14_4" name="cumple14_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Sección de Error Crítico -->
-        <div class="container_impacto">
-            <div class="seccion-titulo">
-                <h1>Error Crítico</h1>
-                <span class="flecha" onclick="toggleSeccion(this)">
-                    <i class="fas fa-chevron-down"></i> <!-- Icono de flecha hacia abajo -->
-                </span>
-            </div>
-        </div>
-
-        <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="display: none;">
-            <div id="calidad-grid-container" class="calidad-grid-container">
-
-                <!-- Rubros de Error Crítico -->
-                <label for="rubro_c" style="margin-bottom: 30px;">
-                    <h6 style="color:rgb(90, 10, 194);">Rubro</h6>
-                </label>
-                <label for="ponderacion_c">
-                    <h6 style="color:rgb(90, 10, 194);">Ponderación</h6>
-                </label>
-                <label for="llamada1_c">
-                    <h6 style="color:rgb(30, 9, 150);">llamada 1</h6>
-                </label>
-                <label for="llamada2_c">
-                    <h6 style="color:rgb(63, 9, 150);">llamada 2</h6>
-                </label>
-                <label for="llamada3_c">
-                    <h6 style="color:rgb(58, 9, 150);">llamada 3</h6>
-                </label>
-                <label for="llamada4_c">
-                    <h6 style="color:rgb(11, 9, 150);">llamada 4</h6>
-                </label>
-
-                <!-- Rubros con ponderaciones -->
-
-                <!--    Rubro     15   -->
-                <label for="maltrato_cb">
-                    <h6>Maltrato al cliente</h6>
-                </label>
-                <input type="text" id="pon15" name="pon15" class="calidad-form-control" value="0" readonly style="text-align: center;">
-
-                <select id="cumple15_1" name="cumple15_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple15_2" name="cumple15_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple15_3" name="cumple15_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple15_4" name="cumple15_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-
-
-                <!--    Rubro     16   -->
-                <label for="desprestigio_cb">
-                    <h6>Desprestigio institucional</h6>
-                </label>
-                <input type="text" id="pon16" name="pon16" class="calidad-form-control" placeholder="" value="0" readonly style="text-align: center;">
-
-                <select id="cumple16_1" name="cumple16_1" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple16_2" name="cumple16_2" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple16_3" name="cumple16_3" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-                <select id="cumple16_4" name="cumple16_4" class="calidad-form-control">
-                    <option value="" hidden>Selecciona</option>
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Contenedor de Fortalezas y Áreas de Oportunidad -->
-        <div class="container_FA">
-            <div class="fortalezas-container">
-                <label for="fortalezas">
-                    <h6>Fortalezas</h6>
-                </label>
-                <textarea id="fortalezas" name="fortalezas" class="fortalezas-textarea" readonly style="cursor: not-allowed;"></textarea>
-            </div>
-
-            <div class="oportunidades-container">
-                <label for="oportunidades">
-                    <h6>Áreas de Oportunidad</h6>
-                </label>
-                <textarea id="oportunidades" name="oportunidades" class="oportunidades-textarea" readonly style="cursor: not-allowed;"></textarea>
-            </div>
-        </div>
-        <!-- Apartado de comentarios y compromiso -->
-        <div class="container_com">
-            <h6>Comentarios</h6>
-            <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="5" style="margin-bottom: 30px;"></textarea>
-
-            <!--<h6>Compromiso</h6>
-                <textarea class="form-control" id="compromisoTextarea" name="compromisoTextarea" rows="5" style="margin-bottom: 3px;"></textarea>-->
-        </div>
-
-        <div class="button-container-bbva">
-            <button type="button" class="btn-limpiar" id="btnlimpiar">Limpiar Formulario </button>
-            <button type="button" class="btn-enviar" id="btnEnviar">Enviar</button>
-        </div>
-
-    </form>
+    </div>
 
 
     <!-- script para la flecha -->
@@ -1724,345 +1733,55 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         });
     </script>
 
+
+    
+    <!-- Scripts en el orden CORRECTO -->
+    <!-- 1. jQuery primero -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- 2. Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+
+    <!-- 3. Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="main/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="main/datatables/jquery.dataTables.min.js"></script>
+    <script src="main/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Moment.js -->
+    <script src="https://cdn.jsdelivr.net/npm/momentjs/latest/moment.min.js"></script>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database-compat.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Scripts locales -->
+    <script src="js/firma.js"></script>
+    <script src="js/firma2.js"></script>
+
     <!--SCRIPT getOperadoresBBVA.js-->
     <script src="js/getOperadoresBBVA.js"></script>
     <!-- Cargar SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.3/dist/sweetalert2.all.min.js"></script>
 
-
-    <!-- SCRIPT DE LA SECCIÓN SUBIR LLAMADA 
-    <script>
-        function handleTrashButton(input, nombreArchivo, btnTrash) {
-            input.value = ''; // Limpiar el input
-            nombreArchivo.textContent = '...'; // Restaurar el texto por defecto
-            btnTrash.style.display = 'none'; // Ocultar el botón de borrar
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.mod-archivo-container').forEach(container => {
-                const input = container.querySelector('input[type="file"]');
-                const nombreArchivo = container.querySelector('.mod-archivo-nombre');
-                const btnTrash = container.querySelector('.mod-btnTrash');
-
-                input.addEventListener('change', (event) => {
-                    event.stopPropagation();
-                    if (input.files.length > 0) {
-                        const file = input.files[0];
-                        nombreArchivo.textContent = file.name;
-                        btnTrash.style.display = 'inline-block';
-                    }
-                });
-
-                btnTrash.addEventListener('click', (event) => {
-                    event.preventDefault(); // Evitar cualquier acción por defecto
-                    event.stopPropagation(); // Detener la propagación del evento
-                    handleTrashButton(input, nombreArchivo, btnTrash);
-                });
-            });
-        });
-    </script>-->
-    <!-- SCRIPT PARA SUBIR LAS LLAMADAS 
-    <script>
-        // Variables globales para almacenar nombres y URLs de las llamadas
-        let llamadasSubidas = {
-            1: {
-                nombre: '',
-                url: ''
-            },
-            2: {
-                nombre: '',
-                url: ''
-            },
-            3: {
-                nombre: '',
-                url: ''
-            },
-            4: {
-                nombre: '',
-                url: ''
-            }
-        };
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Estilo para el spinner
-            const spinnerStyle = document.createElement('style');
-            spinnerStyle.innerHTML = `
-            .spinner {
-                width: 50px;
-                height: 50px;
-                border: 5px solid #f3f3f3;
-                border-top: 5px solid #3498db;
-                border-radius: 50%;
-                animation: spin 1s linear infinite;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: 9999;
-                display: none;
-            }
-            @keyframes spin {
-                0% { transform: translate(-50%, -50%) rotate(0deg); }
-                100% { transform: translate(-50%, -50%) rotate(360deg); }
-            }`;
-            document.head.appendChild(spinnerStyle);
-
-            // Crear spinner
-            const spinner = document.createElement('div');
-            spinner.className = 'spinner';
-            document.body.appendChild(spinner);
-
-            // Configurar eventos para los inputs de llamadas
-            document.querySelectorAll('.auto-upload').forEach(input => {
-                input.addEventListener('change', function() {
-                    const file = this.files[0];
-                    const llamadaNum = parseInt(this.id.split('_')[2]); // Extrae el número de llamada del ID
-                    const container = this.closest('.mod-archivo-container');
-                    const nombreSpan = container.querySelector('.mod-archivo-nombre');
-                    const trashBtn = container.querySelector('.mod-btnTrash');
-                    const playBtn = container.querySelector('.mod-btnPlay') || createPlayButton(container);
-
-                    if (file) {
-                        // Validar tipo de archivo
-                        if (!file.type.match('audio/wav|audio/x-wav|audio/wave')) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: '¡Error!',
-                                text: 'Solo se permiten archivos .wav',
-                            });
-                            return;
-                        }
-
-                        // Mostrar spinner
-                        spinner.style.display = 'block';
-
-                        // Preparar datos del formulario
-                        const formData = new FormData();
-                        formData.append('archivo', file);
-                        formData.append('numero_llamada', llamadaNum);
-
-                        // Obtener operador
-                        const operador = document.getElementById('nombre_cb').value;
-                        if (!operador) {
-                            spinner.style.display = 'none';
-                            Swal.fire({
-                                icon: 'error',
-                                title: '¡Error!',
-                                text: 'Por favor, seleccione un operador válido.',
-                            });
-                            return;
-                        }
-                        formData.append('operador', operador);
-
-                        // Enviar archivo al servidor
-                        fetch('proc/insertLlamadaBBVA.php', {
-                                method: 'POST',
-                                body: formData
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                spinner.style.display = 'none';
-
-                                if (data.success) {
-                                    // Guardar información de la llamada
-                                    llamadasSubidas[llamadaNum] = {
-                                        nombre: data.file_name,
-                                        url: data.file_url
-                                    };
-
-                                    // Actualizar UI
-                                    nombreSpan.textContent = file.name;
-                                    trashBtn.style.display = 'inline-block';
-                                    playBtn.style.display = 'inline-block';
-
-                                    // Configurar botones
-                                    trashBtn.onclick = () => {
-                                        input.value = '';
-                                        nombreSpan.textContent = '...';
-                                        trashBtn.style.display = 'none';
-                                        playBtn.style.display = 'none';
-                                        llamadasSubidas[llamadaNum] = {
-                                            nombre: '',
-                                            url: ''
-                                        }; // Limpiar datos
-                                    };
-
-                                    playBtn.onclick = () => {
-                                        const audioPlayer = document.getElementById('audioPlayer');
-                                        if (audioPlayer) {
-                                            audioPlayer.src = llamadasSubidas[llamadaNum].url;
-                                            audioPlayer.load();
-                                            audioPlayer.play();
-                                        }
-                                    };
-
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: '¡Subido!',
-                                        text: `Llamada ${llamadaNum} subida correctamente`,
-                                        timer: 2000,
-                                        showConfirmButton: false
-                                    });
-
-                                    console.log('Llamadas subidas:', llamadasSubidas); // Verificar en consola
-                                } else {
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Error',
-                                        text: data.error || 'Error al subir la llamada',
-                                    });
-                                }
-                            })
-                            .catch(error => {
-                                spinner.style.display = 'none';
-                                console.error('Error:', error);
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Error',
-                                    text: 'Error al conectar con el servidor',
-                                });
-                            });
-                    }
-                });
-            });
-
-            // Función para crear botón de reproducción si no existe
-            //function createPlayButton(container) {
-            //  const btn = document.createElement('button');
-            // btn.className = 'mod-btnPlay';
-            // btn.innerHTML = '<i class="fa fa-play"></i>';
-            // btn.style.display = 'none';
-            // btn.style.marginLeft = '5px';
-            //  container.appendChild(btn);
-            // return btn;
-            // }
-        });
-    </script>-->
-    <!-- Script para manejar el envío del formulario prueba 1-->
-    <!-- <script type="module">
-        import {
-            initializeApp
-        } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-        import {
-            getDatabase,
-            ref,
-            push,
-            set
-        } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-
-        // Configuración de Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyD1XIbEFJ28sqWcF5Ws3i8zA2o1OhYC7JU",
-            authDomain: "prueba-pickcollect.firebaseapp.com",
-            databaseURL: "https://prueba-pickcollect-default-rtdb.firebaseio.com",
-            projectId: "prueba-pickcollect",
-            storageBucket: "prueba-pickcollect.firebasestorage.app",
-            messagingSenderId: "343351102325",
-            appId: "1:343351102325:web:a6e4184d4752c6cbcfe13c",
-            measurementId: "G-6864KLZWKP"
-        };
-
-        // Inicializar Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        const notificacionesRef = ref(db, "notificaciones");
-
-        // Función para enviar evaluación como notificación
-        document.getElementById('btnEnviar').addEventListener('click', function() {
-            console.log("Botón clickeado");
-
-            const formulario = document.getElementById('miFormulariobbva');
-            if (!formulario) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'No se encontró el formulario.',
-                    confirmButtonColor: '#d33',
-                    confirmButtonText: 'Cerrar'
-                });
-                return;
-            }
-
-            const formData = new FormData(formulario);
-            const datosFormulario = {};
-
-            // Guardar los datos del formulario en un objeto
-            formData.forEach((value, key) => {
-                datosFormulario[key] = value;
-            });
-
-            // Capturar información adicional
-            datosFormulario.calificacion1 = document.getElementById('1')?.innerText || '';
-            datosFormulario.calificacion2 = document.getElementById('2')?.innerText || '';
-            datosFormulario.calificacion3 = document.getElementById('3')?.innerText || '';
-            datosFormulario.calificacion4 = document.getElementById('4')?.innerText || '';
-            datosFormulario.notaCalidad = document.getElementById('nota_bbva')?.innerText || '';
-            datosFormulario.performanceImg = document.getElementById('performancebbva_img')?.src || '';
-            datosFormulario.usuarioActual = 
-            datosFormulario.operador = document.getElementById("nombre_cb").value;
-            datosFormulario.posicion = document.getElementById("posicion_cb").value;
-            datosFormulario.evaluador = document.getElementById("evaluador_cb").value;
-
-            // Capturar las calificaciones, llamadas, duraciones, fechas y horas de las 4 llamadas
-            for (let i = 1; i <= 4; i++) {
-                datosFormulario[`llamada_${i}`] = document.getElementById(`llamada_${i}`)?.value || '';
-                datosFormulario[`duracion_${i}`] = document.getElementById(`duracion_${i}`)?.value || '';
-                datosFormulario[`fecha_llamada_${i}`] = document.getElementById(`fecha_llamada_${i}`)?.value || '';
-                datosFormulario[`hora_llamada_${i}`] = document.getElementById(`hora_llamada_${i}`)?.value || '';
-
-                // Capturar los valores de cumple, si es necesario
-                for (let j = 1; j <= 4; j++) {
-                    datosFormulario[`cumple${i}_${j}`] = document.getElementById(`cumple${i}_${j}`)?.value || '';
-                }
-            }
-
-            // Datos adicionales
-            datosFormulario.fortalezas = document.getElementById("fortalezas").value || 'Sin informacion';
-            datosFormulario.oportunidades = document.getElementById("oportunidades").value || 'Sin informacion';
-            datosFormulario.comentarios_cb = document.getElementById("comentariosTextarea").value || 'Sin informacion';
-
-            // Validaciones previas al envío
-            if (!datosFormulario.operador) {
-                console.log("Selecciona un operador antes de enviar la evaluación.");
-                return;
-            }
-
-            if (!datosFormulario.usuarioActual) {
-                console.log("No se pudo identificar al usuario actual. Inicia sesión nuevamente.");
-                return;
-            }
-
-            // Datos adicionales
-            datosFormulario.fecha = new Date().toISOString().split('T')[0];
-            datosFormulario.leido = false;
-            datosFormulario.tipo= "BBVA";
-            datosFormulario.mensaje = `Tienes una nueva evaluación de Calidad BBVA ${datosFormulario.usuarioActual}`;
-
-            console.log("Enviando datos a Firebase:", datosFormulario);
-
-            // Enviar notificación
-            const nuevaNotificacion = push(notificacionesRef);
-            set(nuevaNotificacion, datosFormulario)
-                .then(() => {
-                    console.log("Notificación enviada correctamente.");
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Evaluación Enviada',
-                        text: 'La evaluación ha sido enviada correctamente.',
-                        confirmButtonText: 'Cerrar'
-                    });
-                })
-                .catch((error) => {
-                    console.error("Error al enviar la notificación:", error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Hubo un problema al enviar la evaluación.',
-                        confirmButtonText: 'Cerrar'
-                    });
-                });
-        });
-    </scrippt>-->
 
 </body>
 

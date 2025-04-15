@@ -59,24 +59,19 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
             <div id="content">
                 <?php include 'topbar.php'; ?>
 
-                <!-- Encabezado -->
-                <div class="header">
-                    <div class="title">MODULO CALIDAD</div>
-                    <div class="container_logo">
-                        <img src="img/BBVA-REDISENO-LOGO.jpg" alt="Logo de la página">
-                    </div>
-                </div>
-
                 <div class="contenidos">
-                    <a href="calidad_bbva.php" class="metric-box container_bbva">
-                        <h1>Calidad BBVA</h1>
-                    </a>
-                    <a href="calidad_hdi.php" class="metric-box container_hdi">
-                        <h1>Calidad HDI</h1>
-                    </a>
-                    <a href="calidad_rh.php" class="metric-box container_rh">
-                        <h1>Calidad RH</h1>
-                    </a>
+                    <div class="bbva">
+                        <h2 style="color: rgb(10, 22, 128); border-bottom: 2px solid rgb(11, 13, 136);">Calidad BBVA</h2>
+                        <a href="calidad_bbva.php" class="cont" id="container_bbva"></a>
+                    </div>
+                    <div class="hdi">
+                        <h2 style="color: rgb(17, 128, 23); border-bottom: 2px solid rgb(13, 116, 26);">Calidad HDI</h2>
+                        <a href="calidad_hdi.php" class="cont" id="container_hdi"></a>
+                    </div>
+                    <div class="rh">
+                        <h2 style="color: rgb(26, 111, 126); border-bottom: 2px solid rgb(21, 148, 148);">Calidad RH</h2>
+                        <a href="calidad_rh.php" class="cont" id="container_rh"></a>
+                    </div>
                 </div>
 
                 <?php include 'footer.php'; ?>

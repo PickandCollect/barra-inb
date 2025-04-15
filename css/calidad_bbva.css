@@ -30,8 +30,8 @@
 .contenedor-principal {
  align-items:center ;
     gap: 20px;
-    width: 100%;
-    max-width: 100%;
+    width: 99%;
+    max-width: 99%;
     padding: 15px;
     box-sizing: border-box; /* Incluye padding en el ancho total */
 }
@@ -240,7 +240,7 @@
 
 /* Contenedor principal de llamadas - Versión mejorada */
 .container_llamadas {
-    max-width: 100%;
+    max-width: 97%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start; /* Cambiado a flex-start para mejor alineación */
@@ -831,6 +831,10 @@
     border: none;
 }
 
+.calidad-form-control{
+    background-color: #adb5e5; /* Fondo gris para campos de solo lectura */
+}
+
 /* Estilos para la tarjeta con borde */
 .custom-card-border-editar {
     background-color: #F3F3F3; /* Color de fondo */
@@ -974,7 +978,11 @@
 
 /* Estilos para los contenedores de Fortalezas y Áreas de Oportunidad */
 .container_FA {
-    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+    max-width: 97%;
     max-height: 80%;
     display: flex;
     gap: 20px;
@@ -1025,7 +1033,7 @@
 /*##############################*/
 
 .container_com {
-    width: 100%;
+    width: 97%;
     background-color: #f8f9fc; /* Color de fondo suave */
     padding: 20px; /* Espaciado interno */
     border-radius: 8px; /* Bordes redondeados */
