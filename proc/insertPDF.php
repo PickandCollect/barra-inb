@@ -1,14 +1,18 @@
 <?php
-// Habilitar la visualización de errores
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require '../vendor/autoload.php';
 
 use Aws\S3\S3Client;
 use Aws\Exception\AwsException;
 use Aws\S3\Exception\S3Exception;
+use Kreait\Firebase\Factory;
+
+
+header('Content-Type: application/json');
+
+// Habilitar la visualización de errores
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // Inicializar el cliente de S3
 $s3 = new S3Client([
@@ -138,6 +142,21 @@ try {
 
     echo json_encode($response);
 
+    // Conectar a Firebase
+    $firebase = (new \Kreait\Firebase\Factory)
+        ->withServiceAccount('../config/prueba-pickcollect-firebase-adminsdk-fbsvc-c1436f4eb7.json') // Ajusta la ruta si es necesario
+        ->withDatabaseUri('https://prueba-pickcollect-default-rtdb.firebaseio.com') // Ajusta si tu URI es diferente
+        ->createDatabase();
+
+    // Subir los metadatos del archivo a Firebase Realtime Database
+    $firebase->getReference('PDF_Parciales')->push([
+        'operador' => $operador,
+        'campana' => $campana,
+        'fileUrl' => $result['ObjectURL'],
+        'filePath' => $s3FilePath,
+        'fileName' => $nombreArchivo,
+        'fecha' => $fechaActual
+    ]);
 } catch (AwsException $e) {
     echo json_encode([
         'success' => false,

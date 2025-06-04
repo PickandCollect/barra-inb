@@ -127,7 +127,7 @@
 
 /*############################################*/
 /* Estilo para el botón Guardar */
-#btnguardarM {
+#btnguardarM, #btnguardarMBBVA, #btnguardarMHDI{
   opacity: none;
   padding: 15px 27px;
   border-radius: 8px;
@@ -141,39 +141,17 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#btnguardarM:hover {
+#btnguardarM, #btnguardarMBBVA, #btnguardarMHDI:hover {
   background-color: rgb(29, 93, 165); /* Verde más oscuro */
   transform: translateY(-2px);
 }
 
-#btnguardarM:active {
+#btnguardarM, #btnguardarMBBVA, #btnguardarMHDI:active {
   background-color: #3f328b; /* Verde más oscuro al hacer clic */
   transform: translateY(2px);
 }
 
-/* Estilo para el botón Salir */
-.btn-salir {
-  padding: 12px 24px;
-  border-radius: 8px;
-  background-color: #dc3545; /* Rojo */
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
 
-.btn-salir:hover {
-  background-color: #c82333; /* Rojo más oscuro */
-  transform: translateY(-2px);
-}
-
-.btn-salir:active {
-  background-color: #bd2130; /* Rojo más oscuro al hacer clic */
-  transform: translateY(2px);
-}
 
 /*################################################*/
 

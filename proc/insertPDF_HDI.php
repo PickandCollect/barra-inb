@@ -1,129 +1,105 @@
 <?php
-// Habilitar la visualización de errores
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// Verificar si el script se está ejecutando mediante POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode([
-        'success' => false,
-        'error' => 'Método no permitido. Se requiere POST'
-    ]);
-    exit();
-}
-
 require '../vendor/autoload.php';
-
 use Aws\S3\S3Client;
-use Aws\Exception\AwsException;
 use Aws\S3\Exception\S3Exception;
+use Kreait\Firebase\Factory;
 
-// Configuración del bucket - CAMBIAR ESTO SEGÚN TU CONFIGURACIÓN
-$bucketName = 'tuasesoria'; // Nombre real de tu bucket S3
-$region = 'us-east-2'; // Región de tu bucket S3
+header('Content-Type: application/json');
+
+// Configuración de errores (solo para desarrollo)
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(0);
 
 try {
-    // Validar que los campos requeridos existen
-    if (!isset($_POST['nombre_ch'])) {
-        throw new Exception('El campo nombre_ch es requerido');
+    // Validar método HTTP
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        throw new Exception('Método no permitido');
     }
 
-    if (!isset($_FILES['archivo'])) {
-        throw new Exception('No se ha subido ningún archivo');
-    }
-
-    // Inicializar el cliente de S3
-    $s3 = new S3Client([
-        'version' => 'latest',
-        'region'  => $region,
-    ]);
-
-    // Sanitizar el nombre del operador
-    $operador = preg_replace('/[^a-zA-Z0-9_-]/', '', str_replace(' ', '_', trim($_POST['nombre_ch'])));
+    // Validar datos de entrada
+    $operador = filter_input(INPUT_POST, 'operador', FILTER_SANITIZE_STRING);
+    $operador = preg_replace('/\s+/', '_', trim($operador));
 
     if (empty($operador)) {
         throw new Exception('El nombre del operador no es válido');
     }
 
-    // Validar el archivo subido
-    $archivo = $_FILES['archivo'];
-
-    if ($archivo['error'] !== UPLOAD_ERR_OK) {
-        throw new Exception('Error al subir el archivo: ' . $archivo['error']);
+    // Validar archivo
+    if (!isset($_FILES['archivo']['tmp_name']) || !is_uploaded_file($_FILES['archivo']['tmp_name'])) {
+        throw new Exception('No se recibió un archivo válido');
     }
 
-    // Validar tipo MIME (añadir más tipos si es necesario)
-    $mimeType = mime_content_type($archivo['tmp_name']);
-    $tiposMimeValidos = ['application/pdf', 'application/octet-stream'];
+    // Validar tipo MIME
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $mimeType = $finfo->file($_FILES['archivo']['tmp_name']);
 
-    if (!in_array($mimeType, $tiposMimeValidos)) {
-        throw new Exception('El archivo debe ser PDF (Tipo MIME detectado: ' . $mimeType . ')');
+    if ($mimeType !== 'application/pdf') {
+        throw new Exception('El archivo debe ser un PDF válido');
     }
 
-    // Configurar rutas y nombres de archivo
-    $carpetaS3 = $operador . '_HDI/';
-    $fechaActual = date('Ymd');
-    $nombreBase = $operador . '_' . $fechaActual . '_evaluacion_HDI';
-    $extension = '.pdf';
-    $contador = 1;
-    $nombreArchivo = $nombreBase . $extension;
-    $s3FilePath = $carpetaS3 . $nombreArchivo;
-
-    // Función para verificar si un archivo existe en S3
-    function archivoExisteEnS3($s3, $bucket, $rutaCompleta)
-    {
-        try {
-            $s3->headObject(['Bucket' => $bucket, 'Key' => $rutaCompleta]);
-            return true;
-        } catch (S3Exception $e) {
-            if ($e->getAwsErrorCode() == 'NotFound') {
-                return false;
-            }
-            throw $e;
-        }
-    }
-
-    // Verificar si el archivo existe y generar nuevo nombre si es necesario
-    while (archivoExisteEnS3($s3, $bucketName, $s3FilePath)) {
-        $nombreArchivo = $nombreBase . '_' . $contador . $extension;
-        $s3FilePath = $carpetaS3 . $nombreArchivo;
-        $contador++;
-    }
-
-    // Subir el archivo a S3
-    $result = $s3->putObject([
-        'Bucket'      => $bucketName,
-        'Key'         => $s3FilePath,
-        'SourceFile'  => $archivo['tmp_name'],
-        'ContentType' => 'application/pdf', // Forzar tipo MIME
+    // Configurar cliente S3
+    $s3 = new S3Client([
+        'version' => 'latest',
+        'region'  => 'us-east-2',
     ]);
 
-    // Construir respuesta exitosa
-    $response = [
-        'success' => true,
-        'message' => 'Evaluación PDF subida correctamente',
-        'file_name' => $nombreArchivo,
-        'file_path' => $s3FilePath,
-        'operador' => $operador,
-        'fecha' => $fechaActual
-    ];
+    $bucketName = 'tuasesoria';
+    $folderName = $operador . '_HDI/';
+    $date = date('Ymd');
+    $baseName = $operador . '_' . $date . '_hdi';
+    $extension = '.pdf';
+    $counter = 1;
 
-    if ($contador > 1) {
-        $response['sufijo_numerico'] = $contador - 1;
-        $response['message'] = 'Evaluación PDF subida con sufijo numérico (' . ($contador - 1) . ')';
+    // Generar nombre único
+    $fileName = $baseName . $extension;
+    $s3Path = $folderName . $fileName;
+
+    while ($s3->doesObjectExist($bucketName, $s3Path)) {
+        $fileName = $baseName . '_' . $counter . $extension;
+        $s3Path = $folderName . $fileName;
+        $counter++;
     }
 
-    echo json_encode($response);
-} catch (AwsException $e) {
-    http_response_code(500);
+    // Subir a S3
+    $result = $s3->putObject([
+        'Bucket' => $bucketName,
+        'Key' => $s3Path,
+        'SourceFile' => $_FILES['archivo']['tmp_name'],
+        'ContentType' => 'application/pdf',
+    ]);
+
+    // Obtener la URL pública del archivo
+    $fileUrl = $result['ObjectURL'];
+
+    // Conectar a Firebase
+    $firebase = (new Factory)
+        ->withServiceAccount('../config/prueba-pickcollect-firebase-adminsdk-fbsvc-c1436f4eb7.json') // Ruta a tu archivo de credenciales de servicio de Firebase
+        ->withDatabaseUri('https://prueba-pickcollect-default-rtdb.firebaseio.com') // URL de la base de datos
+        ->createDatabase();
+
+    // Definir la referencia de Firebase en el nodo 'pdf' de la base de datos
+    $reference = $firebase->getReference('PDF_HDI')->push([ // Cambié 'evaluaciones' por 'pdf'
+        'operador' => $operador,
+        'fileUrl' => $fileUrl,
+        'filePath' => $s3Path,
+        'fileName' => $fileName,
+        'date' => $date
+    ]);
+
+    // Respuesta exitosa
+    echo json_encode([
+        'success' => true,
+        'message' => 'PDF subido correctamente',
+        'filePath' => $s3Path,
+        'fileName' => $fileName
+    ]);
+} catch (S3Exception $e) {
     echo json_encode([
         'success' => false,
-        'error' => 'Error de AWS: ' . $e->getAwsErrorMessage()
+        'error' => 'Error al subir a S3: ' . $e->getAwsErrorMessage()
     ]);
 } catch (Exception $e) {
-    http_response_code(400);
     echo json_encode([
         'success' => false,
         'error' => $e->getMessage()

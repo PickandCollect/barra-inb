@@ -6,7 +6,7 @@
     padding: 10px 20px; /* Espaciado interno */
     background-color: #f8f8f8; /* Color de fondo */
     border-bottom: 1px solid #ddd; /* Borde inferior */
-    margin-bottom: 40px; /* Margen inferior */
+    margin-bottom: 20px; /* Margen inferior */
 }
 
 /* Estilos para el título dentro del header */
@@ -488,6 +488,21 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Botón Regresar */
+.btn-regresar {
+    background: linear-gradient(135deg, #3d7ddd, #042566);
+    color: #ffffff;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 6px 16px rgba(37, 34, 39, 0.35);
+}
+
+.btn-regresar:hover {
+    background: linear-gradient(135deg, #2557bd, #4e81cc);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+
 /* Botón Exportar Excel (manteniendo tu diseño original con mejoras) */
 .btn-llamadas {
     background: linear-gradient(135deg, #30a125, #14740c);
@@ -724,9 +739,33 @@
     object-fit: cover; /* Recorta la imagen sin distorsionarla */
 }
 
-/*###################################################*
+/*###################################################*/
 
+#random{
+display: flex;
+justify-content: center;
+}
 
+#random i {
+color: #ffffff;
+}
+
+.btn-outline-secondary{
+    height: 45px;
+    margin-right: 10px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #42158a, #9e2998);
+    border: none;
+    box-shadow: none;
+}
+
+/* Hover elegante */
+.btn-outline-secondary:hover {
+    background: linear-gradient(135deg, #5b2ba8, #195ca0);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
 /*###############################*/
 
 /* Estilos para el título y la flecha */
@@ -766,6 +805,9 @@
     display: grid; /* Usa grid para organizar los elementos */
     grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
     gap: 10px; /* Espacio entre columnas */
+    width:95%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Estilos para los grupos de formulario */
@@ -832,7 +874,7 @@
 }
 
 .calidad-form-control{
-    background-color: #adb5e5; /* Fondo gris para campos de solo lectura */
+    background-color: #b8e3f193; /* Fondo gris para campos de solo lectura */
 }
 
 /* Estilos para la tarjeta con borde */
@@ -840,6 +882,7 @@
     background-color: #F3F3F3; /* Color de fondo */
     border-left: 5px solid #533392; /* Borde izquierdo */
     border-bottom: 5px solid #533392; /* Borde inferior */
+    
 }
 
 
@@ -1049,7 +1092,9 @@
 }
 
 .container_com textarea{
-    height: 220px;
+    height: 420px;
+    background-color: #fff; /* Color de fondo suave */
+
 }
 
 .form-control {

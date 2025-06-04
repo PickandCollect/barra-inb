@@ -10,6 +10,12 @@ if (!isset($_SESSION['rol'])) {
     exit();
 }
 
+                // Verifica si el nombre de usuario es Verónica
+                if (isset($_SESSION['nombreUsuario']) && $_SESSION['nombreUsuario'] === 'Verónica Ávila García') {
+                    header('Location: calidad_bbva.php');
+                    exit;
+                }
+
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
 ?>

@@ -104,7 +104,7 @@ try {
     // Construir respuesta exitosa
     $response = [
         'success' => true,
-        'message' => 'Llamada BBVA subida correctamente',
+        'message' => 'Llamada HDI subida correctamente',
         'file_name' => $nombreArchivo,
         'file_path' => $s3FilePath,
         'file_url' => $result['ObjectURL'],
@@ -116,7 +116,7 @@ try {
     // Si se usó un sufijo numérico, agregar esta información a la respuesta
     if ($contador > 1) {
         $response['sufijo_numerico'] = $contador - 1;
-        $response['message'] = 'Llamada BBVA subida con sufijo numérico (' . ($contador - 1) . ')';
+        $response['message'] = 'Llamada BB subida con sufijo numérico (' . ($contador - 1) . ')';
     }
 
     echo json_encode($response);

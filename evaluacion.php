@@ -41,6 +41,7 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
 
+
     <!-- SheetJS para exportar a Excel -->
     <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
 
@@ -151,67 +152,47 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                     </div>
                 </div>
 
-                <!-- Sección de Visualización de PDFs -->
-                <div class="pdf-viewer-section">
-                    <h2>Evaluaciones PDF por Operador</h2>
+                <!-- Visualizador de PDF -->
+                <section class="pdfv-section-wrapper">
+                    <h2 class="pdfv-section-title"><i class="fas fa-file-pdf"></i> Visualizador de PDF's</h2>
 
-                    <div class="filters">
-                        <div class="form-group">
-                            <label for="pdfOperadorSelect">Operador:</label>
-                            <select id="pdfOperadorSelect" class="form-control select2">
-                                <option value="">-- Seleccione un operador --</option>
-                                <!-- Se llenará dinámicamente con JavaScript -->
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="pdfFechaSelect">Filtrar por fecha:</label>
-                            <input type="text" id="pdfFechaSelect" class="form-control" placeholder="Seleccione rango de fechas">
-                        </div>
-
-                        <button id="btnLimpiarFiltrosPDF" class="btn btn-secondary">
-                            <i class="fas fa-times"></i> Limpiar filtros
-                        </button>
-                    </div>
-
-                    <div class="pdf-results">
-                        <div id="pdfLoading" class="loading" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i> Cargando evaluaciones...
-                        </div>
-
-                        <div id="pdfEmptyMessage" class="empty-message" style="display: none;">
-                            No se encontraron evaluaciones con los filtros aplicados
-                        </div>
-
-                        <div id="pdfListContainer" class="pdf-list-container">
-                            <h3>Evaluaciones encontradas</h3>
-                            <div id="pdfList" class="pdf-list"></div>
-
-                            <!-- Paginación -->
-                            <div class="pagination">
-                                <span id="pdfPaginationInfo"></span>
-                                <div class="pagination-controls">
-                                    <button id="pdfPrevPage" class="btn btn-sm btn-outline-primary" disabled>
-                                        <i class="fas fa-chevron-left"></i> Anterior
-                                    </button>
-                                    <button id="pdfNextPage" class="btn btn-sm btn-outline-primary" disabled>
-                                        Siguiente <i class="fas fa-chevron-right"></i>
-                                    </button>
-                                </div>
+                    <!-- Filtro por operador -->
+                    <div class="pdfv-filters">
+                        <div class="pdfv-filter-input-wrapper">
+                            <label for="filtroOperadorPDF" class="pdfv-filter-label">
+                                <i class="fas fa-user-shield"></i>
+                                <span>Operador</span>
+                            </label>
+                            <div class="pdfv-select-wrapper">
+                                <select id="filtroOperadorPDF" class="pdfv-premium-select">
+                                    <option value="">Todos los operadores</option>
+                                    <!-- Se llenará dinámicamente desde Firebase -->
+                                </select>
                             </div>
                         </div>
+                    </div>
+                    
 
-                        <div id="pdfViewerContainer" class="pdf-viewer-container">
-                            <h3>Visualizador de PDF</h3>
-                            <div id="pdfViewer" class="pdf-viewer">
-                                <div class="pdf-placeholder">
-                                    <i class="far fa-file-pdf"></i>
-                                    <p>Seleccione una evaluación para visualizarla</p>
+                    <div class="pdfv-results-area">
+                        <!-- Lista de PDFs -->
+                        <div class="pdfv-list-box" id="pdfList">
+                            <div class="pdfv-loading" id="pdfLoading">Cargando archivos PDF...</div>
+                            <div class="pdfv-empty-message" id="pdfEmptyMessage" style="display: none;">No se encontraron archivos PDF.</div>
+                        </div>
+
+                        <!-- Visor de PDF -->
+                        <div class="pdfv-viewer-box">
+                            <div class="pdfv-viewer-area" id="pdfViewer">
+                                <div class="pdfv-placeholder">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <p>Selecciona un PDF para visualizarlo</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
+
+                <!-- Termina la sección del Visualizador. -->
 
                 <div class="container">
                     <div class="container-flex">
@@ -443,7 +424,7 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                 const $cardTexts = $('.card-u .text-xs');
 
                 // Campañas a excluir
-                const EXCLUDED_CAMPAIGNS = ['HDI Seguros', 'BBVA'];
+                const EXCLUDED_CAMPAIGNS = ['HDI Seguros', 'BBVA', 'RH'];
 
                 // Variable para almacenar el rango de fechas seleccionado
                 let currentDateRange = null;
@@ -1621,6 +1602,126 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                 // Cargar datos iniciales para los gráficos
                 actualizarGraficos();
             });
+        </script>
+
+
+        <!-- SCRIPT de lectura PDF y notificaciones -->
+        <script>
+            const db1 = firebase.database();
+            const pdfRef = db1.ref('PDF_Parciales');
+            const notificacionesRef = db1.ref('notificaciones');
+
+            const pdfListContainer = document.getElementById('pdfList');
+            const pdfViewer = document.getElementById('pdfViewer');
+            const operadorSelect = document.getElementById('filtroOperadorPDF');
+
+            let allPDFs = {};
+            let allNotificaciones = {};
+
+            pdfRef.on('value', (snapshot) => {
+                allPDFs = snapshot.val() || {};
+                cargarYRenderizar();
+            });
+
+            notificacionesRef.on('value', (snapshot) => {
+                allNotificaciones = snapshot.val() || {};
+                cargarYRenderizar();
+            });
+
+            function cargarYRenderizar() {
+                const emptyMessage = document.getElementById('pdfEmptyMessage');
+                const loading = document.getElementById('pdfLoading');
+
+                emptyMessage.style.display = 'none';
+                loading.style.display = 'none';
+
+                // Guardar operador actualmente seleccionado
+                const operadorSeleccionado = operadorSelect.value;
+
+                // Crear conjunto único de operadores
+                const operadoresSet = new Set();
+                for (const key in allPDFs) {
+                    const pdf = allPDFs[key];
+                    if (pdf.operador) {
+                        operadoresSet.add(pdf.operador);
+                    }
+                }
+
+                // Evitar reconstruir si ya están los mismos operadores
+                const actuales = Array.from(operadorSelect.options).map(o => o.value);
+                const nuevos = ["", ...Array.from(operadoresSet)];
+
+                const sonIguales = actuales.length === nuevos.length && actuales.every((v, i) => v === nuevos[i]);
+                if (!sonIguales) {
+                    operadorSelect.innerHTML = `<option value="">Todos los operadores</option>`;
+                    operadoresSet.forEach(op => {
+                        const option = document.createElement('option');
+                        option.value = op;
+                        option.textContent = op.replace(/_/g, ' ');
+                        operadorSelect.appendChild(option);
+                    });
+                }
+
+                // Restaurar la selección anterior si existe
+                operadorSelect.value = operadorSeleccionado;
+
+                renderPDFList();
+            }
+
+
+            operadorSelect.addEventListener('change', renderPDFList);
+
+            function renderPDFList() {
+                const selectedOperador = operadorSelect.value;
+                pdfListContainer.innerHTML = '';
+                pdfViewer.innerHTML = '';
+
+                let hasResults = false;
+
+                for (const key in allPDFs) {
+                    const pdf = allPDFs[key];
+
+                    if (!selectedOperador || pdf.operador === selectedOperador) {
+                        hasResults = true;
+
+                        const listItem = document.createElement('div');
+                        listItem.classList.add('pdf-item');
+
+                        const link = document.createElement('a');
+                        link.href = '#';
+                        link.textContent = pdf.fileName;
+                        link.style.cursor = 'pointer';
+
+                        link.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            let notiInfo = '';
+
+                            // Buscar notificación relacionada (opcionalmente por alguna clave coincidente)
+                            for (const notiKey in allNotificaciones) {
+                                const noti = allNotificaciones[notiKey];
+                                if (noti.urlArchivoSubido && noti.urlArchivoSubido.includes(pdf.operador)) {
+                                    notiInfo = `
+                                <p><strong>Audio asociado:</strong></p>
+                                <audio controls src="${noti.urlArchivoSubido}" style="width:100%;"></audio>
+                            `;
+                                    break;
+                                }
+                            }
+
+                            pdfViewer.innerHTML = `
+                        <iframe src="${pdf.fileUrl}" width="100%" height="400px" frameborder="0" style="border-radius: 8px;"></iframe>
+                        ${notiInfo}
+                    `;
+                        });
+
+                        listItem.appendChild(link);
+                        pdfListContainer.appendChild(listItem);
+                    }
+                }
+
+                const emptyMessage = document.getElementById('pdfEmptyMessage');
+                emptyMessage.style.display = hasResults ? 'none' : 'block';
+            }
         </script>
 
 </body>

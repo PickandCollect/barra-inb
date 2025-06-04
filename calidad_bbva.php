@@ -30,7 +30,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>calidad BBVA</title>
+    <title>CEDULA BBVA</title>
 
     <!-- Fuentes personalizadas -->
     <!-- SweetAlert2 CSS -->
@@ -70,7 +70,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                     <div class="datos">
                         <!-- APARTADO DE NOMBRE, EVALUADOR, ETC.-->
-                        <div class="container_datos1">
+                        <div class="container_datos1" style="margin-bottom: 30px;">
                             <div class="datos_us">
                                 <label for="nombre">
                                     <h6>Nombre:</h6>
@@ -131,8 +131,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         </div>
 
                         <div class="button-container-bbva" style="margin-bottom: -40px;">
-
-                            <a href="moduloCalidadBBVA.php"> <button type="button" class="btn-regresar" id="btnregresar"> <i class="fa-solid fa-arrow-left"></i> </button> </a>
+                            <button type="button" class="btn-regresar" id="btnregresar"> <i class="fa-solid fa-arrow-left"></i> </button>
                             <button type="button" class="btn-llamadas" id="btnllamar"> <i class="fas fa-file-excel"></i> </button>
                             <!-- <button type="button" class="btn custom-submit-button-c" id="btnSubirBBVA">Subir LLamada</button>-->
                             <button type="button" class="btn-limpiar" id="btnlimpiar">Limpiar Formulario </button>
@@ -160,6 +159,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                         </div>
                     </div>
+
                 </div>
                 <input type="hidden" name="nota_bbva" id="hiddenNotaCalidadbbva">
                 <input type="hidden" name="performancebbva_img" id="hiddenPerformanceImgbbva">
@@ -171,13 +171,39 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                             <h6 style="padding: 10px;">A calificar:</h6>
                         </label>
 
-                        <!-- Input de archivo oculto -->
                         <input type="file" id="fileInput" name="excelFile" accept=".xlsx, .xls">
 
-                        <input type="text" id="llamada_1" name="llamada_1" class="custom-form-control" placeholder="Número_1" readonly style="cursor: not-allowed;">
-                        <input type="text" id="llamada_2" name="llamada_2" class="custom-form-control" placeholder="Número_2" readonly style="cursor: not-allowed;">
-                        <input type="text" id="llamada_3" name="llamada_3" class="custom-form-control" placeholder="Número_3" readonly style="cursor: not-allowed;">
-                        <input type="text" id="llamada_4" name="llamada_4" class="custom-form-control" placeholder="Número_4" readonly style="cursor: not-allowed;">
+                        <div class="container_llamada1" id="random">
+                            <button class="
+                            btn-outline-secondary" type="button" id="btn_random1" name="btn-random-1">
+                                <i class="fas fa-random"></i>
+                            </button>
+                            <input type="text" id="llamada_1" name="llamada_1" class="custom-form-control" placeholder="Número_1" readonly style="cursor: not-allowed;">
+                        </div>
+
+                        <div class="container_llamada2" id="random">
+                            <button class="
+                            btn-outline-secondary" type="button" id="btn_random2" name="btn-random-2">
+                                <i class="fas fa-random"></i>
+                            </button>
+                            <input type="text" id="llamada_2" name="llamada_2" class="custom-form-control" placeholder="Número_2" readonly style="cursor: not-allowed;">
+                        </div>
+
+                        <div class="container_llamada3" id="random">
+                            <button class="
+                            btn-outline-secondary" type="button" id="btn_random3" name="btn-random-3">
+                                <i class="fas fa-random"></i>
+                            </button>
+                            <input type="text" id="llamada_3" name="llamada_3" class="custom-form-control" placeholder="Número_3" readonly style="cursor: not-allowed;">
+                        </div>
+                        <div class="container_llamada4" id="random">
+                            <button class="
+                            btn-outline-secondary" type="button" id="btn_random4" name="btn-random-4">
+                                <i class="fas fa-random"></i>
+                            </button>
+                            <input type="text" id="llamada_4" name="llamada_4" class="custom-form-control" placeholder="Número_4" readonly style="cursor: not-allowed;">
+                        </div>
+
                     </div>
 
                     <div class="llamadas">
@@ -218,28 +244,28 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                         <div class="mod-archivo-container" style="margin-bottom: 13px;">
                             <label for="archivo_llamada_1" class="mod-archivo-label"><i class="fa fa-phone"></i></label>
                             <span class="mod-archivo-nombre">...</span>
-                            <button class="mod-btnTrash" style="display: none;"><i class="fa fa-trash"></i></button>
+                            <button class="mod-btnTrash" style="display: none;" hidden><i class="fa fa-trash"></i></button>
                             <input type="file" id="archivo_llamada_1" name="archivo_llamada_1" accept=".wav" class="auto-upload">
                         </div>
 
                         <div class="mod-archivo-container" style="margin-bottom: 13px;">
                             <label for="archivo_llamada_2" class="mod-archivo-label"><i class="fa fa-phone"></i></label>
                             <span class="mod-archivo-nombre">...</span>
-                            <button class="mod-btnTrash" style="display: none;"><i class="fa fa-trash"></i></button>
+                            <button class="mod-btnTrash" style="display: none;" hidden><i class="fa fa-trash"></i></button>
                             <input type="file" id="archivo_llamada_2" name="archivo_llamada_2" accept=".wav" class="auto-upload">
                         </div>
 
                         <div class="mod-archivo-container" style="margin-bottom: 13px;">
                             <label for="archivo_llamada_3" class="mod-archivo-label"><i class="fa fa-phone"></i></label>
                             <span class="mod-archivo-nombre">...</span>
-                            <button class="mod-btnTrash" style="display: none;"><i class="fa fa-trash"></i></button>
+                            <button class="mod-btnTrash" style="display: none;" hidden><i class="fa fa-trash"></i></button>
                             <input type="file" id="archivo_llamada_3" name="archivo_llamada_3" accept=".wav" class="auto-upload">
                         </div>
 
                         <div class="mod-archivo-container" style="margin-bottom: 13px;">
                             <label for="archivo_llamada_4" class="mod-archivo-label"><i class="fa fa-phone"></i></label>
                             <span class="mod-archivo-nombre">...</span>
-                            <button class="mod-btnTrash" style="display: none;"><i class="fa fa-trash"></i></button>
+                            <button class="mod-btnTrash" style="display: none;" hidden><i class="fa fa-trash"></i></button>
                             <input type="file" id="archivo_llamada_4" name="archivo_llamada_4" accept=".wav" class="auto-upload">
                         </div>
                     </div>
@@ -254,9 +280,9 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                             <i class="fas fa-chevron-down"></i> <!-- Icono de flecha hacia abajo -->
                         </span>
                     </div>
-
                 </div>
-                <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="display: none;">
+
+                <div class="text-center custom-form-section-editar custom-card-border-editar" style="display: none;">
                     <div id="calidad-grid-container" class="calidad-grid-container">
 
                         <!-- Rubros de Impacto Negocio -->
@@ -550,7 +576,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     </div>
                 </div>
 
-                <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="display: none;">
+                <div class="text-center custom-form-section-editar custom-card-border-editar" style="display: none;">
                     <div id="calidad-grid-container" class="calidad-grid-container">
 
                         <!-- Rubros de Impacto Negocio -->
@@ -723,7 +749,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     </div>
                 </div>
 
-                <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="display: none;">
+                <div class="text-center custom-form-section-editar custom-card-border-editar" style="display: none;">
                     <div id="calidad-grid-container" class="calidad-grid-container">
 
                         <!-- Rubros de Error Crítico -->
@@ -746,7 +772,11 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                             <h6 style="color:rgb(11, 9, 150);">llamada 4</h6>
                         </label>
 
-                        <!-- Rubros con ponderaciones -->
+                        <!-- Rubros con ponderaciones 
+                        ROLAS CHIDAS:
+                        HEXEN
+                        MESHUGGAH
+                        -->
 
                         <!--    Rubro     15   -->
                         <label for="maltrato_cb">
@@ -802,6 +832,33 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                             <option value="SI">SI</option>
                             <option value="NO">NO</option>
                         </select>
+
+                        <!--    Rubro     17   -->
+                        <label for="aviso_cb">
+                            <h6>Aviso de privacidad</h6>
+                        </label>
+                        <input type="text" id="pon17" name="pon17" class="calidad-form-control" placeholder="" value="0" readonly style="text-align: center;">
+
+                        <select id="cumple17_1" name="cumple17_1" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple17_2" name="cumple17_2" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple17_3" name="cumple17_3" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <select id="cumple17_4" name="cumple17_4" class="calidad-form-control">
+                            <option value="" hidden>Selecciona</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
                     </div>
                 </div>
 
@@ -824,7 +881,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 <!-- Apartado de comentarios y compromiso -->
                 <div class="container_com" style="margin-left: auto; margin-right: auto;">
                     <h6>Comentarios</h6>
-                    <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="5" style="margin-bottom: 30px;"></textarea>
+                    <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="5" style="margin-bottom: 30px; "></textarea>
                     <!--<h6>Compromiso</h6>
                 <textarea class="form-control" id="compromisoTextarea" name="compromisoTextarea" rows="5" style="margin-bottom: 3px;"></textarea>-->
                 </div>
@@ -841,7 +898,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     </div>
 
 
-    <!-- script para la flecha -->
+    <!-- Script para la flecha -->
     <script>
         function toggleSeccion(flecha) {
             const seccion = flecha.closest(".container_impacto").nextElementSibling;
@@ -856,6 +913,13 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         }
     </script>
 
+    <!--Script para regresar al modulo-->
+    <script>
+        document.getElementById('btnregresar').addEventListener('click', function() {
+            window.location.href = 'moduloCalidadBBVA.php';
+        });
+    </script>
+
     <!--Script de calcular nota calidad-->
     <script>
         function actualizarImagenYColor(porcentaje) {
@@ -863,11 +927,11 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             let notaCalidadValor = document.getElementById("nota_bbva");
 
             // Verifica el rango y cambia la imagen
-            if (porcentaje >= 0 && porcentaje <= 75) {
+            if (porcentaje >= 0 && porcentaje <= 79) {
                 imagen.src = "img/cuidado.jpg";
                 imagen.alt = "Cuidado";
                 notaCalidadValor.className = "nota-calidad-valor rojo";
-            } else if (porcentaje > 75 && porcentaje <= 89) {
+            } else if (porcentaje > 79 && porcentaje <= 89) {
                 imagen.src = "img/mejora.jpg";
                 imagen.alt = "Mejora";
                 notaCalidadValor.className = "nota-calidad-valor amarillo";
@@ -935,7 +999,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     }, 0);
 
                 // Si cumple15 o cumple16 es "SI", la suma se pone a 0 y se muestra en rojo
-                if ([15, 16].some(num => document.getElementById(`cumple${num}_${llamada}`)?.value === "SI")) {
+                if ([15, 16, 17].some(num => document.getElementById(`cumple${num}_${llamada}`)?.value === "SI")) {
                     suma = 0;
                     document.getElementById(llamada).style.color = "red";
                 } else {
@@ -1062,7 +1126,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             let valido = true;
 
             // Validar desde cumple1_1 hasta cumple16_4
-            for (let i = 1; i <= 16; i++) {
+            for (let i = 1; i <= 17; i++) {
                 for (let j = 1; j <= 4; j++) {
                     const selectId = `cumple${i}_${j}`;
                     const select = document.getElementById(selectId);
@@ -1196,7 +1260,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                     datosFormulario[`hora_llamada_${i}`] = document.getElementById(`hora_llamada_${i}`)?.value || '';
                 }
 
-                for (let i = 1; i <= 16; i++) {
+                for (let i = 1; i <= 17; i++) {
                     for (let j = 1; j <= 4; j++) {
                         datosFormulario[`cumple${i}_${j}`] = document.getElementById(`cumple${i}_${j}`)?.value || '';
                     }
@@ -1251,97 +1315,448 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
     <!--script del boton que trabaja con el excel A calificar-->
     <script>
-        // Escuchar el clic en el botón
-        document.getElementById('btnllamar').addEventListener('click', function() {
-            // Obtener el usuario seleccionado
-            const usuarioSeleccionado = document.getElementById('nombre_cb').value;
-            if (!usuarioSeleccionado) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Usuario no seleccionado',
-                    text: 'Por favor, selecciona un usuario antes de subir un archivo.',
-                });
-                return;
+        //Sección para guardar el excel en memoria y que aparte busque llamadas aleaatorias.
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnLlamar = document.getElementById('btnllamar');
+            const btn_random1 = document.getElementById('btn_random1');
+            const btn_random2 = document.getElementById('btn_random2');
+            const btn_random3 = document.getElementById('btn_random3');
+            const btn_random4 = document.getElementById('btn_random4');
+            const fileInput = document.getElementById('fileInput');
+            const operadorSelect = document.getElementById('nombre_cb');
+
+            let excelEnMemoria = null; // Guardamos el archivo Excel en memoria
+
+            // Deshabilita los botones random al iniciar la página.
+            if (btn_random1) {
+                btn_random1.disabled = true;
             }
 
-            // Si el usuario está seleccionado, abrir el selector de archivos
-            document.getElementById('fileInput').click();
-        });
+            if (btn_random2) {
+                btn_random2.disabled = true;
+            }
 
-        document.getElementById('fileInput').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                // Mostrar alerta de carga
-                Swal.fire({
-                    title: 'Extrayendo archivo...',
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                    didOpen: () => {
-                        Swal.showLoading();
+            if (btn_random3) {
+                btn_random3.disabled = true;
+            }
+
+            if (btn_random4) {
+                btn_random4.disabled = true;
+            }
+
+            if (btnLlamar && fileInput && operadorSelect) {
+                fileInput.style.display = 'none';
+
+                btnLlamar.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    if (!operadorSelect.value) {
+                        showSwal('error', 'Operador requerido', 'Por favor selecciona un operador primero');
+                        operadorSelect.focus();
+                        return;
                     }
+
+                    fileInput.click();
                 });
 
-                // Obtener el usuario seleccionado (ya validado en el click)
-                const usuarioSeleccionado = document.getElementById('nombre_cb').value;
+                fileInput.addEventListener('change', function() {
+                    const operador = operadorSelect.value;
+                    const excelFile = fileInput.files[0];
+                    excelEnMemoria = excelFile; // Guardamos el archivo en memoria
 
-                // Subir el archivo al servidor junto con el usuario seleccionado
-                const formData = new FormData();
-                formData.append('excelFile', file);
-                formData.append('usuario', usuarioSeleccionado);
+                    if (!excelFile) return;
 
-                fetch('lector_excelbbva.php', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`Error en la respuesta del servidor: ${response.status} ${response.statusText}`);
+                    const validTypes = [
+                        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                        'application/vnd.ms-excel',
+                        'application/octet-stream'
+                    ];
+
+                    if (!validTypes.includes(excelFile.type) && !excelFile.name.match(/\.(xlsx|xls)$/i)) {
+                        showSwal('error', 'Archivo no válido', 'Por favor selecciona un archivo Excel válido (.xlsx, .xls)');
+                        fileInput.value = '';
+                        return;
+                    }
+
+                    Swal.fire({
+                        title: 'Procesando archivo',
+                        html: 'Buscando registros para <b>' + operador + '</b>...',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        showConfirmButton: false,
+                        willOpen: () => {
+                            Swal.showLoading();
                         }
-                        return response.json();
-                    })
-                    .then(data => {
-                        Swal.close(); // Cerrar la alerta de carga
-                        if (data.success) {
-                            // Limpiar campos anteriores
-                            for (let i = 1; i <= 4; i++) {
-                                document.getElementById(`llamada_${i}`).value = '';
-                                document.getElementById(`fecha_llamada_${i}`).value = '';
-                                document.getElementById(`hora_llamada_${i}`).value = '';
+                    });
+
+                    const formData = new FormData();
+                    formData.append('nombre_cb', operador);
+                    formData.append('excelFile', excelFile);
+
+                    fetch('lector_excelbbva.php', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                return response.text().then(text => {
+                                    try {
+                                        const data = JSON.parse(text);
+                                        throw data;
+                                    } catch {
+                                        throw {
+                                            error: 'Error en el servidor',
+                                            detail: text.length > 100 ? text.substring(0, 100) + '...' : text
+                                        };
+                                    }
+                                });
                             }
-
-                            // Llenar los campos con los datos aleatorios
-                            data.llamadas.forEach((llamada, index) => {
-                                const indice = index + 1;
-                                document.getElementById(`llamada_${indice}`).value = llamada.folio || '';
-                                document.getElementById(`fecha_llamada_${indice}`).value = llamada.fecha || '';
-                                document.getElementById(`hora_llamada_${indice}`).value = llamada.hora || '';
-                            });
-
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.error) {
+                                throw data;
+                            }
+                            llenarCamposFormulario(data);
+                            if (btn_random1) btn_random1.disabled = false; //Habilitamos el botón random
+                            if (btn_random2) btn_random2.disabled = false; //Habilitamos el botón random
+                            if (btn_random3) btn_random3.disabled = false; //Habilitamos el botón random
+                            if (btn_random4) btn_random4.disabled = false; //Habilitamos el botón random
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Datos capturados',
-                                text: `Se han seleccionado ${data.llamadas.length} llamadas aleatorias.`,
-                                timer: 3000,
-                                showConfirmButton: false,
+                                title: '¡Éxito!',
+                                html: `Se cargaron <b>4 llamadas</b> para <b>${data.operador}</b>`,
+                                showConfirmButton: true,
+                                timer: 3000
                             });
-                        } else {
-                            console.error('Error:', data.error);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            const errorMsg = error.error || 'Error al procesar el archivo';
+                            const detailMsg = error.detail ? `<br><small>${error.detail}</small>` : '';
+
                             Swal.fire({
                                 icon: 'error',
-                                title: 'Error en la carga',
-                                text: data.error,
+                                title: 'Error',
+                                html: `${errorMsg}${detailMsg}`,
+                                showConfirmButton: true
                             });
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        Swal.close();
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'Hubo un problema al subir el archivo. Por favor, inténtalo de nuevo.',
                         });
+                });
+            }
+
+            // Si cambian el operador, reseteamos todo
+            operadorSelect.addEventListener('change', function() {
+                excelEnMemoria = null;
+                if (btn_random1) btn_random1.disabled = true;
+                fileInput.value = ''; // Resetea el input file
+                limpiarCamposFormulario();
+            });
+
+            if (btn_random1) {
+                btn_random1.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    if (!operadorSelect.value) {
+                        showSwal('error', 'Operador requerido', 'Selecciona un operador');
+                        return;
+                    }
+
+                    if (!excelEnMemoria) {
+                        showSwal('error', 'Archivo requerido', 'Primero debes subir un archivo Excel');
+                        return;
+                    }
+
+                    const formData = new FormData();
+                    formData.append('nombre_cb', operadorSelect.value);
+                    formData.append('excelFile', excelEnMemoria);
+                    formData.append('solo_uno', 'true'); // Indica que solo queremos un registro
+
+                    Swal.fire({
+                        title: 'Buscando 1 llamada aleatoria...',
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        willOpen: () => Swal.showLoading()
                     });
+
+                    fetch('lector_excelbbva.php', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.error) throw data;
+                            llenarCamposFormularioAleatorio(data);
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Registro obtenido!',
+                                html: `<b>1 llamada aleatoria</b> cargada para <b>${data.operador}</b>`,
+                                timer: 3000,
+                                showConfirmButton: false
+                            });
+                        })
+                        .catch(error => {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                html: `${error.error || 'No se pudo cargar el registro'}`,
+                                showConfirmButton: true
+                            });
+                        });
+                });
+            }
+
+            if (btn_random2) {
+                btn_random2.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    if (!operadorSelect.value) {
+                        showSwal('error', 'Operador requerido', 'Selecciona un operador');
+                        return;
+                    }
+
+                    if (!excelEnMemoria) {
+                        showSwal('error', 'Archivo requerido', 'Primero debes subir un archivo Excel');
+                        return;
+                    }
+
+                    const formData = new FormData();
+                    formData.append('nombre_cb', operadorSelect.value);
+                    formData.append('excelFile', excelEnMemoria);
+                    formData.append('solo_uno', 'true'); // Indicam que solo queremos un registro
+
+                    Swal.fire({
+                        title: 'Buscando 1 llamada aleatoria...',
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        willOpen: () => Swal.showLoading()
+                    });
+
+                    fetch('lector_excelbbva.php', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.error) throw data;
+                            llenarCamposFormularioAleatorio2(data);
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Registro obtenido!',
+                                html: `<b>1 llamada aleatoria</b> cargada para <b>${data.operador}</b>`,
+                                timer: 3000,
+                                showConfirmButton: false
+                            });
+                        })
+                        .catch(error => {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                html: `${error.error || 'No se pudo cargar el registro'}`,
+                                showConfirmButton: true
+                            });
+                        });
+                });
+            }
+
+            if (btn_random3) {
+                btn_random3.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    if (!operadorSelect.value) {
+                        showSwal('error', 'Operador requerido', 'Selecciona un operador');
+                        return;
+                    }
+
+                    if (!excelEnMemoria) {
+                        showSwal('error', 'Archivo requerido', 'Primero debes subir un archivo Excel');
+                        return;
+                    }
+
+                    const formData = new FormData();
+                    formData.append('nombre_cb', operadorSelect.value);
+                    formData.append('excelFile', excelEnMemoria);
+                    formData.append('solo_uno', 'true'); // Indicam que solo queremos un registro
+
+                    Swal.fire({
+                        title: 'Buscando 1 llamada aleatoria...',
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        willOpen: () => Swal.showLoading()
+                    });
+
+                    fetch('lector_excelbbva.php', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.error) throw data;
+                            llenarCamposFormularioAleatorio3(data);
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Registro obtenido!',
+                                html: `<b>1 llamada aleatoria</b> cargada para <b>${data.operador}</b>`,
+                                timer: 3000,
+                                showConfirmButton: false
+                            });
+                        })
+                        .catch(error => {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                html: `${error.error || 'No se pudo cargar el registro'}`,
+                                showConfirmButton: true
+                            });
+                        });
+                });
+            }
+
+            if (btn_random4) {
+                btn_random4.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    if (!operadorSelect.value) {
+                        showSwal('error', 'Operador requerido', 'Selecciona un operador');
+                        return;
+                    }
+
+                    if (!excelEnMemoria) {
+                        showSwal('error', 'Archivo requerido', 'Primero debes subir un archivo Excel');
+                        return;
+                    }
+
+                    const formData = new FormData();
+                    formData.append('nombre_cb', operadorSelect.value);
+                    formData.append('excelFile', excelEnMemoria);
+                    formData.append('solo_uno', 'true'); // Indica que solo queremos un registro
+
+                    Swal.fire({
+                        title: 'Buscando 1 llamada aleatoria...',
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        willOpen: () => Swal.showLoading()
+                    });
+
+                    fetch('lector_excelbbva.php', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.error) throw data;
+                            llenarCamposFormularioAleatorio4(data);
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Registro obtenido!',
+                                html: `<b>1 llamada aleatoria</b> cargada para <b>${data.operador}</b>`,
+                                timer: 3000,
+                                showConfirmButton: false
+                            });
+                        })
+                        .catch(error => {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                html: `${error.error || 'No se pudo cargar el registro'}`,
+                                showConfirmButton: true
+                            });
+                        });
+                });
+            }
+
+            function llenarCamposFormulario(data) {
+                const fields = [
+                    'llamada_1', 'llamada_2', 'llamada_3', 'llamada_4',
+                    'fecha_llamada_1', 'fecha_llamada_2', 'fecha_llamada_3', 'fecha_llamada_4',
+                    'hora_llamada_1', 'hora_llamada_2', 'hora_llamada_3', 'hora_llamada_4'
+                ];
+
+                fields.forEach(field => {
+                    const element = document.getElementById(field);
+                    if (element && data[field]) {
+                        element.value = data[field];
+                    }
+                });
+            }
+
+            function llenarCamposFormularioAleatorio(data) {
+                const fields = [
+                    'llamada_1', 'fecha_llamada_1', 'hora_llamada_1'
+                ];
+
+                fields.forEach(field => {
+                    const element = document.getElementById(field);
+                    if (element && data[field]) {
+                        element.value = data[field];
+                    }
+                });
+            }
+
+            function llenarCamposFormularioAleatorio2(data) {
+                const fields = [
+                    'llamada_2', 'fecha_llamada_2', 'hora_llamada_2'
+                ];
+
+                fields.forEach(field => {
+                    const element = document.getElementById(field);
+                    if (element && data[field]) {
+                        element.value = data[field];
+                    }
+                });
+            }
+
+            function llenarCamposFormularioAleatorio3(data) {
+                const fields = [
+                    'llamada_3', 'fecha_llamada_3', 'hora_llamada_3'
+                ];
+
+                fields.forEach(field => {
+                    const element = document.getElementById(field);
+                    if (element && data[field]) {
+                        element.value = data[field];
+                    }
+                });
+            }
+
+            function llenarCamposFormularioAleatorio4(data) {
+                const fields = [
+                    'llamada_4', 'fecha_llamada_4', 'hora_llamada_4'
+                ];
+
+                fields.forEach(field => {
+                    const element = document.getElementById(field);
+                    if (element && data[field]) {
+                        element.value = data[field];
+                    }
+                });
+            }
+
+            // 🧹 Función para limpiar todos los campos de llamadas
+            function limpiarCamposFormulario() {
+                const fields = [
+                    'llamada_1', 'llamada_2', 'llamada_3', 'llamada_4',
+                    'fecha_llamada_1', 'fecha_llamada_2', 'fecha_llamada_3', 'fecha_llamada_4',
+                    'hora_llamada_1', 'hora_llamada_2', 'hora_llamada_3', 'hora_llamada_4'
+                ];
+
+                fields.forEach(field => {
+                    const element = document.getElementById(field);
+                    if (element) {
+                        element.value = '';
+                    }
+                });
+            }
+
+            function showSwal(icon, title, text) {
+                Swal.fire({
+                    icon: icon,
+                    title: title,
+                    text: text,
+                    showConfirmButton: true,
+                    timer: 3000
+                });
             }
         });
     </script>
@@ -1648,7 +2063,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // 1. Identificar la sección de calidad
-            const calidadSection = document.querySelector('.form-section-editar.card-border-editar.rubros');
+            const calidadSection = document.querySelector('.custom-form-section-editar');
             if (!calidadSection) return;
 
             // 2. Crear lista de elementos en orden VERTICAL por grupos
@@ -1663,7 +2078,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             // Luego agregamos los campos "cumple" en orden vertical
             // Primero todos los _1, luego todos los _2, etc.
             for (let j = 1; j <= 4; j++) {
-                for (let i = 1; i <= 16; i++) {
+                for (let i = 1; i <= 17; i++) {
                     const select = document.getElementById(`cumple${i}_${j}`);
                     if (select) verticalElements.push(select);
                 }
@@ -1734,7 +2149,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     </script>
 
 
-    
+
     <!-- Scripts en el orden CORRECTO -->
     <!-- 1. jQuery primero -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

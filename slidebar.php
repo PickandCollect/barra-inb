@@ -43,8 +43,25 @@ $nombreUsuario = $_SESSION['nombre_usuario'];
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
+
         <!-- Opciones del sidebar según el rol -->
-        <?php if ($rol == 'Operador' || $rol == 'Call Center' || $rol == 'Integracion'): ?>
+        <?php if ($nombreUsuario == 'Verónica Ávila García'): ?>
+            <!-- Nav exclusivo para Verónica -->
+            <li class="nav-item">
+                <a class="nav-link" href="miReportePersonal.php">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Mi Reporte</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="citas.php">
+                    <i class="fa-solid fa-eye"></i>
+                    <span>Citas</span>
+                </a>
+            </li>
+
+        <?php elseif ($rol == 'Operador' || $rol == 'Call Center' || $rol == 'Integracion'): ?>
             <!-- Nav Item - Datos -->
             <li class="nav-item">
                 <a class="nav-link" href="datos.php">
@@ -69,9 +86,22 @@ $nombreUsuario = $_SESSION['nombre_usuario'];
                 </a>
             </li>
 
-        <?php endif; ?>
+            <li class="nav-item">
+                <a class="nav-link" href="calificacion.php">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Calificación</span>
+                </a>
+            </li>
 
-        <?php if ($rol == 'Supervisor' || $rol == 'ROOT'): ?>
+            <!-- Nav Item - POLITICAS DE PRIVACIDAD -->
+            <li class="nav-item">
+                <a class="nav-link" href="politicas.php">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Politicas de Privacidad</span>
+                </a>
+            </li>
+
+        <?php elseif ($rol == 'Supervisor' || $rol == 'ROOT'): ?>
             <!-- Nav Item - Datos -->
             <li class="nav-item">
                 <a class="nav-link" href="datos.php">
@@ -103,44 +133,47 @@ $nombreUsuario = $_SESSION['nombre_usuario'];
                     <span>Herramientas</span>
                 </a>
             </li>
+
+            <!-- Nav Item - POLITICAS DE PRIVACIDAD -->
+            <li class="nav-item">
+                <a class="nav-link" href="politicas.php">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Politicas de Privacidad</span>
+                </a>
+            </li>
+
+
             <?php if ($nombreUsuario == 'Sabina Velásquez' || $nombreUsuario == 'Karen Correa Alcantara'): ?>
-                <!-- Nav Item - Calidad para Sabina y Karen -->
                 <li class="nav-item">
                     <a class="nav-link" href="calidad.php">
                         <i class="fa-solid fa-medal"></i>
                         <span>Calidad</span>
                     </a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link" href="evaluacion.php">
                         <i class="fa-solid fa-chart-pie"></i>
-                        <span>Metricas</span>
+                        <span>Métricas</span>
                     </a>
                 </li>
             <?php endif; ?>
 
-
-
-            <?php if ($nombreUsuario == 'Alberto Reyes'): ?>
-                <!-- Nav Items para Alberto Reyes -->
+            <?php if ($nombreUsuario == 'Alberto Reyes' || $nombreUsuario == 'Jonathan Vázquez Herrera' || $nombreUsuario == 'Yareni Cornejo'): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="moduloCalidadBBVA.php">
                         <i class="fa-solid fa-medal"></i>
                         <span>Calidad</span>
                     </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="moduloMetricasBBVA.php">
                         <i class="fa-solid fa-chart-pie"></i>
-                        <span>Metricas</span>
+                        <span>Métricas</span>
                     </a>
                 </li>
             <?php endif; ?>
 
-        <?php endif; ?>
-
-
-        <?php if ($rol == 'asegurado'): ?>
+        <?php elseif ($rol == 'asegurado'): ?>
             <!-- Nav Item - Asegurado -->
             <li class="nav-item">
                 <a class="nav-link" href="asegurado.php">
@@ -149,6 +182,10 @@ $nombreUsuario = $_SESSION['nombre_usuario'];
                 </a>
             </li>
         <?php endif; ?>
+
+
+
+
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">

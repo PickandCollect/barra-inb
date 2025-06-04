@@ -81,57 +81,73 @@ $cumple5_1 = isset($_POST['cumple5_1'])  ? htmlspecialchars($_POST['cumple5_1'])
 $cumple5_2 = isset($_POST['cumple5_2'])  ? htmlspecialchars($_POST['cumple5_2']) : '';
 $cumple5_3 = isset($_POST['cumple5_3'])  ? htmlspecialchars($_POST['cumple5_3']) : '';
 $cumple5_4 = isset($_POST['cumple5_4'])  ? htmlspecialchars($_POST['cumple5_4']) : '';
+
 $cumple6_1 = isset($_POST['cumple6_1'])  ? htmlspecialchars($_POST['cumple6_1']) : '';
 $cumple6_2 = isset($_POST['cumple6_2'])  ? htmlspecialchars($_POST['cumple6_2']) : '';
 $cumple6_3 = isset($_POST['cumple6_3'])  ? htmlspecialchars($_POST['cumple6_3']) : '';
 $cumple6_4 = isset($_POST['cumple6_4'])  ? htmlspecialchars($_POST['cumple6_4']) : '';
+
 $cumple7_1 = isset($_POST['cumple7_1'])  ? htmlspecialchars($_POST['cumple7_1']) : '';
 $cumple7_2 = isset($_POST['cumple7_2'])  ? htmlspecialchars($_POST['cumple7_2']) : '';
 $cumple7_3 = isset($_POST['cumple7_3'])  ? htmlspecialchars($_POST['cumple7_3']) : '';
 $cumple7_4 = isset($_POST['cumple7_4'])  ? htmlspecialchars($_POST['cumple7_4']) : '';
+
 $cumple8_1 = isset($_POST['cumple8_1'])  ? htmlspecialchars($_POST['cumple8_1']) : '';
 $cumple8_2 = isset($_POST['cumple8_2'])  ? htmlspecialchars($_POST['cumple8_2']) : '';
 $cumple8_3 = isset($_POST['cumple8_3'])  ? htmlspecialchars($_POST['cumple8_3']) : '';
 $cumple8_4 = isset($_POST['cumple8_4'])  ? htmlspecialchars($_POST['cumple8_4']) : '';
+
 $cumple9_1 = isset($_POST['cumple9_1'])  ? htmlspecialchars($_POST['cumple9_1']) : '';
 $cumple9_2 = isset($_POST['cumple9_2'])  ? htmlspecialchars($_POST['cumple9_2']) : '';
 $cumple9_3 = isset($_POST['cumple9_3'])  ? htmlspecialchars($_POST['cumple9_3']) : '';
 $cumple9_4 = isset($_POST['cumple9_4'])  ? htmlspecialchars($_POST['cumple9_4']) : '';
+
 $cumple10_1 = isset($_POST['cumple10_1'])  ? htmlspecialchars($_POST['cumple10_1']) : '';
 $cumple10_2 = isset($_POST['cumple10_2'])  ? htmlspecialchars($_POST['cumple10_2']) : '';
 $cumple10_3 = isset($_POST['cumple10_3'])  ? htmlspecialchars($_POST['cumple10_3']) : '';
 $cumple10_4 = isset($_POST['cumple10_4'])  ? htmlspecialchars($_POST['cumple10_4']) : '';
+
 $cumple11_1 = isset($_POST['cumple11_1'])  ? htmlspecialchars($_POST['cumple11_1']) : '';
 $cumple11_2 = isset($_POST['cumple11_2'])  ? htmlspecialchars($_POST['cumple11_2']) : '';
 $cumple11_3 = isset($_POST['cumple11_3'])  ? htmlspecialchars($_POST['cumple11_3']) : '';
 $cumple11_4 = isset($_POST['cumple11_4'])  ? htmlspecialchars($_POST['cumple11_4']) : '';
+
 $cumple12_1 = isset($_POST['cumple12_1'])  ? htmlspecialchars($_POST['cumple12_1']) : '';
 $cumple12_2 = isset($_POST['cumple12_2'])  ? htmlspecialchars($_POST['cumple12_2']) : '';
 $cumple12_3 = isset($_POST['cumple12_3'])  ? htmlspecialchars($_POST['cumple12_3']) : '';
 $cumple12_4 = isset($_POST['cumple12_4'])  ? htmlspecialchars($_POST['cumple12_4']) : '';
+
 $cumple13_1 = isset($_POST['cumple13_1'])  ? htmlspecialchars($_POST['cumple13_1']) : '';
 $cumple13_2 = isset($_POST['cumple13_2'])  ? htmlspecialchars($_POST['cumple13_2']) : '';
 $cumple13_3 = isset($_POST['cumple13_3'])  ? htmlspecialchars($_POST['cumple13_3']) : '';
 $cumple13_4 = isset($_POST['cumple13_4'])  ? htmlspecialchars($_POST['cumple13_4']) : '';
+
 $cumple14_1 = isset($_POST['cumple14_1'])  ? htmlspecialchars($_POST['cumple14_1']) : '';
 $cumple14_2 = isset($_POST['cumple14_2'])  ? htmlspecialchars($_POST['cumple14_2']) : '';
 $cumple14_3 = isset($_POST['cumple14_3'])  ? htmlspecialchars($_POST['cumple14_3']) : '';
 $cumple14_4 = isset($_POST['cumple14_4'])  ? htmlspecialchars($_POST['cumple14_4']) : '';
+
 $cumple15_1 = isset($_POST['cumple15_1'])  ? htmlspecialchars($_POST['cumple15_1']) : '';
 $cumple15_2 = isset($_POST['cumple15_2'])  ? htmlspecialchars($_POST['cumple15_2']) : '';
 $cumple15_3 = isset($_POST['cumple15_3'])  ? htmlspecialchars($_POST['cumple15_3']) : '';
 $cumple15_4 = isset($_POST['cumple15_4'])  ? htmlspecialchars($_POST['cumple15_4']) : '';
+
 $cumple16_1 = isset($_POST['cumple16_1'])  ? htmlspecialchars($_POST['cumple16_1']) : '';
 $cumple16_2 = isset($_POST['cumple16_2'])  ? htmlspecialchars($_POST['cumple16_2']) : '';
 $cumple16_3 = isset($_POST['cumple16_3'])  ? htmlspecialchars($_POST['cumple16_3']) : '';
 $cumple16_4 = isset($_POST['cumple16_4'])  ? htmlspecialchars($_POST['cumple16_4']) : '';
 
+$cumple17_1 = isset($_POST['cumple17_1'])  ? htmlspecialchars($_POST['cumple17_1']) : '';
+$cumple17_2 = isset($_POST['cumple17_2'])  ? htmlspecialchars($_POST['cumple17_2']) : '';
+$cumple17_3 = isset($_POST['cumple17_3'])  ? htmlspecialchars($_POST['cumple17_3']) : '';
+$cumple17_4 = isset($_POST['cumple17_4'])  ? htmlspecialchars($_POST['cumple17_4']) : '';
+
+
 // Captura los valores de Fortalezas y Áreas de Oportunidad enviados por POST
 $fortalezas = isset($_POST['fortalezas']) ? htmlspecialchars($_POST['fortalezas']) : '';
 $oportunidades = isset($_POST['areaOpor']) ? htmlspecialchars($_POST['areaOpor']) : '';
-$comentarios = isset($_POST['comentarios_c']) ? htmlspecialchars($_POST['comentarios_c']) : '';
-$compromiso = isset($_POST['compromiso']) ? htmlspecialchars($_POST['compromiso']) : '';
-$nota_bbva = isset($_POST['notaCalidad']) ? $_POST['notaCalidad'] : '';
+$comentarios_cb = isset($_POST['comentarios_cb']) ? htmlspecialchars($_POST['comentarios_cb']) : '';
+$notaCalidad = isset($_POST['notaCalidad']) ? $_POST['notaCalidad'] : '';
 
 // Verificar que el operador existe antes de procesar
 if ($nombre_cb) {
@@ -150,7 +166,7 @@ if ($nombre_cb) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>cedula_bbva</title>
+    <title>CEDULA BBVA</title>
 
     <!-- Fuentes personalizadas -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -176,7 +192,7 @@ if ($nombre_cb) {
     <div id="contenido_bbva">
         <!-- Encabezado -->
         <div class="header">
-            <div class="title">CALIDAD BBVA</div>
+            <div class="title">CEDULA BBVA</div>
             <div class="container_logo">
                 <img src="img/BBVA-REDISENO-LOGO.jpg" alt="Logo de la página">
             </div>
@@ -268,8 +284,8 @@ if ($nombre_cb) {
                         <!-- Contenedor para el porcentaje -->
                         <div id="nota_bbva" name="nota_bbva" class="nota-porcentaje"
                             <?php
-                            if (isset($nota_bbva)) {
-                                $nota = intval($nota_bbva);
+                            if (isset($notaCalidad)) {
+                                $nota = intval($notaCalidad);
                                 if ($nota <= 75) {
                                     echo 'style="color: red;"';
                                 } elseif ($nota >= 76 && $nota <= 89) {
@@ -280,8 +296,8 @@ if ($nombre_cb) {
                             }
                             ?>>
                             <?php
-                            if (isset($nota_bbva)) {
-                                echo htmlspecialchars($nota_bbva);
+                            if (isset($notaCalidad)) {
+                                echo htmlspecialchars($notaCalidad);
                             } else {
                                 echo "%"; // Mensaje por defecto
                             }
@@ -358,7 +374,7 @@ if ($nombre_cb) {
 
             <div class="llamadas">
                 <label for="archivo_llamada">
-                    <h6 style="padding: 10px;">Preciona <i class="fas fa-play"></i> para escuchar tu llamada </h6>
+                    <h6 style="padding: 10px;">Presiona <i class="fas fa-play"></i> para escuchar tu llamada </h6>
                 </label>
 
                 <div class="mod-archivo-container" style="margin-bottom: 13px;">
@@ -396,35 +412,35 @@ if ($nombre_cb) {
 
     <div class="container_flex">
 
-        <div class="container_impactoN" style="">
+        <div class="container_impactoN" style="width: 1300px;">
             <!-- Sección de Impacto Negocio -->
             <div class="container_impacto">
                 <div class="seccion-titulo">
-                    <h3 style="margin-bottom: auto;">🌐Impacto Negocio</h3>
+                    <h3 style="margin-bottom: auto;">📶Impacto Negocio</h3>
                 </div>
             </div>
-            <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="height: 85%;  border-left: 5px solid #276096;
-            border-bottom: 5px solid #276096;">
+            <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="height: 770px;  border-left: 5px solid#3075B6;
+            border-bottom: 5px solid#3075B6;">
                 <div id="calidad-grid-container" class="calidad-grid-container">
 
                     <!-- Rubros de Impacto Negocio -->
                     <label for="rubro_c" style="margin-bottom: 30px;">
-                        <h6 style="color:#276096;">Rubro</h6>
+                        <h6 style="color:#3075B6">Rubro</h6>
                     </label>
                     <label for="ponderacion_c">
-                        <h6 style="color:#276096;">Ponderación</h6>
+                        <h6 style="color:#3075B6">Ponderación</h6>
                     </label>
                     <label for="llamada1_c">
-                        <h6 style="color:#276096;">llamada 1</h6>
+                        <h6 style="color:#3075B6">llamada 1</h6>
                     </label>
                     <label for="llamada2_c">
-                        <h6 style="color:#276096;">llamada 2</h6>
+                        <h6 style="color:#3075B6">llamada 2</h6>
                     </label>
                     <label for="llamada3_c">
-                        <h6 style="color:#276096;">llamada 3</h6>
+                        <h6 style="color:#3075B6">llamada 3</h6>
                     </label>
                     <label for="llamada4_c">
-                        <h6 style="color:#276096;">llamada 4</h6>
+                        <h6 style="color:#3075B6">llamada 4</h6>
                     </label>
 
 
@@ -436,13 +452,13 @@ if ($nombre_cb) {
                     </label>
                     <input type="text" id="pon1" name="pon1" class="calidad-form-control" value="3" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple1_1" name="cumple1_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple1_1); ?>" readonly>
+                    <input type="text" id="cumple1_1" name="cumple1_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple1_1); ?>" readonly>
 
-                    <input type="text" id="cumple1_2" name="cumple1_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple1_2); ?>" readonly>
+                    <input type="text" id="cumple1_2" name="cumple1_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple1_2); ?>" readonly>
 
-                    <input type="text" id="cumple1_3" name="cumple1_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple1_3); ?>" readonly>
+                    <input type="text" id="cumple1_3" name="cumple1_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple1_3); ?>" readonly>
 
-                    <input type="text" id="cumple1_4" name="cumple1_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple1_4); ?>" readonly>
+                    <input type="text" id="cumple1_4" name="cumple1_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple1_4); ?>" readonly>
 
                     <!-- Rubro 2 -->
                     <label for="mute_cb">
@@ -450,13 +466,13 @@ if ($nombre_cb) {
                     </label>
                     <input type="text" id="pon2" name="pon2" class="calidad-form-control" value="4" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple2_1" name="cumple2_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple2_1); ?>" readonly>
+                    <input type="text" id="cumple2_1" name="cumple2_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple2_1); ?>" readonly>
 
-                    <input type="text" id="cumple2_2" name="cumple2_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple2_2); ?>" readonly>
+                    <input type="text" id="cumple2_2" name="cumple2_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple2_2); ?>" readonly>
 
-                    <input type="text" id="cumple2_3" name="cumple2_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple2_3); ?>" readonly>
+                    <input type="text" id="cumple2_3" name="cumple2_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple2_3); ?>" readonly>
 
-                    <input type="text" id="cumple2_4" name="cumple2_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple2_4); ?>" readonly>
+                    <input type="text" id="cumple2_4" name="cumple2_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple2_4); ?>" readonly>
 
                     <!--    Rubro     3   -->
                     <label for="escucha_cb">
@@ -464,13 +480,13 @@ if ($nombre_cb) {
                     </label>
                     <input type="text" id="pon3" name="pon3" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple3_1" name="cumple3_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple3_1); ?>" readonly>
+                    <input type="text" id="cumple3_1" name="cumple3_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple3_1); ?>" readonly>
 
-                    <input type="text" id="cumple3_2" name="cumple3_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple3_2); ?>" readonly>
+                    <input type="text" id="cumple3_2" name="cumple3_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple3_2); ?>" readonly>
 
-                    <input type="text" id="cumple3_3" name="cumple3_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple3_3); ?>" readonly>
+                    <input type="text" id="cumple3_3" name="cumple3_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple3_3); ?>" readonly>
 
-                    <input type="text" id="cumple3_4" name="cumple3_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple3_4); ?>" readonly>
+                    <input type="text" id="cumple3_4" name="cumple3_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple3_4); ?>" readonly>
 
 
                     <!--    Rubro     4   -->
@@ -479,13 +495,13 @@ if ($nombre_cb) {
                     </label>
                     <input type="text" id="pon4" name="pon4" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple4_1" name="cumple4_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple4_1); ?>" readonly>
+                    <input type="text" id="cumple4_1" name="cumple4_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple4_1); ?>" readonly>
 
-                    <input type="text" id="cumple4_2" name="cumple4_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple4_2); ?>" readonly>
+                    <input type="text" id="cumple4_2" name="cumple4_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple4_2); ?>" readonly>
 
-                    <input type="text" id="cumple4_3" name="cumple4_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple4_3); ?>" readonly>
+                    <input type="text" id="cumple4_3" name="cumple4_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple4_3); ?>" readonly>
 
-                    <input type="text" id="cumple4_4" name="cumple4_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple4_4); ?>" readonly>
+                    <input type="text" id="cumple4_4" name="cumple4_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple4_4); ?>" readonly>
 
                     <!--    Rubro     5   -->
                     <label for="cortesia_cb">
@@ -493,13 +509,13 @@ if ($nombre_cb) {
                     </label>
                     <input type="text" id="pon5" name="pon5" class="calidad-form-control" placeholder="" value="6" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple5_1" name="cumple5_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple5_1); ?>" readonly>
+                    <input type="text" id="cumple5_1" name="cumple5_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple5_1); ?>" readonly>
 
-                    <input type="text" id="cumple5_2" name="cumple5_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple5_2); ?>" readonly>
+                    <input type="text" id="cumple5_2" name="cumple5_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple5_2); ?>" readonly>
 
-                    <input type="text" id="cumple5_3" name="cumple5_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple5_3); ?>" readonly>
+                    <input type="text" id="cumple5_3" name="cumple5_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple5_3); ?>" readonly>
 
-                    <input type="text" id="cumple5_4" name="cumple5_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple5_4); ?>" readonly>
+                    <input type="text" id="cumple5_4" name="cumple5_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple5_4); ?>" readonly>
 
 
                     <!--    Rubro     6   -->
@@ -508,13 +524,13 @@ if ($nombre_cb) {
                     </label>
                     <input type="text" id="pon6" name="pon6" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple6_1" name="cumple6_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple6_1); ?>" readonly>
+                    <input type="text" id="cumple6_1" name="cumple6_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple6_1); ?>" readonly>
 
-                    <input type="text" id="cumple6_2" name="cumple6_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple6_2); ?>" readonly>
+                    <input type="text" id="cumple6_2" name="cumple6_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple6_2); ?>" readonly>
 
-                    <input type="text" id="cumple6_3" name="cumple6_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple6_3); ?>" readonly>
+                    <input type="text" id="cumple6_3" name="cumple6_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple6_3); ?>" readonly>
 
-                    <input type="text" id="cumple6_4" name="cumple6_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple6_4); ?>" readonly>
+                    <input type="text" id="cumple6_4" name="cumple6_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple6_4); ?>" readonly>
 
 
                     <!--    Rubro     7   -->
@@ -523,13 +539,13 @@ if ($nombre_cb) {
                     </label>
                     <input type="text" id="pon7" name="pon7" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple7_1" name="cumple7_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple7_1); ?>" readonly>
+                    <input type="text" id="cumple7_1" name="cumple7_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple7_1); ?>" readonly>
 
-                    <input type="text" id="cumple7_2" name="cumple7_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple7_2); ?>" readonly>
+                    <input type="text" id="cumple7_2" name="cumple7_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple7_2); ?>" readonly>
 
-                    <input type="text" id="cumple7_3" name="cumple7_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple7_3); ?>" readonly>
+                    <input type="text" id="cumple7_3" name="cumple7_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple7_3); ?>" readonly>
 
-                    <input type="text" id="cumple7_4" name="cumple7_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple7_4); ?>" readonly>
+                    <input type="text" id="cumple7_4" name="cumple7_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple7_4); ?>" readonly>
 
 
                     <!--    Rubro     8   -->
@@ -538,27 +554,28 @@ if ($nombre_cb) {
                     </label>
                     <input type="text" id="pon8" name="pon8" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple8_1" name="cumple8_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple8_1); ?>" readonly>
+                    <input type="text" id="cumple8_1" name="cumple8_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple8_1); ?>" readonly>
 
-                    <input type="text" id="cumple8_2" name="cumple8_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple8_2); ?>" readonly>
+                    <input type="text" id="cumple8_2" name="cumple8_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple8_2); ?>" readonly>
 
-                    <input type="text" id="cumple8_3" name="cumple8_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple8_3); ?>" readonly>
+                    <input type="text" id="cumple8_3" name="cumple8_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple8_3); ?>" readonly>
 
-                    <input type="text" id="cumple8_4" name="cumple8_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple8_4); ?>" readonly>
+                    <input type="text" id="cumple8_4" name="cumple8_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple8_4); ?>" readonly>
 
                     <!--    Rubro     9   -->
                     <label for="cierres_cb">
                         <h6>Invitación a inspeccionar</h6>
                     </label>
-                    <input type="text" id="pon9" name="pon9" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
+                    <input type="text" id="pon9" name="pon9" class="calidad-form-control" value="10" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple9_1" name="cumple9_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple9_1); ?>" readonly>
+                    <input type="text" id="cumple9_1" name="cumple9_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple9_1); ?>" readonly>
 
-                    <input type="text" id="cumple9_2" name="cumple9_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple9_2); ?>" readonly>
+                    <input type="text" id="cumple9_2" name="cumple9_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple9_2); ?>" readonly>
 
-                    <input type="text" id="cumple9_3" name="cumple9_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple9_3); ?>" readonly>
+                    <input type="text" id="cumple9_3" name="cumple9_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple9_3); ?>" readonly>
 
-                    <input type="text" id="cumple9_4" name="cumple9_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple9_4); ?>" readonly>
+                    <input type="text" id="cumple9_4" name="cumple9_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple9_4); ?>" readonly>
+
                 </div>
             </div>
         </div>
@@ -567,49 +584,49 @@ if ($nombre_cb) {
             <!-- Sección de Impacto Operativo -->
             <div class="container_impacto">
                 <div class="seccion-titulo">
-                    <h3 style="margin-bottom: auto;">🌐Impacto Operativo</h3>
+                    <h3 style="margin-bottom: auto;">📶Impacto Operativo</h3>
                 </div>
             </div>
 
-            <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="height: 50%; border-left: 5px solid #276096;
-            border-bottom: 5px solid #276096;">
+            <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="height: 58%; border-left: 5px solid#3075B6;
+            border-bottom: 5px solid#3075B6;">
                 <div id="calidad-grid-container" class="calidad-grid-container">
 
                     <!-- Rubros de Impacto Negocio -->
                     <label for="rubro_c" style="margin-bottom: 30px;">
-                        <h6 style="color:#276096;">Rubro</h6>
+                        <h6 style="color:#3075B6">Rubro</h6>
                     </label>
                     <label for="ponderacion_c">
-                        <h6 style="color:#276096;">Ponderación</h6>
+                        <h6 style="color:#3075B6">Ponderación</h6>
                     </label>
                     <label for="llamada1_c">
-                        <h6 style="color:#276096;">llamada 1</h6>
+                        <h6 style="color:#3075B6">llamada 1</h6>
                     </label>
                     <label for="llamada2_c">
-                        <h6 style="color:#276096;">llamada 2</h6>
+                        <h6 style="color:#3075B6">llamada 2</h6>
                     </label>
                     <label for="llamada3_c">
-                        <h6 style="color:#276096;">llamada 3</h6>
+                        <h6 style="color:#3075B6">llamada 3</h6>
                     </label>
                     <label for="llamada4_c">
-                        <h6 style="color:#276096;">llamada 4</h6>
+                        <h6 style="color:#3075B6">llamada 4</h6>
                     </label>
 
                     <!-- Rubros con ponderaciones -->
 
                     <!--    Rubro     10   -->
-                    <label for="tutea_c">
+                    <label for="tutea_cb">
                         <h6>Tutea / Personaliza</h6>
                     </label>
-                    <input type="text" id="pon10" name="pon10" class="calidad-form-control" value="6" readonly style="text-align: center;">
+                    <input type="text" id="pon10" name="pon10" class="calidad-form-control" placeholder="" value="6" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple10_1" name="cumple10_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple10_1); ?>" readonly>
+                    <input type="text" id="cumple10_1" name="cumple10_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple10_1); ?>" readonly>
 
-                    <input type="text" id="cumple10_2" name="cumple10_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple10_2); ?>" readonly>
+                    <input type="text" id="cumple10_2" name="cumple10_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple10_2); ?>" readonly>
 
-                    <input type="text" id="cumple10_3" name="cumple10_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple10_3); ?>" readonly>
+                    <input type="text" id="cumple10_3" name="cumple10_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple10_3); ?>" readonly>
 
-                    <input type="text" id="cumple10_4" name="cumple10_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple10_4); ?>" readonly>
+                    <input type="text" id="cumple10_4" name="cumple10_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple10_4); ?>" readonly>
 
                     <!--    Rubro     11   -->
                     <label for="ccc_cb">
@@ -617,13 +634,13 @@ if ($nombre_cb) {
                     </label>
                     <input type="text" id="pon11" name="pon11" class="calidad-form-control" placeholder="" value="8" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple11_1" name="cumple11_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple11_1); ?>" readonly>
+                    <input type="text" id="cumple11_1" name="cumple11_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple11_1); ?>" readonly>
 
-                    <input type="text" id="cumple11_2" name="cumple11_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple11_2); ?>" readonly>
+                    <input type="text" id="cumple11_2" name="cumple11_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple11_2); ?>" readonly>
 
-                    <input type="text" id="cumple11_3" name="cumple11_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple11_3); ?>" readonly>
+                    <input type="text" id="cumple11_3" name="cumple11_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple11_3); ?>" readonly>
 
-                    <input type="text" id="cumple11_4" name="cumple11_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple11_4); ?>" readonly>
+                    <input type="text" id="cumple11_4" name="cumple11_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple11_4); ?>" readonly>
 
 
                     <!--    Rubro     12   -->
@@ -632,14 +649,13 @@ if ($nombre_cb) {
                     </label>
                     <input type="text" id="pon12" name="pon12" class="calidad-form-control" placeholder="" value="5" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple12_1" name="cumple12_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple12_1); ?>" readonly>
+                    <input type="text" id="cumple12_1" name="cumple12_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple12_1); ?>" readonly>
 
-                    <input type="text" id="cumple12_2" name="cumple12_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple12_2); ?>" readonly>
+                    <input type="text" id="cumple12_2" name="cumple12_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple12_2); ?>" readonly>
 
-                    <input type="text" id="cumple12_3" name="cumple12_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple12_3); ?>" readonly>
+                    <input type="text" id="cumple12_3" name="cumple12_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple12_3); ?>" readonly>
 
-                    <input type="text" id="cumple12_4" name="cumple12_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple12_4); ?>" readonly>
-
+                    <input type="text" id="cumple12_4" name="cumple12_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple12_4); ?>" readonly>
 
                     <!--    Rubro     13   -->
                     <label for="contrllamada_cb">
@@ -647,275 +663,152 @@ if ($nombre_cb) {
                     </label>
                     <input type="text" id="pon13" name="pon13" class="calidad-form-control" placeholder="" value="10" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple13_1" name="cumple13_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple13_1); ?>" readonly>
+                    <input type="text" id="cumple13_1" name="cumple13_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple13_1); ?>" readonly>
 
-                    <input type="text" id="cumple13_2" name="cumple13_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple13_2); ?>" readonly>
+                    <input type="text" id="cumple13_2" name="cumple13_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple13_2); ?>" readonly>
 
-                    <input type="text" id="cumple13_3" name="cumple13_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple13_3); ?>" readonly>
+                    <input type="text" id="cumple13_3" name="cumple13_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple13_3); ?>" readonly>
 
-                    <input type="text" id="cumple13_4" name="cumple13_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple13_4); ?>" readonly>
+                    <input type="text" id="cumple13_4" name="cumple13_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple13_4); ?>" readonly>
 
                     <!--    Rubro     14   -->
                     <label for="negativas_cb">
                         <h6>Frases negativas</h6>
                     </label>
-                    <input type="text" id="pon14" name="pon14" class="calidad-form-control" placeholder="" value="7" readonly style="text-align: center;">
+                    <input type="text" id="pon14" name="pon14" class="calidad-form-control" value="7" readonly style="text-align: center; ">
 
-                    <input type="text" id="cumple14_1" name="cumple14_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple14_1); ?>" readonly>
+                    <input type="text" id="cumple14_1" name="cumple14_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple14_1); ?>" readonly>
 
-                    <input type="text" id="cumple14_2" name="cumple14_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple14_2); ?>" readonly>
+                    <input type="text" id="cumple14_2" name="cumple14_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple14_2); ?>" readonly>
 
-                    <input type="text" id="cumple14_3" name="cumple14_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple14_3); ?>" readonly>
+                    <input type="text" id="cumple14_3" name="cumple14_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple14_3); ?>" readonly>
 
-                    <input type="text" id="cumple14_4" name="cumple14_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple14_4); ?>" readonly>
+                    <input type="text" id="cumple14_4" name="cumple14_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple14_4); ?>" readonly>
 
                 </div>
             </div>
             <!-- Sección de Error Crítico -->
             <div class="container_impacto">
                 <div class="seccion-titulo">
-                    <h3 style="margin-bottom: auto;">🌐Error Crítico</h3>
+                    <h3 style="margin-bottom: auto;">📶Error Crítico</h3>
                 </div>
             </div>
 
-            <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="height: 25%; border-left: 5px solid #276096;
-            border-bottom: 5px solid #276096;">
+            <div class="form-section-editar card-border-editar text-center custom-form-section-editar custom-card-border-editar rubros" style="height: 300px; border-left: 5px solid#3075B6;
+            border-bottom: 5px solid#3075B6;">
                 <div id="calidad-grid-container" class="calidad-grid-container">
 
                     <!-- Rubros de Error Crítico -->
-                    <label for="rubro_c" style="margin-bottom: 30px;">
-                        <h6 style="color:#276096;">Rubro</h6>
+                    <label for="rubro_c">
+                        <h6 style="color:#3075B6">Rubro</h6>
                     </label>
                     <label for="ponderacion_c">
-                        <h6 style="color:#276096;">Ponderación</h6>
+                        <h6 style="color:#3075B6">Ponderación</h6>
                     </label>
                     <label for="llamada1_c">
-                        <h6 style="color:#276096;">llamada 1</h6>
+                        <h6 style="color:#3075B6">llamada 1</h6>
                     </label>
                     <label for="llamada2_c">
-                        <h6 style="color:#276096;">llamada 2</h6>
+                        <h6 style="color:#3075B6">llamada 2</h6>
                     </label>
                     <label for="llamada3_c">
-                        <h6 style="color:#276096;">llamada 3</h6>
+                        <h6 style="color:#3075B6">llamada 3</h6>
                     </label>
                     <label for="llamada4_c">
-                        <h6 style="color:#276096;">llamada 4</h6>
+                        <h6 style="color:#3075B6">llamada 4</h6>
                     </label>
 
                     <!-- Rubros con ponderaciones -->
-
                     <!--    Rubro     15   -->
                     <label for="maltrato_cb">
                         <h6>Maltrato al cliente</h6>
                     </label>
-                    <input type="text" id="pon15" name="pon15" class="calidad-form-control" value="0" readonly style="text-align: center; ">
+                    <input type="text" id="pon15" name="pon15" class="calidad-form-control" placeholder="" value="0" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple15_1" name="cumple15_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple15_1); ?>" readonly>
+                    <input type="text" id="cumple15_1" name="cumple15_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple15_1); ?>" readonly>
 
-                    <input type="text" id="cumple15_2" name="cumple15_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple15_2); ?>" readonly>
+                    <input type="text" id="cumple15_2" name="cumple15_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple15_2); ?>" readonly>
 
-                    <input type="text" id="cumple15_3" name="cumple15_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple15_3); ?>" readonly>
+                    <input type="text" id="cumple15_3" name="cumple15_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple15_3); ?>" readonly>
 
-                    <input type="text" id="cumple15_4" name="cumple15_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple15_4); ?>" readonly>
+                    <input type="text" id="cumple15_4" name="cumple15_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple15_4); ?>" readonly>
 
                     <!--    Rubro     16   -->
-                    <label for="desprestigio_cb">
+                    <label for="maltrato_cb">
                         <h6>Desprestigio institucional</h6>
                     </label>
                     <input type="text" id="pon16" name="pon16" class="calidad-form-control" placeholder="" value="0" readonly style="text-align: center;">
 
-                    <input type="text" id="cumple16_1" name="cumple16_1" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple16_1); ?>" readonly>
+                    <input type="text" id="cumple16_1" name="cumple16_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple16_1); ?>" readonly>
 
-                    <input type="text" id="cumple16_2" name="cumple16_2" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple16_2); ?>" readonly>
+                    <input type="text" id="cumple16_2" name="cumple16_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple16_2); ?>" readonly>
 
-                    <input type="text" id="cumple16_3" name="cumple16_3" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple16_3); ?>" readonly>
+                    <input type="text" id="cumple16_3" name="cumple16_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple16_3); ?>" readonly>
 
-                    <input type="text" id="cumple16_4" name="cumple16_4" class="calidad-form-control" style="background-color:#a8d4fd;" value="<?php echo htmlspecialchars($cumple16_4); ?>" readonly>
+                    <input type="text" id="cumple16_4" name="cumple16_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple16_4); ?>" readonly>
+
+                    <!--    Rubro     17   -->
+                    <label for="maltrato_cb">
+                        <h6>Aviso de privacidad</h6>
+                    </label>
+                    <input type="text" id="pon17" name="pon17" class="calidad-form-control" placeholder="" value="0" readonly style="text-align: center;">
+
+                    <input type="text" id="cumple17_1" name="cumple17_1" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple17_1); ?>" readonly>
+
+                    <input type="text" id="cumple17_2" name="cumple17_2" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple17_2); ?>" readonly>
+
+                    <input type="text" id="cumple17_3" name="cumple17_3" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple17_3); ?>" readonly>
+
+                    <input type="text" id="cumple17_4" name="cumple17_4" class="calidad-form-control" style="background-color:#99c7f3;" value="<?php echo htmlspecialchars($cumple17_4); ?>" readonly>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Contenedor que consume Fortalezas y Áreas de Oportunidad -->
-    <div class="container_FA">
-        <div class="fortalezas-container">
-            <label for="fortalezas">
-                <h6>Fortalezas</h6>
-            </label>
-            <textarea id="fortalezas" name="fortalezas" class="fortalezas-textarea" readonly style="cursor: not-allowed;"><?php echo $fortalezas; ?></textarea>
-        </div>
-
-        <div class="oportunidades-container">
-            <label for="oportunidades">
-                <h6>Áreas de Oportunidad</h6>
-            </label>
-            <textarea id="oportunidades" name="oportunidades" class="oportunidades-textarea" readonly style="cursor: not-allowed;"><?php echo $oportunidades; ?></textarea>
-        </div>
+    <div class="contenedor_flex_com">
 
         <!-- Apartado de comentarios y compromiso -->
         <div class="container_com">
-            <h6>Comentarios</h6>
-            <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="5" style="margin-bottom: 30px; cursor: not-allowed; resize: none;" readonly><?php echo $comentarios; ?></textarea>
-
-            <h6>Compromiso</h6>
-            <div contenteditable="true" class="form-control" id="compromiso_cedula" name="compromiso_cedula" rows="3" style="cursor: default; margin-bottom: 30px; height: 150px; resize: none;"></div>
-
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="compromisoCheck" name="compromisoCheck" required>
-                <label class="form-check-label" for="compromisoCheck" style="margin-left: 10px;">
-                    Enterado de mi evaluación.
-                </label>
+            <div class="container_comentarios">
+                <h6>Comentarios</h6>
+                <textarea class="form-control" id="comentariosTextarea" name="comentariosTextarea" rows="5" style="cursor: not-allowed; resize: none; background-color: white;" readonly><?php echo $comentarios_cb; ?></textarea>
             </div>
-
         </div>
+
+        <div class="container_COMFA">
+            <!-- Contenedor que consume Fortalezas y Áreas de Oportunidad -->
+            <div class="container_FA">
+                <div class="fortalezas-container">
+                    <label for="fortalezas">
+                        <h6>Fortalezas</h6>
+                    </label>
+                    <textarea id="fortalezas" name="fortalezas" class="fortalezas-textarea" readonly style="cursor: not-allowed;"><?php echo $fortalezas; ?></textarea>
+                </div>
+
+                <div class="oportunidades-container">
+                    <label for="oportunidades">
+                        <h6>Áreas de Oportunidad</h6>
+                    </label>
+                    <textarea id="oportunidades" name="oportunidades" class="oportunidades-textarea" readonly style="cursor: not-allowed;"><?php echo $oportunidades; ?></textarea>
+                </div>
+            </div>
+            <div class="container_compromiso">
+                <h6>Compromiso</h6>
+                <div contenteditable="true" class="form-control" id="compromiso_cedula" name="compromiso_cedula" rows="3" style="cursor: default; resize: none; background-color: white;"></div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="compromisoCheck" name="compromisoCheck" require>
+                    <label class="form-check-label" for="compromisoCheck" style="margin-left: 10px; color: #3075B6;">
+                        <b>Enterad@</b>
+                    </label>
+                </div>
+            </div>
+        </div>
+
     </div>
-    </div>
 
 
-    <!-- SCRIPT PARA GENERAR EL PDF -->
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', async function() {
-            try {
-                const images = document.querySelectorAll('img');
-                const totalImages = images.length;
 
-                if (totalImages === 0) {
-                    await waitForStylesThenCapture();
-                    return;
-                }
-
-                await Promise.all(Array.from(images).map(img => {
-                    return new Promise((resolve, reject) => {
-                        if (img.complete && img.naturalHeight !== 0) {
-                            convertToBase64(img);
-                            resolve();
-                        } else {
-                            img.addEventListener('load', () => {
-                                convertToBase64(img);
-                                resolve();
-                            });
-                            img.addEventListener('error', () => {
-                                console.error("Error cargando la imagen:", img.src);
-                                resolve(); // Resolvemos incluso si hay un error para no bloquear el proceso
-                            });
-                        }
-                    });
-                }));
-
-                await waitForStylesThenCapture();
-            } catch (error) {
-                console.error("Error en el proceso de carga de imágenes:", error);
-            }
-        });
-
-        function convertToBase64(img) {
-            if (img.src && !img.src.startsWith('data:image')) {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                canvas.width = img.naturalWidth;
-                canvas.height = img.naturalHeight;
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                img.src = canvas.toDataURL('image/png');
-            }
-        }
-
-        function waitForStylesThenCapture() {
-            return new Promise(resolve => {
-                setTimeout(() => {
-                    captureScreen().then(resolve);
-                }, 100); // Ajustamos el tiempo de espera para asegurar que los estilos se apliquen correctamente
-            });
-        }
-
-        async function captureScreen() {
-            try {
-                const contenido = document.getElementById('contenido_bbva');
-
-                if (!contenido) {
-                    throw new Error("El elemento 'contenido_bbva' no fue encontrado.");
-                }
-
-                // Ajustar el ancho del contenido al ancho del PDF
-                const pdfWidth = 210; // Ancho de una hoja A4 en mm
-                contenido.style.width = `${pdfWidth}mm`;
-
-                const canvas = await html2canvas(contenido, {
-                    useCORS: true,
-                    logging: true,
-                    scale: 2,
-                    backgroundColor: null,
-                    foreignObjectRendering: true,
-                    imageTimeout: 5000, // Aumentamos el tiempo de espera para imágenes
-                    width: contenido.scrollWidth,
-                    height: contenido.scrollHeight
-                });
-
-                const imgData = canvas.toDataURL('image/png', 1.0);
-                const {
-                    jsPDF
-                } = window.jspdf;
-                const doc = new jsPDF('p', 'mm', 'a4');
-
-                const pdfWidthFinal = doc.internal.pageSize.getWidth();
-                const pdfHeightFinal = doc.internal.pageSize.getHeight();
-
-                // Calcular la relación de aspecto de la imagen
-                const imgRatio = canvas.width / canvas.height;
-
-                // Ajustar la imagen para que ocupe todo el ancho del PDF
-                let imgWidth = pdfWidthFinal;
-                let imgHeight = pdfWidthFinal / imgRatio;
-
-                // Si la altura de la imagen es mayor que la altura del PDF, ajustamos la altura y recalculamos el ancho
-                if (imgHeight > pdfHeightFinal) {
-                    imgHeight = pdfHeightFinal;
-                    imgWidth = pdfHeightFinal * imgRatio;
-                }
-
-                // Centrar la imagen en la página (opcional)
-                const x = (pdfWidthFinal - imgWidth) / 2;
-                const y = (pdfHeightFinal - imgHeight) / 2;
-
-                // Obtener el valor del campo de entrada
-                const nombrePDFInput = document.getElementById('nombre_cb');
-                let nombrePDF = nombrePDFInput ? nombrePDFInput.value.trim() : '';
-
-                // Validar si el campo está vacío
-                if (!nombrePDF) {
-                    nombrePDF = 'documento_PRUEBA'; // Nombre por defecto
-                }
-
-                // Agregar el texto adicional al nombre
-                const nombreFinal = `${nombrePDF} calidad BBVA`;
-
-                // Agregar la imagen al PDF
-                doc.addImage(imgData, 'PNG', x, y, imgWidth, imgHeight);
-
-                // Guardar el PDF con el nombre final
-                doc.save(`${nombreFinal}.pdf`);
-
-                // Mostrar SweetAlert de éxito y redirigir después de un breve retraso
-                Swal.fire({
-                    icon: 'success',
-                    title: 'PDF descargado',
-                    text: 'El PDF se ha descargado correctamente.',
-                    showConfirmButton: false, // No mostrar botón de confirmación
-                    timer: 1500 // Mostrar la alerta durante 1.5 segundos
-                }).then(() => {
-                    // Redirigir a la página anterior después de que la alerta se cierre
-                    window.history.back();
-                });
-
-            } catch (error) {
-                console.error("Error en el proceso de captura de pantalla:", error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Hubo un error al generar el PDF. Por favor, inténtalo de nuevo.',
-                });
-            }
-        }
-    </script>-->
 
 </body>
 

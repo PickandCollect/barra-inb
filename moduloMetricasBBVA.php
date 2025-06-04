@@ -62,15 +62,15 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
                 <div class="contenidos">
                     <div class="bbva">
                         <h2 style="color: rgb(10, 22, 128); border-bottom: 2px solid rgb(11, 13, 136);">METRICAS BBVA</h2>
-                        <a href="calidad_bbva.php" class="cont" id="container_bbva"></a>
+                        <a href="metricas_bbva.php" class="cont" id="container_bbva"></a>
                     </div>
                     <div class="hdi">
                         <h2 style="color: rgb(17, 128, 23); border-bottom: 2px solid rgb(13, 116, 26);">METRICAS HDI</h2>
-                        <a href="calidad_hdi.php" class="cont" id="container_hdi"></a>
+                        <a href="metricas_hdi.php" class="cont" id="container_hdi"></a>
                     </div>
                     <div class="rh">
                         <h2 style="color: rgb(26, 111, 126); border-bottom: 2px solid rgb(21, 148, 148);">METRICAS RH</h2>
-                        <a href="calidad_rh.php" class="cont" id="container_rh"></a>
+                        <a href="metricas_rh.php" class="cont" id="container_rh"></a>
                     </div>
                 </div>
 

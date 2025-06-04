@@ -6,14 +6,14 @@
     padding: 10px 20px; /* Espaciado interno */
     background-color: #f8f8f8; /* Color de fondo */
     border-bottom: 1px solid #ddd; /* Borde inferior */
-    margin-bottom: 40px; /* Margen inferior */
+    margin-bottom: 20px; /* Margen inferior */
 }
 
 /* Estilos para el título dentro del header */
 .header .title {
     font-size: 45px; /* Tamaño de fuente */
     font-weight: bold; /* Negrita */
-    color: #006a34; /* Color del texto */
+    color: #1f6611; /* Color del texto */
     margin-left: 10px; /* Margen izquierdo */
 }
 
@@ -30,8 +30,8 @@
 .contenedor-principal {
  align-items:center ;
     gap: 20px;
-    width: 100%;
-    max-width: 100%;
+    width: 99%;
+    max-width: 99%;
     padding: 15px;
     box-sizing: border-box; /* Incluye padding en el ancho total */
 }
@@ -51,8 +51,8 @@
     background-color: #f8f9fc;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    border-left: 5px solid #006a34;
-    border-bottom: 5px solid #006a34;
+    border-left: 5px solid #1F6611;
+    border-bottom: 5px solid #1F6611;
     width: 100%;
     box-sizing: border-box;
 }
@@ -66,7 +66,7 @@
 
 /* Etiquetas */
 .datos_us label h6 {
-    color: #006a34;
+    color: #1f6611;
     font-weight: 600;
     font-size: clamp(14px, 1.5vw, 16px); /* Tamaño adaptable */
     margin-bottom: 8px;
@@ -86,7 +86,7 @@
 
 /* Opciones del select */
 .custom-form-control option {
-    background-color: #006a34;
+    background-color: #1f6611;
     color: #fff;
 }
 
@@ -111,7 +111,7 @@
 }
 
 .califica-item h6 {
-    color: #006a34;
+    color: #1f6611;
     font-weight: 600;
     font-size: clamp(14px, 1.5vw, 16px);
     margin-bottom: 5px;
@@ -141,10 +141,10 @@
 
 .container_notahdi {
     border-radius: 20px;
-    padding: 20px;
+    padding: 20ypx;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #006a34;
-    border-bottom: 5px solid #006a34;
+    border-left: 5px solid #1F6611;
+    border-bottom: 5px solid #1F6611;
     width: 100%;
     box-sizing: border-box;
     display: flex;
@@ -162,7 +162,7 @@
 
 /* Título "Nota de calidad" arriba */
 .container_nota_hdi h4 {
-    color: #006a34;
+    color: #1f6611;
     font-weight: 600;
     font-size: clamp(16px, 2vw, 18px);
     margin: 0 0 5px 0; /* Margen solo abajo */
@@ -191,7 +191,7 @@
 
 /* Título "Performance" arriba */
 .container_performancehdi h4 {
-    color: #006a34;
+    color: #1f6611;
     font-weight: 600;
     font-size: clamp(16px, 2vw, 18px);
     text-align: left; /* Alineación izquierda */
@@ -240,7 +240,7 @@
 
 /* Contenedor principal de llamadas - Versión mejorada */
 .container_llamadas {
-    max-width: 100%;
+    max-width: 97%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start; /* Cambiado a flex-start para mejor alineación */
@@ -249,8 +249,8 @@
     background-color: #f8f9fc;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.12); /* Sombra más pronunciada */
     padding: 25px;
-    border-left: 5px solid #006a34;
-    border-bottom: 5px solid #006a34;;
+    border-left: 5px solid #1F6611;
+    border-bottom: 5px solid #1F6611;
     flex-wrap: wrap; /* Permite responsive mejor */
     gap: 15px; /* Espacio uniforme entre columnas */
 }
@@ -266,7 +266,7 @@
 
 /* Estilos para las etiquetas - Versión mejorada */
 .llamadas label h6 {
-    color: #006a34;
+    color: #1f6611;
     font-weight: 600;
     font-size: 15px;
     margin-bottom: 15px;
@@ -282,7 +282,7 @@
     transform: translateX(-50%);
     width: 40px;
     height: 2px;
-    background: linear-gradient(90deg, #006a34, #00B356);
+    background: linear-gradient(90deg, #1F6611, #a777e3);
 }
 
 /* Estilos para los inputs - Versión mejorada */
@@ -300,7 +300,7 @@
 }
 
 .custom-form-control:focus {
-    border-color: #006a34;
+    border-color: #8400ff;
     outline: none;
     box-shadow: 0 0 0 3px rgba(132, 0, 255, 0.1);
 }
@@ -335,7 +335,7 @@
     left: 0;
     width: 3px;
     height: 100%;
-    background: linear-gradient(to bottom, #006a34, #00B356);
+    background: linear-gradient(to bottom, #1F6611, #8400ff);
 }
 
 .mod-archivo-container:hover {
@@ -346,7 +346,7 @@
 
 /* Botón de carga - Versión mejorada */
 .mod-archivo-label {
-    background: linear-gradient(135deg, #006a34, #00B356);
+    background: linear-gradient(135deg, #8400ff, #a777e3);
     color: white;
     padding: 8px 15px;
     border-radius: 50px;
@@ -366,7 +366,7 @@
 }
 
 .mod-archivo-label:hover {
-    background: linear-gradient(135deg, #006a34, #00B356);
+    background: linear-gradient(135deg, #7300e0, #9658d1);
     box-shadow: 0 4px 8px rgba(132, 0, 255, 0.3);
 }
 
@@ -415,12 +415,12 @@
 
 /* Estado con archivo seleccionado - Versión mejorada */
 .mod-archivo-container.has-file {
-    border-color: #00B356;
+    border-color: #b388ff;
     background-color: #f9f0ff;
 }
 
 .mod-archivo-container.has-file .mod-archivo-nombre {
-    color: #006a34;
+    color: #8400ff;
     font-weight: 500;
 }
 
@@ -486,6 +486,21 @@
     position: relative;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón Regresar */
+.btn-regresar {
+    background: linear-gradient(135deg, #3d7ddd, #042566);
+    color: #ffffff;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 6px 16px rgba(37, 34, 39, 0.35);
+}
+
+.btn-regresar:hover {
+    background: linear-gradient(135deg, #2557bd, #4e81cc);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
 }
 
 /* Botón Exportar Excel (manteniendo tu diseño original con mejoras) */
@@ -587,6 +602,7 @@
         max-width: 250px;
     }
 }
+
 /*#############################################*/
 
 /* Contenedor principal */
@@ -598,8 +614,8 @@
     background-color: #f8f9fc;
     border-radius: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #006a34;
-    border-bottom: 5px solid #006a34;
+    border-left: 5px solid #1F6611;
+    border-bottom: 5px solid #1F6611;
 }
 
 /* Contenedor de las semanas */
@@ -619,7 +635,7 @@
 
 /* Estilos para el título de cada semana */
 .califica-item h6 {
-    color: #006a34;
+    color: #1f6611;
     font-weight: bold;
     font-size: 16px;
     margin-bottom: 10px;
@@ -655,13 +671,13 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
     text-align: center; /* Centrar el contenido */
     margin-bottom: 20px; /* Margen inferior */
-    border-left: 5px solid #006a34; /* Borde izquierdo */
-    border-bottom: 5px solid #006a34; /* Borde inferior */
+    border-left: 5px solid #1F6611; /* Borde izquierdo */
+    border-bottom: 5px solid #1F6611; /* Borde inferior */
 }
 
 /* Estilos para la etiqueta de la nota de calidad */
 .container_nota_hdi label h4 {
-    color: #006a34; /* Color del texto */
+    color: #1f6611; /* Color del texto */
     font-weight: bold; /* Negrita */
     margin-bottom: 0px; /* Margen inferior */
 }
@@ -708,7 +724,7 @@
     text-align: center;
     font-size: 20px;
     margin-top: 10px; /* Margen superior */
-    color: #006a34; /* Color del texto */
+    color: #1f6611; /* Color del texto */
     font-weight: bold; /* Negrita */
     margin-bottom: 10px; /* Margen inferior */
 }
@@ -738,7 +754,7 @@
 
 .flecha {
     font-size: 30px;
-    color: #006a34;
+    color: #7536eb;
     cursor: pointer;
     transition: transform 0.3s ease; /* Animación suave */
     margin-left: 20px;
@@ -765,6 +781,9 @@
     display: grid; /* Usa grid para organizar los elementos */
     grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
     gap: 10px; /* Espacio entre columnas */
+    width:95%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Estilos para los grupos de formulario */
@@ -806,14 +825,14 @@
 
 /* Estilos para los encabezados h3 dentro de la sección del formulario */
 .custom-form-section-editar h3 {
-    color: #006a34; /* Color del texto */
+    color: #5854e4; /* Color del texto */
     margin-bottom: 15px; /* Margen inferior */
     font-weight: bold; /* Negrita */
 }
 
 /* Estilos para los encabezados h2 */
 .custom-h2 {
-    color: #006a34; /* Color del texto */
+    color: #2d2a7b; /* Color del texto */
     font-weight: bold; /* Negrita */
 }
 
@@ -830,18 +849,23 @@
     border: none;
 }
 
+.calidad-form-control{
+    background-color: #b8eed3; /* Fondo gris para campos de solo lectura */
+}
+
 /* Estilos para la tarjeta con borde */
 .custom-card-border-editar {
     background-color: #F3F3F3; /* Color de fondo */
-    border-left: 5px solid #006a34; /* Borde izquierdo */
-    border-bottom: 5px solid #006a34; /* Borde inferior */
+    border-left: 5px solid #1F6611; /* Borde izquierdo */
+    border-bottom: 5px solid #1F6611; /* Borde inferior */
+    
 }
 
 
 /* Estilos para el contenedor de impacto */
 .container_impacto {
     margin: 30px 0 30px 30px; /* Margen superior, inferior e izquierdo */
-    color: #006a34; /* Color del texto */
+    color: #2d2a7b; /* Color del texto */
     font-weight: bold; /* Negrita */
     display: flex; /* Activa flexbox */
     align-items: center; /* Centra verticalmente los elementos */
@@ -973,7 +997,11 @@
 
 /* Estilos para los contenedores de Fortalezas y Áreas de Oportunidad */
 .container_FA {
-    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+    max-width: 97%;
     max-height: 80%;
     display: flex;
     gap: 20px;
@@ -1018,30 +1046,29 @@
 .fortalezas-textarea:focus,
 .oportunidades-textarea:focus {
     outline: none;
-    border-color: #006a34;
+    border-color: #1f6611;
 }
 
 /*##############################*/
 
 .container_com {
-    width: 100%;
+    width: 97%;
     background-color: #f8f9fc; /* Color de fondo suave */
     padding: 20px; /* Espaciado interno */
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
     margin: 20px 0; /* Espaciado externo */
-    border-left: 5px solid #006a34;
-    border-bottom: 5px solid #006a34;
+    border-left: 5px solid #1f6611;
 }
 
 .container_com h6 {
-    color: #006a34; /* Color del texto del encabezado */
+    color: #2d2a7b; /* Color del texto del encabezado */
     font-weight: bold; /* Negrita para el encabezado */
     margin-bottom: 10px; /* Espacio debajo del encabezado */
 }
 
 .container_com textarea{
-    height: 220px;
+    height: 420px;
 }
 
 .form-control {
@@ -1078,7 +1105,7 @@
 
 /* Efecto hover para el contenedor */
 .mod-archivo-container:hover {
-    border-color: #006a34;
+    border-color: #8400ff;
     box-shadow: 0 0 0 2px rgba(132, 0, 255, 0.1);
 }
 
@@ -1089,7 +1116,7 @@
 
 /* Estilo del botón de carga */
 .mod-archivo-label {
-    background-color: #006a34;
+    background-color: #8400ff;
     color: white;
     padding: 8px 16px;
     border-radius: 50px;
@@ -1157,7 +1184,7 @@
 
 /* Estado cuando hay archivo seleccionado */
 .mod-archivo-container.has-file {
-    border-color: #006a34;
+    border-color: #8400ff;
     background-color: #f3e9ff;
 }
 
