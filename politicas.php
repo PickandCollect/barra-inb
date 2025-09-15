@@ -140,7 +140,7 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
                     </div>
 
                     <div class="container-actualizacion">
-                        <p>Última actualización: 03 de febrero de 2025 </p>
+                        <p>Última actualización: 07 de abril de 2025 </p>
                     </div>
 
 

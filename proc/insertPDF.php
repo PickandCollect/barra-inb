@@ -60,11 +60,13 @@ if (!in_array($mimeType, $tiposMimeValidos)) {
     exit();
 }
 
+// Obtener la fecha actual en formato YYYYMMDD
+$fechaActual = date('Y-m-d');
+
 // Crear el nombre de la carpeta en S3
 $carpetaS3 = $operador . '_' . $campana . '/';
 
-// Obtener la fecha actual en formato YYYYMMDD
-$fechaActual = date('Ymd');
+
 
 // Función para verificar si un archivo existe en S3
 function archivoExisteEnS3($s3, $bucket, $rutaCompleta) {

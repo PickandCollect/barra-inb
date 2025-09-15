@@ -66,97 +66,101 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                     </div>
                 </div>
 
-                <div class="container_select_fecha">
-                    <h3>Selecciona un rango de fechas</h3>
-                    <input type="text" id="filtroFecha2" placeholder="Selecciona rango de fechas" readonly>
-                </div>
+                <div class="container-principal">
+
+                    <div class="container_select_fecha" style="margin-bottom: 10px;">
+                        <h3>Selecciona un rango de fechas</h3>
+                        <input type="text" id="filtroFecha2" placeholder="Selecciona rango de fechas" readonly>
+                    </div>
 
 
-                <!-- Content Row -->
-                <div class="row">
-                    <div class="card-container">
-                        <!-- 0-74% (Rojo) -->
-                        <div class="card-item">
-                            <div class="card danger-card">
-                                <div class="card-content">
-                                    <div class="card-row">
-                                        <div class="card-text">
-                                            <div class="flex">
-                                                <div class="card-title danger-text">
-                                                    BAJO
+                    <!-- Content Row -->
+                    <div class="row">
+                        <div class="card-container">
+                            <!-- 0-74% (Rojo) -->
+                            <div class="card-item">
+                                <div class="card danger-card">
+                                    <div class="card-content">
+                                        <div class="card-row">
+                                            <div class="card-text">
+                                                <div class="flex">
+                                                    <div class="card-title danger-text">
+                                                        BAJO
+                                                    </div>
+                                                    <div class="card-icon">
+                                                        <i class="fas fa-exclamation-triangle danger-text"></i>
+                                                    </div>
                                                 </div>
-                                                <div class="card-icon">
-                                                    <i class="fas fa-exclamation-triangle danger-text"></i>
-                                                </div>
-                                            </div>
 
-                                            <div id="urgencia-0-2" class="card-value">0</div>
-                                            <div class="card-subtitle">
-                                                Evaluación de 0% - 74%
+                                                <div id="urgencia-0-2" class="card-value">0</div>
+                                                <div class="card-subtitle">
+                                                    Evaluación de 0% - 74%
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- 75-89% (Amarillo) -->
-                        <div class="card-item">
-                            <div class="card warning-card">
-                                <div class="card-content">
-                                    <div class="card-row">
-                                        <div class="card-text">
-                                            <div class="flex">
-                                                <div class="card-title warning-text">
-                                                    REGULAR
+                            <!-- 75-89% (Amarillo) -->
+                            <div class="card-item">
+                                <div class="card warning-card">
+                                    <div class="card-content">
+                                        <div class="card-row">
+                                            <div class="card-text">
+                                                <div class="flex">
+                                                    <div class="card-title warning-text">
+                                                        REGULAR
+                                                    </div>
+                                                    <div class="card-icon">
+                                                        <i class="fas fa-clock warning-text"></i>
+                                                    </div>
                                                 </div>
-                                                <div class="card-icon">
-                                                    <i class="fas fa-clock warning-text"></i>
+                                                <div id="urgencia-3-5" class="card-value">0</div>
+                                                <div class="card-subtitle">
+                                                    Evaluación de 75% - 89%
                                                 </div>
                                             </div>
-                                            <div id="urgencia-3-5" class="card-value">0</div>
-                                            <div class="card-subtitle">
-                                                Evaluación de 75% - 89%
-                                            </div>
+
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- 90-100% (Verde) -->
-                        <div class="card-item">
-                            <div class="card success-card">
-                                <div class="card-content">
-                                    <div class="card-row">
-                                        <div class="card-text">
-                                            <div class="flex">
-                                                <div class="card-title success-text">
-                                                    BUENO
+                            <!-- 90-100% (Verde) -->
+                            <div class="card-item">
+                                <div class="card success-card">
+                                    <div class="card-content">
+                                        <div class="card-row">
+                                            <div class="card-text">
+                                                <div class="flex">
+                                                    <div class="card-title success-text">
+                                                        BUENO
+                                                    </div>
+                                                    <div class="card-icon">
+                                                        <i class="fas fa-check-circle success-text"></i>
+                                                    </div>
                                                 </div>
-                                                <div class="card-icon">
-                                                    <i class="fas fa-check-circle success-text"></i>
+                                                <div id="urgencia-6-14" class="card-value">0</div>
+                                                <div class="card-subtitle">
+                                                    Evaluación de 90% - 100%
                                                 </div>
                                             </div>
-                                            <div id="urgencia-6-14" class="card-value">0</div>
-                                            <div class="card-subtitle">
-                                                Evaluación de 90% - 100%
-                                            </div>
+
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <!-- Visualizador de PDF -->
-                <section class="pdfv-section-wrapper">
+                <div class="container-pdf">
                     <h2 class="pdfv-section-title"><i class="fas fa-file-pdf"></i> Visualizador de PDF's</h2>
 
-                    <!-- Filtro por operador -->
+                    <!-- Filtros -->
                     <div class="pdfv-filters">
                         <div class="pdfv-filter-input-wrapper">
                             <label for="filtroOperadorPDF" class="pdfv-filter-label">
@@ -170,8 +174,20 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                                 </select>
                             </div>
                         </div>
+
+                        <div class="pdfv-filter-input-wrapper">
+                            <label for="filtroFechaPDF" class="pdfv-filter-label">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Fecha</span>
+                            </label>
+                            <div class="pdfv-select-wrapper">
+                                <select id="filtroFechaPDF" class="pdfv-premium-select">
+                                    <option value="">Todas las fechas</option>
+                                    <!-- Se llenará dinámicamente desde Firebase -->
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    
 
                     <div class="pdfv-results-area">
                         <!-- Lista de PDFs -->
@@ -190,22 +206,22 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
 
                 <!-- Termina la sección del Visualizador. -->
 
                 <div class="container">
                     <div class="container-flex">
-                        <div class="filter-container premium-filters">
+                        <div class="filter-container premium-filters" style="margin-bottom: 30px ;">
                             <!-- Filtro de Operador -->
                             <div class="filter-row">
-                                <div class="filter-input-wrapper">
+                                <div class="">
                                     <label for="filtroOperador" class="filter-label">
                                         <i class="fas fa-user-shield"></i>
                                         <span>Operador</span>
                                     </label>
-                                    <div class="select-wrapper">
-                                        <select id="filtroOperador" class="premium-select">
+                                    <div>
+                                        <select id="filtroOperador">
                                             <option value="">Todos los operadores</option>
                                             <!-- Se llenará dinámicamente -->
                                         </select>
@@ -223,7 +239,6 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                                     <div class="date-input-wrapper">
                                         <input type="text" id="filtroFecha" class="premium-date-input" placeholder="Seleccionar fechas" readonly>
                                         <div class="date-icon">
-                                            <i class="fas fa-calendar-day"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -233,10 +248,6 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                         <!--BOTONES -->
 
                         <div class="container_btnfil">
-
-                            <button id="btnLimpiarFiltro">
-                                Limpiar
-                            </button>
                             <button id="btnExportarExcel">
                                 Exportar a Excel
                             </button>
@@ -526,9 +537,9 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                     try {
                         if (!currentDateRange) {
                             console.log("Esperando selección de rango de fechas...");
-                            $urgencia02.html('<div class="text-info small">Selecciona un rango de fechas</div>');
-                            $urgencia35.html('<div class="text-info small">Selecciona un rango de fechas</div>');
-                            $urgencia614.html('<div class="text-info small">Selecciona un rango de fechas</div>');
+                            $urgencia02.html('<div class="text-info small">...</div>');
+                            $urgencia35.html('<div class="text-info small">...</div>');
+                            $urgencia614.html('<div class="text-info small">...</div>');
                             return;
                         }
 
@@ -694,7 +705,7 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                     const style = document.createElement('style');
                     style.id = 'dynamic-card-styles';
                     style.textContent = `
-                /* Contenedor de la lista dentro de la card */
+               /* Contenedor de la lista dentro de la card */
                 .card-list-container {
                     max-height: 260px;
                     overflow-y: auto;
@@ -702,18 +713,24 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                     padding: 0 5px;
                     scrollbar-width: thin;
                     flex-grow: 1;
+                    border-radius: 8px;
+                    background-color: rgba(106, 27, 154, 0.03);
                 }
-                
+
                 /* Personalización de la barra de desplazamiento */
                 .card-list-container::-webkit-scrollbar {
                     width: 5px;
                 }
-                
+
                 .card-list-container::-webkit-scrollbar-thumb {
-                    background: rgba(0, 0, 0, 0.2);
+                    background: rgba(106, 27, 154, 0.3);
                     border-radius: 3px;
                 }
-                
+
+                .card-list-container::-webkit-scrollbar-track {
+                    background: rgba(106, 27, 154, 0.05);
+                }
+
                 /* Estilos para listas pequeñas */
                 .card-list-container ul.small {
                     font-size: 0.9rem;
@@ -721,21 +738,22 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                     padding: 0;
                     list-style-type: none;
                 }
-                
+
                 .card-list-container ul.small li {
-                    padding: 8px 0;
-                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-                    color: #333;
+                    padding: 8px 12px;
+                    border-bottom: 1px solid rgba(106, 27, 154, 0.08);
+                    color: #4a4a4a;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    transition: background-color 0.2s ease;
+                    transition: all 0.25s ease;
                 }
-                
+
                 .card-list-container ul.small li:hover {
-                    background-color: rgba(0, 0, 0, 0.02);
+                    background-color: rgba(106, 27, 154, 0.05);
+                    transform: translateX(2px);
                 }
-                
+
                 /* Elementos de la lista */
                 .card-list-container ul.small li .operator-name {
                     flex-grow: 1;
@@ -744,24 +762,25 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                     white-space: nowrap;
                     padding-right: 15px;
                     font-weight: 500;
+                    color: #333;
                 }
-                
+
                 .card-list-container ul.small li .percentage {
                     font-weight: 600;
-                    color: inherit;
+                    color: var(--primary-purple);
                     min-width: 60px;
                     text-align: right;
                     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 }
-                
+
                 .card-list-container ul.small li .eval-count {
-                    color: rgba(0, 0, 0, 0.5);
+                    color: rgba(106, 27, 154, 0.6);
                     min-width: 50px;
                     text-align: right;
                     font-size: 0.8rem;
                     font-weight: 400;
                 }
-                
+
                 /* Estilos para los indicadores de urgencia - ICONO CENTRADO */
                 #urgencia-0-2, 
                 #urgencia-3-5, 
@@ -776,47 +795,49 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    color: var(--primary-purple);
                 }
-                
+
                 /* Estados y mensajes */
                 .no-evaluations {
-                    color: rgba(0, 0, 0, 0.4);
+                    color: rgba(106, 27, 154, 0.4);
                     font-style: italic;
                     padding: 15px 10px;
                     text-align: center;
                     font-size: 0.9rem;
                 }
-                
+
                 .text-info {
-                    color:rgb(58, 23, 184);
+                    color: var(--primary-purple);
                     text-align: center;
                     font-weight: 500;
                 }
-                
+
                 .text-danger {
-                    color: #dc3545;
+                    color: var(--primary-purple);
                     text-align: center;
                     font-weight: 500;
+                    opacity: 0.8;
                 }
-                
+
                 /* Ajustes específicos para cards */
                 .card-content .card-list-container {
                     margin-top: 10px;
                     padding: 0 10px;
                 }
-                
+
                 .card-content .card-list-container ul.small li {
-                    padding: 6px 0;
+                    padding: 8px 0;
                 }
-                
+
                 /* Adaptación para responsive */
                 @media (max-width: 768px) {
                     .card-list-container {
-                        max-height: 150px;
+                        max-height: 200px;
                     }
                     
                     .card-list-container ul.small li {
-                        padding: 6px 0;
+                        padding: 8px 0;
                     }
                     
                     #urgencia-0-2, 
@@ -825,14 +846,18 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                         font-size: 2rem;
                     }
                 }
-                
+
                 @media (max-width: 480px) {
                     .card-list-container {
-                        max-height: 120px;
+                        max-height: 180px;
                     }
                     
                     .card-list-container ul.small {
                         font-size: 0.85rem;
+                    }
+                    
+                    .card-list-container ul.small li {
+                        padding: 6px 0;
                     }
                     
                     .card-list-container ul.small li .eval-count {
@@ -848,9 +873,9 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                     addCardStyles();
 
                     // Mostrar mensaje inicial
-                    $urgencia02.html('<div class="text-info small">Selecciona un rango de fechas</div>');
-                    $urgencia35.html('<div class="text-info small">Selecciona un rango de fechas</div>');
-                    $urgencia614.html('<div class="text-info small">Selecciona un rango de fechas</div>');
+                    $urgencia02.html('<div class="text-info small">...</div>');
+                    $urgencia35.html('<div class="text-info small">...</div>');
+                    $urgencia614.html('<div class="text-info small">...</div>');
                 }
 
                 initialize();
@@ -908,20 +933,26 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
 
             $(document).ready(function() {
                 $('#filtroOperador').select2({
-                    placeholder: "Seleccione",
+                    placeholder: "Seleccione un operador",
                     allowClear: true,
-                    dropdownParent: $('.filter-container.premium-filters'), // Mantiene en el contexto del contenedor
-                    templateResult: formatState, // Personaliza cómo se muestran los resultados
-                    templateSelection: formatState, // Personaliza cómo se muestra la selección
-                    width: '100%' // Asegura que tome el ancho completo
-                }).on('select2:open', function() {
-                    // Aplica estilos al dropdown cuando se abre
-                    document.querySelector('.select2-container--open .select2-dropdown').classList.add('premium-select-dropdown');
+                    dropdownParent: $('.filter-container.premium-filters'),
+                    width: '100%',
+                    minimumResultsForSearch: Infinity, // Oculta la búsqueda si no es necesaria
+                    templateResult: formatState,
+                    templateSelection: formatState,
+                    dropdownCssClass: 'premium-select2-dropdown'
                 });
 
                 function formatState(state) {
-                    if (!state.id) return state.text;
-                    return $('<span class="select2-option-premium"><i class="fas fa-user-tie"></i> ' + state.text + '</span>');
+                    if (!state.id) {
+                        return state.text;
+                    }
+                    return $(
+                        '<span style="display: flex; align-items: center; gap: 8px;">' +
+                        '<i class="fas fa-user-shield" style="color: #6a11cb; font-size: 18px;"></i>' +
+                        state.text +
+                        '</span>'
+                    );
                 }
 
                 // Cargar lista de operadores y tabla inicial
@@ -1604,7 +1635,6 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
             });
         </script>
 
-
         <!-- SCRIPT de lectura PDF y notificaciones -->
         <script>
             const db1 = firebase.database();
@@ -1614,9 +1644,12 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
             const pdfListContainer = document.getElementById('pdfList');
             const pdfViewer = document.getElementById('pdfViewer');
             const operadorSelect = document.getElementById('filtroOperadorPDF');
+            const fechaSelect = document.getElementById('filtroFechaPDF');
+            const pdfPlaceholder = document.querySelector('.pdfv-placeholder'); // Seleccionamos el placeholder
 
             let allPDFs = {};
             let allNotificaciones = {};
+            let currentSelectedPDF = null; // Variable para rastrear el PDF seleccionado
 
             pdfRef.on('value', (snapshot) => {
                 allPDFs = snapshot.val() || {};
@@ -1635,24 +1668,29 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                 emptyMessage.style.display = 'none';
                 loading.style.display = 'none';
 
-                // Guardar operador actualmente seleccionado
+                // Guardar selecciones actuales
                 const operadorSeleccionado = operadorSelect.value;
+                const fechaSeleccionada = fechaSelect.value;
 
-                // Crear conjunto único de operadores
+                // Crear conjuntos únicos de operadores y fechas
                 const operadoresSet = new Set();
+                const fechasSet = new Set();
+
                 for (const key in allPDFs) {
                     const pdf = allPDFs[key];
                     if (pdf.operador) {
                         operadoresSet.add(pdf.operador);
                     }
+                    if (pdf.fecha) {
+                        fechasSet.add(pdf.fecha);
+                    }
                 }
 
-                // Evitar reconstruir si ya están los mismos operadores
-                const actuales = Array.from(operadorSelect.options).map(o => o.value);
-                const nuevos = ["", ...Array.from(operadoresSet)];
+                // Actualizar select de operadores si hay cambios
+                const actualesOperadores = Array.from(operadorSelect.options).map(o => o.value);
+                const nuevosOperadores = ["", ...Array.from(operadoresSet)];
 
-                const sonIguales = actuales.length === nuevos.length && actuales.every((v, i) => v === nuevos[i]);
-                if (!sonIguales) {
+                if (!arraysIguales(actualesOperadores, nuevosOperadores)) {
                     operadorSelect.innerHTML = `<option value="">Todos los operadores</option>`;
                     operadoresSet.forEach(op => {
                         const option = document.createElement('option');
@@ -1662,26 +1700,73 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                     });
                 }
 
-                // Restaurar la selección anterior si existe
-                operadorSelect.value = operadorSeleccionado;
+                // Actualizar select de fechas si hay cambios
+                const actualesFechas = Array.from(fechaSelect.options).map(o => o.value);
+                const nuevasFechas = ["", ...Array.from(fechasSet).sort().reverse()]; // Ordenar fechas de más reciente a más antigua
+
+                if (!arraysIguales(actualesFechas, nuevasFechas)) {
+                    fechaSelect.innerHTML = `<option value="">Todas las fechas</option>`;
+                    nuevasFechas.filter(f => f).forEach(fecha => {
+                        const option = document.createElement('option');
+                        option.value = fecha;
+                        option.textContent = fecha;
+                        fechaSelect.appendChild(option);
+                    });
+                }
+
+                // Restaurar selecciones anteriores si existen
+                if (operadoresSet.has(operadorSeleccionado)) {
+                    operadorSelect.value = operadorSeleccionado;
+                }
+
+                if (fechasSet.has(fechaSeleccionada)) {
+                    fechaSelect.value = fechaSeleccionada;
+                }
 
                 renderPDFList();
             }
 
+            function arraysIguales(a, b) {
+                return a.length === b.length && a.every((v, i) => v === b[i]);
+            }
 
-            operadorSelect.addEventListener('change', renderPDFList);
+            operadorSelect.addEventListener('change', function() {
+                currentSelectedPDF = null; // Resetear selección al cambiar filtro
+                renderPDFList();
+            });
+
+            fechaSelect.addEventListener('change', function() {
+                currentSelectedPDF = null; // Resetear selección al cambiar filtro
+                renderPDFList();
+            });
 
             function renderPDFList() {
                 const selectedOperador = operadorSelect.value;
+                const selectedFecha = fechaSelect.value;
+
                 pdfListContainer.innerHTML = '';
-                pdfViewer.innerHTML = '';
+
+                // Solo limpiar el visor si no hay PDF seleccionado o si cambiamos los filtros
+                if (!currentSelectedPDF) {
+                    pdfViewer.innerHTML = `
+                <div class="pdfv-placeholder">
+                    <i class="fas fa-file-pdf"></i>
+                    <p>Selecciona un PDF para visualizarlo</p>
+                </div>
+            `;
+                    pdfPlaceholder.style.display = 'flex'; // Mostrar placeholder
+                }
 
                 let hasResults = false;
 
                 for (const key in allPDFs) {
                     const pdf = allPDFs[key];
 
-                    if (!selectedOperador || pdf.operador === selectedOperador) {
+                    // Aplicar filtros
+                    const cumpleOperador = !selectedOperador || pdf.operador === selectedOperador;
+                    const cumpleFecha = !selectedFecha || pdf.fecha === selectedFecha;
+
+                    if (cumpleOperador && cumpleFecha) {
                         hasResults = true;
 
                         const listItem = document.createElement('div');
@@ -1694,6 +1779,8 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
 
                         link.addEventListener('click', (e) => {
                             e.preventDefault();
+                            currentSelectedPDF = pdf; // Guardar el PDF seleccionado
+
                             let notiInfo = '';
 
                             // Buscar notificación relacionada (opcionalmente por alguna clave coincidente)
@@ -1701,17 +1788,24 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
                                 const noti = allNotificaciones[notiKey];
                                 if (noti.urlArchivoSubido && noti.urlArchivoSubido.includes(pdf.operador)) {
                                     notiInfo = `
-                                <p><strong>Audio asociado:</strong></p>
-                                <audio controls src="${noti.urlArchivoSubido}" style="width:100%;"></audio>
+                                <p><strong>Llamada del ejecutivo:</strong></p>
+                                <audio controls src="${noti.urlArchivoSubido}" style="width:100%; "></audio>
                             `;
                                     break;
                                 }
                             }
 
                             pdfViewer.innerHTML = `
-                        <iframe src="${pdf.fileUrl}" width="100%" height="400px" frameborder="0" style="border-radius: 8px;"></iframe>
-                        ${notiInfo}
+                        <iframe src="${pdf.fileUrl}" width="100%" height="500px" frameborder="0"></iframe>
+                        <div class="pdfv-audio-container">
+                            ${notiInfo ? notiInfo.replace('<audio', '<audio class="pdfv-audio-player"') : ''}
+                        </div>
                     `;
+
+                            // Ocultar el placeholder cuando se selecciona un PDF
+                            if (pdfPlaceholder) {
+                                pdfPlaceholder.style.display = 'none';
+                            }
                         });
 
                         listItem.appendChild(link);
@@ -1721,8 +1815,14 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
 
                 const emptyMessage = document.getElementById('pdfEmptyMessage');
                 emptyMessage.style.display = hasResults ? 'none' : 'block';
+
+                // Mostrar el placeholder si no hay PDF seleccionado
+                if (!currentSelectedPDF && pdfPlaceholder) {
+                    pdfPlaceholder.style.display = 'flex';
+                }
             }
         </script>
+
 
 </body>
 

@@ -21,7 +21,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
         } else if (data.rol === "asegurado") {
           window.location.href = "asegurado.php";
         } else {
-          window.location.href = "datos.php";
+          window.location.href = "visualizador.php";
         }
       } else {
         alert(data.message); // ✅ Mantenemos el alert solo en errores

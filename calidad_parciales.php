@@ -404,7 +404,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 echo '<img src="firma_karen.jpg" alt="Firma Karen" id="imagen-firma">';
             } else {
                 // Si no es ninguno de los dos, puedes mostrar una imagen predeterminada o dejarlo vacío
-                echo '<img src="" alt="Firma no disponible" id="imagen-firma">';
+                echo '<img src="img/solera_icono.png" alt="Firma no disponible" id="imagen-firma">';
             }
             ?>
         </div>

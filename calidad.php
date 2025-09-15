@@ -49,7 +49,7 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
                 <div class="container-fluid">
                     <?php
                     // Para Sabina y Karen
-                    if ($nombreUsuario == 'Sabina Velásquez' || $nombreUsuario == 'Karen Correa Alcantara') {
+                    if ($nombreUsuario == 'Sabina Velásquez' || $nombreUsuario == 'Karen Correa Alcantara' || $nombreUsuario == 'Verónica Ávila García') {
                         include 'calidad_parciales.php';
                     }
                     // Para Alberto Reyes

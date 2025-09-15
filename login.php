@@ -12,7 +12,7 @@
         function iniciarSesion(event) {
             event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
             // Redirigir a datos.php
-            window.location.href = "datos.php";
+            window.location.href = "visualizador.php";
         }
     </script>
     <style>

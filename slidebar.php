@@ -60,38 +60,69 @@ $nombreUsuario = $_SESSION['nombre_usuario'];
                     <span>Citas</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="evaluacion.php">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Métricas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="metricas.php">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>PRUEBAS</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="calidad.php">
+                    <i class="fa-solid fa-medal"></i>
+                    <span>Calidad</span>
+                </a>
+            </li>
 
         <?php elseif ($rol == 'Operador' || $rol == 'Call Center' || $rol == 'Integracion'): ?>
+
             <!-- Nav Item - Datos -->
+            <li class="nav-item">
+                <a class="nav-link" href="visualizador.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+
+
+            <!-- Nav Item - Datos 
             <li class="nav-item">
                 <a class="nav-link" href="datos.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Datos</span>
                 </a>
             </li>
+            -->
 
-            <!-- Nav Item - Gráficas -->
+            <!-- Nav Item - Gráficas 
             <li class="nav-item">
                 <a class="nav-link" href="charts.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Gráficas</span>
                 </a>
             </li>
+            -->
 
-            <!-- Nav Item - Herramientas -->
+            <!-- Nav Item - Herramientas 
             <li class="nav-item">
                 <a class="nav-link" href="herramientas.php">
                     <i class="fa-solid fa-gear"></i>
                     <span>Herramientas</span>
                 </a>
             </li>
+            -->
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="calificacion.php">
                     <i class="fa-solid fa-gear"></i>
                     <span>Calificación</span>
                 </a>
-            </li>
+            </li> -->
 
             <!-- Nav Item - POLITICAS DE PRIVACIDAD -->
             <li class="nav-item">
@@ -102,48 +133,43 @@ $nombreUsuario = $_SESSION['nombre_usuario'];
             </li>
 
         <?php elseif ($rol == 'Supervisor' || $rol == 'ROOT'): ?>
-            <!-- Nav Item - Datos -->
+            <!-- Nav Item - Datos 
             <li class="nav-item">
                 <a class="nav-link" href="datos.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Datos</span>
                 </a>
             </li>
+        -->
 
-            <!-- Nav Item - Gráficas -->
+            <!-- Nav Item - Gráficas 
             <li class="nav-item">
                 <a class="nav-link" href="charts.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Gráficas</span>
                 </a>
             </li>
+            -->
 
-            <!-- Nav Item - Usuarios -->
+            <!-- Nav Item - Usuarios 
             <li class="nav-item">
                 <a class="nav-link" href="usuarios.php">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Usuarios</span>
                 </a>
             </li>
+            -->
 
-            <!-- Nav Item - Herramientas -->
+            <!-- Nav Item - Herramientas 
             <li class="nav-item">
                 <a class="nav-link" href="herramientas.php">
                     <i class="fa-solid fa-gear"></i>
                     <span>Herramientas</span>
                 </a>
             </li>
+            -->
 
-            <!-- Nav Item - POLITICAS DE PRIVACIDAD -->
-            <li class="nav-item">
-                <a class="nav-link" href="politicas.php">
-                    <i class="fa-solid fa-lock"></i>
-                    <span>Politicas de Privacidad</span>
-                </a>
-            </li>
-
-
-            <?php if ($nombreUsuario == 'Sabina Velásquez' || $nombreUsuario == 'Karen Correa Alcantara'): ?>
+            <?php if ($nombreUsuario == 'Sabina Velásquez' || $nombreUsuario == 'Karen Correa Alcantara' || $nombreUsuario == 'Verónica Ávila García'): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="calidad.php">
                         <i class="fa-solid fa-medal"></i>
@@ -156,7 +182,22 @@ $nombreUsuario = $_SESSION['nombre_usuario'];
                         <span>Métricas</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="metricas.php">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>PRUEBAS</span>
+                    </a>
+                </li>
             <?php endif; ?>
+
+            <!-- Nav Item - POLITICAS DE PRIVACIDAD -->
+            <li class="nav-item">
+                <a class="nav-link" href="politicas.php">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Politicas</span>
+                </a>
+            </li>
+
 
             <?php if ($nombreUsuario == 'Alberto Reyes' || $nombreUsuario == 'Jonathan Vázquez Herrera' || $nombreUsuario == 'Yareni Cornejo'): ?>
                 <li class="nav-item">
