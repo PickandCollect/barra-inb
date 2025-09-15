@@ -680,8 +680,6 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
             }
         </script>
 
-
-        <!--SCRIPT FIREBASE-->
         <!--SCRIPT FIREBASE-->
         <script>
             // Inicializar Firebase solo una vez
