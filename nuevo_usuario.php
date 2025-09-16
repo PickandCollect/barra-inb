@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Usuario</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/nuevo_usuario.css">
+    <!-- Custom fonts for this template -->
+    <!-- Font Awesome 6 (CDN): Proporciona iconos escalables y vectoriales. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Font Awesome (local): Versión local de Font Awesome para iconos. -->
+    <link href="main/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Google Fonts: Carga la fuente "Nunito" con diferentes grosores y estilos. -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+    <!-- dataTables.bootstrap4.min.css: Estilos para DataTables con Bootstrap 4. -->
+    <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -30,7 +42,7 @@
                                 <label for="nombre_us">Nombre:</label>
                                 <input type="text" id="nombre_us" name="nombre_us" class="custom-form-control form-control" placeholder="Nombre completo">
                             </div>
-                            <div class="custom-form-group form-group">
+                            <!--<div class="custom-form-group form-group">
                                 <label for="curp">CURP:</label>
                                 <input type="text" id="curp" name="curp" class="custom-form-control form-control" placeholder="CURP">
                             </div>
@@ -38,10 +50,10 @@
                                 <label for="rfc">RFC:</label>
                                 <input type="text" id="rfc" name="rfc" class="custom-form-control form-control" placeholder="RFC">
                             </div>
-                            <div class="custom-form-group form-group">
+                             <div class="custom-form-group form-group">
                                 <label for="telefono1">Teléfono fijo:</label>
                                 <input type="text" id="telefono1" name="telefono1" class="custom-form-control form-control" placeholder="Teléfono fijo">
-                            </div>
+                            </div> -->
 
                             <!-- Segunda Columna -->
                             <div class="custom-form-group form-group">
@@ -52,25 +64,25 @@
                                 <label for="email">Email:</label>
                                 <input type="email" id="email" name="email" class="custom-form-control form-control" placeholder="Email">
                             </div>
-                            <div class="custom-form-group form-group">
+
+                            <!--<div class="custom-form-group form-group">
                                 <label for="passemail">PassEmail:</label>
                                 <input type="password" id="passemail" name="passemail" class="custom-form-control form-control" placeholder="PassEmail">
-                            </div>
-                            <div class="custom-form-group form-group">
-                                <label for="extension">Extensión:</label>
-                                <input type="text" id="extension" name="extension" class="custom-form-control form-control" placeholder="Extensión">
-                            </div>
+                            </div>-->
 
                             <!-- Tercera Columna -->
                             <div class="custom-form-group form-group">
                                 <label for="jefe">Jefe directo:</label>
                                 <select id="jefe" name="jefe" class="custom-form-control form-control">
-                                    <option value="" selected>Selecciona</option>
-                                    <option value="1">Persona Física</option>
-                                    <option value="2">Persona Física con Actividad Empresarial</option>
-                                    <option value="3">Persona Moral</option>
+                                    <option value="" selected hidden>Selecciona</option>
+                                    <option value="Sabina Velásquez">Sabina Velásquez</option>
+                                    <option value="Alberto Reyes">Alberto Reyes</option>
+                                    <option value="Tania Aleman">Tania Aleman</option>
+                                    <option value="Kevin Reyes">Kevin Reyes</option>
+                                    <option value="Isis Jimenez">Isis Jimenez</option>
                                 </select>
                             </div>
+
                             <div class="custom-form-group form-group">
                                 <label for="usuario">Usuario:</label>
                                 <input type="text" id="usuario" name="usuario" class="custom-form-control form-control" placeholder="Usuario">
@@ -82,11 +94,32 @@
                             <div class="custom-form-group form-group">
                                 <label for="perfil">Perfil:</label>
                                 <select id="perfil" name="perfil" class="custom-form-control form-control">
-                                    <option value="" selected>Selecciona</option>
+                                    <option value="" selected hidden>Selecciona</option>
                                     <option value="ROOT">ROOT</option>
-                                    <option value="SUPERVISOR">SUPERVISOR</option>
-                                    <option value="OPERADOR">OPERADOR</option>
-                                    <option value="CONSULTA">CONSULTA</option>
+                                    <option value="Supervisor">Supervisor</option>
+                                    <option value="Operador">Operador</option>
+
+                                </select>
+                            </div>
+                            <div class="custom-form-group form-group">
+                                <label for="tipo">Tipo:</label>
+                                <select id="tipo" name="tipo" class="custom-form-control form-control">
+                                    <option value="" selected hidden >Selecciona</option>
+                                    <option value="Integracion">Integracion</option>
+                                    <option value="Supervisor">Supervisor</option>
+                                    <option value="Call Center">Call Center</option>
+                                </select>
+                            </div>
+                            <div class="custom-form-group form-group">
+                                <label for="campana">Campaña:</label>
+                                <select id="campana" name="campana" class="custom-form-control form-control">
+                                    <option value="" selected hidden>Selecciona</option>
+                                    <option value="Pagos Parciales">Pagos Parciales</option>
+                                    <option value="HDI Seguros">HDI Seguros</option>
+                                    <option value="El Aguila">El Aguila</option>
+                                    <option value="BBVA">BBVA</option>
+                                    <option value="Solera">Solera</option>
+                                    <option value="RH">RH</option>
                                 </select>
                             </div>
                         </div>
@@ -106,15 +139,71 @@
                 </div>
             </div>
             <!-- Botón de envío -->
-            <div class="text-center mt-3">
-                <input type="button" value="Insertar" class="custom-submit-button custom-btn" id="btnInsertarUsuario">
-            </div>
+            <button type="button" value="Insertar" class="custom-submit-button custom-btn" id="btnInsertarUsuario">
+                Agregar
+            </button>
 
         </div>
     </form>
 
-    <!-- JavaScript para mostrar el nombre del archivo -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <!-- Scripts -->
+    <!-- jQuery (CDN): Biblioteca de JavaScript para manipulación del DOM y eventos. -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Popper.js (CDN): Biblioteca para manejar tooltips, popovers, y dropdowns en Bootstrap. -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS (CDN): Funcionalidades de Bootstrap como modales, dropdowns, etc. -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('btnInsertarUsuario').addEventListener('click', function(e) {
+            e.preventDefault(); // Previene el envío normal del formulario
+
+            const formData = new FormData(document.getElementById('miFormulario'));
+
+            fetch('proc/procesamiento_usuario.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Éxito',
+                            text: 'Usuario insertado correctamente',
+                            confirmButtonText: 'Aceptar'
+                        }).then(() => {
+                            // Opcional: Limpiar el formulario después del éxito
+                            document.getElementById('miFormulario').reset();
+                            // Restablecer la imagen de perfil
+                            document.getElementById('profilePreview').src = "https://via.placeholder.com/150";
+                            document.querySelector('.custom-file-upload span').textContent = "Selecciona imagen de perfil";
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: data.error || 'Ocurrió un error al procesar la solicitud',
+                            confirmButtonText: 'Aceptar'
+                        });
+                    }
+                })
+                .catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Error de conexión: ' + error.message,
+                        confirmButtonText: 'Aceptar'
+                    });
+                });
+        });
+    </script>
+
     <script>
         const fileInput = document.getElementById('fileInput');
         const profilePreview = document.getElementById('profilePreview');
@@ -139,50 +228,6 @@
             }
         });
     </script>
-    <script>
-        document.getElementById('btnInsertarUsuario').addEventListener('click', async function(e) {
-            e.preventDefault();
-
-            const form = document.getElementById('miFormulario');
-            const data = new FormData(form); // Recoge los datos del formulario
-
-            const fileInput = document.getElementById('fileInput');
-            if (fileInput.files[0]) {
-                // Verificar si se ha seleccionado un archivo
-                console.log("Archivo seleccionado:", fileInput.files[0]);
-
-                // Crear Blob de la imagen seleccionada
-                const imageBlob = await fileInput.files[0].arrayBuffer();
-                const blob = new Blob([imageBlob], {
-                    type: fileInput.files[0].type
-                });
-                data.append('profileImage', blob, fileInput.files[0].name); // Agregar la imagen al FormData
-            }
-
-            // Depuración antes de enviar
-            console.log("Datos enviados al servidor:", Array.from(data.entries()));
-
-            fetch('proc/procesamiento_usuario.php', {
-                    method: 'POST',
-                    body: data,
-                })
-                .then(response => response.json()) // Asegúrate de que la respuesta sea JSON
-                .then(result => {
-                    console.log("Respuesta del servidor:", result); // Verificar la respuesta del servidor
-                    if (result.success) {
-                        alert('Usuario insertado correctamente con ID: ' + result.id_usuario);
-                    } else {
-                        alert('Error: ' + result.error);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Hubo un error al procesar la solicitud.');
-                });
-        });
-    </script>
-
-
 
 </body>
 

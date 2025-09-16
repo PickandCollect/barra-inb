@@ -46,7 +46,7 @@ try {
     }
 
     // Consulta los datos del usuario basado en el ID (ya sea proporcionado directamente o encontrado)
-    $query = "SELECT usuario, nombre, curp, rfc, celular, email, passw, extension, jefe_directo, perfil, imagen_perfil 
+    $query = "SELECT usuario, nombre, celular, email, jefe_directo, perfil, imagen_perfil, tipo  
               FROM Usuario WHERE id_usuario = ?";
 
     // Preparar la consulta

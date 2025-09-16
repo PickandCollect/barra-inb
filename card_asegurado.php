@@ -11,6 +11,12 @@ if (!isset($_SESSION['rol'])) {
 }
 
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
+if (!isset($_SESSION['no_siniestro'])) {
+    echo "<script>console.error('Error: $_SESSION[no_siniestro] no está definida en PHP');</script>";
+} else {
+    echo "<script>console.log('Número de siniestro en PHP:', " . json_encode($_SESSION['no_siniestro']) . ");</script>";
+    echo "<script>console.log('ID_ASEGURADO:', " . json_encode($_SESSION['fk_asegurado']) . ");</script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -790,60 +796,59 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <script>
         $(document).ready(function() {
             // Asignar evento de clic al botón con id #btnG
-            $('#btnG').click(function(e) {
+            $("#btnG").click(function(e) {
                 e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
                 // Crear un objeto FormData para enviar los archivos
                 var formData = new FormData();
 
                 // Añadir archivos al FormData (si están seleccionados)
-                formData.append('pagotrans', $('#fileInput1')[0].files[0]);
-                formData.append('cartaidemn', $('#fileInput2')[0].files[0]);
-                formData.append('factorif', $('#fileInput3')[0].files[0]);
-                formData.append('factori', $('#fileInput4')[0].files[0]);
-                formData.append('subsec1f', $('#fileInput5')[0].files[0]);
-                formData.append('subsec1t', $('#fileInput6')[0].files[0]);
-                formData.append('subsec2f', $('#fileInput7')[0].files[0]);
-                formData.append('subsec2t', $('#fileInput8')[0].files[0]);
-                formData.append('subsec3f', $('#fileInput9')[0].files[0]);
-                formData.append('subsec3t', $('#fileInput10')[0].files[0]);
-                formData.append('factfina', $('#fileInput11')[0].files[0]);
-                formData.append('pagoten', $('#fileInput12')[0].files[0]);
-                formData.append('pagoten1', $('#fileInput13')[0].files[0]);
-                formData.append('pagoten2', $('#fileInput14')[0].files[0]);
-                formData.append('pagoten3', $('#fileInput15')[0].files[0]);
-                formData.append('pagoten4', $('#fileInput16')[0].files[0]);
-                formData.append('pagoten5', $('#fileInput17')[0].files[0]);
-                formData.append('pagoten6', $('#fileInput18')[0].files[0]);
-                formData.append('pagoten7', $('#fileInput19')[0].files[0]);
-                formData.append('pagoten8', $('#fileInput20')[0].files[0]);
-                formData.append('pagoten9', $('#fileInput21')[0].files[0]);
-                formData.append('compveri', $('#fileInput22')[0].files[0]);
-                formData.append('bajaplac', $('#fileInput23')[0].files[0]);
-                formData.append('recibobajaplac', $('#fileInput24')[0].files[0]);
-                formData.append('tarjetacirc', $('#fileInput25')[0].files[0]);
-                formData.append('duplicadollaves', $('#fileInput26')[0].files[0]);
-                formData.append('caractulapoliza', $('#fileInput27')[0].files[0]);
-                formData.append('identificacion', $('#fileInput28')[0].files[0]);
-                formData.append('comprobantedomi', $('#fileInput29')[0].files[0]);
-                formData.append('rfc_contancia', $('#fileInput30')[0].files[0]);
-                formData.append('curp', $('#fileInput31')[0].files[0]);
-                formData.append('solicfdi', $('#fileInput32')[0].files[0]);
-                formData.append('cfdi', $('#fileInput33')[0].files[0]);
-                formData.append('aceptacion_cfdi', $('#fileInput34')[0].files[0]);
-                formData.append('denunciarobo', $('#fileInput35')[0].files[0]);
-                formData.append('acreditacion_propiedad', $('#fileInput36')[0].files[0]);
-                formData.append('liberacionposesion', $('#fileInput37')[0].files[0]);
-                formData.append('solicitud_contrato1', $('#fileInput38')[0].files[0]);
-                formData.append('solicitud_contrato2', $('#fileInput39')[0].files[0]);
-                formData.append('identificacioncuenta', $('#fileInput40')[0].files[0]);
-                formData.append('comprobantedomi1', $('#fileInput41')[0].files[0]);
+                formData.append("pagotrans", $("#fileInput1")[0].files[0]);
+                formData.append("cartaidemn", $("#fileInput2")[0].files[0]);
+                formData.append("factorif", $("#fileInput3")[0].files[0]);
+                formData.append("factori", $("#fileInput4")[0].files[0]);
+                formData.append("subsec1f", $("#fileInput5")[0].files[0]);
+                formData.append("subsec1t", $("#fileInput6")[0].files[0]);
+                formData.append("subsec2f", $("#fileInput7")[0].files[0]);
+                formData.append("subsec2t", $("#fileInput8")[0].files[0]);
+                formData.append("subsec3f", $("#fileInput9")[0].files[0]);
+                formData.append("subsec3t", $("#fileInput10")[0].files[0]);
+                formData.append("factfina", $("#fileInput11")[0].files[0]);
+                formData.append("pagoten", $("#fileInput12")[0].files[0]);
+                formData.append("pagoten1", $("#fileInput13")[0].files[0]);
+                formData.append("pagoten2", $("#fileInput14")[0].files[0]);
+                formData.append("pagoten3", $("#fileInput15")[0].files[0]);
+                formData.append("pagoten4", $("#fileInput16")[0].files[0]);
+                formData.append("pagoten5", $("#fileInput17")[0].files[0]);
+                formData.append("pagoten6", $("#fileInput18")[0].files[0]);
+                formData.append("pagoten7", $("#fileInput19")[0].files[0]);
+                formData.append("pagoten8", $("#fileInput20")[0].files[0]);
+                formData.append("pagoten9", $("#fileInput21")[0].files[0]);
+                formData.append("compveri", $("#fileInput22")[0].files[0]);
+                formData.append("bajaplac", $("#fileInput23")[0].files[0]);
+                formData.append("recibobajaplac", $("#fileInput24")[0].files[0]);
+                formData.append("tarjetacirc", $("#fileInput25")[0].files[0]);
+                formData.append("duplicadollaves", $("#fileInput26")[0].files[0]);
+                formData.append("caractulapoliza", $("#fileInput27")[0].files[0]);
+                formData.append("identificacion", $("#fileInput28")[0].files[0]);
+                formData.append("comprobantedomi", $("#fileInput29")[0].files[0]);
+                formData.append("rfc_contancia", $("#fileInput30")[0].files[0]);
+                formData.append("curp", $("#fileInput31")[0].files[0]);
+                formData.append("solicfdi", $("#fileInput32")[0].files[0]);
+                formData.append("cfdi", $("#fileInput33")[0].files[0]);
+                formData.append("aceptacion_cfdi", $("#fileInput34")[0].files[0]);
+                formData.append("denunciarobo", $("#fileInput35")[0].files[0]);
+                formData.append("acreditacion_propiedad", $("#fileInput36")[0].files[0]);
+                formData.append("liberacionposesion", $("#fileInput37")[0].files[0]);
+                formData.append("solicitud_contrato1", $("#fileInput38")[0].files[0]);
+                formData.append("solicitud_contrato2", $("#fileInput39")[0].files[0]);
+                formData.append("identificacioncuenta", $("#fileInput40")[0].files[0]);
+                formData.append("comprobantedomi1", $("#fileInput41")[0].files[0]);
 
                 // Añadir también los demás campos del formulario
-                formData.append('id_asegurado', $('#id_asegurado').val());
+                formData.append("id_asegurado", $("#id_asegurado").val());
 
                 // Agregar console.log para ver el valor de id_asegurado
-
 
                 // Verifica que al menos un archivo haya sido cargado
                 var filesUploaded = false;
@@ -855,98 +860,123 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
 
                 // Si no se ha subido ningún archivo
                 if (!filesUploaded) {
-                    alert('Por favor, sube al menos un archivo.');
+                    alert("Por favor, sube al menos un archivo.");
                     return;
                 }
 
                 // Realizar la solicitud AJAX para enviar los archivos y datos al servidor
                 $.ajax({
-                    url: 'proc/update_doc_asegurado.php', // Cambia esta URL por la ruta donde se encuentra tu archivo PHP
-                    type: 'POST',
+                    url: "proc/update_doc_asegurado.php", // Cambia esta URL por la ruta donde se encuentra tu archivo PHP
+                    type: "POST",
                     data: formData,
                     processData: false, // No procesar los datos
                     contentType: false, // No establecer un tipo de contenido
                     success: function(response) {
                         if (response.error) {
-                            alert('Error: ' + response.error);
+                            alert("Error: " + response.error);
                         } else if (response.success) {
-                            alert('Datos guardados correctamente');
+                            alert("Datos guardados correctamente");
                         }
                     },
                     error: function(xhr, status, error) {
-                        alert('Ocurrió un error al guardar los datos: ' + error);
-                    }
+                        alert("Ocurrió un error al guardar los datos: " + error);
+                    },
                 });
             });
         });
     </script>
 
 
+    <script src="js/updateNameFile.js"></script>
 
     <script>
-        // Función para actualizar el nombre del archivo cuando se selecciona uno
-        function actualizarNombreArchivo(inputId, spanId, uploadId) {
-            const fileInput = document.getElementById(inputId);
-            const fileNameSpan = document.getElementById(spanId);
+        // Asignar el valor 208 al globalIdAsegurado
+        let globalIdAsegurado = <?php echo json_encode($_SESSION['fk_asegurado']); ?>;
 
-            // Escucha el evento de cambio (cuando se selecciona un archivo)
-            fileInput.addEventListener("change", function() {
-                const file = fileInput.files[0];
-                if (file) {
-                    fileNameSpan.textContent = file.name; // Actualiza el nombre del archivo
-                } else {
-                    fileNameSpan.textContent = "Seleccionar archivo"; // Si no hay archivo, muestra el texto por defecto
+        async function cargarArchivo() {
+            const archivos = []; // Array para almacenar todos los archivos a subir
+            const descripcionArchs = []; // Array para almacenar las descripciones de los archivos
+
+            for (let i = 1; i <= 41; i++) {
+                const fileInput = document.getElementById(`fileInput${i}`);
+                const selectDescripcionArch = document.getElementById(`descripcionArch${i}`);
+
+                if (fileInput && fileInput.files.length > 0) {
+                    const descripcionArch = selectDescripcionArch ? selectDescripcionArch.value : "";
+                    const inputName = fileInput.getAttribute("name"); // Obtener el name del input
+
+                    for (let file of fileInput.files) {
+                        const extension = file.name.split('.').pop(); // Obtener la extensión del archivo
+                        const nuevoNombre = `${inputName}_${globalIdAsegurado}.${extension}`; // Nuevo nombre
+                        const nuevoArchivo = new File([file], nuevoNombre, {
+                            type: file.type
+                        }); // Crear nuevo File
+
+                        archivos.push(nuevoArchivo);
+                        descripcionArchs.push(descripcionArch);
+                    }
                 }
+            }
+
+            if (archivos.length === 0) {
+                alert("Por favor, selecciona al menos un archivo.");
+                return;
+            }
+
+            if (!globalIdAsegurado) {
+                alert("ID del asegurado no encontrado. Asegúrate de que esté definido.");
+                return;
+            }
+
+            const formData = new FormData();
+            archivos.forEach((file, index) => {
+                formData.append(`archivo[${index}]`, file); // Ahora usa índices únicos en vez de "archivo[]"
+                formData.append(`descripcion_arch[${index}]`, descripcionArchs[index]); // Misma corrección
             });
 
-            // Hacer que el contenedor (y no el input) sea clickeable para abrir el explorador
-            document.getElementById(uploadId).addEventListener('click', function() {
-                fileInput.click(); // Simula un clic en el input de tipo archivo
-            });
+            formData.append("id_asegurado", globalIdAsegurado);
+
+            // Depuración: Mostrar archivos agregados
+            console.log("Archivos en FormData:");
+            for (let pair of formData.entries()) {
+                console.log(pair[0], pair[1]);
+            }
+
+            try {
+                const response = await fetch("proc/insert_docs.php", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const textResponse = await response.text();
+                console.log("Respuesta del servidor:", textResponse);
+
+                let data;
+                try {
+                    data = JSON.parse(textResponse);
+                } catch (error) {
+                    console.error("Error al parsear la respuesta JSON:", error);
+                    alert("Hubo un error con la respuesta del servidor.");
+                    return;
+                }
+
+                if (data.success) {
+                    alert("Archivo(s) cargado(s) exitosamente.");
+                    console.log("Archivos subidos:", data.files);
+                } else {
+                    alert("Error al cargar archivo: " + (data.error || "Error desconocido."));
+                }
+            } catch (error) {
+                console.error("Error al cargar el archivo:", error);
+                alert("Hubo un error al cargar el archivo.");
+            }
         }
 
-        // Llamadas a la función para cada campo de archivo
-        actualizarNombreArchivo("fileInput1", "fileName1", "fileUpload1");
-        actualizarNombreArchivo("fileInput2", "fileName2", "fileUpload2");
-        actualizarNombreArchivo("fileInput3", "fileName3", "fileUpload3");
-        actualizarNombreArchivo("fileInput4", "fileName4", "fileUpload4");
-        actualizarNombreArchivo("fileInput5", "fileName5", "fileUpload5");
-        actualizarNombreArchivo("fileInput6", "fileName6", "fileUpload6");
-        actualizarNombreArchivo("fileInput7", "fileName7", "fileUpload7");
-        actualizarNombreArchivo("fileInput8", "fileName8", "fileUpload8");
-        actualizarNombreArchivo("fileInput9", "fileName9", "fileUpload9");
-        actualizarNombreArchivo("fileInput10", "fileName10", "fileUpload10");
-        actualizarNombreArchivo("fileInput11", "fileName11", "fileUpload11");
-        actualizarNombreArchivo("fileInput12", "fileName12", "fileUpload12");
-        actualizarNombreArchivo("fileInput13", "fileName13", "fileUpload13");
-        actualizarNombreArchivo("fileInput14", "fileName14", "fileUpload14");
-        actualizarNombreArchivo("fileInput15", "fileName15", "fileUpload15");
-        actualizarNombreArchivo("fileInput16", "fileName16", "fileUpload16");
-        actualizarNombreArchivo("fileInput17", "fileName17", "fileUpload17");
-        actualizarNombreArchivo("fileInput18", "fileName18", "fileUpload18");
-        actualizarNombreArchivo("fileInput19", "fileName19", "fileUpload19");
-        actualizarNombreArchivo("fileInput20", "fileName20", "fileUpload20");
-        actualizarNombreArchivo("fileInput21", "fileName21", "fileUpload21");
-        actualizarNombreArchivo("fileInput22", "fileName22", "fileUpload22");
-        actualizarNombreArchivo("fileInput23", "fileName23", "fileUpload23");
-        actualizarNombreArchivo("fileInput24", "fileName24", "fileUpload24");
-        actualizarNombreArchivo("fileInput25", "fileName25", "fileUpload25");
-        actualizarNombreArchivo("fileInput26", "fileName26", "fileUpload26");
-        actualizarNombreArchivo("fileInput27", "fileName27", "fileUpload27");
-        actualizarNombreArchivo("fileInput28", "fileName28", "fileUpload28");
-        actualizarNombreArchivo("fileInput29", "fileName29", "fileUpload29");
-        actualizarNombreArchivo("fileInput30", "fileName30", "fileUpload30");
-        actualizarNombreArchivo("fileInput31", "fileName31", "fileUpload31");
-        actualizarNombreArchivo("fileInput32", "fileName32", "fileUpload32");
-        actualizarNombreArchivo("fileInput33", "fileName33", "fileUpload33");
-        actualizarNombreArchivo("fileInput34", "fileName34", "fileUpload34");
-        actualizarNombreArchivo("fileInput35", "fileName35", "fileUpload35");
-        actualizarNombreArchivo("fileInput36", "fileName36", "fileUpload36");
-        actualizarNombreArchivo("fileInput37", "fileName37", "fileUpload37");
-        actualizarNombreArchivo("fileInput38", "fileName38", "fileUpload38");
-        actualizarNombreArchivo("fileInput39", "fileName39", "fileUpload39");
-        actualizarNombreArchivo("fileInput40", "fileName40", "fileUpload40");
-        actualizarNombreArchivo("fileInput41", "fileName41", "fileUpload41");
+        // Asignar evento al botón global
+        const btnG = document.getElementById("btnG");
+        if (btnG) {
+            btnG.addEventListener("click", cargarArchivo);
+        }
     </script>
 
 
@@ -965,236 +995,77 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             $('#modal_m').modal('show');
         });
     </script>
-    <script>
-        // Obtener el número de siniestro directamente de PHP
-        var noSiniestro = "<?php echo $_SESSION['no_siniestro'] ?? ''; ?>"; // Asigna el valor de la sesión, o un valor vacío si no existe
 
-        // Función para obtener los datos del asegurado y del vehículo
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Función para obtener los datos del asegurado
         function obtenerDatosAsegurado(no_siniestro) {
-            // Realizamos la solicitud AJAX al servidor
+            console.log("Enviando solicitud AJAX con no_siniestro:", no_siniestro);
+
             $.ajax({
-                url: 'proc/get_aseg_datos.php', // Archivo PHP que hace la consulta
-                type: 'POST',
+                url: "proc/get_aseg_datos.php",
+                type: "POST",
                 data: {
                     no_siniestro: no_siniestro
                 },
-                dataType: 'json', // Aseguramos que jQuery maneje la respuesta como JSON
+                dataType: "json",
                 success: function(response) {
-                    console.log("Respuesta del servidor:", response); // Verifica lo que realmente está llegando
+                    console.log("Respuesta del servidor:", response);
 
                     if (response.error) {
-                        alert(response.error); // Mostrar error si no se encontró el asegurado
-                    } else {
-                        // Rellenar los campos del formulario con los datos recibidos del asegurado
-                        $('#asegurado_ed').val(response.nom_asegurado);
-                        $('#email_ed').val(response.email);
-                        $('#telefono1_ed').val(response.tel1);
-                        $('#bancoaseg').val(response.banco);
-                        $('#clabeaseg').val(response.clabe);
-                        $('#titularcuenta').val(response.titular_cuenta);
-                        $('#id_asegurado').val(response.id_asegurado);
-
-                        // Rellenar los campos del formulario con los datos del vehículo
-                        $('#id_vehiculo').val(response.id_vehiculo || ''); // Si no hay vehículo, dejar vacío
-                        $('#marca_veh').val(response.marca || ''); // Si no hay vehículo, dejar vacío
-                        $('#tipo_veh').val(response.tipo || ''); // Si no hay vehículo, dejar vacío
-                        $('#placas_veh_aseg').val(response.pk_placas || ''); // Si no hay vehículo, dejar vacío
-                        $('#no_serie_veh_aseg').val(response.pk_no_serie || ''); // Si no hay vehículo, dejar vacío
-
-                        // Rellenar los campos del siniestro y póliza
-                        $('#nsiniestro').val(response.no_siniestro);
-                        $('#npoliza').val(response.poliza);
-                        $('#fechasinaseg').val(response.fecha_siniestro);
+                        alert(response.error);
+                        return;
                     }
+
+                    // Llenar los campos del formulario con los datos recibidos
+                    $("#asegurado_ed").val(response.nom_asegurado || "");
+                    $("#email_ed").val(response.email || "");
+                    $("#telefono1_ed").val(response.tel1 || "");
+                    $("#bancoaseg").val(response.banco || "");
+                    $("#clabeaseg").val(response.clabe || "");
+                    $("#titularcuenta").val(response.titular_cuenta || "");
+                    $("#id_asegurado").val(response.id_asegurado || "");
+                    $("#id_vehiculo").val(response.id_vehiculo || "");
+                    $("#marca_veh").val(response.marca || "");
+                    $("#tipo_veh").val(response.tipo || "");
+                    $("#placas_veh_aseg").val(response.pk_placas || "");
+                    $("#no_serie_veh_aseg").val(response.pk_no_serie || "");
+                    $("#nsiniestro").val(response.no_siniestro || "");
+                    $("#npoliza").val(response.poliza || "");
+                    $("#fechasinaseg").val(response.fecha_siniestro || "");
+
+                    console.log("Datos cargados correctamente.");
                 },
                 error: function(xhr, status, error) {
-                    console.error('Error AJAX:', error);
-                    console.log('Detalles de la respuesta:', xhr.responseText);
-                    alert('Error al obtener los datos del asegurado y vehículo');
+                    console.error("Error AJAX:", error);
+                    console.log("Detalles:", xhr.responseText);
+                    alert("Error al obtener datos.");
                 }
             });
         }
 
-        // Llamar la función para obtener los datos del asegurado y vehículo al cargar la página
+        // Cuando el documento esté listo
         $(document).ready(function() {
-            obtenerDatosAsegurado(noSiniestro);
+            // Obtener el número de siniestro desde PHP
+            var noSiniestro = <?php echo json_encode($_SESSION['no_siniestro'] ?? ''); ?>;
+            console.log("Valor de noSiniestro desde PHP:", noSiniestro);
+
+            // Asegurar que sea string y eliminar espacios en blanco
+            noSiniestro = noSiniestro ? String(noSiniestro).trim() : "";
+
+            // Verificar si noSiniestro tiene un valor válido
+            if (noSiniestro) {
+                // Llamar a la función para obtener los datos del asegurado
+                obtenerDatosAsegurado(noSiniestro);
+            } else {
+                console.error("No se proporcionó un número de siniestro válido.");
+                alert("No se proporcionó un número de siniestro válido.");
+            }
         });
     </script>
+    <script src="js/updateAsegDatos.js"></script>
+    <script src="js/messagesAseg.js"></script>
 
-
-    <script>
-        // Asumiendo que el número de siniestro es proporcionado, por ejemplo:
-        var noSiniestro = "<?php echo $_SESSION['no_siniestro'] ?? ''; ?>"; // Asigna el valor de la sesión, o un valor vacío si no existe
-
-        function guardarDatosAsegurado() {
-            // Recoger los valores del formulario
-            var asegurado = $('#asegurado_ed').val();
-            var email = $('#email_ed').val();
-            var telefono = $('#telefono1_ed').val();
-            var banco = $('#bancoaseg').val();
-            var clabe = $('#clabeaseg').val();
-            var titularCuenta = $('#titularcuenta').val();
-            var idVehiculo = $('#id_vehiculo').val();
-            var marcaVehiculo = $('#marca_veh').val();
-            var tipoVehiculo = $('#tipo_veh').val();
-            var placasVehiculo = $('#placas_veh_aseg').val();
-            var serieVehiculo = $('#no_serie_veh_aseg').val();
-            var poliza = $('#npoliza').val();
-            var fechaSiniestro = $('#fechasinaseg').val();
-            var nsiniestro = $('#nsiniestro').val();
-
-            // Verificar qué datos se están enviando
-            console.log({
-                asegurado,
-                email,
-                telefono,
-                banco,
-                clabe,
-                titularCuenta,
-                idVehiculo,
-                marcaVehiculo,
-                tipoVehiculo,
-                placasVehiculo,
-                serieVehiculo,
-                poliza,
-                fechaSiniestro,
-                nsiniestro
-            });
-
-            // Realizamos la solicitud AJAX para actualizar los datos
-            $.ajax({
-                url: 'proc/update_aseg.php', // El archivo PHP que maneja la actualización
-                type: 'POST',
-                data: {
-                    no_siniestro: nsiniestro, // Número de siniestro
-                    nom_asegurado: asegurado,
-                    email: email,
-                    telefono: telefono,
-                    banco: banco,
-                    clabe: clabe,
-                    titular_cuenta: titularCuenta,
-                    id_vehiculo: idVehiculo,
-                    marca_vehiculo: marcaVehiculo,
-                    tipo_vehiculo: tipoVehiculo,
-                    placas_vehiculo: placasVehiculo,
-                    serie_vehiculo: serieVehiculo,
-                    poliza: poliza,
-                    fecha_siniestro: fechaSiniestro
-                },
-                dataType: 'json', // Aseguramos que la respuesta se maneje como JSON
-                success: function(response) {
-                    if (response.success) {
-                        alert('Datos actualizados correctamente.');
-                    } else {
-                        alert('Error al actualizar los datos: ' + response.error);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error AJAX:', error);
-                    alert('Hubo un problema al guardar los datos');
-                }
-            });
-        }
-
-        // Al hacer clic en el botón "btnGuardarDatos", llamar a la función guardarDatosAsegurado
-        $(document).ready(function() {
-            $('#btnGuardarDatos').click(function() {
-                guardarDatosAsegurado();
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#modal_m').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget); // botón que abre el modal
-                var noSiniestro = "<?php echo $_SESSION['no_siniestro'] ?? ''; ?>"; // Asigna el valor de la sesión, o un valor vacío si no existe
-
-                // Llamada AJAX para obtener los comentarios
-                $.ajax({
-                    url: 'proc/get_mensajes.php', // archivo PHP que recupera los comentarios
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        no_siniestro: noSiniestro
-                    },
-                    success: function(data) {
-                        if (data.error) {
-                            $('#modalContent').html('<p>Error al cargar los comentarios: ' + data.error + '</p>');
-                        } else {
-                            // Limpiar la tabla antes de insertar los nuevos datos
-                            var comentariosTable = $('#dataTable tbody');
-                            comentariosTable.empty(); // Limpiar la tabla para evitar duplicados al recargar los comentarios
-
-                            // Recorrer los comentarios y agregar las filas a la tabla
-                            data.comentarios.forEach(function(comment) {
-                                var tr = $('<tr></tr>');
-                                tr.append('<td>' + (comment.usuario_origen || 'Desconocido') + '</td>'); // Añadir un valor por defecto si es undefined
-                                tr.append('<td>' + comment.fecha_comentario + '</td>');
-                                tr.append('<td>' + comment.comentario + '</td>');
-                                comentariosTable.append(tr); // Agregar fila a la tabla
-                            });
-
-
-                            // Insertar otros datos si es necesario, como el id del asegurado
-                            $('#id_us').val(data.id_asegurado);
-                        }
-                    },
-                    error: function() {
-                        $('#modalContent').html('<p>Error al cargar los comentarios</p>');
-                    }
-                });
-            });
-
-
-            // Enviar el comentario
-            // Enviar el comentario
-            $('#btnEnviar').click(function() {
-                var mensaje = $('#mensaje').val();
-                var id_usuario = $('#id_asegurado').val();
-                var noSiniestro = "<?php echo $_SESSION['no_siniestro'] ?? ''; ?>"; // Número de siniestro
-
-                console.log("Datos a enviar:", {
-                    no_siniestro: noSiniestro,
-                    id_usuario: id_usuario,
-                    mensaje: mensaje
-                });
-
-                if (mensaje && noSiniestro && id_usuario) { // Verificar que todos los datos estén presentes
-                    $.ajax({
-                        url: 'proc/insert_mensajes.php', // URL correcta
-                        type: 'POST',
-                        data: {
-                            no_siniestro: noSiniestro,
-                            id_usuario: id_usuario,
-                            mensaje: mensaje
-                        },
-                        success: function(response) {
-                            console.log("Respuesta del servidor:", response); // Verifica lo que el servidor devuelve
-                            try {
-                                // Aquí la respuesta ya es un objeto JSON válido
-                                if (response.success) {
-                                    alert('Comentario enviado correctamente');
-                                    // Opcional: refrescar los comentarios o mostrar algo en la UI
-                                } else {
-                                    alert(response.error || 'Hubo un error al enviar el comentario');
-                                }
-                            } catch (e) {
-                                console.error('Error al procesar la respuesta del servidor:', e);
-                                alert('Hubo un error al procesar la respuesta del servidor');
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error en la petición AJAX:', status, error);
-                            alert('Hubo un error al enviar el comentario');
-                        }
-                    });
-                } else {
-                    alert('Por favor, ingresa un mensaje, un número de siniestro y un ID de usuario.');
-                }
-            });
-
-        });
-    </script>
     <script>
         $(document).ready(function() {
             // Al hacer clic en el botón "Cerrar Sesión"

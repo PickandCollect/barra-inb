@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 
 try {
     // Consulta para obtener los nombres de todos los usuarios
-    $query = "SELECT nombre FROM Usuario";
+    $query = "SELECT nombre FROM Usuario WHERE tipo = 'INTEGRACION' OR tipo = 'CALL CENTER'";
 
     // Preparar la consulta
     $stmt = $conexion->prepare($query);

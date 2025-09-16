@@ -1,75 +1,118 @@
-/* Estilo para el sidebar */
-.sidebar {
-    transition: width 0.3s, background 0.3s; /* Transición suave */
-    width: 250px; /* Ancho inicial del sidebar */
-    background: linear-gradient(90deg, #7F00A5, #2d2a7b); /* Fondo con gradiente */
-    overflow: hidden; /* Ocultar contenido desbordado */
+/* Estilos encapsulados para el sidebar */
+.custom-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px; /* Ancho del sidebar expandido */
+    height: 100%;
+    background: linear-gradient(90deg, #7F00A5, #2d2a7b);
+    z-index: 100; /* Menor que el z-index del topbar */
+    padding-top: 20px;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.sidebar.collapsed {
-    width: 80px; /* Ancho reducido cuando el sidebar está colapsado */
-}
-
-/* Estilo para el logo */
-.sidebar-brand {
+/* Logo */
+.custom-sidebar .sidebar-brand {
     text-align: center;
-    padding: 15px 0;
-    background-color: rgba(92, 45, 128, 0.9); /* Fondo semitransparente */
-    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+    background-color: rgba(32, 15, 73, 0.3);
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.sidebar-logo {
-    max-width: 100%;
-    max-height: 50px; /* Tamaño máximo del logo expandido */
-    transition: all 0.3s ease; /* Transición suave */
+.custom-sidebar #sidebarLogo {
+    max-width: 80%;
+    height: auto;
+    transition: all 0.5s ease-in-out;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
 }
 
-.sidebar.collapsed .sidebar-logo {
-    max-height: 40px; /* Tamaño del logo reducido */
+/* Estilo del sidebar cuando está colapsado */
+.custom-sidebar.collapsed {
+    width: 150px;
 }
 
-/* Divider */
-.sidebar-divider {
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    margin: 10px 0;
+/* Estilo de los íconos y texto */
+.custom-sidebar .nav-item {
+    list-style: none;
+    padding: 0.75rem 1rem;
+    white-space: nowrap;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Botón de colapsar */
-#sidebarToggle {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-#sidebarToggle:hover {
-    color: #ccc;
-}
-
-/* Estilo para los enlaces */
-.nav-link {
+.custom-sidebar .nav-link {
     display: flex;
     align-items: center;
+    padding: 12px 20px;
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    border-radius: 5px;
+    position: relative;
 }
 
-.nav-link i {
-    margin-right: 10px;
+.custom-sidebar .nav-link:hover, .custom-sidebar .nav-link:focus {
+    background: rgba(0, 0, 0, 0.3);
+    color: #62c6ff;
 }
 
-.nav-link span {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+/* Efecto de subrayado al pasar el mouse */
+.custom-sidebar .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #62c6ff;
+    transition: width 0.3s ease-in-out;
 }
 
-.sidebar.collapsed .nav-link span {
-    display: none; /* Ocultar textos al colapsar */
+.custom-sidebar .nav-link:hover::after {
+    width: calc(100% - 40px);
 }
 
-.nav-link:hover {
-    background: rgba(255, 255, 255, 0.1); /* Fondo al pasar el mouse */
+.custom-sidebar .nav-link i {
+    margin-right: 12px;
+    font-size: 20px;
+    transition: margin-right 0.3s ease-in-out;
+}
+
+/* Ocultar el texto cuando el sidebar está colapsado */
+.custom-sidebar.collapsed .nav-link span {
+    display: none;
+}
+
+/* Ajustar el margen del ícono cuando el texto está oculto */
+.custom-sidebar.collapsed .nav-link i {
+    margin-right: 0;
+    font-size: 24px;
+}
+
+/* Mostrar los íconos centrados cuando el sidebar está colapsado */
+.custom-sidebar.collapsed .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+}
+
+/* Contenedor principal del contenido */
+.content {
+    margin-left: 210px;
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+    position: relative;
+    z-index: 1;
+    overflow-y: auto;
+    height: calc(100% - 60px);
+    margin-top: 60px;
+}
+
+/* Ajustar el margen del contenido cuando el sidebar está colapsado */
+.custom-sidebar.collapsed + .content {
+    margin-left: 150px;
 }

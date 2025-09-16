@@ -11,82 +11,210 @@ if (!isset($_SESSION['rol'])) {
 }
 
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
+$nombreUsuario = $_SESSION['nombre_usuario'];
 ?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Estilos personalizados -->
+    <!-- slidebar.css: Estilos personalizados para la barra lateral -->
     <link rel="stylesheet" href="css/slidebar.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Fuentes personalizadas -->
+    <!-- Font Awesome: Librería de iconos (versión 6.0.0) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
     <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
-
+    <div class="container_sidebar custom-sidebar" id="accordionSidebar">
         <!-- Sidebar - Brand -->
         <div class="sidebar-brand d-flex align-items-center justify-content-center">
             <!-- Imagen del logo -->
             <img src="img/Solera_Logo_White.png" id="sidebarLogo" class="sidebar-logo">
         </div>
 
-        <!-- Sidebar Toggler -->
-        <li class="nav-item text-center">
-            <button class="rounded-circle border-0" id="sidebarToggle">
-
-            </button>
-        </li>
-
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
+
         <!-- Opciones del sidebar según el rol -->
-        <?php if ($rol == 'administrador'): ?>
+        <?php if ($nombreUsuario == 'Verónica Ávila García'): ?>
+            <!-- Nav exclusivo para Verónica -->
+            <li class="nav-item">
+                <a class="nav-link" href="miReportePersonal.php">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Mi Reporte</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="citas.php">
+                    <i class="fa-solid fa-eye"></i>
+                    <span>Citas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="evaluacion.php">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Métricas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="metricas.php">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>PRUEBAS</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="calidad.php">
+                    <i class="fa-solid fa-medal"></i>
+                    <span>Calidad</span>
+                </a>
+            </li>
+
+        <?php elseif ($rol == 'Operador' || $rol == 'Call Center' || $rol == 'Integracion'): ?>
+
             <!-- Nav Item - Datos -->
+            <li class="nav-item">
+                <a class="nav-link" href="visualizador.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+
+
+            <!-- Nav Item - Datos 
             <li class="nav-item">
                 <a class="nav-link" href="datos.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Datos</span>
                 </a>
             </li>
+            -->
 
-            <!-- Nav Item - Gráficas -->
+            <!-- Nav Item - Gráficas 
             <li class="nav-item">
                 <a class="nav-link" href="charts.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Gráficas</span>
                 </a>
             </li>
+            -->
 
-            <!-- Nav Item - Usuarios -->
-            <li class="nav-item">
-                <a class="nav-link" href="usuarios.php">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Usuarios</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Herramientas -->
+            <!-- Nav Item - Herramientas 
             <li class="nav-item">
                 <a class="nav-link" href="herramientas.php">
                     <i class="fa-solid fa-gear"></i>
                     <span>Herramientas</span>
                 </a>
             </li>
+            -->
 
-            <!-- Nav Item - Calidad 
-            <li class="nav-item">
-                <a class="nav-link" href="calidad.php">
-                    <i class="fa-solid fa-medal"></i>
-                    <span>Calidad</span>
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="calificacion.php">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Calificación</span>
                 </a>
-            </li>-->
-        <?php endif; ?>
+            </li> -->
 
-        <?php if ($rol == 'asegurado'): ?>
+            <!-- Nav Item - POLITICAS DE PRIVACIDAD -->
+            <li class="nav-item">
+                <a class="nav-link" href="politicas.php">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Politicas de Privacidad</span>
+                </a>
+            </li>
+
+        <?php elseif ($rol == 'Supervisor' || $rol == 'ROOT'): ?>
+            <!-- Nav Item - Datos 
+            <li class="nav-item">
+                <a class="nav-link" href="datos.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Datos</span>
+                </a>
+            </li>
+        -->
+
+            <!-- Nav Item - Gráficas 
+            <li class="nav-item">
+                <a class="nav-link" href="charts.php">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Gráficas</span>
+                </a>
+            </li>
+            -->
+
+            <!-- Nav Item - Usuarios 
+            <li class="nav-item">
+                <a class="nav-link" href="usuarios.php">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Usuarios</span>
+                </a>
+            </li>
+            -->
+
+            <!-- Nav Item - Herramientas 
+            <li class="nav-item">
+                <a class="nav-link" href="herramientas.php">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Herramientas</span>
+                </a>
+            </li>
+            -->
+
+            <?php if ($nombreUsuario == 'Sabina Velásquez' || $nombreUsuario == 'Karen Correa Alcantara' || $nombreUsuario == 'Verónica Ávila García'): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="calidad.php">
+                        <i class="fa-solid fa-medal"></i>
+                        <span>Calidad</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="evaluacion.php">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Métricas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="metricas.php">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>PRUEBAS</span>
+                    </a>
+                </li>
+            <?php endif; ?>
+
+            <!-- Nav Item - POLITICAS DE PRIVACIDAD -->
+            <li class="nav-item">
+                <a class="nav-link" href="politicas.php">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Politicas</span>
+                </a>
+            </li>
+
+
+            <?php if ($nombreUsuario == 'Alberto Reyes' || $nombreUsuario == 'Jonathan Vázquez Herrera' || $nombreUsuario == 'Yareni Cornejo'): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="moduloCalidadBBVA.php">
+                        <i class="fa-solid fa-medal"></i>
+                        <span>Calidad</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="moduloMetricasBBVA.php">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Métricas</span>
+                    </a>
+                </li>
+            <?php endif; ?>
+
+        <?php elseif ($rol == 'asegurado'): ?>
             <!-- Nav Item - Asegurado -->
             <li class="nav-item">
                 <a class="nav-link" href="asegurado.php">
@@ -96,28 +224,109 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             </li>
         <?php endif; ?>
 
+
+
+
+
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
-    </ul>
-    <!-- End of Sidebar -->
+    </div>
 
-    <!-- Script para manejar el colapsado del sidebar -->
+    <!-- Content area -->
+    <div class="content">
+        <!-- Aquí va el contenido principal de la página -->
+    </div>
+    <!-- jQuery: Librería para manipulación del DOM y eventos -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
     <script>
         $(document).ready(function() {
-            $("#sidebarToggle").on("click", function() {
-                let sidebar = $("#accordionSidebar");
-                sidebar.toggleClass("collapsed");
+            const sidebar = $("#accordionSidebar");
+            const logo = $("#sidebarLogo");
+            const content = $(".content");
+            let hoverTimeout;
+            let collapseTimeout;
+            const COLLAPSE_DELAY = 0;
 
-                // Cambiar tamaño del logo
-                let logo = $("#sidebarLogo");
+            // Estado para rastrear si el mouse está dentro del sidebar
+            let isMouseInsideSidebar = false;
+
+            // Función para colapsar el sidebar
+            function collapseSidebar() {
+                // Solo colapsar si el mouse no está dentro
+                if (!isMouseInsideSidebar) {
+                    sidebar.addClass("collapsed");
+                    logo.attr("src", "img/Solera_Logo_White_nn.png");
+                    content.css("margin-left", "110px");
+                }
+            }
+
+            // Función para expandir el sidebar
+            function expandSidebar() {
+                sidebar.removeClass("collapsed");
+                logo.attr("src", "img/Solera_Logo_White.png");
+                content.css("margin-left", "210px");
+            }
+
+            // Iniciar temporizador de colapso
+            function startCollapseTimer() {
+                clearTimeout(collapseTimeout);
+                if (!sidebar.hasClass("collapsed") && !isMouseInsideSidebar) {
+                    collapseTimeout = setTimeout(collapseSidebar, COLLAPSE_DELAY);
+                }
+            }
+
+            // Evento para alternar entre colapsado y expandido
+            $("#sidebarToggle").on("click", function() {
                 if (sidebar.hasClass("collapsed")) {
-                    logo.attr("src", "img/Solera_Logo_White_nn.png"); // Cambiar al logo pequeño
+                    expandSidebar();
                 } else {
-                    logo.attr("src", "img/Solera_Logo_White.png"); // Cambiar al logo completo
+                    collapseSidebar();
+                }
+                startCollapseTimer();
+            });
+
+            // Evento hover para expandir el sidebar
+            sidebar.hover(
+                function() { // Mouse entra
+                    isMouseInsideSidebar = true;
+                    clearTimeout(hoverTimeout);
+                    clearTimeout(collapseTimeout); // Cancelar colapso automático
+
+                    if (sidebar.hasClass("collapsed")) {
+                        hoverTimeout = setTimeout(expandSidebar, 100);
+                    }
+                },
+                function() { // Mouse sale
+                    isMouseInsideSidebar = false;
+                    clearTimeout(hoverTimeout);
+
+                    if (!sidebar.hasClass("collapsed")) {
+                        hoverTimeout = setTimeout(() => {
+                            collapseSidebar();
+                            startCollapseTimer(); // Reiniciar temporizador al salir
+                        }, 100);
+                    }
+                    startCollapseTimer(); // Iniciar temporizador al salir
+                }
+            );
+
+            // Detectar movimiento del mouse en el documento
+            $(document).mousemove(function() {
+                // Solo reiniciar el temporizador si el mouse no está dentro del sidebar
+                if (!isMouseInsideSidebar) {
+                    startCollapseTimer();
                 }
             });
+
+            // Iniciar el temporizador al cargar la página
+            startCollapseTimer();
         });
     </script>
+
+
+
 </body>
 
 </html>
