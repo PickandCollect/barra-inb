@@ -13,21 +13,10 @@ if (!isset($_SESSION['rol'])) {
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/nuevo_modal.css">
-
-    <!-- Custom fonts for this template -->
-
-    <!-- Google Fonts: Carga la fuente "Nunito" con diferentes grosores y estilos. -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- dataTables.bootstrap4.min.css: Estilos para DataTables con Bootstrap 4. -->
-    <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -78,66 +67,62 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
     <script>
         $(document).ready(function() {
             // Abre el modal y carga su contenido
-            $("#nuevaCedulaBtn").on("click", function() {
+            $('#nuevaCedulaBtn').on('click', function() {
                 // Agregar el ID si es una edición
-                let url = "<?php echo $modalUrl; ?>";
-                let id = "<?php echo $cedulaId; ?>";
+                let url = '<?php echo $modalUrl; ?>';
+                let id = '<?php echo $cedulaId; ?>';
                 if (id) {
-                    url = url + "?id=" + id; // Enviar el ID de la cédula para editar
+                    url = url + '?id=' + id; // Enviar el ID de la cédula para editar
                 }
 
                 $.ajax({
                     url: url, // Cargar el contenido dinámico
                     success: function(data) {
-                        $("#modalContent").html(data); // Insertar el contenido en el modal
-                        $("#nuevaCedulaModal").modal("show"); // Mostrar el modal
+                        $('#modalContent').html(data); // Insertar el contenido en el modal
+                        $('#nuevaCedulaModal').modal('show'); // Mostrar el modal
 
                         // Inicializar los colapsos después de que el modal esté completamente visible
-                        $("#nuevaCedulaModal").on("shown.bs.modal", function() {
+                        $('#nuevaCedulaModal').on('shown.bs.modal', function() {
                             // Inicializar los colapsos dentro del modal
-                            $("#modalContent .collapse").each(function() {
+                            $('#modalContent .collapse').each(function() {
                                 if ($(this).length) {
                                     // Descartar cualquier estado previo y reiniciar el colapso
-                                    $(this).collapse("dispose"); // Eliminar eventos previos
+                                    $(this).collapse('dispose'); // Eliminar eventos previos
                                     $(this).collapse(); // Inicializar el colapso correctamente
                                 }
                             });
 
-                            console.log("Colapsos reinicializados dentro del modal.");
+                            console.log('Colapsos reinicializados dentro del modal.');
                         });
                     },
                     error: function() {
-                        console.error("Error al cargar el contenido del modal");
-                    },
+                        console.error('Error al cargar el contenido del modal');
+                    }
                 });
             });
 
             // Limpiar contenido al cerrar el modal
-            $("#nuevaCedulaModal").on("hidden.bs.modal", function() {
-                $("#modalContent").empty();
+            $('#nuevaCedulaModal').on('hidden.bs.modal', function() {
+                $('#modalContent').empty();
             });
 
-            $("#nuevaCedulaModal").on("show.bs.modal", function(e) {
+            $('#nuevaCedulaModal').on('show.bs.modal', function(e) {
                 // Obtener la fecha y hora actuales
                 var now = new Date();
-                var currentDate = now.toISOString().split("T")[0]; // Formato YYYY-MM-DD
-                var currentTime = now.toTimeString().split(" ")[0].substring(0, 5); // Formato HH:MM
+                var currentDate = now.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+                var currentTime = now.toTimeString().split(' ')[0].substring(0, 5); // Formato HH:MM
 
                 // Establecer la fecha y hora en los campos de entrada
-                $("#fecha_reconocimiento").val(currentDate);
-                $("#hora_seguimiento").val(currentTime);
+                $('#fecha_reconocimiento').val(currentDate);
+                $('#hora_seguimiento').val(currentTime);
             });
 
             // Recargar la página al presionar el botón de actualizar
-            $("#actualizar").on("click", function() {
+            $('#actualizar').on('click', function() {
                 location.reload(); // Recargar la página
             });
         });
     </script>
-
-    <!-- Scripts -->
-    <!-- jQuery (CDN): Biblioteca de JavaScript para manipulación del DOM y eventos. -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </body>
 

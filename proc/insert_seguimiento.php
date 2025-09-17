@@ -74,37 +74,9 @@ if ($stmt = $conexion->prepare($query_insert)) {
         echo json_encode(['error' => 'Error al insertar el seguimiento']);
     }
 
-    // Preparar la consulta SQL para actualizar la cedula
-    $query_update = "UPDATE Cedula SET 
-                        estatus = ?, 
-                        subestatus = ?, 
-                        estacion = ? 
-                    WHERE id_registro = ?"; // Asegúrate de actualizar la cédula con el ID correspondiente
-
-    // Ejecutar la consulta con los parámetros
-    if ($stmtCedula = $conexion->prepare($query_update)) {
-        // Vincular los parámetros
-        $stmtCedula->bind_param(
-            "ssss", // Los tipos de datos para los parámetros
-            $estatus_seg,
-            $sub_seg,
-            $estacion_seg,
-            $fk_cedula // Asegúrate de incluir el parámetro para la cédula
-        );
-
-        // Ejecutar la consulta
-        if ($stmtCedula->execute()) {
-            error_log ("Actualización de cédula realizada correctamente");
-        } else {
-            error_log ("Error al actualizar la cédula");
-        }
-    } else {
-        echo json_encode(['error' => 'Error al preparar la consulta para actualizar la cédula']);
-    }
-
     $stmt->close();
 } else {
-    echo json_encode(['error' => 'Error al preparar la consulta para insertar seguimiento']);
+    echo json_encode(['error' => 'Error al preparar la consulta']);
 }
 
 // Cerrar la conexión

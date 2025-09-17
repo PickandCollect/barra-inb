@@ -11,17 +11,13 @@ if (!isset($_SESSION['rol'])) {
 }
 
 $rol = $_SESSION['rol']; // Recupera el rol del usuario
-$nombre_usuario = $_SESSION['nombre_usuario'];
-
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <!-- Bootstrap CSS -->
-    <!-- Bootstrap CSS -->
-    
+
     <!-- Optional JavaScript and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -34,11 +30,6 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 </head>
 
 <body>
-    <script>
-        var nombreUsuario = "<?php echo $rol; ?>";
-        console.log("Nombre de usuario:", nombreUsuario);
-    </script>
-
     <!-- Tabla -->
     <div class="custom-table-style-main-container  card shadow mb-4" style="border-radius: 20px;">
         <div class="card-header py-3" style="background-color: #e0e0e0;">
@@ -169,87 +160,55 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
                             <div class="invisible" id="mainDocs">
                                 <div id="modal-docs">
-                                    <div class="additional-content" style="text-align: center;">
-                                        <div class="checkbox-container custom-form-section-editar custom-card-border-editar" style="height: 275px; padding: 5px; box-sizing: border-box;">
-                                            <label for="doc_reg">
-                                                <h4 style="margin: 2px 0; font-size: 16px;"><b>Documento en registro</b></h4>
-                                            </label>
-                                            <div class="custom-form-group form-group" style="margin: 0; padding: 0;">
-                                                <label for="descripcion_arch">
-                                                    <h3 style="margin: 2px 0; font-size: 16px;">Descripción del archivo:</h3>
-                                                </label>
-                                                <select id="descripcion_arch" name="descripcion_arch" class="custom-form-control form-control" style="margin: 2px 0; padding: 2px; height: 30px;">
-                                                    <option value="Autorización de pago por transferencia" selected>Autorización de pago por transferencia</option>
-                                                    <option value="Carta petición de indemnización" selected>Carta petición de indemnización</option>
-                                                    <option value="Factura de origen frente" selected>Factura de origen frente</option>
-                                                    <option value="Factura de origen trasero" selected>Factura de origen trasero</option>
-                                                    <option value="Factura subsecuente 1 frente" selected>Factura subsecuente 1 frente</option>
-                                                    <option value="Factura subsecuente 1 traseros" selected>Factura subsecuente 1 traseros</option>
-                                                    <option value="Factura subsecuente 2 frente" selected>Factura subsecuente 2 frente</option>
-                                                    <option value="Factura subsecuente 2 traseros" selected>Factura subsecuente 2 traseros</option>
-                                                    <option value="Factura subsecuente 3 frente" selected>Factura subsecuente 3 frente</option>
-                                                    <option value="Factura subsecuente 3 traseros" selected>Factura subsecuente 3 traseros</option>
-                                                    <option value="Carta factura vigente" selected>Carta factura vigente</option>
-                                                    <option value="Tenencia 1" selected>Tenencia 1</option>
-                                                    <option value="Comprobante de pago de tenencias o certificación 1" selected>Comprobante de pago de tenencias o certificación 1</option>
-                                                    <option value="Tenencia 2" selected>Tenencia 2</option>
-                                                    <option value="Comprobante de pago de tenencias o certificación 2" selected>Comprobante de pago de tenencias o certificación 2</option>
-                                                    <option value="Tenencia 3" selected>Tenencia 3</option>
-                                                    <option value="Comprobante de pago de tenencias o certificación 3" selected>Comprobante de pago de tenencias o certificación 3</option>
-                                                    <option value="Tenencia 2" selected>Tenencia 4</option>
-                                                    <option value="Comprobante de pago de tenencias o certificación 4" selected>Comprobante de pago de tenencias o certificación 4</option>
-                                                    <option value="Tenencia 5" selected>Tenencia 5</option>
-                                                    <option value="Comprobante de pago de tenencias o certificación 5" selected>Comprobante de pago de tenencias o certificación 5</option>
-                                                    <option value="Comprobante de verificación / Certificación de verificación" selected>Comprobante de verificación / Certificación de verificación</option>
-                                                    <option value="Baja de placas" selected>Baja de placas</option>
-                                                    <option value="Recibo de pago baja de placas" selected>Recibo de pago baja de placas</option>
-                                                    <option value="Tarjeta de circulación" selected>Tarjeta de circulación</option>
-                                                    <option value="Duplicado de llaves" selected>Duplicado de llaves</option>
-                                                    <option value="Carátula de la póliza de seguro a nombre del asegurado" selected>Carátula de la póliza de seguro a nombre del asegurado</option>
-                                                    <option value="Identificación oficial (INE, pasaporte, o cédula profesional)" selected>Identificación oficial (INE, pasaporte, o cédula profesional)</option>
-                                                    <option value="Comprobante de domicilio (No mayor a 3 meses de antigüedad)" selected>Comprobante de domicilio (No mayor a 3 meses de antigüedad)</option>
-                                                    <option value="Cedúla fiscal de RFC / Constancia de situacion fiscal" selected>Cedúla fiscal de RFC / Constancia de situacion fiscal</option>
-                                                    <option value="CURP" selected>CURP</option>
-                                                    <option value="Solicitud de expedición de CFDI" selected>Solicitud de expedición de CFDI</option>
-                                                    <option value="CFDI" selected>CFDI</option>
-                                                    <option value="Carta de aceptación para generar CFDI" selected>Carta de aceptación para generar CFDI</option>
-                                                    <option value="Denuncia de robo" selected>Denuncia de robo</option>
-                                                    <option value="Acreditación de la propiedad certificada ante el Ministerio Público" selected>Acreditación de la propiedad certificada ante el Ministerio Público</option>
-                                                    <option value="Liberación en posesión" selected>Liberación en posesión</option>
-                                                    <option value="Solicitud correpondiente al tipo de cuenta" selected>Solicitud correpondiente al tipo de cuenta</option>
-                                                    <option value="Contrato correpondiente al tipo de cuenta" selected>Contrato correpondiente al tipo de cuenta</option>
-                                                    <option value="Identificación oficial (INE, pasaporte, o cédula profesional)" selected>Identificación oficial (INE, pasaporte, o cédula profesional)</option>
-                                                    <option value="Comprobante de domicilio (No mayor a 3 meses de antigüedad)" selected>Comprobante de domicilio (No mayor a 3 meses de antigüedad)</option>
-                                                </select>
-                                            </div>
-                                            <div class="custom-form-group-editar form-group" style="margin: 0; padding: 0;">
-                                                <label for="arch">
-                                                    <h3 style="margin: 2px 0; font-size: 16px;">Selecciona archivo:</h3>
-                                                    <div class="file-upload" id="fileUpload" style="margin: 2px 0;">
-                                                        <label for="fileInput" class="file-label" style="margin: 0;">
-                                                            <i class="fas fa-file-upload"></i>
-                                                        </label>
-                                                        <input type="file" id="fileInput" name="arch" accept="image/*,application/pdf" style="display:none;" onchange="updateFileName()" />
-                                                        <input type="text" id="fileName" class="file-name" disabled placeholder="No se ha seleccionado un archivo" style="margin: 2px 0; font-size: 16px;" />
-                                                    </div>
-                                                </label>
-                                            </div>
-                                            <button type="button" id="btnCargaArch" class="btn custom-submit-button-editar" style="display: block; margin: 5px auto; padding: 5px 10px;">
-                                                Cargar archivo
-                                            </button>
-                                        </div>
-
-                                    </div>
                                     <!--<h3 id="docs-heading" style="cursor: pointer;">Documentación</h3>-->
                                     <div id="carouselExample" class="carousel slide custom-form-section-editar custom-card-border-editar" data-ride="carousel">
                                         <!-- Indicadores -->
-                                        <ol class="carousel-indicators" id="carouselIndicators">
-                                            <!-- Los indicadores se generarán dinámicamente -->
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
+                                            <li data-target="#carouselExample" data-slide-to="1"></li>
+                                            <li data-target="#carouselExample" data-slide-to="2"></li>
+                                            <li data-target="#carouselExample" data-slide-to="3"></li>
                                         </ol>
 
                                         <!-- Contenido del Carousel -->
-                                        <div class="carousel-inner" id="carouselItems">
-                                            <!-- Los items del carrusel se generarán dinámicamente -->
+                                        <div class="carousel-inner">
+                                            <!-- Primer Item (Imagen) -->
+                                            <div class="carousel-item active">
+                                                <iframe src="https://www.pinterest.com/" width="800" height="700"></iframe>
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Etiqueta de la primera diapositiva (Imagen)</h5>
+                                                    <p>Contenido de la primera diapositiva con imagen.</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Segundo Item (PDF) -->
+                                            <div class="carousel-item">
+                                                <iframe src="https://www.pdf995.com/samples/pdf.pdf" class="d-block w-100" height="400px" allow="autoplay"></iframe>
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Etiqueta de la segunda diapositiva (PDF)</h5>
+                                                    <p>Vista previa del PDF en el carousel.</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Tercer Item (Imagen) -->
+                                            <div class="carousel-item">
+                                                <img src="https://place.dog/800/400" class="d-block w-100" alt="Imagen de un perrito">
+
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Etiqueta de la tercera diapositiva (Imagen)</h5>
+                                                    <p>Contenido de la tercera diapositiva con imagen.</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Cuarto Item (PDF) -->
+                                            <div class="carousel-item">
+                                                <iframe src="https://www.pdf995.com/samples/pdf.pdf" class="d-block w-100" height="400px" allow="autoplay"></iframe>
+
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Etiqueta de la cuarta diapositiva (PDF)</h5>
+                                                    <p>Vista de otro archivo PDF en el carousel.</p>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <!-- Controles -->
@@ -262,14 +221,13 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                             <span class="sr-only">Siguiente</span>
                                         </a>
                                     </div>
-
                                     <div class="" id="collapseDocs" class="collapse show card-body">
                                         <div class=" checkbox-container-wrapper ">
                                             <!-- Columna izquierda -->
 
                                             <div class=" checkbox-container custom-form-section-editar custom-card-border-editar">
                                                 <label for="doc_reg">
-                                                    <h4><b>Documento en registro</b></h4>
+                                                    <h6>Documento en registro:</h6>
                                                 </label>
                                                 <label>
                                                     <input type="checkbox" id="checkPagoTrans" checked disabled><b>Autorización de pago por transferencia</b>
@@ -398,7 +356,83 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                             </div>
 
                                             <!-- Columna derecha (puedes agregar contenido adicional aquí) -->
+                                            <div class="additional-content">
+                                                <div class=" checkbox-container custom-form-section-editar custom-card-border-editar">
+                                                    <label for="doc_reg">
+                                                        <h6>Documento en registro:</h6>
+                                                    </label>
+                                                    <div class="custom-form-group form-group">
+                                                        <label for="descripcion_arch">
+                                                            <h6>Descripcion del archivo:</h6>
+                                                        </label>
+                                                        <select id="descripcion_arch" name="descripcion_arch" class="custom-form-control form-control">
+                                                            <option value="Autorización de pago por transferencia" selected>Autorización de pago por transferencia</option>
+                                                            <option value="Carta petición de indemnización" selected>Carta petición de indemnización</option>
+                                                            <option value="Factura de origen frente" selected>Factura de origen frente</option>
+                                                            <option value="Factura de origen trasero" selected>Factura de origen trasero</option>
+                                                            <option value="Factura subsecuente 1 frente" selected>Factura subsecuente 1 frente</option>
+                                                            <option value="Factura subsecuente 1 traseros" selected>Factura subsecuente 1 traseros</option>
+                                                            <option value="Factura subsecuente 2 frente" selected>Factura subsecuente 2 frente</option>
+                                                            <option value="Factura subsecuente 2 traseros" selected>Factura subsecuente 2 traseros</option>
+                                                            <option value="Factura subsecuente 3 frente" selected>Factura subsecuente 3 frente</option>
+                                                            <option value="Factura subsecuente 3 traseros" selected>Factura subsecuente 3 traseros</option>
+                                                            <option value="Carta factura vigente" selected>Carta factura vigente</option>
+                                                            <option value="Tenencia 1" selected>Tenencia 1</option>
+                                                            <option value="Comprobante de pago de tenencias o certificación 1" selected>Comprobante de pago de tenencias o certificación 1</option>
+                                                            <option value="Tenencia 2" selected>Tenencia 2</option>
+                                                            <option value="Comprobante de pago de tenencias o certificación 2" selected>Comprobante de pago de tenencias o certificación 2</option>
+                                                            <option value="Tenencia 3" selected>Tenencia 3</option>
+                                                            <option value="Comprobante de pago de tenencias o certificación 3" selected>Comprobante de pago de tenencias o certificación 3</option>
+                                                            <option value="Tenencia 2" selected>Tenencia 4</option>
+                                                            <option value="Comprobante de pago de tenencias o certificación 4" selected>Comprobante de pago de tenencias o certificación 4</option>
+                                                            <option value="Tenencia 5" selected>Tenencia 5</option>
+                                                            <option value="Comprobante de pago de tenencias o certificación 5" selected>Comprobante de pago de tenencias o certificación 5</option>
+                                                            <option value="Comprobante de verificación / Certificación de verificación" selected>Comprobante de verificación / Certificación de verificación</option>
+                                                            <option value="Baja de placas" selected>Baja de placas</option>
+                                                            <option value="Recibo de pago baja de placas" selected>Recibo de pago baja de placas</option>
+                                                            <option value="Tarjeta de circulación" selected>Tarjeta de circulación</option>
+                                                            <option value="Duplicado de llaves" selected>Duplicado de llaves</option>
+                                                            <option value="Carátula de la póliza de seguro a nombre del asegurado" selected>Carátula de la póliza de seguro a nombre del asegurado</option>
+                                                            <option value="Identificación oficial (INE, pasaporte, o cédula profesional)" selected>Identificación oficial (INE, pasaporte, o cédula profesional)</option>
+                                                            <option value="Comprobante de domicilio (No mayor a 3 meses de antigüedad)" selected>Comprobante de domicilio (No mayor a 3 meses de antigüedad)</option>
+                                                            <option value="Cedúla fiscal de RFC / Constancia de situacion fiscal" selected>Cedúla fiscal de RFC / Constancia de situacion fiscal</option>
+                                                            <option value="CURP" selected>CURP</option>
+                                                            <option value="Solicitud de expedición de CFDI" selected>Solicitud de expedición de CFDI</option>
+                                                            <option value="CFDI" selected>CFDI</option>
+                                                            <option value="Carta de aceptación para generar CFDI" selected>Carta de aceptación para generar CFDI</option>
+                                                            <option value="Denuncia de robo" selected>Denuncia de robo</option>
+                                                            <option value="Acreditación de la propiedad certificada ante el Ministerio Público" selected>Acreditación de la propiedad certificada ante el Ministerio Público</option>
+                                                            <option value="Liberación en posesión" selected>Liberación en posesión</option>
+                                                            <option value="Solicitud correpondiente al tipo de cuenta" selected>Solicitud correpondiente al tipo de cuenta</option>
+                                                            <option value="Contrato correpondiente al tipo de cuenta" selected>Contrato correpondiente al tipo de cuenta</option>
+                                                            <option value="Identificación oficial (INE, pasaporte, o cédula profesional)" selected>Identificación oficial (INE, pasaporte, o cédula profesional)</option>
+                                                            <option value="Comprobante de domicilio (No mayor a 3 meses de antigüedad)" selected>Comprobante de domicilio (No mayor a 3 meses de antigüedad)</option>
+                                                        </select>
+                                                        <div class="custom-form-group-editar form-group">
+                                                            <label for="arch">
+                                                                <h6>Selecciona archivo:</h6>
+                                                                <!-- Archivo de carga con el ícono y el nombre del archivo -->
+                                                                <div class="file-upload" id="fileUpload">
+                                                                    <!-- Botón con ícono de archivo -->
+                                                                    <label for="fileInput" class="file-label">
+                                                                        <i class="fas fa-file-upload"></i>
+                                                                    </label>
 
+                                                                    <!-- Input de archivo (hidden para ocultar el campo estándar) -->
+                                                                    <input type="file" id="fileInput" name="arch" accept="image/*,application/pdf" style="display:none;" onchange="updateFileName()" />
+
+                                                                    <!-- Caja de texto deshabilitada para mostrar el nombre del archivo -->
+                                                                    <input type="text" id="fileName" class="file-name" disabled placeholder="No se ha seleccionado un archivo" />
+                                                                </div>
+
+                                                            </label>
+                                                        </div>
+                                                        <button type="button" id="btnCargaArch" class="btn custom-submit-button-editar" style="display: block; margin-left: auto; margin-right: auto;">
+                                                            Cargar archivo
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1070,39 +1104,32 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                         </button>
                                     </div>
 
-                                    <?php 
-                                        $rol = trim(strtolower($rol)); // Normalizar el rol
-                                    
-                                        if ($rol == 'Supervisor'): ?>
-                                            <!-- Si el usuario es SUPERVISOR o root, se muestra el contenido -->
-                                            <div id="modal-asignamiento" class="custom-form-section-editar custom-card-border-editar">
-                                                <h3 id="asignamiento-heading" style="cursor: pointer;">Asignamiento</h3>
-                                                <div id="collapseAsignamiento" class="collapse hide">
-                                                    <div class="custom-table-style-main-container card shadow mb-4">
-                                                        <div class="custom-grid-container-ee custom-form-group-editar form-group">
-                                                            <div class="custom-form-group form-group">
-                                                                <label for="asignacion">Asignación:</label>
-                                                                <select id="asignacion" name="asignacion" class="custom-form-control form-control">
-                                                                    <option value="" selected>Selecciona</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="custom-form-group form-group">
-                                                                <label for="fecha_asignacion">Fecha de asignación:</label>
-                                                                <input type="date" id="fecha_asignacion" name="fecha_asignacion" class="custom-form-control form-control" 
-                                                                    value="<?php echo date('Y-m-d'); ?>" readonly>
-                                                            </div>
-                                                            <div>
-                                                                <button type="button" class="btn custom-submit-button-editar1" id="btnAs">
-                                                                    Asignar
-                                                                </button>
-                                                            </div>
-                                                        </div>
+                                    <div id="modal-asignamiento" class="custom-form-section-editar custom-card-border-editar">
+                                        <h3 id="asignamiento-heading" style="cursor: pointer;">Asignamiento</h3>
+                                        <div id="collapseAsignamiento" class="collapse hide">
+                                            <div class="custom-table-style-main-container card shadow mb-4">
+                                                <div class="custom-grid-container-ee custom-form-group-editar form-group">
+                                                    <div class="custom-form-group form-group">
+                                                        <label for="asignacion">Asignación:</label>
+                                                        <select id="asignacion" name="asignacion" class="custom-form-control form-control">
+                                                            <option value="" selected>Selecciona</option>
+
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="custom-form-group form-group">
+                                                        <label for="fecha_asignacion">Fecha de asignación:</label>
+                                                        <input type="date" id="fecha_asignacion" name="fecha_asignacion" class="custom-form-control form-control">
+                                                    </div>
+                                                    <div>
+                                                        <button type="button" class="btn custom-submit-button-editar1" id="btnAs">
+                                                            Asignar
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
-                                        <?php endif; ?>
-
-
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                     </div>
@@ -1112,13 +1139,70 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
             </div>
 
-        </div>
-        
-        <script src="main/jquery/jquery.min.js"></script>
-        <script src="main/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="main/jquery-easing/jquery.easing.min.js"></script>
-        <script src="js/demo/datatables-demo.js"></script>
 
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                //ELIMINAR 
+                $('.custom-table-style-delete-btn').on('click', function() {
+                    // Obtener el ID del registro a eliminar directamente desde el botón de eliminación
+                    const idRegistro = $(this).data('id'); // Captura el 'data-id' del botón de eliminación
+
+                    // Verifica si el idRegistro es válido
+                    if (!idRegistro) {
+                        alert('No se ha encontrado un ID válido para la eliminación.');
+                        return;
+                    }
+
+                    // Confirmación de eliminación
+                    if (confirm('¿Estás seguro de que deseas eliminar esta cédula?')) {
+                        // Llamada AJAX para eliminar la cédula
+                        $.ajax({
+                            url: 'proc/borra_cedula.php', // El archivo PHP que maneja la eliminación
+                            type: 'POST',
+                            data: {
+                                id: idRegistro
+                            },
+                            success: function(response) {
+                                console.log('Respuesta de eliminación:', response); // Ver la respuesta del servidor
+                                try {
+                                    const data = JSON.parse(response);
+                                    if (data.status === 'success') {
+                                        // Si la eliminación fue exitosa, eliminar la fila de la tabla
+                                        alert('Cédula eliminada exitosamente');
+                                        // Eliminar la fila de la tabla
+                                        $(`button[data-id="${idRegistro}"]`).closest('tr').remove();
+                                    } else {
+                                        alert('Error al eliminar la cédula: ' + data.message);
+                                    }
+                                } catch (e) {
+                                    console.error('Error al procesar la respuesta JSON:', e);
+                                    alert('Error en la respuesta del servidor.');
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                // Mostrar error detallado en la consola para depuración
+                                console.error('Error en la solicitud de eliminación:', error);
+                                console.log('Estado de la solicitud:', status);
+                                console.log('Respuesta completa:', xhr.responseText);
+                                alert('Error al eliminar la cédula: ' + xhr.responseText);
+                            }
+                        });
+                    }
+                });
+
+                //EDITAR
+                $('.custom-table-style-edit-btn').on('click', function() {
+                    // Abrir el modal de edición
+                    $('#editarCedulaModal').modal('show');
+
+
+                });
+
+
+            });
+        </script>
         <script>
             $(document).ready(function() {
                 // Al hacer clic en el encabezado
@@ -1172,13 +1256,368 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         </script>
 
         <!--Expediente-->
-        <script src="js/getExpediente.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const editButtons = document.querySelectorAll('.custom-table-style-edit-btn');
+
+                editButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const idExp = this.getAttribute('data-id'); // Obtener el ID de la cédula
+                        console.log('ID Expediente desde el botón:', idExp); // Verificar si obtenemos el id correcto
+
+                        // Verificar que el idExp no esté vacío
+                        if (!idExp) {
+                            console.error('No se encontró el ID de la cédula');
+                            alert('Error: No se encontró el ID de la cédula.');
+                            return; // Detener ejecución si no hay ID válido
+                        }
+
+                        // Cambiar la URL para enviar el parámetro id_cedula
+                        fetch('proc/get_expediente.php?id_cedula=' + idExp)
+                            .then(response => {
+                                console.log('Respuesta del servidor:', response);
+
+                                if (!response.ok) {
+                                    throw new Error('Error al obtener los datos: ' + response.statusText);
+                                }
+                                return response.json(); // Usamos .json() directamente para obtener la respuesta como JSON
+                            })
+                            .then(parsedData => {
+                                console.log('Datos JSON parseados:', parsedData);
+
+                                if (parsedData && !parsedData.error) {
+                                    // Asignar los valores al formulario
+                                    document.getElementById('fecha_carga_exp').value = parsedData.fecha_carga_exp || '';
+                                    document.getElementById('no_siniestro_exp').value = parsedData.no_siniestro || '';
+                                    document.getElementById('poliza_exp').value = parsedData.poliza || '';
+                                    document.getElementById('afectado_exp').value = parsedData.afectado || '';
+                                    document.getElementById('tipo_caso_exp').value = parsedData.tipo_caso || '';
+                                    document.getElementById('cobertura_exp').value = parsedData.cobertura || '';
+                                    document.getElementById('fecha_siniestro_exp').value = parsedData.fecha_siniestro || '';
+                                    document.getElementById('taller_corralon_exp').value = parsedData.taller_corralon || '';
+                                    document.getElementById('financiado_exp').value = parsedData.financiado || '';
+                                    document.getElementById('regimen_exp').value = parsedData.regimen || '';
+                                    document.getElementById('pass_ext_exp').value = parsedData.passw_ext || '';
+
+                                    // Corregir la asignación del valor a id_cedula_ed
+                                    document.getElementById('cedula_id_ed').value = parsedData.cedulaId || '';
+
+                                    // Agregar el nuevo campo 'id_expediente' al formulario
+                                    document.getElementById('id_expediente_exp').value = parsedData.id_expediente || '';
+
+                                    // Agregar el campo 'id_direccion' al formulario
+                                    document.getElementById('id_direccion_exp').value = parsedData.id_direccion || '';
+
+                                    // Los campos de dirección (estado, ciudad, región)
+                                    document.getElementById('estado_exp').value = parsedData.estado || '';
+                                    document.getElementById('ciudad_exp').value = parsedData.ciudad || '';
+                                    document.getElementById('region_exp').value = parsedData.region || '';
+                                } else {
+                                    // Manejar el caso donde el JSON tiene un error
+                                    console.error('Error en los datos recibidos:', parsedData.error);
+                                    alert('Error al obtener los datos del expediente: ' + parsedData.error);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error al obtener los datos:', error);
+                                alert('Ocurrió un error al obtener los datos del expediente.');
+                            });
+                    });
+                });
+            });
+        </script>
         <!--Comentarios-->
-        <script src="js/getComentarios.js"></script>
+        <script>
+            $(document).ready(function() {
+
+                $('#editarCedulaModal').on('show.bs.modal', function(event) {
+
+                    var button = $(event.relatedTarget); // botón que abre el modal
+                    var noSiniestro = document.getElementById('no_siniestro_exp').value; // Asigna el valor de la sesión, o un valor vacío si no existe
+
+                    // Llamada AJAX para obtener los comentarios
+                    $.ajax({
+                        url: 'proc/get_mensajes.php', // archivo PHP que recupera los comentarios
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            no_siniestro: noSiniestro
+                        },
+                        success: function(data) {
+                            if (data.error) {
+                                $('#modalContent').html('<p>Error al cargar los comentarios: ' + data.error + '</p>');
+                            } else {
+                                // Limpiar la tabla antes de insertar los nuevos datos
+                                var comentariosTable = $('#dataTableC tbody');
+                                comentariosTable.empty(); // Limpiar la tabla para evitar duplicados al recargar los comentarios
+
+                                // Recorrer los comentarios y agregar las filas a la tabla
+                                data.comentarios.forEach(function(comment) {
+                                    var tr = $('<tr></tr>');
+                                    tr.append('<td>' + (comment.usuario_origen || 'Desconocido') + '</td>'); // Añadir un valor por defecto si es undefined
+                                    tr.append('<td>' + comment.fecha_comentario + '</td>');
+                                    tr.append('<td>' + comment.comentario + '</td>');
+                                    comentariosTable.append(tr); // Agregar fila a la tabla
+                                });
+
+
+                                // Insertar otros datos si es necesario, como el id del asegurado
+                                $('#id_us').val(data.id_asegurado);
+
+                            }
+                        },
+                        error: function() {
+                            $('#modalContent').html('<p>Error al cargar los comentarios</p>');
+                        }
+                    });
+                });
+            });
+        </script>
+
         <!--Vehiculo-->
-        <script src="js/getVehiculo.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const editButtons = document.querySelectorAll('.custom-table-style-edit-btn');
+
+                editButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const idExp = this.getAttribute('data-id'); // Obtener la cédula
+
+                        // Verificar que el idExp no esté vacío
+                        if (!idExp) {
+                            console.error('No se encontró el ID de la cédula');
+                            return; // Detener ejecución si no hay ID válido
+                        }
+
+                        console.log('ID de expediente:', idExp); // Agregar para depuración
+
+                        // Cambiar la URL para enviar el parámetro id_cedula
+                        fetch('proc/get_vehiculo.php?id_cedula=' + idExp)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Error al obtener los datos: ' + response.statusText);
+                                }
+                                return response.json(); // Usamos .json() directamente para obtener la respuesta como JSON
+                            })
+                            .then(parsedData => {
+                                console.log('Datos JSON parseados: ', parsedData);
+
+                                // Verificar si hay datos y asignarlos a los campos del formulario
+                                if (parsedData && !parsedData.error) {
+                                    document.getElementById('marca_veh').value = parsedData.marca || '';
+                                    document.getElementById('tipo_veh').value = parsedData.tipo || '';
+                                    document.getElementById('placas_veh').value = parsedData.pk_placas || '';
+                                    document.getElementById('no_serie_veh').value = parsedData.pk_no_serie || '';
+                                    document.getElementById('valor_indem_veh').value = parsedData.valor_indemnizacion || '';
+                                    document.getElementById('valor_comer_veh').value = parsedData.valor_comercial || '';
+
+                                    // Convertir el porcentaje de daño a formato 2 dígitos
+                                    const porcentajeDanio = parsedData.porc_dano; // Valor recibido del backend
+                                    const porcentajeDanioFormateado = Math.round(porcentajeDanio); // Redondear a entero
+                                    const porcentajeDanioString = String(porcentajeDanioFormateado).padStart(2, '0'); // Convertir a string con 2 dígitos
+
+                                    // Asignar el valor al select
+                                    const selectElement = document.getElementById('porc_dano_veh');
+                                    selectElement.value = porcentajeDanioString; // Establecer el valor del select
+
+                                    document.getElementById('valor_base_veh').value = parsedData.valor_base || '';
+
+                                    // Asignar el id_vehiculo al campo oculto
+                                    document.getElementById('id_vehiculo').value = parsedData.id_vehiculo || ''; // Campo oculto para el ID del vehículo
+                                } else {
+                                    // Manejar el caso donde el JSON tiene un error
+                                    console.error('Error en los datos recibidos:', parsedData.error);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error al obtener los datos:', error);
+                                alert('Ocurrió un error al obtener los datos del vehículo.');
+                            });
+                    });
+                });
+            });
+        </script>
+
         <!--Asegurado-->
-        <script src="js/accionesAsegurado.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Variable global para almacenar el id_asegurado
+                let globalIdAsegurado = null;
+
+                // Declarar botones de edición
+                const editButtons = document.querySelectorAll('.custom-table-style-edit-btn');
+
+                // Función para obtener los datos del asegurado
+                async function obtenerDatosAsegurado(idAsegurado) {
+                    try {
+                        console.log("Obteniendo datos para el asegurado con id:", );
+                        const response = await fetch('proc/get_doc_aseg.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                id_asegurado: idAsegurado
+                            })
+                        });
+
+                        const data = await response.json();
+                        console.log("Datos obtenidos del asegurado:", data);
+
+                        if (data.error) {
+                            console.log("error: " + data.error);
+                            alert("Error al obtener los datos del asegurado: " + data.error);
+                        } else {
+                            actualizarCheckboxes(data);
+                        }
+                    } catch (error) {
+                        console.error('Error al obtener datos del asegurado:', error);
+                        alert('Hubo un error al obtener los datos del asegurado.');
+                    }
+                }
+
+                // Función para actualizar los checkboxes basándose en los datos obtenidos
+                function actualizarCheckboxes(datos) {
+                    const checkboxes = [{
+                            id: 'checkCFDI',
+                            field: 'cfdi'
+                        },
+                        {
+                            id: 'checkFacA',
+                            field: 'facturas'
+                        },
+                        {
+                            id: 'checkTitulo',
+                            field: 'titulo_propiedad'
+                        },
+                        {
+                            id: 'checkPedimento',
+                            field: 'pedimento'
+                        },
+                        {
+                            id: 'checkBajaPermiso',
+                            field: 'baja_permiso'
+                        },
+                        {
+                            id: 'checkUltimas5Ten',
+                            field: 'tenencias'
+                        },
+                        {
+                            id: 'checkBajaPlacas',
+                            field: 'baja_placas'
+                        },
+                        {
+                            id: 'checkVerificacion',
+                            field: 'verificacion'
+                        },
+                        {
+                            id: 'checkAveriguacion',
+                            field: 'averiguacion'
+                        },
+                        {
+                            id: 'checkAcreditacion',
+                            field: 'acreditacion'
+                        },
+                        {
+                            id: 'checkAviso',
+                            field: 'aviso'
+                        },
+                        {
+                            id: 'checkINE',
+                            field: 'ine'
+                        },
+                        {
+                            id: 'checkComprobante',
+                            field: 'comprobante'
+                        },
+                        {
+                            id: 'checkEstadoCuenta',
+                            field: 'estado_cuenta'
+                        },
+                        {
+                            id: 'checkFiniquito',
+                            field: 'finiquito'
+                        },
+                        {
+                            id: 'checkFormato',
+                            field: 'formato'
+                        },
+                        {
+                            id: 'checkRFC',
+                            field: 'rfc'
+                        }
+                    ];
+
+                    checkboxes.forEach(function(checkbox) {
+                        const isChecked = datos[checkbox.field];
+                        const checkboxElement = document.getElementById(checkbox.id);
+
+                        if (checkboxElement) {
+                            checkboxElement.checked = isChecked;
+                        }
+                    });
+                }
+
+                // Obtener datos del asegurado y asignar los valores a los campos del formulario
+                async function cargarDatosAsegurado(idExp) {
+                    try {
+                        const response = await fetch('proc/get_asegurado.php?id_cedula=' + idExp);
+
+                        if (!response.ok) {
+                            throw new Error('Error al obtener los datos: ' + response.statusText);
+                        }
+
+                        const data = await response.json();
+                        console.log('Datos obtenidos:', data);
+
+                        if (data && !data.error) {
+                            // Asignar los datos a los campos del formulario
+                            document.getElementById('asegurado_ed').value = data.nom_asegurado || '';
+                            document.getElementById('email_ed').value = data.email || '';
+                            document.getElementById('telefono1_ed').value = data.tel1 || '';
+                            document.getElementById('telefono2_ed').value = data.tel2 || '';
+                            document.getElementById('contacto_ed').value = data.contacto || '';
+                            document.getElementById('con_email_ed').value = data.contacto_email || '';
+                            document.getElementById('con_telefono1_ed').value = data.contacto_tel1 || '';
+                            document.getElementById('con_telefono2_ed').value = data.contacto_tel2 || '';
+
+                            // Asignar id_asegurado al campo oculto y a la variable global
+                            document.getElementById('id_asegurado').value = data.id_asegurado || '';
+                            globalIdAsegurado = data.id_asegurado || '';
+                            console.log('id_asegurado almacenado globalmente:', globalIdAsegurado);
+
+                            // Obtener datos adicionales del asegurado
+                            await obtenerDatosAsegurado(globalIdAsegurado);
+
+                            // Actualizar los elementos del modal con el nombre y teléfono
+                            document.getElementById('asegurado-nombre').textContent = data.nom_asegurado || 'Nombre no disponible';
+                            document.getElementById('asegurado-telefono').textContent = data.tel1 || 'Teléfono no disponible';
+                        } else {
+                            console.error('Error en los datos recibidos:', data.error);
+                            alert('No se encontraron datos para el asegurado.');
+                        }
+                    } catch (error) {
+                        console.error('Error al cargar los datos del asegurado:', error);
+                        alert('Hubo un error al cargar los datos del asegurado.');
+                    }
+                }
+
+                // Asignar event listeners a los botones de edición
+                editButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const idExp = this.getAttribute('data-id');
+                        if (idExp) {
+                            cargarDatosAsegurado(idExp);
+                        } else {
+                            console.error('No se encontró el ID de la cédula');
+                        }
+                    });
+                });
+
+
+            });
+        </script>
+
 
 
         <!--Estatus, subestatus, estacion-->
@@ -1315,11 +1754,166 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         </script>
 
         <!--Seguimiento-->
-        <script src="js/getSeguimiento.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const editButtons = document.querySelectorAll('.custom-table-style-edit-btn'); // Botones de edición en la tabla
 
-        <script src="js/updateVehiculo.js"></script>
+                editButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const idSeguimiento = this.getAttribute('data-id'); // Obtener el ID de seguimiento
+
+                        // Verificar que el idSeguimiento no esté vacío
+                        if (!idSeguimiento) {
+                            console.error('No se encontró el ID de seguimiento');
+                            return; // Detener ejecución si no hay ID válido
+                        }
+
+                        console.log('ID de seguimiento:', idSeguimiento); // Agregar para depuración
+
+                        // Cambiar la URL para enviar el parámetro id_seguimiento
+                        fetch('proc/get_seguimiento.php?id_seguimiento=' + idSeguimiento) // Cambiar por la URL que corresponda para obtener los datos del seguimiento
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Error al obtener los datos: ' + response.statusText);
+                                }
+                                return response.json(); // Usamos .json() directamente para obtener la respuesta como JSON
+                            })
+                            .then(parsedData => {
+                                console.log('Datos JSON parseados: ', parsedData);
+
+                                // Verificar si hay datos y asignarlos a los campos del formulario
+                                if (parsedData && !parsedData.error) {
+                                    document.getElementById('estatus_seg').value = parsedData.estatus_seguimiento || '';
+                                    document.getElementById('sub_seg').value = parsedData.subestatus || '';
+                                    document.getElementById('estacion_seg').value = parsedData.estacion || '';
+                                    document.getElementById('fecha_ter_seg').value = parsedData.fecha_termino || '';
+                                } else {
+                                    // Manejar el caso donde el JSON tiene un error
+                                    console.error('Error en los datos recibidos:', parsedData.error);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error al obtener los datos:', error);
+                                alert('Ocurrió un error al obtener los datos del seguimiento.');
+                            });
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const btnActualizar = document.getElementById('btnActualizar'); // Asegúrate de tener el botón con id="btnActualizar"
+
+                btnActualizar.addEventListener('click', function(event) {
+                    event.preventDefault(); // Evita el envío del formulario
+
+                    // Obtener los datos del formulario para Vehículo
+                    const idVehiculo = document.getElementById('id_vehiculo').value;
+                    const marca = document.getElementById('marca_veh').value;
+                    const tipo = document.getElementById('tipo_veh').value;
+                    const placas = document.getElementById('placas_veh').value;
+                    const noSerie = document.getElementById('no_serie_veh').value;
+                    const valorIndemnizacion = document.getElementById('valor_indem_veh').value;
+                    const valorComercial = document.getElementById('valor_comer_veh').value;
+                    const porcDano = document.getElementById('porc_dano_veh').value;
+                    const valorBase = document.getElementById('valor_base_veh').value;
+
+                    // Obtener los datos del formulario para Asegurado
+                    const idAsegurado = document.getElementById('id_asegurado').value;
+                    const asegurado = document.getElementById('asegurado_ed').value;
+                    const email = document.getElementById('email_ed').value;
+                    const telefono1 = document.getElementById('telefono1_ed').value;
+                    const telefono2 = document.getElementById('telefono2_ed').value;
+                    const contacto = document.getElementById('contacto_ed').value;
+                    const contactoEmail = document.getElementById('con_email_ed').value;
+                    const contactoTel1 = document.getElementById('con_telefono1_ed').value;
+                    const contactoTel2 = document.getElementById('con_telefono2_ed').value;
+
+                    // Realizar las llamadas AJAX para ambos formularios
+                    Promise.all([
+                            fetch('proc/update_vehiculo.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded'
+                                },
+                                body: `id_vehiculo=${idVehiculo}&marca=${marca}&tipo=${tipo}&placas=${placas}&no_serie=${noSerie}&valor_indemnizacion=${valorIndemnizacion}&valor_comercial=${valorComercial}&porc_dano=${porcDano}&valor_base=${valorBase}`
+                            }).then(response => response.json()),
+
+                            fetch('proc/update_asegurado.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded'
+                                },
+                                body: `id_asegurado=${idAsegurado}&nom_asegurado=${asegurado}&email=${email}&tel1=${telefono1}&tel2=${telefono2}&contacto=${contacto}&contacto_email=${contactoEmail}&contacto_tel1=${contactoTel1}&contacto_tel2=${contactoTel2}`
+                            }).then(response => response.json())
+                        ])
+                        .then(responses => {
+                            const [vehiculoData, aseguradoData] = responses;
+
+                            if (vehiculoData.status === 'success' && aseguradoData.success) {
+                                alert('Actualización realizada');
+                            } else {
+                                alert('Hubo un error al actualizar: ' + (vehiculoData.error || aseguradoData.error || 'desconocido'));
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error al realizar la solicitud:', error);
+                            alert('Ocurrió un error inesperado');
+                        });
+                });
+            });
+        </script>
         <!--Actualizar expediente-->
-        <script src="js/updateExpediente.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const btnActualizar = document.getElementById('btnActualizar'); // Asegúrate de tener el botón con id="btnActualizar"
+
+                btnActualizar.addEventListener('click', function(event) {
+                    event.preventDefault(); // Evita el envío del formulario
+
+                    // Obtener los datos del formulario
+                    const idExpediente = document.getElementById('id_expediente_exp').value;
+                    const fechaCarga = document.getElementById('fecha_carga_exp').value;
+                    const noSiniestro = document.getElementById('no_siniestro_exp').value;
+                    const poliza = document.getElementById('poliza_exp').value;
+                    const afectado = document.getElementById('afectado_exp').value;
+                    const tipoCaso = document.getElementById('tipo_caso_exp').value;
+                    const cobertura = document.getElementById('cobertura_exp').value;
+                    const fechaSiniestro = document.getElementById('fecha_siniestro_exp').value;
+                    const tallerCorralon = document.getElementById('taller_corralon_exp').value;
+                    const financiado = document.querySelector('input[name="financiado_exp"]:checked')?.value || '';
+                    const regimen = document.getElementById('regimen_exp').value;
+                    const passwExt = document.getElementById('pass_ext_exp').value;
+                    const estado = document.getElementById('estado_exp').value;
+
+
+                    // Mostrar en consola el valor de id_expediente
+                    console.log("ID Expediente: ", idExpediente);
+
+                    // Realizar la llamada AJAX para actualizar el expediente
+                    fetch('proc/update_expediente.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            },
+                            body: `id_expediente=${idExpediente}&fecha_carga_exp=${fechaCarga}&no_siniestro_exp=${noSiniestro}&poliza_exp=${poliza}&afectado_exp=${afectado}&tipo_caso_exp=${tipoCaso}&cobertura_exp=${cobertura}&fecha_siniestro_exp=${fechaSiniestro}&taller_corralon_exp=${tallerCorralon}&financiado_exp=${financiado}&regimen_exp=${regimen}&pass_ext_exp=${passwExt}&estado_exp=${estado}`
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('Expediente actualizado correctamente');
+                            } else {
+                                alert('Error al actualizar expediente: ' + (data.error || 'desconocido'));
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error al realizar la solicitud:', error);
+                            alert('Ocurrió un error inesperado');
+                        });
+                });
+            });
+        </script>
         <!--Insertar seguimiento-->
         <script>
             $(document).ready(function() {
@@ -1354,9 +1948,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
                     // Validar que no falten datos necesarios
                     if (!mensaje_seg_ed || !id_asegurado || !no_siniestro_exp) {
-                        alert(
-                            "Faltan datos necesarios: número de siniestro, usuario receptor o mensaje."
-                        );
+                        alert("Faltan datos necesarios: número de siniestro, usuario receptor o mensaje.");
                         return; // Detener la ejecución si falta algún dato
                     }
 
@@ -1385,7 +1977,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                         fk_cedula: fk_cedula,
                         no_siniestro: no_siniestro_exp,
                         usuario_emisor: "<?php echo $_SESSION['id_usuario'] ?? ''; ?>", // El usuario_emisor es el ID del usuario actual
-                        usuario_receptor: id_asegurado, // El receptor es el ID del asegurado
+                        usuario_receptor: id_asegurado // El receptor es el ID del asegurado
                     };
 
                     // Mostrar los datos que se enviarán a insert_seguimiento.php
@@ -1393,8 +1985,8 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
                     // Enviar los datos al servidor usando AJAX para el insert_seguimiento.php
                     $.ajax({
-                        url: "proc/insert_seguimiento.php",
-                        type: "POST",
+                        url: 'proc/insert_seguimiento.php',
+                        type: 'POST',
                         data: data, // Verifica que 'data' sea un objeto o string válido
                         success: function(response) {
                             console.log(response);
@@ -1404,26 +1996,26 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                     id_usuario_receptor: "<?php echo $_SESSION['id_usuario'] ?? ''; ?>",
                                     mensaje: comentario,
                                     fecha_envio: fecha_envio_seg,
-                                    no_siniestro: no_siniestro_exp,
+                                    no_siniestro: no_siniestro_exp
                                 };
 
                                 console.log("Enviados a insert_mensajes_op.php:", messageData);
 
                                 $.ajax({
-                                    url: "proc/insert_mensajes_op.php",
-                                    type: "POST",
+                                    url: 'proc/insert_mensajes_op.php',
+                                    type: 'POST',
                                     data: messageData, // Los datos se deben enviar correctamente formateados
                                     success: function(response) {
                                         if (response.success) {
-                                            alert("Mensaje enviado correctamente.");
+                                            alert('Mensaje enviado correctamente.');
                                         } else {
-                                            alert("Error al enviar el mensaje.");
+                                            alert('Error al enviar el mensaje.');
                                         }
                                     },
                                     error: function(xhr, status, error) {
                                         console.log(xhr.responseText); // Muestra más detalles sobre el error
-                                        alert("Hubo un error al enviar el mensaje.");
-                                    },
+                                        alert('Hubo un error al enviar el mensaje.');
+                                    }
                                 });
                             } else {
                                 alert(response.error);
@@ -1431,14 +2023,48 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                         },
                         error: function(xhr, status, error) {
                             console.log(xhr.responseText); // Ver el detalle del error para el seguimiento
-                            alert("Hubo un error al enviar los datos de seguimiento.");
-                        },
+                            alert('Hubo un error al enviar los datos de seguimiento.');
+                        }
                     });
+
                 });
             });
         </script>
+
+
+
         <!--Obtener asignacion-->
-        <script src="js/getAsignacion.js"></script>
+        <script>
+            // Al cargar la página, hacer la solicitud GET para obtener las asignaciones (usuarios)
+            $(document).ready(function() {
+                $.ajax({
+                    url: 'proc/get_asignacion.php', // Nombre del archivo PHP que devuelve los usuarios
+                    type: 'GET',
+                    success: function(response) {
+                        // Verificar si la respuesta es exitosa
+                        if (response.success) {
+                            var select = $('#asignacion'); // El elemento select con id 'asignacion'
+
+                            // Iterar sobre los usuarios y agregar opciones al select
+                            response.data.forEach(function(user) {
+                                // Crear un nuevo elemento option
+                                var option = $('<option></option>')
+                                    .text(user.nombre); // Establece el texto de la opción
+
+                                // Agregar la opción al select
+                                select.append(option);
+                            });
+                        } else {
+                            console.error('No se pudieron cargar las asignaciones:', response.error);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error en la solicitud:', error);
+                    }
+                });
+            });
+        </script>
+
 
         <!--Visibilidad de los divs-->
         <script>
@@ -1544,7 +2170,41 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         </script>
 
 
-        <script src="js/insertAsignacion.js"></script>
+        <script>
+            document.getElementById("btnAs").addEventListener("click", function() {
+                // Obtener los valores de los campos
+                let operador = document.getElementById("asignacion").value;
+                let fecha_asignacion = document.getElementById("fecha_asignacion").value;
+                let fk_cedula = document.getElementById("cedula_id_ed").value; // Aquí puedes obtener la cédula
+
+                // Crear un objeto FormData para incluir los datos y el archivo
+                let formData = new FormData();
+                formData.append("operador", operador);
+                formData.append("fecha_asignacion", fecha_asignacion);
+                formData.append("fk_cedula", fk_cedula);
+
+                // Crear el objeto XMLHttpRequest para enviar la solicitud AJAX
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "proc/insert_asignacion.php", true); // Asegúrate de usar el nombre correcto de tu archivo PHP
+
+                // Manejar la respuesta del servidor
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            alert('Asignación realizada correctamente');
+                        } else {
+                            alert('Error: ' + response.error);
+                        }
+                    } else {
+                        alert('Error en la solicitud AJAX');
+                    }
+                };
+
+                // Enviar los datos
+                xhr.send(formData);
+            });
+        </script>
 
         <!--<script>
             $(document).ready(function() {
@@ -1644,7 +2304,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                 // Actualizar mensajes cada 1 segundo
                 setInterval(cargarMensajesRecibidos, 1000);
             });
-        </scrip=>-->
+        </script>-->
 
 
         <script>
@@ -1655,72 +2315,99 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
             $j(document).ready(function() {
                 // Vincula el evento click para abrir el modal
                 $j('#btnEditTabla').on('click', function() {
-                    abrirModal('editarCedulaModal'); // Usar abrirModal en lugar de modal('show')
+                    $j('#editarCedulaModal').modal('show');
                 });
             });
         </script>
 
-        <!--Asignacion de casos notifiaciones firebase realtime-->
-        <script type="module">
-            import {
-                initializeApp
-            } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-            import {
-                getDatabase,
-                ref,
-                onValue,
-                push,
-                set
-            } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Elementos del DOM
+                const btnCargaArch = document.getElementById("btnCargaArch");
+                const fileInput = document.getElementById("fileInput");
+                const fileName = document.getElementById("fileName");
+                const descripcionArch = "Autorización de pago por transferencia"; // Cambiar según la descripción deseada
+                let idAsegurado = id_asegurado; // Reemplaza con el valor dinámico o almacenado de id_asegurado
 
-            // 🔹 Configuración de Firebase
-            const firebaseConfig = {
-                apiKey: "AIzaSyD1XIbEFJ28sqWcF5Ws3i8zA2o1OhYC7JU",
-                authDomain: "prueba-pickcollect.firebaseapp.com",
-                databaseURL: "https://prueba-pickcollect-default-rtdb.firebaseio.com",
-                projectId: "prueba-pickcollect",
-                storageBucket: "prueba-pickcollect.firebasestorage.app",
-                messagingSenderId: "343351102325",
-                appId: "1:343351102325:web:a6e4184d4752c6cbcfe13c",
-                measurementId: "G-6864KLZWKP"
-            };
-
-            const app = initializeApp(firebaseConfig);
-            const db = getDatabase(app);
-            const notificacionesRef = ref(db, "notificaciones");
-
-            // 🔹 Función para enviar notificación al operador seleccionado
-            document.getElementById("btnAs").addEventListener("click", function() {
-                const usuarioActual = '<?php echo $rol; ?>'; // 🔹 Reemplázalo con el ID real del usuario logueado
-                const operadorSeleccionado = document.getElementById("asignacion").value;
-                const fechaAsignacion = document.getElementById("fecha_asignacion").value;
-                const num_siniestro = document.getElementById("no_siniestro_exp").value;
-                const id_cedula = document.getElementById("cedula_id_ed").value;
-                const id_asegurado = document.getElementById("id_asegurado").value;
-                const id_vehiculo = document.getElementById("id_vehiculo").value;
-
-
-                if (operadorSeleccionado === "") {
-                    alert("Selecciona un operador antes de asignar.");
-                    return;
+                // Función para actualizar el nombre del archivo en la caja de texto
+                function updateFileName() {
+                    const file = fileInput.files[0];
+                    if (file) {
+                        fileName.value = file.name;
+                    } else {
+                        fileName.value = "No se ha seleccionado un archivo";
+                    }
                 }
 
-                const nuevaNotificacion = push(notificacionesRef);
-                set(nuevaNotificacion, {
-                    asignador: usuarioActual,
-                    operador: operadorSeleccionado,
-                    mensaje: `Tienes una nueva asignación`,
-                    siniestro: id_cedula,
-                    fecha: fechaAsignacion,
-                    leido: false,
-                    tipo: "asignacion"
-                });
+                // Asignar evento onchange al input de archivo
+                fileInput.addEventListener("change", updateFileName);
 
-                alert("Asignación enviada correctamente.");
+                // Función para convertir el archivo a Base64
+                function convertToBase64(file) {
+                    return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onload = () => resolve(reader.result.split(",")[1]); // Obtener solo la parte base64
+                        reader.onerror = (error) => reject(error);
+                        reader.readAsDataURL(file);
+                    });
+                }
+
+                // Función para cargar el archivo al servidor
+                async function cargarArchivo() {
+                    const file = fileInput.files[0];
+
+                    if (!file) {
+                        alert("Por favor, selecciona un archivo.");
+                        return;
+                    }
+
+                    if (!idAsegurado) {
+                        alert("ID del asegurado no encontrado. Asegúrate de que esté definido.");
+                        return;
+                    }
+
+                    try {
+                        // Convertir el archivo a base64
+                        const archivoBase64 = await convertToBase64(file);
+
+                        // Crear el cuerpo de la solicitud
+                        const payload = {
+                            id_asegurado: idAsegurado,
+                            descripcion_arch: descripcionArch,
+                            archivo: archivoBase64,
+                        };
+
+                        // Enviar datos al servidor con fetch
+                        const response = await fetch("insert_docs.php", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(payload),
+                        });
+
+                        const data = await response.json();
+
+                        if (data.success) {
+                            alert("Archivo cargado exitosamente.");
+                        } else {
+                            alert("Error al cargar archivo: " + (data.error || "Error desconocido."));
+                        }
+                    } catch (error) {
+                        console.error("Error al cargar el archivo:", error);
+                        alert("Hubo un error al cargar el archivo.");
+                    }
+                }
+
+                // Asignar evento al botón de carga
+                btnCargaArch.addEventListener("click", cargarArchivo);
             });
         </script>
 
 
+
+
+        <!-- Se eliminó el script que abre el modal -->
 </body>
 
 </html>

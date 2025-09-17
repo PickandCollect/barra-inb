@@ -2,7 +2,6 @@
 
 namespace PhpOffice\PhpSpreadsheet\Writer\Xls;
 
-use Composer\Pcre\Preg;
 use GdImage;
 use PhpOffice\PhpSpreadsheet\Cell\Cell;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
@@ -462,11 +461,11 @@ class Worksheet extends BIFFwriter
             if (str_contains($url, 'sheet://')) {
                 // internal to current workbook
                 $url = str_replace('sheet://', 'internal:', $url);
-            } elseif (Preg::isMatch('/^(http:|https:|ftp:|mailto:)/', $url)) {
+            } elseif (preg_match('/^(http:|https:|ftp:|mailto:)/', $url)) {
                 // URL
-            } elseif (!empty($hyperlinkbase) && !Preg::isMatch('~^([A-Za-z]:)?[/\\\\]~', $url)) {
+            } elseif (!empty($hyperlinkbase) && preg_match('~^([A-Za-z]:)?[/\\\\]~', $url) !== 1) {
                 $url = "$hyperlinkbase$url";
-                if (!Preg::isMatch('/^(http:|https:|ftp:|mailto:)/', $url)) {
+                if (preg_match('/^(http:|https:|ftp:|mailto:)/', $url) !== 1) {
                     $url = 'external:' . $url;
                 }
             } else {
@@ -934,10 +933,10 @@ class Worksheet extends BIFFwriter
     private function writeUrlRange(int $row1, int $col1, int $row2, int $col2, string $url): void
     {
         // Check for internal/external sheet links or default to web link
-        if (Preg::isMatch('[^internal:]', $url)) {
+        if (preg_match('[^internal:]', $url)) {
             $this->writeUrlInternal($row1, $col1, $row2, $col2, $url);
         }
-        if (Preg::isMatch('[^external:]', $url)) {
+        if (preg_match('[^external:]', $url)) {
             $this->writeUrlExternal($row1, $col1, $row2, $col2, $url);
         }
 
@@ -970,7 +969,8 @@ class Worksheet extends BIFFwriter
 
         // Convert URL to a null terminated wchar string
 
-        $url = implode("\0", Preg::split("''", $url, -1, PREG_SPLIT_NO_EMPTY));
+        /** @phpstan-ignore-next-line */
+        $url = implode("\0", preg_split("''", $url, -1, PREG_SPLIT_NO_EMPTY));
         $url = $url . "\0\0\0";
 
         // Pack the length of the URL
@@ -1003,7 +1003,7 @@ class Worksheet extends BIFFwriter
         $record = 0x01B8; // Record identifier
 
         // Strip URL type
-        $url = Preg::replace('/^internal:/', '', $url);
+        $url = (string) preg_replace('/^internal:/', '', $url);
 
         // Pack the undocumented parts of the hyperlink stream
         $unknown1 = pack('H*', 'D0C9EA79F9BACE118C8200AA004BA90B02000000');
@@ -1050,7 +1050,7 @@ class Worksheet extends BIFFwriter
     {
         // Network drives are different. We will handle them separately
         // MS/Novell network drives and shares start with \\
-        if (Preg::isMatch('[^external:\\\\]', $url)) {
+        if (preg_match('[^external:\\\\]', $url)) {
             return;
         }
 
@@ -1058,7 +1058,7 @@ class Worksheet extends BIFFwriter
 
         // Strip URL type and change Unix dir separator to Dos style (if needed)
         //
-        $url = Preg::replace(['/^external:/', '/\//'], ['', '\\'], $url);
+        $url = (string) preg_replace(['/^external:/', '/\//'], ['', '\\'], $url);
 
         // Determine if the link is relative or absolute:
         //   relative if link contains no dir separator, "somefile.xls"
@@ -1066,7 +1066,7 @@ class Worksheet extends BIFFwriter
         //   otherwise, absolute
 
         $absolute = 0x00; // relative path
-        if (Preg::isMatch('/^[A-Z]:/', $url)) {
+        if (preg_match('/^[A-Z]:/', $url)) {
             $absolute = 0x02; // absolute path on Windows, e.g. C:\...
         }
         $link_type = 0x01 | $absolute;
@@ -1075,7 +1075,7 @@ class Worksheet extends BIFFwriter
         // parameters accordingly.
         // Split the dir name and sheet name (if it exists)
         $dir_long = $url;
-        if (Preg::isMatch('/\\#/', $url)) {
+        if (preg_match('/\\#/', $url)) {
             $link_type |= 0x08;
         }
 
@@ -1083,11 +1083,11 @@ class Worksheet extends BIFFwriter
         $link_type = pack('V', $link_type);
 
         // Calculate the up-level dir count e.g.. (..\..\..\ == 3)
-        $up_count = Preg::isMatchAll('/\\.\\.\\\\/', $dir_long, $useless);
+        $up_count = preg_match_all('/\\.\\.\\\\/', $dir_long, $useless);
         $up_count = pack('v', $up_count);
 
         // Store the short dos dir name (null terminated)
-        $dir_short = Preg::replace('/\\.\\.\\\\/', '', $dir_long) . "\0";
+        $dir_short = (string) preg_replace('/\\.\\.\\\\/', '', $dir_long) . "\0";
 
         // Store the long dir name as a wchar string (non-null terminated)
         //$dir_long = $dir_long . "\0";
@@ -2640,7 +2640,7 @@ class Worksheet extends BIFFwriter
                 $options |= $errorStyle << 4;
 
                 // explicit formula?
-                if ($type == 0x03 && Preg::isMatch('/^\".*\"$/', $dataValidation->getFormula1())) {
+                if ($type == 0x03 && preg_match('/^\".*\"$/', $dataValidation->getFormula1())) {
                     $options |= 0x01 << 7;
                 }
 

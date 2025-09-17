@@ -27,7 +27,6 @@ file_put_contents($logFile, $logMessage, FILE_APPEND);
 
 require '../vendor/autoload.php'; // PhpSpreadsheet
 require 'conexion.php'; // Archivo de conexión a la base de datos
-
 // Verificar que fk_usuario existe en la base de datos
 $stmtCheckUsuario = $conexion->prepare("SELECT id_usuario FROM Usuario WHERE id_usuario = ?");
 $stmtCheckUsuario->bind_param("i", $idUsuario);
@@ -91,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $montoEBC = is_numeric(str_replace([',', '$'], '', $row[17] ?? '')) ? str_replace([',', '$'], '', $row[17]) : 0;
             $comentariosExtra = trim($row[18] ?? '');
             $montoParcialMax = is_numeric(str_replace([',', '$'], '', $row[19] ?? '')) ? str_replace([',', '$'], '', $row[19]) : 0;
+          
 
             // Validar datos obligatorios
             if (!$marca || !$modelo || !$serie || !$nombreAsegurado || !$poliza || !$siniestro || !$placas) {
@@ -112,73 +112,141 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             // Insertar en la tabla asegurado
+            // Generar una contraseña única y aleatoria
             if (!function_exists('generarContrasena')) {
                 function generarContrasena($nombre, $telefono)
                 {
+                    // Obtener las primeras 3 letras del nombre (convertidas a minúsculas) si el nombre tiene más de 3 caracteres
                     $parteNombre = substr(strtolower($nombre), 0, 3);
-                    $parteTelefono = substr(preg_replace('/\D/', '', $telefono), -4);
+
+                    // Obtener los últimos 4 dígitos del teléfono
+                    $parteTelefono = substr(preg_replace('/\D/', '', $telefono), -4); // Solo números del teléfono
+
+                    // Agregar un conjunto de caracteres aleatorios
                     $caracteresEspeciales = "!@#$%^&*";
                     $caracterAleatorio = $caracteresEspeciales[random_int(0, strlen($caracteresEspeciales) - 1)];
+
+                    // Combinar partes para crear la contraseña
                     $contrasena = $parteNombre . $parteTelefono . $caracterAleatorio;
+
+                    // Asegurarse de que sea única (puedes usar un hash aquí si es necesario)
                     $contrasena .= random_int(100, 999);
+
                     return $contrasena;
                 }
             }
 
+            // Crear la contraseña para el asegurado
             $contrasenaGenerada = generarContrasena($nombreAsegurado, $telefonoAsegurado);
 
+            // Insertar asegurado en la base de datos
             $stmtAsegurado = $conexion->prepare(
                 "INSERT INTO Asegurado (nom_asegurado, email, tel1, contacto, passw) VALUES (?, ?, ?, ?, ?)"
             );
+           
             $stmtAsegurado->bind_param("sssss", $nombreAsegurado, $correoAsegurado, $telefonoAsegurado, $nombreAsegurado, $contrasenaGenerada);
 
-            if (!$stmtAsegurado->execute()) {
-                $errores[] = "Error al insertar asegurado en la fila $index: " . $stmtAsegurado->error;
-                continue;
+            // Ejecutar la consulta
+            if ($stmtAsegurado->execute()) {
+                // Obtener el ID del último asegurado insertado
+                $fkAsegurado = $conexion->insert_id;
+
+                // Mostrar el ID del asegurado insertado
+                echo "Asegurado insertado con éxito. ID: " . $fkAsegurado;
+            } else {
+                // Manejar el error si la inserción falla
+                echo "Error al insertar asegurado: " . $stmtAsegurado->error;
             }
-
-            $fkAsegurado = $conexion->insert_id;
-
-            // Insertar en la tabla Vehiculo
+            // Preparar la consulta de inserción en la tabla Vehiculo
             $stmtVehiculo = $conexion->prepare(
-                "INSERT INTO Vehiculo (marca, tipo, ano, pk_placas, pk_no_serie, color, veh_estatus, monto_ebc, pago_parcial_max, fk_asegurado) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-            );
-            $stmtVehiculo->bind_param("sssssssssi", $marca, $modelo, $ano, $placas, $serie, $color, $estatus, $montoEBC, $montoParcialMax, $fkAsegurado);
+                    "INSERT INTO Vehiculo (marca, tipo, ano, pk_placas, pk_no_serie, color, veh_estatus, monto_ebc, pago_parcial_max, fk_asegurado) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                );
 
-            if (!$stmtVehiculo->execute()) {
-                $errores[] = "Error al insertar vehículo en la fila $index: " . $stmtVehiculo->error;
-                continue;
+            // Vincular los parámetros
+            $stmtVehiculo->bind_param(
+                "sssssssssi",  // Los tipos de datos corresponden a las columnas
+                $marca,
+                $modelo,
+                $ano,
+                $placas,
+                $serie,
+                $color,
+                $estatus,
+                $montoEBC,
+                $montoParcialMax,
+                $fkAsegurado
+            );
+
+            // Ejecutar la consulta
+            if ($stmtVehiculo->execute()) {
+                // Obtener el ID del vehículo insertado
+                $fkVehiculo = $conexion->insert_id;
+
+                // Mostrar el ID del vehículo insertado
+                echo "Vehículo insertado con éxito. ID del vehículo: " . $fkVehiculo;
+            } else {
+                // Manejar el error si la inserción falla
+                echo "Error al insertar vehículo: " . $stmtVehiculo->error;
             }
 
-            $fkVehiculo = $conexion->insert_id;
+
+            // Insertar en la tabla expediente
+            // Registro de los valores antes de la inserción en la tabla Expediente
+            error_log("Insertando en la tabla Expediente: fecha_carga=$fechaIngreso, no_siniestro=$siniestro, poliza=$poliza, afectado=$nombreAsegurado, tipo_caso=$tipoPersona, cobertura=$cobertura, fk_asegurado=$fkAsegurado, fk_usuario=$idUsuario", 3, "debug_log.txt");
+
+            $stmtCheckUsuario = $conexion->prepare("SELECT id_usuario FROM Usuario WHERE id_usuario = ?");
+            $stmtCheckUsuario->bind_param("i", $idUsuario);
+            $stmtCheckUsuario->execute();
+            $stmtCheckUsuario->store_result();
 
             // Insertar en la tabla expediente
             $stmtExpediente = $conexion->prepare(
-                "INSERT INTO Expediente (fecha_carga, no_siniestro, poliza, afectado, tipo_caso, cobertura, fk_asegurado, fk_usuario, regimen, passw_ext) 
-                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                "INSERT INTO Expediente (fecha_carga, no_siniestro, poliza, afectado, tipo_caso, cobertura, fk_asegurado, fk_usuario, regimen) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
             );
-            $tipo = 'COLISION';
-            $afectado = 'ASEGURADO';
-            $stmtExpediente->bind_param("ssssssiiss", $fechaIngreso, $siniestro, $poliza, $afectado, $tipo, $cobertura, $fkAsegurado, $idUsuario, $tipoPersona, $contrasenaGenerada);
 
-            if (!$stmtExpediente->execute()) {
-                $errores[] = "Error al insertar expediente en la fila $index: " . $stmtExpediente->error;
-                continue;
+            // Asignar el valor para tipo_caso
+            $tipo = 'COLISION';  // O el valor que se requiera
+
+            $stmtExpediente->bind_param(
+                "ssssssiis",  // Tipos de datos para cada columna
+                $fechaIngreso,
+                $siniestro,
+                $poliza,
+                $nombreAsegurado,
+                $tipo,
+                $cobertura,
+                $fkAsegurado,
+                $idUsuario,
+                $tipoPersona
+            );
+
+            // Ejecutar la consulta
+            if ($stmtExpediente->execute()) {
+                // Obtener el ID del expediente insertado
+                $fkExpediente = $conexion->insert_id;
+
+                // Mostrar el ID del expediente insertado
+                echo "Expediente insertado con éxito. ID del expediente: " . $fkExpediente;
+            } else {
+                // Manejar el error si la inserción falla
+                echo "Error al insertar expediente: " . $stmtExpediente->error;
             }
 
-            $fkExpediente = $conexion->insert_id;
 
-            // Insertar en la tabla Cedula
+            // Preparamos la consulta para insertar en la tabla Cedula
             $stmtCedula = $conexion->prepare(
                 "INSERT INTO Cedula (
                 siniestro, poliza, marca, tipo, modelo, serie, fecha_siniestro, estacion, estatus, subestatus,
                 porc_doc, porc_total, estado, fecha_subida, no_reporte, fecha_asignacion, asegurado, cobertura,
-                tel1, celular, email, datos_audatex, nom_estado, fk_asegurado, fk_vehiculo, fk_expediente, fk_direccion, fk_usuario,
+                tel1, celular, email,datos_audatex, nom_estado, fk_asegurado, fk_vehiculo, fk_expediente, fk_direccion,fk_usuario,
                 color, folio, veh_estatus, hora_subida
-            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
-            );
+            ) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+                    );
 
+            // Inicializamos las variables (esto es solo un ejemplo, los valores pueden venir de un formulario o base de datos)
             $estacion = 'NUEVO';
             $subestatus = 'NUEVO';
             $estatus_ced = 'ABIERTO';
@@ -187,13 +255,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $fkDireccion = 10;
             $porcDoc = 0;
             $porcTotal = 0;
-            $fecha_siniestro = '0000-00-00';
-            $fecha_subida = date('Y-m-d');
-            $fecha_asignacion = date('Y-m-d');
-            $hora_subida = date('H:i:s');
+            $fecha_siniestro = '0000-00-00';  // Ejemplo de valor por defecto
+            // Obtener la fecha actual en formato YYYY-MM-DD
+            $fecha_subida = date('Y-m-d');  // Fecha actual
+            $fecha_asignacion = date('Y-m-d');  // Fecha actual
 
+            // Si necesitas la fecha y hora actuales
+            $hora_subida = date('H:i:s');  // Hora actual (sin la fecha)
+
+            // Procedemos a vincular los parámetros de la consulta con las variables
             $stmtCedula->bind_param(
-                "ssssssssssiissssssiisssiiiiissss",
+                "ssssssssssiissssssiisssiiiiissss",  // Tipos de datos correctos para 36 columnas
                 $siniestro,
                 $poliza,
                 $marca,
@@ -226,26 +298,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $folio,
                 $estatus,
                 $horaIngreso
+
             );
 
-            if (!$stmtCedula->execute()) {
-                $errores[] = "Error al insertar en Cedula en la fila $index: " . $stmtCedula->error;
-                continue;
+            // Ejecutar la consulta
+            if ($stmtCedula->execute()) {
+                // Si la inserción fue exitosa, registrar el éxito en el archivo de logs
+                error_log("Inserción exitosa en la tabla Cedula.", 3, "debug_log.txt");
+                echo "Registro insertado en la tabla Cedula con éxito.";
+            } else {
+                // Si hubo un error, registrar el error en el archivo de logs
+                error_log("Error al insertar en la tabla Cedula: " . $stmtCedula->error . " - fk_usuario: $idUsuario", 3, "debug_log.txt");
+                throw new Exception("Error al insertar en Cedula. Ver log para más detalles.");
             }
 
-            $fkCedula = $conexion->insert_id;
-
-            // Insertar en la tabla Seguimiento
-            $stmtSeguimiento = $conexion->prepare(
-                "INSERT INTO Seguimiento (fecha_seguimiento, hr_seguimiento, estatus_seguimiento, subestatus, estacion, usuario, fk_cedula) 
-                VALUES (?,?,?,?,?,?,?)"
-            );
-            $stmtSeguimiento->bind_param("ssssssi", $fecha_asignacion, $hora_subida, $estacion, $estatus_ced, $subestatus, $idUsuario, $fkCedula);
-
-            if (!$stmtSeguimiento->execute()) {
-                $errores[] = "Error al insertar en Seguimiento en la fila $index: " . $stmtSeguimiento->error;
-                continue;
-            }
         }
 
         $conexion->commit();
@@ -261,3 +327,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo json_encode(['error' => 'Método no permitido.']);
 }
+

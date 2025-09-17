@@ -2,7 +2,6 @@
 
 namespace PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-use Composer\Pcre\Preg;
 use PhpOffice\PhpSpreadsheet\Calculation\Information\ErrorValue;
 use PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 use PhpOffice\PhpSpreadsheet\Cell\Cell;
@@ -1536,17 +1535,18 @@ class Worksheet extends WriterPart
 
     private function parseRef(string $coordinate, string $ref): string
     {
-        if (!Preg::isMatch('/^([A-Z]{1,3})([0-9]{1,7})(:([A-Z]{1,3})([0-9]{1,7}))?$/', $ref, $matches)) {
+        if (preg_match('/^([A-Z]{1,3})([0-9]{1,7})(:([A-Z]{1,3})([0-9]{1,7}))?$/', $ref, $matches) !== 1) {
             return $ref;
         }
         if (!isset($matches[3])) { // single cell, not range
             return $coordinate;
         }
         $minRow = (int) $matches[2];
-        $maxRow = (int) $matches[5];
+        // https://github.com/phpstan/phpstan/issues/11602
+        $maxRow = (int) $matches[5]; // @phpstan-ignore-line
         $rows = $maxRow - $minRow + 1;
         $minCol = Coordinate::columnIndexFromString($matches[1]);
-        $maxCol = Coordinate::columnIndexFromString($matches[4]);
+        $maxCol = Coordinate::columnIndexFromString($matches[4]); // @phpstan-ignore-line
         $cols = $maxCol - $minCol + 1;
         $firstCellArray = Coordinate::indexesFromString($coordinate);
         $lastRow = $firstCellArray[1] + $rows - 1;

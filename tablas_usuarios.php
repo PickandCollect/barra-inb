@@ -1,47 +1,9 @@
-<?php
-// Verifica si la sesión ya está activa
-if (session_status() == PHP_SESSION_NONE) {
-    session_start(); // Inicia la sesión si no está activa
-}
-
-if (!isset($_SESSION['rol'])) {
-    // Si no hay rol en la sesión, redirige al login
-    header('Location: login.php');
-    exit();
-}
-
-$rol = $_SESSION['rol']; // Recupera el rol del usuario
-?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
     <link rel="stylesheet" href="css/tablas_usuarios.css">
     <link rel="stylesheet" href="css/nuevo_usuario.css">
-
-    <!-- Custom fonts for this template -->
-    <!-- Font Awesome 6 (CDN): Proporciona iconos escalables y vectoriales. -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Font Awesome (local): Versión local de Font Awesome para iconos. -->
-    <link href="main/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Google Fonts: Carga la fuente "Nunito" con diferentes grosores y estilos. -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <!-- sb-admin-2.min.css: Estilos personalizados para la plantilla SB Admin 2. -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- dataTables.bootstrap4.min.css: Estilos para DataTables con Bootstrap 4. -->
-    <link href="main/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-    <!-- Date Range Picker CSS: Estilos para el selector de rango de fechas. -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 
 <body>
@@ -119,6 +81,8 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
     </div>
 
+    <!-- FontAwesome para los iconos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <!-- Modal -->
     <div class="modal fade" id="nuevaCedulaModal" tabindex="-1" role="dialog" aria-labelledby="nuevaCedulaModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -164,18 +128,18 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                 <label for="nombre_us">Nombre:</label>
                                                 <input type="text" id="nombre_us" name="nombre_us" class="custom-form-control form-control" placeholder="Nombre completo">
                                             </div>
-                                            <!--<div class="custom-form-group form-group">
-                                <label for="curp">CURP:</label>
-                                <input type="text" id="curp" name="curp" class="custom-form-control form-control" placeholder="CURP">
-                            </div>
-                            <div class="custom-form-group form-group">
-                                <label for="rfc">RFC:</label>
-                                <input type="text" id="rfc" name="rfc" class="custom-form-control form-control" placeholder="RFC">
-                            </div>
-                             <div class="custom-form-group form-group">
-                                <label for="telefono1">Teléfono fijo:</label>
-                                <input type="text" id="telefono1" name="telefono1" class="custom-form-control form-control" placeholder="Teléfono fijo">
-                            </div> -->
+                                            <div class="custom-form-group form-group">
+                                                <label for="curp">CURP:</label>
+                                                <input type="text" id="curp" name="curp" class="custom-form-control form-control" placeholder="CURP">
+                                            </div>
+                                            <div class="custom-form-group form-group">
+                                                <label for="rfc">RFC:</label>
+                                                <input type="text" id="rfc" name="rfc" class="custom-form-control form-control" placeholder="RFC">
+                                            </div>
+                                            <div class="custom-form-group form-group">
+                                                <label for="telefono1">Teléfono fijo:</label>
+                                                <input type="text" id="telefono1" name="telefono1" class="custom-form-control form-control" placeholder="Teléfono fijo">
+                                            </div>
 
                                             <!-- Segunda Columna -->
                                             <div class="custom-form-group form-group">
@@ -186,21 +150,25 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                 <label for="email">Email:</label>
                                                 <input type="email" id="email" name="email" class="custom-form-control form-control" placeholder="Email">
                                             </div>
-
-                                            <!--<div class="custom-form-group form-group">
-                                <label for="passemail">PassEmail:</label>
-                                <input type="password" id="passemail" name="passemail" class="custom-form-control form-control" placeholder="PassEmail">
-                            </div>-->
+                                            <div class="custom-form-group form-group">
+                                                <label for="passemail">PassEmail:</label>
+                                                <input type="password" id="passemail" name="passemail" class="custom-form-control form-control" placeholder="PassEmail">
+                                            </div>
+                                            <div class="custom-form-group form-group">
+                                                <label for="extension">Extensión:</label>
+                                                <input type="text" id="extension" name="extension" class="custom-form-control form-control" placeholder="Extensión">
+                                            </div>
 
                                             <!-- Tercera Columna -->
                                             <div class="custom-form-group form-group">
                                                 <label for="jefe">Jefe directo:</label>
                                                 <select id="jefe" name="jefe" class="custom-form-control form-control">
                                                     <option value="" selected>Selecciona</option>
-
+                                                    <option value="Persona Física">Persona Física</option>
+                                                    <option value="Persona Física con Actividad Empresarial">Persona Física con Actividad Empresarial</option>
+                                                    <option value="Persona Moral">Persona Moral</option>
                                                 </select>
                                             </div>
-
                                             <div class="custom-form-group form-group">
                                                 <label for="usuario">Usuario:</label>
                                                 <input type="text" id="usuario" name="usuario" class="custom-form-control form-control" placeholder="Usuario">
@@ -216,16 +184,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                                                     <option value="ROOT">ROOT</option>
                                                     <option value="SUPERVISOR">SUPERVISOR</option>
                                                     <option value="OPERADOR">OPERADOR</option>
-
-                                                </select>
-                                            </div>
-                                            <div class="custom-form-group form-group">
-                                                <label for="tipo">Tipo:</label>
-                                                <select id="tipo" name="tipo" class="custom-form-control form-control">
-                                                    <option value="" selected>Selecciona</option>
-                                                    <option value="INTEGRACION">INTEGRACION</option>
-                                                    <option value="SUPERVISOR">SUPERVISOR</option>
-                                                    <option value="CALL CENTER">CALL CENTER</option>
+                                                    <option value="CONSULTA">CONSULTA</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -255,32 +214,113 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
             </div>
         </div>
     </div>
+
     <!-- Scripts -->
-    <!-- jQuery (CDN): Biblioteca de JavaScript para manipulación del DOM y eventos. -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Popper.js (CDN): Biblioteca para manejar tooltips, popovers, y dropdowns en Bootstrap. -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-
-    <!-- Bootstrap JS (CDN): Funcionalidades de Bootstrap como modales, dropdowns, etc. -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- accionesUsuario.js: Script personalizado para manejar acciones relacionadas con los usuarios. -->
-    <script src="js/accionesUsuario.js"></script>
+    <script>
+        $(document).ready(function() {
+            const modalUrl = "nuevo_usuario.php"; // URL para cargar contenido dinámico
 
-    <!-- updateUsuario.js: Script personalizado para actualizar la información de los usuarios. -->
-    <script src="js/updateUsuario.js"></script>
+            // Evento para abrir modal con datos dinámicos
+            $('.custom-table-style-edit-btn').on('click', function() {
+                const usuario = $(this).data('usuario'); // Obtiene el nombre de usuario
 
-    <!-- Supervisor -->
-    <!-- getSupervisor.js: Script personalizado para manejar la lógica relacionada con los supervisores. -->
-    <script src="js/getSupervisor.js"></script>
+                console.log('Usuario enviado:', usuario); // Verifica el nombre de usuario en la consola
 
-    <!-- Top bar pa que no se rompa -->
-    <!-- Bootstrap Bundle: Incluye Popper.js y Bootstrap JS en un solo archivo. -->
-    <script src="main/bootstrap/js/bootstrap.bundle.min.js"></script>
+                $.ajax({
+                    url: 'proc/obtener_usuario.php', // Cambiado a 'obtener_usuario.php' para obtener los datos
+                    type: "GET",
+                    data: {
+                        usuario: usuario // Envía el nombre de usuario como parámetro
+                    },
+                    success: function(response) {
+                        console.log('Respuesta del servidor:', response); // Verifica la respuesta en la consola
 
-    
-    <!-- Inicialización de Date Range Picker -->
+                        if (response.success) {
+                            const usuario = response.data[0]; // Suponiendo que solo hay un usuario con el id
+                            console.log('Datos del usuario:', usuario);
+
+                            // Rellenamos el modal con los datos del usuario
+                            $('#nombre_us').val(usuario.nombre || '');
+                            $('#curp').val(usuario.curp || '');
+                            $('#rfc').val(usuario.rfc || '');
+                            $('#telefono1').val(usuario.telefono1 || '');
+                            $('#celular').val(usuario.celular || '');
+                            $('#email').val(usuario.email || '');
+                            $('#passemail').val(usuario.passemail || '');
+                            $('#extension').val(usuario.extension || '');
+                            $('#jefe').val(usuario.jefe_directo || '');
+                            $('#usuario').val(usuario.usuario || '');
+                            $('#contrasena').val(usuario.contrasena || '');
+                            $('#perfil').val(usuario.perfil || '');
+
+                            // Si hay imagen de perfil, mostrarla
+                            if (usuario.imagen_perfil) {
+                                $('#profilePreview').attr('src', usuario.imagen_perfil);
+                            } else {
+                                $('#profilePreview').attr('src', 'https://via.placeholder.com/150');
+                            }
+
+                            // Muestra el modal_p
+                            $('#modal_p').modal('show');
+                        } else {
+                            alert('Error: ' + response.error);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error al cargar los datos del usuario: ', error);
+                        alert('No se pudo cargar el usuario.');
+                    }
+                });
+            });
+        });
+
+
+
+        $('.delete-btn').on('click', function() {
+            const nombreUsuario = $(this).data('usuario'); // Obtener el nombre de usuario desde el atributo data-usuario
+            console.log("Nombre de usuario:", nombreUsuario); // Para verificar que se está capturando correctamente
+
+            if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+                $.ajax({
+                    url: 'proc/borra_usuario.php', // El archivo PHP que maneja la eliminación
+                    type: 'POST',
+                    data: {
+                        nombre_usuario: nombreUsuario // Enviar el nombre del usuario al servidor
+                    },
+                    success: function(response) {
+                        console.log('Respuesta de eliminación:', response); // Ver la respuesta del servidor
+                        try {
+                            const data = JSON.parse(response);
+                            if (data.status === 'success') {
+                                alert('Usuario eliminado exitosamente');
+                                // Eliminar la fila de la tabla
+                                $(`button[data-usuario="${nombreUsuario}"]`).closest('tr').remove();
+                            } else {
+                                alert('Error al eliminar el usuario: ' + data.message);
+                            }
+                        } catch (e) {
+                            console.error('Error al procesar la respuesta JSON:', e);
+                            alert('Error en la respuesta del servidor.');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error en la solicitud de eliminación:', error);
+                        alert('Error al eliminar el usuario: ' + xhr.responseText);
+                    }
+                });
+            }
+        });
+        // Limpiar el contenido del modal al cerrarlo
+        $('#nuevaCedulaModal').on('hidden.bs.modal', function() {
+            $('#modalContent').empty();
+        });
+    </script>
+    <!-- JavaScript para mostrar el nombre del archivo -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <script>
         const fileInput = document.getElementById('fileInput');
         const profilePreview = document.getElementById('profilePreview');
@@ -303,6 +343,84 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
                 fileLabel.textContent = "Selecciona imagen de perfil *";
                 profilePreview.src = "https://via.placeholder.com/150";
             }
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Manejar la selección de archivo para mostrar la vista previa
+            $('#fileInput').on('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    // Crear una URL de la imagen para la vista previa
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#profilePreview').attr('src', e.target.result); // Actualizar la imagen de vista previa
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Manejar el evento de click para insertar o actualizar el usuario
+            $('#btnInsertarUsuario').on('click', function(e) {
+                e.preventDefault();
+
+                // Crear FormData
+                const formData = new FormData();
+                formData.append('usuario', $('#usuario').val());
+                formData.append('nombre_us', $('#nombre_us').val());
+                formData.append('curp', $('#curp').val());
+                formData.append('rfc', $('#rfc').val());
+                formData.append('telefono1', $('#telefono1').val());
+                formData.append('celular', $('#celular').val());
+                formData.append('email', $('#email').val());
+                formData.append('passemail', $('#passemail').val());
+                formData.append('extension', $('#extension').val());
+                formData.append('jefe', $('#jefe').val());
+                formData.append('perfil', $('#perfil').val());
+
+                // Agregar la imagen seleccionada al FormData
+                const profileImageInput = $('#fileInput')[0];
+                if (profileImageInput.files[0]) {
+                    formData.append('profileImage', profileImageInput.files[0]);
+                }
+
+                // Realizar la solicitud AJAX
+                $.ajax({
+                    url: 'proc/update_usuario.php', // Cambia esta URL por la que corresponda
+                    type: 'POST',
+                    data: formData,
+                    processData: false, // Importante para enviar FormData con archivos
+                    contentType: false, // Importante para enviar FormData con archivos
+                    success: function(response) {
+                        // Asegúrate de que la respuesta sea un objeto JSON
+                        console.log('Respuesta recibida del servidor:', response);
+
+                        try {
+                            // Intentar parsear la respuesta (en caso de que no sea JSON)
+                            response = JSON.parse(response);
+                        } catch (e) {
+                            console.error('Error al parsear la respuesta:', e);
+                            alert('Hubo un error en la respuesta del servidor.');
+                            return;
+                        }
+
+                        // Comprobar si la respuesta tiene los campos success y error
+                        if (response.success !== undefined) {
+                            if (response.success) {
+                                alert('Usuario actualizado correctamente');
+                            } else {
+                                alert('Error al actualizar el usuario: ' + (response.error || 'Desconocido'));
+                            }
+                        } else {
+                            alert('La respuesta del servidor es incorrecta');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error en la solicitud:', error);
+                        alert('Hubo un error al procesar la solicitud.');
+                    }
+                });
+            });
         });
     </script>
 

@@ -1,157 +1,37 @@
-/* Toast Style */
-.toast {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-width: 250px;
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 15px;
-  line-height: 1.4; /* Ajuste de altura del texto */
-  position: relative;
-  animation: fadeInOut 10s ease-out forwards;
-}
+  /* Estilos personalizados */
+        .custom-topbar {
+            background-color: #e0e0e0;
+        }
 
-/* Fade In & Out Animation */
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.9);
-  }
-  10% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  90% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.9);
-  }
-}
+        /* Estilo del botón toggle del sidebar en el topbar */
+        .custom-sidebar-toggle {
+            background-color: #533392 !important;
+            color: white !important;
+            border: none;
+        }
 
-/*#################################################/*
-/*STILOS DEL MODAL*/
+        /* Efecto hover para el botón toggle del sidebar */
+        .custom-sidebar-toggle:focus,
+        .custom-sidebar-toggle:hover {
+            background-color: #2D2A7B !important;
+            color: white !important;
+        }
 
-/* Estilo general del modal */
-.custom-modal {
-  position: fixed;
-  /* Posicionamiento fijo para centrar el modal */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* Centra el modal en la pantalla */
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  /* Bordes redondeados */
-  width: 90%;
-  /* Ancho relativo */
-  max-width: 1300px;
-  /* Ancho máximo para evitar que sea demasiado grande */
-  max-height: 90vh;
-  /* Altura máxima relativa a la ventana */
-  overflow-y: auto;
-  /* Permite scroll si el contenido es muy largo */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  /* Sombra para mejor visibilidad */
-  z-index: 1000;
-  /* Asegura que el modal esté por encima de otros elementos */
-}
+        /* Estilo para el botón de búsqueda */
+        .custom-search-btn {
+            background-color: #533392 !important;
+            color: white !important;
+            border: none;
+        }
 
-/* Estilo del encabezado del modal */
-.custom-modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-  /* Espacio adicional debajo del encabezado */
-}
+        /* Asegurar el icono blanco en el botón de búsqueda */
+        .custom-search-btn i {
+            color: white !important;
+        }
 
-/* Estilo del botón de cerrar */
-.custom-modal-header .close {
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-}
-
-.custom-modal-header .close:hover {
-  color: #f00;
-  /* Cambia el color al pasar el cursor */
-}
-
-/* Estilo del cuerpo del modal */
-.custom-modal-body {
-  padding: 20px 0;
-  overflow: hidden;
-  /* Evita que el contenido se desborde */
-}
-
-/* Ajustes para el contenido dentro del cuerpo */
-.custom-modal-body > * {
-  max-width: 100%;
-  /* Asegura que el contenido no exceda el ancho del modal */
-  word-wrap: break-word;
-  /* Rompe palabras largas para evitar desbordamiento */
-}
-
-/* Efecto de transición */
-.modal.show {
-  display: block;
-  transition: opacity 0.3s ease;
-}
-
-/* Opcional: para manejar el fondo semitransparente */
-.modal-backdrop.show {
-  opacity: 0.5;
-  background-color: rgba(0, 0, 0, 0.5);
-  /* Fondo oscuro semitransparente */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 999;
-  /* Asegura que el fondo esté detrás del modal */
-}
-
-/*############################################*/
-/* Estilo para el botón Guardar */
-#btnguardarM, #btnguardarMBBVA, #btnguardarMHDI{
-  opacity: none;
-  padding: 15px 27px;
-  border-radius: 8px;
-  background-color: rgb(0, 89, 255); /* Verde */
-  color: rgb(255, 255, 255);
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 5);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-#btnguardarM, #btnguardarMBBVA, #btnguardarMHDI:hover {
-  background-color: rgb(29, 93, 165); /* Verde más oscuro */
-  transform: translateY(-2px);
-}
-
-#btnguardarM, #btnguardarMBBVA, #btnguardarMHDI:active {
-  background-color: #3f328b; /* Verde más oscuro al hacer clic */
-  transform: translateY(2px);
-}
-
-
-
-/*################################################*/
-
+        /* Hover para el botón de búsqueda */
+        .custom-search-btn:hover,
+        .custom-search-btn:focus {
+            background-color: #2D2A7B !important;
+            color: white !important;
+        }

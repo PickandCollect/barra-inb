@@ -4,16 +4,13 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start(); // Inicia la sesión si no está activa
 }
 
-// Redirigir al login si no hay rol en la sesión
 if (!isset($_SESSION['rol'])) {
-    echo 'No se encontró un rol en la sesión. Redirigiendo al login...';
+    // Si no hay rol en la sesión, redirige al login
     header('Location: login.php');
     exit();
 }
 
-// Recuperar el rol de la sesión
-$rol = $_SESSION['rol'];
-$nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usuario en la sesión
+$rol = $_SESSION['rol']; // Recupera el rol del usuario
 ?>
 
 <!DOCTYPE html>
@@ -47,27 +44,18 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
                 <?php include 'topbar.php'; ?>
 
                 <div class="container-fluid">
-                    <?php
-                    // Para Sabina y Karen
-                    if ($nombreUsuario == 'Sabina Velásquez' || $nombreUsuario == 'Karen Correa Alcantara' || $nombreUsuario == 'Verónica Ávila García') {
-                        include 'calidad_parciales.php';
-                    }
-                    // Para Alberto Reyes
-                    elseif ($nombreUsuario == 'Alberto Reyes') {
-                        include 'moduloCalidadBBVA';
-                    }
-                    ?>
-                </div>
+                    <?php include 'calidad_parciales.php'; ?>
 
+                </div>
                 <?php include 'footer.php'; ?>
             </div>
+
 
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fas fa-angle-up"></i>
             </a>
         </div>
-
         <script src="js/firma.js"></script>
         <script src="js/firma2.js"></script>
         <!-- Bootstrap core JavaScript (CDN)-->

@@ -1,9 +1,8 @@
 <?php
-session_start();
+session_start(); // Iniciar sesión
 include 'conexion.php'; // Archivo de conexión a la base de datos
 
-// Configurar la respuesta como JSON
-header('Content-Type: application/json');
+header('Content-Type: application/json'); // Configurar la respuesta como JSON
 
 // Inicializar la respuesta
 $response = [
@@ -12,8 +11,6 @@ $response = [
     'rol' => null,
     'no_siniestro' => null,
     'id_usuario' => null,
-    'perfil' => null,
-    'nombre_usuario' => null,
 ];
 
 // Verificar si el método es POST
@@ -39,7 +36,7 @@ if ((!$usuario || !$contrasena) && (!$no_siniestro || !$passw_ext)) {
 try {
     // Verificar si el usuario y la contraseña existen en la tabla Usuario
     if ($usuario && $contrasena) {
-        $sql = "SELECT usuario, nombre, id_usuario, passw, perfil, tipo FROM Usuario WHERE usuario = ? LIMIT 1";
+        $sql = "SELECT usuario, nombre, id_usuario, passw FROM Usuario WHERE usuario = ? LIMIT 1";
         $stmt = $conexion->prepare($sql);
         $stmt->bind_param('s', $usuario);
         $stmt->execute();
@@ -48,22 +45,16 @@ try {
         if ($resultado->num_rows === 1) {
             $usuarioData = $resultado->fetch_assoc();
 
-            // Registrar en log los datos obtenidos
-            error_log("Datos de usuario obtenidos: " . print_r($usuarioData, true));
-
             if ($contrasena === $usuarioData['passw']) {
                 $_SESSION['usuario'] = $usuarioData['usuario'];
                 $_SESSION['nombre_usuario'] = $usuarioData['nombre']; // Guardar el nombre del usuario
-                $_SESSION['rol'] = $usuarioData['tipo'];
+                $_SESSION['rol'] = 'administrador';
                 $_SESSION['id_usuario'] = $usuarioData['id_usuario'];
-                $_SESSION['perfil'] = $usuarioData['perfil'];
 
                 $response['success'] = true;
                 $response['message'] = 'Inicio de sesión exitoso.';
-                $response['rol'] = $usuarioData['tipo'];
+                $response['rol'] = 'administrador';
                 $response['id_usuario'] = $usuarioData['id_usuario'];
-                $response['perfil'] = $usuarioData['perfil'];
-                $response['nombre_usuario'] = $usuarioData['nombre']; // Asegurar que el nombre se devuelve en la respuesta
             } else {
                 $response['message'] = 'Contraseña incorrecta.';
             }
@@ -92,16 +83,13 @@ try {
                         // Guardar los datos en la sesión
                         $_SESSION['no_siniestro'] = $expedienteData['no_siniestro'];
                         $_SESSION['fk_asegurado'] = $expedienteData['fk_asegurado'];
-                        $_SESSION['nombre_usuario'] = $aseguradoData['nom_asegurado']; // Guardar el nombre del asegurado
+                        $_SESSION['nom_asegurado'] = $aseguradoData['nom_asegurado'];
                         $_SESSION['rol'] = 'asegurado';
-                        $_SESSION['id_asegurado'] = $aseguradoData['id_asegurado'];
 
                         $response['success'] = true;
                         $response['message'] = 'Acceso asegurado exitoso.';
                         $response['rol'] = 'asegurado';
                         $response['no_siniestro'] = $expedienteData['no_siniestro'];
-                        $response['nombre_usuario'] = $aseguradoData['nom_asegurado']; // Asegurar que se devuelve
-                        $response['fk_asegurado'] = $expedienteData['fk_asegurado'];
                     } else {
                         $response['message'] = 'No se encontró el asegurado asociado.';
                     }
@@ -123,6 +111,4 @@ try {
 }
 
 $conexion->close(); // Cerrar conexión
-
-// Enviar la respuesta como JSON
-echo json_encode($response);
+echo json_encode($response); // Responder con JSON
