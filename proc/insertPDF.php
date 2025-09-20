@@ -4,8 +4,6 @@ require '../vendor/autoload.php';
 use Aws\S3\S3Client;
 use Aws\Exception\AwsException;
 use Aws\S3\Exception\S3Exception;
-use Kreait\Firebase\Factory;
-
 
 header('Content-Type: application/json');
 
@@ -60,13 +58,11 @@ if (!in_array($mimeType, $tiposMimeValidos)) {
     exit();
 }
 
-// Obtener la fecha actual en formato YYYYMMDD
+// Obtener la fecha actual en formato YYYY-MM-DD
 $fechaActual = date('Y-m-d');
 
 // Crear el nombre de la carpeta en S3
 $carpetaS3 = $operador . '_' . $campana . '/';
-
-
 
 // Función para verificar si un archivo existe en S3
 function archivoExisteEnS3($s3, $bucket, $rutaCompleta) {
@@ -142,23 +138,9 @@ try {
         $response['message'] = 'Evaluación PDF subida con sufijo numérico (' . ($contador - 1) . ')';
     }
 
+    // Retornar JSON limpio al frontend
     echo json_encode($response);
 
-    // Conectar a Firebase
-    $firebase = (new \Kreait\Firebase\Factory)
-        ->withServiceAccount('../config/prueba-pickcollect-firebase-adminsdk-fbsvc-c1436f4eb7.json') // Ajusta la ruta si es necesario
-        ->withDatabaseUri('https://prueba-pickcollect-default-rtdb.firebaseio.com') // Ajusta si tu URI es diferente
-        ->createDatabase();
-
-    // Subir los metadatos del archivo a Firebase Realtime Database
-    $firebase->getReference('PDF_Parciales')->push([
-        'operador' => $operador,
-        'campana' => $campana,
-        'fileUrl' => $result['ObjectURL'],
-        'filePath' => $s3FilePath,
-        'fileName' => $nombreArchivo,
-        'fecha' => $fechaActual
-    ]);
 } catch (AwsException $e) {
     echo json_encode([
         'success' => false,

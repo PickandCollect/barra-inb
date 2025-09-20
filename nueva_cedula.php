@@ -30,10 +30,13 @@
                                 <label for="fecha_subida">Fecha Subida:</label>
                                 <input type="date" id="fecha_subida" name="fecha_subida" class="custom-form-control form-control">
                             </div>
+
+                            <!-- No aparece en HDI
                             <div class="custom-form-group form-group">
                                 <label for="hora_subida">Hora Subida:</label>
                                 <input type="time" id="hora_subida" name="hora_subida" class="custom-form-control form-control">
                             </div>
+                            -->
                             <div class="custom-form-group form-group">
                                 <label for="no_reporte">No Siniestro:</label>
                                 <input type="text" id="no_reporte" name="no_reporte" class="custom-form-control form-control" placeholder="Número de reporte">
@@ -42,19 +45,43 @@
                                 <label for="poliza">Póliza:</label>
                                 <input type="text" id="poliza" name="poliza" class="custom-form-control form-control" placeholder="Número de póliza">
                             </div>
+
+                            <!-- No aparece en HDI
                             <div class="custom-form-group form-group">
                                 <label for="folio">Folio:</label>
                                 <input type="text" id="folio" name="folio" class="custom-form-control form-control" placeholder="Número de póliza">
                             </div>
+                            
+                            
                             <div class="custom-form-group form-group">
                                 <label for="fecha_asignacion">Fecha Asignación:</label>
                                 <input type="date" id="fecha_asignacion" name="fecha_asignacion" class="custom-form-control form-control">
                             </div>
 
+                            -->
+
                             <div class="custom-form-group form-group">
-                                <label for="asegurado">Nombre:</label>
+                                <label for="asegurado">Asegurado:</label>
                                 <input type="text" id="asegurado" name="asegurado" class="custom-form-control form-control" placeholder="Nombre completo">
                             </div>
+                                                      
+                            <div class="custom-form-group form-group">
+                                <label for="situacionFis">Situación Fiscal:</label>
+                                <select id="situacionFis" name="situacionFis" class="custom-form-control form-control">
+                                    <option value="">Selecciona</option>
+                                    <option value="PERSONA FISICA">PERSONA FISICA</option>
+                                    <option value="PERSONA FISICA CON ACTIVIDAD EMPRESARIAL">PERSONA FISICA CON ACTIVIDAD EMPRESARIAL</option>
+                                    <option value="PERSONA MORAL">PERSONA MORAL</option>
+                                    <option value="REGIMEN INCORPORACION FISCAL">REGIMEN INCORPORACION FISCAL</option>
+                                    <option value="REGIMEN SIMPLIFICADO DE CONFIANZA">REGIMEN SIMPLIFICADO DE CONFIANZA</option>
+                                </select>
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="isr">ISR:</label>
+                                <input type="text" id="isr" name="isr" class="custom-form-control form-control" placeholder="ISR">
+                            </div>
+
                             <div class="custom-form-group form-group">
                                 <label for="afectado">Afectado:</label>
                                 <select id="afectado" name="afectado" class="custom-form-control form-control">
@@ -63,21 +90,38 @@
                                     <option value="TERCERO">TERCERO</option>
                                 </select>
                             </div>
+
+                            <!--Cambio de nombre por homologación a HDI-->
                             <div class="custom-form-group form-group">
-                                <label for="celular">Celular:</label>
-                                <input type="text" id="celular" name="celular" class="custom-form-control form-control" placeholder="Celular" maxlength="10">
+                                <label for="telefonoPrincipal">Telefono Principal:</label>
+                                <input type="text" id="telefonoPrincipal" name="telefonoPrincipal" class="custom-form-control form-control" placeholder="Telefono Principal" maxlength="10">
                             </div>
+                            <!--Campos agregados por homologación a HDI-->
+                            <div class="custom-form-group form-group">
+                                <label for="telefonoSecundario">Telefono Secundario:</label>
+                                <input type="text" id="telefonoSecundario" name="telefonoSecundario" class="custom-form-control form-control" placeholder="Telefono Secundario" maxlength="10">
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="telefonoAdicional">Telefono Adicional:</label>
+                                <input type="text" id="telefonoAdicional" name="telefonoAdicional" class="custom-form-control form-control" placeholder="Telefono Adicional" maxlength="10">
+                            </div>
+
+
                             <div class="custom-form-group form-group">
                                 <label for="email">Email:</label>
                                 <input type="email" id="email" name="email" class="custom-form-control form-control" placeholder="Correo electrónico" required>
                             </div>
+
+                            <!--No aparece en HDI
                             <div class="custom-form-group form-group">
                                 <label for="cobertura">Cobertura:</label>
                                 <select id="cobertura" name="cobertura" class="custom-form-control form-control">
                                     <option value="">Selecciona</option>
                                     <option value="DM">DM</option>
                                 </select>
-                            </div>
+                            </div>-->
+
                             <!-- <div class="custom-form-group form-group">
                                 <label for="telefono1">Teléfono1:</label>
                                 <input type="text" id="telefono1" name="telefono1" class="custom-form-control form-control" placeholder="Teléfono principal" maxlength="10">
@@ -93,14 +137,35 @@
                                 <label for="marca">Marca:</label>
                                 <input type="text" id="marca" name="marca" class="custom-form-control form-control" placeholder="Marca del vehículo">
                             </div>
+                            <!--Campo agregado por homologación a HDI-->
+                            <div class="custom-form-group form-group">
+                                <label for="submarca">Submarca:</label>
+                                <input type="text" id="submarca" name="submarca" class="custom-form-control form-control" placeholder="Submarca del vehículo">
+                            </div>
+                            
                             <div class="custom-form-group form-group">
                                 <label for="tipo">Modelo:</label>
                                 <input type="text" id="tipo" name="tipo" class="custom-form-control form-control" placeholder="Tipo de vehículo">
                             </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="no_serie">No. Serie:</label>
+                                <input type="text" id="no_serie" name="no_serie" class="custom-form-control form-control" placeholder="Número de serie" maxlength="17">
+                            </div>
+
+                            <!--Campo agregado por homologación a HDI-->
+                            <div class="custom-form-group form-group">
+                                <label for="no_motor">No. Motor:</label>
+                                <input type="text" id="no_motor" name="no_motor" class="custom-form-control form-control" placeholder="Número de motor" maxlength="17">
+                            </div>
+
+                            <!--No aparece en HDI
                             <div class="custom-form-group form-group">
                                 <label for="ano">Año:</label>
                                 <input type="text" id="ano" name="ano" class="custom-form-control form-control" placeholder="Año de fabricación">
                             </div>
+                            -->
+
                             <div class="custom-form-group form-group">
                                 <label for="color">Color:</label>
                                 <input type="text" id="color" name="color" class="custom-form-control form-control" placeholder="Año de fabricación">
@@ -109,10 +174,8 @@
                                 <label for="placas">Placas:</label>
                                 <input type="text" id="placas" name="placas" class="custom-form-control form-control" placeholder="Placas" maxlength="7">
                             </div>
-                            <div class="custom-form-group form-group">
-                                <label for="no_serie">No. Serie:</label>
-                                <input type="text" id="no_serie" name="no_serie" class="custom-form-control form-control" placeholder="Número de serie" maxlength="17">
-                            </div>
+
+                            <!--No aparece en HDI
                             <div class="custom-form-group form-group">
                                 <label for="status">Status:</label>
                                 <input type="text" id="status" name="status" class="custom-form-control form-control" placeholder="Status" maxlength="17">
@@ -126,10 +189,10 @@
                                     <option value="PERSONA MORAL">PERSONA MORAL</option>
                                 </select>
                             </div>
-                            <!--<div class="custom-form-group form-group">
+                            <div class="custom-form-group form-group">
                                 <label for="taller">Taller:</label>
                                 <input type="text" id="taller" name="taller" class="custom-form-control form-control" placeholder="Taller asignado">
-                            </div>-->
+                            </div>
                             <div class="custom-form-group form-group">
                                 <label for="tipo_caso">Tipo de caso:</label>
                                 <select id="tipo_caso" name="tipo_caso" class="custom-form-control form-control">
@@ -152,6 +215,8 @@
                                 <label for="datosaudatex">Comentarios Extra:</label>
                                 <input type="text" id="datosaudatex" name="datosaudatex" class="custom-form-control form-control" placeholder="Comentarios Extra">
                             </div>
+
+                            -->
                         </div>
                     </div>
                 </div>
@@ -163,6 +228,10 @@
                     <div class="custom-form-section custom-card-border">
                         <h3>Datos de Dirección</h3>
                         <div class="custom-grid-container">
+                            <div class="custom-form-group form-group">
+                                <label for="ubicacion">Ubicación:</label>
+                                <input type="text" id="ubicacion" name="ubicacion" class="custom-form-control form-control" placeholder="Ubicación" maxlength="100">
+                            </div>
                             <div class="custom-form-group form-group">
                                 <label for="estado">Estado:</label>
                                 <select id="estado" name="estado" class="custom-form-control form-control">
@@ -194,6 +263,7 @@
                         </div>
                     </div>
                     <!-- Datos de Seguimiento -->
+                    <!-- No aparece en HDI 
                     <div class="custom-form-section custom-card-border">
                         <h3>Datos de Seguimiento</h3>
                         <div class="custom-grid-container">
@@ -210,16 +280,16 @@
                                 <label for="estatus_seg_ed">Estatus Seguimiento:</label>
                                 <select id="estatus_seg_ed" name="estatus_seg_ed" class="custom-form-control form-control">
                                     <option value="" selected>Selecciona</option>
-                                    <!-- <option value="ABIERTO">ABIERTO</option>
+                                     <option value="ABIERTO">ABIERTO</option>
                                                     <option value="TERMINADO">TERMINADO</option>
-                                                    <option value="NUEVO">NUEVO</option>-->
+                                                    <option value="NUEVO">NUEVO</option>
                                 </select>
                             </div>
                             <div class="custom-form-group form-group" style="margin-top: 24px;">
                                 <label for="subestatus_seg_ed">Subestatus:</label>
                                 <select id="subestatus_seg_ed" name="subestatus_seg_ed" class="custom-form-control form-control">
                                     <option value="" selected>Selecciona</option>
-                                    <!--    GENERALES
+                                      GENERALES
                                                         <option value="CANCELADO POR ASEGURADORA(DESVÍO INTERNO, INVESTIGACIÓN, PÓLIZA NO PAGADA)">CANCELADO POR ASEGURADORA(DESVÍO INTERNO, INVESTIGACIÓN, PÓLIZA NO PAGADA)</option>
                                                         <option value="CITA CANCELADA">CITA CANCELADA</option>
                                                         <option value="CITA CONCLUIDA">CITA CONCLUIDA</option>
@@ -240,9 +310,9 @@
                                                         <option value="SIN CONTACTO">SIN CONTACTO</option>
                                                         <option value="TERMINADO ENTREGA ORIGINALES EN OFICINA">TERMINADO ENTREGA ORIGINALES EN OFICINA</option>
                                                         <option value="TERMINADO POR PROCESO COMPLETO">TERMINADO POR PROCESO COMPLETO</option>
-                                                        <option vale="INTEGRACION">INTEGRACIÓN</option>-->
+                                                        <option vale="INTEGRACION">INTEGRACIÓN</option>
 
-                                    <!-- INBURSA -->
+                                    INBURSA 
                                     <option value="NUEVO">NUEVO</option>
                                     <option value="SIN CONTACTO">SIN CONTACTO</option>
                                     <option value="CON CONTACTO SIN DOCUMENTOS">CON CONTACTO SIN DOCUMENTOS</option>
@@ -269,14 +339,14 @@
                                 <label for="estacion_seg_ed">Estación:</label>
                                 <select id="estacion_seg_ed" name="estacion_sed_ed" class="custom-form-control form-control">
                                     <option value="" selected>Selecciona</option>
-                                    <!-- GENERALES
+                                     GENERALES
                                                         <option value="CANCELADO">CANCELADO</option>
                                                         <option value="EN SEGUIMIENTO">EN SEGUIMIENTO</option>
                                                         <option value="EN SEGUIMIENTO ASEGURADORA">EN SEGUIMIENTO ASEGURADORA</option>
                                                         <option value="EXPEDIENTE COMPLETO GESTIONADO">EXPEDIENTE COMPLETO GESTIONADO</option>
                                                         <option value="MARCACION">MARCACIÓN</option>
-                                                        <option value="NUEVO">NUEVO</option>-->
-                                    <!-- INBURSA -->
+                                                        <option value="NUEVO">NUEVO</option>
+                                    INBURSA 
                                     <option value="NUEVO">NUEVO</option>
                                     <option value="MARCACION">MARCACIÓN</option>
                                     <option value="EN SEGUIMIENTO AOL">EN SEGUIMIENTO AOL</option>
@@ -287,10 +357,13 @@
                             </div>
                         </div>
                     </div>
+                    -->
                     <!-- Datos Adicionales -->
                     <div class="custom-form-section custom-card-border">
                         <h3>Datos Adicionales</h3>
                         <div class="custom-grid-container">
+
+                        <!-- No aparece en HDI
                             <div class="custom-form-group form-group">
                                 <label for="proyecto">Proyecto:</label>
                                 <input type="text" id="proyecto" name="proyecto" class="custom-form-control form-control" value="SOLERA">
@@ -335,7 +408,78 @@
                                     <option value="DESCONOCIDO">DESCONOCIDO</option>
                                 </select>
                             </div>
-                        </div>
+                            -->
+
+                            <div class="custom-form-group form-group">
+                                <label for="resguardo">Resguardo AutoOnline:</label>
+                                <input type="text" id="resguardo" name="resguardo" class="custom-form-control form-control" value="Resguardo AutoOnline">
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="fecha_determinacion">Fecha Determinación:</label>
+                                <input type="date" id="fecha_determinacion" name="fecha_determinacion" class="custom-form-control form-control">
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="indemnizacion">Tipo de indemnización:</label>
+                                <select id="indemnizacion" name="indemnizacion" class="custom-form-control form-control">
+                                    <option value="" selected>Selecciona</option>
+                                    <option value="VALOR COMERCIAL">VALOR COMERCIAL</option>
+                                    <option value="VALOR COMERCIAL +10">VALOR COMERCIAL +10</option>
+                                    <option value="VALOR CONVENIDO">VALOR CONVENIDO</option>
+                                    <option value="VALOR FACTURA">VALOR FACTURA</option>
+                                </select>
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="porcentajeDanos">Porcentaje daños:</label>
+                                <input type="text" id="porcentajeDanos" name="porcentajeDanos" class="custom-form-control form-control" value="Porcentaje daños">
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="valorIndem">Valor indemnizado:</label>
+                                <input type="text" id="valorIndem" name="valorIndem" class="custom-form-control form-control" placeholder="Valor indemnizado">
+                            </div>    
+
+                            <div class="custom-form-group form-group">
+                                <label for="baseIndem">Base a indemnizar:</label>
+                                <input type="text" id="baseIndem" name="baseIndem" class="custom-form-control form-control" placeholder="Base a indemnizar">
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="deducible">Deducible:</label>
+                                <input type="text" id="deducible" name="deducible" class="custom-form-control form-control" placeholder="Deducible">
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="coaseguro">Coaseguro:</label>
+                                <input type="text" id="coaseguro" name="coaseguro" class="custom-form-control form-control" placeholder="Coaseguro">
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="primasPen">Primas pendientes:</label>
+                                <input type="text" id="primasPen" name="primasPen" class="custom-form-control form-control" placeholder="Primas pendientes">
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="montoRes">Monto restos:</label>
+                                <input type="text" id="montoRes" name="montoRes" class="custom-form-control form-control" placeholder="Monto restos">
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="tipoNegocio">Tipo negocio:</label>
+                                <input type="text" id="tipoNegocio" name="tipoNegocio" class="custom-form-control form-control" placeholder="Tipo negocio">
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="coberturasAdi">Coberturas adicionales:</label>
+                                <input type="text" id="coberturasAdi" name="coberturasAdi" class="custom-form-control form-control" placeholder="Coberturas adicionales">
+                            </div>
+
+                            <div class="custom-form-group form-group">
+                                <label for="montoCoberAdi">Monto coberturas adicionales:</label>
+                                <input type="text" id="montoCoberAdi" name="montoCoberAdi" class="custom-form-control form-control" placeholder="Monto coberturas adicionales">
+                            </div>
                     </div>
                 </div>
             </div>

@@ -301,7 +301,7 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
 
 
 
-        <script src="get_pdf.js"></script>
+        <script src="js/get_pdf.js"></script>
 
         <!-- Scripts en el orden CORRECTO -->
         <!-- 1. jQuery primero -->
@@ -346,7 +346,7 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
 
         <!-- Scripts locales -->
         <script src="js/firma.js"></script>
-        <script src="js/firma2.js"></script>
+        <!--<script src="js/firma2.js"></script>-->
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -814,13 +814,6 @@ $nombreUsuario = $_SESSION['nombre_usuario'] ?? ''; // Recupera el nombre de usu
             // Iniciar la carga de datos cuando el DOM esté listo
             document.addEventListener('DOMContentLoaded', cargarDatosOperador);
         </script>
-
-    
-
-
-
-
-
 
 
 </body>

@@ -260,236 +260,257 @@ $nombre = $_SESSION['nombre_usuario']; // Asegúrate de definir el nombre de usu
     <!-- Incluye SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- Script que genera el PDF DEL MODAL CEDULA_CALIDAD2.PHP -->
-    <script>
-        document.getElementById('btnguardarM')?.addEventListener('click', async function() {
-            // Validar la firma en el canvas
-            const canvas = document.getElementById('firmaAsesorCanvas');
-            const ctx = canvas.getContext('2d');
-            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-            let isCanvasEmpty = true;
+<!-- Script que genera el PDF DEL MODAL CEDULA_CALIDAD2.PHP -->
+<script>
+    document.getElementById('btnguardarM')?.addEventListener('click', async function() {
+        console.log('Click en btnguardarM');
 
-            for (let i = 0; i < imageData.length; i += 4) {
-                if (imageData[i + 3] !== 0) { // Si el pixel no es transparente
-                    isCanvasEmpty = false;
-                    break;
-                }
+        // Validar la firma en el canvas
+        const canvas = document.getElementById('firmaAsesorCanvas');
+        const ctx = canvas.getContext('2d');
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        let isCanvasEmpty = true;
+
+        for (let i = 0; i < imageData.length; i += 4) {
+            if (imageData[i + 3] !== 0) { // Si el pixel no es transparente
+                isCanvasEmpty = false;
+                break;
             }
+        }
 
-            if (isCanvasEmpty) {
-                // Mostrar alerta de SweetAlert2 para la firma
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Firma requerida 😅',
-                    confirmButtonText: 'Entendido',
-                });
-                return; // Detener la ejecución si el canvas está vacío
-            }
-
-            // Validar el contenido del div (compromiso)
-            const compromisoDiv = document.getElementById('compromiso_cedula');
-            const evaluacionDiv = document.getElementById('compromiso_cedula');
-
-            if (compromisoDiv.innerText.trim() === '') {
-                // Mostrar alerta de SweetAlert2 para el compromiso
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Compromiso requerido 😅',
-                    confirmButtonText: 'Entendido',
-                });
-                return; // Detener la ejecución si el compromiso está vacío
-            }
-
-            const modal = document.querySelector('.custom-modal-content');
-            const buttons = modal.querySelectorAll('button');
-
-            // Oculta los botones
-            hideElements(buttons);
-
-            // Mostrar alerta de carga
+        if (isCanvasEmpty) {
+            console.warn('Canvas vacío: no hay firma');
             Swal.fire({
-                title: 'Generando PDF...',
-                allowOutsideClick: false,
-                allowEscapeKey: false, // Evita que se cierre con la tecla Esc
-                didOpen: () => {
-                    Swal.showLoading();
-                }
+                icon: 'warning',
+                title: 'Firma requerida 😅',
+                confirmButtonText: 'Entendido',
             });
+            return;
+        }
 
+        // Validar el contenido del div (compromiso)
+        const compromisoDiv = document.getElementById('compromiso_cedula');
+        console.log('Compromiso div encontrado:', compromisoDiv);
 
-            try {
-                // Espera a que los elementos dinámicos se carguen
-                await waitForDynamicContent(modal);
+        if (compromisoDiv.innerText.trim() === '') {
+            console.warn('Compromiso vacío');
+            Swal.fire({
+                icon: 'warning',
+                title: 'Compromiso requerido 😅',
+                confirmButtonText: 'Entendido',
+            });
+            return;
+        }
 
-                // Convierte las imágenes a Base64
-                await convertImagesToBase64(modal);
+        const modal = document.querySelector('.custom-modal-content');
+        const buttons = modal.querySelectorAll('button');
+        console.log('Modal y botones encontrados:', modal, buttons);
 
-                // Captura el modal y genera el PDF
-                const pdfBlob = await captureModalWithStyles(modal, -100, -70, 1200, 2400);
+        // Oculta los botones
+        hideElements(buttons);
 
-                // Enviar el PDF al servidor
-                const operador = modal.querySelector('#nombre_c').value;
-                const campana = modal.querySelector('#campana_c').value;
-
-                const formData = new FormData();
-                formData.append('operador', operador);
-                formData.append('campana', campana);
-                formData.append('archivo', pdfBlob, 'cedula_parciales.pdf');
-
-                const response = await fetch('proc/insertPDF.php', {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    // Cerrar la alerta de carga
-                    Swal.close();
-
-                    // Mostrar alerta de éxito y cerrarla automáticamente
-                    Swal.fire({
-                        icon: 'success',
-                        title: '¡ El PDF  <i class="fas fa-file-pdf" style="color:red;" ></i> se ha guardado correctamente. !',
-                        timer: 4500, // Duración de la alerta en milisegundos (2 segundos)
-                        showConfirmButton: false, // No mostrar botón de confirmación
-                    }).then(() => {
-                        // Cerrar el modal después de que la alerta se cierre
-                        document.getElementById('btnsalirM')?.click();
-                        // Recargar la página completamente (desde el servidor)
-                        location.reload(true);
-                    });
-                } else {
-                    throw new Error(result.error || 'Error al subir el PDF a S3');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                // Cerrar la alerta de carga en caso de error
-                Swal.close();
-                showErrorAlert();
-            } finally {
-                // Restaura el estado original
-                showElements(buttons);
-                restoreModalStyles(modal);
-            }
+        // Mostrar alerta de carga
+        Swal.fire({
+            title: 'Generando PDF...',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            didOpen: () => Swal.showLoading()
         });
 
-        // Función para esperar a que los elementos dinámicos se carguen
-        function waitForDynamicContent(container) {
-            return new Promise((resolve) => {
-                const observer = new MutationObserver((mutationsList, observer) => {
-                    resolve();
-                    observer.disconnect();
-                });
-                observer.observe(container, {
-                    childList: true,
-                    subtree: true
-                });
-                setTimeout(resolve, 500); // Timeout de seguridad
+        try {
+            console.log('Esperando contenido dinámico...');
+            await waitForDynamicContent(modal);
+
+            console.log('Convirtiendo imágenes a Base64...');
+            await convertImagesToBase64(modal);
+
+            console.log('Capturando modal y generando PDF...');
+            const pdfBlob = await captureModalWithStyles(modal, -100, -70, 1200, 2400);
+            console.log('PDF Blob generado:', pdfBlob, 'Tamaño del blob:', pdfBlob.size);
+
+            // Enviar el PDF al servidor (S3)
+            const operador = modal.querySelector('#nombre_c').value;
+            const campana = modal.querySelector('#campana_c').value;
+            console.log('Valores a enviar al servidor:', { operador, campana, archivo: pdfBlob });
+
+            const formData = new FormData();
+            formData.append('operador', operador);
+            formData.append('campana', campana);
+            formData.append('archivo', pdfBlob, 'cedula_parciales.pdf');
+
+            const response = await fetch('proc/insertPDF.php', {
+                method: 'POST',
+                body: formData,
             });
-        }
 
-        // Función para ocultar elementos
-        function hideElements(elements) {
-            elements.forEach(element => (element.style.display = 'none'));
-        }
+            const result = await response.json();
+            console.log('Respuesta del servidor:', result);
 
-        // Función para mostrar elementos
-        function showElements(elements) {
-            elements.forEach(element => (element.style.display = ''));
-        }
+            if (result.success) {
+                // Registrar metadatos en Firebase
+                try {
+                    await database.ref('PDF_Parciales').push({
+                        operador: result.operador,
+                        campana: result.campana,
+                        fileUrl: result.file_url,
+                        filePath: result.file_path,
+                        fileName: result.file_name,
+                        fecha: result.fecha
+                    });
+                    console.log('Metadatos registrados en Firebase');
+                } catch (firebaseError) {
+                    console.error('Error registrando en Firebase:', firebaseError);
+                }
 
-        // Función para convertir imágenes a Base64
-        function convertImagesToBase64(container) {
-            const images = container.querySelectorAll('img');
-            return Promise.all(
-                Array.from(images).map(img => {
-                    return new Promise((resolve) => {
-                        if (img.complete && img.naturalHeight !== 0) {
+                // Cerrar la alerta de carga y mostrar éxito
+                Swal.close();
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡ El PDF  <i class="fas fa-file-pdf" style="color:red;" ></i> se ha guardado correctamente. !',
+                    timer: 4500,
+                    showConfirmButton: false,
+                }).then(() => {
+                    document.getElementById('btnsalirM')?.click();
+                    location.reload(true);
+                });
+
+            } else {
+                throw new Error(result.error || 'Error al subir el PDF a S3');
+            }
+
+        } catch (error) {
+            console.error('Error capturado en try/catch:', error);
+            Swal.close();
+            showErrorAlert();
+        } finally {
+            showElements(buttons);
+            restoreModalStyles(modal);
+        }
+    });
+
+    // ---------------- Funciones auxiliares ----------------
+
+    // Función para esperar a que los elementos dinámicos se carguen
+    function waitForDynamicContent(container) {
+        return new Promise((resolve) => {
+            const observer = new MutationObserver((mutationsList, observer) => {
+                console.log('Mutación detectada, contenido dinámico listo.');
+                resolve();
+                observer.disconnect();
+            });
+            observer.observe(container, { childList: true, subtree: true });
+            setTimeout(() => {
+                console.log('Timeout alcanzado para contenido dinámico');
+                resolve();
+            }, 500);
+        });
+    }
+
+    // Función para ocultar elementos
+    function hideElements(elements) {
+        elements.forEach(element => (element.style.display = 'none'));
+    }
+
+    // Función para mostrar elementos
+    function showElements(elements) {
+        elements.forEach(element => (element.style.display = ''));
+    }
+
+    // Función para convertir imágenes a Base64
+    function convertImagesToBase64(container) {
+        const images = container.querySelectorAll('img');
+        return Promise.all(
+            Array.from(images).map(img => {
+                return new Promise((resolve) => {
+                    if (img.complete && img.naturalHeight !== 0) {
+                        console.log('Convirtiendo imagen ya cargada:', img.src);
+                        convertToBase64(img);
+                        resolve();
+                    } else {
+                        img.addEventListener('load', () => {
+                            console.log('Imagen cargada:', img.src);
                             convertToBase64(img);
                             resolve();
-                        } else {
-                            img.addEventListener('load', () => {
-                                convertToBase64(img);
-                                resolve();
-                            });
-                            img.addEventListener('error', () => {
-                                console.error("Error cargando la imagen:", img.src);
-                                resolve();
-                            });
-                        }
-                    });
-                })
-            );
-        }
+                        });
+                        img.addEventListener('error', () => {
+                            console.error("Error cargando la imagen:", img.src);
+                            resolve();
+                        });
+                    }
+                });
+            })
+        );
+    }
 
-        // Función para convertir una imagen a Base64
-        function convertToBase64(img) {
-            if (img.src && !img.src.startsWith('data:image')) {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                canvas.width = img.naturalWidth;
-                canvas.height = img.naturalHeight;
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                img.src = canvas.toDataURL('image/png');
+    // Función para convertir una imagen a Base64
+    function convertToBase64(img) {
+        if (img.src && !img.src.startsWith('data:image')) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            img.src = canvas.toDataURL('image/png');
+        }
+    }
+
+    // Función para capturar el modal y generar el PDF
+    async function captureModalWithStyles(modal, x, y, width, height) {
+        console.log('captureModalWithStyles - preparando modal...');
+        const originalOverflow = modal.style.overflow;
+        modal.style.overflow = 'visible';
+        modal.style.width = `${modal.scrollWidth}px`;
+
+        const canvas = await html2canvas(modal, {
+            scale: window.devicePixelRatio * 2,
+            logging: true,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: null,
+            foreignObjectRendering: true,
+            imageTimeout: 5000,
+            width,
+            height,
+            windowWidth: modal.scrollWidth,
+            windowHeight: modal.scrollHeight,
+            scrollX: x,
+            scrollY: y,
+        });
+
+        const imgData = canvas.toDataURL('image/png', 1.0);
+        const pdf = new jspdf.jsPDF({
+            orientation: 'portrait',
+            unit: 'px',
+            format: [width, height]
+        });
+        pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+
+        const pdfBlob = pdf.output('blob');
+        console.log('PDF generado en captureModalWithStyles:', pdfBlob, 'Tamaño:', pdfBlob.size);
+        return pdfBlob;
+    }
+
+    // Función para mostrar una alerta de error
+    function showErrorAlert() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Hubo un problema al generar o subir el PDF. Por favor, inténtalo de nuevo.',
+            confirmButtonText: 'Salir',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('btnsalirM')?.click();
             }
-        }
+        });
+    }
 
-        // Función para capturar el modal y generar el PDF
-        async function captureModalWithStyles(modal, x, y, width, height) {
-            const originalOverflow = modal.style.overflow;
-            modal.style.overflow = 'visible';
-            modal.style.width = `${modal.scrollWidth}px`;
+    // Función para restaurar los estilos del modal
+    function restoreModalStyles(modal) {
+        modal.style.overflow = '';
+        modal.style.width = '';
+    }
+</script>
 
-            const canvas = await html2canvas(modal, {
-                scale: window.devicePixelRatio * 2,
-                logging: true,
-                useCORS: true,
-                allowTaint: true,
-                backgroundColor: null,
-                foreignObjectRendering: true,
-                imageTimeout: 5000, // Aumenta el timeout para imágenes
-                width,
-                height,
-                windowWidth: modal.scrollWidth,
-                windowHeight: modal.scrollHeight,
-                scrollX: x,
-                scrollY: y,
-            });
-
-            const imgData = canvas.toDataURL('image/png', 1.0);
-            const pdf = new jspdf.jsPDF({
-                orientation: 'portrait',
-                unit: 'px',
-                format: [width, height]
-            });
-            pdf.addImage(imgData, 'PNG', 0, 0, width, height);
-
-            // Convertir el PDF a Blob
-            const pdfBlob = pdf.output('blob');
-            return pdfBlob;
-        }
-
-        // Función para mostrar una alerta de error
-        function showErrorAlert() {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Hubo un problema al generar o subir el PDF. Por favor, inténtalo de nuevo.',
-                confirmButtonText: 'Salir',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('btnsalirM')?.click();
-                }
-            });
-        }
-
-        // Función para restaurar los estilos del modal
-        function restoreModalStyles(modal) {
-            modal.style.overflow = '';
-            modal.style.width = '';
-        }
-    </script>
 
     <!-- Script que genera el PDF DEL MODAL CEDULA_BBVA.PHP -->
     <script>
