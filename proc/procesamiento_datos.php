@@ -3,19 +3,14 @@ include 'conexion.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-
 // Verificar si la conexión es exitosa
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 echo "Conexión exitosa.";
 
-
 // Validar que los datos han sido enviados
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    // Depuración de datos enviados por el formulario
-   
 
     // Recoger los datos del formulario con validación básica
     $fecha_subida = isset($_POST['fecha_subida']) ? $_POST['fecha_subida'] : null;
@@ -25,9 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $asegurado = isset($_POST['asegurado']) ? $_POST['asegurado'] : null;
     $afectado = isset($_POST['afectado']) ? $_POST['afectado'] : null;
     $cobertura = isset($_POST['cobertura']) ? $_POST['cobertura'] : null;
-    $tel1 = isset($_POST['telefono1']) ? $_POST['telefono1'] : null;
-    $cel = isset($_POST['celular']) ? $_POST['celular'] : null;
-    $tel3 = isset($_POST['telefono3']) ? $_POST['telefono3'] : null;
+    $tel1 = isset($_POST['telefonoPrincipal']) ? $_POST['telefonoPrincipal'] : null;
+    $cel = isset($_POST['telefonoSecundario']) ? $_POST['telefonoSecundario'] : null;
+    $tel3 = isset($_POST['telefonoAdicional']) ? $_POST['telefonoAdicional'] : null;
     $email = isset($_POST['email']) ? $_POST['email'] : null;
     $datosau = isset($_POST['datosaudatex']) ? $_POST['datosaudatex'] : null;
     $marca = isset($_POST['marca']) ? $_POST['marca'] : null;
@@ -36,6 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $ano = isset($_POST['ano']) ? $_POST['ano'] : null;
     $placas = isset($_POST['placas']) ? $_POST['placas'] : null;
     $no_serie = isset($_POST['no_serie']) ? $_POST['no_serie'] : null;
+    $submarca = isset($_POST['submarca']) ? $_POST['submarca'] : null;
+    $no_motor = isset($_POST['no_motor']) ? $_POST['no_motor'] : null;
     $regimen = isset($_POST['regimen']) ? $_POST['regimen'] : null;
     $taller = isset($_POST['taller']) ? $_POST['taller'] : null;
     $estado = isset($_POST['estado']) ? $_POST['estado'] : null;
@@ -49,25 +46,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fecha_sin = isset($_POST['fecha_siniestro']) ? $_POST['fecha_siniestro'] : null;
     $fecha_pag = isset($_POST['fecha_pago']) ? $_POST['fecha_pago'] : null;
     $linea = isset($_POST['linea']) ? $_POST['linea'] : null;
-    $corralon = isset($_POST['corralon']) ? $_POST['corralon'] : null;
-    $folio = isset($_POST['poliza']) ? $_POST['corralon'] : null;//ced
-    $color = isset($_POST['color']) ? $_POST['color'] : null;//veh ced
-    $veh_estatus = isset($_POST['status']) ? $_POST['status'] : null; //ced
+    $color = isset($_POST['color']) ? $_POST['color'] : null;
+    $veh_estatus = isset($_POST['status']) ? $_POST['status'] : null;
     $hora_subida = isset($_POST['hora_subida']) ? $_POST['hora_subida'] : null;
-    $monto_ebc = isset($_POST['ebc']) ? $_POST['ebc'] : null; //veh
-    $pago_parcial_max = isset($_POST['ppm']) ? $_POST['ppm'] : null; //veh
-    /*folio varchar(50) 
-    color varchar(50) 
-    veh_estatus varchar(50) 
-    hora_subida time*/
+    $monto_ebc = isset($_POST['ebc']) ? $_POST['ebc'] : null;
+    $pago_parcial_max = isset($_POST['ppm']) ? $_POST['ppm'] : null;
+    $situacionFis = isset($_POST['situacionFis']) ? $_POST['situacionFis'] : null;
+    $isr = isset($_POST['isr']) ? $_POST['isr'] : null;
+    $resguardo = isset($_POST['resguardo']) ? $_POST['resguardo'] : null;
+    $fecha_determinacion = isset($_POST['fecha_determinacion']) ? $_POST['fecha_determinacion'] : null;
+    $indemnizacion = isset($_POST['indemnizacion']) ? $_POST['indemnizacion'] : null;
+    $porcentajeDanos = isset($_POST['porcentajeDanos']) ? $_POST['porcentajeDanos'] : null;
+    $valorIndem = isset($_POST['valorIndem']) ? $_POST['valorIndem'] : null;
+    $baseIndem = isset($_POST['baseIndem']) ? $_POST['baseIndem'] : null;
+    $deducible = isset($_POST['deducible']) ? $_POST['deducible'] : null;
+    $coaseguro = isset($_POST['coaseguro']) ? $_POST['coaseguro'] : null;
+    $primasPen = isset($_POST['primasPen']) ? $_POST['primasPen'] : null;
+    $montoRes = isset($_POST['montoRes']) ? $_POST['montoRes'] : null;
+    $tipoNegocio = isset($_POST['tipoNegocio']) ? $_POST['tipoNegocio'] : null;
+    $coberturasAdi = isset($_POST['coberturasAdi']) ? $_POST['coberturasAdi'] : null;
+    $montoCoberAdi = isset($_POST['montoCoberAdi']) ? $_POST['montoCoberAdi'] : null;
 
-    // Validar los campos obligatorios (ejemplo: fecha_subida y siniestro)
-    if (empty($fecha_subida) || empty($siniestro)) {
+    // Validar los campos obligatorios
+    if (empty($fecha_subida) || empty($no_reporte)) {
         echo json_encode(['status' => 'error', 'message' => 'Los campos Fecha de Subida y Siniestro son obligatorios']);
         exit;
     }
 
-    // Obtener el ID del estado en base al nombre del estado de forma segura
+    // Obtener el ID del estado
     $stmt = $conexion->prepare("SELECT id_direccion FROM Direccion WHERE pk_estado = ?");
     $stmt->bind_param("s", $estado);
     $stmt->execute();
@@ -81,21 +87,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $fk_estado = $fila_estado['id_direccion'];
 
-    // Insertar en Asegurado usando sentencias preparadas
+    // Insertar en Asegurado
     $stmt = $conexion->prepare("INSERT INTO Asegurado (nom_asegurado, email, tel1, tel2, contacto) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("sssss", $asegurado, $email, $tel1, $cel, $tel3);
-
     if (!$stmt->execute()) {
         echo "Error al insertar en Asegurado: " . $stmt->error;
         exit;
-    } else {
-        echo "Inserción en Asegurado exitosa.";
     }
     $fk_asegurado = $stmt->insert_id;
 
     // Insertar en Vehículo
-    $stmt = $conexion->prepare("INSERT INTO Vehiculo (marca, tipo, ano, pk_placas, pk_no_serie, fk_asegurado,color,veh_estatus,monto_ebc,pago_parcial_max) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?)");
-    $stmt->bind_param("sssssissss", $marca, $tipo, $ano, $placas, $no_serie, $fk_asegurado,$color,$veh_estatus,$monto_ebc,$pago_parcial_max);
+    $stmt = $conexion->prepare("INSERT INTO Vehiculo (marca, tipo, ano, pk_placas, pk_no_serie, fk_asegurado,color,veh_estatus,monto_ebc,pago_parcial_max,submarca,no_motor) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssissssss", $marca, $tipo, $ano, $placas, $no_serie, $fk_asegurado,$color,$veh_estatus,$monto_ebc,$pago_parcial_max,$submarca,$no_motor);
     if ($stmt->execute()) {
         $fk_vehiculo = $stmt->insert_id;
     } else {
@@ -104,8 +107,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Insertar en Adicionales
-    $stmt = $conexion->prepare("INSERT INTO Adicionales (proyecto, siniestro, fecha_siniestro, fecha_pago, linea, corralon) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $proyecto, $siniestro, $fecha_sin, $fecha_pag, $linea, $corralon);
+    $stmt = $conexion->prepare("INSERT INTO Adicionales (proyecto, siniestro, fecha_siniestro, fecha_pago, linea) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $proyecto, $siniestro, $fecha_sin, $fecha_pag, $linea);
     if ($stmt->execute()) {
         $fk_adicionales = $stmt->insert_id;
     } else {
@@ -125,71 +128,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Insertar en Cedula
-    // Asigna los valores predeterminados antes de bind_param()
-    // Asignar valores predeterminados
-    $porc_doc = 00.00;  // Porcentaje de documentos
-    $porc_total = 00.00; // Porcentaje total
-    $fk_usuario = 1;     // ID del usuario predeterminado
-
-    // Preparar la consulta de inserción en la tabla cedula
-    // Asegúrate de que todas las variables tienen valores válidos
+    $porc_doc = 0.00;
+    $porc_total = 0.00;
+    $fk_usuario = 1;
     $folio = $folio ?? 'Sin folio';
     $color = $color ?? 'Sin color';
     $veh_estatus = $veh_estatus ?? 'Desconocido';
-    $hora_subida = $hora_subida ?? date('H:i:s'); // Hora actual si no está definida
+    $hora_subida = $hora_subida ?? date('H:i:s');
 
-    echo "Debugging variables:<br>";
-    echo "Folio: $folio<br>";
-    echo "Color: $color<br>";
-    echo "Vehículo Estatus: $veh_estatus<br>";
-    echo "Hora Subida: $hora_subida<br>";
-
-    $stmt = $conexion->prepare("
+$stmt = $conexion->prepare("
     INSERT INTO Cedula (
         siniestro, poliza, marca, tipo, modelo, serie, fecha_siniestro, estacion, 
         estatus, subestatus, porc_doc, porc_total, estado, fecha_subida, no_reporte, 
         fecha_asignacion, asegurado, email, tel1, celular, tel3, nom_estado, fk_asegurado, 
         fk_vehiculo, fk_expediente, fk_direccion, fk_adicionales, fk_usuario, folio, 
-        color, veh_estatus, hora_subida
-    ) 
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        color, veh_estatus, hora_subida,
+        submarca, no_motor, situacionFis, isr,
+        resguardo, fecha_determinacion, indemnizacion,
+        porcentajeDanos, valorIndem, baseIndem, deducible, coaseguro,
+        primasPen, montoRes, tipoNegocio, coberturasAdi, montoCoberAdi
+    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
 ");
 
-    $stmt->bind_param(
-        "ssssssssssssssssssssssssssiiiiii",
-        $siniestro,
-        $poliza,
-        $marca,
-        $modelo,
-        $tipo,
-        $no_serie,
-        $fecha_sin,
-        $estacion,
-        $estatus,
-        $subestatus,
-        $porc_doc,
-        $porc_total,
-        $estado,
-        $fecha_subida,
-        $no_reporte,
-        $fecha_asignacion,
-        $asegurado,
-        $email,
-        $tel1,
-        $cel,
-        $tel3,
-        $estado,
-        $fk_asegurado,
-        $fk_vehiculo,
-        $fk_expediente,
-        $fk_estado,
-        $fk_adicionales,
-        $fk_usuario,
-        $folio,
-        $color,
-        $veh_estatus,
-        $hora_subida
-    );
+$stmt->bind_param(
+    str_repeat("s", 23) . str_repeat("i", 7) . str_repeat("s", 20),
+    $siniestro, $poliza, $marca, $modelo, $tipo, $no_serie, $fecha_sin, $estacion,
+    $estatus, $subestatus, $porc_doc, $porc_total, 
+    $estado, $fecha_subida, $no_reporte, $fecha_asignacion,
+    $asegurado, $email, $tel1, $cel, $tel3, $estado, // 23 "s"
+    $fk_asegurado, $fk_vehiculo, $fk_expediente, $fk_estado, $fk_adicionales, $fk_usuario, // 7 "i"
+    $folio, $color, $veh_estatus, $hora_subida, 
+    $submarca, $no_motor, $situacionFis, $isr,
+    $resguardo, $fecha_determinacion, $indemnizacion,
+    $porcentajeDanos, $valorIndem, $baseIndem, $deducible, $coaseguro,
+    $primasPen, $montoRes, $tipoNegocio, $coberturasAdi, $montoCoberAdi // 20 "s"
+);
+
 
     if ($stmt->execute()) {
         echo "Cédula creada correctamente.";
@@ -204,7 +178,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ) 
     VALUES (?,?,?,?,?,?,?)");
 
-  
     $stmt->bind_param(
         "ssssssi",
         $fecha_asignacion,
@@ -224,9 +197,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt->close();
 
-    } else {    
-        echo json_encode(['status' => 'error', 'message' => 'Método no permitido']);
-    }
+} else {    
+    echo json_encode(['status' => 'error', 'message' => 'Método no permitido']);
+}
 
 // Cerrar conexión
 $conexion->close();
+?>

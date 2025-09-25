@@ -74,6 +74,7 @@ $rol = $_SESSION['rol']; // Recupera el rol del usuario
         </div>
     </div>
 
+
     <!-- Script para abrir el modal -->
     <script>
         $(document).ready(function() {

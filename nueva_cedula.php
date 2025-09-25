@@ -482,9 +482,10 @@
                             </div>
                     </div>
                 </div>
+
             </div>
             <!-- Botón de envío -->
-            <div class="text-center mt-3">
+            <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
                 <input type="submit" value="Insertar" class="custom-submit-button custom-btn">
             </div>
         </form>
