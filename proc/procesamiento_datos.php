@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $datosau = isset($_POST['datosaudatex']) ? $_POST['datosaudatex'] : null;
     $marca = isset($_POST['marca']) ? $_POST['marca'] : null;
     $tipo = isset($_POST['tipo_caso']) ? $_POST['tipo_caso'] : null;
-    $modelo = isset($_POST['tipo']) ? $_POST['tipo'] : null;
+    $modelo = isset($_POST['modelo']) ? $_POST['modelo'] : null;
     $ano = isset($_POST['ano']) ? $_POST['ano'] : null;
     $placas = isset($_POST['placas']) ? $_POST['placas'] : null;
     $no_serie = isset($_POST['no_serie']) ? $_POST['no_serie'] : null;
@@ -97,8 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fk_asegurado = $stmt->insert_id;
 
     // Insertar en Vehículo
-    $stmt = $conexion->prepare("INSERT INTO Vehiculo (marca, tipo, ano, pk_placas, pk_no_serie, fk_asegurado,color,veh_estatus,monto_ebc,pago_parcial_max,submarca,no_motor) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?,?,?)");
-    $stmt->bind_param("sssssissssss", $marca, $tipo, $ano, $placas, $no_serie, $fk_asegurado,$color,$veh_estatus,$monto_ebc,$pago_parcial_max,$submarca,$no_motor);
+    $stmt = $conexion->prepare("INSERT INTO Vehiculo (marca, tipo, modelo, ano, pk_placas, pk_no_serie, fk_asegurado,color,veh_estatus,monto_ebc,pago_parcial_max,submarca,no_motor,valor_indemnizacion,valor_comercial) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssisssssssss", $marca,$submarca, $modelo, $ano, $placas, $no_serie, $fk_asegurado,$color,$veh_estatus,$monto_ebc,$pago_parcial_max,$submarca,$no_motor,$valorIndem,$baseIndem);
     if ($stmt->execute()) {
         $fk_vehiculo = $stmt->insert_id;
     } else {
@@ -127,41 +127,56 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
+   $porc_doc = 0.00;
+$porc_total = 0.00;
+$fk_usuario = 1;
+$folio = $folio ?? 'Sin folio';
+$color = $color ?? 'Sin color';
+$veh_estatus = $veh_estatus ?? 'Desconocido';
+$hora_subida = $hora_subida ?? date('H:i:s');
+$nom_estado = $estado; // Asigna el valor de $estado a la variable para la columna nom_estado
+$afectado = $afectado ?? null;
+$cobertura = $cobertura ?? null;
+$datos_audatex = $datosau ?? null;
+$usuario = $usuario ?? null; // Si no está definido, puede ser la causa de un error en Seguimiento.
+$estacion = 'NUEVO';
+$subestatus = 'NUEVO';
+$estatus = 'NUEVO';
+$fecha_asignacion = $fecha_asignacion ?? $fecha_sin;
+$siniestro = $siniestro ?? $no_reporte;
+
     // Insertar en Cedula
-    $porc_doc = 0.00;
-    $porc_total = 0.00;
-    $fk_usuario = 1;
-    $folio = $folio ?? 'Sin folio';
-    $color = $color ?? 'Sin color';
-    $veh_estatus = $veh_estatus ?? 'Desconocido';
-    $hora_subida = $hora_subida ?? date('H:i:s');
 
 $stmt = $conexion->prepare("
     INSERT INTO Cedula (
         siniestro, poliza, marca, tipo, modelo, serie, fecha_siniestro, estacion, 
         estatus, subestatus, porc_doc, porc_total, estado, fecha_subida, no_reporte, 
-        fecha_asignacion, asegurado, email, tel1, celular, tel3, nom_estado, fk_asegurado, 
-        fk_vehiculo, fk_expediente, fk_direccion, fk_adicionales, fk_usuario, folio, 
-        color, veh_estatus, hora_subida,
-        submarca, no_motor, situacionFis, isr,
-        resguardo, fecha_determinacion, indemnizacion,
-        porcentajeDanos, valorIndem, baseIndem, deducible, coaseguro,
-        primasPen, montoRes, tipoNegocio, coberturasAdi, montoCoberAdi
-    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        fecha_asignacion, asegurado, afectado, cobertura, tel1, celular, tel3, email, datos_audatex,
+        nom_estado, fk_asegurado, fk_vehiculo, fk_expediente, fk_direccion, fk_adicionales, 
+        fk_usuario, color, folio, veh_estatus, hora_subida, indemnizacion,
+        porcentajeDanos, valorIndem, baseIndem, deducible, coaseguro, primasPen, montoRes, 
+        tipoNegocio, coberturasAdi, montoCoberAdi, resguardo, fecha_determinacion, submarca, no_motor, situacionFis, isr
+    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
 ");
 
+// Contar las columnas:
+// 12 's' (siniestro, poliza, marca, tipo, modelo, serie, fecha_siniestro, estacion, estatus, subestatus, estado, fecha_subida)
+// 2 'd' (porc_doc, porc_total)
+// 13 's' (no_reporte ... datos_audatex, nom_estado)
+// 6 'i' (fk_asegurado ... fk_usuario)
+// 19 's' (color ... isr)
+// Total: 12 + 2 + 13 + 6 + 19 = 52.
+
 $stmt->bind_param(
-    str_repeat("s", 23) . str_repeat("i", 7) . str_repeat("s", 20),
-    $siniestro, $poliza, $marca, $modelo, $tipo, $no_serie, $fecha_sin, $estacion,
-    $estatus, $subestatus, $porc_doc, $porc_total, 
+    "ssssssssssddsssssssssssssiiiiiisssssssssssssssssssss",
+    $siniestro, $poliza, $marca, $submarca, $modelo, $no_serie, $fecha_sin, $estacion,
+    $estatus, $subestatus, $porc_doc, $porc_total,
     $estado, $fecha_subida, $no_reporte, $fecha_asignacion,
-    $asegurado, $email, $tel1, $cel, $tel3, $estado, // 23 "s"
-    $fk_asegurado, $fk_vehiculo, $fk_expediente, $fk_estado, $fk_adicionales, $fk_usuario, // 7 "i"
-    $folio, $color, $veh_estatus, $hora_subida, 
-    $submarca, $no_motor, $situacionFis, $isr,
-    $resguardo, $fecha_determinacion, $indemnizacion,
-    $porcentajeDanos, $valorIndem, $baseIndem, $deducible, $coaseguro,
-    $primasPen, $montoRes, $tipoNegocio, $coberturasAdi, $montoCoberAdi // 20 "s"
+    $asegurado, $afectado, $cobertura, $tel1, $cel, $tel3, $email, $datos_audatex, $nom_estado,
+    $fk_asegurado, $fk_vehiculo, $fk_expediente, $fk_estado, $fk_adicionales, $fk_usuario,
+    $color, $folio, $veh_estatus, $hora_subida, $indemnizacion,
+    $porcentajeDanos, $valorIndem, $baseIndem, $deducible, $coaseguro, $primasPen, $montoRes,
+    $tipoNegocio, $coberturasAdi, $montoCoberAdi, $resguardo, $fecha_determinacion, $submarca, $no_motor, $situacionFis, $isr
 );
 
 
@@ -172,6 +187,7 @@ $stmt->bind_param(
         echo "Error al insertar en Cedula: " . $stmt->error;
     }
 
+   
     $stmt = $conexion->prepare("
     INSERT INTO Seguimiento (
       fecha_seguimiento, hr_seguimiento, estatus_seguimiento, subestatus, estacion, usuario, fk_cedula
