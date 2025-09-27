@@ -285,7 +285,7 @@ $(document).ready(function () {
        setValue("no_siniestro_exp", dataExpediente.no_siniestro);
        setValue("poliza_exp", dataExpediente.poliza);
        setValue("afectado_exp", dataExpediente.afectado);
-       setValue("tipo_caso_exp", dataExpediente.tipo_caso);
+       //setValue("tipo_caso_exp", dataExpediente.tipo_caso);
        setValue("cobertura_exp", dataExpediente.cobertura);
        setValue("fecha_siniestro_exp", dataExpediente.fecha_siniestro);
        setValue("taller_corralon_exp", dataExpediente.taller_corralon);
@@ -295,6 +295,8 @@ $(document).ready(function () {
        setValue("estado_exp", dataExpediente.estado);
        setValue("ciudad_exp", dataExpediente.ciudad);
        setValue("region_exp", dataExpediente.region);
+       setValue("asegurado_exp", dataAsegurado.nom_asegurado);
+       setValue("isr_exp", dataAsegurado.isr); // Asignar valor de isr
 
        // Asignar valores del vehículo
        setValue("marca_veh", dataVehiculo.marca);

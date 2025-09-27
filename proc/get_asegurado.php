@@ -27,6 +27,9 @@ if ($rowCedula = $resultCedula->fetch_assoc()) {
     // Llenar la respuesta con el ID del asegurado
     $response['id_asegurado'] = $aseguradoId;
 
+    // Llenar la respuesta con el valor de isr
+    $response['isr'] = $rowCedula['isr'];
+
     // Ahora, si deseas obtener los datos del asegurado, puedes hacer la siguiente consulta:
     $sqlAsegurado = "SELECT * FROM Asegurado WHERE id_asegurado = ?";
     $stmtAsegurado = $conexion->prepare($sqlAsegurado);

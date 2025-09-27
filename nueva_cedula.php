@@ -90,6 +90,18 @@
                                     <option value="TERCERO">TERCERO</option>
                                 </select>
                             </div>
+                            <!-- Homologacion a HDI-->
+                            <div class="form-group custom-form-group">
+                                <label for="cobertura">
+                                    <h6>Cobertura:</h6>
+                                </label>
+                                <select id="cobertura" name="cobertura" class="form-control form-control-user">
+                                    <option value="">Selecciona</option>
+                                    <option value="ROBO">ROBO</option>
+                                    <option value="ADAPTACION">ADAPTACION</option>
+                                    <option value="DAÑOS">DAÑOS</option>
+                                </select>
+                            </div>
 
                             <!--Cambio de nombre por homologación a HDI-->
                             <div class="custom-form-group form-group">
@@ -520,15 +532,51 @@
                     method: 'POST',
                     body: formData
                 })
-                .then(response => response.text()) // Procesamos la respuesta como texto
+                .then(response => response.json()) // Procesamos la respuesta como JSON
                 .then(data => {
-                    // Mostrar un mensaje de éxito o el contenido que devuelve el PHP
-                    //alert('Datos enviados correctamente: ' + data);
+                    // Mostrar un mensaje dependiendo de la respuesta del servidor
+                    if (data.status === 'success') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Cédula creada!',
+                            text: data.message || 'La cédula fue registrada correctamente.',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'Aceptar'
+                        }).then(() => {
+                            // 🔹 Si usas modal de Bootstrap, lo puedes cerrar aquí
+                            if (typeof $('#nuevaCedulaModal') !== "undefined") {
+                                $('#nuevaCedulaModal').modal('hide');
+                            }
+                            // 🔹 Refrescar la página
+                            document.getElementById('datosCed').reset();
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error al crear la cédula',
+                            text: data.message || 'Ocurrió un problema. Vuelve a intentarlo.',
+                            confirmButtonColor: '#d33',
+                            confirmButtonText: 'Reintentar'
+                        }).then(() => {
+                            // 🔹 Limpiar formulario para volver a intentarlo
+                            document.getElementById('datosCed').reset();
+                        });
+                    }
                 })
                 .catch(error => {
                     // Manejo de errores
                     console.error('Error al enviar los datos:', error);
-                    //alert('Hubo un error al enviar los datos.');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Hubo un error inesperado.',
+                        confirmButtonColor: '#d33',
+                        confirmButtonText: 'Cerrar'
+                    }).then(() => {
+                        // 🔹 También limpiamos el formulario en caso de error inesperado
+                        document.getElementById('datosCed').reset();
+                    });
                 });
         });
     </script>

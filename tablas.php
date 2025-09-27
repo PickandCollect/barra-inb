@@ -619,40 +619,48 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                                 </div>
                                                 <div class="custom-form-group-editar form-group">
                                                     <label for="telefono1_ed">
-                                                        <h6>Teléfono1:</h6>
+                                                        <h6>Teléfono principal:</h6>
                                                     </label>
                                                     <input type="text" id="telefono1_ed" name="telefono1_ed" class="custom-form-control form-control" placeholder="Teléfono principal">
                                                 </div>
                                                 <div class="custom-form-group-editar form-group">
                                                     <label for="telefono2_ed">
-                                                        <h6>Teléfono2:</h6>
+                                                        <h6>Teléfono alterno:</h6>
                                                     </label>
                                                     <input type="text" id="telefono2_ed" name="telefono2_ed" class="custom-form-control form-control" placeholder="Otro teléfono">
                                                 </div>
                                                 <div class="custom-form-group-editar form-group">
+                                                    <label for="con_telefono1_ed">
+                                                        <h6>Teléfono adicional:</h6>
+                                                    </label>
+                                                    <input type="text" id="con_telefono1_ed" name="con_telefono1_ed" class="custom-form-control form-control" placeholder="Otro teléfono">
+                                                </div>
+                                                <!--No aparece en HDI-->
+                                                <div class="custom-form-group-editar form-group" style ="display: none;">
                                                     <label for="contacto_ed">
                                                         <h6>Contacto:</h6>
                                                     </label>
                                                     <input type="text" id="contacto_ed" name="contacto_ed" class="custom-form-control form-control" placeholder="Contacto">
                                                 </div>
-                                                <div class="custom-form-group-editar form-group">
+                                                <div class="custom-form-group-editar form-group" style ="display: none;">
                                                     <label for="con_email_ed">
                                                         <h6>Contacto email:</h6>
                                                     </label>
                                                     <input type="email" id="con_email_ed" name="con_email_ed" class="custom-form-control form-control" placeholder="Contacto email">
                                                 </div>
-                                                <div class="custom-form-group-editar form-group">
+                                                <!--<div class="custom-form-group-editar form-group" style ="display: none;">
                                                     <label for="con_telefono1_ed">
                                                         <h6>Contacto teléfono 1:</h6>
                                                     </label>
                                                     <input type="text" id="con_telefono1_ed" name="con_telefono1_ed" class="custom-form-control form-control" placeholder="Contacto teléfono 1">
-                                                </div>
-                                                <div class="custom-form-group-editar form-group">
+                                                </div> -->
+                                                <div class="custom-form-group-editar form-group" style ="display: none;">
                                                     <label for="con_telefono2_ed">
                                                         <h6>Contacto teléfono 2:</h6>
                                                     </label>
                                                     <input type="text" id="con_telefono2_ed" name="con_telefono2_ed" class="custom-form-control form-control" placeholder="Contacto teléfono 2">
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -666,7 +674,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                         <div id="collapseExpediente" class="custom-grid-container-editar collapse hide">
                                             <div class="custom-form-group-editar form-group">
                                                 <label for="fecha_carga_exp">
-                                                    <h6>Fecha Carga:</h6>
+                                                    <h6>Fecha Siniestro:</h6>
                                                 </label>
                                                 <input type="date" id="fecha_carga_exp" name="fecha_carga_exp" class="custom-form-control form-control">
                                             </div>
@@ -683,6 +691,33 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                                 </label>
                                                 <input type="text" id="poliza_exp" name="poliza_exp" class="custom-form-control form-control" placeholder="Número de póliza">
                                             </div>
+                                            <!-- Aparece en HDI-->
+                                            <div class="custom-form-group-editar form-group">
+                                                <label for="asegurado_exp">
+                                                    <h6>Asegurado:</h6>
+                                                </label>
+                                                <input type="text" id="asegurado_exp" name="asegurado_exp" class="custom-form-control form-control" placeholder="Nombre completo">
+                                            </div>
+                                            <div class="custom-form-group-editar form-group">
+                                                <label for="regimen_exp">
+                                                    <h6>Régimen:</h6>
+                                                </label>
+                                                <select id="regimen_exp" name="regimen_exp" class="custom-form-control form-control">
+                                                    <option value="" selected>Selecciona</option>
+                                                    <option value="PERSONA FISICA">PERSONA FISICA</option>
+                                                    <option value="PERSONA FISICA CON ACTIVIDAD EMPRESARIAL">PERSONA FISICA CON ACTIVIDAD EMPRESARIAL</option>
+                                                    <option value="PERSONA MORAL">PERSONA MORAL</option>
+                                                    <option value="REGIMEN INCORPORACION FISCAL">REGIMEN INCORPORACION FISCAL</option>
+                                                    <option value="REGIMEN SIMPLIFICADO DE CONFIANZA">REGIMEN SIMPLIFICADO DE CONFIANZA</option>
+                                                </select>
+                                            </div>
+                                            <!-- Aparece en HDI-->
+                                            <div class="custom-form-group-editar form-group">
+                                                <label for="isr_exp">
+                                                    <h6>ISR:</h6>
+                                                </label>
+                                                <input type="text" id="isr_exp" name="isr_exp" class="custom-form-control form-control" placeholder="ISR">
+                                            </div>
                                             <div class="custom-form-group-editar form-group">
                                                 <label for="afectado_exp">
                                                     <h6>Afectado:</h6>
@@ -693,7 +728,8 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                                     <option value="TERCERO">TERCERO</option>
                                                 </select>
                                             </div>
-                                            <div class="custom-form-group-editar form-group">
+                                            <!-- No aparece en HDI-->
+                                            <div class="custom-form-group-editar form-group" style="display: none;">
                                                 <label for="tipo_caso_exp">
                                                     <h6>Tipo de caso:</h6>
                                                 </label>
@@ -705,7 +741,20 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                                     <option value="ROBO">ROBO</option>
                                                 </select>
                                             </div>
+                                            <!--Homologacion con HDI-->
                                             <div class="form-group custom-form-group-editar ">
+                                                <label for="cobertura_exp">
+                                                    <h6>Cobertura:</h6>
+                                                </label>
+                                                <select id="cobertura_exp" name="cobertura_exp" class="form-control form-control-user">
+                                                    <option value="">Selecciona</option>
+                                                    <option value="ROBO">ROBO</option>
+                                                    <option value="ADAPTACION">ADAPTACION</option>
+                                                    <option value="DAÑOS">DAÑOS</option>
+                                                </select>
+                                            </div>
+                                            <!-- Homologacion con HDI
+                                            <div class="form-group custom-form-group-editar " style="display: none;">
                                                 <label for="cobertura_exp">
                                                     <h6>Cobertura:</h6>
                                                 </label>
@@ -715,8 +764,9 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                                     <option value="RT">RT</option>
                                                     <option value="RC">RC</option>
                                                 </select>
-                                            </div>
-                                            <div class="form-group custom-form-group-editar">
+                                            </div>-->
+                                            <!-- No aparece en HDI-->
+                                            <div class="form-group custom-form-group-editar" style="display: none;">
                                                 <label for="fecha_siniestro_exp">
                                                     <h6>Fecha Siniestro:</h6>
                                                 </label>
@@ -760,13 +810,15 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
-                                            <div class="form-group custom-form-group-editar">
+                                            <!-- No aparece en HDI-->
+                                            <div class="form-group custom-form-group-editar" style="display: none;">
                                                 <label for="taller_corralon_exp">
                                                     <h6>Taller/Corralon:</h6>
                                                 </label>
                                                 <input type="text" id="taller_corralon_exp" name="taller_corralon_exp" class="custom-form-control form-control" placeholder="Taller/Corralon">
                                             </div>
-                                            <div class="form-group custom-form-group-editar">
+                                            <!-- No aparece en HDI-->
+                                            <div class="form-group custom-form-group-editar" style="display: none;">
                                                 <label for="financiado_exp">
                                                     <h6>Financiado:</h6>
                                                 </label>
@@ -774,17 +826,6 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                                     <option value="">Selecciona</option>
                                                     <option value="SI">SI</option>
                                                     <option value="NO">NO</option>
-                                                </select>
-                                            </div>
-                                            <div class="custom-form-group-editar form-group">
-                                                <label for="regimen_exp">
-                                                    <h6>Régimen:</h6>
-                                                </label>
-                                                <select id="regimen_exp" name="regimen_exp" class="custom-form-control form-control">
-                                                    <option value="" selected>Selecciona</option>
-                                                    <option value="PERSONA FISICA">PERSONA FISICA</option>
-                                                    <option value="PERSONA FISICA CON ACTIVIDAD EMPRESARIAL">PERSONA FISICA CON ACTIVIDAD EMPRESARIAL</option>
-                                                    <option value="PERSONA MORAL">PERSONA MORAL</option>
                                                 </select>
                                             </div>
                                             <div class="form-group custom-form-group-editar">
@@ -796,6 +837,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                         </div>
                                     </div>
 
+                                    <!-- No aparece en HDI
                                     <div id="perdidas" class="custom-form-section-editar custom-card-border-editar">
                                         <h3 id="perdidas-heading" style="cursor: pointer;">Perdidas Totales</h3>
                                         <div id="collapsePerdidas" class="custom-grid-container-editar collapse hide">
@@ -847,8 +889,11 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                             </div>
                                         </div>
                                     </div>
+                                    -->
                                 </div>
+                                
                             </div>
+                        
                             <div class="custom-form-section-editar custom-card-border-editar ">
                                 <h3 id="seguimiento-heading" style="cursor: pointer;">Seguimiento</h3>
                                 <div id="collapseSeguimiento" class="collapse hide">
